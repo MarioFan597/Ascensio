@@ -94,6 +94,41 @@ return {
                 "multipler by {C:money}#3#{} each trigger"
                 }
             },
+			j_asc_greedy = {
+				name = "Avarus",
+				text = {
+					"Played cards with {C:diamond}Diamond",
+					"suit give {X:dark_edition,C:white}^#1#{} Mult",
+					"when scored",
+				}
+			},
+
+			j_asc_lusty = {
+				name = "Libido",
+				text = {
+					"Played cards with {C:heart}Heart",
+					"suit give {X:dark_edition,C:white}^#1#{} Mult",
+					"when scored",
+				}
+			},
+
+			j_asc_wrathful = {
+				name = "Iram",
+				text = {
+					"Played cards with {C:spade}Spade",
+					"suit give {X:dark_edition,C:white}^#1#{} Mult",
+					"when scored",
+				}
+			},
+
+			j_asc_gluttonous = {
+				name = "Gula",
+				text = {
+					"Played cards with {C:club}Club",
+					"suit give {X:dark_edition,C:white}^#1#{} Mult",
+					"when scored",
+				}
+			},
 
             ----Cryptid------
             j_asc_high_five = {
