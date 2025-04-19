@@ -934,12 +934,13 @@ SMODS.Joker {
 		if context.individual then
 			if context.cardarea == G.play and context.other_card:is_suit('Diamonds') then
 				return {
-					e_mult = card.ability.extra.e_mult,
-					card = card
+					message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.e_mult } }),
+					Emult_mod = card.ability.extra.e_mult,
+					colour = G.C.DARK_EDITION,
 				}
 			end
 		end
-	end
+	end,
 	cry_credits = {
 		idea = {
 			"Lexi"
@@ -969,12 +970,13 @@ SMODS.Joker {
 		if context.individual then
 			if context.cardarea == G.play and context.other_card:is_suit('Hearts') then
 				return {
-					e_mult = card.ability.extra.e_mult,
-					card = card
+					message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.e_mult } }),
+					Emult_mod = card.ability.extra.e_mult,
+					colour = G.C.DARK_EDITION,
 				}
 			end
 		end
-	end
+	end,
 	cry_credits = {
 		idea = {
 			"Lexi"
@@ -1004,12 +1006,13 @@ SMODS.Joker {
 		if context.individual then
 			if context.cardarea == G.play and context.other_card:is_suit('Spades') then
 				return {
-					e_mult = card.ability.extra.e_mult,
-					card = card
+					message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.e_mult } }),
+					Emult_mod = card.ability.extra.e_mult,
+					colour = G.C.DARK_EDITION,
 				}
 			end
 		end
-	end
+	end,
 	cry_credits = {
 		idea = {
 			"Lexi"
@@ -1039,12 +1042,13 @@ SMODS.Joker {
 		if context.individual then
 			if context.cardarea == G.play and context.other_card:is_suit('Clubs') then
 				return {
-					e_mult = card.ability.extra.e_mult,
-					card = card
+					message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.e_mult } }),
+					Emult_mod = card.ability.extra.e_mult,
+					colour = G.C.DARK_EDITION,
 				}
 			end
 		end
-	end
+	end,
 	cry_credits = {
 		idea = {
 			"Lexi"
