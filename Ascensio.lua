@@ -80,6 +80,10 @@ local ascensionable = {
 			j_abstract = "j_asc_abstract",
 			j_oops = "j_asc_oops",
 			j_golden = "j_asc_golden",
+			j_greedy = "j_asc_greedy",
+			j_lusty = "j_asc_lusty",
+			j_wrathful = "j_asc_wrathful",
+			j_gluttonous = "j_asc_gluttonous"
 			j_asc_b_cake = "j_cry_crustulum"	
 		}
 
