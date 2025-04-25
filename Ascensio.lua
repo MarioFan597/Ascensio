@@ -206,6 +206,150 @@ SMODS.Joker {
 }
 
 SMODS.Joker {
+	key = "greedy",
+	config = { extra = { e_mult = 1.2 } },
+	rarity = "cry_exotic",
+	atlas = "v_atlas_1",
+	blueprint_compat = true,
+	pos = { x = 3, y = 2 },
+	soul_pos = { x = 5, y = 2, extra = { x = 4, y = 2 } },
+	cost = 50,
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.e_mult } }
+	end,
+	calculate = function(self, card, context)
+		if context.individual then
+			if context.cardarea == G.play and context.other_card:is_suit('Diamonds') then
+				return {
+					message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.e_mult } }),
+					Emult_mod = card.ability.extra.e_mult,
+					colour = G.C.DARK_EDITION,
+				}
+			end
+		end
+	end,
+	cry_credits = {
+		idea = {
+			"Lexi"
+		},
+		art = {
+			"MarioFan597"
+		},
+		code = {
+			"Glitchkat10"
+		}
+	},
+}
+
+SMODS.Joker {
+	key = "lusty",
+	config = { extra = { e_mult = 1.2 } },
+	rarity = "cry_exotic",
+	atlas = "v_atlas_1",
+	blueprint_compat = true,
+	pos = { x = 6, y = 2 },
+	soul_pos = { x = 8, y = 2, extra = { x = 7, y = 2 } },
+	cost = 50,
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.e_mult } }
+	end,
+	calculate = function(self, card, context)
+		if context.individual then
+			if context.cardarea == G.play and context.other_card:is_suit('Hearts') then
+				return {
+					message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.e_mult } }),
+					Emult_mod = card.ability.extra.e_mult,
+					colour = G.C.DARK_EDITION,
+				}
+			end
+		end
+	end,
+	cry_credits = {
+		idea = {
+			"Lexi"
+		},
+		art = {
+			"MarioFan597"
+		},
+		code = {
+			"Glitchkat10"
+		}
+	},
+}
+
+SMODS.Joker {
+	key = "wrathful",
+	config = { extra = { e_mult = 1.2 } },
+	rarity = "cry_exotic",
+	atlas = "v_atlas_1",
+	blueprint_compat = true,
+	pos = { x = 9, y = 2 },
+	soul_pos = { x = 11, y = 2, extra = { x = 10, y = 2 } },
+	cost = 50,
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.e_mult } }
+	end,
+	calculate = function(self, card, context)
+		if context.individual then
+			if context.cardarea == G.play and context.other_card:is_suit('Spades') then
+				return {
+					message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.e_mult } }),
+					Emult_mod = card.ability.extra.e_mult,
+					colour = G.C.DARK_EDITION,
+				}
+			end
+		end
+	end,
+	cry_credits = {
+		idea = {
+			"Lexi"
+		},
+		art = {
+			"MarioFan597"
+		},
+		code = {
+			"Glitchkat10"
+		}
+	},
+}
+
+SMODS.Joker {
+	key = "gluttonous",
+	config = { extra = { e_mult = 1.2 } },
+	rarity = "cry_exotic",
+	atlas = "v_atlas_1",
+	blueprint_compat = true,
+	pos = { x = 0, y = 3 },
+	soul_pos = { x = 2, y = 3, extra = { x = 1, y = 3 } },
+	cost = 50,
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.e_mult } }
+	end,
+	calculate = function(self, card, context)
+		if context.individual then
+			if context.cardarea == G.play and context.other_card:is_suit('Clubs') then
+				return {
+					message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.e_mult } }),
+					Emult_mod = card.ability.extra.e_mult,
+					colour = G.C.DARK_EDITION,
+				}
+			end
+		end
+	end,
+	cry_credits = {
+		idea = {
+			"Lexi"
+		},
+		art = {
+			"MarioFan597"
+		},
+		code = {
+			"Glitchkat10"
+		}
+	},
+}
+
+SMODS.Joker {
 	key = 'duo',
 	config = { extra = {power = 2 } },
 	rarity = "cry_exotic",
@@ -920,150 +1064,6 @@ SMODS.Joker{
 				"Jevonn"
 			}
 		},
-}
-
-SMODS.Joker {
-	key = "greedy",
-	config = { extra = { e_mult = 1.2 } },
-	rarity = "cry_exotic",
-	atlas = "v_atlas_1",
-	blueprint_compat = true,
-	pos = { x = 3, y = 2 },
-	soul_pos = { x = 5, y = 2, extra = { x = 4, y = 2 } },
-	cost = 50,
-	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.e_mult } }
-	end,
-	calculate = function(self, card, context)
-		if context.individual then
-			if context.cardarea == G.play and context.other_card:is_suit('Diamonds') then
-				return {
-					message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.e_mult } }),
-					Emult_mod = card.ability.extra.e_mult,
-					colour = G.C.DARK_EDITION,
-				}
-			end
-		end
-	end,
-	cry_credits = {
-		idea = {
-			"Lexi"
-		},
-		art = {
-			"MarioFan597"
-		},
-		code = {
-			"Glitchkat10"
-		}
-	},
-}
-
-SMODS.Joker {
-	key = "lusty",
-	config = { extra = { e_mult = 1.2 } },
-	rarity = "cry_exotic",
-	atlas = "v_atlas_1",
-	blueprint_compat = true,
-	pos = { x = 6, y = 2 },
-	soul_pos = { x = 8, y = 2, extra = { x = 7, y = 2 } },
-	cost = 50,
-	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.e_mult } }
-	end,
-	calculate = function(self, card, context)
-		if context.individual then
-			if context.cardarea == G.play and context.other_card:is_suit('Hearts') then
-				return {
-					message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.e_mult } }),
-					Emult_mod = card.ability.extra.e_mult,
-					colour = G.C.DARK_EDITION,
-				}
-			end
-		end
-	end,
-	cry_credits = {
-		idea = {
-			"Lexi"
-		},
-		art = {
-			"MarioFan597"
-		},
-		code = {
-			"Glitchkat10"
-		}
-	},
-}
-
-SMODS.Joker {
-	key = "wrathful",
-	config = { extra = { e_mult = 1.2 } },
-	rarity = "cry_exotic",
-	atlas = "v_atlas_1",
-	blueprint_compat = true,
-	pos = { x = 9, y = 2 },
-	soul_pos = { x = 11, y = 2, extra = { x = 10, y = 2 } },
-	cost = 50,
-	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.e_mult } }
-	end,
-	calculate = function(self, card, context)
-		if context.individual then
-			if context.cardarea == G.play and context.other_card:is_suit('Spades') then
-				return {
-					message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.e_mult } }),
-					Emult_mod = card.ability.extra.e_mult,
-					colour = G.C.DARK_EDITION,
-				}
-			end
-		end
-	end,
-	cry_credits = {
-		idea = {
-			"Lexi"
-		},
-		art = {
-			"MarioFan597"
-		},
-		code = {
-			"Glitchkat10"
-		}
-	},
-}
-
-SMODS.Joker {
-	key = "gluttonous",
-	config = { extra = { e_mult = 1.2 } },
-	rarity = "cry_exotic",
-	atlas = "v_atlas_1",
-	blueprint_compat = true,
-	pos = { x = 0, y = 3 },
-	soul_pos = { x = 2, y = 3, extra = { x = 1, y = 3 } },
-	cost = 50,
-	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.e_mult } }
-	end,
-	calculate = function(self, card, context)
-		if context.individual then
-			if context.cardarea == G.play and context.other_card:is_suit('Clubs') then
-				return {
-					message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.e_mult } }),
-					Emult_mod = card.ability.extra.e_mult,
-					colour = G.C.DARK_EDITION,
-				}
-			end
-		end
-	end,
-	cry_credits = {
-		idea = {
-			"Lexi"
-		},
-		art = {
-			"MarioFan597"
-		},
-		code = {
-			"Glitchkat10"
-		}
-	},
 }
 
 ----------------------------------------------
