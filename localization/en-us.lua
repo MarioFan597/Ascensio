@@ -133,6 +133,15 @@ return {
 				}
 			},
 
+			j_asc_bull = {
+				name = "Taurus",
+				text = {
+					"{C:white,X:dark_edition}^#2#{} Chips for",
+					"every {C:money}$1{} you have",
+					"{C:inactive}(Currently {}{C:white,X:dark_edition}^#1#{C:inactive} Chips){}"
+				}
+			},
+
 			j_asc_seltzer = {
 				name = "Bulla Aquae",
 				text = {
@@ -140,6 +149,14 @@ return {
 					"Increase number of retriggers",
 					"after {C:attention}#3#{} hands",
 					"{C:inactive}(Hands until upgrade: {C:attention}#2#{C:inactive})"
+				}
+			},
+
+			j_asc_hanging_chad = {
+				name = "Charta Electionis",
+				text = {
+					"Retrigger the first",
+					"scored card {C:attention}#1#{} times"
 				}
 			},
 
