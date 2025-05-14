@@ -225,7 +225,7 @@ return {
 				}
 			},
 
-			j_asc_thanatos = {
+			j_asc_canio = {
 				name = "Thanatos",
 				text = {
 					"Gains {X:dark_edition,C:white}^#2#{} Mult per destroyed face card,",
