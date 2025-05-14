@@ -1089,7 +1089,7 @@ SMODS.Joker {
 				"MarioFan597"
 			},
 			art = {
-				"MarioFan597"
+				"Tatteredlurker"
 			},
 			code = {
 				"Glitchkat10"
