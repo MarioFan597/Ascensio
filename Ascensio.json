@@ -3,7 +3,7 @@
 	"name": "Ascēnsiō",
 	"display_name": "Ascēnsiō",
 	"author": ["MarioFan597"],
-	"description": "Exoticfy your Jokers! Special thanks to Glitchkat10, Tatteredlurker, and the rest of the Crypid Discord!",
+	"description": "Exoticfy your Jokers! Special thanks to Glitchkat10, Tatteredlurker, and the rest of the Cryptid Discord!",
 	"prefix": "asc",
 	"main_file": "Ascensio.lua",
 	"priority": 0,
