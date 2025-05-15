@@ -58,7 +58,7 @@ SMODS.Joker{
 		end
 		return nil
 	end,
-	cry_credits = {
+	asc_credits = {
 			idea = {
 				"Glitchkat10"
 			},

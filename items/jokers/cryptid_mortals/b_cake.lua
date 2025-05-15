@@ -77,7 +77,7 @@ SMODS.Joker{
 		calculate_reroll_cost(true)
 	end,
 
-	cry_credits = {
+	asc_credits = {
 			idea = {
 				"MarioFan597"
 			},

@@ -34,7 +34,7 @@ SMODS.Joker {
 			SMODS.Events["ev_asc_tripple_money"]:finish()
 		end
 	end,
-    cry_credits = {
+    asc_credits = {
 			idea = {
 				"TheOfficialfem"
 			},

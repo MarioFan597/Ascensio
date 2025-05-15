@@ -90,7 +90,7 @@ SMODS.Joker {
 		end
 	end,
 
-	cry_credits = {
+	asc_credits = {
 		idea = {
 			"UTNerd24",
 			"hssr96",

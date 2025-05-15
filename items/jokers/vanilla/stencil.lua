@@ -53,7 +53,7 @@ SMODS.Joker {
 			G.jokers.config.card_limit = G.jokers.config.card_limit - card.ability.extra.joker_slots
 		end
 	end,
-	cry_credits = {
+	asc_credits = {
 			idea = {
 				"UTNerd24",
 				"Glitchkat10"

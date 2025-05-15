@@ -51,7 +51,7 @@ SMODS.Joker {
 			end
 		end
 	end,
-    cry_credits = {
+    asc_credits = {
 			idea = {
 				"MarioFan597"
 			},

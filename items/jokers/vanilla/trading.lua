@@ -1,8 +1,8 @@
 SMODS.Joker {
-	key = "jimbo",
-	config = { extra = { mult = 44444 } },
+	key = "trading",
+	config = { extra = { mult = 0, chips} },
 	rarity = "cry_exotic",
-	atlas = "v_atlas_1",
+	atlas = "trading_card",
 	blueprint_compat = true,
 	pos = { x = 0, y = 0 },
 	soul_pos = { x = 2, y = 0, extra = { x = 1, y = 0 } },

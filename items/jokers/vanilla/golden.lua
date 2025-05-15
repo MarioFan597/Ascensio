@@ -28,7 +28,7 @@ SMODS.Joker {
 			return (card.ability.extra.gold * (to_number(G.GAME.dollars) or 0))
 		end
 	end,
-	cry_credits = {
+	asc_credits = {
 			idea = {
 				"yahooyowza",
 				"UTNerd24"

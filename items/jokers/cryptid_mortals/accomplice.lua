@@ -53,7 +53,7 @@ SMODS.Joker { --Commented out at the moment as it is also increasing hand size a
 			return nil, true
 		end
 	end,
-	cry_credits = {
+	asc_credits = {
 			idea = {
 				"Googol1e308plex"
 			},
