@@ -160,6 +160,16 @@ return {
 				}
 			},
 
+			j_asc_blueprint = {
+				name = "Hyacintho Progressus",
+				text = {
+					"Retriggers {C:attention}Joker{} to the right",
+					"for each copy of that {C:attention}Joker{} you own",
+					"{C:attention}Duplicate Joker{} to the right at end of shop",
+					"{C:inactive}(Must have room)"
+				}
+			},
+
 			j_asc_oops = {
 				name = "Fortunae Risus",
 				text = {

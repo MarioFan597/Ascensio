@@ -40,20 +40,6 @@ SMODS.Atlas {
 	py = 95
 }
 
-SMODS.Atlas {
-	key = "oops_all_6s",
-	path = "oops_all_6s.png",
-	px = 71,
-	py = 95
-}
-
-SMODS.Atlas {
-	key = "defectus",
-	path = "defectus.png",
-	px = 71,
-	py = 95
-}
-
 --[[
 SMODS.Atlas {
 	key = "gluttony",
@@ -70,9 +56,67 @@ SMODS.Sound{
 }
 --]]
 
+----------Defining Vanilla Jokers----------
+local v_jokers = {
+	"jimbo",
+	"greedy",
+	"lusty",
+	"wrathful",
+	"gluttonous",
+	"stencil",
+	"credit_card",
+	"misprint",
+	"scary",
+	"abstract",
+	"dna",
+	"midas",
+	--"to_the_moon",
+	"golden",
+	"bull",
+	"seltzer",
+	"hanging_chad",
+	"blueprint",
+	"oops",
+	"duo",
+	"trio",
+	"family",
+	"order",
+	"tribe",
+	"drivers_license",
+	"canio"
+}
+
+for i, v in pairs(v_jokers) do
+	assert(SMODS.load_file("items/jokers/vanilla/"..v..".lua"))()
+end
+
+----------Defining Cryptid Jokers----------
+local c_jokers = {
+	"gardenfork",
+	"oil_lamp",
+	"high_five"
+}
+
+for i, v in pairs(c_jokers) do
+	assert(SMODS.load_file("items/jokers/cryptid/"..v..".lua"))()
+end
+
+----------Defining Cryptid Mortal Jokers----------
+local cm_jokers = {
+	"b_cake",
+	--"accomplice"
+}
+
+for i, v in pairs(cm_jokers) do
+	assert(SMODS.load_file("items/jokers/cryptid_mortals/"..v..".lua"))()
+end
+
+
+
 ----------Defining Consumables----------
 --Borrowed and modyfied from MoreMarioJoker's powerup card and cryptid's gateway
 local ascensionable = {
+	--Vanilla
 			j_joker = "j_asc_jimbo",
 			j_greedy_joker = "j_asc_greedy",
 			j_lusty_joker = "j_asc_lusty",
@@ -88,6 +132,7 @@ local ascensionable = {
 			j_golden = "j_asc_golden",
 			j_bull = "j_asc_bull",
 			j_selzer = "j_asc_seltzer",
+			j_blueprint = "j_asc_blueprint",
 			j_oops = "j_asc_oops",
 			j_duo = "j_asc_duo",
 			j_trio = "j_asc_trio",
@@ -97,9 +142,13 @@ local ascensionable = {
 			j_drivers_license = "j_asc_drivers_license",
 			j_caino = "j_asc_canio",
 			-- j_to_the_moon = "j_asc_to_the_moon",
+			
+	---Cryptid
 			j_cry_gardenfork = "j_asc_gardenfork",
 			j_cry_oil_lamp = "j_asc_oil_lamp",
 			j_cry_highfive = "j_asc_high_five",
+
+	---Cryptid Mortals
 			j_asc_b_cake = "j_cry_crustulum",
 			j_asc_gemino = "j_cry_gemino"
 		}
@@ -295,60 +344,6 @@ function SMODS.create_mod_badges(obj, badges)
 			end
 		end
 	end
-end
-
-----------Defining Vanilla Jokers----------
-local v_jokers = {
-	"jimbo",
-	"greedy",
-	"lusty",
-	"wrathful",
-	"gluttonous",
-	"stencil",
-	"credit_card",
-	"misprint",
-	"scary",
-	"abstract",
-	"dna",
-	"midas",
-	--"to_the_moon",
-	"golden",
-	"bull",
-	"seltzer",
-	"hanging_chad",
-	"oops",
-	"duo",
-	"trio",
-	"family",
-	"order",
-	"tribe",
-	"drivers_license",
-	"canio"
-}
-
-for i, v in pairs(v_jokers) do
-	assert(SMODS.load_file("items/jokers/vanilla/"..v..".lua"))()
-end
-
-----------Defining Cryptid Jokers----------
-local c_jokers = {
-	"gardenfork",
-	"oil_lamp",
-	"high_five"
-}
-
-for i, v in pairs(c_jokers) do
-	assert(SMODS.load_file("items/jokers/cryptid/"..v..".lua"))()
-end
-
-----------Defining Cryptid Mortal Jokers----------
-local cm_jokers = {
-	"b_cake",
-	--"accomplice"
-}
-
-for i, v in pairs(cm_jokers) do
-	assert(SMODS.load_file("items/jokers/cryptid_mortals/"..v..".lua"))()
 end
 
 
