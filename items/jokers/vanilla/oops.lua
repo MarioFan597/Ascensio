@@ -1,3 +1,10 @@
+SMODS.Atlas {
+	key = "oops_all_6s",
+	path = "oops_all_6s.png",
+	px = 71,
+	py = 95
+}
+
 SMODS.Joker {
 	key = "oops",
 	config = { extra = { slot_gain = 1, joker_slots = 0, consumable_slots = 0 } },
