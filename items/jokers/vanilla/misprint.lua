@@ -1,8 +1,15 @@
+SMODS.Atlas {
+	key = "misprint",
+	path = "misprint.png",
+	px = 71,
+	py = 95
+}
+
 SMODS.Joker {
 	key = "misprint",
 	config = { extra = { range = 200} },
 	rarity = "cry_exotic",
-	atlas = "defectus",
+	atlas = "misprint",
 	blueprint_compat = true,
 	pos = { x = 0, y = 0 },
 	soul_pos = { x = 5, y = 4, extra = { x = 4, y = 4 } },
