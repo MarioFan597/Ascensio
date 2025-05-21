@@ -232,7 +232,7 @@ return {
 					"Retrigger leftmost {C:attention}Joker{} by number of ",
 					"{C:attention}Jokers{} between it and this {C:attention}Joker{} inclusively",
 					"At end of shop, create a {C:attention}Joker",
-					"of same rariety as leftmost",
+					"of same rarity as leftmost",
 					"{C:inactive}(Can't affect self and must have room)"
 				}
 			},
