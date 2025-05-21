@@ -293,6 +293,17 @@ return {
 					"rerolls are free"
 				}
 			},
+
+			-----Astronomica-----
+			j_asc_facsimile = {
+				name = "Coccineum Progressus",
+				text = {
+					"Retriggers {C:attention}Joker{} to the left",
+					"for each copy of that {C:attention}Joker{} you own",
+					"{C:attention}Duplicate Joker{} to the left at end of shop",
+					"{C:inactive}(Must have room)"
+				}
+			},
 		},
 		Other = {},
 		Planet = {},
