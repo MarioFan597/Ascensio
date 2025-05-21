@@ -24,6 +24,7 @@ local v_jokers = {
 	"family",
 	"order",
 	"tribe",
+	"brainstorm",
 	"drivers_license",
 	"canio"
 }

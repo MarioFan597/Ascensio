@@ -79,6 +79,7 @@ ascensionable = {
 			j_family = "j_asc_family",
 			j_order = "j_asc_order",
 			j_tribe = "j_asc_tribe",
+			j_brainstorm = "j_asc_brainstorm",
 			j_drivers_license = "j_asc_drivers_license",
 			j_caino = "j_asc_canio",
 			-- j_to_the_moon = "j_asc_to_the_moon",

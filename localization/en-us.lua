@@ -226,6 +226,17 @@ return {
 				}
 			},
 
+			j_asc_brainstorm = {
+				name = "Magnum Opus",
+				text = {
+					"Retrigger leftmost {C:attention}Joker{} by number of ",
+					"{C:attention}Jokers{} between it and this {C:attention}Joker{} inclusively",
+					"At end of shop, create a {C:attention}Joker",
+					"of same rariety as leftmost",
+					"{C:inactive}(Can't affect self and must have room)"
+				}
+			},
+
 			j_asc_drivers_license = {
 				name = "Identitatis Discrimine",
 				text = {
