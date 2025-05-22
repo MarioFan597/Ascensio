@@ -7,6 +7,7 @@ local v_jokers = {
 	"gluttonous",
 	"stencil",
 	"credit_card",
+	"mystic_summit",
 	"misprint",
 	"scary",
 	"abstract",
@@ -94,8 +95,9 @@ end
 
 if next(SMODS.find_mod('Astronomica')) then
 	local ast_jokers = {
+		"stopwatch",
 		"facsimile",
-		"stopwatch"
+
 	}
 
 	for i, v in pairs(ast_jokers) do

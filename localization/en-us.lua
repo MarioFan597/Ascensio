@@ -70,6 +70,15 @@ return {
 				}
 			},
 
+			j_asc_mystic_summit = {
+				name = "Fabulosa Radices",
+				text = {
+					"{X:dark_edition,C:white}^#1#{} Mult",
+					"Gains {X:dark_edition,C:white}^#2#{} Mult at end of round",
+					"when {C:attention}0{} discards remaining",
+				}
+			},
+
 			j_asc_misprint = {
 				name = "Defectus",
 				text = {
@@ -124,15 +133,6 @@ return {
 				}
 			},
 			
-			j_asc_bull = {
-				name = "Taurus",
-				text = {
-					"{C:white,X:dark_edition}^#2#{} Chips for",
-					"every {C:money}$1{} you have",
-					"{C:inactive}(Currently {}{C:white,X:dark_edition}^#1#{C:inactive} Chips){}"
-				}
-			},
-
 			j_asc_bull = {
 				name = "Taurus",
 				text = {

@@ -64,6 +64,7 @@ ascensionable = {
 			j_gluttonous_joker = "j_asc_gluttonous",
 			j_stencil = "j_asc_stencil",
 			j_credit_card = "j_asc_credit_card",
+			j_mystic_summit = "j_asc_mystic_summit",
 			j_misprint = "j_asc_misprint",
 			j_scary_face = "j_asc_scary",
 			j_abstract = "j_asc_abstract",
