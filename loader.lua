@@ -94,7 +94,8 @@ end
 
 if next(SMODS.find_mod('Astronomica')) then
 	local ast_jokers = {
-		"facsimile"
+		"facsimile",
+		"stopwatch"
 	}
 
 	for i, v in pairs(ast_jokers) do

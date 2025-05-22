@@ -232,7 +232,7 @@ return {
 					"Retrigger leftmost {C:attention}Joker{} by number of ",
 					"{C:attention}Jokers{} between it and this {C:attention}Joker{} inclusively",
 					"At end of shop, create a {C:attention}Joker",
-					"of same rarity as leftmost",
+					"of same rariety as leftmost",
 					"{C:inactive}(Can't affect self and must have room)"
 				}
 			},
@@ -306,6 +306,17 @@ return {
 			},
 
 			-----Astronomica-----
+			j_asc_stopwatch = {
+				name = "Aeon",
+				text = {
+					"Gives {C:chips}+G {C:black}Chips for each {C:attention}second{}",
+					"the {C:black}game has been open where {C:chips}G{} is",
+					"the number of decks won on {C:money}Gold Stake",
+					"{C:inactive}(Currently {C:chips}#1# {C:inactive}Chips and {C:money}#2# Gold wins)",
+					"{C:inactive}(At least gives 1 Chip per second)"
+				}
+			},
+
 			j_asc_facsimile = {
 				name = "Coccineum Progressus",
 				text = {
@@ -315,6 +326,8 @@ return {
 					"{C:inactive}(Must have room)"
 				}
 			},
+
+			
 		},
 		Other = {},
 		Planet = {},

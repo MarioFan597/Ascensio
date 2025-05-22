@@ -94,7 +94,8 @@ ascensionable = {
 			j_asc_gemino = "j_cry_gemino",
 	---Cryptposting
 	---Astronomica
-			j_ast_facsimile = "j_asc_facsimile"
+			j_ast_facsimile = "j_asc_facsimile",
+			j_ast_stopwatch = "j_asc_stopwatch"
 	---Entropy
 		}
 

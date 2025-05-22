@@ -14,7 +14,7 @@ SMODS.Joker {
 	pos = { x = 0, y = 0 },
 	soul_pos = { x = 14, y = 2, extra = { x = 0, y = 1 } },
 	cost = 50,
-	order = 123,
+	order = 706,
 	--Taken from old blueprint and Chad
 	calculate = function(self, card, context)
 		local other_joker = nil
