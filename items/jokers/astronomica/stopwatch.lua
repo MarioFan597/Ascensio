@@ -74,8 +74,8 @@ SMODS.Joker {
 			end
 		end
 		card.ability.extra.chip_mod = math.max(card.ability.extra.gold_count, 1)
-		local time_elapsed = love.timer.getTime() - AST.start
-		card.ability.extra.chips = (math.floor(time_elapsed/1) * card.ability.extra.chip_mod) --/1 means per second, /60 would mean per minute
+		local time_elapsed = (love.timer.getTime() - AST.start) * card.ability.extra.chip_mod
+		card.ability.extra.chips = (math.floor(time_elapsed/1))--/1 means per second, /60 would mean per minute --/1 means per second, /60 would mean per minute
 	end,
 	--Taken from old blueprint and Chad
 	calculate = function(self, card, context)
