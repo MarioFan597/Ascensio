@@ -133,15 +133,6 @@ return {
 				}
 			},
 
-			j_asc_bull = {
-				name = "Taurus",
-				text = {
-					"{C:white,X:dark_edition}^#2#{} Chips for",
-					"every {C:money}$1{} you have",
-					"{C:inactive}(Currently {}{C:white,X:dark_edition}^#1#{C:inactive} Chips){}"
-				}
-			},
-
 			j_asc_seltzer = {
 				name = "Bulla Aquae",
 				text = {
