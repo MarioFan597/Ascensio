@@ -10,14 +10,14 @@ SMODS.Joker {
 	cost = 50,
 	order = 33,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card and card.ability.extra.power } }
+		return { vars = { card and lenient_bignum(card.ability.extra.power) } }
 	end,
 	calculate = function(self, card, context)
 		if (context.cardarea == G.play and context.individual) or context.forcetrigger then
 			if (context.other_card:is_face()) or context.forcetrigger then
 				return {
-					message = localize({ type = "variable", key = "a_powchips", vars = { card.ability.extra.power } }),
-					Echip_mod = math.min(card.ability.extra.power, Global_Cap),
+					message = localize({ type = "variable", key = "a_powchips", vars = { lenient_bignum(card.ability.extra.power) } }),
+					Echip_mod = lenient_bignum(card.ability.extra.power),
 					colour = G.C.DARK_EDITION,
 				}
 			end

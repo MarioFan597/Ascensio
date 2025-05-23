@@ -1,6 +1,6 @@
 SMODS.Joker {
 	key = "dna",
-	config = { extra = { copies = 10} },
+	config = { extra = { copies = 10 } },
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
@@ -10,7 +10,7 @@ SMODS.Joker {
 	cost = 50,
 	order = 51,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card and card.ability.extra.copies} }
+		return { vars = { card and lenient_bignum(card.ability.extra.copies) } }
 	end,
 	calculate = function(self, card, context)
     if (context.joker_main and G.GAME.current_round.hands_played == 0 and #context.full_hand == 1) or context.forcetrigger then
@@ -28,7 +28,7 @@ SMODS.Joker {
 		end,
 		}))
         local _card = copy_card(context.full_hand[1], nil, nil, G.playing_card)
-        for i = 1, card.ability.extra.copies do
+        for i = 1, lenient_bignum(card.ability.extra.copies) do
         	--G.playing_card = (G.playing_card and G.playing_card + 1) or 1
         	G.E_MANAGER:add_event(Event({
                     trigger = "before",
@@ -52,7 +52,7 @@ SMODS.Joker {
             message = localize('k_copied_ex'),
             colour = G.C.CHIPS,
             card = self,
-           	playing_cards_created = {true}
+           	playing_cards_created = { true }
         	}
     	end 
 	end,

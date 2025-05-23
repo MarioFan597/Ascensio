@@ -10,11 +10,11 @@ SMODS.Joker {
 	cost = 50,
 	order = 17,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card and card.ability.extra.mult,  card and card.ability.extra.mult_gain, card and card.ability.extra.joker_slots, card and card.ability.extra.slot_gain } }
+		return { vars = { card and lenient_bignum(card.ability.extra.mult),  card and lenient_bignum(card.ability.extra.mult_gain), card and lenient_bignum(card.ability.extra.joker_slots), card and lenient_bignum(card.ability.extra.slot_gain) } }
 	end,
 	calculate = function(self, card, context)
 		if (context.end_of_round and context.cardarea == G.jokers and not context.blueprint and not context.retrigger_joker) or context.forcetrigger then
-			card.ability.extra.mult = ((G.jokers.config.card_limit - #G.jokers.cards) * card.ability.extra.mult_gain) + card.ability.extra.mult
+			card.ability.extra.mult = ((G.jokers.config.card_limit - #G.jokers.cards) * lenient_bignum(card.ability.extra.mult_gain)) + lenient_bignum(card.ability.extra.mult)
 			card_eval_status_text(card, "extra", nil, nil, nil, {
 					message = localize("k_upgrade_ex"),
 					colour = G.C.MULT,
@@ -22,8 +22,8 @@ SMODS.Joker {
 		end
 
 		if (context.ending_shop) or context.forcetrigger then
-			card.ability.extra.joker_slots = card.ability.extra.joker_slots + card.ability.extra.slot_gain
-			G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.slot_gain
+			card.ability.extra.joker_slots = lenient_bignum(card.ability.extra.joker_slots) + lenient_bignum(card.ability.extra.slot_gain)
+			G.jokers.config.card_limit = G.jokers.config.card_limit + lenient_bignum(card.ability.extra.slot_gain)
 			card_eval_status_text(card, "extra", nil, nil, nil, {
 					message = localize("k_upgrade_ex"),
 					colour = G.C.DARK_EDITION,
@@ -35,23 +35,23 @@ SMODS.Joker {
 					type = "variable",
 					key = "a_xmult",
 					vars = {
-						number_format(card.ability.extra.mult),
+						number_format(lenient_bignum(card.ability.extra.mult)),
 					},
 				}),
-				Xmult_mod = to_big(card.ability.extra.mult),
+				Xmult_mod = lenient_bignum(card.ability.extra.mult),
 				colour = G.C.MULT,
 			}
 		end
 	end,
 	add_to_deck = function(self, card, from_debuff)
  		if G.jokers and not from_debuff then
-			card.ability.extra.mult = ((G.jokers.config.card_limit - #G.jokers.cards) * card.ability.extra.mult_gain)
-			G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.joker_slots
+			card.ability.extra.mult = ((G.jokers.config.card_limit - #G.jokers.cards) * lenient_bignum(card.ability.extra.mult_gain))
+			G.jokers.config.card_limit = G.jokers.config.card_limit + lenient_bignum(card.ability.extra.joker_slots)
 		end
 	end,
 	remove_from_deck = function(self, card, from_debuff)
 		if G.jokers and not from_debuff then
-			G.jokers.config.card_limit = G.jokers.config.card_limit - card.ability.extra.joker_slots
+			G.jokers.config.card_limit = G.jokers.config.card_limit - lenient_bignum(card.ability.extra.joker_slots)
 		end
 	end,
 	asc_credits = {

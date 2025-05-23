@@ -10,14 +10,14 @@ SMODS.Joker {
 	cost = 50,
 	order = 4,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.e_mult } }
+		return { vars = { lenient_bignum(card.ability.extra.e_mult) } }
 	end,
 	calculate = function(self, card, context)
 		if (context.individual) or context.forcetrigger then
 			if (context.cardarea == G.play and context.other_card:is_suit("Spades")) or context.forcetrigger then
 				return {
-					message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.e_mult } }),
-					Emult_mod = math.min(card.ability.extra.e_mult, Global_Cap),
+					message = localize({ type = "variable", key = "a_powmult", vars = { lenient_bignum(card.ability.extra.e_mult) } }),
+					Emult_mod = lenient_bignum(card.ability.extra.e_mult),
 					colour = G.C.DARK_EDITION,
 				}
 			end

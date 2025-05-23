@@ -10,7 +10,7 @@ SMODS.Joker {
 	cost = 50,
 	order = 146,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card and card.ability.extra.power, card and card.ability.extra.gain } }
+		return { vars = { card and lenient_bignum(card.ability.extra.power), card and lenient_bignum(card.ability.extra.gain) } }
 	end,
 
 	calculate = function(self, card, context)
@@ -23,7 +23,7 @@ SMODS.Joker {
         		table.insert(G.playing_cards, replacement)
         		G.hand:emplace(replacement)
         		playing_card_joker_effects({ replacement })
-          		card.ability.extra.power = card.ability.extra.power + card.ability.extra.gain
+          		card.ability.extra.power = lenient_bignum(card.ability.extra.power) + lenient_bignum(card.ability.extra.gain)
           		check = check + 1 --We need to do a check here instead of the return statement otherwise it wouldn't count every face card
         	end
       	end
@@ -46,8 +46,8 @@ SMODS.Joker {
 	if (context.joker_main) or context.forcetrigger then
 			if card.ability.extra.power > 1 then
 				return {
-				message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.power} }),
-				Emult_mod = card.ability.extra.power,
+				message = localize({ type = "variable", key = "a_powmult", vars = { lenient_bignum(card.ability.extra.power) } }),
+				Emult_mod = lenient_bignum(card.ability.extra.power),
 				colour = G.C.DARK_EDITION,
 				}
 			end

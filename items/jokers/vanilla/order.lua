@@ -10,7 +10,7 @@ SMODS.Joker {
 	blueprint_compat = true,
 	demicoloncompat = true,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.e_mult } }
+		return { vars = { lenient_bignum(card.ability.extra.e_mult) } }
 	end,
 	calculate = function(self, card, context)
 		if (context.joker_main) or context.forcetrigger then
@@ -20,10 +20,10 @@ SMODS.Joker {
 					type = "variable",
 					key = "a_powmult",
 					vars = {
-						number_format(card.ability.extra.e_mult),
+						number_format(lenient_bignum(card.ability.extra.e_mult)),
 					},
 				}),
-				Emult_mod = math.min(card.ability.extra.e_mult, Global_Cap),
+				Emult_mod = lenient_bignum(card.ability.extra.e_mult),
 				colour = G.C.DARK_EDITION,
 			}
 			end

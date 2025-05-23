@@ -10,12 +10,12 @@ SMODS.Joker {
 	cost = 50,
 	order = 23,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card and card.ability.extra.mult, card and card.ability.extra.gain } }
+		return { vars = { card and lenient_bignum(card.ability.extra.mult), card and lenient_bignum(card.ability.extra.gain) } }
 	end,
 	calculate = function(self, card, context)
 	if (context.end_of_round and context.cardarea == G.jokers and not context.blueprint and not context.retrigger_joker) or context.forcetrigger then
 		if (G.GAME.current_round.discards_left == 0) or context.forcetrigger then
-			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.gain
+			card.ability.extra.mult = lenient_bignum(card.ability.extra.mult) + lenient_bignum(card.ability.extra.gain)
 			card_eval_status_text(card, "extra", nil, nil, nil, {
 					message = localize("k_upgrade_ex"),
 					colour = G.C.DARK_EDITION,
@@ -23,10 +23,10 @@ SMODS.Joker {
 		end
 	end
 	if (context.joker_main) or context.forcetrigger then
-			if card.ability.extra.mult > 1 then
+			if lenient_bignum(card.ability.extra.mult) > 1 then
 				return {
-					message = localize { type = "variable", key = "a_powmult", vars = { math.min(card.ability.extra.mult, Global_Cap) } },
-					Emult_mod = math.min(card.ability.extra.mult, Global_Cap),
+					message = localize { type = "variable", key = "a_powmult", vars = { lenient_bignum(card.ability.extra.mult) } },
+					Emult_mod = lenient_bignum(card.ability.extra.mult),
 					colour = G.C.DARK_EDITION,
 				}
 			end

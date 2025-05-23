@@ -79,10 +79,10 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 		if (context.joker_main) or context.forcetrigger then
-			if card.ability.extra.range > 0 then
+			if lenient_bignum(card.ability.extra.range) > 0 then
 				local operator = math.random(1, 3) --1 is +, 2 is x, 3 is ^
 				local type = math.random(1,2) --1 is chips, 2 is mult
-				local result = to_big(math.random(1, card.ability.extra.range)) --Makes sure our result is consistant
+				local result = lenient_bignum(math.random(1, lenient_bignum(card.ability.extra.range))) --Makes sure our result is consistant
 				if operator == 1 then
 					if type == 1 then
 						return {
@@ -90,10 +90,10 @@ SMODS.Joker {
 								type = "variable",
 								key = "a_chips",
 								vars = {
-									number_format(result),
+									number_format(lenient_bignum(result)),
 								},
 							}),
-							chip_mod = result,
+							chip_mod = lenient_bignum(result),
 							colour = G.C.CHIPS,
 						}
 					else
@@ -102,10 +102,10 @@ SMODS.Joker {
 								type = "variable",
 								key = "a_mult",
 								vars = {
-									number_format(result),
+									number_format(lenient_bignum(result)),
 								},
 							}),
-							mult_mod = result,
+							mult_mod = lenient_bignum(result),
 							colour = G.C.MULT,
 						}
 					end
@@ -116,10 +116,10 @@ SMODS.Joker {
 								type = "variable",
 								key = "a_xchips",
 								vars = {
-									number_format(result),
+									number_format(lenient_bignum(result)),
 								},
 							}),
-							Xchip_mod = result,
+							Xchip_mod = lenient_bignum(result),
 							colour = G.C.CHIPS,
 						}
 					else
@@ -128,10 +128,10 @@ SMODS.Joker {
 								type = "variable",
 								key = "a_xmult",
 								vars = {
-									number_format(result),
+									number_format(lenient_bignum(result)),
 								},
 							}),
-							Xmult_mod = result,
+							Xmult_mod = lenient_bignum(result),
 							colour = G.C.MULT,
 						}
 					end
@@ -142,10 +142,10 @@ SMODS.Joker {
 								type = "variable",
 								key = "a_powchips",
 								vars = {
-									number_format(result),
+									number_format(lenient_bignum(result)),
 								},
 							}),
-							Echip_mod = result,
+							Echip_mod = lenient_bignum(result),
 							colour = G.C.DARK_EDITION,
 						}
 					else
@@ -154,10 +154,10 @@ SMODS.Joker {
 								type = "variable",
 								key = "a_powmult",
 								vars = {
-									number_format(result),
+									number_format(lenient_bignum(result)),
 								},
 							}),
-							Emult_mod = result,
+							Emult_mod = lenient_bignum(result),
 							colour = G.C.DARK_EDITION,
 						}
 					end

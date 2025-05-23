@@ -10,7 +10,7 @@ SMODS.Joker {
 	cost = 50,
 	order = 216,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card and card.ability.extra.money } }
+		return { vars = { card and lenient_bignum(card.ability.extra.money) } }
 	end,
 	calculate = function(self, card, context)
 		if context.cardarea == G.jokers and context.before and context.full_hand then
@@ -24,8 +24,8 @@ SMODS.Joker {
 				end
 			end
 			if ((has_ace or has_7) and G.GAME.dollars > to_big(0)) or context.forcetrigger then
-				ease_dollars(G.GAME.dollars * card.ability.extra.money)
-				return { message = "X" .. card.ability.extra.money, colour = G.C.MONEY }
+				ease_dollars(G.GAME.dollars * lenient_bignum(card.ability.extra.money))
+				return { message = "X" .. lenient_bignum(card.ability.extra.money), colour = G.C.MONEY }
 			end
 		end
 	end,

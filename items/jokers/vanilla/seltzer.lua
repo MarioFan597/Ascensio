@@ -10,21 +10,21 @@ SMODS.Joker {
 	cost = 50,
 	order = 102,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card and card.ability.extra.retriggers, card and card.ability.extra.played_hands, card and card.ability.extra.goal_hands } }
+		return { vars = { card and lenient_bignum(card.ability.extra.retriggers), card and lenient_bignum(card.ability.extra.played_hands), card and lenient_bignum(card.ability.extra.goal_hands) } }
 	end,
 	calculate = function(self, card, context)
 		if context.cardarea == G.play and context.repetition and not context.repetition_only then
 			return {
 				message = "Again!",
-				repetitions = card.ability.extra.retriggers,
+				repetitions = lenient_bignum(card.ability.extra.retriggers),
 				card = context.other_card
 			}
 		end
 		if context.after then
-			card.ability.extra.played_hands = card.ability.extra.played_hands - 1
-			if card.ability.extra.played_hands <= 0 then
-				card.ability.extra.retriggers = card.ability.extra.retriggers + 1
-				card.ability.extra.played_hands = card.ability.extra.goal_hands
+			card.ability.extra.played_hands = lenient_bignum(card.ability.extra.played_hands) - 1
+			if lenient_bignum(card.ability.extra.played_hands) <= 0 then
+				card.ability.extra.retriggers = lenient_bignum(card.ability.extra.retriggers) + 1
+				card.ability.extra.played_hands = lenient_bignum(card.ability.extra.goal_hands)
 				card_eval_status_text(
 					card,
 					"extra",

@@ -29,14 +29,14 @@ SMODS.Joker{
 		end
 		return {
 			vars = {
-				math.min(card.ability.extra.base_mult * (2^mod_count), Global_Cap)
+				lenient_bignum(lenient_bignum(card.ability.extra.base_mult) * (2^mod_count))
 			}
 		}
 	end,
 	calculate = function(self, card, context)
 		if context.blueprint or context.forcetrigger then
 			return {
-				x_mult = math.min(2^mod_count, Global_Cap)
+				x_mult = lenient_bignum(2^mod_count)
 			}
 		end
 		if context.joker_main and not context.blueprint then
@@ -57,9 +57,8 @@ SMODS.Joker{
 					end
 				end
 			end
-			
 			return {
-				x_mult = math.min(2^mod_count, Global_Cap)
+				x_mult = lenient_bignum(2^mod_count)
 			}
 		end
 		return nil

@@ -12,7 +12,7 @@ SMODS.Joker {
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_gold
 		info_queue[#info_queue + 1] = G.P_CENTERS.e_cry_gold
-		return { vars = { card and card.ability.extra.power } }
+		return { vars = { card and lenient_bignum(card.ability.extra.power) } }
 	end,
 	calculate = function(self, card, context)
 		if
@@ -56,7 +56,7 @@ SMODS.Joker {
 				}
 			else
 				return {
-					Emult = math.min(card.ability.extra.power, Global_Cap),
+					Emult = lenient_bignum(card.ability.extra.power),
 					colour = G.C.DARK_EDITION,
 					card = card,
 				}

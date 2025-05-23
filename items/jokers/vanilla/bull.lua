@@ -10,16 +10,16 @@ SMODS.Joker {
 	cost = 50,
 	order = 1,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card and card.ability.extra.chips, card and card.ability.extra.gain } }
+		return { vars = { card and lenient_bignum(card.ability.extra.chips), card and lenient_bignum(card.ability.extra.gain) } }
 	end,
 	calculate = function(self, card, context)
 	card.ability.extra.chips = 1
-	card.ability.extra.chips = card.ability.extra.chips + (to_number(G.GAME.dollars) * card.ability.extra.gain)
+	card.ability.extra.chips = lenient_bignum(card.ability.extra.chips) + (to_number(G.GAME.dollars) * lenient_bignum(card.ability.extra.gain))
 	if (context.joker_main) or context.forcetrigger then
 			if card.ability.extra.chips > 0 then
 				return {
-					Echip_mod = math.min(card.ability.extra.chips, Global_Cap),
-					message = localize { type = "variable", key = "a_powchips", vars = { math.min(card.ability.extra.chips, Global_Cap) } }
+					Echip_mod = lenient_bignum(card.ability.extra.chips),
+					message = localize { type = "variable", key = "a_powchips", vars = { lenient_bignum(card.ability.extra.chips) } }
 				}
 			end
 		end
