@@ -10,13 +10,13 @@ SMODS.Joker{
 	cost = 8,
 	order = 508,
 	loc_vars = function(self, info_queue, card)
-	return { vars = { card and card.ability.extra.chips, card and card.ability.extra.reroll } }
+	return { vars = { card and lenient_bignum(card.ability.extra.chips), card and lenient_bignum(card.ability.extra.reroll) } }
 	end,
 	calculate = function(self, card, context)
 	--Taken from crustulum
 
 		if (context.reroll_shop and not context.blueprint) or context.forcetrigger then
-			card.ability.extra.chips = card.ability.extra.chips - card.ability.extra.reroll
+			card.ability.extra.chips = lenient_bignum(card.ability.extra.chips) - lenient_bignum(card.ability.extra.reroll)
 			if card.ability.extra.chips > 0 then
 				--G.GAME.current_round.free_rerolls = G.GAME.current_round.free_rerolls + 1
 				--calculate_reroll_cost(true)
@@ -27,7 +27,7 @@ SMODS.Joker{
 					nil,
 					nil,
 					nil,
-					{message =  "-"..card.ability.extra.reroll, colour = G.C.CHIPS}
+					{message =  "-" .. lenient_bignum(card.ability.extra.reroll), colour = G.C.CHIPS}
 				)
 				})
 				return nil, true
@@ -63,8 +63,8 @@ SMODS.Joker{
 		if (context.joker_main) or context.forcetrigger then
 			if card.ability.extra.chips > 0 then
 				return {
-					chip_mod = math.min(card.ability.extra.chips, Global_Cap),
-					message = localize { type = "variable", key = "a_chips", vars = { math.min(card.ability.extra.chips, Global_Cap) } }
+					chip_mod = lenient_bignum(card.ability.extra.chips),
+					message = localize { type = "variable", key = "a_chips", vars = { lenient_bignum(card.ability.extra.chips) } }
 				}
 			end
 		end

@@ -7,7 +7,7 @@ SMODS.Atlas {
 
 SMODS.Joker {
 	key = "brainstorm",
-	config = { extra = {} },
+	config = { extra = {  } },
 	rarity = "cry_exotic",
 	atlas =  "brainstorm",
 	blueprint_compat = true,

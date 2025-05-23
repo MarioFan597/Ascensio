@@ -11,7 +11,7 @@ SMODS.Joker { --Commented out at the moment as it is also increasing hand size a
 	loc_vars = function(self, info_queue, card)
 		card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui or ''; card.ability.blueprint_compat_check = nil
 		return {
-			vars = { card.ability.extra.scale },
+			vars = { lenient_bignum(card.ability.extra.scale) },
 			main_end = (card.area and card.area == G.jokers) and {
         			{n=G.UIT.C, config={align = "bm", minh = 0.4}, nodes={
             				{n=G.UIT.C, config={ref_table = card, align = "m", colour = G.C.JOKER_GREY, r = 0.05, padding = 0.06, func = 'blueprint_compat'}, nodes={
@@ -37,7 +37,7 @@ SMODS.Joker { --Commented out at the moment as it is also increasing hand size a
 			local card = G.jokers.cards[1]
 			if not Card.no(G.jokers.cards[1], "immutable", true) then
 				Cryptid.with_deck_effects(G.jokers.cards[1], function(card)
-					Cryptid.misprintize(card, { min = 2, max = 2 }, nil, true, "+")
+					Cryptid.misprintize(card, { min = lenient_bignum(card.ability.extra.scale), max = lenient_bignum(card.ability.extra.scale) }, nil, true, "+")
 				end)
 				check = true
 			end

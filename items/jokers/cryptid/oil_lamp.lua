@@ -13,7 +13,7 @@ SMODS.Joker {
 		card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui or ""
 		card.ability.blueprint_compat_check = nil
 		return {
-			vars = { card.ability.extra.increase },
+			vars = { lenient_bignum(card.ability.extra.increase) },
 		}
 	end,
 	calculate = function(self, card, context)
@@ -26,7 +26,7 @@ SMODS.Joker {
 							Cryptid.with_deck_effects(G.jokers.cards[i], function(cards)
 								Cryptid.misprintize(
 									cards,
-									{ min = card.ability.extra.increase, max = card.ability.extra.increase },
+									{ min = lenient_bignum(card.ability.extra.increase), max = lenient_bignum(card.ability.extra.increase) },
 									nil,
 									true
 								)

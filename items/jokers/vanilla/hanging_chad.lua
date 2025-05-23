@@ -10,13 +10,13 @@ SMODS.Joker {
 	cost = 50,
 	order = 115,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card and card.ability.extra.retriggers } }
+		return { vars = { card and lenient_bignum(card.ability.extra.retriggers) } }
 	end,
 	calculate = function(self, card, context)
         if context.repetition and context.cardarea == G.play and (context.other_card == context.scoring_hand[1]) then
             return {
                 message = localize('k_again_ex'),
-				repetitions = math.min(card.ability.extra.retriggers, Global_Cap)
+				repetitions = lenient_bignum(card.ability.extra.retriggers)
             }
 		end
 	end,

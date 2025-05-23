@@ -10,14 +10,14 @@ SMODS.Joker {
 	cost = 50,
 	order = 1,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card and card.ability.extra.mult } }
+		return { vars = { card and lenient_bignum(card.ability.extra.mult) } }
 	end,
 	calculate = function(self, card, context)
 	if (context.joker_main) or context.forcetrigger then
 			if (card.ability.extra.mult > 0) or context.forcetrigger then
 				return {
-					mult_mod = math.min(card.ability.extra.mult, Global_Cap),
-					message = localize { type = "variable", key = "a_mult", vars = { math.min(card.ability.extra.mult, Global_Cap) } }
+					mult_mod = lenient_bignum(card.ability.extra.mult),
+					message = localize { type = "variable", key = "a_mult", vars = { lenient_bignum(card.ability.extra.mult) } }
 				}
 			end
 		end

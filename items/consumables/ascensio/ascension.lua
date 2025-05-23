@@ -15,7 +15,7 @@ SMODS.Consumable {
 	soul_pos = { x = 2, y = 0, extra = { x = 1, y = 0 } },
 	cost = 4,
 	hidden = true,
-	config = {},
+	config = {  },
 	can_use = function(self, card)
 		if #G.jokers.highlighted == 1 and ascensionable[G.jokers.highlighted[1].config.center.key] then
 				return true

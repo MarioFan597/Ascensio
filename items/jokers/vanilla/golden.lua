@@ -10,12 +10,12 @@ SMODS.Joker {
 	cost = 50,
 	order = 90,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged), card and card.ability.extra.gold, card and card.ability.extra.gain, card and card.ability.extra.odds} }
+		return { vars = { cry_prob(card.ability.cry_prob, lenient_bignum(card.ability.extra.odds), card.ability.cry_rigged), card and lenient_bignum(card.ability.extra.gold), card and lenient_bignum(card.ability.extra.gain), card and lenient_bignum(card.ability.extra.odds)} }
 	end,
 	calc_dollar_bonus = function (self, card)
-		if (card.ability.extra.gold > 1) or context.forcetrigger then
-			if (pseudorandom("moooooooooooonside") < cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged) / card.ability.extra.odds) or context.forcetrigger then
-				card.ability.extra.gold = card.ability.extra.gold + card.ability.extra.gain
+		if card.ability.extra.gold > 1 then
+			if pseudorandom("moooooooooooonside") < cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged) / card.ability.extra.odds then
+				card.ability.extra.gold = lenient_bignum(card.ability.extra.gold) + lenient_bignum(card.ability.extra.gain)
 				card_eval_status_text(
 					card,
 					"extra",
@@ -25,7 +25,13 @@ SMODS.Joker {
 					{ message = localize("k_upgrade_ex"), colour = G.C.GOLD }
 				)
 			end
-			return (card.ability.extra.gold * (to_number(G.GAME.dollars) or 0))
+			return (lenient_bignum(card.ability.extra.gold) * (to_number(G.GAME.dollars) or 0))
+		end
+	end,
+	calculate = function(self, card, context)
+		if context.forcetrigger then
+			ease_dollars(G.GAME.dollars * lenient_bignum(card.ability.extra.gold))
+			return { message = "X" .. lenient_bignum(card.ability.extra.gold), colour = G.C.MONEY }
 		end
 	end,
 	asc_credits = {

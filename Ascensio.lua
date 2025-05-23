@@ -1,9 +1,9 @@
 ----------------------------------------------
 ------------MOD CODE -------------------------
----
----
----
-Global_Cap = 1000000
+
+-----bignum compatibility using cryptid-----
+Cryptid.mod_whitelist["Ascensio"] = true
+
 ----------Defining Multiuse Atlases------------------
 SMODS.Atlas {
 	key = "modicon",
@@ -311,7 +311,7 @@ local current_mod = SMODS.current_mod
 local mod_path = SMODS.current_mod.path
 asc_config = SMODS.current_mod.config
 if asc_config["Insanity Mode!!!"] == nil then
-  asc_config["Insanity Mode!!!"] = false
+	asc_config["Insanity Mode!!!"] = false
 end
 
 local ascensioTabs = function() return {

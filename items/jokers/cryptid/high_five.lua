@@ -1,17 +1,17 @@
 SMODS.Joker {
 	key = "high_five",
-	config = { extra = { power = 1.1 } },
+	config = { extra = {  } },
 	rarity = "cry_exotic",
 	atlas =  "c_atlas_1",
 	blueprint_compat = false,
-	demicoloncompat = true,
+	demicoloncompat = false,
 	pos = { x = 0, y = 0 },
 	soul_pos = { x = 2, y = 0, extra = { x = 1, y = 0 } },
 	cost = 50,
 	order = 287,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.e_cry_astral
-		return { vars = { card and card.ability.extra.power } }
+		return { vars = { card } }
 	end,
 	calculate = function(self, card, context)
 		if

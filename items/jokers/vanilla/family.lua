@@ -13,11 +13,11 @@ SMODS.Joker {
 		return { vars = { card and card.ability.extra.power } }
 	end,
 	calculate = function(self, card, context)
-		if context.joker_main then
+		if (context.joker_main) or context.forcetrigger then
 			if (context.poker_hands ~= nil and next(context.poker_hands["Four of a Kind"])) or context.forcetrigger then
 				return {
-					message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.power } }),
-					Emult_mod = math.min(card.ability.extra.power, Global_Cap),
+					message = localize({ type = "variable", key = "a_powmult", vars = { lenient_bignum(card.ability.extra.power) } }),
+					Emult_mod = lenient_bignum(card.ability.extra.power),
 					colour = G.C.DARK_EDITION,
 				}
 			end

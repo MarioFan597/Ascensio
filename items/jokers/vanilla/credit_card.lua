@@ -10,27 +10,27 @@ SMODS.Joker {
 	cost = 50,
 	order = 20,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card and card.ability.extra.debt, card and card.ability.extra.chips, card and card.ability.extra.gain } }
+		return { vars = { card and lenient_bignum(card.ability.extra.debt), card and lenient_bignum(card.ability.extra.chips), card and lenient_bignum(card.ability.extra.gain) } }
 	end,
 	add_to_deck = function(self, card, from_debuff)
-		G.GAME.bankrupt_at = G.GAME.bankrupt_at - card.ability.extra.debt
+		G.GAME.bankrupt_at = G.GAME.bankrupt_at - lenient_bignum(card.ability.extra.debt)
 	end,
 	remove_from_deck = function(self, card, from_debuff)
-		G.GAME.bankrupt_at = G.GAME.bankrupt_at + card.ability.extra.debt
+		G.GAME.bankrupt_at = G.GAME.bankrupt_at + lenient_bignum(card.ability.extra.debt)
 	end,
 	calculate = function(self, card, context)
 		if (context.joker_main) or context.forcetrigger then
-			if (to_big(card.ability.extra.chips) > to_big(1)) then
+			if (lenient_bignum(card.ability.extra.chips) > lenient_bignum(1)) then
 				return {
-					Xchip_mod = math.min(card.ability.extra.chips, Global_Cap),
-					message = localize { type = "variable", key = "a_xchips", vars = { math.min(card.ability.extra.chips, Global_Cap) } }
+					Xchip_mod = lenient_bignum(card.ability.extra.chips),
+					message = localize { type = "variable", key = "a_xchips", vars = { lenient_bignum(card.ability.extra.chips) } }
 				}
 			end
 		end
 		if (context.ending_shop and not context.individual and not context.repetition and not (context.blueprint_card or card.getting_sliced)) or context.forcetrigger then
 			local debt = to_big(G.GAME.dollars)
 			if debt < to_big(0) then
-				card.ability.extra.chips = card.ability.extra.chips + (card.ability.extra.gain * (-1 * debt))
+				card.ability.extra.chips = lenient_bignum(card.ability.extra.chips) + (lenient_bignum(card.ability.extra.gain) * (-1 * debt))
 				card_eval_status_text(card, "extra", nil, nil, nil, {
 					message = localize("k_upgrade_ex"),
 					colour = G.C.CHIPS,
