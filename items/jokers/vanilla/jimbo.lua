@@ -4,6 +4,7 @@ SMODS.Joker {
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
+	demicoloncompat = true,
 	pos = { x = 0, y = 0 },
 	soul_pos = { x = 2, y = 0, extra = { x = 1, y = 0 } },
 	cost = 50,
@@ -12,7 +13,7 @@ SMODS.Joker {
 		return { vars = { card and card.ability.extra.mult } }
 	end,
 	calculate = function(self, card, context)
-	if context.joker_main then
+		if (context.joker_main) or context.forcetrigger then
 			if card.ability.extra.mult > 0 then
 				return {
 					mult_mod = math.min(card.ability.extra.mult, Global_Cap),

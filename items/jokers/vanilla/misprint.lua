@@ -7,10 +7,11 @@ SMODS.Atlas {
 
 SMODS.Joker {
 	key = "misprint",
-	config = { extra = { range = 200} },
+	config = { extra = { range = 200 } },
 	rarity = "cry_exotic",
 	atlas = "misprint",
 	blueprint_compat = true,
+	demicoloncompat = true,
 	pos = { x = 0, y = 0 },
 	soul_pos = { x = 5, y = 4, extra = { x = 4, y = 4 } },
 	cost = 50,
@@ -77,7 +78,7 @@ SMODS.Joker {
 		}
 	end,
 	calculate = function(self, card, context)
-		if context.joker_main then
+		if (context.joker_main) or context.forcetrigger then
 			if card.ability.extra.range > 0 then
 				local operator = math.random(1, 3) --1 is +, 2 is x, 3 is ^
 				local type = math.random(1,2) --1 is chips, 2 is mult

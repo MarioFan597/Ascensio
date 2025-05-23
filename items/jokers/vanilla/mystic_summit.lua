@@ -4,6 +4,7 @@ SMODS.Joker {
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
+	demicoloncompat = true,
 	pos = { x = 9, y = 5 },
 	soul_pos = { x = 11, y = 5, extra = { x = 10, y = 5 } },
 	cost = 50,
@@ -12,8 +13,8 @@ SMODS.Joker {
 		return { vars = { card and card.ability.extra.mult, card and card.ability.extra.gain } }
 	end,
 	calculate = function(self, card, context)
-	if context.end_of_round and context.cardarea == G.jokers and not context.blueprint and not context.retrigger_joker then
-		if G.GAME.current_round.discards_left == 0 then
+	if (context.end_of_round and context.cardarea == G.jokers and not context.blueprint and not context.retrigger_joker) or context.forcetrigger then
+		if (G.GAME.current_round.discards_left == 0) or context.forcetrigger then
 			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.gain
 			card_eval_status_text(card, "extra", nil, nil, nil, {
 					message = localize("k_upgrade_ex"),
@@ -21,7 +22,7 @@ SMODS.Joker {
 				})
 		end
 	end
-	if context.joker_main then
+	if (context.joker_main) or context.forcetrigger then
 			if card.ability.extra.mult > 1 then
 				return {
 					message = localize { type = "variable", key = "a_powmult", vars = { math.min(card.ability.extra.mult, Global_Cap) } },

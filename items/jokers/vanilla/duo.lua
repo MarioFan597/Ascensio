@@ -4,6 +4,7 @@ SMODS.Joker {
 	rarity = "cry_exotic",
 	atlas =  "v_atlas_1",
 	blueprint_compat = true,
+	demicoloncompat = true,
 	pos = { x = 9, y = 0 },
 	soul_pos = { x = 11, y = 0, extra = { x = 10, y = 0 } },
 	cost = 50,
@@ -42,7 +43,7 @@ SMODS.Joker {
 		end
 		]]
 			
-		if context.poker_hands ~= nil and next(context.poker_hands["Pair"]) then
+		if (context.poker_hands ~= nil and next(context.poker_hands["Pair"])) or context.forcetrigger then
 			return {
 				message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.power } }),
 				Emult_mod = math.min(card.ability.extra.power, Global_Cap),

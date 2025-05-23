@@ -4,6 +4,7 @@ SMODS.Joker {
 	rarity = "cry_exotic",
 	atlas =  "v_atlas_1",
 	blueprint_compat = true,
+	demicoloncompat = true,
 	pos = { x = 0, y = 1 },
 	soul_pos = { x = 2, y = 1, extra = { x = 1, y = 1 } },
 	cost = 50,
@@ -12,8 +13,8 @@ SMODS.Joker {
 		return { vars = { card and card.ability.extra.power } }
 	end,
 	calculate = function(self, card, context)
-		if context.joker_main then
-			if context.poker_hands ~= nil and next(context.poker_hands["Three of a Kind"]) then
+		if (context.joker_main) or context.forcetrigger then
+			if (context.poker_hands ~= nil and next(context.poker_hands["Three of a Kind"])) or context.forcetrigger then
 				return {
 					message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.power } }),
 					Emult_mod = math.min(card.ability.extra.power, Global_Cap),

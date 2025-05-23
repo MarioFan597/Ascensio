@@ -53,8 +53,8 @@ return {
 				name = "Inanis",
 				text = {
 					"Gains {X:mult,C:white}X#2#{} Mult for every",
-					"empty Joker Slot at end of round",
-					"Gains {C:dark_edition}+#4#{} Joker Slots at end of shop",
+					"empty {C:attention}Joker{} slot at end of round",
+					"Gains {C:dark_edition}+#4#{} {C:attention}Joker{} slots at end of shop",
 					"{C:inactive}(Currently {}{X:mult,C:white}X#1#{}{C:inactive} Mult and {}{C:dark_edition}+#3#{C:inactive} Joker Slots)"
 				}
 			},
@@ -82,7 +82,7 @@ return {
 			j_asc_misprint = {
 				name = "Defectus",
 				text = {
-					"",
+					"", -- look in misprint.lua for the text
 				}
 			},
 
@@ -99,7 +99,7 @@ return {
 				name = "Aenigmatum",
 				text = {
 					"This Joker gains {X:dark_edition,C:white}^#2#{} Mult", 
-					"for each {C:attention}Joker{} card,",
+					"for each {C:attention}Joker{} card",
 					"{C:inactive}(Currently {X:dark_edition,C:white}^#1#{} {C:inactive}Mult)"
 				}
 			},
@@ -129,7 +129,7 @@ return {
 				text = {
 					"{X:money,C:white}X#2#{} total money at end of round,",
 					"{C:green}#1# in #4#{} chance to increase ",
-					"multipler by {C:money}#3#{} each trigger"
+					"multiplier by {C:money}#3#{} each trigger" -- hello everybody my name is multiplier
 				}
 			},
 			
@@ -176,8 +176,9 @@ return {
 					"{C:cry_code}Rig{} all scored cards and a random", 
 					"{C:attention}Joker{} before each hand played,",
 					"{C:red}fixed{} {C:green}1 in 6{} chance to grant",
-					"{C:dark_edition}+#1#{} Joker or consumable slot",
-					"{C:inactive}(Currently {C:dark_edition}+#2# J{}{C:inactive} and {C:dark_edition}+#3# C{}{C:inactive})"
+					"{C:dark_edition}+#1#{} {C:attention}Joker{} or consumable slot",
+					"{C:inactive}(Currently {C:dark_edition}+#2#{}{C:attention} Joker{}{C:inactive} slot(s) and",
+					"{C:attention}+#3#{} {C:inactive}consumable slot(s))"
 				}
 			},
 
@@ -230,10 +231,10 @@ return {
 				name = "Magnum Opus",
 				text = {
 					"Retrigger leftmost {C:attention}Joker{} by number of ",
-					"{C:attention}Jokers{} between it and this {C:attention}Joker{} inclusively",
-					"At end of shop, create a {C:attention}Joker",
-					"of same rariety as leftmost",
-					"{C:inactive}(Can't affect self and must have room)"
+					"{C:attention}Jokers{} between it and this {C:attention}Joker{} inclusively,", -- comma splice to be consistent with vanilla. womp womp to all the grammar people
+					"at end of shop, create a {C:attention}Joker",
+					"of same rarity as leftmost",
+					"{C:inactive}(Cannot affect self and must have room)"
 				}
 			},
 
@@ -241,7 +242,7 @@ return {
 				name = "Identitatis Discrimine",
 				text = {
 					"{X:mult,C:white}X#1#{} Mult",
-					"{C:attention}Doubles{} for every {C:attention}Modification{}",
+					"{C:attention}Doubles{} for every {C:attention}modification{}",
 					"in remaining deck"
 				}
 			},
@@ -271,7 +272,7 @@ return {
 			j_asc_gardenfork = {
 				name = "Contra Homo",
 				text = {
-					"{X:money,C:white}X#1#{} total money if played hand,",
+					"{X:money,C:white}X#1#{} total money if played hand",
 					"contains an {C:attention}Ace{} or {C:attention}7{}"
 				}
 			},
@@ -281,8 +282,8 @@ return {
 				text = {
 					"Before scoring, if played hand", 
 					"contains a scoring {C:attention}5{},",
-					"convert {C:attention}all{} scored cards to {C:attention}5{}s",
-					"They also become {C:dark_edition}Astral"
+					"convert {C:attention}all{} scored",
+					"cards to {C:dark_edition}Astral {C:attention}5{}s",
 				}
 			},
 
@@ -291,21 +292,23 @@ return {
 				text = {
 					"Increase values of all {C:attention}Jokers", 
 					"by {C:attention}X#1#{} at the end of round.",
-					"{C:inactive}(If possible, doesn't affect self)"
+					"{C:inactive}(Does not affect self)" -- oil lamp does not say "if possible," so why should this
 				}
 			},
 
 			-----Cryptid Mortals-----
+
 			j_asc_b_cake = {
 				name = "Birthday Cake",
 				text = {
 					"{C:chips}+#1#{} Chips", 
-					"{C:chips}-#2#{} Chips per reroll,",
-					"rerolls are free"
+					"{C:chips}-#2#{} Chips per {C:green}Reroll{},", -- see choas the clown for {c} formatting on "reroll"
+					"{C:green}Rerolls{} are free"
 				}
 			},
 
 			-----Astronomica-----
+
 			j_asc_stopwatch = {
 				name = "Aeon",
 				text = {

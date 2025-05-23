@@ -8,12 +8,13 @@ SMODS.Joker {
 	cost = 50,
 	order = 135,
 	blueprint_compat = true,
+	demicoloncompat = true,
 	loc_vars = function(self, info_queue, card)
 		return { vars = { card.ability.extra.e_mult } }
 	end,
 	calculate = function(self, card, context)
-		if context.joker_main then
-			if context.poker_hands ~= nil and next(context.poker_hands["Flush"]) then
+		if (context.joker_main) or context.forcetrigger then
+			if (context.poker_hands ~= nil and next(context.poker_hands["Flush"])) or context.forcetrigger then
 			return {
 				message = localize({
 					type = "variable",

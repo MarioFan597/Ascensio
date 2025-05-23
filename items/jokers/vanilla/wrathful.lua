@@ -4,6 +4,7 @@ SMODS.Joker {
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
+	demicoloncompat = true,
 	pos = { x = 6, y = 4 },
 	soul_pos = { x = 8, y = 4, extra = { x = 7, y = 4 } },
 	cost = 50,
@@ -12,8 +13,8 @@ SMODS.Joker {
 		return { vars = { card.ability.extra.e_mult } }
 	end,
 	calculate = function(self, card, context)
-		if context.individual then
-			if context.cardarea == G.play and context.other_card:is_suit("Spades") then
+		if (context.individual) or context.forcetrigger then
+			if (context.cardarea == G.play and context.other_card:is_suit("Spades")) or context.forcetrigger then
 				return {
 					message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.e_mult } }),
 					Emult_mod = math.min(card.ability.extra.e_mult, Global_Cap),

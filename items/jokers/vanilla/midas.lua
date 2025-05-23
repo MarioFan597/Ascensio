@@ -4,6 +4,7 @@ SMODS.Joker {
 	rarity = "cry_exotic",
 	atlas =  "v_atlas_1",
 	blueprint_compat = true,
+	demicoloncompat = true,
 	pos = { x = 6, y = 0 },
 	soul_pos = { x = 8, y = 0, extra = { x = 7, y = 0 } },
 	cost = 50,
@@ -11,7 +12,7 @@ SMODS.Joker {
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_gold
 		info_queue[#info_queue + 1] = G.P_CENTERS.e_cry_gold
-		return { vars = { card and card.ability.extra.power} }
+		return { vars = { card and card.ability.extra.power } }
 	end,
 	calculate = function(self, card, context)
 		if
@@ -25,26 +26,27 @@ SMODS.Joker {
 				end
 				local enhancement = "cry_golden"
 				if _card.ability.effect ~= "Golden" then
-					_card:set_edition({cry_gold = true})
+					_card:set_edition( { cry_gold = true } )
 				end
-				G.E_MANAGER:add_event(Event({
+				G.E_MANAGER:add_event(Event( {
 					delay = 0.6,
 					func = function()	
 						_card:juice_up()
 						play_sound("tarot1")
 						return true
 					end,
-				}))
+				} ))
 			end
 			if converted then
-				return {message = "Gold!", colour = G.C.GOLD,}
+				return { message = "Gold!", colour = G.C.GOLD, }
 			end
 		end
 		if
-			context.individual
+			(context.individual
 			and context.cardarea == G.hand
 			and context.other_card.ability.effect == "Gold Card"
-			and not context.end_of_round
+			and not context.end_of_round)
+			or context.forcetrigger
 		then
 			if context.other_card.debuff then
 				return {
@@ -54,7 +56,7 @@ SMODS.Joker {
 				}
 			else
 				return {
-					e_mult = math.min(card.ability.extra.power, Global_Cap),
+					Emult = math.min(card.ability.extra.power, Global_Cap),
 					colour = G.C.DARK_EDITION,
 					card = card,
 				}

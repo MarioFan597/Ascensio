@@ -4,6 +4,7 @@ SMODS.Joker {
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
+	demicoloncompat = true,
 	pos = { x = 0, y = 3 },
 	soul_pos = { x = 2, y = 3, extra = { x = 1, y = 3 } },
 	cost = 50,
@@ -12,7 +13,7 @@ SMODS.Joker {
 		return { vars = { card and card.ability.extra.copies} }
 	end,
 	calculate = function(self, card, context)
-    if context.joker_main and G.GAME.current_round.hands_played == 0 and #context.full_hand == 1 then
+    if (context.joker_main and G.GAME.current_round.hands_played == 0 and #context.full_hand == 1) or context.forcetrigger then
 		G.E_MANAGER:add_event(Event({
 			trigger = "before",
 			delay = 0.75,

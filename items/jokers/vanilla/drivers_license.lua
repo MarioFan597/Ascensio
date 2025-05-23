@@ -6,7 +6,8 @@ SMODS.Joker{
 	cost = 50,
 	order = 141,
 	config = { extra = { base_mult = 1 } },
-	blueprint_compat = false,
+	blueprint_compat = true,
+	demicoloncompat = true,
 	atlas = "v_atlas_1",
 	loc_vars = function(self, info_queue, card)
 		local mod_count = 0
@@ -21,7 +22,7 @@ SMODS.Joker{
 					mod_count = mod_count + 1
 				end
 				-- enhancement
-				if c.ability.set == "Enhanced" then
+				if c.enhancement then
 					mod_count = mod_count + 1
 				end
 			end
@@ -33,6 +34,11 @@ SMODS.Joker{
 		}
 	end,
 	calculate = function(self, card, context)
+		if context.blueprint or context.forcetrigger then
+			return {
+				x_mult = math.min(2^mod_count, Global_Cap)
+			}
+		end
 		if context.joker_main and not context.blueprint then
 			local mod_count = 0
 			if G and G.deck and G.deck.cards then
@@ -46,7 +52,7 @@ SMODS.Joker{
 						mod_count = mod_count + 1
 					end
 					-- enhancement
-					if c.ability.set == "Enhanced" then
+					if c.enhancement then
 						mod_count = mod_count + 1
 					end
 				end
