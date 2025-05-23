@@ -11,6 +11,7 @@ SMODS.Joker {
 	rarity = "cry_exotic",
 	atlas =  "brainstorm",
 	blueprint_compat = true,
+	demicoloncompat = true,
 	pos = { x = 0, y = 0 },
 	soul_pos = { x = 0, y = 5, extra = { x = 0, y = 4 } },
 	cost = 50,
@@ -69,13 +70,14 @@ SMODS.Joker {
 		]]
 
 		--Taken and modifed from Cryptid's smile (:D)
-		if context.ending_shop 
+		if (context.ending_shop 
 			and not context.individual
 			and not context.repetition
 			and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit
 			and #G.jokers.cards
 			and other_joker ~= nil
-			and other_joker ~= card
+			and other_joker ~= card)
+			or context.forcetrigger
 			--and rarity_check
 			--and not position == #G.jokers.cards
 		then

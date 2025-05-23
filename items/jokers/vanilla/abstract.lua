@@ -4,6 +4,7 @@ SMODS.Joker {
 	rarity = "cry_exotic",
 	atlas =  "v_atlas_1",
 	blueprint_compat = true,
+	demicoloncompat = true,
 	pos = { x = 9, y = 1 },
 	soul_pos = { x = 11, y = 1, extra = { x = 10, y = 1 } },
 	cost = 50,
@@ -17,7 +18,7 @@ SMODS.Joker {
 		card.ability.extra.power = card.ability.extra.power + (#G.jokers.cards * card.ability.extra.gain)
 		--end
 
-		if context.joker_main then
+		if (context.joker_main) or context.forcetrigger then
 			return {
 				message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.power } }),
 				Emult_mod = math.min(card.ability.extra.power, Global_Cap),

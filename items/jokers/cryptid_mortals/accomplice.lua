@@ -4,6 +4,7 @@ SMODS.Joker { --Commented out at the moment as it is also increasing hand size a
 	rarity = 3,
 	atlas = "c_atlas_mortal",
 	blueprint_compat = true,
+	demicoloncompat = true,	
 	pos = { x = 1, y = 0 },
 	cost = 10,
 	order = 515,
@@ -31,7 +32,7 @@ SMODS.Joker { --Commented out at the moment as it is also increasing hand size a
 		end
 	end,
 	calculate = function(self, card2, context)
-		if context.end_of_round and not context.repetition and not context.individual then
+		if (context.end_of_round and not context.repetition and not context.individual) or context.forcetrigger then
 			local check = false
 			local card = G.jokers.cards[1]
 			if not Card.no(G.jokers.cards[1], "immutable", true) then

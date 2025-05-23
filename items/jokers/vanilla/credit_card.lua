@@ -4,6 +4,7 @@ SMODS.Joker {
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
+	demicoloncompat = true,
 	pos = { x = 3, y = 3 },
 	soul_pos = { x = 5, y = 3, extra = { x = 4, y = 3 } },
 	cost = 50,
@@ -18,15 +19,15 @@ SMODS.Joker {
 		G.GAME.bankrupt_at = G.GAME.bankrupt_at + card.ability.extra.debt
 	end,
 	calculate = function(self, card, context)
-		if context.joker_main then
+		if (context.joker_main) or context.forcetrigger then
 			if (to_big(card.ability.extra.chips) > to_big(1)) then
 				return {
-					chip_mod = math.min(card.ability.extra.chips, Global_Cap),
+					Xchip_mod = math.min(card.ability.extra.chips, Global_Cap),
 					message = localize { type = "variable", key = "a_xchips", vars = { math.min(card.ability.extra.chips, Global_Cap) } }
 				}
 			end
 		end
-		if context.ending_shop and not context.individual and not context.repetition and not (context.blueprint_card or card).getting_sliced then
+		if (context.ending_shop and not context.individual and not context.repetition and not (context.blueprint_card or card.getting_sliced)) or context.forcetrigger then
 			local debt = to_big(G.GAME.dollars)
 			if debt < to_big(0) then
 				card.ability.extra.chips = card.ability.extra.chips + (card.ability.extra.gain * (-1 * debt))

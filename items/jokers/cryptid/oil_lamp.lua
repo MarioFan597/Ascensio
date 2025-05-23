@@ -6,6 +6,8 @@ SMODS.Joker {
 	rarity = "cry_exotic",
 	cost = 50,
 	order = 277,
+	blueprint_compat = false,
+	demicoloncompat = true,
 	atlas = "c_atlas_1",
 	loc_vars = function(self, info_queue, card)
 		card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui or ""
@@ -15,7 +17,7 @@ SMODS.Joker {
 		}
 	end,
 	calculate = function(self, card, context)
-		if context.end_of_round and not context.repetition and not context.individual and not context.blueprint then
+		if (context.end_of_round and not context.repetition and not context.individual and not context.blueprint) or context.forcetrigger then
 			local check = false
 			for i = 1, #G.jokers.cards do
 				if not (G.jokers.cards[i] == card) then

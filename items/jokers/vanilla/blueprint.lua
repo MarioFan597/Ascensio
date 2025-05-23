@@ -11,6 +11,7 @@ SMODS.Joker {
 	rarity = "cry_exotic",
 	atlas =  "blueprint",
 	blueprint_compat = true,
+	demicoloncompat = true,
 	pos = { x = 0, y = 0 },
 	soul_pos = { x = 0, y = 2, extra = { x = 0, y = 1 } },
 	cost = 50,
@@ -43,12 +44,13 @@ SMODS.Joker {
 			end
 		end
 		--Taken and modifed from Cryptid's smile (:D)
-		if context.ending_shop 
+		if (context.ending_shop 
 			and not context.individual
 			and not context.repetition
 			and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit
 			and #G.jokers.cards
-			and other_joker ~= nil
+			and other_joker ~= nil)
+			or context.forcetrigger
 			--and not position == #G.jokers.cards
 		then
 			local roundcreatejoker = math.min(1, G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer))

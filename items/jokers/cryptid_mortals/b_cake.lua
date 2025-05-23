@@ -4,6 +4,7 @@ SMODS.Joker{
 	rarity = 2,
 	atlas = "c_atlas_mortal",
 	blueprint_compat = true,
+	demicoloncompat = true,
 	pools = { ["Food"] = true },
 	pos = { x = 0, y = 0 },
 	cost = 8,
@@ -14,7 +15,7 @@ SMODS.Joker{
 	calculate = function(self, card, context)
 	--Taken from crustulum
 
-		if context.reroll_shop and not context.blueprint then
+		if (context.reroll_shop and not context.blueprint) or context.forcetrigger then
 			card.ability.extra.chips = card.ability.extra.chips - card.ability.extra.reroll
 			if card.ability.extra.chips > 0 then
 				--G.GAME.current_round.free_rerolls = G.GAME.current_round.free_rerolls + 1
@@ -59,7 +60,7 @@ SMODS.Joker{
 				}
 			end
 		end
-		if context.joker_main then
+		if (context.joker_main) or context.forcetrigger then
 			if card.ability.extra.chips > 0 then
 				return {
 					chip_mod = math.min(card.ability.extra.chips, Global_Cap),

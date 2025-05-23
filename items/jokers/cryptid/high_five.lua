@@ -29,12 +29,12 @@ SMODS.Joker {
 				end
 			end
 
-			if (five_count > 0) or context.forcetrigger then
+			if (five_count > 0) then
 				for i = 1, #context.scoring_hand do
 				local _card = context.scoring_hand[i]
 				converted = true
 				local _card = context.scoring_hand[i]
-					if (_card:get_id() ~= 5 and not SMODS.has_no_rank(_card)) or context.forcetrigger then
+					if (_card:get_id() ~= 5 and not SMODS.has_no_rank(_card)) then
 						G.E_MANAGER:add_event(Event({
 							func = function()
 								assert(SMODS.change_base(_card, _, "5"))
@@ -44,7 +44,7 @@ SMODS.Joker {
 						}))
 					end
 					local enhancement = "cry_astral"
-					if (_card.ability.effect ~= "Astral") or context.forcetrigger then
+					if (_card.ability.effect ~= "Astral") then
 						_card:set_edition({cry_astral = true})
 					end
 					G.E_MANAGER:add_event(Event({

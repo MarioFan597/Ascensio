@@ -1,9 +1,10 @@
 SMODS.Joker {
 	key = "canio",
-	config = { extra = { power = 1, gain = 1} },
+	config = { extra = { power = 1, gain = 1 } },
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
+	demicoloncompat = true,
 	pos = { x = 3, y = 2 },
 	soul_pos = { x = 5, y = 2, extra = { x = 4, y = 2 } },
 	cost = 50,
@@ -13,7 +14,7 @@ SMODS.Joker {
 	end,
 
 	calculate = function(self, card, context)
-	 if not context.blueprint and context.remove_playing_cards and context.removed then --Check if face cards are removed.
+	 if context.blueprint and context.remove_playing_cards and context.removed then --Check if face cards are removed.
 	 	local check = 0
 		for _, _card in ipairs(context.removed) do
         	if _card:is_face() then
@@ -33,9 +34,16 @@ SMODS.Joker {
 	            	remove = true
 	            	}
 	    end
+		if context.forcetrigger then
+			card.ability.extra.power = card.ability.extra.power + card.ability.extra.gain
+			return {
+				message = localize("k_upgrade_ex"),
+				colour = G.C.DARK_EDITION,
+				remove = true
+			}
+		end
 	end
-
-	if context.joker_main then
+	if (context.joker_main) or context.forcetrigger then
 			if card.ability.extra.power > 1 then
 				return {
 				message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.power} }),
