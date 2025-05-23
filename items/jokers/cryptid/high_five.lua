@@ -1,9 +1,10 @@
 SMODS.Joker {
 	key = "high_five",
-	config = { extra = {power = 1.1 } },
+	config = { extra = { power = 1.1 } },
 	rarity = "cry_exotic",
 	atlas =  "c_atlas_1",
 	blueprint_compat = false,
+	demicoloncompat = true,
 	pos = { x = 0, y = 0 },
 	soul_pos = { x = 2, y = 0, extra = { x = 1, y = 0 } },
 	cost = 50,
@@ -28,12 +29,12 @@ SMODS.Joker {
 				end
 			end
 
-			if five_count > 0 then
+			if (five_count > 0) or context.forcetrigger then
 				for i = 1, #context.scoring_hand do
 				local _card = context.scoring_hand[i]
 				converted = true
 				local _card = context.scoring_hand[i]
-					if _card:get_id() ~= 5 and not SMODS.has_no_rank(_card) then
+					if (_card:get_id() ~= 5 and not SMODS.has_no_rank(_card)) or context.forcetrigger then
 						G.E_MANAGER:add_event(Event({
 							func = function()
 								assert(SMODS.change_base(_card, _, "5"))
@@ -43,7 +44,7 @@ SMODS.Joker {
 						}))
 					end
 					local enhancement = "cry_astral"
-					if _card.ability.effect ~= "Astral" then
+					if (_card.ability.effect ~= "Astral") or context.forcetrigger then
 						_card:set_edition({cry_astral = true})
 					end
 					G.E_MANAGER:add_event(Event({
@@ -56,7 +57,7 @@ SMODS.Joker {
 					}))
 				end
 				if converted then
-				return { message = "I Wish", colour = G.C.PURPLE }
+					return { message = "I Wish", colour = G.C.PURPLE }
 				end
 			end
 		end

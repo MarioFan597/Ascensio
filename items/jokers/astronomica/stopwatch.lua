@@ -7,17 +7,18 @@ SMODS.Atlas {
 
 SMODS.Joker {
 	key = "stopwatch",
-	config = { extra = {chips = 0, gold_count = 0, chip_mod = 1,}},
+	config = { extra = { chips = 0, gold_count = 0, chip_mod = 1 } },
 	rarity = "cry_exotic",
 	atlas =  "stopwatch",
 	blueprint_compat = true,
+	demicoloncompat = true,
 	pos = { x = 0, y = 0 },
 	soul_pos = { x = 2, y = 0, extra = { x = 1, y = 0 } },
 	cost = 50,
 	order = 703,
 	loc_vars = function(self, info_queue, card)
 		return {
-			vars = {card.ability.extra.chips, card.ability.extra.chip_mod}
+			vars = { card.ability.extra.chips, card.ability.extra.chip_mod }
 		}
 	end,
 	update = function(self, card, dt)
@@ -69,7 +70,7 @@ SMODS.Joker {
 		}
 		card.ability.extra.gold_count = 0
 		for i, v in pairs(deck_list) do
-			if (Cryptid.safe_get(G.PROFILES, G.SETTINGS.profile, "deck_usage", v, "wins", 8) or 0 ~= 0) then
+			if ((Cryptid.safe_get(G.PROFILES, G.SETTINGS.profile, "deck_usage", v, "wins", 8) or 0 ~= 0)) then
 				card.ability.extra.gold_count = card.ability.extra.gold_count + 1
 			end
 		end
@@ -79,12 +80,15 @@ SMODS.Joker {
 	end,
 	--Taken from old blueprint and Chad
 	calculate = function(self, card, context)
-		if context.joker_main and card.ability.extra.chips > 0 then
+		if (context.joker_main and card.ability.extra.chips > 0) or context.forcetrigger then
 			return {
 				message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } },
 				chip_mod = card.ability.extra.chips,
 				colour = G.C.CHIPS
 			}
+		end
+		if context.forcetrigger then
+			card.ability.extra.gold_count = card.ability.extra.gold_count + 1
 		end
 	end,
     ascxast_credits = {

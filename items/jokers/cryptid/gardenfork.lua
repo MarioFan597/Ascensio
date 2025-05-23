@@ -4,6 +4,7 @@ SMODS.Joker {
 	rarity = "cry_exotic",
 	atlas = "c_atlas_1",
 	blueprint_compat = true,
+	demicoloncompat = true,
 	pos = { x = 6, y = 0 },
 	soul_pos = { x = 8, y = 0, extra = { x = 7, y = 0 } },
 	cost = 50,
@@ -22,7 +23,7 @@ SMODS.Joker {
 					has_7 = true
 				end
 			end
-			if (has_ace or has_7) and G.GAME.dollars > to_big(0) then
+			if ((has_ace or has_7) and G.GAME.dollars > to_big(0)) or context.forcetrigger then
 				ease_dollars(G.GAME.dollars * card.ability.extra.money)
 				return { message = "X" .. card.ability.extra.money, colour = G.C.MONEY }
 			end
