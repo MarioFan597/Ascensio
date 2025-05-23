@@ -1,0 +1,37 @@
+SMODS.Joker {
+	key = "family",
+	config = { extra = { power = 4 } },
+	rarity = "cry_exotic",
+	atlas =  "v_atlas_1",
+	blueprint_compat = true,
+	demicoloncompat = true,
+	pos = { x = 3, y = 1 },
+	soul_pos = { x = 5, y = 1, extra = { x = 4, y = 1 } },
+	cost = 50,
+	order = 133,
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card and card.ability.extra.power } }
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main then
+			if (context.poker_hands ~= nil and next(context.poker_hands["Four of a Kind"])) or context.forcetrigger then
+				return {
+					message = localize({ type = "variable", key = "a_powmult", vars = { card.ability.extra.power } }),
+					Emult_mod = math.min(card.ability.extra.power, Global_Cap),
+					colour = G.C.DARK_EDITION,
+				}
+			end
+		end
+	end,
+    asc_credits = {
+			idea = {
+				"hssr96"
+			},
+			art = {
+				"MarioFan597"
+			},
+			code = {
+				"MarioFan597"
+			}
+		},
+}
