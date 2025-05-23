@@ -30,17 +30,19 @@ SMODS.Joker {
 				})
 		end
 		if (context.joker_main) or context.forcetrigger then
-			return {
-				message = localize({
-					type = "variable",
-					key = "a_xmult",
-					vars = {
-						number_format(lenient_bignum(card.ability.extra.mult)),
-					},
-				}),
-				Xmult_mod = lenient_bignum(card.ability.extra.mult),
-				colour = G.C.MULT,
-			}
+			if card.ability.extra.mult > 0 then
+				return {
+					message = localize({
+						type = "variable",
+						key = "a_xmult",
+						vars = {
+							number_format(lenient_bignum(card.ability.extra.mult)),
+						},
+					}),
+					Xmult_mod = lenient_bignum(card.ability.extra.mult),
+					colour = G.C.MULT,
+				}
+			end
 		end
 	end,
 	add_to_deck = function(self, card, from_debuff)
