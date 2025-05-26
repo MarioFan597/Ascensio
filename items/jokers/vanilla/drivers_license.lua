@@ -22,7 +22,7 @@ SMODS.Joker{
 					mod_count = mod_count + 1
 				end
 				-- enhancement
-				if c.enhancement then
+				if c.ability.set == "Enhanced" then
 					mod_count = mod_count + 1
 				end
 			end
@@ -52,7 +52,7 @@ SMODS.Joker{
 						mod_count = mod_count + 1
 					end
 					-- enhancement
-					if c.enhancement then
+					if c.ability.set == "Enhanced" then
 						mod_count = mod_count + 1
 					end
 				end
