@@ -10,7 +10,7 @@ SMODS.Joker {
 	cost = 50,
 	order = 17,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card and lenient_bignum(card.ability.extra.mult),  card and lenient_bignum(card.ability.extra.mult_gain), card and lenient_bignum(card.ability.extra.joker_slots), card and lenient_bignum(card.ability.extra.slot_gain) } }
+		return { vars = { card and lenient_bignum(card.ability.extra.mult), card and lenient_bignum(card.ability.extra.mult_gain), card and lenient_bignum(card.ability.extra.joker_slots), card and lenient_bignum(card.ability.extra.slot_gain) } }
 	end,
 	calculate = function(self, card, context)
 		if (context.end_of_round and context.cardarea == G.jokers and not context.blueprint and not context.retrigger_joker) or context.forcetrigger then
