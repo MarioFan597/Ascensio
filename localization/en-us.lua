@@ -302,8 +302,8 @@ return {
 				name = "Birthday Cake",
 				text = {
 					"{C:chips}+#1#{} Chips", 
-					"{C:chips}-#2#{} Chips per {C:green}Reroll{},", -- see choas the clown for {c} formatting on "reroll"
-					"{C:green}Rerolls{} are free"
+					"{C:chips}-#2#{} Chips per {C:attention}reroll{},", -- see flash card for {c} formatting on "reroll" when used in reference to gaining/losing values
+					"{C:green}Rerolls{} are free" -- see choas the clown for {c} formatting on "reroll" when used in reference to free rerolls
 				}
 			},
 
