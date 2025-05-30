@@ -16,6 +16,17 @@ SMODS.Joker {
 	soul_pos = { x = 2, y = 0, extra = { x = 1, y = 0 } },
 	cost = 50,
 	order = 703,
+
+	animation = {
+        macro = {
+            type = "skim",
+            soul_pos = {
+                include = {{x1=0,x2=4,y1=0,y2=4}},
+				exclude = {{x=0,y=0},{x=1,y=0},{x1=2,x2=4,y1=4,y2=4}}
+            }
+        }
+	},
+
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = { lenient_bignum(card.ability.extra.chips), lenient_bignum(card.ability.extra.chip_mod) }
@@ -103,33 +114,3 @@ SMODS.Joker {
 			}
 	},
 }
-
-
----Animation
-stopwatch_dt = 0
-local _game_update = Game.update
-function Game:update(dt)
-	_game_update(self, dt)
-	 stopwatch_dt = stopwatch_dt + dt -- cryptid has a check here but im not sure what it's for
-		if G.P_CENTERS and G.P_CENTERS.j_asc_stopwatch and stopwatch_dt > 0.10 then
-			stopwatch_dt = stopwatch_dt - 0.10
-			local stopwatch = G.P_CENTERS.j_asc_stopwatch
-			if stopwatch.soul_pos.x == 1 and stopwatch.soul_pos.y == 4 then --Last frame of animation
-				stopwatch.soul_pos.x = 2
-				stopwatch.soul_pos.y = 0
-			elseif stopwatch.soul_pos.x < 4 then --If it isnt the right most image
-				stopwatch.soul_pos.x = stopwatch.soul_pos.x + 1
-			elseif stopwatch.soul_pos.y < 4 then --If it isnt the bottom most image
-				stopwatch.soul_pos.x = 0
-				stopwatch.soul_pos.y = stopwatch.soul_pos.y + 1
-			end
-	        -- oh my god i hate this so much but ARGH
-	        -- note that this can't use find_card because it also needs to work in the collection
-	        -- unless there's some other way you can do it
-	        for _, card in pairs(G.I.CARD) do
-	            if card and card.config.center == stopwatch then
-	                card.children.floating_sprite:set_sprite_pos(stopwatch.soul_pos)
-	            end
-	        end
-		end
-end

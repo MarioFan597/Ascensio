@@ -16,6 +16,18 @@ SMODS.Joker {
 	soul_pos = { x = 14, y = 2, extra = { x = 0, y = 1 } },
 	cost = 50,
 	order = 706,
+
+	animation = {
+        macro = {
+            type = "skim",
+            soul_pos = {
+                include = {{x1=0,x2=14,y1=2,y2=9}},
+				exclude = {{x1=0,x2=9,y1=9,y2=9}},
+				direction = {"row", "forward", "backward"}
+            }
+        }
+	},
+
 	--Taken from old blueprint and Chad
 	calculate = function(self, card, context)
 		local other_joker = nil
@@ -82,33 +94,3 @@ SMODS.Joker {
 			}
 	},
 }
-
-
----Animation
-facsimile_dt = 0
-local _game_update = Game.update
-function Game:update(dt)
-	_game_update(self, dt)
-	 facsimile_dt = facsimile_dt + dt -- cryptid has a check here but im not sure what it's for
-		if G.P_CENTERS and G.P_CENTERS.j_asc_facsimile and facsimile_dt > 0.10 then
-			facsimile_dt = facsimile_dt - 0.10
-			local facsimile = G.P_CENTERS.j_asc_facsimile
-			if facsimile.soul_pos.x == 10 and facsimile.soul_pos.y == 9 then --Last frame of animation
-				facsimile.soul_pos.x = 14
-				facsimile.soul_pos.y = 2
-			elseif facsimile.soul_pos.x > 0 then --If it isnt the left most image
-				facsimile.soul_pos.x = facsimile.soul_pos.x - 1
-			elseif facsimile.soul_pos.y < 9 then --If it isnt the bottom most image
-				facsimile.soul_pos.x = 14
-				facsimile.soul_pos.y = facsimile.soul_pos.y + 1
-			end
-	        -- oh my god i hate this so much but ARGH
-	        -- note that this can't use find_card because it also needs to work in the collection
-	        -- unless there's some other way you can do it
-	        for _, card in pairs(G.I.CARD) do
-	            if card and card.config.center == facsimile then
-	                card.children.floating_sprite:set_sprite_pos(facsimile.soul_pos)
-	            end
-	        end
-		end
-end
