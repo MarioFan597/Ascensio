@@ -21,7 +21,7 @@ SMODS.Joker {
 				})
 		end
 
-		if (context.ending_shop) or context.forcetrigger then
+		if (context.ending_shop or context.forcetrigger ) and not context.blueprint then
 			card.ability.extra.joker_slots = lenient_bignum(card.ability.extra.joker_slots) + lenient_bignum(card.ability.extra.slot_gain)
 			G.jokers.config.card_limit = G.jokers.config.card_limit + lenient_bignum(card.ability.extra.slot_gain)
 			card_eval_status_text(card, "extra", nil, nil, nil, {
@@ -29,7 +29,7 @@ SMODS.Joker {
 					colour = G.C.DARK_EDITION,
 				})
 		end
-		if (context.joker_main) or context.forcetrigger then
+		if (context.joker_main or context.forcetrigger) and not context.blueprint then
 			if card.ability.extra.mult > 0 then
 				return {
 					message = localize({

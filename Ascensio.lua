@@ -61,7 +61,7 @@ ascensionable = {
 			j_greedy_joker = "j_asc_greedy",
 			j_lusty_joker = "j_asc_lusty",
 			j_wrathful_joker = "j_asc_wrathful",
-			j_gluttonous_joker = "j_asc_gluttonous",
+			j_gluttenous_joker = "j_asc_gluttonous",
 			j_stencil = "j_asc_stencil",
 			j_credit_card = "j_asc_credit_card",
 			j_mystic_summit = "j_asc_mystic_summit",
@@ -257,7 +257,7 @@ function SMODS.create_mod_badges(obj, badges)
 						n = G.UIT.R,
 						config = {
 							align = "cm",
-							colour = HEX("395F8C"),
+							colour = HEX("7664AC"),
 							r = 0.1,
 							minw = 2 / min_scale_fac,
 							minh = 0.36,
