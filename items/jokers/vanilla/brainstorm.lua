@@ -19,7 +19,7 @@ SMODS.Joker {
 	--Taken from old blueprint and Chad
 	calculate = function(self, card, context)
 		local other_joker = G.jokers.cards[1]
-		
+		local position = 0
 
 		if context.retrigger_joker_check and not context.retrigger_joker and other_joker ~= nil then
 			for i = 1, #G.jokers.cards do
