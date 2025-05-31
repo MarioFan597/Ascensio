@@ -8,6 +8,7 @@ if not G.cardanim then
     }
 end
 
+-- [[ DEFINING CARD LAYERS ]]
 G.cardanim.card_layers.pos = {
     coords = function(p_center) return p_center.pos end,
     child  = function(children) return children.center end
