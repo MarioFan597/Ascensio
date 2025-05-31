@@ -1,16 +1,24 @@
-Ascensio.card_layers = {
-    pos = {
-        coords = function(p_center) return p_center.pos end,
-        child  = function(children) return children.center end
-    },
-    soul_pos = {
-        coords = function(p_center) return p_center.soul_pos end,
-        child  = function(children) return children.floating_sprite end
-    },
-    soul_pos_extra = {
-        coords = function(p_center) return p_center.soul_pos and p_center.soul_pos.extra or nil end,
-        child  = function(children) return children.floating_sprite2 end
+-- Preparing global property for animation stuff
+-- Doing this to anticipate other mods using this system
+if not G.cardanim then
+    G.cardanim = {
+        DEBUGGING = {}, -- Modules can add entries to this table to see what is happening within it
+        card_layers = {},
+        animation_macros = {}
     }
+end
+
+G.cardanim.card_layers.pos = {
+    coords = function(p_center) return p_center.pos end,
+    child  = function(children) return children.center end
+}
+G.cardanim.card_layers.soul_pos = {
+    coords = function(p_center) return p_center.soul_pos end,
+    child  = function(children) return children.floating_sprite end
+}
+G.cardanim.card_layers.soul_pos_extra = {
+    coords = function(p_center) return p_center.soul_pos and p_center.soul_pos.extra or nil end,
+    child  = function(children) return children.floating_sprite2 end
 }
 
 -- [[ MACRO LOADING ]]
@@ -18,8 +26,7 @@ local macros = {
     "skim"
 }
 
-Ascensio.card_macros = {}
-local card_macros = Ascensio.card_macros
+G.cardanim.animation_macros = {}
 for _,v in pairs(macros) do
     assert(SMODS.load_file("lib/animation_macros/"..v..".lua"))()
 end
@@ -28,18 +35,24 @@ end
 -- This will only load after the game is actually ready to do stuff
 G.E_MANAGER:add_event(Event{blocking=false,func=function() -- anti-nesting
 -----------
+-- Only do all of the following if animations haven't been set up yet
+-- (Only one mod needs to do so, and it will do so for all mods, including cross-mods)
+if G.cardanim.animation_details then return true end
+
 -- Register animations
-Ascensio.animation_details = {}
-local anim_details = Ascensio.animation_details
+G.cardanim.animation_details = {}
+local anim_details = G.cardanim.animation_details
 for card_key,card_center in pairs(G.P_CENTERS) do
     local card_anim = card_center.animation
     if not card_anim then goto continuecenters end
 
-    if card_anim.macro then
+    -- Run macro
+    if card_anim.macro and card_anim.macro.type then
         local macro_obj = card_anim.macro
         macro_obj.card_key = card_key
-        
-        card_anim.frames = Ascensio.card_macros[macro_obj.type](macro_obj)
+
+        local macro_frames = G.cardanim.animation_macros[macro_obj.type](macro_obj)
+        if macro_frames then card_anim.frames = macro_frames end
     end
 
     -- i_list - track ID of current frame
@@ -47,7 +60,7 @@ for card_key,card_center in pairs(G.P_CENTERS) do
     -- for both, keys are (keys of card_layers) AKA "keywords" or "kw"
     anim_details[card_key] = { i_list = {}, t_list = {}, seq = card_anim.frames }
 
-    for kw,_ in pairs(Ascensio.card_layers) do
+    for kw,_ in pairs(G.cardanim.card_layers) do
         anim_details[card_key].i_list[kw] = 1
         anim_details[card_key].t_list[kw] = 1
     end
@@ -71,7 +84,7 @@ function Game:update(dt)
         local frame_dur = card_anim_d.t_list   -- track current frame duration
         local frame_seq = card_anim_d.seq      -- list of all frames, each labeled with an id
 
-        for kw,part in pairs(Ascensio.card_layers) do if frame_seq[kw] and part.coords(card_def) then
+        for kw,part in pairs(G.cardanim.card_layers) do if frame_seq[kw] and part.coords(card_def) then
             local pos_table = part.coords(card_def)
             local frame = frame_seq[kw][frame_i[kw]]
 
@@ -93,16 +106,21 @@ function Game:update(dt)
     end
 
     -- apparently changing pos, etc. doesnt automatically update the sprite for all cards?
-    -- so we need to use set_sprite_pos on each child of the card center
+    -- so we need to use set_sprite_pos on each child of the card object thing
     for _, card in pairs(G.I.CARD) do
+        -- not sure why but this is something that needs to be checked
         if not card.config.center then goto icardcontinue end
+
         local card_key = card.config.center.key
+        -- If the card is not animatable
         if not anim_details[card_key] then goto icardcontinue end
 
+        -- Grab card center and its frames
         local card_def = G.P_CENTERS[card_key]
         local frame_seq = anim_details[card_key].seq
 
-        for kw,part in pairs(Ascensio.card_layers) do if frame_seq[kw] and part.coords(card_def) then
+        -- Update each layer, but only if frames are defined for that layer
+        for kw,part in pairs(G.cardanim.card_layers) do if frame_seq[kw] and part.coords(card_def) then
             part.child(card.children):set_sprite_pos(part.coords(card_def))
         end end
 

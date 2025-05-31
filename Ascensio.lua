@@ -1,9 +1,6 @@
 ----------------------------------------------
 ------------MOD CODE -------------------------
 
-----Mod global table----
-if not Ascensio then Ascensio = {} end
-
 -----bignum compatibility using cryptid-----
 Cryptid.mod_whitelist["Ascensio"] = true
 

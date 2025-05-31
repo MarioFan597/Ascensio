@@ -32,12 +32,11 @@ local function string_any(main, options)
 end
 
 -----------------------------------
-Ascensio.poopshit = {}
 
 -- The macro itself
-function Ascensio.card_macros.skim(macro_obj)
+function G.cardanim.animation_macros.skim(macro_obj)
     local seq = {}
-    for kw,__ in pairs(Ascensio.card_layers) do
+    for kw,__ in pairs(G.cardanim.card_layers) do
         -- the "next" function is an emptiness check
         if (not macro_obj[kw]) or next(macro_obj[kw]) == nil then goto skimmacrocontinue end
         seq[kw] = {}
@@ -124,8 +123,6 @@ function Ascensio.card_macros.skim(macro_obj)
                 for _,v in ipairs(coord_list) do remove_from_aa(v) end
             end
         end
-
-        table.insert(Ascensio.poopshit, active_area)
 
         --[[ ADD FRAMES
             This system allows for an integer sequence or integer non-sequence
