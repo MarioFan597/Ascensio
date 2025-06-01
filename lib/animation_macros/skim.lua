@@ -125,7 +125,7 @@ function G.cardanim.animation_macros.skim(macro_obj)
         end
 
         --[[ ADD FRAMES
-            This system allows for an integer sequence or integer non-sequence
+            This system allows for timer= to be an integer sequence or integer non-sequence
             nils are defaulted to t=1
 
             For example, timing = {1,2,3,4,5} will show each frame for an increasing amount of time
