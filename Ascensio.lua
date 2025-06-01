@@ -61,7 +61,7 @@ ascensionable = {
 			j_greedy_joker = "j_asc_greedy",
 			j_lusty_joker = "j_asc_lusty",
 			j_wrathful_joker = "j_asc_wrathful",
-			j_gluttenous_joker = "j_asc_gluttonous",
+			j_gluttenous_joker_joker = "j_asc_gluttonous",
 			j_stencil = "j_asc_stencil",
 			j_credit_card = "j_asc_credit_card",
 			j_mystic_summit = "j_asc_mystic_summit",
@@ -88,6 +88,7 @@ ascensionable = {
 	---Cryptid
 			j_cry_gardenfork = "j_asc_gardenfork",
 			j_cry_oil_lamp = "j_asc_oil_lamp",
+			j_cry_huntingseason = "j_asc_hunting_season",
 			j_cry_highfive = "j_asc_high_five",
 
 	---Cryptid Mortals
