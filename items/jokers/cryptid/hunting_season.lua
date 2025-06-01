@@ -16,6 +16,21 @@ SMODS.Joker {
 	blueprint_compat = false,
 	demicoloncompat = false,
 	atlas = "hunting_season",
+
+	animation = {
+        macro = {
+			type = "skim",
+			soul_pos_extra = {
+				include = {{x1=0,x2=9,y1=1,y2=5}},
+				exclude = {{x1=5,x2=9,y1=5,y2=5}}
+			},
+			soul_pos = {
+				include = {{x1=0,x2=9,y1=6,y2=10}},
+				exclude = {{x1=5,x2=9,y1=10,y2=10}},
+			},
+        }
+	},
+
 	calculate = function(self, card, context) --This was taken in part and modified from the original hunting season
 		if
 			(context.cardarea == G.play or context.cardarea == "unscored")
@@ -51,62 +66,3 @@ SMODS.Joker {
 		},
 	},
 }
-
----Extra
-hunting_dt = 0
-local _game_update = Game.update
-function Game:update(dt)
-	_game_update(self, dt)
-	 hunting_dt = hunting_dt + dt -- cryptid has a check here but im not sure what it's for
-		if G.P_CENTERS and G.P_CENTERS.j_asc_hunting_season and hunting_dt > 0.10 then
-			hunting_dt = hunting_dt - 0.10
-			local hunting = G.P_CENTERS.j_asc_hunting_season
-			if hunting.soul_pos.extra.x == 4 and hunting.soul_pos.extra.y == 5 then --Last frame of animation
-				hunting.soul_pos.extra.x = 0
-				hunting.soul_pos.extra.y = 1
-			elseif hunting.soul_pos.extra.x < 9 then --If it isnt the right most image
-				hunting.soul_pos.extra.x = hunting.soul_pos.extra.x + 1
-			elseif hunting.soul_pos.extra.y < 5 then --If it isnt the bottom most image
-				hunting.soul_pos.extra.x = 0
-				hunting.soul_pos.extra.y = hunting.soul_pos.extra.y + 1
-			end
-	        -- oh my god i hate this so much but ARGH
-	        -- note that this can't use find_card because it also needs to work in the collection
-	        -- unless there's some other way you can do it
-	        for _, card in pairs(G.I.CARD) do
-	            if card.children.back and card.config.center == hunting then
-	                card.children.floating_sprite2:set_sprite_pos(hunting.soul_pos.extra)
-	            end
-	        end
-		end
-end
-
----Soul
-
-season_dt = 0
-local _game_update = Game.update
-function Game:update(dt)
-	_game_update(self, dt)
-	 season_dt = season_dt + dt -- cryptid has a check here but im not sure what it's for
-		if G.P_CENTERS and G.P_CENTERS.j_asc_hunting_season and season_dt > 0.10 then
-			season_dt = season_dt - 0.10
-			local season = G.P_CENTERS.j_asc_hunting_season
-			if season.soul_pos.x == 4 and season.soul_pos.y == 10 then --Last frame of animation
-				season.soul_pos.x = 0
-				season.soul_pos.y = 6
-			elseif season.soul_pos.x < 9 then --If it isnt the right most image
-				season.soul_pos.x = season.soul_pos.x + 1
-			elseif season.soul_pos.y < 10 then --If it isnt the bottom most image
-				season.soul_pos.x = 0
-				season.soul_pos.y = season.soul_pos.y + 1
-			end
-	        -- oh my god i hate this so much but ARGH
-	        -- note that this can't use find_card because it also needs to work in the collection
-	        -- unless there's some other way you can do it
-	        for _, card in pairs(G.I.CARD) do
-	            if card and card.config.center == season then
-	                card.children.floating_sprite:set_sprite_pos(season.soul_pos)
-	            end
-	        end
-		end
-end
