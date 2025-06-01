@@ -61,7 +61,7 @@ ascensionable = {
 			j_greedy_joker = "j_asc_greedy",
 			j_lusty_joker = "j_asc_lusty",
 			j_wrathful_joker = "j_asc_wrathful",
-			j_gluttenous_joker = "j_asc_gluttonous", --No Touchie!!!!
+			j_gluttenous_joker = "j_asc_gluttonous", --No Touchie!!!! Sic
 			j_stencil = "j_asc_stencil",
 			j_credit_card = "j_asc_credit_card",
 			j_mystic_summit = "j_asc_mystic_summit",
@@ -72,7 +72,7 @@ ascensionable = {
 			j_midas_mask = "j_asc_midas",
 			j_golden = "j_asc_golden",
 			j_bull = "j_asc_bull",
-			j_selzer = "j_asc_seltzer",
+			j_selzer = "j_asc_seltzer",  --No Touchie!!!! Sic
 			j_blueprint = "j_asc_blueprint",
 			j_oops = "j_asc_oops",
 			j_duo = "j_asc_duo",
@@ -82,7 +82,7 @@ ascensionable = {
 			j_tribe = "j_asc_tribe",
 			j_brainstorm = "j_asc_brainstorm",
 			j_drivers_license = "j_asc_drivers_license",
-			j_caino = "j_asc_canio",
+			j_caino = "j_asc_canio",  --No Touchie!!!! Sic
 			-- j_to_the_moon = "j_asc_to_the_moon",
 
 	---Cryptid
