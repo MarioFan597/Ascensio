@@ -296,6 +296,18 @@ return {
 				}
 			},
 
+			j_asc_hunting_season = {
+				name = "Sine Fine Venari",
+				text = {
+					"If Hand contains an odd number of cards above {C:attention}1{},",
+					"{C:red}destroy{} the {C:attention}center{} card after scoring",
+					"Remaining played cards gain bonus {X:mult,C:white}XMult{}",
+					"equal to {C:red}destroyed{} card's rank",
+					"{C:inactive}(J = 11, Q = 12, K = 13, A = 14)"
+					--divided by {C:attention}10{}",
+				}
+			},
+
 			-----Cryptid Mortals-----
 
 			j_asc_b_cake = {

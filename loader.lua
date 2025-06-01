@@ -38,6 +38,7 @@ end
 local cry_jokers = {
 	"gardenfork",
 	"oil_lamp",
+	"hunting_season",
 	"high_five"
 }
 
