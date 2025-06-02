@@ -18,7 +18,7 @@ SMODS.Joker {
 	atlas = "hunting_season",
 
 	animation = {
-        macro = {
+	        macro = {
 			type = "skim",
 			soul_pos_extra = {
 				include = {{x1=0,x2=9,y1=1,y2=5}},
@@ -28,7 +28,7 @@ SMODS.Joker {
 				include = {{x1=0,x2=9,y1=6,y2=10}},
 				exclude = {{x1=5,x2=9,y1=10,y2=10}},
 			},
-        }
+	        }
 	},
 
 	calculate = function(self, card, context) --This was taken in part and modified from the original hunting season
