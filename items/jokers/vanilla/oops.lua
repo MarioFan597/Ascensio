@@ -22,12 +22,12 @@ SMODS.Joker {
 	end,
 
 	animation = {
-        macro = {
-            type = "skim",
-            soul_pos = {
-                include = {{x1=1,x2=4,y1=0,y2=1}}
-            }
-        }
+		macro = {
+			type = "skim",
+			soul_pos = {
+				include = {{x1=1,x2=4,y1=0,y2=1}}
+			}
+		}
 	},
 
 	calculate = function(self, card, context)

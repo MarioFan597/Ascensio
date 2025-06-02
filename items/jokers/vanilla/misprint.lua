@@ -18,13 +18,13 @@ SMODS.Joker {
 	order = 27,
 
 	animation = {
-        macro = {
+		macro = {
 			type = "skim",
 			pos = {
 				include = {{x1=0,x2=5,y1=0,y2=4}},
 				exclude = {{x1=4,x2=5,y1=4,y2=4}}
 			},
-        }
+		}
 	},
 
 	loc_vars = function(self, info_queue, card)

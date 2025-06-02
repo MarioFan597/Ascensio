@@ -18,7 +18,7 @@ SMODS.Joker {
 	order = 138,
 
 	animation = {
-        macro = {
+		macro = {
 			type = "skim",
 			pos = {
 				include = {{x1=0,x2=9,y1=0,y2=3}},
@@ -26,7 +26,7 @@ SMODS.Joker {
 			soul_pos = {
 				include = {{x1=0,x2=9,y1=5,y2=8}}
 			},
-        }
+		}
 	},
 
 	--Taken from old blueprint and Chad

@@ -18,14 +18,14 @@ SMODS.Joker {
 	order = 706,
 
 	animation = {
-        macro = {
-            type = "skim",
-            soul_pos = {
-                include = {{x1=0,x2=14,y1=2,y2=9}},
+		macro = {
+			type = "skim",
+			soul_pos = {
+				include = {{x1=0,x2=14,y1=2,y2=9}},
 				exclude = {{x1=0,x2=9,y1=9,y2=9}},
 				direction = {"row", "forward", "backward"}
-            }
-        }
+			}
+		}
 	},
 
 	--Taken from old blueprint and Chad
