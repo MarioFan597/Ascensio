@@ -142,4 +142,4 @@ end
 
 ---------Loading Animations---------
 
-assert(SMODS.load_file("lib/animation.lua"))()
+assert(SMODS.load_file("lib/cardanim.lua"))()

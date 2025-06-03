@@ -2,13 +2,17 @@
 -- Doing this to anticipate other mods using this system
 if not G.cardanim then
     G.cardanim = {
-        DEBUGGING = {}, -- Modules can add entries to this table to see what is happening within it
-        card_layers = {},
-        animation_macros = {}
+        DEBUG = {}, -- Modules can add entries to this table for debugging purposes
+        card_layers = {}
+        -- later added here: animation_macros = {}
+        -- DO NOT ADD animation_details = {} here, its existence is checked by the loading event
     }
 end
 
+
 -- [[ DEFINING CARD LAYERS ]]
+-- coords is the part of the card definition that has x-y coords on the atlas
+-- child is the child of the card center that has the "set_sprite_pos" method
 G.cardanim.card_layers.pos = {
     coords = function(p_center) return p_center.pos end,
     child  = function(children) return children.center end
@@ -22,19 +26,23 @@ G.cardanim.card_layers.soul_pos_extra = {
     child  = function(children) return children.floating_sprite2 end
 }
 
+
 -- [[ MACRO LOADING ]]
+-- When a macro is added to the macros folder, its name should be added here too
 local macros = {
     "skim"
 }
-
+-- Load macros
 G.cardanim.animation_macros = {}
 for _,v in pairs(macros) do
-    assert(SMODS.load_file("lib/animation_macros/"..v..".lua"))()
+    assert(SMODS.load_file("lib/cardanim_macros/"..v..".lua"))()
 end
 
+
 -- [[ ANIMATION LOADING EVENT ]]
--- This will only load after the game is actually ready to do stuff
+-- This will only run after the game is finished loading
 G.E_MANAGER:add_event(Event{blocking=false,func=function() -- anti-nesting
+
 -----------
 -- Only do all of the following if animations haven't been set up yet
 -- (Only one mod needs to do so, and it will do so for all mods, including cross-mods)
@@ -45,7 +53,7 @@ G.cardanim.animation_details = {}
 local anim_details = G.cardanim.animation_details
 for card_key,card_center in pairs(G.P_CENTERS) do
     local card_anim = card_center.animation
-    if not card_anim then goto continuecenters end
+    if not card_anim then goto continue_centers end
 
     -- Run macro
     if card_anim.macro and card_anim.macro.type then
@@ -66,17 +74,19 @@ for card_key,card_center in pairs(G.P_CENTERS) do
         anim_details[card_key].t_list[kw] = 1
     end
 
-    ::continuecenters::
+    ::continue_centers::
 end
 
 -- Start animation update
 local sprite_dt = 0
 local sprite_spf = 0.10 -- seconds per frame
-local _game_update = Game.update
+local _game_update = Game.update -- hella sus, akin to performing brain surgery on yourself
 function Game:update(dt)
 	_game_update(self, dt)
-    sprite_dt = sprite_dt + dt -- cryptid has a check here but im not sure what it's for
-    if sprite_dt < sprite_spf then goto skip end
+    -- dt accounts for different frame rates,
+    -- hence this is required for constant animations across all devices
+    sprite_dt = sprite_dt + dt
+    if sprite_dt < sprite_spf then goto skip_update end
     sprite_dt = sprite_dt - sprite_spf
 
     for card_key,card_anim_d in pairs(anim_details) do
@@ -106,15 +116,15 @@ function Game:update(dt)
         end end
     end
 
-    -- apparently changing pos, etc. doesnt automatically update the sprite for all cards?
+    -- apparently changing pos, etc. doesnt automatically update the sprite for all cards
     -- so we need to use set_sprite_pos on each child of the card object thing
     for _, card in pairs(G.I.CARD) do
-        -- not sure why but this is something that needs to be checked
-        if not card.config.center then goto icardcontinue end
+        -- Skip cards without centers (I think playing cards?)
+        if not card.config.center then goto i_card_continue end
 
         local card_key = card.config.center.key
-        -- If the card is not animatable
-        if not anim_details[card_key] then goto icardcontinue end
+        -- If the card has no animation, skip
+        if not anim_details[card_key] then goto i_card_continue end
 
         -- Grab card center and its frames
         local card_def = G.P_CENTERS[card_key]
@@ -125,10 +135,11 @@ function Game:update(dt)
             part.child(card.children):set_sprite_pos(part.coords(card_def))
         end end
 
-        ::icardcontinue::
+        ::i_card_continue::
     end
 
-    ::skip::
+    ::skip_update::
 end
 -----------
+
 return true end})
