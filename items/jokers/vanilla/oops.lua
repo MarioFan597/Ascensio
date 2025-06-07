@@ -21,6 +21,15 @@ SMODS.Joker {
 		return { vars = { card and lenient_bignum(card.ability.extra.slot_gain), card and lenient_bignum(card.ability.extra.joker_slots), card and lenient_bignum(card.ability.extra.consumable_slots) } }
 	end,
 
+	animation = {
+		macro = {
+			type = "skim",
+			soul_pos = {
+				include = {{x1=1,x2=4,y1=0,y2=1}}
+			}
+		}
+	},
+
 	calculate = function(self, card, context)
 		if context.before and not context.blueprint_card and not context.retrigger_joker and not context.repetition then
 			--This is directly borrowed/altered from kalidescope
@@ -113,34 +122,3 @@ SMODS.Joker {
 		}
 	},
 }
-
-
---Animation for Oops! All 6s's exotic
---This section was taken from potassium which in turn was taken from cryptid
-dice_dt = 0
-local _game_update = Game.update
-function Game:update(dt)
-	_game_update(self, dt)
-	 dice_dt = dice_dt + dt -- cryptid has a check here but im not sure what it's for
-		if G.P_CENTERS and G.P_CENTERS.j_asc_oops and dice_dt > 0.10 then
-			dice_dt = dice_dt - 0.10
-			local dice = G.P_CENTERS.j_asc_oops
-			if dice.soul_pos.x == 4 and dice.soul_pos.y == 1 then --Last frame of animation
-				dice.soul_pos.x = 1
-				dice.soul_pos.y = 0
-			elseif dice.soul_pos.x < 4 then --If it isnt the right most image
-				dice.soul_pos.x = dice.soul_pos.x + 1
-			elseif dice.soul_pos.y < 1 then --If it isnt the bottom most image
-				dice.soul_pos.x = 1
-				dice.soul_pos.y = dice.soul_pos.y + 1
-			end
-	        -- oh my god i hate this so much but ARGH
-	        -- note that this can't use find_card because it also needs to work in the collection
-	        -- unless there's some other way you can do it
-	        for _, card in pairs(G.I.CARD) do
-	            if card and card.config.center == dice then
-	                card.children.floating_sprite:set_sprite_pos(dice.soul_pos)
-	            end
-	        end
-		end
-end

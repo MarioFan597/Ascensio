@@ -139,3 +139,7 @@ if next(SMODS.find_mod('Entropy')) then
 	end
 
 end
+
+---------Loading Animations---------
+
+assert(SMODS.load_file("lib/cardanim.lua"))()

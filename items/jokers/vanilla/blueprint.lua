@@ -16,6 +16,17 @@ SMODS.Joker {
 	soul_pos = { x = 0, y = 2, extra = { x = 0, y = 1 } },
 	cost = 50,
 	order = 123,
+
+	animation = {
+		macro = {
+			type = "skim",
+			soul_pos = {
+				include = {{x1=0,x2=14,y1=2,y2=9}},
+				exclude = {{x1=5,x2=14,y1=9,y2=9}},
+			}
+		}
+	},
+
 	--Taken from old blueprint and Chad
 	calculate = function(self, card, context)
 		local other_joker = nil
@@ -84,32 +95,3 @@ SMODS.Joker {
 			}
 	},
 }
-
----Animation
-blue_dt = 0
-local _game_update = Game.update
-function Game:update(dt)
-	_game_update(self, dt)
-	 blue_dt = blue_dt + dt -- cryptid has a check here but im not sure what it's for
-		if G.P_CENTERS and G.P_CENTERS.j_asc_blueprint and blue_dt > 0.10 then
-			blue_dt = blue_dt - 0.10
-			local blue = G.P_CENTERS.j_asc_blueprint
-			if blue.soul_pos.x == 4 and blue.soul_pos.y == 9 then --Last frame of animation
-				blue.soul_pos.x = 0
-				blue.soul_pos.y = 2
-			elseif blue.soul_pos.x < 14 then --If it isnt the right most image
-				blue.soul_pos.x = blue.soul_pos.x + 1
-			elseif blue.soul_pos.y < 9 then --If it isnt the bottom most image
-				blue.soul_pos.x = 0
-				blue.soul_pos.y = blue.soul_pos.y + 1
-			end
-	        -- oh my god i hate this so much but ARGH
-	        -- note that this can't use find_card because it also needs to work in the collection
-	        -- unless there's some other way you can do it
-	        for _, card in pairs(G.I.CARD) do
-	            if card and card.config.center == blue then
-	                card.children.floating_sprite:set_sprite_pos(blue.soul_pos)
-	            end
-	        end
-		end
-end

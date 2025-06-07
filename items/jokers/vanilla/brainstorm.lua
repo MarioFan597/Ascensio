@@ -16,6 +16,19 @@ SMODS.Joker {
 	soul_pos = { x = 0, y = 5, extra = { x = 0, y = 4 } },
 	cost = 50,
 	order = 138,
+
+	animation = {
+		macro = {
+			type = "skim",
+			pos = {
+				include = {{x1=0,x2=9,y1=0,y2=3}},
+			},
+			soul_pos = {
+				include = {{x1=0,x2=9,y1=5,y2=8}}
+			},
+		}
+	},
+
 	--Taken from old blueprint and Chad
 	calculate = function(self, card, context)
 		local other_joker = G.jokers.cards[1]
@@ -120,65 +133,3 @@ SMODS.Joker {
 			}
 	},
 }
-
----Animation
-
----Body
-
-brain_dt = 0
-local _game_update = Game.update
-function Game:update(dt)
-	_game_update(self, dt)
-	 brain_dt = brain_dt + dt -- cryptid has a check here but im not sure what it's for
-		if G.P_CENTERS and G.P_CENTERS.j_asc_brainstorm and brain_dt > 0.10 then
-			brain_dt = brain_dt - 0.10
-			local brain = G.P_CENTERS.j_asc_brainstorm
-			if brain.pos.x == 9 and brain.pos.y == 3 then --Last frame of animation
-				brain.pos.x = 0
-				brain.pos.y = 0
-			elseif brain.pos.x < 9 then --If it isnt the right most image
-				brain.pos.x = brain.pos.x + 1
-			elseif brain.pos.y < 3 then --If it isnt the bottom most image
-				brain.pos.x = 0
-				brain.pos.y = brain.pos.y + 1
-			end
-	        -- oh my god i hate this so much but ARGH
-	        -- note that this can't use find_card because it also needs to work in the collection
-	        -- unless there's some other way you can do it
-	        for _, card in pairs(G.I.CARD) do
-	            if card.children.back and card.config.center == brain then
-	                card.children.back:set_sprite_pos(brain.pos)
-	            end
-	        end
-		end
-end
-
----Soul
-
-storm_dt = 0
-local _game_update = Game.update
-function Game:update(dt)
-	_game_update(self, dt)
-	 storm_dt = storm_dt + dt -- cryptid has a check here but im not sure what it's for
-		if G.P_CENTERS and G.P_CENTERS.j_asc_brainstorm and storm_dt > 0.10 then
-			storm_dt = storm_dt - 0.10
-			local storm = G.P_CENTERS.j_asc_brainstorm
-			if storm.soul_pos.x == 9 and storm.soul_pos.y == 8 then --Last frame of animation
-				storm.soul_pos.x = 0
-				storm.soul_pos.y = 5
-			elseif storm.soul_pos.x < 9 then --If it isnt the right most image
-				storm.soul_pos.x = storm.soul_pos.x + 1
-			elseif storm.soul_pos.y < 8 then --If it isnt the bottom most image
-				storm.soul_pos.x = 0
-				storm.soul_pos.y = storm.soul_pos.y + 1
-			end
-	        -- oh my god i hate this so much but ARGH
-	        -- note that this can't use find_card because it also needs to work in the collection
-	        -- unless there's some other way you can do it
-	        for _, card in pairs(G.I.CARD) do
-	            if card and card.config.center == storm then
-	                card.children.floating_sprite:set_sprite_pos(storm.soul_pos)
-	            end
-	        end
-		end
-end
