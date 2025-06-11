@@ -99,7 +99,7 @@ return {
 				name = "Aenigmatum",
 				text = {
 					"This Joker gains {X:dark_edition,C:white}^#2#{} Mult", 
-					"for each {C:attention}Joker{} card",
+					"for each {C:attention}Joker{} Card",
 					"{C:inactive}(Currently {X:dark_edition,C:white}^#1#{} {C:inactive}Mult)"
 				}
 			},
