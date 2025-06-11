@@ -37,6 +37,7 @@ end
 ----------Loading Cryptid Jokers----------
 local cry_jokers = {
 	"gardenfork",
+	"like_antennas_to_heaven",
 	"oil_lamp",
 	"hunting_season",
 	"high_five"

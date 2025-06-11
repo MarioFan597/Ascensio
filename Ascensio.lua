@@ -87,6 +87,7 @@ ascensionable = {
 
 	---Cryptid
 			j_cry_gardenfork = "j_asc_gardenfork",
+			j_cry_antennastoheaven = "j_asc_like_antennas_to_heaven",
 			j_cry_oil_lamp = "j_asc_oil_lamp",
 			j_cry_huntingseason = "j_asc_hunting_season",
 			j_cry_highfive = "j_asc_high_five",

@@ -277,6 +277,17 @@ return {
 				}
 			},
 
+			j_asc_like_antennas_to_heaven = {
+				name = "Contra Logos",
+				text = {
+					"This joker gains {X:dark_edition,C:white}^#1#{} chips",
+					"for every {C:attention}7{} or {C:attention}4{}",
+					"contained in full hand",
+					"{C:inactive}(Currently {X:dark_edition,C:white}^#2#{} {C:inactive}chips)"
+				}
+			},
+
+
 			j_asc_high_five = {
 				name = "Superioris Manus",
 				text = {
