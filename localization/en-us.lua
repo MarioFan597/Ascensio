@@ -99,7 +99,7 @@ return {
 				name = "Aenigmatum",
 				text = {
 					"This Joker gains {X:dark_edition,C:white}^#2#{} Mult", 
-					"for each {C:attention}Joker{} Card",
+					"for each {C:attention}Joker{} card",
 					"{C:inactive}(Currently {X:dark_edition,C:white}^#1#{} {C:inactive}Mult)"
 				}
 			},
@@ -111,6 +111,16 @@ return {
 					"add {C:attention}#1#{} permanent copies to deck,",
 					"draw them to {C:attention}hand{},", 
 					"and destroy remaining cards in {C:attention}hand{}"
+				}
+			},
+
+			j_asc_square = {
+				name = "Dimensio Quattuor",
+				text = {
+					"This Joker gains {X:dark_edition,C:edition}^^#1#{} Chips", 
+					"if played hand has",
+					"exactly {C:attention}4{} cards", 
+					"{C:inactive}(Currently {X:dark_edition,C:edition}^^#2#{} {C:inactive}Chips)"
 				}
 			},
 

@@ -69,6 +69,7 @@ ascensionable = {
 			j_scary_face = "j_asc_scary",
 			j_abstract = "j_asc_abstract",
 			j_dna = "j_asc_dna",
+			j_square = "j_asc_square",
 			j_midas_mask = "j_asc_midas",
 			j_golden = "j_asc_golden",
 			j_bull = "j_asc_bull",

@@ -12,6 +12,7 @@ local v_jokers = {
 	"scary",
 	"abstract",
 	"dna",
+	"square",
 	"midas",
 	--"to_the_moon",
 	"golden",
