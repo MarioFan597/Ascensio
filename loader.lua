@@ -72,7 +72,7 @@ end
 ------------Cross Mod---------------------
 ---------Loading Cryptposting Jokers---------
 
-if next(SMODS.find_mod('Cryptposting')) then
+if next(SMODS.find_mod('cryptposting')) then
 	local crp_jokers = {
 		
 	}
@@ -121,16 +121,16 @@ end
 
 ---------Loading Entropy Jokers---------
 
-if next(SMODS.find_mod('Entropy')) then
+if next(SMODS.find_mod('entr')) then
 	local entr_jokers = {
-		
+		"sunny_joker",
 	}
 
 	for i, v in pairs(entr_jokers) do
 		assert(SMODS.load_file("items/jokers/entropy/"..v..".lua"))()
 	end
 
----------Loading Astronomica Consumables---------
+---------Loading Entropy Consumables---------
 
 	local entr_consumables = {
 		

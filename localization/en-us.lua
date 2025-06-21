@@ -363,9 +363,26 @@ return {
 				}
 			},
 
+			-----Entropy-----
+
+			j_asc_sunny_joker = {
+				name = "Solis",
+				text = {
+					"{X:gold,C:white}X#1#{} Ascension Power"
+				}
+			},
+
 			
 		},
-		Other = {},
+		Other = {
+			asc_ascensionable = {
+				name = "Ascension Canadite",
+				text = {
+				"This Joker can reach",
+				"a {C:cry_exotic,E:1}Higher Form{}"
+				}
+			}
+		},
 		Planet = {},
 		Spectral = {
 			c_asc_ascension = {

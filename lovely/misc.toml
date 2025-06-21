@@ -40,3 +40,17 @@ pattern = '''if not v.ability.eternal then'''
 position = "at"
 payload ='''if not v.ability.eternal and not asc_config["Insanity Mode!!!"] or false then'''
 match_indent = true
+
+#Adds the Ascensionable tooltip to all ascensionable jokers. Thank you hexacryonic for the code.
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "for _, v in ipairs(info_queue) do"
+position = "before"
+payload = '''for k, _ in pairs(ascensionable) do
+  if _c.key == k then
+    info_queue[#info_queue+1] = {key = 'asc_ascensionable', set = 'Other'}
+  end
+end
+'''
+match_indent = true
