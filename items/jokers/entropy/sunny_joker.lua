@@ -1,6 +1,6 @@
 SMODS.Joker {
 	key = "sunny_joker",
-	config = { extra = {mult_asc = 1, gain = 0.75} },
+	config = { extra = {asc = 1, gain = 0.05} },
 	rarity = "cry_exotic",
 	atlas =  "e_atlas_1",
 	blueprint_compat = true,
@@ -12,15 +12,15 @@ SMODS.Joker {
 	loc_vars = function(self, info_queue, card)
         return {
             vars = {
-                number_format(card.ability.extra.mult_asc),number_format(card.ability.extra.gain)
+                number_format(card.ability.extra.asc),number_format(card.ability.extra.gain)
             },
         }
     end,
 	calculate = function(self, card, context)
 		if (context.before and not context.blueprint) or context.forcetrigger then
-			local extra = G.GAME.current_round.current_hand.cry_asc_num
-			if extra > 0 then
-				card.ability.extra.mult_asc = card.ability.extra.mult_asc + (card.ability.extra.gain * extra)
+			local asc = G.GAME.current_round.current_hand.cry_asc_num
+			if asc ~= 0 then
+				card.ability.extra.asc = card.ability.extra.asc + card.ability.extra.gain
 				 return {
 					extra = { focus = card, message = localize("k_upgrade_ex") },
 					card = card,
@@ -29,9 +29,9 @@ SMODS.Joker {
         	end
 		end
         if context.joker_main or context.forcetrigger then
-        	if card.ability.extra.mult_asc > 1 then
+        	if card.ability.extra.asc > 1 then
 	            return {
-	                asc = lenient_bignum(card.ability.extra.mult_asc),
+	                exp_asc = lenient_bignum(card.ability.extra.asc),
 	            }
 	        end
         end

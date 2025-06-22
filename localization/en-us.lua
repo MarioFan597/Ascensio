@@ -368,10 +368,9 @@ return {
 			j_asc_sunny_joker = {
 				name = "Solis",
 				text = {
-					"Gains {X:gold,C:white}X#2#{} Ascension Power for each",
-					"scored card above minimum required",
-					"for each played hand",
-					"{C:inactive}(Currently: {X:gold,C:white}X#1#{}{C:inactive}){}"
+					"Gains {X:gold,C:white}^#2#{} Ascension Power",
+					"for each {C:gold}Ascended{} hand played",
+					"{C:inactive}(Currently: {X:gold,C:white}^#1#{}{C:inactive}){}"
 				}
 			},
 
