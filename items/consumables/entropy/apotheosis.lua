@@ -1,23 +1,27 @@
---Borrowed and modyfied from MoreMarioJoker's powerup card and cryptid's gateway
+--Borrowed and modyfied from entropy's beyond
 
 SMODS.Atlas {
-	key = "ascension",
-	path = "ascension.png",
+	key = "apotheosis",
+	path = "apotheosis.png",
 	px = 71,
 	py = 95
 }
 
 SMODS.Consumable {
-	key = "ascension",
-	set = "Spectral",
-	atlas = "ascension",
-	pos = { x = 0, y = 0 },
-	soul_pos = { x = 2, y = 0, extra = { x = 1, y = 0 } },
-	cost = 4,
-	hidden = true,
-	config = {  },
+	key = "apotheosis",
+    inversion = "c_asc_ascension",
+    pos = {x = 0, y = 0},
+    tsoul_pos = {x=2, y=0, extra = {x=1,y=0}},
+    dependencies = {
+        items = {"set_entr_entropics", "set_entr_inversions"}
+    },
+    atlas = "apotheosis",
+    set = "Omen",
+    no_select = true,
+    hidden=true,
+    soul_rate = 0,
 	can_use = function(self, card)
-		if #G.jokers.highlighted == 1 and ascensionable[G.jokers.highlighted[1].config.center.key] then
+		if #G.jokers.highlighted == 1 and apothable[G.jokers.highlighted[1].config.center.key] then
 				return true
 		end
 	end,
@@ -35,9 +39,9 @@ SMODS.Consumable {
 			else
 				for k, v in pairs(G.jokers.cards) do
 					if not v.ability.eternal then
-						if not Entropy.DeckOrSleeve("doc") or to_big(G.GAME.entropy or 0) < to_big(100) then
-							deletable_jokers[#deletable_jokers + 1] = v
-						end
+                		if not Entropy.DeckOrSleeve("doc") or to_big(G.GAME.entropy or 0) < to_big(100) then
+				    		deletable_jokers[#deletable_jokers + 1] = v
+                		end
 					end
 				end
 			end
@@ -64,7 +68,7 @@ SMODS.Consumable {
 			delay = 0.4,
 			func = function()
 				play_sound("timpani")
-				local card = create_card("Joker", G.jokers, nil, "cry_exotic", nil, nil, ascensionable[ascendent.config.center.key], "cry_gateway")
+				local card = create_card("Joker", G.jokers, nil, "entr_entropic", nil, nil, apothable[ascendent.config.center.key], "entr_beyond")
 				card:add_to_deck()
 				G.jokers:emplace(card)
 				card:juice_up(0.3, 0.5)
@@ -88,12 +92,11 @@ SMODS.Consumable {
 			"MarioFan597",
 		},
 		art = {
-			"cozyori",
-			"MarioFan597",
+			"Ruby",
 		},
 		code = {
 			"MarioFan597",
-			"MathIsFun",
+			"Ruby",
 			"SMG9000"
 		},
 	},

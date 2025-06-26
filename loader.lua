@@ -130,10 +130,18 @@ if next(SMODS.find_mod('entr')) then
 		assert(SMODS.load_file("items/jokers/entropy/"..v..".lua"))()
 	end
 
+	local entr_apoth_jokers = {
+		"sunny_joker_entr",
+	}
+
+	for i, v in pairs(entr_apoth_jokers) do
+		assert(SMODS.load_file("items/jokers/entropy_entropics/"..v..".lua"))()
+	end
+
 ---------Loading Entropy Consumables---------
 
 	local entr_consumables = {
-		
+		"apotheosis"
 	}
 
 	for i, v in pairs(entr_consumables) do

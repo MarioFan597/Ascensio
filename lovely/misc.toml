@@ -54,3 +54,17 @@ payload = '''for k, _ in pairs(ascensionable) do
 end
 '''
 match_indent = true
+
+#Adds the Apothable tooltip to all apothable jokers. Thank you hexacryonic for the code.
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "for _, v in ipairs(info_queue) do"
+position = "before"
+payload = '''for k, _ in pairs(apothable) do
+  if _c.key == k then
+    info_queue[#info_queue+1] = {key = 'asc_apothable', set = 'Other'}
+  end
+end
+'''
+match_indent = true

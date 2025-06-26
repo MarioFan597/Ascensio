@@ -112,6 +112,13 @@ ascensionable = {
 		}
 
 
+---------Joker Ascension Dictionary-----------
+apothable = {
+	---Entropy
+	j_entr_sunny_joker = "j_asc_sunny_joker_entr",
+	j_asc_sunny_joker = "j_asc_sunny_joker_entr"
+}
+
 ---Cryptid's Credit System----
 --This was modified and taken from Entropy
 

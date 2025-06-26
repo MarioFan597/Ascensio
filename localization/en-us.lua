@@ -374,7 +374,15 @@ return {
 				}
 			},
 
-			
+			-----Entropy Entropics-----
+			j_asc_sunny_joker_entr = {
+				name = "Iliakos",
+				text = {
+					"{X:gold,C:white}#3##1#{} Ascension Power",
+					"Increases operator after",
+					"{C:attention}#2#{} {C:gold}Ascended{} hands played"
+				}
+			},
 		},
 		Other = {
 			asc_ascensionable = {
@@ -382,6 +390,13 @@ return {
 				text = {
 				"This Joker can reach",
 				"a {C:cry_exotic,E:1}Higher Form{}"
+				}
+			},
+			asc_apothable = {
+				name = "Apotheosis Canadite",
+				text = {
+				"This Joker can reach",
+				"a {C:entr_entropic,E:1}Even Higher Form{}"
 				}
 			}
 		},
@@ -391,12 +406,22 @@ return {
 				name = "Ascension",
 				text = {
 					"Transforms viable {C:attention}Jokers{} to",
-					"their {C:cry_exotic,E:1}Exotic{} counterpart,",
-					"destroy all other {C:attention}Jokers{}"
+					"their {C:cry_exotic,E:1}Exotic{} counterpart",
+					"Destroy all other held {C:attention}Jokers{}"
 				},
 			},
 		},
 		Code = {},
+		Omen = {
+			c_asc_apotheosis = {
+					name = "Apotheosis",
+					text = {
+						"Transforms viable {C:cry_exotic,E:1}Exotic{} {C:attention}Jokers{} to",
+						"their {C:entr_entropic,E:1}Entropic{} counterpart",
+						"Destroy all other held Jokers"
+					}
+				},
+		},
 		Stake = {},
 		Tag = {},
 		Tarot = {},
