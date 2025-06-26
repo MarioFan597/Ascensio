@@ -406,7 +406,7 @@ return {
 				name = "Apotheosis Canadite",
 				text = {
 				"This Joker can reach",
-				"a {C:entr_entropic,E:1}Even Higher Form{}"
+				"an {C:entr_entropic,E:1}Even Higher Form{}"
 				}
 			}
 		},
