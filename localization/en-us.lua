@@ -416,7 +416,7 @@ return {
 			c_asc_apotheosis = {
 					name = "Apotheosis",
 					text = {
-						"Transforms viable {C:cry_exotic,E:1}Exotic{} {C:attention}Jokers{} to",
+						"Transforms viable {C:attention}Jokers{} to",
 						"their {C:entr_entropic,E:1}Entropic{} counterpart",
 						"Destroy all other held Jokers"
 					}
