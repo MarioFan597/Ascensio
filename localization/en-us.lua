@@ -114,15 +114,15 @@ return {
 				}
 			},
 
-			j_asc_midas = {
-				name = "Rex Midas",
-				text = {
-					"All played cards become", 
-					"{C:attention}Gold{} and {C:attention}Golden{} when scored,",
-					"{C:attention}Gold{} cards held in hand",
-					"give {X:dark_edition,C:white}^#1#{} Mult"
-				}
-			},
+			j_asc_blue = {
+               			name = "Magnus Sapphirus",
+                		text = {
+                    			"{X:chips, C:white}x#2#{} Chips for each remaining {C:attention}card{} in deck.",
+                    			"Gains {X:chips, C:white}x#3#{} Chips when a card is",
+                   			"added to deck.",
+                   			"{C:inactive}(Currently: {}{X:chips, C:white}X#1#{C:inactive} chips)"
+                			}
+            			},
 
 			j_asc_square = {
 				name = "Dimensio Quattuor",
