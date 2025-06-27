@@ -114,6 +114,16 @@ return {
 				}
 			},
 
+			j_asc_midas = {
+				name = "Rex Midas",
+				text = {
+					"All played cards become", 
+					"{C:attention}Gold{} and {C:attention}Golden{} when scored,",
+					"{C:attention}Gold{} cards held in hand",
+					"give {X:dark_edition,C:white}^#1#{} Mult"
+				}
+			},
+
 			j_asc_square = {
 				name = "Dimensio Quattuor",
 				text = {
