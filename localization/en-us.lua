@@ -115,14 +115,15 @@ return {
 			},
 
 			j_asc_blue = {
-               			name = "Magnus Sapphirus",
-                		text = {
-                    			"{X:chips, C:white}x#2#{} Chips for each remaining {C:attention}card{} in deck.",
-                    			"Gains {X:chips, C:white}x#3#{} Chips when a card is",
-                   			"added to deck.",
-                   			"{C:inactive}(Currently: {}{X:chips, C:white}X#1#{C:inactive} chips)"
-                			}
-            			},
+		                name = "Magnus Sapphirus",
+		                text = {
+		                    "{X:chips,C:white}X#2#{} Chips for each",
+		                    "remaining card in {C:attention}deck{},",
+		                    "Gains {X:chips,C:white}X#3#{} Chips when",
+		                    "a card is added to {C:attention}deck{}",
+		                    "{C:inactive}(Currently: {}{X:chips,C:white}X#1#{C:inactive} chips)"
+		                }
+		            },
 
 			j_asc_square = {
 				name = "Dimensio Quattuor",
