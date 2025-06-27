@@ -121,7 +121,7 @@ return {
 		                    "remaining card in {C:attention}deck{},",
 		                    "Gains {X:chips,C:white}X#3#{} Chips when",
 		                    "a card is added to {C:attention}deck{}",
-		                    "{C:inactive}(Currently: {}{X:chips,C:white}X#1#{C:inactive} chips)"
+		                    "{C:inactive}(Currently: {}{X:chips,C:white}X#1#{C:inactive} Chips)"
 		                }
 		            },
 
