@@ -56,9 +56,9 @@ SMODS.Joker {
 				}
 			else
 				return {
-					Emult = lenient_bignum(card.ability.extra.power),
-					colour = G.C.DARK_EDITION,
-					card = card,
+					Emult_mod = lenient_bignum(card.ability.extra.power),
+					message = "^" .. number_format(lenient_bignum(card.ability.extra.power)) .. " Mult",
+					colour = G.C.DARK_EDITION
 				}
 			end
 		end
