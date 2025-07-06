@@ -19,17 +19,12 @@ SMODS.Joker{
 		}
 	end,
 	calculate = function(self, card, context)
-		if context.forcetrigger then
+		if context.joker_main or context.forcetrigger then
 			return {
 				x_chips = lenient_bignum(#G.deck.cards * card.ability.extra.x_chips_mod)
 			}
 		end
-		if context.joker_main and not context.blueprint then
-			return {
-				x_chips = lenient_bignum(#G.deck.cards * card.ability.extra.x_chips_mod)
-			}
-		end
-		if context.playing_card_added then
+		if context.playing_card_added and not context.blueprint then
 			card.ability.extra.x_chips_mod = card.ability.extra.x_chips_mod + 0.1
 			return {
 				localize("k_upgrade_ex"),

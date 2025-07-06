@@ -40,6 +40,13 @@ SMODS.Atlas {
 	py = 95
 }
 
+SMODS.Atlas {
+	key = "deck_atlas",
+	path = "deck_atlas.png",
+	px = 71,
+	py = 95
+}
+
 --[[
 SMODS.Atlas {
 	key = "gluttony",
@@ -73,6 +80,7 @@ ascensionable = {
 			j_credit_card = "j_asc_credit_card",
 			j_mystic_summit = "j_asc_mystic_summit",
 			j_misprint = "j_asc_misprint",
+			j_fibonacci = "j_asc_fibonacci",
 			j_scary_face = "j_asc_scary",
 			j_abstract = "j_asc_abstract",
 			j_dna = "j_asc_dna",

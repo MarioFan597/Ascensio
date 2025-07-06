@@ -86,6 +86,18 @@ return {
 				}
 			},
 
+			j_asc_fibonacci = {
+				name = "Proportio Aurea",
+				text = {
+					"Each played {C:attention}Ace{}, {C:attention}2{}, {C:attention}3{}, {C:attention}5{}, or {C:attention}8{}",
+					"gives {X:mult,C:white}X#1#{} Mult when scored",
+					"and Joker gains previous {X:mult,C:white}X{} Mult",
+					"Resets each hand played",
+					"{C:inactive}[ex: X1, X2, X3, X5, X8, etc.]"
+
+				}
+			},
+
 			j_asc_scary = {
 				name = "Immanis Facies",
 				text = {
@@ -115,15 +127,15 @@ return {
 			},
 
 			j_asc_blue = {
-		                name = "Magnus Sapphirus",
-		                text = {
-		                    "{X:chips,C:white}X#2#{} Chips for each",
-		                    "remaining card in {C:attention}deck{},",
-		                    "Gains {X:chips,C:white}X#3#{} Chips when",
-		                    "a card is added to {C:attention}deck{}",
-		                    "{C:inactive}(Currently: {}{X:chips,C:white}X#1#{C:inactive} Chips)"
-		                }
-		            },
+                name = "Magnus Sapphirus",
+                text = {
+                    "{X:chips,C:white}X#2#{} Chips for each",
+                    "remaining card in {C:attention}deck{},",
+                    "Gains {X:chips,C:white}X#3#{} Chips when",
+                    "a card is added to {C:attention}deck{}",
+                    "{C:inactive}(Currently: {}{X:chips,C:white}X#1#{C:inactive} chips)"
+                }
+            },
 
 			j_asc_square = {
 				name = "Dimensio Quattuor",
@@ -432,6 +444,21 @@ return {
 						"Destroy all other held Jokers"
 					}
 				},
+		},
+		Back = {
+			b_asc_starlight = {
+				name = "Starlight Deck",
+				text = {
+					"Start with an {C:cry_exotic,T:c_asc_ascension}Ascension{C:attention} Card",
+					"Jokers are {C:attention}20X{} more",
+					"likely to be {C:dark_edition}Negative",
+					"{C:attention}-2{} Joker slots",
+					"{C:inactive,s:0.7}Starlight, starbright,{}",
+					"{C:inactive,s:0.7}First star I see tonight;{}",
+					"{C:inactive,s:0.7} I wish I may, I wish I might{}",
+					"{C:inactive,s:0.7}have the wish I wish tonight{}"
+				}
+			},
 		},
 		Stake = {},
 		Tag = {},

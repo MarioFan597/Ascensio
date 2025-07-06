@@ -9,6 +9,7 @@ local v_jokers = {
 	"credit_card",
 	"mystic_summit",
 	"misprint",
+	"fibonacci",
 	"scary",
 	"abstract",
 	"dna",
@@ -67,6 +68,17 @@ local asc_consumables = {
 
 for i, v in pairs(asc_consumables) do
 	assert(SMODS.load_file("items/consumables/ascensio/"..v..".lua"))()
+end
+
+
+---------Loading Ascensio Decks---------------
+
+local asc_decks = {
+	--"starlight"
+}
+
+for i, v in pairs(asc_decks) do
+	assert(SMODS.load_file("items/decks/ascensio/"..v..".lua"))()
 end
 
 
