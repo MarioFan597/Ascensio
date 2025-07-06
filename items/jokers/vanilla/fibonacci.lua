@@ -13,7 +13,7 @@ SMODS.Joker {
 		return { vars = { lenient_bignum(card.ability.extra.mult), lenient_bignum(card.ability.extra.start_mult) } }
 	end,
 	calculate = function(self, card, context)
-		if (context.cardarea == G.play and context.before) or context.forcetrigger then
+		if (context.individual and context.cardarea == G.play) or context.forcetrigger then
 			local rank = context.other_card:get_id()
 			if rank == 14 or rank == 2 or rank == 3 or rank == 5 or rank == 8 then
 				local current_value = lenient_bignum(card.ability.extra.mult)
