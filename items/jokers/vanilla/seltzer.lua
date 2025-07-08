@@ -1,8 +1,8 @@
-SMODS.Joker {
+SMODS.Joker({
 	key = "seltzer",
 	config = { extra = { retriggers = 1, played_hands = 10, goal_hands = 10 } },
 	rarity = "cry_exotic",
-	atlas = "v_atlas_1", 
+	atlas = "v_atlas_1",
 	blueprint_compat = true,
 	demicoloncompat = false,
 	pos = { x = 3, y = 0 },
@@ -10,14 +10,20 @@ SMODS.Joker {
 	cost = 50,
 	order = 102,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card and lenient_bignum(card.ability.extra.retriggers), card and lenient_bignum(card.ability.extra.played_hands), card and lenient_bignum(card.ability.extra.goal_hands) } }
+		return {
+			vars = {
+				card and lenient_bignum(card.ability.extra.retriggers),
+				card and lenient_bignum(card.ability.extra.played_hands),
+				card and lenient_bignum(card.ability.extra.goal_hands),
+			},
+		}
 	end,
 	calculate = function(self, card, context)
 		if context.cardarea == G.play and context.repetition and not context.repetition_only then
 			return {
 				message = "Again!",
 				repetitions = lenient_bignum(card.ability.extra.retriggers),
-				card = context.other_card
+				card = context.other_card,
 			}
 		end
 		if context.after then
@@ -37,14 +43,14 @@ SMODS.Joker {
 		end
 	end,
 	asc_credits = {
-			idea = {
-				"MarioFan597"
-			},
-			art = {
-				"MarioFan597"
-			},
-			code = {
-				"MarioFan597"
-			}
+		idea = {
+			"MarioFan597",
+		},
+		art = {
+			"MarioFan597",
+		},
+		code = {
+			"MarioFan597",
+		},
 	},
-}
+})

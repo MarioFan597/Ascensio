@@ -1,11 +1,11 @@
-SMODS.Atlas {
+SMODS.Atlas({
 	key = "hunting_season",
 	path = "hunting_season.png",
 	px = 71,
-	py = 95
-}
+	py = 95,
+})
 
-SMODS.Joker {
+SMODS.Joker({
 	key = "hunting_season",
 	pos = { x = 0, y = 0 },
 	soul_pos = { x = 0, y = 6, extra = { x = 0, y = 1 } },
@@ -18,17 +18,17 @@ SMODS.Joker {
 	atlas = "hunting_season",
 
 	animation = {
-	        macro = {
+		macro = {
 			type = "skim",
 			soul_pos_extra = {
-				include = {{x1=0,x2=9,y1=1,y2=5}},
-				exclude = {{x1=5,x2=9,y1=5,y2=5}}
+				include = { { x1 = 0, x2 = 9, y1 = 1, y2 = 5 } },
+				exclude = { { x1 = 5, x2 = 9, y1 = 5, y2 = 5 } },
 			},
 			soul_pos = {
-				include = {{x1=0,x2=9,y1=6,y2=10}},
-				exclude = {{x1=5,x2=9,y1=10,y2=10}},
+				include = { { x1 = 0, x2 = 9, y1 = 6, y2 = 10 } },
+				exclude = { { x1 = 5, x2 = 9, y1 = 10, y2 = 10 } },
 			},
-	        }
+		},
 	},
 
 	calculate = function(self, card, context) --This was taken in part and modified from the original hunting season
@@ -43,14 +43,16 @@ SMODS.Joker {
 			for _, c in ipairs(context.full_hand) do
 				--c.ability.perma_x_chips = c.ability.perma_x_chips or 1
 				--if type(context.full_hand[(#context.full_hand + 1) / 2]:get_id()) == number then
-					--c.ability.perma_x_chips = c.ability.perma_x_chips + (context.full_hand[(#context.full_hand + 1) / 2]:get_id()-1)
-					c.ability.perma_x_mult = c.ability.perma_x_mult + context.full_hand[(#context.full_hand + 1) / 2]:get_id()
+				--c.ability.perma_x_chips = c.ability.perma_x_chips + (context.full_hand[(#context.full_hand + 1) / 2]:get_id()-1)
+				c.ability.perma_x_mult = c.ability.perma_x_mult
+					+ context.full_hand[(#context.full_hand + 1) / 2]:get_id()
 			end
 			return {
-				extra = {message = localize('k_upgrade_ex'), colour = G.C.MULT},
+				extra = { message = localize("k_upgrade_ex"), colour = G.C.MULT },
 				colour = G.C.MULT,
 				card = context.other_card,
- 				remove = not context.destroy_card.ability.eternal }
+				remove = not context.destroy_card.ability.eternal,
+			}
 		end
 	end,
 	asc_credits = {
@@ -65,4 +67,4 @@ SMODS.Joker {
 			"MarioFan597",
 		},
 	},
-}
+})

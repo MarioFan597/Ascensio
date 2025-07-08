@@ -1,34 +1,58 @@
-SMODS.Joker { --Commented out at the moment as it is also increasing hand size at the moment for some reason
+SMODS.Joker({ --Commented out at the moment as it is also increasing hand size at the moment for some reason
 	key = "accomplice", --Mostly taken from gemini
 	config = { extra = { scale = 2 } },
 	rarity = 3,
 	atlas = "c_atlas_mortal",
 	blueprint_compat = true,
-	demicoloncompat = true,	
+	demicoloncompat = true,
 	pos = { x = 1, y = 0 },
 	cost = 10,
 	order = 515,
 	loc_vars = function(self, info_queue, card)
-		card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui or ''; card.ability.blueprint_compat_check = nil
+		card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui or ""
+		card.ability.blueprint_compat_check = nil
 		return {
 			vars = { lenient_bignum(card.ability.extra.scale) },
 			main_end = (card.area and card.area == G.jokers) and {
-        			{n=G.UIT.C, config={align = "bm", minh = 0.4}, nodes={
-            				{n=G.UIT.C, config={ref_table = card, align = "m", colour = G.C.JOKER_GREY, r = 0.05, padding = 0.06, func = 'blueprint_compat'}, nodes={
-                			{n=G.UIT.T, config={ref_table = card.ability, ref_value = 'blueprint_compat_ui',colour = G.C.UI.TEXT_LIGHT, scale = 0.32*0.8}},
-            				}}
-        			}}
-    			} or nil
+				{
+					n = G.UIT.C,
+					config = { align = "bm", minh = 0.4 },
+					nodes = {
+						{
+							n = G.UIT.C,
+							config = {
+								ref_table = card,
+								align = "m",
+								colour = G.C.JOKER_GREY,
+								r = 0.05,
+								padding = 0.06,
+								func = "blueprint_compat",
+							},
+							nodes = {
+								{
+									n = G.UIT.T,
+									config = {
+										ref_table = card.ability,
+										ref_value = "blueprint_compat_ui",
+										colour = G.C.UI.TEXT_LIGHT,
+										scale = 0.32 * 0.8,
+									},
+								},
+							},
+						},
+					},
+				},
+			} or nil,
 		}
 	end,
 	update = function(self, card, front)
 		if G.STAGE == G.STAGES.RUN then
 			other_joker = G.jokers.cards[1]
 			if other_joker and other_joker ~= card and not (Card.no(other_joker, "immutable", true)) then
-                		card.ability.blueprint_compat = 'compatible'
-            		else
-               			card.ability.blueprint_compat = 'incompatible'
-            		end
+				card.ability.blueprint_compat = "compatible"
+			else
+				card.ability.blueprint_compat = "incompatible"
+			end
 		end
 	end,
 	calculate = function(self, card2, context)
@@ -37,7 +61,10 @@ SMODS.Joker { --Commented out at the moment as it is also increasing hand size a
 			local card = G.jokers.cards[1]
 			if not Card.no(G.jokers.cards[1], "immutable", true) then
 				Cryptid.with_deck_effects(G.jokers.cards[1], function(card)
-					Cryptid.misprintize(card, { min = lenient_bignum(card.ability.extra.scale), max = lenient_bignum(card.ability.extra.scale) }, nil, true, "+")
+					Cryptid.misprintize(card, {
+						min = lenient_bignum(card.ability.extra.scale),
+						max = lenient_bignum(card.ability.extra.scale),
+					}, nil, true, "+")
 				end)
 				check = true
 			end
@@ -55,19 +82,19 @@ SMODS.Joker { --Commented out at the moment as it is also increasing hand size a
 		end
 	end,
 	asc_credits = {
-			idea = {
-				"Googol1e308plex"
-			},
-			art = {
-				"Requiacity",
-				"MarioFan597"
-			},
-			code = {
-				"Math",
-				"MarioFan597"
-			}
+		idea = {
+			"Googol1e308plex",
+		},
+		art = {
+			"Requiacity",
+			"MarioFan597",
+		},
+		code = {
+			"Math",
+			"MarioFan597",
+		},
 	},
-}
+})
 
 ---Functions-----
 --Ruby's Misprint + value fix

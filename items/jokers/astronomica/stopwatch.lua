@@ -1,15 +1,15 @@
-SMODS.Atlas {
+SMODS.Atlas({
 	key = "stopwatch",
 	path = "stopwatch.png",
 	px = 71,
-	py = 95
-}
+	py = 95,
+})
 
-SMODS.Joker {
+SMODS.Joker({
 	key = "stopwatch",
 	config = { extra = { chips = 0, gold_count = 0, chip_mod = 1 } },
 	rarity = "cry_exotic",
-	atlas =  "stopwatch",
+	atlas = "stopwatch",
 	blueprint_compat = true,
 	demicoloncompat = true,
 	pos = { x = 0, y = 0 },
@@ -21,15 +21,15 @@ SMODS.Joker {
 		macro = {
 			type = "skim",
 			soul_pos = {
-				include = {{x1=0,x2=4,y1=0,y2=4}},
-				exclude = {{x=0,y=0},{x=1,y=0},{x1=2,x2=4,y1=4,y2=4}}
-			}
-		}
+				include = { { x1 = 0, x2 = 4, y1 = 0, y2 = 4 } },
+				exclude = { { x = 0, y = 0 }, { x = 1, y = 0 }, { x1 = 2, x2 = 4, y1 = 4, y2 = 4 } },
+			},
+		},
 	},
 
 	loc_vars = function(self, info_queue, card)
 		return {
-			vars = { lenient_bignum(card.ability.extra.chips), lenient_bignum(card.ability.extra.chip_mod) }
+			vars = { lenient_bignum(card.ability.extra.chips), lenient_bignum(card.ability.extra.chip_mod) },
 		}
 	end,
 	update = function(self, card, dt)
@@ -77,40 +77,44 @@ SMODS.Joker {
 			--Entropy
 			"b_entr_twisted",
 			"b_entr_redefined",
-			"b_entr_containment"
+			"b_entr_containment",
 		}
 		card.ability.extra.gold_count = 0
 		for i, v in pairs(deck_list) do
-			if ((Cryptid.safe_get(G.PROFILES, G.SETTINGS.profile, "deck_usage", v, "wins", 8) or 0 ~= 0)) then
+			if Cryptid.safe_get(G.PROFILES, G.SETTINGS.profile, "deck_usage", v, "wins", 8) or 0 ~= 0 then
 				card.ability.extra.gold_count = lenient_bignum(card.ability.extra.gold_count) + 1
 			end
 		end
 		card.ability.extra.chip_mod = math.max(lenient_bignum(card.ability.extra.gold_count), 1)
 		local time_elapsed = (love.timer.getTime() - AST.start) * lenient_bignum(card.ability.extra.chip_mod)
-		card.ability.extra.chips = (math.floor(time_elapsed/1))--/1 means per second, /60 would mean per minute --/1 means per second, /60 would mean per minute
+		card.ability.extra.chips = (math.floor(time_elapsed / 1)) --/1 means per second, /60 would mean per minute --/1 means per second, /60 would mean per minute
 	end,
 	--Taken from old blueprint and Chad
 	calculate = function(self, card, context)
 		if (context.joker_main and card.ability.extra.chips > 0) or context.forcetrigger then
 			return {
-				message = localize { type = 'variable', key = 'a_chips', vars = { lenient_bignum(card.ability.extra.chips) } },
+				message = localize({
+					type = "variable",
+					key = "a_chips",
+					vars = { lenient_bignum(card.ability.extra.chips) },
+				}),
 				chip_mod = lenient_bignum(card.ability.extra.chips),
-				colour = G.C.CHIPS
+				colour = G.C.CHIPS,
 			}
 		end
 		if context.forcetrigger then
 			card.ability.extra.gold_count = lenient_bignum(card.ability.extra.gold_count) + 1
 		end
 	end,
-    ascxast_credits = {
-			idea = {
-				"CapitalChirp",
-			},
-			art = {
-				"hasu"
-			},
-			code = {
-				"MarioFan597"
-			}
+	ascxast_credits = {
+		idea = {
+			"CapitalChirp",
+		},
+		art = {
+			"hasu",
+		},
+		code = {
+			"MarioFan597",
+		},
 	},
-}
+})

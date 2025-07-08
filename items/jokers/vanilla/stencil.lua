@@ -1,8 +1,8 @@
-SMODS.Joker {
+SMODS.Joker({
 	key = "stencil",
 	config = { extra = { mult = 0, mult_gain = 1, joker_slots = 0, slot_gain = 1 } },
 	rarity = "cry_exotic",
-	atlas =  "v_atlas_1",
+	atlas = "v_atlas_1",
 	blueprint_compat = true,
 	demicoloncompat = true,
 	pos = { x = 9, y = 2 },
@@ -10,24 +10,41 @@ SMODS.Joker {
 	cost = 50,
 	order = 17,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card and lenient_bignum(card.ability.extra.mult), card and lenient_bignum(card.ability.extra.mult_gain), card and lenient_bignum(card.ability.extra.joker_slots), card and lenient_bignum(card.ability.extra.slot_gain) } }
+		return {
+			vars = {
+				card and lenient_bignum(card.ability.extra.mult),
+				card and lenient_bignum(card.ability.extra.mult_gain),
+				card and lenient_bignum(card.ability.extra.joker_slots),
+				card and lenient_bignum(card.ability.extra.slot_gain),
+			},
+		}
 	end,
 	calculate = function(self, card, context)
-		if (context.end_of_round and context.cardarea == G.jokers and not context.blueprint and not context.retrigger_joker) or context.forcetrigger then
-			card.ability.extra.mult = ((G.jokers.config.card_limit - #G.jokers.cards) * lenient_bignum(card.ability.extra.mult_gain)) + lenient_bignum(card.ability.extra.mult)
+		if
+			(
+				context.end_of_round
+				and context.cardarea == G.jokers
+				and not context.blueprint
+				and not context.retrigger_joker
+			) or context.forcetrigger
+		then
+			card.ability.extra.mult = (
+				(G.jokers.config.card_limit - #G.jokers.cards) * lenient_bignum(card.ability.extra.mult_gain)
+			) + lenient_bignum(card.ability.extra.mult)
 			card_eval_status_text(card, "extra", nil, nil, nil, {
-					message = localize("k_upgrade_ex"),
-					colour = G.C.MULT,
-				})
+				message = localize("k_upgrade_ex"),
+				colour = G.C.MULT,
+			})
 		end
 
-		if (context.ending_shop or context.forcetrigger ) and not context.blueprint then
-			card.ability.extra.joker_slots = lenient_bignum(card.ability.extra.joker_slots) + lenient_bignum(card.ability.extra.slot_gain)
+		if (context.ending_shop or context.forcetrigger) and not context.blueprint then
+			card.ability.extra.joker_slots = lenient_bignum(card.ability.extra.joker_slots)
+				+ lenient_bignum(card.ability.extra.slot_gain)
 			G.jokers.config.card_limit = G.jokers.config.card_limit + lenient_bignum(card.ability.extra.slot_gain)
 			card_eval_status_text(card, "extra", nil, nil, nil, {
-					message = localize("k_upgrade_ex"),
-					colour = G.C.DARK_EDITION,
-				})
+				message = localize("k_upgrade_ex"),
+				colour = G.C.DARK_EDITION,
+			})
 		end
 		if (context.joker_main or context.forcetrigger) and not context.blueprint then
 			if card.ability.extra.mult > 0 then
@@ -46,8 +63,10 @@ SMODS.Joker {
 		end
 	end,
 	add_to_deck = function(self, card, from_debuff)
- 		if G.jokers and not from_debuff then
-			card.ability.extra.mult = ((G.jokers.config.card_limit - #G.jokers.cards) * lenient_bignum(card.ability.extra.mult_gain))
+		if G.jokers and not from_debuff then
+			card.ability.extra.mult = (
+				(G.jokers.config.card_limit - #G.jokers.cards) * lenient_bignum(card.ability.extra.mult_gain)
+			)
 			G.jokers.config.card_limit = G.jokers.config.card_limit + lenient_bignum(card.ability.extra.joker_slots)
 		end
 	end,
@@ -57,15 +76,15 @@ SMODS.Joker {
 		end
 	end,
 	asc_credits = {
-			idea = {
-				"UTNerd24",
-				"Glitchkat10"
-			},
-			art = {
-				"Tatteredlurker"
-			},
-			code = {
-				"MarioFan597"
-			}
+		idea = {
+			"UTNerd24",
+			"Glitchkat10",
+		},
+		art = {
+			"Tatteredlurker",
+		},
+		code = {
+			"MarioFan597",
+		},
 	},
-}
+})

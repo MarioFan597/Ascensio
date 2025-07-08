@@ -1,4 +1,4 @@
-SMODS.Joker{
+SMODS.Joker({
 	key = "drivers_license",
 	pos = { x = 0, y = 5 },
 	soul_pos = { x = 2, y = 5, extra = { x = 1, y = 5 } },
@@ -29,14 +29,14 @@ SMODS.Joker{
 		end
 		return {
 			vars = {
-				lenient_bignum(lenient_bignum(card.ability.extra.base_mult) * (2^mod_count))
-			}
+				lenient_bignum(lenient_bignum(card.ability.extra.base_mult) * (2 ^ mod_count)),
+			},
 		}
 	end,
 	calculate = function(self, card, context)
 		if context.blueprint or context.forcetrigger then
 			return {
-				x_mult = lenient_bignum(2^mod_count)
+				x_mult = lenient_bignum(2 ^ mod_count),
 			}
 		end
 		if context.joker_main and not context.blueprint then
@@ -58,20 +58,20 @@ SMODS.Joker{
 				end
 			end
 			return {
-				x_mult = lenient_bignum(2^mod_count)
+				x_mult = lenient_bignum(2 ^ mod_count),
 			}
 		end
 		return nil
 	end,
 	asc_credits = {
-			idea = {
-				"Glitchkat10"
-			},
-			art = {
-				"Tatteredlurker"
-			},
-			code = {
-				"Glitchkat10"
-			}
+		idea = {
+			"Glitchkat10",
+		},
+		art = {
+			"Tatteredlurker",
+		},
+		code = {
+			"Glitchkat10",
+		},
 	},
-}
+})

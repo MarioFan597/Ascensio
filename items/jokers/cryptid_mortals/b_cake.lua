@@ -1,4 +1,4 @@
-SMODS.Joker{
+SMODS.Joker({
 	key = "b_cake",
 	config = { extra = { chips = 80, reroll = 20 } },
 	rarity = 2,
@@ -10,25 +10,31 @@ SMODS.Joker{
 	cost = 8,
 	order = 508,
 	loc_vars = function(self, info_queue, card)
-	return { vars = { card and lenient_bignum(card.ability.extra.chips), card and lenient_bignum(card.ability.extra.reroll) } }
+		return {
+			vars = {
+				card and lenient_bignum(card.ability.extra.chips),
+				card and lenient_bignum(card.ability.extra.reroll),
+			},
+		}
 	end,
 	calculate = function(self, card, context)
-	--Taken from crustulum
+		--Taken from crustulum
 
 		if (context.reroll_shop and not context.blueprint) or context.forcetrigger then
-			card.ability.extra.chips = lenient_bignum(card.ability.extra.chips) - lenient_bignum(card.ability.extra.reroll)
+			card.ability.extra.chips = lenient_bignum(card.ability.extra.chips)
+				- lenient_bignum(card.ability.extra.reroll)
 			if card.ability.extra.chips > 0 then
 				--G.GAME.current_round.free_rerolls = G.GAME.current_round.free_rerolls + 1
 				--calculate_reroll_cost(true)
 				card_eval_status_text(card, "extra", nil, nil, nil, {
 					card_eval_status_text(
-					card,
-					"extra",
-					nil,
-					nil,
-					nil,
-					{message =  "-" .. lenient_bignum(card.ability.extra.reroll), colour = G.C.CHIPS}
-				)
+						card,
+						"extra",
+						nil,
+						nil,
+						nil,
+						{ message = "-" .. lenient_bignum(card.ability.extra.reroll), colour = G.C.CHIPS }
+					),
 				})
 				return nil, true
 			else
@@ -49,22 +55,26 @@ SMODS.Joker{
 								G.jokers:remove_card(card)
 								card:remove()
 								card = nil
-								return true;
-							end
+								return true
+							end,
 						}))
 						return true
-				end
+					end,
 				}))
 				return {
-					message = "Eaten!"
+					message = "Eaten!",
 				}
 			end
 		end
-		if (context.joker_main) or context.forcetrigger then
+		if context.joker_main or context.forcetrigger then
 			if card.ability.extra.chips > 0 then
 				return {
 					chip_mod = lenient_bignum(card.ability.extra.chips),
-					message = localize { type = "variable", key = "a_chips", vars = { lenient_bignum(card.ability.extra.chips) } }
+					message = localize({
+						type = "variable",
+						key = "a_chips",
+						vars = { lenient_bignum(card.ability.extra.chips) },
+					}),
 				}
 			end
 		end
@@ -79,15 +89,15 @@ SMODS.Joker{
 	end,
 
 	asc_credits = {
-			idea = {
-				"MarioFan597"
-			},
-			art = {
-				"MarioFan597"
-			},
-			code = {
-				"MarioFan597",
-				"Jevonn"
-			}
+		idea = {
+			"MarioFan597",
+		},
+		art = {
+			"MarioFan597",
+		},
+		code = {
+			"MarioFan597",
+			"Jevonn",
+		},
 	},
-}
+})

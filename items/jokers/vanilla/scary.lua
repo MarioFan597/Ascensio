@@ -1,8 +1,8 @@
-SMODS.Joker {
+SMODS.Joker({
 	key = "scary",
 	config = { extra = { power = 1.25 } },
 	rarity = "cry_exotic",
-	atlas =  "v_atlas_1",
+	atlas = "v_atlas_1",
 	blueprint_compat = true,
 	demicoloncompat = true,
 	pos = { x = 6, y = 1 },
@@ -16,7 +16,11 @@ SMODS.Joker {
 		if (context.cardarea == G.play and context.individual) or context.forcetrigger then
 			if (context.other_card:is_face()) or context.forcetrigger then
 				return {
-					message = localize({ type = "variable", key = "a_powchips", vars = { lenient_bignum(card.ability.extra.power) } }),
+					message = localize({
+						type = "variable",
+						key = "a_powchips",
+						vars = { lenient_bignum(card.ability.extra.power) },
+					}),
 					Echip_mod = lenient_bignum(card.ability.extra.power),
 					colour = G.C.DARK_EDITION,
 				}
@@ -24,14 +28,14 @@ SMODS.Joker {
 		end
 	end,
 	asc_credits = {
-			idea = {
-				"TheOfficialfem"
-			},
-			art = {
-				"MarioFan597"
-			},
-			code = {
-				"MarioFan597"
-			}
+		idea = {
+			"TheOfficialfem",
+		},
+		art = {
+			"MarioFan597",
+		},
+		code = {
+			"MarioFan597",
+		},
 	},
-}
+})

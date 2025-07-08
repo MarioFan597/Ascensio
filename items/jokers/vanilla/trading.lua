@@ -1,4 +1,4 @@
-SMODS.Joker {
+SMODS.Joker({
 	key = "trading",
 	config = { extra = { mult = 0, chips = nil } },
 	rarity = "cry_exotic",
@@ -13,24 +13,28 @@ SMODS.Joker {
 		return { vars = { card and lenient_bignum(card.ability.extra.mult) } }
 	end,
 	calculate = function(self, card, context)
-	if (context.joker_main) or context.forcetrigger then
+		if context.joker_main or context.forcetrigger then
 			if (card.ability.extra.mult > 0) or context.forcetrigger then
 				return {
 					mult_mod = lenient_bignum(card.ability.extra.mult),
-					message = localize { type = "variable", key = "a_mult", vars = { lenient_bignum(card.ability.extra.mult) } }
+					message = localize({
+						type = "variable",
+						key = "a_mult",
+						vars = { lenient_bignum(card.ability.extra.mult) },
+					}),
 				}
 			end
 		end
 	end,
 	asc_credits = {
-			idea = {
-				"Inspector_B"
-			},
-			art = {
-				"MarioFan597"
-			},
-			code = {
-				"MarioFan597"
-			}
+		idea = {
+			"Inspector_B",
+		},
+		art = {
+			"MarioFan597",
+		},
+		code = {
+			"MarioFan597",
+		},
 	},
-}
+})

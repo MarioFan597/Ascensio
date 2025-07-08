@@ -1,6 +1,6 @@
-SMODS.Joker {
+SMODS.Joker({
 	key = "fibonacci",
-	config = { extra = { mult = 1, start_mult = 1, immutable = {previous = 0, previous2 = 0},},},
+	config = { extra = { mult = 1, start_mult = 1, immutable = { previous = 0, previous2 = 0 } } },
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
@@ -19,35 +19,42 @@ SMODS.Joker {
 				local current_value = lenient_bignum(card.ability.extra.mult)
 				card.ability.extra.immutable.previous2 = card.ability.extra.immutable.previous
 				card.ability.extra.immutable.previous = card.ability.extra.mult
-				card.ability.extra.mult = (card.ability.extra.immutable.previous2 + card.ability.extra.immutable.previous)
+				card.ability.extra.mult = (
+					card.ability.extra.immutable.previous2 + card.ability.extra.immutable.previous
+				)
 				return {
-					message = localize({ type = "variable", key = "a_xmult", vars = { lenient_bignum(card.ability.extra.mult) } }),
+					message = localize({
+						type = "variable",
+						key = "a_xmult",
+						vars = { lenient_bignum(card.ability.extra.mult) },
+					}),
 					Xmult_mod = lenient_bignum(card.ability.extra.mult),
 					colour = G.C.MULT,
 				}
 			end
 		end
-		if (context.after and not context.blueprint) --and card.ability.extra.mult ~= 1 
+		if
+			context.after and not context.blueprint --and card.ability.extra.mult ~= 1
 		then
 			card.ability.extra.mult = card.ability.extra.start_mult
 			card.ability.extra.immutable.previous = 0
 			card.ability.extra.immutable.previous2 = 0
 			--return {
-					--card = self,
-					--message = localize("k_reset"),
-					--}
+			--card = self,
+			--message = localize("k_reset"),
+			--}
 		end
 	end,
 	asc_credits = {
 		idea = {
 			"OmegaLife",
-			"Tatteredlurker"
+			"Tatteredlurker",
 		},
 		art = {
-			"missingnumber"
+			"missingnumber",
 		},
 		code = {
-			"MarioFan597"
-		}
+			"MarioFan597",
+		},
 	},
-}
+})

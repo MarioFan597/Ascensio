@@ -1,13 +1,13 @@
 --Borrowed and modyfied from MoreMarioJoker's powerup card and cryptid's gateway
 
-SMODS.Atlas {
+SMODS.Atlas({
 	key = "ascension",
 	path = "ascension.png",
 	px = 71,
-	py = 95
-}
+	py = 95,
+})
 
-SMODS.Consumable {
+SMODS.Consumable({
 	key = "ascension",
 	set = "Spectral",
 	atlas = "ascension",
@@ -15,10 +15,10 @@ SMODS.Consumable {
 	soul_pos = { x = 2, y = 0, extra = { x = 1, y = 0 } },
 	cost = 4,
 	hidden = true,
-	config = {  },
+	config = {},
 	can_use = function(self, card)
 		if #G.jokers.highlighted == 1 and ascensionable[G.jokers.highlighted[1].config.center.key] then
-				return true
+			return true
 		end
 	end,
 	use = function(self, card, area, copier)
@@ -64,7 +64,16 @@ SMODS.Consumable {
 			delay = 0.4,
 			func = function()
 				play_sound("timpani")
-				local card = create_card("Joker", G.jokers, nil, "cry_exotic", nil, nil, ascensionable[ascendent.config.center.key], "cry_gateway")
+				local card = create_card(
+					"Joker",
+					G.jokers,
+					nil,
+					"cry_exotic",
+					nil,
+					nil,
+					ascensionable[ascendent.config.center.key],
+					"cry_gateway"
+				)
 				card:add_to_deck()
 				G.jokers:emplace(card)
 				card:juice_up(0.3, 0.5)
@@ -77,7 +86,7 @@ SMODS.Consumable {
 		if G and G.jokers and G.jokers.cards then
 			for k, v in ipairs(G.jokers.cards) do
 				if ascensionable[v.config.center.key] then
-					return true 
+					return true
 				end
 			end
 		end
@@ -94,7 +103,7 @@ SMODS.Consumable {
 		code = {
 			"MarioFan597",
 			"MathIsFun",
-			"SMG9000"
+			"SMG9000",
 		},
 	},
-}
+})

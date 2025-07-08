@@ -1,15 +1,15 @@
-SMODS.Atlas {
+SMODS.Atlas({
 	key = "brainstorm",
 	path = "brainstorm.png",
 	px = 71,
-	py = 95
-}
+	py = 95,
+})
 
-SMODS.Joker {
+SMODS.Joker({
 	key = "brainstorm",
-	config = { extra = {  } },
+	config = { extra = {} },
 	rarity = "cry_exotic",
-	atlas =  "brainstorm",
+	atlas = "brainstorm",
 	blueprint_compat = true,
 	demicoloncompat = true,
 	pos = { x = 0, y = 0 },
@@ -21,12 +21,12 @@ SMODS.Joker {
 		macro = {
 			type = "skim",
 			pos = {
-				include = {{x1=0,x2=9,y1=0,y2=3}},
+				include = { { x1 = 0, x2 = 9, y1 = 0, y2 = 3 } },
 			},
 			soul_pos = {
-				include = {{x1=0,x2=9,y1=5,y2=8}}
+				include = { { x1 = 0, x2 = 9, y1 = 5, y2 = 8 } },
 			},
-		}
+		},
 	},
 
 	--Taken from old blueprint and Chad
@@ -39,7 +39,7 @@ SMODS.Joker {
 				if G.jokers.cards[i] == card then
 					position = i
 				end
-			end 
+			end
 			if context.other_card == other_joker and position > 0 then
 				return {
 					message = localize("k_again_ex"),
@@ -83,14 +83,16 @@ SMODS.Joker {
 		]]
 
 		--Taken and modifed from Cryptid's smile (:D)
-		if (context.ending_shop 
-			and not context.individual
-			and not context.repetition
-			and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit
-			and #G.jokers.cards
-			and other_joker ~= nil
-			and other_joker ~= card)
-			or context.forcetrigger
+		if
+			(
+				context.ending_shop
+				and not context.individual
+				and not context.repetition
+				and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit
+				and #G.jokers.cards
+				and other_joker ~= nil
+				and other_joker ~= card
+			) or context.forcetrigger
 			--and rarity_check
 			--and not position == #G.jokers.cards
 		then
@@ -100,36 +102,60 @@ SMODS.Joker {
 				func = function()
 					if roundcreatejoker > 0 then
 						local _card
-						if other_joker.config.center.rarity == 1 then 
-							_card = create_card("Joker", G.jokers, nil, 0, other_joker.edition and other_joker.edition.negative)
-						elseif other_joker.config.center.rarity == 2 then  
-							_card = create_card("Joker", G.jokers, nil, 0.9, other_joker.edition and other_joker.edition.negative)
-						elseif other_joker.config.center.rarity == 4 then 
-							_card = create_card("Joker", G.jokers, true, 4, other_joker.edition and other_joker.edition.negative)
+						if other_joker.config.center.rarity == 1 then
+							_card = create_card(
+								"Joker",
+								G.jokers,
+								nil,
+								0,
+								other_joker.edition and other_joker.edition.negative
+							)
+						elseif other_joker.config.center.rarity == 2 then
+							_card = create_card(
+								"Joker",
+								G.jokers,
+								nil,
+								0.9,
+								other_joker.edition and other_joker.edition.negative
+							)
+						elseif other_joker.config.center.rarity == 4 then
+							_card = create_card(
+								"Joker",
+								G.jokers,
+								true,
+								4,
+								other_joker.edition and other_joker.edition.negative
+							)
 						else
-							_card = create_card("Joker", G.jokers, nil, other_joker.config.center.rarity, other_joker.edition and other_joker.edition.negative)
+							_card = create_card(
+								"Joker",
+								G.jokers,
+								nil,
+								other_joker.config.center.rarity,
+								other_joker.edition and other_joker.edition.negative
+							)
 						end
 						_card:add_to_deck()
 						G.jokers:emplace(_card)
 						_card:start_materialize()
 						G.GAME.joker_buffer = 0
-						end
-						return true
-					end,
-				}))
-				card_eval_status_text(card, "extra", nil, nil, nil, { message = localize("k_duplicated_ex")}) 
-				return nil, true
+					end
+					return true
+				end,
+			}))
+			card_eval_status_text(card, "extra", nil, nil, nil, { message = localize("k_duplicated_ex") })
+			return nil, true
 		end
 	end,
-    asc_credits = {
-			idea = {
-				"MarioFan597"
-			},
-			art = {
-				"Tatteredlurker"
-			},
-			code = {
-				"MarioFan597"
-			}
+	asc_credits = {
+		idea = {
+			"MarioFan597",
+		},
+		art = {
+			"Tatteredlurker",
+		},
+		code = {
+			"MarioFan597",
+		},
 	},
-}
+})

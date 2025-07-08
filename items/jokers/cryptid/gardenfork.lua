@@ -1,4 +1,4 @@
-SMODS.Joker {
+SMODS.Joker({
 	key = "gardenfork",
 	config = { extra = { money = 1.7 } },
 	rarity = "cry_exotic",
@@ -29,16 +29,16 @@ SMODS.Joker {
 			end
 		end
 	end,
-    asc_credits = {
-			idea = {
-				"Adrianinoninja"
-			},
-			art = {
-				"Oinite12"
-			},
-			code = {
-				"Jevonn",
-				"MarioFan597"
-			}
+	asc_credits = {
+		idea = {
+			"Adrianinoninja",
 		},
-}
+		art = {
+			"Oinite12",
+		},
+		code = {
+			"Jevonn",
+			"MarioFan597",
+		},
+	},
+})
