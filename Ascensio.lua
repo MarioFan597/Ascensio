@@ -83,6 +83,7 @@ ascensionable = {
 			j_fibonacci = "j_asc_fibonacci",
 			j_scary_face = "j_asc_scary",
 			j_abstract = "j_asc_abstract",
+			j_blackboard = "j_asc_blackboard",
 			j_dna = "j_asc_dna",
 			j_blue_joker = "j_asc_blue",
 			j_square = "j_asc_square",

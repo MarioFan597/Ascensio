@@ -12,6 +12,7 @@ local v_jokers = {
 	"fibonacci",
 	"scary",
 	"abstract",
+	"blackboard",
 	"dna",
 	"blue",
 	"square",

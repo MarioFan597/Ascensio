@@ -115,6 +115,16 @@ return {
 					"{C:inactive}(Currently {X:dark_edition,C:white}^#1#{} {C:inactive}Mult)"
 				}
 			},
+			j_asc_blackboard = {
+				name = "Tabula Lapidea",
+				text = {
+					"This Joker gains {C:white,X:mult}X#3#{} Mult for every", 
+					"{C:spade}Spade{} or {C:club}Club{} held in hand before scoring", 
+					"If all cards held in hand are {C:spade}Spades{} or {C:club}Clubs",
+					"each card instead gives this Joker {C:white,X:mult}X#2#{} Mult",
+					"{C:inactive}(Currently {C:white,X:mult}X#1#{} {C:inactive}Mult)"
+				}
+			},
 
 			j_asc_dna = {
 				name = "Sui Replicatio",
