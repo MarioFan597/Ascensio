@@ -32,11 +32,11 @@ local v_jokers = {
 	"tribe",
 	"brainstorm",
 	"drivers_license",
-	"canio"
+	"canio",
 }
 
 for i, v in pairs(v_jokers) do
-	assert(SMODS.load_file("items/jokers/vanilla/"..v..".lua"))()
+	assert(SMODS.load_file("items/jokers/vanilla/" .. v .. ".lua"))()
 end
 
 ----------Loading Cryptid Jokers----------
@@ -45,11 +45,11 @@ local cry_jokers = {
 	"like_antennas_to_heaven",
 	"oil_lamp",
 	"hunting_season",
-	"high_five"
+	"high_five",
 }
 
 for i, v in pairs(cry_jokers) do
-	assert(SMODS.load_file("items/jokers/cryptid/"..v..".lua"))()
+	assert(SMODS.load_file("items/jokers/cryptid/" .. v .. ".lua"))()
 end
 
 ----------Loading Cryptid Mortal Jokers----------
@@ -59,19 +59,18 @@ local crym_jokers = {
 }
 
 for i, v in pairs(crym_jokers) do
-	assert(SMODS.load_file("items/jokers/cryptid_mortals/"..v..".lua"))()
+	assert(SMODS.load_file("items/jokers/cryptid_mortals/" .. v .. ".lua"))()
 end
 
 ---------Loading Ascensio Consumables---------------
 
 local asc_consumables = {
-	"ascension"
+	"ascension",
 }
 
 for i, v in pairs(asc_consumables) do
-	assert(SMODS.load_file("items/consumables/ascensio/"..v..".lua"))()
+	assert(SMODS.load_file("items/consumables/ascensio/" .. v .. ".lua"))()
 end
-
 
 ---------Loading Ascensio Decks---------------
 
@@ -80,69 +79,58 @@ local asc_decks = {
 }
 
 for i, v in pairs(asc_decks) do
-	assert(SMODS.load_file("items/decks/ascensio/"..v..".lua"))()
+	assert(SMODS.load_file("items/decks/ascensio/" .. v .. ".lua"))()
 end
-
 
 ------------Cross Mod---------------------
 ---------Loading Cryptposting Jokers---------
 
-if next(SMODS.find_mod('cryptposting')) then
-	local crp_jokers = {
-		
-	}
+if next(SMODS.find_mod("cryptposting")) then
+	local crp_jokers = {}
 
 	for i, v in pairs(crp_jokers) do
-		assert(SMODS.load_file("items/jokers/cryptposting/"..v..".lua"))()
+		assert(SMODS.load_file("items/jokers/cryptposting/" .. v .. ".lua"))()
 	end
 
----------Loading Cryptposting Consumables---------
+	---------Loading Cryptposting Consumables---------
 
-	local crp_consumables = {
-		
-	}
+	local crp_consumables = {}
 
 	for i, v in pairs(crp_consumables) do
-		assert(SMODS.load_file("items/consumables/cryptposting/"..v..".lua"))()
+		assert(SMODS.load_file("items/consumables/cryptposting/" .. v .. ".lua"))()
 	end
-
 end
-
 
 ---------Loading Astronomica Jokers---------
 
-if next(SMODS.find_mod('Astronomica')) then
+if next(SMODS.find_mod("Astronomica")) then
 	local ast_jokers = {
 		"stopwatch",
 		"facsimile",
-
 	}
 
 	for i, v in pairs(ast_jokers) do
-		assert(SMODS.load_file("items/jokers/astronomica/"..v..".lua"))()
+		assert(SMODS.load_file("items/jokers/astronomica/" .. v .. ".lua"))()
 	end
 
----------Loading Astronomica Consumables---------
+	---------Loading Astronomica Consumables---------
 
-	local ast_consumables = {
-		
-	}
+	local ast_consumables = {}
 
 	for i, v in pairs(ast_consumables) do
-		assert(SMODS.load_file("items/consumables/astronomica/"..v..".lua"))()
+		assert(SMODS.load_file("items/consumables/astronomica/" .. v .. ".lua"))()
 	end
-
 end
 
 ---------Loading Entropy Jokers---------
 
-if next(SMODS.find_mod('entr')) then
+if next(SMODS.find_mod("entr")) then
 	local entr_jokers = {
 		"sunny_joker",
 	}
 
 	for i, v in pairs(entr_jokers) do
-		assert(SMODS.load_file("items/jokers/entropy/"..v..".lua"))()
+		assert(SMODS.load_file("items/jokers/entropy/" .. v .. ".lua"))()
 	end
 
 	local entr_apoth_jokers = {
@@ -150,19 +138,18 @@ if next(SMODS.find_mod('entr')) then
 	}
 
 	for i, v in pairs(entr_apoth_jokers) do
-		assert(SMODS.load_file("items/jokers/entropy_entropics/"..v..".lua"))()
+		assert(SMODS.load_file("items/jokers/entropy_entropics/" .. v .. ".lua"))()
 	end
 
----------Loading Entropy Consumables---------
+	---------Loading Entropy Consumables---------
 
 	local entr_consumables = {
-		"apotheosis"
+		"apotheosis",
 	}
 
 	for i, v in pairs(entr_consumables) do
-		assert(SMODS.load_file("items/consumables/entropy/"..v..".lua"))()
+		assert(SMODS.load_file("items/consumables/entropy/" .. v .. ".lua"))()
 	end
-
 end
 
 ---------Loading Animations---------

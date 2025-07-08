@@ -1,4 +1,4 @@
-SMODS.Joker {
+SMODS.Joker({
 	key = "wrathful",
 	config = { extra = { e_mult = 1.2 } },
 	rarity = "cry_exotic",
@@ -13,10 +13,14 @@ SMODS.Joker {
 		return { vars = { lenient_bignum(card.ability.extra.e_mult) } }
 	end,
 	calculate = function(self, card, context)
-		if (context.individual) or context.forcetrigger then
+		if context.individual or context.forcetrigger then
 			if (context.cardarea == G.play and context.other_card:is_suit("Spades")) or context.forcetrigger then
 				return {
-					message = localize({ type = "variable", key = "a_powmult", vars = { lenient_bignum(card.ability.extra.e_mult) } }),
+					message = localize({
+						type = "variable",
+						key = "a_powmult",
+						vars = { lenient_bignum(card.ability.extra.e_mult) },
+					}),
 					Emult_mod = lenient_bignum(card.ability.extra.e_mult),
 					colour = G.C.DARK_EDITION,
 				}
@@ -25,13 +29,13 @@ SMODS.Joker {
 	end,
 	asc_credits = {
 		idea = {
-			"Lexi"
+			"Lexi",
 		},
 		art = {
-			"MarioFan597"
+			"MarioFan597",
 		},
 		code = {
-			"Glitchkat10"
-		}
+			"Glitchkat10",
+		},
 	},
-}
+})

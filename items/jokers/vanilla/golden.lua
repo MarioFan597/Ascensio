@@ -1,4 +1,4 @@
-SMODS.Joker {
+SMODS.Joker({
 	key = "golden",
 	config = { extra = { gold = 2, gain = 1, odds = 7 } },
 	rarity = "cry_exotic",
@@ -10,12 +10,24 @@ SMODS.Joker {
 	cost = 50,
 	order = 90,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { cry_prob(card.ability.cry_prob, lenient_bignum(card.ability.extra.odds), card.ability.cry_rigged), card and lenient_bignum(card.ability.extra.gold), card and lenient_bignum(card.ability.extra.gain), card and lenient_bignum(card.ability.extra.odds)} }
+		return {
+			vars = {
+				cry_prob(card.ability.cry_prob, lenient_bignum(card.ability.extra.odds), card.ability.cry_rigged),
+				card and lenient_bignum(card.ability.extra.gold),
+				card and lenient_bignum(card.ability.extra.gain),
+				card and lenient_bignum(card.ability.extra.odds),
+			},
+		}
 	end,
-	calc_dollar_bonus = function (self, card)
+	calc_dollar_bonus = function(self, card)
 		if card.ability.extra.gold > 1 then
-			if pseudorandom("moooooooooooonside") < cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged) / card.ability.extra.odds then
-				card.ability.extra.gold = lenient_bignum(card.ability.extra.gold) + lenient_bignum(card.ability.extra.gain)
+			if
+				pseudorandom("moooooooooooonside")
+				< cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged)
+					/ card.ability.extra.odds
+			then
+				card.ability.extra.gold = lenient_bignum(card.ability.extra.gold)
+					+ lenient_bignum(card.ability.extra.gain)
 				card_eval_status_text(
 					card,
 					"extra",
@@ -35,15 +47,15 @@ SMODS.Joker {
 		end
 	end,
 	asc_credits = {
-			idea = {
-				"yahooyowza",
-				"UTNerd24"
-			},
-			art = {
-				"MarioFan597"
-			},
-			code = {
-				"MarioFan597"
-			}
+		idea = {
+			"yahooyowza",
+			"UTNerd24",
+		},
+		art = {
+			"MarioFan597",
+		},
+		code = {
+			"MarioFan597",
+		},
 	},
-}
+})

@@ -1,8 +1,8 @@
-SMODS.Joker {
+SMODS.Joker({
 	key = "hanging_chad",
 	config = { extra = { retriggers = 20 } },
 	rarity = "cry_exotic",
-	atlas = "v_atlas_1", 
+	atlas = "v_atlas_1",
 	blueprint_compat = true,
 	demicoloncompat = false,
 	pos = { x = 6, y = 5 },
@@ -13,22 +13,22 @@ SMODS.Joker {
 		return { vars = { card and lenient_bignum(card.ability.extra.retriggers) } }
 	end,
 	calculate = function(self, card, context)
-        if context.repetition and context.cardarea == G.play and (context.other_card == context.scoring_hand[1]) then
-            return {
-                message = localize('k_again_ex'),
-				repetitions = lenient_bignum(card.ability.extra.retriggers)
-            }
+		if context.repetition and context.cardarea == G.play and (context.other_card == context.scoring_hand[1]) then
+			return {
+				message = localize("k_again_ex"),
+				repetitions = lenient_bignum(card.ability.extra.retriggers),
+			}
 		end
 	end,
 	asc_credits = {
-			idea = {
-				"MarioFan597"
-			},
-			art = {
-				"Tatteredlurker"
-			},
-			code = {
-				"Glitchkat10"
-			}
+		idea = {
+			"MarioFan597",
+		},
+		art = {
+			"Tatteredlurker",
+		},
+		code = {
+			"Glitchkat10",
+		},
 	},
-}
+})

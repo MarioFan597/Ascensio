@@ -1,4 +1,4 @@
-SMODS.Joker {
+SMODS.Joker({
 	key = "oil_lamp", --This is mostly just taken straight from oil lamp's code
 	pos = { x = 3, y = 0 },
 	soul_pos = { x = 5, y = 0, extra = { x = 4, y = 0 } },
@@ -17,20 +17,21 @@ SMODS.Joker {
 		}
 	end,
 	calculate = function(self, card, context)
-		if (context.end_of_round and not context.repetition and not context.individual and not context.blueprint) or context.forcetrigger then
+		if
+			(context.end_of_round and not context.repetition and not context.individual and not context.blueprint)
+			or context.forcetrigger
+		then
 			local check = false
 			for i = 1, #G.jokers.cards do
 				if not (G.jokers.cards[i] == card) then
-						if not Card.no(G.jokers.cards[i], "immutable", true) then
-							check = true
-							Cryptid.with_deck_effects(G.jokers.cards[i], function(cards)
-								Cryptid.misprintize(
-									cards,
-									{ min = lenient_bignum(card.ability.extra.increase), max = lenient_bignum(card.ability.extra.increase) },
-									nil,
-									true
-								)
-							end)
+					if not Card.no(G.jokers.cards[i], "immutable", true) then
+						check = true
+						Cryptid.with_deck_effects(G.jokers.cards[i], function(cards)
+							Cryptid.misprintize(cards, {
+								min = lenient_bignum(card.ability.extra.increase),
+								max = lenient_bignum(card.ability.extra.increase),
+							}, nil, true)
+						end)
 					end
 				end
 			end
@@ -58,4 +59,4 @@ SMODS.Joker {
 			"MarioFan597",
 		},
 	},
-}
+})

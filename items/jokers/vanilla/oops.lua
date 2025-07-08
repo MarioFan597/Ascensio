@@ -1,11 +1,11 @@
-SMODS.Atlas {
+SMODS.Atlas({
 	key = "oops_all_6s",
 	path = "oops_all_6s.png",
 	px = 71,
-	py = 95
-}
+	py = 95,
+})
 
-SMODS.Joker {
+SMODS.Joker({
 	key = "oops",
 	config = { extra = { slot_gain = 1, joker_slots = 0, consumable_slots = 0 } },
 	rarity = "cry_exotic",
@@ -18,16 +18,22 @@ SMODS.Joker {
 	order = 126,
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = { key = "cry_rigged", set = "Other", vars = {} }
-		return { vars = { card and lenient_bignum(card.ability.extra.slot_gain), card and lenient_bignum(card.ability.extra.joker_slots), card and lenient_bignum(card.ability.extra.consumable_slots) } }
+		return {
+			vars = {
+				card and lenient_bignum(card.ability.extra.slot_gain),
+				card and lenient_bignum(card.ability.extra.joker_slots),
+				card and lenient_bignum(card.ability.extra.consumable_slots),
+			},
+		}
 	end,
 
 	animation = {
 		macro = {
 			type = "skim",
 			soul_pos = {
-				include = {{x1=1,x2=4,y1=0,y2=1}}
-			}
-		}
+				include = { { x1 = 1, x2 = 4, y1 = 0, y2 = 1 } },
+			},
+		},
 	},
 
 	calculate = function(self, card, context)
@@ -49,7 +55,12 @@ SMODS.Joker {
 			end
 		end
 
-		if context.cardarea == G.jokers and context.before and not context.blueprint_card and not context.retrigger_joker then
+		if
+			context.cardarea == G.jokers
+			and context.before
+			and not context.blueprint_card
+			and not context.retrigger_joker
+		then
 			for i = 1, #context.scoring_hand do
 				local _card = context.scoring_hand[i]
 				converted = true
@@ -59,7 +70,7 @@ SMODS.Joker {
 				end
 				G.E_MANAGER:add_event(Event({
 					delay = 0.6,
-					func = function()	
+					func = function()
 						_card:juice_up()
 						play_sound("tarot1")
 						return true
@@ -67,18 +78,22 @@ SMODS.Joker {
 				}))
 			end
 			if converted then
-				return {message = "Rigged!", colour = G.C.GREEN,}
+				return { message = "Rigged!", colour = G.C.GREEN }
 			end
 		end
 
 		if context.joker_main and not context.blueprint_card then
 			if math.random(1, 6) == 1 then
 				if math.random(1, 2) == 1 then
-					card.ability.extra.joker_slots = lenient_bignum(card.ability.extra.joker_slots) + lenient_bignum(card.ability.extra.slot_gain)
-					G.jokers.config.card_limit = G.jokers.config.card_limit + lenient_bignum(card.ability.extra.slot_gain)
+					card.ability.extra.joker_slots = lenient_bignum(card.ability.extra.joker_slots)
+						+ lenient_bignum(card.ability.extra.slot_gain)
+					G.jokers.config.card_limit = G.jokers.config.card_limit
+						+ lenient_bignum(card.ability.extra.slot_gain)
 				else
-					card.ability.extra.consumable_slots = lenient_bignum(card.ability.extra.consumable_slots) + lenient_bignum(card.ability.extra.slot_gain)
-					G.consumeables.config.card_limit = G.consumeables.config.card_limit + lenient_bignum(card.ability.extra.slot_gain)
+					card.ability.extra.consumable_slots = lenient_bignum(card.ability.extra.consumable_slots)
+						+ lenient_bignum(card.ability.extra.slot_gain)
+					G.consumeables.config.card_limit = G.consumeables.config.card_limit
+						+ lenient_bignum(card.ability.extra.slot_gain)
 				end
 				card_eval_status_text(card, "extra", nil, nil, nil, {
 					message = localize("k_upgrade_ex"),
@@ -96,14 +111,16 @@ SMODS.Joker {
 	add_to_deck = function(self, card, from_debuff)
 		if G.jokers and not from_debuff then
 			G.jokers.config.card_limit = G.jokers.config.card_limit + lenient_bignum(card.ability.extra.joker_slots)
-			G.consumeables.config.card_limit = G.consumeables.config.card_limit + lenient_bignum(card.ability.extra.consumable_slots)
+			G.consumeables.config.card_limit = G.consumeables.config.card_limit
+				+ lenient_bignum(card.ability.extra.consumable_slots)
 		end
 	end,
 
 	remove_from_deck = function(self, card, from_debuff)
 		if G.jokers and not from_debuff then
 			G.jokers.config.card_limit = G.jokers.config.card_limit - lenient_bignum(card.ability.extra.joker_slots)
-			G.consumeables.config.card_limit = G.consumeables.config.card_limit - lenient_bignum(card.ability.extra.consumable_slots)
+			G.consumeables.config.card_limit = G.consumeables.config.card_limit
+				- lenient_bignum(card.ability.extra.consumable_slots)
 		end
 	end,
 
@@ -111,14 +128,14 @@ SMODS.Joker {
 		idea = {
 			"UTNerd24",
 			"hssr96",
-			"MarioFan597"
+			"MarioFan597",
 		},
 		art = {
-			"MarioFan597"
+			"MarioFan597",
 		},
 		code = {
 			"MarioFan597",
-			"Jevonn"
-		}
+			"Jevonn",
+		},
 	},
-}
+})

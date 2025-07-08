@@ -1,8 +1,8 @@
-SMODS.Joker {
+SMODS.Joker({
 	key = "duo",
 	config = { extra = { power = 2 } },
 	rarity = "cry_exotic",
-	atlas =  "v_atlas_1",
+	atlas = "v_atlas_1",
 	blueprint_compat = true,
 	demicoloncompat = true,
 	pos = { x = 9, y = 0 },
@@ -42,25 +42,29 @@ SMODS.Joker {
 				end
 		end
 		]]
-			
-		if (context.poker_hands ~= nil and next(context.poker_hands["Pair"])) or context.forcetrigger then
-			return {
-				message = localize({ type = "variable", key = "a_powmult", vars = { lenient_bignum(card.ability.extra.power) } }),
-				Emult_mod = lenient_bignum(card.ability.extra.power),
-				colour = G.C.DARK_EDITION,
+
+			if (context.poker_hands ~= nil and next(context.poker_hands["Pair"])) or context.forcetrigger then
+				return {
+					message = localize({
+						type = "variable",
+						key = "a_powmult",
+						vars = { lenient_bignum(card.ability.extra.power) },
+					}),
+					Emult_mod = lenient_bignum(card.ability.extra.power),
+					colour = G.C.DARK_EDITION,
 				}
 			end
 		end
 	end,
-    asc_credits = {
-			idea = {
-				"MarioFan597"
-			},
-			art = {
-				"MarioFan597"
-			},
-			code = {
-				"MarioFan597"
-			}
+	asc_credits = {
+		idea = {
+			"MarioFan597",
 		},
-}
+		art = {
+			"MarioFan597",
+		},
+		code = {
+			"MarioFan597",
+		},
+	},
+})

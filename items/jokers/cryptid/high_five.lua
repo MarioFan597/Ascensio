@@ -1,8 +1,8 @@
-SMODS.Joker {
+SMODS.Joker({
 	key = "high_five",
-	config = { extra = {  } },
+	config = { extra = {} },
 	rarity = "cry_exotic",
-	atlas =  "c_atlas_1",
+	atlas = "c_atlas_1",
 	blueprint_compat = false,
 	demicoloncompat = false,
 	pos = { x = 0, y = 0 },
@@ -25,16 +25,16 @@ SMODS.Joker {
 				local _card = context.scoring_hand[i]
 				local rank = _card:get_id()
 				if rank == 5 then
-						five_count = five_count + 1
+					five_count = five_count + 1
 				end
 			end
 
-			if (five_count > 0) then
+			if five_count > 0 then
 				for i = 1, #context.scoring_hand do
-				local _card = context.scoring_hand[i]
-				converted = true
-				local _card = context.scoring_hand[i]
-					if (_card:get_id() ~= 5 and not SMODS.has_no_rank(_card)) then
+					local _card = context.scoring_hand[i]
+					converted = true
+					local _card = context.scoring_hand[i]
+					if _card:get_id() ~= 5 and not SMODS.has_no_rank(_card) then
 						G.E_MANAGER:add_event(Event({
 							func = function()
 								assert(SMODS.change_base(_card, _, "5"))
@@ -44,12 +44,12 @@ SMODS.Joker {
 						}))
 					end
 					local enhancement = "cry_astral"
-					if (_card.ability.effect ~= "Astral") then
-						_card:set_edition({cry_astral = true})
+					if _card.ability.effect ~= "Astral" then
+						_card:set_edition({ cry_astral = true })
 					end
 					G.E_MANAGER:add_event(Event({
 						delay = 0.6,
-						func = function()	
+						func = function()
 							_card:juice_up()
 							play_sound("tarot1")
 							return true
@@ -62,15 +62,15 @@ SMODS.Joker {
 			end
 		end
 	end,
-    asc_credits = {
-			idea = {
-				"MarioFan597"
-			},
-			art = {
-				"MarioFan597"
-			},
-			code = {
-				"MarioFan597"
-			}
+	asc_credits = {
+		idea = {
+			"MarioFan597",
 		},
-}
+		art = {
+			"MarioFan597",
+		},
+		code = {
+			"MarioFan597",
+		},
+	},
+})
