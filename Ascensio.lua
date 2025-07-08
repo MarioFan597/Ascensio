@@ -90,6 +90,8 @@ ascensionable = {
 			j_golden = "j_asc_golden",
 			j_bull = "j_asc_bull",
 			j_selzer = "j_asc_seltzer",  --No Touchie!!!! Sic
+			j_throwback = "j_asc_throwback",
+			j_hanging_chad = "j_asc_hanging_chad",
 			j_blueprint = "j_asc_blueprint",
 			j_oops = "j_asc_oops",
 			j_duo = "j_asc_duo",
@@ -127,6 +129,16 @@ apothable = {
 	j_entr_sunny_joker = "j_asc_sunny_joker_entr",
 	j_asc_sunny_joker = "j_asc_sunny_joker_entr"
 }
+
+------Extra Functions----------
+function factorial(n)
+    if (n == 0) then
+        return 1
+    else
+        return n * factorial(n - 1)
+    end
+end
+
 
 ---Cryptid's Credit System----
 --This was modified and taken from Entropy

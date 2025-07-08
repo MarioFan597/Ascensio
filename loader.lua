@@ -20,6 +20,7 @@ local v_jokers = {
 	"golden",
 	"bull",
 	"seltzer",
+	"throwback",
 	"hanging_chad",
 	"blueprint",
 	"oops",

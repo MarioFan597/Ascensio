@@ -185,6 +185,17 @@ return {
 				}
 			},
 
+			j_asc_throwback = {
+				name = "Desiderium",
+				text = {
+					"Gains {X:mult,C:white}X(n^#3#){} Mult for each",
+					"{C:attention}Blind{} skipped this run",
+					"{X:attention,C:white}n{} is equal to the current",
+					"number of {C:attention}Blinds{} skipped",
+					"{C:inactive,s:0.9}(Currently {X:mult,C:white,s:0.9}X#1#{}{C:inactive,s:0.9} Mult and {C:attention,s:0.9}#2#{}{C:inactive,s:0.9} skips)",
+				}
+			},
+
 			j_asc_hanging_chad = {
 				name = "Charta Electionis",
 				text = {
