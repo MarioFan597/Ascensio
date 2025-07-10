@@ -70,6 +70,17 @@ return {
 				},
 			},
 
+			j_asc_banner = {
+				name = "Conquestum",
+				text = {
+					"Gains {X:chips,C:white}X#2#{} Chips per remaining",
+					"{C:attention}discard{} every hand played",
+					"On scoring, {X:chips,C:white}X#3#{} Chips for", 
+					"each remaining {C:attention}discard{}",
+					"{C:inactive}(Currently {X:chips,C:white}X#1#{}{C:inactive} Chips)",
+				},
+			},
+
 			j_asc_mystic_summit = {
 				name = "Fabulosa Radices",
 				text = {

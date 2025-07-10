@@ -7,6 +7,7 @@ local v_jokers = {
 	"gluttonous",
 	"stencil",
 	"credit_card",
+	"banner",
 	"mystic_summit",
 	"misprint",
 	"fibonacci",

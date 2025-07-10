@@ -77,6 +77,7 @@ ascensionable = {
 	j_gluttenous_joker = "j_asc_gluttonous", --No Touchie!!!! Sic
 	j_stencil = "j_asc_stencil",
 	j_credit_card = "j_asc_credit_card",
+	j_banner = "j_asc_banner",
 	j_mystic_summit = "j_asc_mystic_summit",
 	j_misprint = "j_asc_misprint",
 	j_fibonacci = "j_asc_fibonacci",
