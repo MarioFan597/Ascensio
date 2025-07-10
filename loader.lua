@@ -41,6 +41,7 @@ end
 
 ----------Loading Cryptid Jokers----------
 local cry_jokers = {
+	"canvas",
 	"gardenfork",
 	"like_antennas_to_heaven",
 	"oil_lamp",

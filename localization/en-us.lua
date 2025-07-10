@@ -91,7 +91,8 @@ return {
 				text = {
 					"Each played {C:attention}Ace{}, {C:attention}2{}, {C:attention}3{}, {C:attention}5{}, or {C:attention}8{}",
 					"gives {X:mult,C:white}X#1#{} Mult when scored",
-					"and Joker gains previous {X:mult,C:white}X{} Mult",
+					"Joker gains previous {X:mult,C:white}X{} Mult",
+					"before scoring each card",
 					"Resets each hand played",
 					"{C:inactive}[ex: X1, X2, X3, X5, X8, etc.]",
 				},
@@ -117,11 +118,12 @@ return {
 			j_asc_blackboard = {
 				name = "Tabula Lapidea",
 				text = {
-					"This Joker gains {C:white,X:mult}X#3#{} Mult for every",
-					"{C:spade}Spade{} or {C:club}Club{} held in hand before scoring",
-					"If all cards held in hand are {C:spade}Spades{} or {C:club}Clubs",
-					"each card instead gives this Joker {C:white,X:mult}X#2#{} Mult",
-					"{C:inactive}(Currently {C:white,X:mult}X#1#{} {C:inactive}Mult)",
+					"Gains {X:mult,C:white}X#3#{} Mult for all", 
+					"{C:spade}Spades{} & {C:club}Clubs{} held in hand;", 
+					"instead gains {X:mult,C:white}X#2#{} Mult per card", 
+					"if all cards are {C:spade}Spades{} or {C:club}Clubs{}",
+					"{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult)"
+
 				},
 			},
 
@@ -322,7 +324,16 @@ return {
 			--
 
 			-----Cryptid-----
-
+			j_asc_canvas = {
+				name = "Oleum Pictura",
+				text = {
+					"{C:attention}Retrigger{} all {C:attention}Jokers{} to the left",
+					"once for {C:attention}every{} Joker{} including itself",
+					"to the right of this Joker",
+					"Creates a {C:dark_edition}Negative{} {C:attention,T:j_joker}Joker{} when exiting shop",
+					"{C:inactive}(Does not need room)"
+				},
+			},
 			j_asc_gardenfork = {
 				name = "Contra Homo",
 				text = {
@@ -429,14 +440,14 @@ return {
 		},
 		Other = {
 			asc_ascensionable = {
-				name = "Ascension Canadite",
+				name = "Ascension Candidate",
 				text = {
 					"This Joker can reach",
 					"a {C:cry_exotic,E:1}Higher Form{}",
 				},
 			},
 			asc_apothable = {
-				name = "Apotheosis Canadite",
+				name = "Apotheosis Candidate",
 				text = {
 					"This Joker can reach",
 					"an {C:entr_entropic,E:1}Even Higher Form{}",

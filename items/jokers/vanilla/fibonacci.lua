@@ -1,6 +1,6 @@
 SMODS.Joker({
 	key = "fibonacci",
-	config = { extra = { mult = 1, start_mult = 1, immutable = { previous = 0, previous2 = 0 } } },
+	config = { extra = { mult = 1, start_mult = 1, start_previous = 1, immutable = { previous = 0, previous2 = 0 } } },
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
@@ -13,10 +13,12 @@ SMODS.Joker({
 		return { vars = { lenient_bignum(card.ability.extra.mult), lenient_bignum(card.ability.extra.start_mult) } }
 	end,
 	calculate = function(self, card, context)
-		if (context.individual and context.cardarea == G.play) or context.forcetrigger then
+		if ((context.individual and context.cardarea == G.play) and not context.blueprint)then
 			local rank = context.other_card:get_id()
 			if rank == 14 or rank == 2 or rank == 3 or rank == 5 or rank == 8 then
-				local current_value = lenient_bignum(card.ability.extra.mult)
+				if (card.ability.extra.immutable.previous) == 0 then
+					card.ability.extra.immutable.previous = card.ability.extra.start_previous
+				end
 				card.ability.extra.immutable.previous2 = card.ability.extra.immutable.previous
 				card.ability.extra.immutable.previous = card.ability.extra.mult
 				card.ability.extra.mult = (
@@ -32,7 +34,43 @@ SMODS.Joker({
 					colour = G.C.MULT,
 				}
 			end
+		end 
+
+		if (context.forcetrigger) then
+			if (card.ability.extra.immutable.previous) == 0 then
+				card.ability.extra.immutable.previous = card.ability.extra.start_previous
+			end
+			card.ability.extra.immutable.previous2 = card.ability.extra.immutable.previous
+			card.ability.extra.immutable.previous = card.ability.extra.mult
+			card.ability.extra.mult = (
+				card.ability.extra.immutable.previous2 + card.ability.extra.immutable.previous
+			)
+			return {
+				message = localize({
+					type = "variable",
+					key = "a_xmult",
+					vars = { lenient_bignum(card.ability.extra.mult) },
+				}),
+				Xmult_mod = lenient_bignum(card.ability.extra.mult),
+				colour = G.C.MULT,
+			}
 		end
+
+		if ((context.individual and context.cardarea == G.play) and context.blueprint) then
+			local rank = context.other_card:get_id()
+			if rank == 14 or rank == 2 or rank == 3 or rank == 5 or rank == 8 then
+				return {
+					message = localize({
+						type = "variable",
+						key = "a_xmult",
+						vars = { lenient_bignum(card.ability.extra.mult) },
+					}),
+					Xmult_mod = lenient_bignum(card.ability.extra.mult),
+					colour = G.C.MULT,
+				}
+			end
+		end
+
 		if
 			context.after and not context.blueprint --and card.ability.extra.mult ~= 1
 		then
