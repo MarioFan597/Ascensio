@@ -57,6 +57,7 @@ end
 ----------Loading Cryptid Mortal Jokers----------
 local crym_jokers = {
 	"b_cake",
+	"orion_pax",
 	--"accomplice"
 }
 

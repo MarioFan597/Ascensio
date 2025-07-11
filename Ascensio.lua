@@ -115,6 +115,7 @@ ascensionable = {
 
 	---Cryptid Mortals
 	j_asc_b_cake = "j_cry_crustulum",
+	j_asc_orion_pax = "j_cry_primus",
 	j_asc_gemino = "j_cry_gemino",
 	---Cryptposting
 	---Astronomica

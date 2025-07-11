@@ -405,6 +405,15 @@ return {
 				},
 			},
 
+			j_asc_orion_pax = {
+				name = "Orion Pax",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult if all cards", 
+					"in played hand are",
+					"{C:attention}Aces{}, {C:attention}2s{}, {C:attention}3s{}, {C:attention}5s{}, or {C:attention}7s{}",
+				},
+			},
+
 			-----Astronomica-----
 
 			j_asc_stopwatch = {
