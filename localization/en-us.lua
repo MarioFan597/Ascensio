@@ -394,6 +394,16 @@ return {
 				},
 			},
 
+			j_asc_code_joker = {
+				name = "Transcriptio Virtualis",
+				text = {
+					"Creates a {C:dark_edition}Negative{} {C:cry_code}Code Card{} when", 
+					"{C:attention}Blind{} is selected with {C:attention}#1#{} uses",
+					"Increase uses by {C:attention}#2#{}", 
+					"at the end of {C:attention}Boss Blind{}",
+				},
+			},
+
 			-----Cryptid Mortals-----
 
 			j_asc_b_cake = {
@@ -402,6 +412,15 @@ return {
 					"{C:chips}+#1#{} Chips",
 					"{C:chips}-#2#{} Chips per {C:attention}reroll{},", -- see flash card for {c} formatting on "reroll" when used in reference to gaining/losing values
 					"{C:green}Rerolls{} are free", -- see choas the clown for {c} formatting on "reroll" when used in reference to free rerolls
+				},
+			},
+
+			j_asc_b_pie = {
+				name = "Blueberry Pi",
+				text = {
+					"{X:chips,C:white}Xpi{} Chips if",
+					"{C:attention}exactly{} #2#",
+					"hands remaining",
 				},
 			},
 

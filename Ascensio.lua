@@ -112,9 +112,11 @@ ascensionable = {
 	j_cry_oil_lamp = "j_asc_oil_lamp",
 	j_cry_huntingseason = "j_asc_hunting_season",
 	j_cry_highfive = "j_asc_high_five",
+	j_cry_CodeJoker = "j_asc_code_joker",
 
 	---Cryptid Mortals
 	j_asc_b_cake = "j_cry_crustulum",
+	j_asc_b_pie = "j_cry_circulus_pistoris",
 	j_asc_orion_pax = "j_cry_primus",
 	j_asc_gemino = "j_cry_gemino",
 	---Cryptposting
