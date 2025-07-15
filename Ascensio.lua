@@ -76,7 +76,10 @@ ascensionable = {
 	j_wrathful_joker = "j_asc_wrathful",
 	j_gluttenous_joker = "j_asc_gluttonous", --No Touchie!!!! Sic
 	j_stencil = "j_asc_stencil",
+	j_four_fingers = "j_asc_four_fingers",
+	j_mime = "j_asc_mime",
 	j_credit_card = "j_asc_credit_card",
+	j_ceremonial = "j_asc_ceremonial",
 	j_banner = "j_asc_banner",
 	j_mystic_summit = "j_asc_mystic_summit",
 	j_misprint = "j_asc_misprint",
@@ -94,6 +97,7 @@ ascensionable = {
 	j_throwback = "j_asc_throwback",
 	j_hanging_chad = "j_asc_hanging_chad",
 	j_blueprint = "j_asc_blueprint",
+	j_smeared = "j_asc_smeared",
 	j_oops = "j_asc_oops",
 	j_duo = "j_asc_duo",
 	j_trio = "j_asc_trio",
@@ -103,7 +107,7 @@ ascensionable = {
 	j_brainstorm = "j_asc_brainstorm",
 	j_drivers_license = "j_asc_drivers_license",
 	j_caino = "j_asc_canio", --No Touchie!!!! Sic
-	-- j_to_the_moon = "j_asc_to_the_moon",
+	j_to_the_moon = "j_asc_to_the_moon",
 
 	---Cryptid
 	j_cry_canvas = "j_asc_canvas",
