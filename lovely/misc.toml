@@ -68,3 +68,28 @@ payload = '''for k, _ in pairs(apothable) do
 end
 '''
 match_indent = true
+
+#Allows Four finger exotic's extra cards to give ascension power.
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Cryptid "lib/ascended.lua"]'
+pattern = '''["Straight"] = next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5,'''
+position = "at"
+payload = '''["Straight"] = next(SMODS.find_card("j_asc_four_fingers")) and 2 or next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5,'''
+match_indent = true 
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Cryptid "lib/ascended.lua"]'
+pattern = '''["Flush"] = next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5,'''
+position = "at"
+payload = '''["Flush"] = next(SMODS.find_card("j_asc_four_fingers")) and 2 or next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5,'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS Cryptid "lib/ascended.lua"]'
+pattern = '''["Straight Flush"] = next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5, --debatable'''
+position = "at"
+payload = '''["Straight Flush"] = next(SMODS.find_card("j_asc_four_fingers")) and 2 or next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5,'''
+match_indent = true 

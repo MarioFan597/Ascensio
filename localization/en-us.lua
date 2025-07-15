@@ -62,9 +62,10 @@ return {
 			j_asc_four_fingers = {
 				name = "Truncus Manus",
 				text = {
-					"All {C:attention}Flushes{} and",
-					"{C:attention}Straights{} can be",
-					"made with {C:attention}2{} cards",
+					"All {C:attention}Flushes{} and {C:attention}Straights{} can",
+					"be made with {C:attention}2{} cards",
+					"Extra cards contribute",
+					"to Ascension Power",
 				},
 			},
 
@@ -252,7 +253,7 @@ return {
 				text = {
 					"{C:attention}All{} cards count as", 
 					"every {C:attention}suit{} and every {C:attention}rank{}",
-					"Cards with a suit or a rank",
+					"cards with a suit or a rank",
 					"{C:attention}cannot{} be debuffed"
 				}
 			},
