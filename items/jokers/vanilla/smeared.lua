@@ -4,8 +4,8 @@ SMODS.Joker {
 	atlas = "v_atlas_1",
 	blueprint_compat = false,
 	demicoloncompat = false,
-	pos = { x = 9, y = 6 },
-	soul_pos = { x = 11, y = 6, extra = { x = 10, y = 6 } },
+	pos = { x = 9, y = 7 },
+	soul_pos = { x = 11, y = 7, extra = { x = 10, y = 7 } },
 	cost = 50,
     asc_credits = {
 			idea = {

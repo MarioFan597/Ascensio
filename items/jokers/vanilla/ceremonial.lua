@@ -4,8 +4,8 @@ SMODS.Joker {
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
 	demicoloncompat = true,
-	pos = { x = 3, y = 6 },
-	soul_pos = { x = 5, y = 6, extra = { x = 4, y = 6 } },
+	pos = { x = 3, y = 7 },
+	soul_pos = { x = 5, y = 7, extra = { x = 4, y = 7 } },
     config = { extra = { Emult = 1, Emult_mod = 1, odds = 4 } },
 	cost = 50,
     asc_credits = {
