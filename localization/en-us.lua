@@ -71,9 +71,10 @@ return {
 			j_asc_mime = {
 				name = "Silentium",
 				text = {
-					"The {C:dark_edition}editions{} of Playing Cards become held in hand effects",
-					"{C:attention}retrigger{} all cards held in hand once",
-					"{C:attention}retrigger{} editioned Playing Cards once"
+					"The {C:dark_edition}editions{} of Playing Cards", 
+					"become held in hand effects",
+					"{C:attention}Retrigger{} all cards held in hand once",
+					"{C:attention}Retrigger{} editioned Playing Cards once"
 				}
 			},
 
@@ -235,11 +236,24 @@ return {
 				},
 			},
 
+			j_asc_campfire = {
+				name = "Silva Ardens",
+				text = {
+					"Gains {C:white,X:dark_edition}^#2#{} Mult for each card {C:attention}sold{}, resets",
+					"Mult and increases gain by {C:white,X:dark_edition}^#3#{} Mult",
+					"for each item {C:attention}sold{} this {C:attention}Ante{}", 
+					"when a {C:attention}Boss Blind{} is defeated",
+					"{C:inactive}(Currently {}{C:white,X:dark_edition}^#1#{C:inactive} Mult and {C:attention}#4#{} {C:inactive}cards sold){}"
+				},
+			},
+
 			j_asc_smeared = {
 				name = "Inquino",
 				text = {
-					"{C:attention}All{} cards count as every {C:attention}suit{} and every {C:attention}rank{}",
-					"cards with a suit or a rank {C:attention}cannot{} be debuffed"
+					"{C:attention}All{} cards count as", 
+					"every {C:attention}suit{} and every {C:attention}rank{}",
+					"cards with a suit or a rank",
+					"{C:attention}cannot{} be debuffed"
 				}
 			},
 
@@ -462,6 +476,15 @@ return {
 					"{X:mult,C:white}X#1#{} Mult if all cards", 
 					"in played hand are",
 					"{C:attention}Aces{}, {C:attention}2s{}, {C:attention}3s{}, {C:attention}5s{}, or {C:attention}7s{}",
+				},
+			},
+
+			j_asc_exorcist = {
+				name = "Exorcist",
+				text = {
+					"When a {X:cry_cursed,C:white}Cursed{} Joker is", 
+					"obtained, destroy it", 
+					"and create a {C:cry_candy}Candy{}",
 				},
 			},
 

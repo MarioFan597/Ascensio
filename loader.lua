@@ -25,6 +25,7 @@ local v_jokers = {
 	"golden",
 	"bull",
 	"seltzer",
+	"campfire",
 	"throwback",
 	"smeared",
 	"hanging_chad",
@@ -64,7 +65,8 @@ local crym_jokers = {
 	"b_cake",
 	"b_pie",
 	"orion_pax",
-	--"accomplice"
+	--"accomplice",
+	"exorcist",
 }
 
 for i, v in pairs(crym_jokers) do

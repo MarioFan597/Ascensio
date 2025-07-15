@@ -94,6 +94,7 @@ ascensionable = {
 	j_golden = "j_asc_golden",
 	j_bull = "j_asc_bull",
 	j_selzer = "j_asc_seltzer", --No Touchie!!!! Sic
+	j_campfire = "j_asc_campfire",
 	j_throwback = "j_asc_throwback",
 	j_hanging_chad = "j_asc_hanging_chad",
 	j_blueprint = "j_asc_blueprint",
@@ -123,6 +124,7 @@ ascensionable = {
 	j_asc_b_pie = "j_cry_circulus_pistoris",
 	j_asc_orion_pax = "j_cry_primus",
 	j_asc_gemino = "j_cry_gemino",
+	j_asc_exorcist = "j_cry_formidiulosus",
 	---Cryptposting
 	---Astronomica
 	j_ast_facsimile = "j_asc_facsimile",
