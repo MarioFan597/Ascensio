@@ -252,7 +252,7 @@ return {
 				text = {
 					"{C:attention}All{} cards count as", 
 					"every {C:attention}suit{} and every {C:attention}rank{}",
-					"cards with a suit or a rank",
+					"Cards with a suit or a rank",
 					"{C:attention}cannot{} be debuffed"
 				}
 			},
