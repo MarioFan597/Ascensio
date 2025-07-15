@@ -59,6 +59,34 @@ return {
 				},
 			},
 
+			j_asc_four_fingers = {
+				name = "Truncus Manus",
+				text = {
+					"All {C:attention}Flushes{} and",
+					"{C:attention}Straights{} can be",
+					"made with {C:attention}2{} cards",
+				},
+			},
+
+			j_asc_mime = {
+				name = "Silentium",
+				text = {
+					"The {C:dark_edition}editions{} of Playing Cards become held in hand effects",
+					"{C:attention}retrigger{} all cards held in hand once",
+					"{C:attention}retrigger{} editioned Playing Cards once"
+				}
+			},
+
+			j_asc_ceremonial = {
+				name = "Fractus Capulo",
+				text = {
+					"When Blind is selected", 
+					"{C:green}#1# in #2#{} chance to destroy every other Joker", 
+					"Gains {X:dark_edition,C:white}^#3#{} Mult for each Joker destroyed this way",
+					"{C:inactive}(Currently {X:dark_edition,C:white}^#4#{}{C:inactive} Mult)"
+				}
+			},
+
 			j_asc_credit_card = {
 				name = "Debitum Accepi",
 				text = {
@@ -207,6 +235,14 @@ return {
 				},
 			},
 
+			j_asc_smeared = {
+				name = "Inquino",
+				text = {
+					"{C:attention}All{} cards count as every {C:attention}suit{} and every {C:attention}rank{}",
+					"cards with a suit or a rank {C:attention}cannot{} be debuffed"
+				}
+			},
+
 			j_asc_throwback = {
 				name = "Desiderium",
 				text = {
@@ -322,17 +358,13 @@ return {
 				},
 			},
 
-			--[[
 			j_asc_to_the_moon = {
 				name = "Pecunia Dominus",
 				text = {
 					"Whenever you would gain {C:money}${},",
 					"gain {X:money,C:white}triple{} that amount",
-					"All purchases only spend"
 				}
 			},
-			]]
-			--
 
 			-----Cryptid-----
 			j_asc_canvas = {
