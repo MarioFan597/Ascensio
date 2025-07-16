@@ -151,7 +151,7 @@ G.E_MANAGER:add_event(Event({
 
 				local card_key = card.config.center.key
 				-- If the card has no animation, skip
-				if not anim_details[card_key] then
+				if not anim_details[card_key] or card.facing == 'back' or not card.config.center.unlocked or not card.config.center.discovered then
 					goto i_card_continue
 				end
 
