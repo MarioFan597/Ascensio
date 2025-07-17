@@ -1,5 +1,5 @@
-SMODS.Joker{
-    key = "b_pie",
+SMODS.Joker({
+	key = "b_pie",
 	pos = { x = 3, y = 0 },
 	rarity = 2,
 	cost = 6.28, --2xpi, displays pi in sell value
@@ -13,8 +13,8 @@ SMODS.Joker{
 		return {
 			vars = {
 				lenient_bignum(lenient_bignum(card.ability.extra.chips)),
-                lenient_bignum(lenient_bignum(card.ability.extra.hands_remaining))
-			}
+				lenient_bignum(lenient_bignum(card.ability.extra.hands_remaining)),
+			},
 		}
 	end,
 	calculate = function(self, card, context) --took the code straight from circulus, no shame >:3
@@ -32,31 +32,31 @@ SMODS.Joker{
 				pi = 2 * pi
 			end
 			return {
-					message = localize({
-						type = "variable",
-						key = "a_xchips",
-						vars = {
-							(Cryptid.safe_get(card, "edition", "cry_oversat") and "tau" or "pi"),
-						},
-					}),
-					Xchip_mod = lenient_bignum(pi),
-					colour = G.C.CHIPS,
-				}
+				message = localize({
+					type = "variable",
+					key = "a_xchips",
+					vars = {
+						(Cryptid.safe_get(card, "edition", "cry_oversat") and "tau" or "pi"),
+					},
+				}),
+				Xchip_mod = lenient_bignum(pi),
+				colour = G.C.CHIPS,
+			}
 		end
 	end,
 	asc_credits = {
-			idea = {
-				"hssr"
-			},
-			art = {
-				"MarioFan597",
-				"HexaCryonic",
-			},
-			code = {
-				"hasu <3"
-			}
+		idea = {
+			"hssr",
+		},
+		art = {
+			"MarioFan597",
+			"HexaCryonic",
+		},
+		code = {
+			"hasu <3",
+		},
 	},
-}
+})
 
 --localization
 --
