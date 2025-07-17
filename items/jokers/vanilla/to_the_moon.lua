@@ -1,6 +1,6 @@
-SMODS.Joker {
+SMODS.Joker({
 	key = "to_the_moon",
-	config = { extra = {  } },
+	config = { extra = {} },
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = false,
@@ -8,18 +8,18 @@ SMODS.Joker {
 	pos = { x = 6, y = 2 },
 	soul_pos = { x = 8, y = 2, extra = { x = 7, y = 2 } },
 	cost = 50,
-    asc_credits = {
-			idea = {
-				"TheOfficialfem"
-			},
-			art = {
-				"Oinite12"
-			},
-			code = {
-				"Somethingcom515"
-			}
+	asc_credits = {
+		idea = {
+			"TheOfficialfem",
 		},
-}
+		art = {
+			"Oinite12",
+		},
+		code = {
+			"Somethingcom515",
+		},
+	},
+})
 
 local oldeasedollars = ease_dollars
 function ease_dollars(mod, instant)

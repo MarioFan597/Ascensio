@@ -11,8 +11,7 @@ SMODS.Joker({
 	order = 508,
 	loc_vars = function(self, info_queue, card)
 		return {
-			vars = {
-			},
+			vars = {},
 		}
 	end,
 
@@ -35,7 +34,7 @@ SMODS.Joker({
 					_card:add_to_deck()
 					G.jokers:emplace(_card)
 					return true
-				end
+				end,
 			}))
 		end
 	end,
@@ -43,7 +42,7 @@ SMODS.Joker({
 	asc_credits = {
 		idea = {
 			"CapitalChirp",
-			"hssr"
+			"hssr",
 		},
 		art = {
 			"MarioFan597",

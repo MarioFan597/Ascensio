@@ -1,4 +1,4 @@
-SMODS.Joker {
+SMODS.Joker({
 	key = "canvas",
 	order = 4,
 	pos = { x = 6, y = 3 },
@@ -15,9 +15,7 @@ SMODS.Joker {
 		if context.retrigger_joker_check and not context.retrigger_joker then
 			local num_retriggers = 1
 			for i = 1, #G.jokers.cards do
-				if
-					card.T.x + card.T.w / 2 < G.jokers.cards[i].T.x + G.jokers.cards[i].T.w / 2
-				then
+				if card.T.x + card.T.w / 2 < G.jokers.cards[i].T.x + G.jokers.cards[i].T.w / 2 then
 					num_retriggers = num_retriggers + 1
 				end
 			end
@@ -34,7 +32,7 @@ SMODS.Joker {
 			end
 		end
 		if
-			(context.ending_shop)
+			context.ending_shop
 			and not (context.blueprint or context.retrigger_joker_check or context.retrigger_joker)
 		then
 			card_eval_status_text(
@@ -62,14 +60,14 @@ SMODS.Joker {
 		idea = {
 			"hssr96",
 			"Googol1e308plex",
-			"Gudusername_53951"
+			"Gudusername_53951",
 		},
 		art = {
 			"Lil Mr. Slipstream",
 		},
 		code = {
 			"Math",
-			"MarioFan597"
+			"MarioFan597",
 		},
 	},
-}
+})

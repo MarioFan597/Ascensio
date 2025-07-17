@@ -1,6 +1,6 @@
 SMODS.Joker({
 	key = "orion_pax",
-	config = { extra = { mult = 3} },
+	config = { extra = { mult = 3 } },
 	rarity = 3,
 	atlas = "c_atlas_mortal",
 	blueprint_compat = true,
@@ -19,14 +19,18 @@ SMODS.Joker({
 		if context.joker_main and context.scoring_hand then
 			local prime = 0
 			for i = 1, #context.scoring_hand do
-				if not (context.scoring_hand[i]:get_id() == 4
+				if
+					not (
+						context.scoring_hand[i]:get_id() == 4
 						or context.scoring_hand[i]:get_id() == 6
 						or context.scoring_hand[i]:get_id() == 8
 						or context.scoring_hand[i]:get_id() == 9
 						or context.scoring_hand[i]:get_id() == 10
 						or context.scoring_hand[i]:get_id() == 11
 						or context.scoring_hand[i]:get_id() == 12
-						or context.scoring_hand[i]:get_id() == 13) then
+						or context.scoring_hand[i]:get_id() == 13
+					)
+				then
 					prime = prime + 1
 				end
 			end
@@ -56,7 +60,7 @@ SMODS.Joker({
 	asc_credits = {
 		idea = {
 			"MarioFan597",
-			"Glitchkat10"
+			"Glitchkat10",
 		},
 		art = {
 			"Jevon",

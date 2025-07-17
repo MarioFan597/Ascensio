@@ -26,14 +26,8 @@ SMODS.Joker({
 		}
 	end,
 	calculate = function(self, card, context)
-		if
-			(
-				context.before
-				and not context.blueprint
-				and not context.retrigger_joker
-			) or context.forcetrigger
-		then
-			if (G.GAME.current_round.discards_left > 0) then
+		if (context.before and not context.blueprint and not context.retrigger_joker) or context.forcetrigger then
+			if G.GAME.current_round.discards_left > 0 then
 				card.ability.extra.chips = lenient_bignum(card.ability.extra.chips) + G.GAME.current_round.discards_left
 				card_eval_status_text(card, "extra", nil, nil, nil, {
 					message = localize("k_upgrade_ex"),
@@ -42,12 +36,20 @@ SMODS.Joker({
 			end
 		end
 		if context.joker_main or context.forcetrigger then
-			if (lenient_bignum(card.ability.extra.chips) > 1) or (lenient_bignum(card.ability.extra.bonus) > 1 and G.GAME.current_round.discards_left > 0) then
+			if
+				(lenient_bignum(card.ability.extra.chips) > 1)
+				or (lenient_bignum(card.ability.extra.bonus) > 1 and G.GAME.current_round.discards_left > 0)
+			then
 				return {
 					message = localize({
 						type = "variable",
 						key = "a_xchips",
-						vars = { lenient_bignum(card.ability.extra.chips * (card.ability.extra.bonus * G.GAME.current_round.discards_left)) },
+						vars = {
+							lenient_bignum(
+								card.ability.extra.chips
+									* (card.ability.extra.bonus * G.GAME.current_round.discards_left)
+							),
+						},
 					}),
 					Xchip_mod = lenient_bignum(card.ability.extra.chips),
 					colour = G.C.CHIPS,
