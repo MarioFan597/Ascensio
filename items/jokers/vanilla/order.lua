@@ -1,6 +1,6 @@
 SMODS.Joker({
 	key = "order",
-	config = { extra = { e_mult = 3 } },
+	config = { extra = { power = 3,} },
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	pos = { x = 6, y = 3 },
@@ -10,23 +10,36 @@ SMODS.Joker({
 	blueprint_compat = true,
 	demicoloncompat = true,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { lenient_bignum(card.ability.extra.e_mult) } }
+		return { vars = { card and lenient_bignum(card.ability.extra.power) } }
 	end,
 	calculate = function(self, card, context)
-		if context.joker_main or context.forcetrigger then
-			if (context.poker_hands ~= nil and next(context.poker_hands["Straight"])) or context.forcetrigger then
+		if --The card transformation apspect of this was taken and modifed in part from the Waterfall Joker from the Celesete Card Collection
+			context.before and context.poker_hands ~= nil and next(context.poker_hands["Straight"])
+		then
 				return {
-					message = localize({
-						type = "variable",
-						key = "a_powmult",
-						vars = {
-							number_format(lenient_bignum(card.ability.extra.e_mult)),
-						},
-					}),
-					Emult_mod = lenient_bignum(card.ability.extra.e_mult),
-					colour = G.C.DARK_EDITION,
+					G.E_MANAGER:add_event(Event({
+						trigger = 'immediate',
+						func = function()
+							for i = 1, #G.hand.cards do
+								assert(SMODS.change_base(G.hand.cards[i], _, context.scoring_hand[((i - 1) % #context.scoring_hand) + 1].base.value))
+								G.hand.cards[i]:juice_up()
+								play_sound('tarot1', 0.8, 0.4)
+							end
+							return true
+						end
+					}))
+					}
+		end
+		if (context.joker_main and context.poker_hands ~= nil and next(context.poker_hands["Straight"])) or context.forcetrigger then
+			return {
+				message = localize({
+					type = "variable",
+					key = "a_powmult",
+					vars = { lenient_bignum(card.ability.extra.power) },
+				}),
+				Emult_mod = lenient_bignum(card.ability.extra.power),
+				colour = G.C.DARK_EDITION,
 				}
-			end
 		end
 	end,
 	asc_credits = {
