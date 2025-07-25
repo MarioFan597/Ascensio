@@ -173,8 +173,9 @@ return {
 				text = {
 					"If {C:attention}first hand{} of round has only {C:attention}1{} card,",
 					"add {C:attention}#1#{} permanent copies to deck,",
-					"draw them to {C:attention}hand{},",
-					"and destroy remaining cards in {C:attention}hand{}",
+					"draws them to {C:attention}hand{}, and destroys any",
+					"remaining cards in {C:attention}hand{} that are",
+					"not identical to copied card"
 				},
 			},
 
