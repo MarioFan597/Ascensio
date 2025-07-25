@@ -14,7 +14,9 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		if context.first_hand_drawn then
-			local eval = function() return G.GAME.current_round.hands_played == 0 end
+			local eval = function()
+				return G.GAME.current_round.hands_played == 0
+			end
 			juice_card_until(card, eval, true)
 		end
 		if
@@ -28,10 +30,13 @@ SMODS.Joker({
 				delay = 0.75,
 				func = function()
 					for k, v in pairs(G.hand.cards) do
-						if not(v.base.suit == _card.base.suit and 
-							v.base.value == _card.base.value and 
-							v.config.center == _card.config.center and
-							v.seal == _card.seal)
+						if
+							not (
+								v.base.suit == _card.base.suit
+								and v.base.value == _card.base.value
+								and v.config.center == _card.config.center
+								and v.seal == _card.seal
+							)
 						then
 							v:start_dissolve(nil, _first_dissolve)
 							_first_dissolve = true

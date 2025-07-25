@@ -1,6 +1,6 @@
 SMODS.Joker({
 	key = "tribe",
-	config = { extra = { e_mult = 2} },
+	config = { extra = { e_mult = 2 } },
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	pos = { x = 9, y = 3 },
@@ -14,10 +14,9 @@ SMODS.Joker({
 	end,
 	calculate = function(self, card, context)
 		if --The card transformation apspect of this was taken and modifed in part from the Waterfall Joker from the Celesete Card Collection
-			context.before and 
-			context.poker_hands ~= nil and 
-			next(context.poker_hands['Flush'])
-
+			context.before
+			and context.poker_hands ~= nil
+			and next(context.poker_hands["Flush"])
 		then
 			local suit_count = {}
 			for i = 1, #context.scoring_hand do
@@ -33,37 +32,40 @@ SMODS.Joker({
 				local most = suit_count[suit]
 
 				for k, v in pairs(suit_count) do
-    				if suit_count[k] > most then
-        				suit, most = k, v
-    				end
+					if suit_count[k] > most then
+						suit, most = k, v
+					end
 				end
 				return {
 					G.E_MANAGER:add_event(Event({
-						trigger = 'immediate',
+						trigger = "immediate",
 						func = function()
-							for i = 1, #G.hand.cards do 
+							for i = 1, #G.hand.cards do
 								G.hand.cards[i]:change_suit(suit)
 								G.hand.cards[i]:juice_up()
-								play_sound('tarot1', 0.8, 0.4)
+								play_sound("tarot1", 0.8, 0.4)
 							end
 							return true
-						end
-					}))
-					}
+						end,
+					})),
+				}
 			end
 		end
-		if (context.joker_main and context.poker_hands ~= nil and next(context.poker_hands["Flush"])) or context.forcetrigger then
-				return {
-					message = localize({
-						type = "variable",
-						key = "a_powmult",
-						vars = {
-							number_format(lenient_bignum(card.ability.extra.e_mult)),
-						},
-					}),
-					Emult_mod = lenient_bignum(card.ability.extra.e_mult),
-					colour = G.C.DARK_EDITION,
-				}
+		if
+			(context.joker_main and context.poker_hands ~= nil and next(context.poker_hands["Flush"]))
+			or context.forcetrigger
+		then
+			return {
+				message = localize({
+					type = "variable",
+					key = "a_powmult",
+					vars = {
+						number_format(lenient_bignum(card.ability.extra.e_mult)),
+					},
+				}),
+				Emult_mod = lenient_bignum(card.ability.extra.e_mult),
+				colour = G.C.DARK_EDITION,
+			}
 		end
 	end,
 	asc_credits = {

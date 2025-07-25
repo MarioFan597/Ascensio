@@ -51,22 +51,15 @@ SMODS.Joker({
 			end
 			if destroyedcount > 0 then
 				play_sound("slice1", 0.96 + math.random() * 0.08)
-				card_eval_status_text(
-					card,
-					"extra",
-					nil,
-					nil,
-					nil,
-					{
-						message = localize({
-							type = "variable",
-							key = "a_powmult",
-							vars = { card.ability.extra.Emult + addedemult },
-						}),
-						colour = G.C.DARK_EDITION,
-						no_juice = true,
-					}
-				)
+				card_eval_status_text(card, "extra", nil, nil, nil, {
+					message = localize({
+						type = "variable",
+						key = "a_powmult",
+						vars = { card.ability.extra.Emult + addedemult },
+					}),
+					colour = G.C.DARK_EDITION,
+					no_juice = true,
+				})
 				return nil, true
 			end
 		end
