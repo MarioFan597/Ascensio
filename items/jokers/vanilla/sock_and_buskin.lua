@@ -64,7 +64,7 @@ SMODS.Joker({
 			"yahooyowza",
 		},
 		art = {
-			"???",
+			"thje_axolotl",
 		},
 		code = {
 			"OmegaLife",
