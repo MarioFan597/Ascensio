@@ -11,26 +11,26 @@ SMODS.Joker({
 
 	config = {
 		extra = {
-			rep = 5,
+			rep = 3,
 			xchip = 1.5,
-
+			xmult = 1.5,
 			cnt = 1,
+			immutable = {
+				max_rep = 40
+			}
 		},
 	},
 
-	loc_vars = function(_, _, card)
-		if card then
-			return {
-				vars = {
-					lenient_bignum(card.ability.extra.rep),
-					lenient_bignum(card.ability.extra.xchip),
-				},
-			}
-		else
-			return { vars = { 5, 2 } }
-		end
+	loc_vars = function(self, info_queue, card)
+		return {
+			vars = {
+				lenient_bignum(card.ability.extra.rep),
+				lenient_bignum(card.ability.extra.xchip),
+				lenient_bignum(card.ability.extra.xmult),
+				lenient_bignum(card.ability.extra.immutable.max_rep)
+			},
+		}
 	end,
-
 	calculate = function(_, card, context)
 		if context.individual and context.cardarea == G.play then
 			if context.other_card:is_face() then
@@ -39,7 +39,7 @@ SMODS.Joker({
 						return {
 							message = localize({
 								type = "variable",
-								key = "a_xchip",
+								key = "a_xchips",
 								vars = { number_format(card.ability.extra.xchip) },
 							}),
 							Xchip_mod = card.ability.extra.xchip,
@@ -56,8 +56,26 @@ SMODS.Joker({
 				repetitions = math.floor(card.ability.extra.rep),
 			}
 		end
+		if
+			context.individual
+			and context.cardarea == G.hand
+			and context.other_card:is_face()
+			and not context.end_of_round
+		then
+			if context.other_card.debuff then
+				return {
+					message = localize("k_debuffed"),
+					colour = G.C.MULT,
+					card = card,
+				}
+			else
+				return {
+					x_mult = lenient_bignum(card.ability.extra.xmult),
+					card = card,
+				}
+			end
+		end
 	end,
-
 	asc_credits = {
 		idea = {
 			"OmegaLife",

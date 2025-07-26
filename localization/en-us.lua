@@ -397,8 +397,10 @@ return {
 			j_asc_sock_and_buskin = {
 				name = "Thalia et Melpomene",
 				text = {
-					"Retrigger all played face cards {C:attention}#1#{} times.",
-					"Scored face cards gives {X:chips,C:white}X#2#{} Chips.",
+					"Retrigger all played face cards {C:attention}#1#{} times",
+					"Scored face cards give {X:chips,C:white}X#2#{} Chips",
+					"Face cards {C:attention}held in hand{} give {X:mult,C:white}X#3#{} Mult",
+					"{C:inactive}(Max {C:attention}#4#{} {C:inactive}retriggers)"
 				},
 			},
 
