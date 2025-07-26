@@ -14,7 +14,7 @@ SMODS.Joker({
 			vars = {
 				card and lenient_bignum(card.ability.extra.mult),
 				card and lenient_bignum(card.ability.extra.gain),
-				card and lenient_bignum(card.ability.extra.income)
+				card and lenient_bignum(card.ability.extra.income),
 			},
 		}
 	end,
@@ -37,13 +37,13 @@ SMODS.Joker({
 	end,
 	calc_dollar_bonus = function(self, card)
 		if card.ability.extra.income >= 1 then
-			return (card.ability.extra.income)
+			return card.ability.extra.income
 		end
 	end,
 	asc_credits = {
 		idea = {
 			"UTNerd24",
-			"Glitchkat10"
+			"Glitchkat10",
 		},
 		art = {
 			"MarioFan597",
