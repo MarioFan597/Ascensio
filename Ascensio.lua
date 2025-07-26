@@ -99,6 +99,7 @@ ascensionable = {
 	j_throwback = "j_asc_throwback",
 	j_hanging_chad = "j_asc_hanging_chad",
 	j_blueprint = "j_asc_blueprint",
+	j_sock_and_buskin = "j_asc_sock_and_buskin",
 	j_smeared = "j_asc_smeared",
 	j_oops = "j_asc_oops",
 	j_duo = "j_asc_duo",
@@ -110,7 +111,6 @@ ascensionable = {
 	j_drivers_license = "j_asc_drivers_license",
 	j_bootstraps = "j_asc_bootstraps",
 	j_caino = "j_asc_canio", --No Touchie!!!! Sic
-	j_sock_and_buskin = "j_asc_sock_and_buskin",
 
 	---Cryptid
 	j_cry_canvas = "j_asc_canvas",
