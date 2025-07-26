@@ -91,6 +91,7 @@ ascensionable = {
 	j_blue_joker = "j_asc_blue",
 	j_square = "j_asc_square",
 	j_midas_mask = "j_asc_midas",
+	j_to_the_moon = "j_asc_to_the_moon",
 	j_golden = "j_asc_golden",
 	j_bull = "j_asc_bull",
 	j_selzer = "j_asc_seltzer", --No Touchie!!!! Sic
@@ -107,8 +108,8 @@ ascensionable = {
 	j_tribe = "j_asc_tribe",
 	j_brainstorm = "j_asc_brainstorm",
 	j_drivers_license = "j_asc_drivers_license",
+	j_bootstraps = "j_asc_bootstraps",
 	j_caino = "j_asc_canio", --No Touchie!!!! Sic
-	j_to_the_moon = "j_asc_to_the_moon",
 
 	---Cryptid
 	j_cry_canvas = "j_asc_canvas",
@@ -141,6 +142,7 @@ apothable = {
 }
 
 ------Extra Functions----------
+
 function factorial(n)
 	if n == 0 then
 		return 1

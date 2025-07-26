@@ -72,21 +72,21 @@ return {
 			j_asc_mime = {
 				name = "Silentium",
 				text = {
-					"The {C:dark_edition}editions{} of Playing Cards",
+					"The {C:dark_edition}editions{} of Playing Cards", 
 					"become held in hand effects",
 					"{C:attention}Retrigger{} all cards held in hand once",
-					"{C:attention}Retrigger{} editioned Playing Cards once",
-				},
+					"{C:attention}Retrigger{} editioned Playing Cards once"
+				}
 			},
 
 			j_asc_ceremonial = {
 				name = "Fractus Capulo",
 				text = {
-					"When Blind is selected",
-					"{C:green}#1# in #2#{} chance to destroy every other Joker",
+					"When Blind is selected", 
+					"{C:green}#1# in #2#{} chance to destroy every other Joker", 
 					"Gains {X:dark_edition,C:white}^#3#{} Mult for each Joker destroyed this way",
-					"{C:inactive}(Currently {X:dark_edition,C:white}^#4#{}{C:inactive} Mult)",
-				},
+					"{C:inactive}(Currently {X:dark_edition,C:white}^#4#{}{C:inactive} Mult)"
+				}
 			},
 
 			j_asc_credit_card = {
@@ -105,7 +105,7 @@ return {
 				text = {
 					"Gains {X:chips,C:white}X#2#{} Chips per remaining",
 					"{C:attention}discard{} every hand played",
-					"On scoring, {X:chips,C:white}X#3#{} Chips for",
+					"On scoring, {X:chips,C:white}X#3#{} Chips for", 
 					"each remaining {C:attention}discard{}",
 					"{C:inactive}(Currently {X:chips,C:white}X#1#{}{C:inactive} Chips)",
 				},
@@ -159,11 +159,12 @@ return {
 			j_asc_blackboard = {
 				name = "Tabula Lapidea",
 				text = {
-					"Gains {X:mult,C:white}X#3#{} Mult for all",
-					"{C:spade}Spades{} & {C:club}Clubs{} held in hand;",
-					"instead gains {X:mult,C:white}X#2#{} Mult per card",
+					"Gains {X:mult,C:white}X#3#{} Mult for all", 
+					"{C:spade}Spades{} & {C:club}Clubs{} held in hand;", 
+					"instead gains {X:mult,C:white}X#2#{} Mult per card", 
 					"if all cards are {C:spade}Spades{} or {C:club}Clubs{}",
-					"{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult)",
+					"{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult)"
+
 				},
 			},
 
@@ -174,7 +175,7 @@ return {
 					"add {C:attention}#1#{} permanent copies to deck,",
 					"draws them to {C:attention}hand{}, and destroys any",
 					"remaining cards in {C:attention}hand{} that are",
-					"not identical to copied card",
+					"not identical to copied card"
 				},
 			},
 
@@ -207,6 +208,14 @@ return {
 					"{C:attention}Gold{} cards held in hand",
 					"give {X:dark_edition,C:white}^#1#{} Mult",
 				},
+			},
+
+			j_asc_to_the_moon = {
+				name = "Pecunia Dominus",
+				text = {
+					"Whenever you would gain {C:money}${},",
+					"gain {X:money,C:white}triple{} that amount",
+				}
 			},
 
 			j_asc_golden = {
@@ -242,20 +251,20 @@ return {
 				text = {
 					"Gains {C:white,X:dark_edition}^#2#{} Mult for each card {C:attention}sold{}, resets",
 					"Mult and increases gain by {C:white,X:dark_edition}^#3#{} Mult",
-					"for each item {C:attention}sold{} this {C:attention}Ante{}",
+					"for each item {C:attention}sold{} this {C:attention}Ante{}", 
 					"when a {C:attention}Boss Blind{} is defeated",
-					"{C:inactive}(Currently {}{C:white,X:dark_edition}^#1#{C:inactive} Mult and {C:attention}#4#{} {C:inactive}cards sold){}",
+					"{C:inactive}(Currently {}{C:white,X:dark_edition}^#1#{C:inactive} Mult and {C:attention}#4#{} {C:inactive}cards sold){}"
 				},
 			},
 
 			j_asc_smeared = {
 				name = "Inquino",
 				text = {
-					"{C:attention}All{} cards count as",
+					"{C:attention}All{} cards count as", 
 					"every {C:attention}suit{} and every {C:attention}rank{}",
 					"cards with a suit or a rank",
-					"{C:attention}cannot{} be debuffed",
-				},
+					"{C:attention}cannot{} be debuffed"
+				}
 			},
 
 			j_asc_throwback = {
@@ -369,20 +378,21 @@ return {
 				},
 			},
 
+			j_asc_bootstraps = {
+				name = "Inflatio",
+				text = {
+					"{X:mult,C:white}X#2#{} Mult for every {C:money}$1{} you have", 
+					"Earn {C:money}$#3#{} at end of round",
+					"{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult)"
+				},
+			},
+
 			j_asc_canio = {
 				name = "Thanatos",
 				text = {
 					"Gains {X:dark_edition,C:white}^#2#{} Mult per destroyed face card,",
 					"destroyed face cards are returned to hand",
 					"{C:inactive}(Currently {X:dark_edition,C:white}^#1#{}{C:inactive} Mult)",
-				},
-			},
-
-			j_asc_to_the_moon = {
-				name = "Pecunia Dominus",
-				text = {
-					"Whenever you would gain {C:money}${},",
-					"gain {X:money,C:white}triple{} that amount",
 				},
 			},
 
@@ -394,7 +404,7 @@ return {
 					"once for {C:attention}every{} Joker{} including itself",
 					"to the right of this Joker",
 					"Creates a {C:dark_edition}Negative{} {C:attention,T:j_joker}Joker{} when exiting shop",
-					"{C:inactive}(Does not need room)",
+					"{C:inactive}(Does not need room)"
 				},
 			},
 			j_asc_gardenfork = {
@@ -449,9 +459,9 @@ return {
 			j_asc_code_joker = {
 				name = "Transcriptio Virtualis",
 				text = {
-					"Creates a {C:dark_edition}Negative{} {C:cry_code}Code Card{} when",
+					"Creates a {C:dark_edition}Negative{} {C:cry_code}Code Card{} when", 
 					"{C:attention}Blind{} is selected with {C:attention}#1#{} uses",
-					"Increase uses by {C:attention}#2#{}",
+					"Increase uses by {C:attention}#2#{}", 
 					"at the end of {C:attention}Boss Blind{}",
 				},
 			},
@@ -479,7 +489,7 @@ return {
 			j_asc_orion_pax = {
 				name = "Orion Pax",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult if all cards",
+					"{X:mult,C:white}X#1#{} Mult if all cards", 
 					"in played hand are",
 					"{C:attention}Aces{}, {C:attention}2s{}, {C:attention}3s{}, {C:attention}5s{}, or {C:attention}7s{}",
 				},
@@ -488,8 +498,8 @@ return {
 			j_asc_exorcist = {
 				name = "Exorcist",
 				text = {
-					"When a {X:cry_cursed,C:white}Cursed{} Joker is",
-					"obtained, destroy it",
+					"When a {X:cry_cursed,C:white}Cursed{} Joker is", 
+					"obtained, destroy it", 
 					"and create a {C:cry_candy}Candy{}",
 				},
 			},

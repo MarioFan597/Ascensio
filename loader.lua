@@ -38,6 +38,7 @@ local v_jokers = {
 	"tribe",
 	"brainstorm",
 	"drivers_license",
+	"bootstraps",
 	"canio",
 }
 
@@ -53,7 +54,7 @@ local cry_jokers = {
 	"oil_lamp",
 	"hunting_season",
 	"high_five",
-	"code_joker",
+	"code_joker"
 }
 
 for i, v in pairs(cry_jokers) do
