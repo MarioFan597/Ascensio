@@ -1,6 +1,5 @@
 return {
 	descriptions = {
-		Back = {},
 		Blind = {},
 		Edition = {},
 		Enhanced = {},
@@ -398,9 +397,8 @@ return {
 			j_asc_sock_and_buskin = {
 				name = "Thalia et Melpomene",
 				text = {
-					"Retrigger all face cards {C:attention}#1#{} times.",
+					"Retrigger all played face cards {C:attention}#1#{} times.",
 					"Scored face cards gives {X:chips,C:white}X#2#{} Chips.",
-					"Face cards held in hand gives {X:mult,C:white}X#3#{} Mult.",
 				},
 			},
 
