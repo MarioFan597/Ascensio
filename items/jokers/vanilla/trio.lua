@@ -15,7 +15,9 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		local flag = false
 		if --The card transformation apspect of this was taken and modifed in part from the Waterfall Joker from the Celesete Card Collection
-			context.before and context.poker_hands ~= nil and next(context.poker_hands["Three of a Kind"])
+			context.before
+			and context.poker_hands ~= nil
+			and next(context.poker_hands["Three of a Kind"])
 		then
 			local rank_count = {}
 			for i = 1, #context.scoring_hand do
@@ -31,28 +33,30 @@ SMODS.Joker({
 				local most = rank_count[rank]
 
 				for k, v in pairs(rank_count) do
-    				if rank_count[k] > most then
-        				rank, most = k, v
-    				end
+					if rank_count[k] > most then
+						rank, most = k, v
+					end
 				end
-
 
 				return {
 					G.E_MANAGER:add_event(Event({
-						trigger = 'immediate',
+						trigger = "immediate",
 						func = function()
-							for i = 1, #G.hand.cards do 
+							for i = 1, #G.hand.cards do
 								assert(SMODS.change_base(G.hand.cards[i], _, rank))
 								G.hand.cards[i]:juice_up()
-								play_sound('tarot1', 0.8, 0.4)
+								play_sound("tarot1", 0.8, 0.4)
 							end
 							return true
-						end
-					}))
-					}
+						end,
+					})),
+				}
 			end
 		end
-		if (context.joker_main and context.poker_hands ~= nil and next(context.poker_hands["Three of a Kind"])) or context.forcetrigger then
+		if
+			(context.joker_main and context.poker_hands ~= nil and next(context.poker_hands["Three of a Kind"]))
+			or context.forcetrigger
+		then
 			flag = false
 			return {
 				message = localize({
@@ -62,7 +66,7 @@ SMODS.Joker({
 				}),
 				Emult_mod = lenient_bignum(card.ability.extra.power),
 				colour = G.C.DARK_EDITION,
-				}
+			}
 		end
 	end,
 	asc_credits = {
