@@ -71,7 +71,7 @@ SMODS.Joker({
 	end,
 	asc_credits = {
 		idea = { "OmegaLife" },
-		art = { "???" },
+		art = { "Lil Mr. Slipstream" },
 		code = { "OmegaLife" },
 	},
 })
