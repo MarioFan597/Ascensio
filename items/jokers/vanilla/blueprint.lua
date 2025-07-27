@@ -70,7 +70,7 @@ SMODS.Joker({
 			G.GAME.joker_buffer = G.GAME.joker_buffer + roundcreatejoker
 			G.E_MANAGER:add_event(Event({
 				func = function()
-					if roundcreatejoker > 0 then
+					if other_joker and roundcreatejoker > 0 then
 						local _card =
 							copy_card(other_joker, nil, nil, nil, other_joker.edition and other_joker.edition.negative)
 						_card:set_edition(other_joker.edition)
