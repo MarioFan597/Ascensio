@@ -7,7 +7,7 @@ SMODS.Atlas({
 
 SMODS.Joker({
 	key = "oops",
-	config = { extra = { slot_gain = 1, immutable = {joker_slots = 0, consumable_slots = 0}, } },
+	config = { extra = { slot_gain = 1, immutable = { joker_slots = 0, consumable_slots = 0 } } },
 	rarity = "cry_exotic",
 	atlas = "oops_all_6s",
 	blueprint_compat = false,
@@ -61,6 +61,7 @@ SMODS.Joker({
 			and not context.blueprint_card
 			and not context.retrigger_joker
 		then
+			local converted = false
 			for i = 1, #context.scoring_hand do
 				local _card = context.scoring_hand[i]
 				converted = true
@@ -90,8 +91,9 @@ SMODS.Joker({
 					G.jokers.config.card_limit = G.jokers.config.card_limit
 						+ lenient_bignum(card.ability.extra.slot_gain)
 				else
-					card.ability.extra.immutable.consumable_slots = lenient_bignum(card.ability.extra.immutable.consumable_slots)
-						+ lenient_bignum(card.ability.extra.slot_gain)
+					card.ability.extra.immutable.consumable_slots = lenient_bignum(
+						card.ability.extra.immutable.consumable_slots
+					) + lenient_bignum(card.ability.extra.slot_gain)
 					G.consumeables.config.card_limit = G.consumeables.config.card_limit
 						+ lenient_bignum(card.ability.extra.slot_gain)
 				end
@@ -110,7 +112,8 @@ SMODS.Joker({
 
 	add_to_deck = function(self, card, from_debuff)
 		if G.jokers and not from_debuff then
-			G.jokers.config.card_limit = G.jokers.config.card_limit + lenient_bignum(card.ability.extra.immutable.joker_slots)
+			G.jokers.config.card_limit = G.jokers.config.card_limit
+				+ lenient_bignum(card.ability.extra.immutable.joker_slots)
 			G.consumeables.config.card_limit = G.consumeables.config.card_limit
 				+ lenient_bignum(card.ability.extra.immutable.consumable_slots)
 		end
@@ -118,7 +121,8 @@ SMODS.Joker({
 
 	remove_from_deck = function(self, card, from_debuff)
 		if G.jokers and not from_debuff then
-			G.jokers.config.card_limit = G.jokers.config.card_limit - lenient_bignum(card.ability.extra.immutable.joker_slots)
+			G.jokers.config.card_limit = G.jokers.config.card_limit
+				- lenient_bignum(card.ability.extra.immutable.joker_slots)
 			G.consumeables.config.card_limit = G.consumeables.config.card_limit
 				- lenient_bignum(card.ability.extra.immutable.consumable_slots)
 		end

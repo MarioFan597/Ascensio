@@ -86,9 +86,7 @@ SMODS.Joker({
 			"MarioFan597",
 		},
 		art = {
-			"MarioFan597",
-			"Grahkon",
-			"thje_axolotl",
+			"Tatteredlurker",
 		},
 		code = {
 			"MarioFan597",

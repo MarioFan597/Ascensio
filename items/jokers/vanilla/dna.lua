@@ -1,6 +1,6 @@
 SMODS.Joker({
 	key = "dna",
-	config = { extra = { copies = 10, immutable = {max_copies = 40}, } },
+	config = { extra = { copies = 10, immutable = { max_copies = 40 } } },
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
@@ -10,11 +10,11 @@ SMODS.Joker({
 	cost = 50,
 	order = 51,
 	loc_vars = function(self, info_queue, card)
-		return { 
-			vars = { 
-				card and lenient_bignum(card.ability.extra.copies), 
-				card and lenient_bignum(card.ability.extra.immutable. max_copies)
-			} 
+		return {
+			vars = {
+				card and lenient_bignum(card.ability.extra.copies),
+				card and lenient_bignum(card.ability.extra.immutable.max_copies),
+			},
 		}
 	end,
 	calculate = function(self, card, context)

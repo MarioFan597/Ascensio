@@ -174,7 +174,7 @@ return {
 					"draws them to {C:attention}hand{}, and destroys any",
 					"remaining cards in {C:attention}hand{} that are",
 					"not identical to copied card",
-					"{C:inactive}(Max {C:attention}#2#{} {C:inactive}cards created)"
+					"{C:inactive}(Max {C:attention}#2#{} {C:inactive}cards created)",
 				},
 			},
 
@@ -242,7 +242,7 @@ return {
 					"Increase number of retriggers",
 					"after {C:attention}#3#{} hands",
 					"{C:inactive}(Hands until upgrade: {C:attention}#2#{C:inactive})",
-					"{C:inactive}(Max {C:attention}#4#{} {C:inactive}retriggers)"
+					"{C:inactive}(Max {C:attention}#4#{} {C:inactive}retriggers)",
 				},
 			},
 
@@ -286,7 +286,7 @@ return {
 					"{C:attention}+#2#{} permanent hand size when",
 					"{C:attention}Boss Blind{} is defeated",
 					"{C:inactive}(Currently {C:attention}#1#{} {C:inactive}retriggers)",
-					"{C:inactive}(Max {C:attention}#3#{} {C:inactive}retriggers)"
+					"{C:inactive}(Max {C:attention}#3#{} {C:inactive}retriggers)",
 				},
 			},
 
@@ -406,7 +406,17 @@ return {
 					"Retrigger all played face cards {C:attention}#1#{} times",
 					"Scored face cards give {X:chips,C:white}X#2#{} Chips",
 					"Face cards {C:attention}held in hand{} give {X:mult,C:white}X#3#{} Mult",
-					"{C:inactive}(Max {C:attention}#4#{} {C:inactive}retriggers)"
+					"{C:inactive}(Max {C:attention}#4#{} {C:inactive}retriggers)",
+				},
+			},
+
+			j_asc_banana = {
+				name = "Musa Acuminata",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult.",
+					"At the end of round, has a {C:attention}#3#{} in {C:attention}#4#{} chance to",
+					"duplicate itself. Otherwise, gains {X:mult,C:white}X#2#{} Mult.",
+					"{C:inactive}Must have room.{}",
 				},
 			},
 
@@ -421,6 +431,7 @@ return {
 					"{C:inactive}(Does not need room)",
 				},
 			},
+
 			j_asc_gardenfork = {
 				name = "Contra Homo",
 				text = {
