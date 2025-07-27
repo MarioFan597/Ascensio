@@ -410,6 +410,16 @@ return {
 				},
 			},
 
+			j_asc_banana = {
+				name = "Musa Acuminata",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult.",
+					"At the end of round, has a {C:attention}#3#{} in {C:attention}#4#{} chance to",
+					"duplicate itself. Otherwise, gains {X:mult,C:white}X#2#{} Mult.",
+					"{C:inactive}Must have room.{}",
+				},
+			},
+
 			-----Cryptid-----
 			j_asc_canvas = {
 				name = "Oleum Pictura",
@@ -421,6 +431,7 @@ return {
 					"{C:inactive}(Does not need room)",
 				},
 			},
+
 			j_asc_gardenfork = {
 				name = "Contra Homo",
 				text = {

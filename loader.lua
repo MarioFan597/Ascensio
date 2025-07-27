@@ -14,6 +14,7 @@ local v_jokers = {
 	"mystic_summit",
 	"misprint",
 	"fibonacci",
+	"banana",
 	"scary",
 	"abstract",
 	"blackboard",
