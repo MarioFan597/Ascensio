@@ -21,7 +21,7 @@ SMODS.Joker({
 		},
 	},
 
-	loc_vars = function(self, info_queue, card)
+	loc_vars = function(_, _, card)
 		return {
 			vars = {
 				lenient_bignum(card.ability.extra.rep),
