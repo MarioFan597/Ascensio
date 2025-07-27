@@ -16,8 +16,8 @@ SMODS.Joker({
 			xmult = 1.5,
 			cnt = 1,
 			immutable = {
-				max_rep = 40
-			}
+				max_rep = 40,
+			},
 		},
 	},
 
@@ -27,7 +27,7 @@ SMODS.Joker({
 				lenient_bignum(card.ability.extra.rep),
 				lenient_bignum(card.ability.extra.xchip),
 				lenient_bignum(card.ability.extra.xmult),
-				lenient_bignum(card.ability.extra.immutable.max_rep)
+				lenient_bignum(card.ability.extra.immutable.max_rep),
 			},
 		}
 	end,
@@ -53,9 +53,7 @@ SMODS.Joker({
 		if context.repetition and context.cardarea == G.play and context.other_card:is_face() then
 			return {
 				message = localize("k_again_ex"),
-				repetitions = to_number(
-						math.min(card.ability.immutable.max_rep, card.ability.extra.rep)
-					),
+				repetitions = to_number(math.min(card.ability.immutable.max_rep, card.ability.extra.rep)),
 			}
 		end
 		if
