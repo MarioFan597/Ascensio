@@ -1,6 +1,6 @@
 SMODS.Joker({
 	key = "dna",
-	config = { extra = { copies = 10 } },
+	config = { extra = { copies = 10, immutable = {max_copies = 40}, } },
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
@@ -10,7 +10,12 @@ SMODS.Joker({
 	cost = 50,
 	order = 51,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card and lenient_bignum(card.ability.extra.copies) } }
+		return { 
+			vars = { 
+				card and lenient_bignum(card.ability.extra.copies), 
+				card and lenient_bignum(card.ability.extra.immutable. max_copies)
+			} 
+		}
 	end,
 	calculate = function(self, card, context)
 		if context.first_hand_drawn then
@@ -47,7 +52,7 @@ SMODS.Joker({
 					return true
 				end,
 			}))
-			for i = 1, lenient_bignum(card.ability.extra.copies - 1) do
+			for i = 1, to_number(math.min(card.ability.extra.immutable.max_copies, card.ability.extra.copies - 1)) do
 				--G.playing_card = (G.playing_card and G.playing_card + 1) or 1
 				G.E_MANAGER:add_event(Event({
 					trigger = "before",

@@ -174,6 +174,7 @@ return {
 					"draws them to {C:attention}hand{}, and destroys any",
 					"remaining cards in {C:attention}hand{} that are",
 					"not identical to copied card",
+					"{C:inactive}(Max {C:attention}#2#{} {C:inactive}cards created)"
 				},
 			},
 
@@ -241,6 +242,7 @@ return {
 					"Increase number of retriggers",
 					"after {C:attention}#3#{} hands",
 					"{C:inactive}(Hands until upgrade: {C:attention}#2#{C:inactive})",
+					"{C:inactive}(Max {C:attention}#4#{} {C:inactive}retriggers)"
 				},
 			},
 
@@ -279,8 +281,12 @@ return {
 			j_asc_hanging_chad = {
 				name = "Charta Electionis",
 				text = {
-					"Retrigger the first",
-					"scored card {C:attention}#1#{} times",
+					"Retrigger the first scored",
+					"card for current handsize",
+					"{C:attention}+#2#{} permanent hand size when",
+					"{C:attention}Boss Blind{} is defeated",
+					"{C:inactive}(Currently {C:attention}#1#{} {C:inactive}retriggers)",
+					"{C:inactive}(Max {C:attention}#3#{} {C:inactive}retriggers)"
 				},
 			},
 

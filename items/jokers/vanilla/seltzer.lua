@@ -1,6 +1,6 @@
 SMODS.Joker({
 	key = "seltzer",
-	config = { extra = { retriggers = 1, played_hands = 10, goal_hands = 10 } },
+	config = { extra = { retriggers = 1, played_hands = 10, goal_hands = 10 , immutable = { max_rep = 40}, } },
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
@@ -15,20 +15,25 @@ SMODS.Joker({
 				card and lenient_bignum(card.ability.extra.retriggers),
 				card and lenient_bignum(card.ability.extra.played_hands),
 				card and lenient_bignum(card.ability.extra.goal_hands),
+				card and lenient_bignum(card.ability.extra.immutable.max_rep),
 			},
 		}
 	end,
 	calculate = function(self, card, context)
 		if context.cardarea == G.play and context.repetition and not context.repetition_only then
-			return {
-				message = "Again!",
-				repetitions = lenient_bignum(card.ability.extra.retriggers),
-				card = context.other_card,
-			}
+			return{
+                message = localize('k_again_ex'),
+                repetitions = to_number(
+						math.min(card.ability.extra.immutable.max_rep, card.ability.extra.retriggers)
+					),
+                card = card
+            }
 		end
-		if context.after then
-			card.ability.extra.played_hands = lenient_bignum(card.ability.extra.played_hands) - 1
-			if lenient_bignum(card.ability.extra.played_hands) <= 0 then
+		if context.after
+			and context.cardarea == G.jokers
+			and not context.blueprint
+		then
+			if lenient_bignum(card.ability.extra.played_hands) <= 1 then
 				card.ability.extra.retriggers = lenient_bignum(card.ability.extra.retriggers) + 1
 				card.ability.extra.played_hands = lenient_bignum(card.ability.extra.goal_hands)
 				card_eval_status_text(
@@ -39,6 +44,12 @@ SMODS.Joker({
 					nil,
 					{ message = localize("k_upgrade_ex"), colour = G.C.GOLD }
 				)
+			else
+				card.ability.extra.played_hands = lenient_bignum(card.ability.extra.played_hands) - 1
+                    return {
+                        message = card.ability.extra.played_hands..'',
+                        colour = G.C.FILTER
+                    }
 			end
 		end
 	end,

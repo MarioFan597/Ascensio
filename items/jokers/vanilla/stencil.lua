@@ -1,6 +1,6 @@
 SMODS.Joker({
 	key = "stencil",
-	config = { extra = { mult = 0, mult_gain = 1, joker_slots = 0, slot_gain = 1 } },
+	config = { extra = { mult = 0, mult_gain = 1, immutable = {joker_slots = 0,}, slot_gain = 1 } },
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
@@ -14,7 +14,7 @@ SMODS.Joker({
 			vars = {
 				card and lenient_bignum(card.ability.extra.mult),
 				card and lenient_bignum(card.ability.extra.mult_gain),
-				card and lenient_bignum(card.ability.extra.joker_slots),
+				card and lenient_bignum(card.ability.extra.immutable.joker_slots),
 				card and lenient_bignum(card.ability.extra.slot_gain),
 			},
 		}
@@ -38,7 +38,7 @@ SMODS.Joker({
 		end
 
 		if (context.ending_shop or context.forcetrigger) and not context.blueprint then
-			card.ability.extra.joker_slots = lenient_bignum(card.ability.extra.joker_slots)
+			card.ability.extra.immutable.joker_slots = lenient_bignum(card.ability.extra.immutable.joker_slots)
 				+ lenient_bignum(card.ability.extra.slot_gain)
 			G.jokers.config.card_limit = G.jokers.config.card_limit + lenient_bignum(card.ability.extra.slot_gain)
 			card_eval_status_text(card, "extra", nil, nil, nil, {
@@ -67,12 +67,12 @@ SMODS.Joker({
 			card.ability.extra.mult = (
 				(G.jokers.config.card_limit - #G.jokers.cards) * lenient_bignum(card.ability.extra.mult_gain)
 			)
-			G.jokers.config.card_limit = G.jokers.config.card_limit + lenient_bignum(card.ability.extra.joker_slots)
+			G.jokers.config.card_limit = G.jokers.config.card_limit + lenient_bignum(card.ability.extra.immutable.joker_slots)
 		end
 	end,
 	remove_from_deck = function(self, card, from_debuff)
 		if G.jokers and not from_debuff then
-			G.jokers.config.card_limit = G.jokers.config.card_limit - lenient_bignum(card.ability.extra.joker_slots)
+			G.jokers.config.card_limit = G.jokers.config.card_limit - lenient_bignum(card.ability.extra.immutable.joker_slots)
 		end
 	end,
 	asc_credits = {
