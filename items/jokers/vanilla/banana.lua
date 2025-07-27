@@ -6,7 +6,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	demicoloncompat = true,
 	pos = { x = 3, y = 8 },
-	-- soul_pos = { x = 5, y = 8, extra = { x = 4, y = 8 } },
+	soul_pos = { x = 5, y = 8, extra = { x = 4, y = 8 } },
 	cost = 50,
 	order = 3,
 	loc_vars = function(_, _, card)
