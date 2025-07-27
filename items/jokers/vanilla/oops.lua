@@ -61,6 +61,7 @@ SMODS.Joker({
 			and not context.blueprint_card
 			and not context.retrigger_joker
 		then
+			local converted = false
 			for i = 1, #context.scoring_hand do
 				local _card = context.scoring_hand[i]
 				converted = true
