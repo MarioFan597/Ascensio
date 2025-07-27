@@ -1,6 +1,6 @@
 SMODS.Joker({
 	key = "banana",
-	config = { extra = { xmult = 15, xmult_gain = 2.5, probability_num = 1, probability_denum = 8 } },
+	config = { extra = { xmult = 15, xmult_gain = 2.5, probability_num = 1, probability_denum = 64 } },
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
