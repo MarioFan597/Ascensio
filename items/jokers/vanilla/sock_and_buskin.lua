@@ -86,6 +86,7 @@ SMODS.Joker({
 		},
 		code = {
 			"OmegaLife",
+			"MarioFan597",
 		},
 	},
 })
