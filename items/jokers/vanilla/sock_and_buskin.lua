@@ -15,9 +15,10 @@ SMODS.Joker({
 			xchip = 1.5,
 			xmult = 1.5,
 			cnt = 1,
-			immutable = {
-				max_rep = 40,
-			},
+		},
+
+		immutable = {
+			max_rep = 40,
 		},
 	},
 
