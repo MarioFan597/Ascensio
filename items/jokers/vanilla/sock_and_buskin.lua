@@ -28,7 +28,7 @@ SMODS.Joker({
 				lenient_bignum(card.ability.extra.rep),
 				lenient_bignum(card.ability.extra.xchip),
 				lenient_bignum(card.ability.extra.xmult),
-				lenient_bignum(card.ability.extra.immutable.max_rep),
+				lenient_bignum(card.ability.immutable.max_rep),
 			},
 		}
 	end,
