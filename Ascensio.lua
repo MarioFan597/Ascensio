@@ -85,12 +85,12 @@ ascensionable = {
 	j_misprint = "j_asc_misprint",
 	j_fibonacci = "j_asc_fibonacci",
 	j_gros_michel = "j_asc_banana",
-	j_cavendish = "j_asc_banana",
 	j_scary_face = "j_asc_scary",
 	j_abstract = "j_asc_abstract",
 	j_blackboard = "j_asc_blackboard",
 	j_dna = "j_asc_dna",
 	j_blue_joker = "j_asc_blue",
+	j_cavendish = "j_asc_banana",
 	j_square = "j_asc_square",
 	j_midas_mask = "j_asc_midas",
 	j_to_the_moon = "j_asc_to_the_moon",
@@ -137,12 +137,20 @@ ascensionable = {
 	j_entr_sunny_joker = "j_asc_sunny_joker",
 }
 
----------Joker Ascension Dictionary-----------
+---------Joker Apothable Dictionary-----------
 apothable = {
 	---Entropy
 	j_entr_sunny_joker = "j_asc_sunny_joker_entr",
 	j_asc_sunny_joker = "j_asc_sunny_joker_entr",
 }
+
+---------Extra Rarites-----------
+
+SMODS.Rarity({
+	key = "banana", --Throwaway rariety for Musa Ingles
+	badge_colour = HEX("FFE135"),
+})
+
 
 ------Extra Functions----------
 

@@ -155,6 +155,18 @@ return {
 					"{C:inactive}(Currently {X:dark_edition,C:white}^#1#{} {C:inactive}Mult)",
 				},
 			},
+
+			j_asc_banana = {
+				name = "Musa Acuminata",
+				text = {
+					"{X:mult,C:white}X#1#{} Mult",
+					"At the end of round, has a",
+					"{C:green}#3# in #4#{} chance to duplicate itself",
+					"Otherwise, gains {X:mult,C:white}X#2#{} Mult",
+					"{C:inactive}(Must have room){}",
+				},
+			},
+
 			j_asc_blackboard = {
 				name = "Tabula Lapidea",
 				text = {
@@ -186,6 +198,15 @@ return {
 					"Gains {X:chips,C:white}X#3#{} Chips when",
 					"a card is added to {C:attention}deck{}",
 					"{C:inactive}(Currently: {}{X:chips,C:white}X#1#{C:inactive} chips)",
+				},
+			},
+
+			j_asc_musa_ingens = {
+				name = "Musa Ingens",
+				text = {
+					"{X:dark_edition,C:white}^#1#{} Mult",
+					"{C:money,E:2}OH, BANANA!{}",
+
 				},
 			},
 
@@ -410,16 +431,6 @@ return {
 				},
 			},
 
-			j_asc_banana = {
-				name = "Musa Acuminata",
-				text = {
-					"{X:mult,C:white}X#1#{} Mult.",
-					"At the end of round, has a {C:attention}#3#{} in {C:attention}#4#{} chance to",
-					"duplicate itself. Otherwise, gains {X:mult,C:white}X#2#{} Mult.",
-					"{C:inactive}Must have room.{}",
-				},
-			},
-
 			-----Cryptid-----
 			j_asc_canvas = {
 				name = "Oleum Pictura",
@@ -633,6 +644,8 @@ return {
 	},
 	misc = {
 		dictionary = {
+			k_asc_banana = "Banana", --Banana Rariety Label
+			asc_banana_ex = "Banana!",
 			asc_config = "Config",
 			asc_config_insanity_mode = "Insanity Mode!!!",
 		},

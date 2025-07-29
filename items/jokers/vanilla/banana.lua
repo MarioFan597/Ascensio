@@ -1,6 +1,6 @@
 SMODS.Joker({
 	key = "banana",
-	config = { extra = { xmult = 15, xmult_gain = 2.5, probability_num = 1, probability_denum = 64 } },
+	config = { extra = { xmult = 15, xmult_gain = 2.5, probability_denum = 64 } },
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
@@ -9,19 +9,18 @@ SMODS.Joker({
 	soul_pos = { x = 5, y = 8, extra = { x = 4, y = 8 } },
 	cost = 50,
 	order = 3,
-	loc_vars = function(_, _, card)
+	loc_vars = function(self, info_queue, card)
 		return {
 			vars = {
 				lenient_bignum(card.ability.extra.xmult),
 				lenient_bignum(card.ability.extra.xmult_gain),
-				lenient_bignum(card.ability.extra.probability_num),
+				cry_prob(card.ability.cry_prob, lenient_bignum(card.ability.extra.probability_denum), card.ability.cry_rigged),
 				lenient_bignum(card.ability.extra.probability_denum),
 			},
 		}
 	end,
-	calculate = function(_, card, context)
-		card.ability.extra.probability_num = math.floor(card.ability.extra.probability_num)
-		card.ability.extra.probability_denum = math.floor(card.ability.extra.probability_denum)
+	calculate = function(self, card, context)
+		
 
 		if context.joker_main or context.forcetrigger then
 			return {
@@ -35,17 +34,31 @@ SMODS.Joker({
 			}
 		end
 
-		if context.end_of_round and not (context.individual or context.repetition or context.blueprint) then
+		if context.end_of_round 
+			and not (context.individual 
+			or context.repetition 
+			or context.blueprint) 
+		then
 			if
-				SMODS.pseudorandom_probability(
-					card,
-					"minion_5_when",
-					lenient_bignum(card.ability.extra.probability_num),
-					lenient_bignum(card.ability.extra.probability_denum)
-				)
+				pseudorandom("ooooooooooh banana")
+				< cry_prob(card.ability.cry_prob, card.ability.extra.probability_denum, card.ability.cry_rigged)
+					/ card.ability.extra.probability_denum
 				and #G.jokers.cards
 				and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit
+				and not (context.blueprint
+				or context.repetition
+				or context.retrigger_joker_check 
+				or context.retrigger_joker)
 			then
+				local roundcreatejoker = math.min(1, G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer))
+				G.GAME.joker_buffer = G.GAME.joker_buffer + roundcreatejoker
+					card_eval_status_text(
+					card,
+					"extra",
+					nil,
+					nil,
+					nil,
+					{ message = localize("asc_banana_ex"), colour = G.C.MONEY })
 				G.E_MANAGER:add_event(Event({
 					func = function()
 						local _card = copy_card(card, nil, nil, nil, card.edition and card.edition.negative)
@@ -53,11 +66,12 @@ SMODS.Joker({
 						_card:add_to_deck()
 						G.jokers:emplace(_card)
 						_card:start_materialize()
+						G.GAME.joker_buffer = 0
 						return true
 					end,
 				}))
 
-				card_eval_status_text(card, "extra", nil, nil, nil, { message = localize("k_duplicated_ex") })
+				--card_eval_status_text(card, "extra", nil, nil, nil, { message = localize("k_duplicated_ex") })
 				return nil, true
 			else
 				card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
@@ -72,6 +86,6 @@ SMODS.Joker({
 	asc_credits = {
 		idea = { "OmegaLife" },
 		art = { "Lil Mr. Slipstream" },
-		code = { "OmegaLife" },
+		code = { "OmegaLife"},
 	},
 })
