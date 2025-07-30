@@ -17,6 +17,8 @@ local v_jokers = {
 	"scary",
 	"abstract",
 	"banana",
+	"even_steven",
+	"odd_todd",
 	"blackboard",
 	"dna",
 	"blue",

@@ -167,6 +167,31 @@ return {
 				},
 			},
 
+			j_asc_even_steven = {
+				name = "Sinistra",
+				text = {
+					"Played cards with {C:attention}even{} rank", 
+					"give {X:mult,C:white}X#1#{} Mult when scored",
+					"Instead gives {X:mult,C:white}X#2#{} Mult",
+					"if played hand has an {C:attention}even{}",
+					"amount of cards in it",
+					"{C:inactive}(10, 8, 6, 4, 2){}",
+				},
+			},
+
+			j_asc_odd_todd = {
+				name = "Dextra",
+				text = {
+					"Played cards with {C:attention}odd{} rank", 
+					"give {X:chips,C:white}X#1#{} Chips when scored",
+					"Instead gives {X:chips,C:white}X#2#{} Chips",
+					"if played hand has an {C:attention}odd{}",
+					"amount of cards in it",
+					"{C:inactive}(A, 9, 7, 5, 3){}",
+				},
+			},
+
+
 			j_asc_blackboard = {
 				name = "Tabula Lapidea",
 				text = {
