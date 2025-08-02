@@ -14,7 +14,7 @@ SMODS.Joker({
 			xmult = 3,
 			immutable = {
 				max_rep = 40,
-				redo = 0
+				redo = 0,
 			},
 		},
 	},
@@ -33,7 +33,9 @@ SMODS.Joker({
 			if card.ability.extra.immutable.redo > 1 then
 				return {
 					message = localize("k_again_ex"),
-					repetitions = to_number(math.min(card.ability.extra.immutable.max_rep, card.ability.extra.immutable.redo - 1)),
+					repetitions = to_number(
+						math.min(card.ability.extra.immutable.max_rep, card.ability.extra.immutable.redo - 1)
+					),
 				}
 			end
 		end

@@ -153,7 +153,6 @@ SMODS.Rarity({
 	badge_colour = HEX("FFE135"),
 })
 
-
 ------Extra Functions----------
 
 function factorial(n)
