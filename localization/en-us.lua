@@ -361,7 +361,7 @@ return {
 					"{C:inactive}(Max {C:attention}#4#{} {C:inactive}retriggers)",
 				},
 				{
-					"Scored {C:attention}face{} cards",
+					"{C:attention}Face{} cards scored",
 					"give {X:chips,C:white}X#2#{} Chips and those",
 					"{C:attention}held in hand{} give {X:mult,C:white}X#3#{} Mult",
 				}},
