@@ -50,12 +50,17 @@ return {
 
 			j_asc_stencil = {
 				name = "Inanis",
-				text = {
+				text = {{
 					"Gains {X:mult,C:white}X#2#{} Mult for every",
-					"empty {C:attention}Joker{} slot at end of round",
-					"Gains {C:dark_edition}+#4#{} {C:attention}Joker{} slots at end of shop",
-					"{C:inactive}(Currently {}{X:mult,C:white}X#1#{}{C:inactive} Mult and {}{C:dark_edition}+#3#{C:inactive} Joker Slots)",
+					"empty {C:attention}Joker{} slot",
+					"at end of round",
+					"{C:inactive}(Currently {}{X:mult,C:white}X#1#{}{C:inactive} Mult)"
 				},
+				{
+					"Gains {C:dark_edition}+#4#{} {C:attention}Joker{} slots",
+					"at end of shop",
+					"{C:inactive}(Currently {}{C:dark_edition}+#3#{C:inactive} Joker Slots)",
+				}},
 			},
 
 			j_asc_four_fingers = {
@@ -70,20 +75,28 @@ return {
 
 			j_asc_mime = {
 				name = "Silentium",
-				text = {
-					"The {C:dark_edition}editions{} of Playing Cards",
-					"become held in hand effects",
-					"{C:attention}Retrigger{} all cards held in hand once",
-					"{C:attention}Retrigger{} editioned Playing Cards once",
+				text = {{
+					"The {C:dark_edition}editions{} of",
+					"Playing Cards become",
+					"held in hand effects",
 				},
+				{
+					"{C:attention}Retrigger{} all cards",
+					"held in hand once",
+				},
+				{
+					"{C:attention}Retrigger{} editioned",
+					"Playing Cards once",
+				}},
 			},
 
 			j_asc_ceremonial = {
 				name = "Fractus Capulo",
 				text = {
-					"When Blind is selected",
-					"{C:green}#1# in #2#{} chance to destroy every other Joker",
-					"Gains {X:dark_edition,C:white}^#3#{} Mult for each Joker destroyed this way",
+					"When Blind is selected, {C:green}#1# in #2#{} chance",
+					"to destroy every other {C:attention}Joker{}",
+					"Gains {X:dark_edition,C:white}^#3#{} Mult for each",
+					"{C:attention}Joker{} destroyed this way",
 					"{C:inactive}(Currently {X:dark_edition,C:white}^#4#{}{C:inactive} Mult)",
 				},
 			},
@@ -101,13 +114,15 @@ return {
 
 			j_asc_banner = {
 				name = "Conquestum",
-				text = {
+				text = {{
 					"Gains {X:chips,C:white}X#2#{} Chips per remaining",
 					"{C:attention}discard{} every hand played",
-					"On scoring, {X:chips,C:white}X#3#{} Chips for",
-					"each remaining {C:attention}discard{}",
 					"{C:inactive}(Currently {X:chips,C:white}X#1#{}{C:inactive} Chips)",
 				},
+				{
+					"On scoring, {X:chips,C:white}X#3#{} Chips for",
+					"each remaining {C:attention}discard{}",
+				}},
 			},
 
 			j_asc_mystic_summit = {
@@ -128,14 +143,16 @@ return {
 
 			j_asc_fibonacci = {
 				name = "Proportio Aurea",
-				text = {
+				text = {{
 					"Each played {C:attention}Ace{}, {C:attention}2{}, {C:attention}3{}, {C:attention}5{}, or {C:attention}8{}",
 					"gives {X:mult,C:white}X#1#{} Mult when scored",
+				},
+				{
 					"Joker gains previous {X:mult,C:white}X{} Mult",
 					"before scoring each card",
 					"Resets each hand played",
 					"{C:inactive}[ex: X1, X2, X3, X5, X8, etc.]",
-				},
+				}},
 			},
 
 			j_asc_scary = {
@@ -164,43 +181,51 @@ return {
 					"{C:green}#3# in #4#{} chance to duplicate itself",
 					"Otherwise, gains {X:mult,C:white}X#2#{} Mult",
 					"{C:inactive}(Must have room){}",
+					"{C:money,E:2}OH, BANANA!{}",
 				},
 			},
 
 			j_asc_even_steven = {
 				name = "Sinistra",
-				text = {
+				text = {{
 					"Played cards with {C:attention}even{} rank", 
 					"give {X:mult,C:white}X#1#{} Mult when scored",
+					"{C:inactive}(10, 8, 6, 4, 2){}",
+				},
+				{
 					"Instead gives {X:mult,C:white}X#2#{} Mult",
 					"if played hand has an {C:attention}even{}",
 					"amount of cards in it",
-					"{C:inactive}(10, 8, 6, 4, 2){}",
-				},
+				}},
 			},
 
 			j_asc_odd_todd = {
 				name = "Dextra",
-				text = {
+				text = {{
 					"Played cards with {C:attention}odd{} rank", 
 					"give {X:chips,C:white}X#1#{} Chips when scored",
+					"{C:inactive}(A, 9, 7, 5, 3){}",
+				},
+				{
 					"Instead gives {X:chips,C:white}X#2#{} Chips",
 					"if played hand has an {C:attention}odd{}",
 					"amount of cards in it",
-					"{C:inactive}(A, 9, 7, 5, 3){}",
-				},
+				}},
 			},
 
 
 			j_asc_blackboard = {
 				name = "Tabula Lapidea",
-				text = {
-					"Gains {X:mult,C:white}X#3#{} Mult for all",
-					"{C:spade}Spades{} & {C:club}Clubs{} held in hand;",
-					"instead gains {X:mult,C:white}X#2#{} Mult per card",
-					"if all cards are {C:spade}Spades{} or {C:club}Clubs{}",
+				text = {{
+					"Gains {X:mult,C:white}X#3#{} Mult for every",
+					"{C:spade}Spades{} & {C:club}Clubs{} held in hand",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult)",
 				},
+				{
+					"Instead gains {X:mult,C:white}X#2#{} Mult per card",
+					"if all cards are {C:spade}Spades{} or {C:club}Clubs{}",
+					
+				}},
 			},
 
 			j_asc_dna = {
@@ -208,22 +233,24 @@ return {
 				text = {
 					"If {C:attention}first hand{} of round has only {C:attention}1{} card,",
 					"add {C:attention}#1#{} permanent copies to deck,",
-					"draws them to {C:attention}hand{}, and destroys any",
-					"remaining cards in {C:attention}hand{} that are",
-					"not identical to copied card",
+					"draw them to {C:attention}hand{}, and destroy",
+					"non-identical cards held in {C:attention}hand{}",
 					"{C:inactive}(Max {C:attention}#2#{} {C:inactive}cards created)",
 				},
 			},
 
 			j_asc_blue = {
 				name = "Magnus Sapphirus",
-				text = {
+				text = {{
 					"{X:chips,C:white}X#2#{} Chips for each",
-					"remaining card in {C:attention}deck{},",
-					"Gains {X:chips,C:white}X#3#{} Chips when",
-					"a card is added to {C:attention}deck{}",
+					"remaining card in {C:attention}deck{}",
 					"{C:inactive}(Currently: {}{X:chips,C:white}X#1#{C:inactive} chips)",
 				},
+				{
+					"Increases Chips per card",
+					"by {X:chips,C:white}X#3#{} when a card",
+					"is added to {C:attention}deck{}",
+				}},
 			},
 
 			j_asc_musa_ingens = {
@@ -247,12 +274,14 @@ return {
 
 			j_asc_midas = {
 				name = "Rex Midas",
-				text = {
+				text = {{
 					"All played cards become",
-					"{C:attention}Gold{} and {C:attention}Golden{} when scored,",
+					"{C:attention}Gold{} and {C:attention}Golden{} when scored",
+				},
+				{
 					"{C:attention}Gold{} cards held in hand",
 					"give {X:dark_edition,C:white}^#1#{} Mult",
-				},
+				}},
 			},
 
 			j_asc_to_the_moon = {
@@ -283,24 +312,59 @@ return {
 
 			j_asc_seltzer = {
 				name = "Bulla Aquae",
-				text = {
+				text = {{
 					"Retriggers all cards played {C:attention}#1#{} time(s)",
+					"{C:inactive}(Max {C:attention}#4#{} {C:inactive}retriggers)"
+				},
+				{
 					"Increase number of retriggers",
 					"after {C:attention}#3#{} hands",
 					"{C:inactive}(Hands until upgrade: {C:attention}#2#{C:inactive})",
-					"{C:inactive}(Max {C:attention}#4#{} {C:inactive}retriggers)",
+				}},
+			},
+
+			j_asc_smiley_face = {
+				name = "Acclamatio",
+				text = {{
+					"Retrigger {C:attention}face{} cards for", 
+					"amount of previously scored",
+					"{C:attention}face{} cards in played hand",
+					"{C:inactive}(Max {C:attention}#2#{} {C:inactive}retriggers)",
 				},
+				{
+					"Played {C:attention}face{} cards give",
+					"{C:white,X:mult}X#1#{} Mult when scored",
+				}},
 			},
 
 			j_asc_campfire = {
 				name = "Silva Ardens",
-				text = {
-					"Gains {C:white,X:dark_edition}^#2#{} Mult for each card {C:attention}sold{}, resets",
-					"Mult and increases gain by {C:white,X:dark_edition}^#3#{} Mult",
-					"for each item {C:attention}sold{} this {C:attention}Ante{}",
-					"when a {C:attention}Boss Blind{} is defeated",
-					"{C:inactive}(Currently {}{C:white,X:dark_edition}^#1#{C:inactive} Mult and {C:attention}#4#{} {C:inactive}cards sold){}",
+				text = {{
+					"Gains {C:white,X:dark_edition}^#2#{} Mult for each card {C:attention}sold{}",
+					"Resets when {C:attention}Boss Blind{} is defeated",
+					"{C:inactive}(Currently {}{C:white,X:dark_edition}^#1#{C:inactive} Mult)",
 				},
+				{
+					"Increases gain after",
+					"{C:attention}Boss Blind{} by {C:white,X:dark_edition}^#3#{} Mult",
+					"for each card {C:attention}sold{} this {C:attention}Ante{}",
+					"{C:inactive}(Currently {C:attention}#4#{} {C:inactive}cards sold){}",
+				}},
+			},
+
+			j_asc_sock_and_buskin = {
+				name = "Thalia et Melpomene",
+				text = {{
+
+					"Retrigger all played",
+					"{C:attention}face{} cards {C:attention}#1#{} times",
+					"{C:inactive}(Max {C:attention}#4#{} {C:inactive}retriggers)",
+				},
+				{
+					"Scored {C:attention}face{} cards",
+					"give {X:chips,C:white}X#2#{} Chips and those",
+					"{C:attention}held in hand{} give {X:mult,C:white}X#3#{} Mult",
+				}},
 			},
 
 			j_asc_smeared = {
@@ -308,7 +372,7 @@ return {
 				text = {
 					"{C:attention}All{} cards count as",
 					"every {C:attention}suit{} and every {C:attention}rank{}",
-					"cards with a suit or a rank",
+					"Cards with a suit or a rank",
 					"{C:attention}cannot{} be debuffed",
 				},
 			},
@@ -326,36 +390,42 @@ return {
 
 			j_asc_hanging_chad = {
 				name = "Charta Electionis",
-				text = {
+				text = {{
 					"Retrigger the first scored",
 					"card for current handsize",
-					"{C:attention}+#2#{} permanent hand size when",
-					"{C:attention}Boss Blind{} is defeated",
 					"{C:inactive}(Currently {C:attention}#1#{} {C:inactive}retriggers)",
 					"{C:inactive}(Max {C:attention}#3#{} {C:inactive}retriggers)",
 				},
+				{
+					"{C:attention}+#2#{} permanent hand size when",
+					"{C:attention}Boss Blind{} is defeated",
+				}},
 			},
 
 			j_asc_blueprint = {
 				name = "Hyacintho Progressus",
-				text = {
+				text = {{
 					"Retriggers {C:attention}Joker{} to the right",
 					"for each copy of that {C:attention}Joker{} you own",
-					"{C:attention}Duplicate Joker{} to the right at end of shop",
-					"{C:inactive}(Must have room)",
 				},
+				{
+					"{C:attention}Duplicate Joker{} to right at end of shop",
+					"{C:inactive}(Must have room)",
+				}},
 			},
 
 			j_asc_oops = {
 				name = "Fortunae Risus",
-				text = {
+				text = {{
 					"{C:cry_code}Rig{} all scored cards and a random",
-					"{C:attention}Joker{} before each hand played,",
-					"{C:red}fixed{} {C:green}1 in 6{} chance to grant",
-					"{C:dark_edition}+#1#{} {C:attention}Joker{} or consumable slot",
-					"{C:inactive}(Currently {C:dark_edition}+#2#{}{C:attention} Joker{}{C:inactive} slot(s) and",
-					"{C:attention}+#3#{} {C:inactive}consumable slot(s))",
+					"{C:attention}Joker{} before each hand played",
 				},
+				{
+					"{C:red}Fixed{} {C:green}1 in 6{} chance each hand to grant",
+					"{C:dark_edition}+#1#{} {C:attention}Joker{} or consumable slot",
+					"{C:inactive}(Currently {C:dark_edition}+#2#{}{C:attention} Joker{}{C:inactive} slot(s)",
+					"{C:inactive}and {C:attention}+#3#{} {C:inactive}consumable slot(s))",
+				}},
 			},
 
 			j_asc_duo = {
@@ -410,13 +480,16 @@ return {
 
 			j_asc_brainstorm = {
 				name = "Magnum Opus",
-				text = {
-					"Retrigger leftmost {C:attention}Joker{} by number of ",
-					"{C:attention}Jokers{} between it and this {C:attention}Joker{} inclusively,", -- comma splice to be consistent with vanilla. womp womp to all the grammar people
-					"at end of shop, create a {C:attention}Joker",
-					"of same rarity as leftmost",
-					"{C:inactive}(Cannot affect self and must have room)",
+				text = {{
+					"Retrigger leftmost {C:attention}Joker{} by",
+					"number of {C:attention}Jokers{} between it",
+					"and this {C:attention}Joker{} inclusively"
 				},
+				{
+					"At end of shop, create a {C:attention}Joker",
+					"of same rarity as leftmost",
+					"{C:inactive,s:0.9}(Cannot affect self; must have room)",
+				}},
 			},
 
 			j_asc_drivers_license = {
@@ -446,26 +519,19 @@ return {
 				},
 			},
 
-			j_asc_sock_and_buskin = {
-				name = "Thalia et Melpomene",
-				text = {
-					"Retrigger all played face cards {C:attention}#1#{} times",
-					"Scored face cards give {X:chips,C:white}X#2#{} Chips",
-					"Face cards {C:attention}held in hand{} give {X:mult,C:white}X#3#{} Mult",
-					"{C:inactive}(Max {C:attention}#4#{} {C:inactive}retriggers)",
-				},
-			},
-
 			-----Cryptid-----
 			j_asc_canvas = {
 				name = "Oleum Pictura",
-				text = {
+				text = {{
 					"{C:attention}Retrigger{} all {C:attention}Jokers{} to the left",
 					"once for {C:attention}every{} Joker{} including itself",
 					"to the right of this Joker",
-					"Creates a {C:dark_edition}Negative{} {C:attention,T:j_joker}Joker{} when exiting shop",
-					"{C:inactive}(Does not need room)",
 				},
+				{
+					"Creates a {C:dark_edition}Negative{} {C:attention,T:j_joker}Joker{}",
+					"when exiting shop",
+					"{C:inactive}(Does not need room)",
+				}},
 			},
 
 			j_asc_gardenfork = {
@@ -500,7 +566,7 @@ return {
 				name = "Lucerna",
 				text = {
 					"Increase values of all {C:attention}Jokers",
-					"by {C:attention}X#1#{} at the end of round.",
+					"by {C:attention}X#1#{} at the end of round",
 					"{C:inactive}(Does not affect self)", -- oil lamp does not say "if possible," so why should this
 				},
 			},
@@ -508,9 +574,9 @@ return {
 			j_asc_hunting_season = {
 				name = "Sine Fine Venari",
 				text = {
-					"If Hand contains an odd number of cards above {C:attention}1{},",
+					"If Hand contains odd number of cards above {C:attention}1{},",
 					"{C:red}destroy{} the {C:attention}center{} card after scoring",
-					"Remaining played cards gain bonus {X:mult,C:white}XMult{}",
+					"Remaining played cards gain {X:mult,C:white}XMult{}",
 					"equal to {C:red}destroyed{} card's rank",
 					"{C:inactive}(J = 11, Q = 12, K = 13, A = 14)",
 					--divided by {C:attention}10{}",
@@ -519,12 +585,14 @@ return {
 
 			j_asc_code_joker = {
 				name = "Transcriptio Virtualis",
-				text = {
+				text = {{
 					"Creates a {C:dark_edition}Negative{} {C:cry_code}Code Card{} when",
 					"{C:attention}Blind{} is selected with {C:attention}#1#{} uses",
+				},
+				{
 					"Increase uses by {C:attention}#2#{}",
 					"at the end of {C:attention}Boss Blind{}",
-				},
+				}},
 			},
 
 			-----Cryptid Mortals-----
@@ -533,7 +601,7 @@ return {
 				name = "Birthday Cake",
 				text = {
 					"{C:chips}+#1#{} Chips",
-					"{C:chips}-#2#{} Chips per {C:attention}reroll{},", -- see flash card for {c} formatting on "reroll" when used in reference to gaining/losing values
+					"{C:chips}-#2#{} Chips per {C:attention}reroll{}", -- see flash card for {c} formatting on "reroll" when used in reference to gaining/losing values
 					"{C:green}Rerolls{} are free", -- see choas the clown for {c} formatting on "reroll" when used in reference to free rerolls
 				},
 			},
@@ -580,12 +648,14 @@ return {
 
 			j_asc_facsimile = {
 				name = "Coccineum Progressus",
-				text = {
+				text = {{
 					"Retriggers {C:attention}Joker{} to the left",
 					"for each copy of that {C:attention}Joker{} you own",
-					"{C:attention}Duplicate Joker{} to the left at end of shop",
-					"{C:inactive}(Must have room)",
 				},
+				{
+					"{C:attention}Duplicate Joker{} to right at end of shop",
+					"{C:inactive}(Must have room)",
+				}},
 			},
 
 			-----Entropy-----
