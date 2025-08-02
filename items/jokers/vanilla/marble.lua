@@ -1,0 +1,1 @@
+SMODS.Joker({})

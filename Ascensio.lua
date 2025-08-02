@@ -164,7 +164,7 @@ function factorial(n)
 end
 
 ---Cryptid's Credit System----
---This was modified and taken from Entropy
+-- This was modified and taken from Entropy
 
 ---Ascensio Tag
 local smcmb = SMODS.create_mod_badges
@@ -370,7 +370,7 @@ function SMODS.create_mod_badges(obj, badges)
 				},
 			}
 			local function eq_col(x, y)
-				for i = 1, 4 do
+				for _ = 1, 4 do
 					if x[1] ~= y[1] then
 						return false
 					end
@@ -502,8 +502,6 @@ end
 
 ------Mod Menu Tabs (Taken directly and modified from more mario jokers)
 
-local current_mod = SMODS.current_mod
-local mod_path = SMODS.current_mod.path
 asc_config = SMODS.current_mod.config
 if asc_config["Insanity Mode!!!"] == nil then
 	asc_config["Insanity Mode!!!"] = false
@@ -541,6 +539,7 @@ local ascensioTabs = function()
 		},
 	}
 end
+
 SMODS.current_mod.extra_tabs = ascensioTabs
 ----------------------------------------------
 ------------MOD CODE END----------------------

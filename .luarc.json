@@ -1,0 +1,17 @@
+{
+    "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+    "diagnostics.globals": [
+        "G",
+        "Cryptid",
+        "localize",
+        "lenient_bignum",
+        "to_number",
+        "cry_prob",
+        "pseudorandom",
+        "card_eval_status_text",
+        "create_toggle"
+    ],
+    "runtime": {
+        "version": "LuaJIT"
+    }
+}
