@@ -140,6 +140,21 @@ return {
 				},
 			},
 
+			j_asc_marble = {
+				name = "Stela Marmorea",
+				text = {
+					{
+						"Retrigger played {C:attention}Stone{} Card {C:attention}#1#{} times.",
+						"Stone cards gives {X:dark_edition,C:white}^#2#{} Chips when scored.",
+					},
+					{
+						"Creates {C:attention}#3#{} {C:attention}Red Sealed{}, {C:dark_edition}Mosaic{} {C:attention}Stone{} cards",
+						"when {C:attention}Blind{} is selected.",
+					},
+					{ "{C:inactive,S:0.8}Max 40 retriggers, and 8 cards created at once.{}" },
+				},
+			},
+
 			j_asc_misprint = {
 				name = "Defectus",
 				text = {
@@ -155,10 +170,10 @@ return {
 						"gives {X:mult,C:white}X#1#{} Mult when scored",
 					},
 					{
-						"Joker gains previous {X:mult,C:white}X{} Mult",
+						"Joker gains previous {X:mult,C:white}XMult{}",
 						"before scoring each card",
-						"Resets each hand played",
-						"{C:inactive}[ex: X1, X2, X3, X5, X8, etc.]",
+						"Resets each hand played.",
+						"{C:inactive}(e.g: X1, X2, X3, X5, X8, etc.){}",
 					},
 				},
 			},

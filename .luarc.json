@@ -9,7 +9,10 @@
         "cry_prob",
         "pseudorandom",
         "card_eval_status_text",
-        "create_toggle"
+        "create_toggle",
+        "playing_card_joker_effects",
+        "copy_card",
+        "draw_card"
     ],
     "runtime": {
         "version": "LuaJIT"

@@ -32,6 +32,7 @@ SMODS.Joker({
 			},
 		}
 	end,
+
 	calculate = function(_, card, context)
 		if context.individual and context.cardarea == G.play then
 			if context.other_card:is_face() then
@@ -57,6 +58,7 @@ SMODS.Joker({
 				repetitions = to_number(math.min(card.ability.immutable.max_rep, card.ability.extra.rep)),
 			}
 		end
+
 		if
 			context.individual
 			and context.cardarea == G.hand

@@ -9,7 +9,7 @@ SMODS.Joker({
 	soul_pos = { x = 5, y = 8, extra = { x = 4, y = 8 } },
 	cost = 50,
 	order = 3,
-	loc_vars = function(self, info_queue, card)
+	loc_vars = function(_, _, card)
 		return {
 			vars = {
 				lenient_bignum(card.ability.extra.xmult),
