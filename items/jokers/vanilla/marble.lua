@@ -30,7 +30,7 @@ SMODS.Joker({
 				lenient_bignum(math.min(card.ability.extra.retrigger, card.ability.immutable.recap)),
 				lenient_bignum(math.min(card.ability.extra.create, card.ability.immutable.cacap)),
 				lenient_bignum(card.ability.immutable.recap),
-				lenient_bignum(card.ability.immutable.cacap)
+				lenient_bignum(card.ability.immutable.cacap),
 			},
 		}
 	end,
@@ -64,39 +64,39 @@ SMODS.Joker({
 					area = G.discard,
 				})
 				if card.ability.extra.create <= 5 and not Talisman.config_file.disable_anims then
-					stone:set_edition('e_cry_mosaic')		
+					stone:set_edition("e_cry_mosaic")
 				else
-					stone:set_edition('e_cry_mosaic', nil, true)
+					stone:set_edition("e_cry_mosaic", nil, true)
 				end
 				table.insert(stones, stone)
 				--Modifed VanillaRemade Stone Joker for the visual aspect
-					G.playing_card = (G.playing_card and G.playing_card + 1) or 1
-	            	stone.playing_card = G.playing_card
-	            	table.insert(G.playing_cards, stone)
-	            	 G.E_MANAGER:add_event(Event({
-	                func = function()
-	                    stone:start_materialize({ G.C.SECONDARY_SET.Enhanced })
-	                    G.play:emplace(stone)
-	                    return true
-	                end
-	            	}))
-			end
-				return {
-					message = '+'.. card.ability.extra.retrigger ..' '.. localize("asc_mossaic_stone_cards"),
-					colour = G.C.SECONDARY_SET.Enhanced,
+				G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+				stone.playing_card = G.playing_card
+				table.insert(G.playing_cards, stone)
+				G.E_MANAGER:add_event(Event({
 					func = function()
-						for _ = 1, to_number(math.min(card.ability.extra.create, card.ability.immutable.cacap)) do 
-						G.E_MANAGER:add_event(Event({
-			                func = function()
-			                    G.deck.config.card_limit = G.deck.config.card_limit + 1
-			                    return true
-			                end
-			            }))
-			            draw_card(G.play, G.deck, 90, 'up')
-			            SMODS.calculate_context({ playing_card_added = true, cards = stones })
-						end
+						stone:start_materialize({ G.C.SECONDARY_SET.Enhanced })
+						G.play:emplace(stone)
+						return true
 					end,
-				}
+				}))
+			end
+			return {
+				message = "+" .. card.ability.extra.retrigger .. " " .. localize("asc_mossaic_stone_cards"),
+				colour = G.C.SECONDARY_SET.Enhanced,
+				func = function()
+					for _ = 1, to_number(math.min(card.ability.extra.create, card.ability.immutable.cacap)) do
+						G.E_MANAGER:add_event(Event({
+							func = function()
+								G.deck.config.card_limit = G.deck.config.card_limit + 1
+								return true
+							end,
+						}))
+						draw_card(G.play, G.deck, 90, "up")
+						SMODS.calculate_context({ playing_card_added = true, cards = stones })
+					end
+				end,
+			}
 		end
 	end,
 
@@ -109,7 +109,7 @@ SMODS.Joker({
 		},
 		code = {
 			"OmegaLife",
-			"MarioFan597"
+			"MarioFan597",
 		},
 	},
 })

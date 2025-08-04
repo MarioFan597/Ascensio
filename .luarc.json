@@ -3,9 +3,11 @@
     "diagnostics.globals": [
         "G",
         "Cryptid",
+        "Talisman",
         "localize",
         "lenient_bignum",
         "to_number",
+        "to_big",
         "cry_prob",
         "pseudorandom",
         "card_eval_status_text",
