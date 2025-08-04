@@ -82,7 +82,7 @@ SMODS.Joker({
 				}))
 			end
 			return {
-				message = "+" .. card.ability.extra.retrigger .. " " .. localize("asc_mossaic_stone_cards"),
+				message = "+" .. card.ability.extra.create .. " " .. localize("asc_mossaic_stone_cards"),
 				colour = G.C.SECONDARY_SET.Enhanced,
 				func = function()
 					for _ = 1, to_number(math.min(card.ability.extra.create, card.ability.immutable.cacap)) do
