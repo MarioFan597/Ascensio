@@ -6,6 +6,7 @@ SMODS.Joker({
 	demicoloncompat = true,
 	pos = { x = 3, y = 9 },
 	soul_pos = { x = 5, y = 9, extra = { x = 4, y = 9 } },
+	cost = 50,
 
 	config = {
 		extra = {
