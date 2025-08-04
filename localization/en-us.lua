@@ -264,8 +264,11 @@ return {
 			j_asc_ice_cream = {
 				name = "Glacies Cremoris",
 				text = {
-					"{C:chips}+#1#{} Chips",
-					"{C:attention}Doubles{} the above amount for every hand played",
+					"{X:dark_edition,C:white}^#1#{} Chips",
+					"Gains {X:dark_edition,C:white}^#2#{} Chips for",
+					"every hand played this run",
+					"after each hand played",
+					"{C:inactive}(Currently {C:attention}#3#{C:inactive} hands played)"
 				},
 			},
 
