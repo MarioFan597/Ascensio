@@ -68,7 +68,7 @@ SMODS.Joker({
 					stone:set_edition('e_cry_mosaic', nil, true)
 				end
 				table.insert(stones, stone)
-				--if not Talisman.config_file.disable_anims then
+				--Modifed VanillaRemade Stone Joker for the visual aspect
 					G.playing_card = (G.playing_card and G.playing_card + 1) or 1
 	            	stone.playing_card = G.playing_card
 	            	table.insert(G.playing_cards, stone)
@@ -79,7 +79,6 @@ SMODS.Joker({
 	                    return true
 	                end
 	            	}))
-	            --end
 			end
 				return {
 					message = '+'.. card.ability.extra.retrigger ..' '.. localize("asc_mossaic_stone_cards"),
