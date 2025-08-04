@@ -144,14 +144,20 @@ return {
 				name = "Stela Marmorea",
 				text = {
 					{
-						"Retrigger played {C:attention}Stone{} Card {C:attention}#1#{} times.",
-						"Stone cards gives {X:dark_edition,C:white}^#2#{} Chips when scored.",
+						"Creates {C:attention}#2#{} {C:dark_edition}Mosaic{}", 
+						"{C:attention}Stone{} cards when",
+						"{C:attention}Blind{} is selected",
+						"{C:inactive}(Max {C:attention}#4#{C:inactive} cards)"
 					},
 					{
-						"Creates {C:attention}#3#{} {C:attention}Red Sealed{}, {C:dark_edition}Mosaic{} {C:attention}Stone{} cards",
-						"when {C:attention}Blind{} is selected.",
+						"Retrigger played {C:attention}Stone{}",
+						"Cards {C:attention}#1#{} times",
+						"{C:inactive}(Max {C:attention}#3#{C:inactive} retriggers)",
 					},
-					{ "{C:inactive,S:0.8}Max 40 retriggers, and 8 cards created at once.{}" },
+					--[[{
+						"{C:attention}Stone{} cards give",
+						"{X:dark_edition,C:white}^#2#{} Chips when scored.",  
+					},]]
 				},
 			},
 
@@ -793,6 +799,7 @@ return {
 		dictionary = {
 			k_asc_banana = "Banana", --Banana Rariety Label
 			asc_banana_ex = "Banana!",
+			asc_mossaic_stone_cards = "Mossaic Stone Cards",
 			asc_config = "Config",
 			asc_config_insanity_mode = "Insanity Mode!!!",
 		},

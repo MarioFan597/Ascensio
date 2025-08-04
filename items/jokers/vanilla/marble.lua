@@ -9,28 +9,32 @@ SMODS.Joker({
 
 	config = {
 		extra = {
-			echips = 1.5,
-			retrigger = 3,
+			retrigger = 1,
 			create = 3,
 		},
 
 		immutable = {
 			recap = 40,
-			cacap = 8,
+			cacap = 40,
 		},
 	},
 
-	loc_vars = function(_, _, card)
+	loc_vars = function(self, info_queue, card)
+		if not card.edition or (card.edition and not card.edition.e_cry_mosaic) then
+			info_queue[#info_queue + 1] = G.P_CENTERS.e_cry_mosaic
+		end
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
 		return {
 			vars = {
 				lenient_bignum(math.min(card.ability.extra.retrigger, card.ability.immutable.recap)),
-				lenient_bignum(card.ability.extra.echips),
 				lenient_bignum(math.min(card.ability.extra.create, card.ability.immutable.cacap)),
+				lenient_bignum(card.ability.immutable.recap),
+				lenient_bignum(card.ability.immutable.cacap)
 			},
 		}
 	end,
 
-	calculate = function(_, card, context)
+	calculate = function(self, card, context)
 		if
 			context.repetition
 			and context.cardarea == G.play
@@ -42,43 +46,57 @@ SMODS.Joker({
 			}
 		end
 
-		if
-			context.individual
-			and context.cardarea == G.play
-			and SMODS.has_enhancement(context.other_card, "m_stone")
-		then
-			return {
-				message = localize({
-					type = "variable",
-					key = "a_powchips",
-					vars = { number_format(card.ability.extra.echips) },
-				}),
-				Echip_mod = card.ability.extra.echips,
-				colour = G.C.DARK_EDITION,
-			}
-		end
-
 		if context.setting_blind then
-			local stones = {}
-			for _ = 1, to_number(math.min(card.ability.extra.create, card.ability.immutable.cacap)) do
-				local stone = SMODS.add_card({
-					set = "Playing Card",
-					enhancement = "m_stone",
-					edition = "e_cry_mosaic",
-					seal = "Red",
-					area = G.deck,
-				})
-
-				table.insert(stones, stone)
+			if card.ability.extra.retrigger > card.ability.immutable.recap then
+				card.ability.extra.retrigger = card.ability.immutable.recap
 			end
-
-			return {
-				message = localize("k_plus_stone"),
-				colour = G.C.SECONDARY_SET.Enhanced,
-				func = function()
-					SMODS.calculate_context({ playing_card_added = true, cards = stones })
-				end,
-			}
+			if card.ability.extra.create > card.ability.immutable.cacap then
+				card.ability.extra.create = card.ability.immutable.cacap
+			end
+			local stones = {}
+			for _ = 1, to_number(card.ability.extra.create) do
+				local stone = SMODS.create_card({
+					set = "Base",
+					enhancement = "m_stone",
+					--edition = "e_cry_mosaic", we have to do this later so we can disable the sound
+					--seal = "Red", --Not using this as stone gives all the retriggers we need
+					area = G.discard,
+				})
+				if card.ability.extra.create <= 5 and not Talisman.config_file.disable_anims then
+					stone:set_edition('e_cry_mosaic')		
+				else
+					stone:set_edition('e_cry_mosaic', nil, true)
+				end
+				table.insert(stones, stone)
+				--if not Talisman.config_file.disable_anims then
+					G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+	            	stone.playing_card = G.playing_card
+	            	table.insert(G.playing_cards, stone)
+	            	 G.E_MANAGER:add_event(Event({
+	                func = function()
+	                    stone:start_materialize({ G.C.SECONDARY_SET.Enhanced })
+	                    G.play:emplace(stone)
+	                    return true
+	                end
+	            	}))
+	            --end
+			end
+				return {
+					message = '+'.. card.ability.extra.retrigger ..' '.. localize("asc_mossaic_stone_cards"),
+					colour = G.C.SECONDARY_SET.Enhanced,
+					func = function()
+						for _ = 1, to_number(math.min(card.ability.extra.create, card.ability.immutable.cacap)) do 
+						G.E_MANAGER:add_event(Event({
+			                func = function()
+			                    G.deck.config.card_limit = G.deck.config.card_limit + 1
+			                    return true
+			                end
+			            }))
+			            draw_card(G.play, G.deck, 90, 'up')
+			            SMODS.calculate_context({ playing_card_added = true, cards = stones })
+						end
+					end,
+				}
 		end
 	end,
 
@@ -91,6 +109,7 @@ SMODS.Joker({
 		},
 		code = {
 			"OmegaLife",
+			"MarioFan597"
 		},
 	},
 })
