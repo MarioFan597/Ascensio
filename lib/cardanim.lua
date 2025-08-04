@@ -6,7 +6,7 @@ if not G.cardanim then
 		card_layers = {},
 		-- later added here: animation_macros = {}
 		-- DO NOT ADD animation_details = {} here, its existence is checked by the loading event
-		framerate_granularity = 2
+		framerate_granularity = 2,
 	}
 end
 
@@ -97,7 +97,7 @@ G.E_MANAGER:add_event(Event({
 
 		-- Start animation update
 		local sprite_dt = 0
-		local sprite_spf = 0.1/granularity -- seconds per frame
+		local sprite_spf = 0.1 / granularity -- seconds per frame
 		local _game_update = Game.update -- hella sus, akin to performing brain surgery on yourself
 		function Game:update(dt)
 			_game_update(self, dt)
@@ -130,7 +130,7 @@ G.E_MANAGER:add_event(Event({
 						if not frame.t then
 							frame.t = 1
 						end
-						local proper_t = frame.t*granularity
+						local proper_t = frame.t * granularity
 						if proper_t <= frame_dur[kw] then
 							frame_i[kw] = frame_i[kw] + 1 -- increase frame
 							if frame_i[kw] > #frame_seq[kw] then

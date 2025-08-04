@@ -91,6 +91,7 @@ ascensionable = {
 	j_scary_face = "j_asc_scary",
 	j_abstract = "j_asc_abstract",
 	j_blackboard = "j_asc_blackboard",
+	j_ice_cream = "j_asc_ice_cream",
 	j_dna = "j_asc_dna",
 	j_blue_joker = "j_asc_blue",
 	j_cavendish = "j_asc_banana",

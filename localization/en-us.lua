@@ -144,10 +144,10 @@ return {
 				name = "Stela Marmorea",
 				text = {
 					{
-						"Creates {C:attention}#2#{} {C:dark_edition}Mosaic{}", 
+						"Creates {C:attention}#2#{} {C:dark_edition}Mosaic{}",
 						"{C:attention}Stone{} cards when",
 						"{C:attention}Blind{} is selected",
-						"{C:inactive}(Max {C:attention}#4#{C:inactive} cards)"
+						"{C:inactive}(Max {C:attention}#4#{C:inactive} cards)",
 					},
 					{
 						"Retrigger played {C:attention}Stone{}",
@@ -258,6 +258,14 @@ return {
 						"Instead gains {X:mult,C:white}X#2#{} Mult per card",
 						"if all cards are {C:spade}Spades{} or {C:club}Clubs{}",
 					},
+				},
+			},
+
+			j_asc_ice_cream = {
+				name = "Glacies Cremoris",
+				text = {
+					"{C:chips}+#1#{} Chips",
+					"{C:attention}Doubles{} the above amount for every hand played",
 				},
 			},
 
