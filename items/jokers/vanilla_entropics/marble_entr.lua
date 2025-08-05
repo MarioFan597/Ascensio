@@ -10,12 +10,12 @@ SMODS.Joker({
 
 	config = {
 		buycost = 4,
-        sellcost = 4,
+		sellcost = 4,
 		extra = {
 			retrigger = 3,
 			create = 3,
 			buycost = 4,
-        	sellcost = 4,
+			sellcost = 4,
 		},
 
 		immutable = {

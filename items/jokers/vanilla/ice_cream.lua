@@ -8,16 +8,16 @@ SMODS.Joker({
 	soul_pos = { x = 8, y = 9, extra = { x = 7, y = 9 } },
 	cost = 50,
 
-	config = { extra = { chips = 1,  gain = 0.005}, immutable = {hands = 0} },
+	config = { extra = { chips = 1, gain = 0.005 }, immutable = { hands = 0 } },
 
-	loc_vars = function(self, info_queue,  card)
-			return {
-				vars = {
-					card.ability.extra.chips,
-					card.ability.extra.gain,
-					card.ability.immutable.hands
-				},
-			}
+	loc_vars = function(self, info_queue, card)
+		return {
+			vars = {
+				card.ability.extra.chips,
+				card.ability.extra.gain,
+				card.ability.immutable.hands,
+			},
+		}
 	end,
 
 	add_to_deck = function(self, card, from_debuff)
@@ -27,24 +27,25 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		if context.joker_main and card.ability.extra.chips > 1 then
 			return {
-					Echip_mod = lenient_bignum(card.ability.extra.chips),
-					message = localize({
-						type = "variable",
-						key = "a_powchips",
-						vars = { lenient_bignum(card.ability.extra.chips) },
-					}),
-				}
+				Echip_mod = lenient_bignum(card.ability.extra.chips),
+				message = localize({
+					type = "variable",
+					key = "a_powchips",
+					vars = { lenient_bignum(card.ability.extra.chips) },
+				}),
+			}
 		end
 		if context.after then
 			card.ability.immutable.hands = G.GAME.hands_played + 1
-			card.ability.extra.chips = card.ability.extra.chips + (card.ability.extra.gain * card.ability.immutable.hands)
+			card.ability.extra.chips = card.ability.extra.chips
+				+ (card.ability.extra.gain * card.ability.immutable.hands)
 			card_eval_status_text(
 				card,
 				"extra",
 				nil,
 				nil,
 				nil,
-				{ message = localize("k_upgrade_ex"), colour = G.C.DARK_EDITION}
+				{ message = localize("k_upgrade_ex"), colour = G.C.DARK_EDITION }
 			)
 		end
 	end,

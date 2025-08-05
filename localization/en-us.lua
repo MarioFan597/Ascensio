@@ -268,7 +268,7 @@ return {
 					"Gains {X:dark_edition,C:white}^#2#{} Chips for",
 					"every hand played this run",
 					"after each hand played",
-					"{C:inactive}(Currently {C:attention}#3#{C:inactive} hands played)"
+					"{C:inactive}(Currently {C:attention}#3#{C:inactive} hands played)",
 				},
 			},
 
@@ -756,7 +756,7 @@ return {
 					{
 						"{C:attention}Stone{} cards in",
 						"remaining deck can be",
-						"{C:attention}bought{} and {C:attention}sold{} for {C:money}$#5#{}"  
+						"{C:attention}bought{} and {C:attention}sold{} for {C:money}$#5#{}",
 					},
 				},
 			},
