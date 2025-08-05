@@ -28,6 +28,7 @@ SMODS.Joker({
 		if not card.edition or (card.edition and not card.edition.e_cry_mosaic) then
 			info_queue[#info_queue + 1] = G.P_CENTERS.e_cry_mosaic
 		end
+		info_queue[#info_queue + 1] = { key = "entr_crimson_seal", set = "Other" }
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
 		return {
 			vars = {
