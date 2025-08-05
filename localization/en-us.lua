@@ -739,6 +739,27 @@ return {
 			},
 
 			-----Entropy Entropics-----
+			j_asc_marble_entr = {
+				name = "Petrinos Vlemma",
+				text = {
+					{
+						"Creates {C:attention}#2#{} {C:attention}Crimson Seal{}",
+						"{C:dark_edition}Mosaic{} {C:attention}Stone{} cards when",
+						"{C:attention}Blind{} is selected",
+						"{C:inactive}(Max {C:attention}#4#{C:inactive} cards)",
+					},
+					{
+						"Retrigger played {C:attention}Stone{}",
+						"Cards {C:attention}#1#{} times",
+						"{C:inactive}(Max {C:attention}#3#{C:inactive} retriggers)",
+					},
+					{
+						"{C:attention}Stone{} cards in",
+						"remaining deck can be",
+						"{C:attention}bought{} and {C:attention}sold{} for {C:money}$#5#{}"  
+					},
+				},
+			},
 			j_asc_sunny_joker_entr = {
 				name = "Iliakos",
 				text = {
@@ -810,6 +831,8 @@ return {
 		dictionary = {
 			k_asc_banana = "Banana", --Banana Rariety Label
 			asc_banana_ex = "Banana!",
+			b_sell_stone = "-Stones",
+			b_buy_stone = "+Stones",
 			asc_mossaic_stone_cards = "Mossaic Stone Cards",
 			asc_config = "Config",
 			asc_config_insanity_mode = "Insanity Mode!!!",

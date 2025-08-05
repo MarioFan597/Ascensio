@@ -41,6 +41,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+	key = "e_entr_atlas_1",
+	path = "entropy_entropic_atlas_1.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Atlas({
 	key = "deck_atlas",
 	path = "deck_atlas.png",
 	px = 71,
@@ -143,6 +150,9 @@ ascensionable = {
 
 ---------Joker Apothable Dictionary-----------
 apothable = {
+	--Vanilla
+	j_marble = "j_asc_marble_entr",
+	j_asc_marble = "j_asc_marble_entr",
 	---Entropy
 	j_entr_sunny_joker = "j_asc_sunny_joker_entr",
 	j_asc_sunny_joker = "j_asc_sunny_joker_entr",
