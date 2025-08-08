@@ -54,6 +54,8 @@ for i, v in pairs(v_jokers) do
 	assert(SMODS.load_file("items/jokers/vanilla/" .. v .. ".lua"))()
 end
 
+		
+
 ----------Loading Cryptid Jokers----------
 local cry_jokers = {
 	"canvas",
@@ -74,7 +76,7 @@ local crym_jokers = {
 	"b_cake",
 	"b_pie",
 	"orion_pax",
-	--"accomplice",
+	"accomplice",
 	"exorcist",
 }
 

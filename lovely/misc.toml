@@ -62,7 +62,7 @@ target = "functions/common_events.lua"
 pattern = "for _, v in ipairs(info_queue) do"
 position = "before"
 payload = '''for k, _ in pairs(apothable) do
-  if _c.key == k then
+  if _c.key == k and next(SMODS.find_mod("entr")) then
     info_queue[#info_queue+1] = {key = 'asc_apothable', set = 'Other'}
   end
 end

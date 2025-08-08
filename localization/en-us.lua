@@ -268,7 +268,7 @@ return {
 					"Gains {X:dark_edition,C:white}^#2#{} Chips for",
 					"every hand played this run",
 					"after each hand played",
-					"{C:inactive}(Currently {C:attention}#3#{C:inactive} hands played)",
+					"{C:inactive}(Currently {C:attention}#3#{C:inactive} hands played)"
 				},
 			},
 
@@ -691,6 +691,16 @@ return {
 				},
 			},
 
+			j_asc_accomplice = {
+				name = "Accomplice",
+				text = {
+					"Leftmost Joker gains {C:mult}+#1#{} Mult",
+					"or {C:chips}+#2#{} Chips at end of round",
+					"if it is a {C:attention}Type Mult{} or",
+					"{C:attention}Type Chips{} Joker respectively",
+				}
+			},
+
 			j_asc_exorcist = {
 				name = "Exorcist",
 				text = {
@@ -756,7 +766,7 @@ return {
 					{
 						"{C:attention}Stone{} cards in",
 						"remaining deck can be",
-						"{C:attention}bought{} and {C:attention}sold{} for {C:money}$#5#{}",
+						"{C:attention}bought{} and {C:attention}sold{} for {C:money}$#5#{}"  
 					},
 				},
 			},
@@ -782,6 +792,14 @@ return {
 				text = {
 					"This Joker can reach",
 					"an {C:entr_entropic,E:1}Even Higher Form{}",
+				},
+			},
+			asc_astronomica_compat = {
+				name = "Astronomica Compat",
+				text = {
+					"Also gives {X:purple,C:white}Astronomica's{}",
+					"{C:attention}Type Score{} Jokers",
+					"{C:purple}+300{} Score"
 				},
 			},
 		},

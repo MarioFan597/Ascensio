@@ -138,7 +138,7 @@ ascensionable = {
 	j_asc_b_cake = "j_cry_crustulum",
 	j_asc_b_pie = "j_cry_circulus_pistoris",
 	j_asc_orion_pax = "j_cry_primus",
-	j_asc_gemino = "j_cry_gemino",
+	j_asc_accomplice = "j_cry_gemino",
 	j_asc_exorcist = "j_cry_formidiulosus",
 	---Cryptposting
 	---Astronomica
