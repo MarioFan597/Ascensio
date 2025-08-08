@@ -1,6 +1,6 @@
 SMODS.Joker({ --Commented out at the moment as it is also increasing hand size at the moment for some reason
 	key = "accomplice", --Mostly taken from gemini
-	config = { extra = { scale_mult = 4, scale_chip = 16, scale_score = 300,} },
+	config = { extra = { scale_mult = 8, scale_chip = 32, scale_score = 300,} },
 	rarity = 2,
 	atlas = "c_atlas_mortal",
 	blueprint_compat = true,
@@ -101,23 +101,23 @@ SMODS.Joker({ --Commented out at the moment as it is also increasing hand size a
 			or context.forcetrigger then
 			local check = false
 			local card = G.jokers.cards[1]
-			if  other_joker.config.center.effect == "Cry Type Score"
+			if  card.config.center.effect == "Cry Type Score"
 				and not Card.no(G.jokers.cards[1], "immutable", true) then
 				Cryptid.manipulate(G.jokers.cards[1], { value = card2.ability.extra.scale_score, type = "+" })
 				check = true
-			elseif other_joker.config.center.effect == "Cry Type Chips"
+			elseif card.config.center.effect == "Cry Type Chips"
 				or (
-					other_joker.config.center.name == "Sly Joker"
-					or other_joker.config.center.name == "Wily Joker"
-					or other_joker.config.center.name == "Clever Joker"
-					or other_joker.config.center.name == "Devious Joker"
-					or other_joker.config.center.name == "Crafty Joker"
+					card.config.center.name == "Sly Joker"
+					or card.config.center.name == "Wily Joker"
+					or card.config.center.name == "Clever Joker"
+					or card.config.center.name == "Devious Joker"
+					or card.config.center.name == "Crafty Joker"
 				) and not Card.no(G.jokers.cards[1], "immutable", true) then
 				Cryptid.manipulate(G.jokers.cards[1], { value = card2.ability.extra.scale_chip, type = "+" })
 				check = true
-			elseif (other_joker.config.center.effect == "Type Mult"
-				or other_joker.config.center.effect == "Cry Type Mult"
-				or other_joker.config.center.effect == "Boost Kidnapping")
+			elseif (card.config.center.effect == "Type Mult"
+				or card.config.center.effect == "Cry Type Mult"
+				or card.config.center.effect == "Boost Kidnapping")
 				and not Card.no(G.jokers.cards[1], "immutable", true) then
 				Cryptid.manipulate(G.jokers.cards[1], { value = card2.ability.extra.scale_mult, type = "+" })
 				check = true
