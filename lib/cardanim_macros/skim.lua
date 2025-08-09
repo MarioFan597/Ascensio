@@ -2,6 +2,7 @@ local error_messages = {}
 function error_messages.skim_invalid_str(key, type, found_string, is_sub)
 	return ('Animation macro "SKIM": Card ' .. key .. " specifies an incorrect " .. type .. ' "' .. found_string .. '"')
 end
+local mod_prefix = SMODS.current_mod.prefix
 
 -- Returns all coordinates within a rectangle
 local function coord_rect(coords)
@@ -24,9 +25,7 @@ end
 -- Determines if main is equivalent to any of the items in the options sequence
 local function string_any(main, options)
 	for _, v in ipairs(options) do
-		if main == v then
-			return true
-		end
+		if main == v then return true end
 	end
 	return false
 end
@@ -34,17 +33,17 @@ end
 -----------------------------------
 
 -- The macro itself
-function G.cardanim.animation_macros.skim(macro_obj)
+return function(macro_obj)
 	local seq = {}
-	for kw, __ in pairs(G.cardanim.card_layers) do
+	for layer_name, __ in pairs(G[mod_prefix .. "_cardanim_cfg"].card_layers) do
 		-- the "next" function is an emptiness check
-		if (not macro_obj[kw]) or next(macro_obj[kw]) == nil then
+		if (not macro_obj[layer_name]) or next(macro_obj[layer_name]) == nil then
 			goto skimmacrocontinue
 		end
-		seq[kw] = {}
+		seq[layer_name] = {}
 
 		local err_msg = error_messages
-		local part_table = macro_obj[kw]
+		local part_table = macro_obj[layer_name]
 		local card_key = macro_obj.card_key
 
 		local include = part_table.include or {}
@@ -193,9 +192,9 @@ function G.cardanim.animation_macros.skim(macro_obj)
 			for _, j in ipairs(subiter_keys) do
 				local frame_t = timing[time_id] or 1
 				if iter_axis == "x" then
-					table.insert(seq[kw], { x = i, y = j, t = frame_t })
+					table.insert(seq[layer_name], { x = i, y = j, t = frame_t })
 				elseif iter_axis == "y" then
-					table.insert(seq[kw], { x = j, y = i, t = frame_t })
+					table.insert(seq[layer_name], { x = j, y = i, t = frame_t })
 				end
 
 				-- if is_periodic then loop back to the start
