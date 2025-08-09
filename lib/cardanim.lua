@@ -2,7 +2,6 @@
 
 -- == CONFIG
 local cardanim_cfg = {
-	DEBUG = {}, -- Modules can add entries to this table for debugging purposes
 	macro_directory = "lib/cardanim_macros",
 	card_layers = {
 		-- [[ DEFINING CARD LAYERS ]]
@@ -42,7 +41,9 @@ local cardanim_cfg = {
 local mod_prefix = SMODS.current_mod.prefix
 -- Create global cardanim tables
 G[mod_prefix .. "_cardanim_cfg"] = cardanim_cfg
-G[mod_prefix .. "_cardanim"] = {}
+G[mod_prefix .. "_cardanim"] = {
+	DEBUG = {}, -- Modules can add entries to this table for debugging purposes
+}
 local cardanim_tbl = G[mod_prefix .. "_cardanim"]
 
 -- Load macros
