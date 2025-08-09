@@ -144,14 +144,20 @@ return {
 				name = "Stela Marmorea",
 				text = {
 					{
-						"Retrigger played {C:attention}Stone{} Card {C:attention}#1#{} times.",
-						"Stone cards gives {X:dark_edition,C:white}^#2#{} Chips when scored.",
+						"Creates {C:attention}#2#{} {C:dark_edition}Mosaic{}",
+						"{C:attention}Stone{} cards when",
+						"{C:attention}Blind{} is selected",
+						"{C:inactive}(Max {C:attention}#4#{C:inactive} cards)",
 					},
 					{
-						"Creates {C:attention}#3#{} {C:attention}Red Sealed{}, {C:dark_edition}Mosaic{} {C:attention}Stone{} cards",
-						"when {C:attention}Blind{} is selected.",
+						"Retrigger played {C:attention}Stone{}",
+						"Cards {C:attention}#1#{} times",
+						"{C:inactive}(Max {C:attention}#3#{C:inactive} retriggers)",
 					},
-					{ "{C:inactive,S:0.8}Max 40 retriggers, and 8 cards created at once.{}" },
+					--[[{
+						"{C:attention}Stone{} cards give",
+						"{X:dark_edition,C:white}^#2#{} Chips when scored.",  
+					},]]
 				},
 			},
 
@@ -252,6 +258,17 @@ return {
 						"Instead gains {X:mult,C:white}X#2#{} Mult per card",
 						"if all cards are {C:spade}Spades{} or {C:club}Clubs{}",
 					},
+				},
+			},
+
+			j_asc_ice_cream = {
+				name = "Glacies Cremoris",
+				text = {
+					"{X:dark_edition,C:white}^#1#{} Chips",
+					"Gains {X:dark_edition,C:white}^#2#{} Chips for",
+					"every hand played this run",
+					"after each hand played",
+					"{C:inactive}(Currently {C:attention}#3#{C:inactive} hands played)"
 				},
 			},
 
@@ -674,6 +691,16 @@ return {
 				},
 			},
 
+			j_asc_accomplice = {
+				name = "Accomplice",
+				text = {
+					"Leftmost Joker gains {C:mult}+#1#{} Mult",
+					"or {C:chips}+#2#{} Chips at end of round",
+					"if it is a {C:attention}Type Mult{} or",
+					"{C:attention}Type Chips{} Joker respectively",
+				}
+			},
+
 			j_asc_exorcist = {
 				name = "Exorcist",
 				text = {
@@ -722,6 +749,27 @@ return {
 			},
 
 			-----Entropy Entropics-----
+			j_asc_marble_entr = {
+				name = "Petrinos Vlemma",
+				text = {
+					{
+						"Creates {C:attention}#2#{} {C:attention}Crimson Seal{}",
+						"{C:dark_edition}Mosaic{} {C:attention}Stone{} cards when",
+						"{C:attention}Blind{} is selected",
+						"{C:inactive}(Max {C:attention}#4#{C:inactive} cards)",
+					},
+					{
+						"Retrigger played {C:attention}Stone{}",
+						"Cards {C:attention}#1#{} times",
+						"{C:inactive}(Max {C:attention}#3#{C:inactive} retriggers)",
+					},
+					{
+						"{C:attention}Stone{} cards in",
+						"remaining deck can be",
+						"{C:attention}bought{} and {C:attention}sold{} for {C:money}$#5#{}"  
+					},
+				},
+			},
 			j_asc_sunny_joker_entr = {
 				name = "Iliakos",
 				text = {
@@ -744,6 +792,14 @@ return {
 				text = {
 					"This Joker can reach",
 					"an {C:entr_entropic,E:1}Even Higher Form{}",
+				},
+			},
+			asc_astronomica_compat = {
+				name = "Astronomica Compat",
+				text = {
+					"Also gives {X:purple,C:white}Astronomica's{}",
+					"{C:attention}Type Score{} Jokers",
+					"{C:purple}+300{} Score"
 				},
 			},
 		},
@@ -793,6 +849,9 @@ return {
 		dictionary = {
 			k_asc_banana = "Banana", --Banana Rariety Label
 			asc_banana_ex = "Banana!",
+			b_sell_stone = "-Stones",
+			b_buy_stone = "+Stones",
+			asc_mossaic_stone_cards = "Mossaic Stone Cards",
 			asc_config = "Config",
 			asc_config_insanity_mode = "Insanity Mode!!!",
 		},

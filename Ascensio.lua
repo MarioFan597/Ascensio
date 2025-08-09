@@ -41,6 +41,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+	key = "e_entr_atlas_1",
+	path = "entropy_entropic_atlas_1.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Atlas({
 	key = "deck_atlas",
 	path = "deck_atlas.png",
 	px = 71,
@@ -91,6 +98,7 @@ ascensionable = {
 	j_scary_face = "j_asc_scary",
 	j_abstract = "j_asc_abstract",
 	j_blackboard = "j_asc_blackboard",
+	j_ice_cream = "j_asc_ice_cream",
 	j_dna = "j_asc_dna",
 	j_blue_joker = "j_asc_blue",
 	j_cavendish = "j_asc_banana",
@@ -130,7 +138,7 @@ ascensionable = {
 	j_asc_b_cake = "j_cry_crustulum",
 	j_asc_b_pie = "j_cry_circulus_pistoris",
 	j_asc_orion_pax = "j_cry_primus",
-	j_asc_gemino = "j_cry_gemino",
+	j_asc_accomplice = "j_cry_gemino",
 	j_asc_exorcist = "j_cry_formidiulosus",
 	---Cryptposting
 	---Astronomica
@@ -142,6 +150,9 @@ ascensionable = {
 
 ---------Joker Apothable Dictionary-----------
 apothable = {
+	--Vanilla
+	j_marble = "j_asc_marble_entr",
+	j_asc_marble = "j_asc_marble_entr",
 	---Entropy
 	j_entr_sunny_joker = "j_asc_sunny_joker_entr",
 	j_asc_sunny_joker = "j_asc_sunny_joker_entr",

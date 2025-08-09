@@ -1,17 +1,21 @@
 SMODS.Joker({
-	key = "marble",
-	rarity = "cry_exotic",
-	atlas = "v_atlas_1",
+	key = "marble_entr",
+	rarity = "entr_entropic",
+	atlas = "e_entr_atlas_1",
 	blueprint_compat = true,
 	demicoloncompat = true,
-	pos = { x = 3, y = 9 },
-	soul_pos = { x = 5, y = 9, extra = { x = 4, y = 9 } },
-	cost = 50,
+	pos = { x = 0, y = 0 },
+	soul_pos = { x = 2, y = 0, extra = { x = 1, y = 0 } },
+	cost = 150,
 
 	config = {
+		buycost = 4,
+		sellcost = 4,
 		extra = {
-			retrigger = 1,
+			retrigger = 3,
 			create = 3,
+			buycost = 4,
+			sellcost = 4,
 		},
 
 		immutable = {
@@ -24,6 +28,7 @@ SMODS.Joker({
 		if not card.edition or (card.edition and not card.edition.e_cry_mosaic) then
 			info_queue[#info_queue + 1] = G.P_CENTERS.e_cry_mosaic
 		end
+		info_queue[#info_queue + 1] = { key = "entr_crimson_seal", set = "Other" }
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
 		return {
 			vars = {
@@ -31,11 +36,29 @@ SMODS.Joker({
 				lenient_bignum(math.min(card.ability.extra.create, card.ability.immutable.cacap)),
 				lenient_bignum(card.ability.immutable.recap),
 				lenient_bignum(card.ability.immutable.cacap),
+				card.ability.buycost,
+				card.ability.sellcost,
 			},
 		}
 	end,
 
 	calculate = function(self, card, context)
+		--[[if
+			context.individual
+			and context.cardarea == G.play
+			and SMODS.has_enhancement(context.other_card, "m_stone")
+		then
+			return {
+				message = localize({
+					type = "variable",
+					key = "a_powchips",
+					vars = { number_format(card.ability.extra.echips) },
+				}),
+				Echip_mod = card.ability.extra.echips,
+				colour = G.C.DARK_EDITION,
+			}
+		end
+		]]
 		if
 			context.repetition
 			and context.cardarea == G.play
@@ -60,7 +83,7 @@ SMODS.Joker({
 					set = "Base",
 					enhancement = "m_stone",
 					--edition = "e_cry_mosaic", we have to do this later so we can disable the sound
-					--seal = "Red", --Not using this as stone gives all the retriggers we need
+					seal = "entr_crimson",
 					area = G.discard,
 				})
 				if card.ability.extra.create <= 5 and not Talisman.config_file.disable_anims then
@@ -105,10 +128,9 @@ SMODS.Joker({
 			"OmegaLife",
 		},
 		art = {
-			"Tatteredlurker",
+			"Lil Mr. Slipstream",
 		},
 		code = {
-			"OmegaLife",
 			"MarioFan597",
 		},
 	},

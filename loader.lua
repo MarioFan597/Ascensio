@@ -21,6 +21,7 @@ local v_jokers = {
 	"even_steven",
 	"odd_todd",
 	"blackboard",
+	"ice_cream",
 	"dna",
 	"blue",
 	--"musa_ingens",
@@ -53,6 +54,8 @@ for i, v in pairs(v_jokers) do
 	assert(SMODS.load_file("items/jokers/vanilla/" .. v .. ".lua"))()
 end
 
+		
+
 ----------Loading Cryptid Jokers----------
 local cry_jokers = {
 	"canvas",
@@ -73,7 +76,7 @@ local crym_jokers = {
 	"b_cake",
 	"b_pie",
 	"orion_pax",
-	--"accomplice",
+	"accomplice",
 	"exorcist",
 }
 
@@ -152,6 +155,15 @@ if next(SMODS.find_mod("entr")) then
 		assert(SMODS.load_file("items/jokers/entropy/" .. v .. ".lua"))()
 	end
 
+	--Vanilla Entropics
+	local entr_vanilla = {
+		"marble_entr",
+	}
+	for i, v in pairs(entr_vanilla) do
+		assert(SMODS.load_file("items/jokers/vanilla_entropics/" .. v .. ".lua"))()
+	end
+
+	--Entropy Entropics
 	local entr_apoth_jokers = {
 		"sunny_joker_entr",
 	}
@@ -174,3 +186,7 @@ end
 ---------Loading Animations---------
 
 assert(SMODS.load_file("lib/cardanim.lua"))()
+
+--------Loading Hooks-----------------------------
+
+assert(SMODS.load_file("lib/hooks.lua"))()

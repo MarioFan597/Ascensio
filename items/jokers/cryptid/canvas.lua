@@ -8,7 +8,9 @@ SMODS.Joker({
 	blueprint_compat = true,
 	atlas = "c_atlas_1",
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+		if not card.edition or (card.edition and not card.edition.e_negative) then
+			info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+		end
 		info_queue[#info_queue + 1] = G.P_CENTERS.j_joker
 	end,
 	calculate = function(self, card, context) --Just taken and modifed from canvas since it is just canvas without restirctions

@@ -1,18 +1,25 @@
 SMODS.Joker({ --Commented out at the moment as it is also increasing hand size at the moment for some reason
 	key = "accomplice", --Mostly taken from gemini
-	config = { extra = { scale = 2 } },
-	rarity = 3,
+	config = { extra = { scale_mult = 8, scale_chip = 32, scale_score = 300,} },
+	rarity = 2,
 	atlas = "c_atlas_mortal",
 	blueprint_compat = true,
 	demicoloncompat = true,
 	pos = { x = 1, y = 0 },
-	cost = 10,
+	cost = 8,
 	order = 515,
 	loc_vars = function(self, info_queue, card)
+		if next(SMODS.find_mod("Astronomica")) then
+			info_queue[#info_queue+1] = {key = 'asc_astronomica_compat', set = 'Other'}
+		end
 		card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui or ""
 		card.ability.blueprint_compat_check = nil
 		return {
-			vars = { lenient_bignum(card.ability.extra.scale) },
+			vars = { number_format(card.ability.extra.scale_mult), 
+					number_format(card.ability.extra.scale_chip), 
+					--number_format(card.ability.extra.curr_mult),
+					--number_format(card.ability.extra.curr_chip) 
+					},
 			main_end = (card.area and card.area == G.jokers) and {
 				{
 					n = G.UIT.C,
@@ -46,9 +53,43 @@ SMODS.Joker({ --Commented out at the moment as it is also increasing hand size a
 		}
 	end,
 	update = function(self, card, front)
+		--card.ability.extra.curr_mult = tonumber(G.GAME.round) * card.ability.extra.scale_mult
+		--card.ability.extra.curr_chip = tonumber(G.GAME.round) * card.ability.extra.scale_chip
+		--card.ability.extra.curr_score = tonumber(G.GAME.round) * card.ability.extra.scale_score
 		if G.STAGE == G.STAGES.RUN then
 			other_joker = G.jokers.cards[1]
-			if other_joker and other_joker ~= card and not (Card.no(other_joker, "immutable", true)) then
+			--[[local check = false
+			if G.GAME and other_joker and (
+				G.P_CENTERS[other_joker].effect == "Type Mult"
+				or G.P_CENTERS[other_joker].effect == "Cry Type Mult"
+				or G.P_CENTERS[other_joker].effect == "Cry Type Chips"
+				--or G.P_CENTERS[other_joker].effect == "Cry Type Score"
+				or G.P_CENTERS[other_joker].effect == "Boost Kidnapping"
+				or (
+					G.P_CENTERS[other_joker].name == "Sly Joker"
+					or G.P_CENTERS[other_joker].name == "Wily Joker"
+					or G.P_CENTERS[other_joker].name == "Clever Joker"
+					or G.P_CENTERS[other_joker].name == "Devious Joker"
+					or G.P_CENTERS[other_joker].name == "Crafty Joker"
+				))
+			then
+				check = true
+			end]]
+			if other_joker 
+				and other_joker ~= card
+				and (other_joker.config.center.effect == "Type Mult"
+				or other_joker.config.center.effect == "Cry Type Mult"
+				or other_joker.config.center.effect == "Cry Type Chips"
+				or other_joker.config.center.effect == "Cry Type Score"
+				or other_joker.config.center.effect == "Boost Kidnapping"
+				or (
+					other_joker.config.center.name == "Sly Joker"
+					or other_joker.config.center.name == "Wily Joker"
+					or other_joker.config.center.name == "Clever Joker"
+					or other_joker.config.center.name == "Devious Joker"
+					or other_joker.config.center.name == "Crafty Joker"
+				))
+				and not (Card.no(other_joker, "immutable", true)) then
 				card.ability.blueprint_compat = "compatible"
 			else
 				card.ability.blueprint_compat = "incompatible"
@@ -56,16 +97,29 @@ SMODS.Joker({ --Commented out at the moment as it is also increasing hand size a
 		end
 	end,
 	calculate = function(self, card2, context)
-		if (context.end_of_round and not context.repetition and not context.individual) or context.forcetrigger then
+		if (context.end_of_round and not context.repetition and not context.individual)
+			or context.forcetrigger then
 			local check = false
 			local card = G.jokers.cards[1]
-			if not Card.no(G.jokers.cards[1], "immutable", true) then
-				Cryptid.with_deck_effects(G.jokers.cards[1], function(card)
-					Cryptid.misprintize(card, {
-						min = lenient_bignum(card.ability.extra.scale),
-						max = lenient_bignum(card.ability.extra.scale),
-					}, nil, true, "+")
-				end)
+			if  card.config.center.effect == "Cry Type Score"
+				and not Card.no(G.jokers.cards[1], "immutable", true) then
+				Cryptid.manipulate(G.jokers.cards[1], { value = card2.ability.extra.scale_score, type = "+" })
+				check = true
+			elseif card.config.center.effect == "Cry Type Chips"
+				or (
+					card.config.center.name == "Sly Joker"
+					or card.config.center.name == "Wily Joker"
+					or card.config.center.name == "Clever Joker"
+					or card.config.center.name == "Devious Joker"
+					or card.config.center.name == "Crafty Joker"
+				) and not Card.no(G.jokers.cards[1], "immutable", true) then
+				Cryptid.manipulate(G.jokers.cards[1], { value = card2.ability.extra.scale_chip, type = "+" })
+				check = true
+			elseif (card.config.center.effect == "Type Mult"
+				or card.config.center.effect == "Cry Type Mult"
+				or card.config.center.effect == "Boost Kidnapping")
+				and not Card.no(G.jokers.cards[1], "immutable", true) then
+				Cryptid.manipulate(G.jokers.cards[1], { value = card2.ability.extra.scale_mult, type = "+" })
 				check = true
 			end
 			if check then
@@ -84,64 +138,17 @@ SMODS.Joker({ --Commented out at the moment as it is also increasing hand size a
 	asc_credits = {
 		idea = {
 			"Googol1e308plex",
+			"MarioFan597"
 		},
 		art = {
 			"Requiacity",
 			"MarioFan597",
 		},
 		code = {
-			"Math",
 			"MarioFan597",
+			"Math",
 		},
 	},
 })
 
----Functions-----
---Ruby's Misprint + value fix
---[[
-function Cryptid.calculate_misprint(initial, min, max, grow_type, pow_level)
-    local big_initial = (type(initial) ~= "table" and to_big(initial)) or initial
-    local big_min = (type(min) ~= "table" and to_big(min)) or min
-    local big_max = (type(max) ~= "table" and to_big(max)) or max
 
-    local grow = Cryptid.log_random(pseudoseed("cry_misprint" .. G.GAME.round_resets.ante), big_min, big_max)
-
-    local calc = big_initial
-    if not grow_type then
-        calc = calc * grow
-    elseif grow_type == "+" then
-        if to_big(math.abs(initial)) > to_big(0.00001) then calc = calc + grow end
-    elseif grow_type == "-" then
-        calc = calc - grow
-    elseif grow_type == "/" then
-        calc = calc / grow
-    elseif grow_type == "^" then
-        pow_level = pow_level or 1
-        if pow_level == 1 then
-            calc = calc ^ grow
-        else
-            local function hyper(level, base, height)
-                local big_base = (type(base) ~= "table" and to_big(base)) or base
-                local big_height = (type(height) ~= "table" and to_big(height)) or height
-
-                if height == 1 then
-                    return big_base
-                elseif level == 1 then
-                    return big_base ^ big_height
-                else
-                    local inner = hyper(level, base, height - 1)
-                    return hyper(level - 1, base, inner)
-                end
-            end
-
-            calc = hyper(pow_level, calc, grow)
-        end
-    end
-
-    if calc > to_big(-1e100) and calc < to_big(1e100) then
-        calc = to_number(calc)
-    end
-
-    return calc
-end
-]]
