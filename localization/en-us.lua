@@ -321,15 +321,15 @@ return {
 				name = "Nebulosa Imago",
 				text = {
 					{
-						"At the start of turn, create",
-						"{C:attention}#1#{} {C:attention}Polychrome Steel King of Hearts{}.",
+						"At the start of turn, create {C:attention}#1#{} card",
+						"with the same {C:attention}rank{}, {C:attention}edition{}, {C:attention}enhancement{} and {C:attention}seal{}",
 						"{C:inactive}(Maximum{} {C:attention}40{} {C:inactive}card created at once){}",
 					},
 					{
 						"Whenever a {C:attention}card{} is",
 						"{C:attention}added to deck{} or {C:attention}destroyed{}",
 						"gains {X:dark_edition,C:white}^#2#{} Mult",
-						"{C:inactive}(Currently {X:dark_edition,C:white}^#3#{} Mult){}",
+						"{C:inactive}(Currently{} {X:dark_edition,C:white}^#3#{} {C:inactive}Mult){}",
 					},
 				},
 			},

@@ -13,6 +13,13 @@ SMODS.Joker({
 			emult = 1,
 			gain = 0.05,
 			dup = 1,
+
+			card = {
+				enhancement = "m_stone",
+				edition = "e_foil",
+				rank = "2",
+				suit = "S",
+			},
 		},
 		immutable = { maxdup = 40 },
 	},
@@ -58,16 +65,50 @@ SMODS.Joker({
 			end
 		end
 
+		if
+			context.after
+			and context.scoring_hand ~= nil
+			and #context.scoring_hand ~= 0
+			and context.cardarea == G.play
+		then
+			local cpy = context.scoring_hand[#context.scoring_hand]
+
+			local function get_load(tbl, default)
+				for key, cond in pairs(tbl) do
+					if cond then
+						return key
+					end
+				end
+
+				return default
+			end
+
+			print("XACTS")
+
+			local enhancement = get_load(cpy.enhancement, nil)
+			local edition = get_load(cpy.edition, nil)
+			local rank = cpy.rank
+			local suit = cpy.suit
+
+			card.ability.extra.card = {
+				enhancement = enhancement,
+				edition = edition,
+				rank = rank,
+				suit = suit,
+			}
+		end
+
 		if context.first_hand_drawn then
 			local cards = {}
 
 			for _ = 1, math.min(card.ability.immutable.maxdup, lenient_bignum(card.ability.extra.dup)) do
 				local ducard = SMODS.add_card({
 					set = "Base",
-					enhancement = "m_steel",
-					edition = "e_polychrome",
-					rank = "K",
-					suit = "H",
+
+					enhancement = card.ability.extra.card.enhancement,
+					edition = card.ability.extra.card.edition,
+					rank = card.ability.extra.card.rank,
+					suit = card.ability.extra.card.suit,
 				})
 
 				G.playing_card = (G.playing_card and G.playing_card + 1) or 1
