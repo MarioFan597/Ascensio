@@ -26,6 +26,7 @@ local v_jokers = {
 	"blue",
 	--"musa_ingens",
 	"square",
+	"hologram",
 	"midas",
 	"to_the_moon",
 	"golden",

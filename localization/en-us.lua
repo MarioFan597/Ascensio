@@ -317,6 +317,24 @@ return {
 				},
 			},
 
+			j_asc_hologram = {
+				name = "Nebulosa Imago",
+				text = {
+					{
+						"Whenever a {C:attention}card{} is scored,",
+						"create {C:attention}#1#{} duplicates of it",
+						"and add them to deck, then destroy it.",
+						"{C:inactive}(Maximum 40 duplicates.){}",
+					},
+					{
+						"Whenever a {C:attention}card{} is",
+						"{C:attention}added to deck{} or {C:attention}destroyed{},",
+						"gains {X:dark_edition,C:white}^#2#{} Mult.",
+						"{C:inactive}(Currently {X:dark_edition,C:white}^#3#{} Mult.){}",
+					},
+				},
+			},
+
 			j_asc_midas = {
 				name = "Rex Midas",
 				text = {
