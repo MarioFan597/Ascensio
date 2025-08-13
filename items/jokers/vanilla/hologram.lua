@@ -65,6 +65,29 @@ SMODS.Joker({
 			end
 		end
 
+		if context.individual and context.cardarea == G.play and context.other_card ~= nil then
+			local enh, edi
+
+			for enhx, applied in pairs(context.other_card.enhancement) do
+				if applied then
+					enh = enhx
+					break
+				end
+			end
+
+			for edix, applied in pairs(context.other_card.edition) do
+				if applied then
+					edi = edix
+					break
+				end
+			end
+
+			card.ability.extra.card.enhancement = enh
+			card.ability.extra.card.edition = edi
+			card.ability.extra.card.rank = context.other_card.rank
+			card.ability.extra.card.suit = context.other_card.suit
+		end
+
 		if context.first_hand_drawn then
 			local cards = {}
 

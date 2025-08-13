@@ -323,6 +323,7 @@ return {
 					{
 						"At the start of turn, create {C:attention}#1#{} card",
 						"with the same {C:attention}rank{}, {C:attention}edition{}, {C:attention}enhancement{} and {C:attention}seal{}",
+						"as the {C:attention}last scored{} card",
 						"{C:inactive}(Maximum{} {C:attention}40{} {C:inactive}card created at once){}",
 					},
 					{
