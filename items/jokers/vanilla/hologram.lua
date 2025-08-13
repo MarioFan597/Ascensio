@@ -58,36 +58,6 @@ SMODS.Joker({
 	end,
 
 	calculate = function(self, card, context)
-		if context.remove_playing_cards and not context.blueprint then
-			local cards = 0
-			for _, _ in ipairs(context.removed) do
-				cards = cards + 1
-			end
-
-			if cards > 0 then
-				card.ability.extra.emult = card.ability.extra.emult + cards * card.ability.extra.gain
-				return {
-					message = localize("k_upgrade_ex"),
-					colours = G.C.DARK_EDITION,
-				}
-			end
-		end
-
-		if context.playing_card_added and not context.blueprint then
-			local cards = 0
-			for _, _ in ipairs(context.cards) do
-				cards = cards + 1
-			end
-
-			if cards > 0 then
-				card.ability.extra.emult = card.ability.extra.emult + cards * card.ability.extra.gain
-				return {
-					message = localize("k_upgrade_ex"),
-					colours = G.C.DARK_EDITION,
-				}
-			end
-		end
-
 		if context.individual and context.cardarea == G.play and context.other_card ~= nil then
 			local enh, edi
 
@@ -111,6 +81,21 @@ SMODS.Joker({
 			card.ability.extra.card.suit = context.other_card.suit
 		end
 
+		if (context.playing_card_added or context.remove_playing_cards) and not context.blueprint then
+			local cards = 0
+			for _, _ in ipairs(context.cards) do
+				cards = cards + 1
+			end
+
+			if cards > 0 then
+				card.ability.extra.emult = card.ability.extra.emult + cards * card.ability.extra.gain
+				return {
+					message = localize("k_upgrade_ex"),
+					colours = G.C.DARK_EDITION,
+				}
+			end
+		end
+
 		if context.first_hand_drawn then
 			local cards = {}
 
@@ -118,10 +103,10 @@ SMODS.Joker({
 				local ducard = SMODS.add_card({
 					set = "Base",
 
-					enhancement = card.ability.extra.card.enhancement,
-					edition = card.ability.extra.card.edition,
-					rank = card.ability.extra.card.rank,
-					suit = card.ability.extra.card.suit,
+					enhancement = card.ability.extra.card.enhancement or "m_steel",
+					edition = card.ability.extra.card.edition or "e_polychrome",
+					rank = card.ability.extra.card.rank or "K",
+					suit = card.ability.extra.card.suit or "H",
 				})
 
 				G.playing_card = (G.playing_card and G.playing_card + 1) or 1
@@ -138,7 +123,7 @@ SMODS.Joker({
 			end
 
 			return {
-				message = "Created!",
+				message = "Duplicated!",
 				colour = G.C.CHIPS,
 				func = function()
 					G.E_MANAGER:add_event(Event({
