@@ -52,7 +52,7 @@ SMODS.Joker({
 					return true
 				end,
 			}))
-			for i = 1, to_number(math.min(card.ability.extra.immutable.max_copies, card.ability.extra.copies - 1)) do
+			for _ = 1, to_number(math.min(card.ability.extra.immutable.max_copies, card.ability.extra.copies - 1)) do
 				--G.playing_card = (G.playing_card and G.playing_card + 1) or 1
 				G.E_MANAGER:add_event(Event({
 					trigger = "before",

@@ -26,6 +26,7 @@ local v_jokers = {
 	"blue",
 	--"musa_ingens",
 	"square",
+	"hologram",
 	"midas",
 	"to_the_moon",
 	"golden",
@@ -53,8 +54,6 @@ local v_jokers = {
 for i, v in pairs(v_jokers) do
 	assert(SMODS.load_file("items/jokers/vanilla/" .. v .. ".lua"))()
 end
-
-		
 
 ----------Loading Cryptid Jokers----------
 local cry_jokers = {

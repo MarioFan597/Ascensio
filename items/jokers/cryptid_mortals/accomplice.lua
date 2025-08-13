@@ -1,6 +1,6 @@
 SMODS.Joker({ --Commented out at the moment as it is also increasing hand size at the moment for some reason
 	key = "accomplice", --Mostly taken from gemini
-	config = { extra = { scale_mult = 8, scale_chip = 32, scale_score = 300,} },
+	config = { extra = { scale_mult = 8, scale_chip = 32, scale_score = 300 } },
 	rarity = 2,
 	atlas = "c_atlas_mortal",
 	blueprint_compat = true,
@@ -10,16 +10,17 @@ SMODS.Joker({ --Commented out at the moment as it is also increasing hand size a
 	order = 515,
 	loc_vars = function(self, info_queue, card)
 		if next(SMODS.find_mod("Astronomica")) then
-			info_queue[#info_queue+1] = {key = 'asc_astronomica_compat', set = 'Other'}
+			info_queue[#info_queue + 1] = { key = "asc_astronomica_compat", set = "Other" }
 		end
 		card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui or ""
 		card.ability.blueprint_compat_check = nil
 		return {
-			vars = { number_format(card.ability.extra.scale_mult), 
-					number_format(card.ability.extra.scale_chip), 
-					--number_format(card.ability.extra.curr_mult),
-					--number_format(card.ability.extra.curr_chip) 
-					},
+			vars = {
+				number_format(card.ability.extra.scale_mult),
+				number_format(card.ability.extra.scale_chip),
+				--number_format(card.ability.extra.curr_mult),
+				--number_format(card.ability.extra.curr_chip)
+			},
 			main_end = (card.area and card.area == G.jokers) and {
 				{
 					n = G.UIT.C,
@@ -75,21 +76,12 @@ SMODS.Joker({ --Commented out at the moment as it is also increasing hand size a
 			then
 				check = true
 			end]]
-			if other_joker 
+			if
+				other_joker
 				and other_joker ~= card
-				and (other_joker.config.center.effect == "Type Mult"
-				or other_joker.config.center.effect == "Cry Type Mult"
-				or other_joker.config.center.effect == "Cry Type Chips"
-				or other_joker.config.center.effect == "Cry Type Score"
-				or other_joker.config.center.effect == "Boost Kidnapping"
-				or (
-					other_joker.config.center.name == "Sly Joker"
-					or other_joker.config.center.name == "Wily Joker"
-					or other_joker.config.center.name == "Clever Joker"
-					or other_joker.config.center.name == "Devious Joker"
-					or other_joker.config.center.name == "Crafty Joker"
-				))
-				and not (Card.no(other_joker, "immutable", true)) then
+				and (other_joker.config.center.effect == "Type Mult" or other_joker.config.center.effect == "Cry Type Mult" or other_joker.config.center.effect == "Cry Type Chips" or other_joker.config.center.effect == "Cry Type Score" or other_joker.config.center.effect == "Boost Kidnapping" or (other_joker.config.center.name == "Sly Joker" or other_joker.config.center.name == "Wily Joker" or other_joker.config.center.name == "Clever Joker" or other_joker.config.center.name == "Devious Joker" or other_joker.config.center.name == "Crafty Joker"))
+				and not (Card.no(other_joker, "immutable", true))
+			then
 				card.ability.blueprint_compat = "compatible"
 			else
 				card.ability.blueprint_compat = "incompatible"
@@ -97,28 +89,32 @@ SMODS.Joker({ --Commented out at the moment as it is also increasing hand size a
 		end
 	end,
 	calculate = function(self, card2, context)
-		if (context.end_of_round and not context.repetition and not context.individual)
-			or context.forcetrigger then
+		if (context.end_of_round and not context.repetition and not context.individual) or context.forcetrigger then
 			local check = false
 			local card = G.jokers.cards[1]
-			if  card.config.center.effect == "Cry Type Score"
-				and not Card.no(G.jokers.cards[1], "immutable", true) then
+			if card.config.center.effect == "Cry Type Score" and not Card.no(G.jokers.cards[1], "immutable", true) then
 				Cryptid.manipulate(G.jokers.cards[1], { value = card2.ability.extra.scale_score, type = "+" })
 				check = true
-			elseif card.config.center.effect == "Cry Type Chips"
+			elseif
+				card.config.center.effect == "Cry Type Chips"
 				or (
-					card.config.center.name == "Sly Joker"
-					or card.config.center.name == "Wily Joker"
-					or card.config.center.name == "Clever Joker"
-					or card.config.center.name == "Devious Joker"
-					or card.config.center.name == "Crafty Joker"
-				) and not Card.no(G.jokers.cards[1], "immutable", true) then
+						card.config.center.name == "Sly Joker"
+						or card.config.center.name == "Wily Joker"
+						or card.config.center.name == "Clever Joker"
+						or card.config.center.name == "Devious Joker"
+						or card.config.center.name == "Crafty Joker"
+					)
+					and not Card.no(G.jokers.cards[1], "immutable", true)
+			then
 				Cryptid.manipulate(G.jokers.cards[1], { value = card2.ability.extra.scale_chip, type = "+" })
 				check = true
-			elseif (card.config.center.effect == "Type Mult"
-				or card.config.center.effect == "Cry Type Mult"
-				or card.config.center.effect == "Boost Kidnapping")
-				and not Card.no(G.jokers.cards[1], "immutable", true) then
+			elseif
+				(
+					card.config.center.effect == "Type Mult"
+					or card.config.center.effect == "Cry Type Mult"
+					or card.config.center.effect == "Boost Kidnapping"
+				) and not Card.no(G.jokers.cards[1], "immutable", true)
+			then
 				Cryptid.manipulate(G.jokers.cards[1], { value = card2.ability.extra.scale_mult, type = "+" })
 				check = true
 			end
@@ -138,7 +134,7 @@ SMODS.Joker({ --Commented out at the moment as it is also increasing hand size a
 	asc_credits = {
 		idea = {
 			"Googol1e308plex",
-			"MarioFan597"
+			"MarioFan597",
 		},
 		art = {
 			"Requiacity",
@@ -150,5 +146,3 @@ SMODS.Joker({ --Commented out at the moment as it is also increasing hand size a
 		},
 	},
 })
-
-

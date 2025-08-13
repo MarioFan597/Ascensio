@@ -1,6 +1,6 @@
 SMODS.Joker({
 	key = "campfire",
-	config = { extra = { mult = 1, temp_gain = 0.1, perm_gain = 0.03, immutable = {cards_sold = 0} } },
+	config = { extra = { mult = 1, temp_gain = 0.1, perm_gain = 0.03, immutable = { cards_sold = 0 } } },
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
@@ -57,7 +57,10 @@ SMODS.Joker({
 		then
 			card.ability.extra.mult = 1
 			card.ability.extra.temp_gain = lenient_bignum(
-				to_big(card.ability.extra.temp_gain + (card.ability.extra.perm_gain * card.ability.extra.immutable.cards_sold))
+				to_big(
+					card.ability.extra.temp_gain
+						+ (card.ability.extra.perm_gain * card.ability.extra.immutable.cards_sold)
+				)
 			)
 			card.ability.extra.immutable.cards_sold = 0
 			card_eval_status_text(card, "extra", nil, nil, nil, {

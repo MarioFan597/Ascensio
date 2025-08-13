@@ -268,7 +268,7 @@ return {
 					"Gains {X:dark_edition,C:white}^#2#{} Chips for",
 					"every hand played this run",
 					"after each hand played",
-					"{C:inactive}(Currently {C:attention}#3#{C:inactive} hands played)"
+					"{C:inactive}(Currently {C:attention}#3#{C:inactive} hands played)",
 				},
 			},
 
@@ -314,6 +314,24 @@ return {
 					"if played hand has",
 					"exactly {C:attention}4{} cards",
 					"{C:inactive}(Currently {X:dark_edition,C:edition}^^#2#{} {C:inactive}Chips)",
+				},
+			},
+
+			j_asc_hologram = {
+				name = "Nebulosa Imago",
+				text = {
+					{
+						"At the start of turn, create {C:attention}#1#{} card",
+						"with the same {C:attention}rank{}, {C:attention}edition{}, {C:attention}enhancement{} and {C:attention}seal{}",
+						"as the {C:attention}last scored{} card",
+						"{C:inactive}(Maximum{} {C:attention}40{} {C:inactive}card created at once){}",
+					},
+					{
+						"Whenever a {C:attention}card{} is",
+						"{C:attention}added to deck{} or {C:attention}destroyed{}",
+						"gains {X:dark_edition,C:white}^#2#{} Mult",
+						"{C:inactive}(Currently{} {X:dark_edition,C:white}^#3#{} {C:inactive}Mult){}",
+					},
 				},
 			},
 
@@ -698,7 +716,7 @@ return {
 					"or {C:chips}+#2#{} Chips at end of round",
 					"if it is a {C:attention}Type Mult{} or",
 					"{C:attention}Type Chips{} Joker respectively",
-				}
+				},
 			},
 
 			j_asc_exorcist = {
@@ -766,7 +784,7 @@ return {
 					{
 						"{C:attention}Stone{} cards in",
 						"remaining deck can be",
-						"{C:attention}bought{} and {C:attention}sold{} for {C:money}$#5#{}"  
+						"{C:attention}bought{} and {C:attention}sold{} for {C:money}$#5#{}",
 					},
 				},
 			},
@@ -799,7 +817,7 @@ return {
 				text = {
 					"Also gives {X:purple,C:white}Astronomica's{}",
 					"{C:attention}Type Score{} Jokers",
-					"{C:purple}+300{} Score"
+					"{C:purple}+300{} Score",
 				},
 			},
 		},

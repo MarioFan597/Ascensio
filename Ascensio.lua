@@ -103,6 +103,7 @@ ascensionable = {
 	j_blue_joker = "j_asc_blue",
 	j_cavendish = "j_asc_banana",
 	j_square = "j_asc_square",
+	j_hologram = "j_asc_hologram",
 	j_midas_mask = "j_asc_midas",
 	j_to_the_moon = "j_asc_to_the_moon",
 	j_golden = "j_asc_golden",
