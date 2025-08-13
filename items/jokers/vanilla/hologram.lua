@@ -68,14 +68,14 @@ SMODS.Joker({
 		if context.individual and context.cardarea == G.play and context.other_card ~= nil then
 			local enh, edi
 
-			for enhx, applied in pairs(context.other_card.enhancement) do
+			for enhx, applied in pairs(context.other_card.enhancement or {}) do
 				if applied then
 					enh = enhx
 					break
 				end
 			end
 
-			for edix, applied in pairs(context.other_card.edition) do
+			for edix, applied in pairs(context.other_card.edition or {}) do
 				if applied then
 					edi = edix
 					break
