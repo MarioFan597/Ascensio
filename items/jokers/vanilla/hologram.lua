@@ -1,11 +1,18 @@
+SMODS.Atlas({
+	key = "hologram",
+	path = "hologram.png",
+	px = 71,
+	py = 95,
+})
+
 SMODS.Joker({
 	key = "hologram",
 	rarity = "cry_exotic",
-	atlas = "v_atlas_1",
+	atlas = "hologram",
 	blueprint_compat = true,
 	demicoloncompat = true,
-	pos = { x = 9, y = 9 },
-	soul_pos = { x = 11, y = 9, extra = { x = 10, y = 9 } },
+	pos = { x = 0, y = 0 },
+	soul_pos = { x = 0, y = 9, extra = { x = 0, y = 5 } },
 	cost = 50,
 
 	config = {
@@ -141,12 +148,27 @@ SMODS.Joker({
 		end
 	end,
 
+	animation = {
+		macro = {
+			type = "skim",
+			pos = {
+				include = { { x1 = 0, x2 = 19, y1 = 0, y2 = 9 } },
+			},
+			soul_pos = {
+				include = { { x1 = 0, x2 = 19, y1 = 0, y2 = 9 } },
+			},
+			soul_pos_extra = {
+				include = { { x1 = 0, x2 = 19, y1 = 0, y2 = 9 } },
+			},
+		},
+	},
+
 	asc_credits = {
 		idea = {
 			"OmegaLife",
 		},
 		art = {
-			"???",
+			"Tatteredlurker",
 		},
 		code = {
 			"OmegaLife",
