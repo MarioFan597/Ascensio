@@ -11,9 +11,25 @@ SMODS.Joker({
 	atlas = "hologram",
 	blueprint_compat = true,
 	demicoloncompat = true,
-	pos = { x = 0, y = 0 },
-	soul_pos = { x = 0, y = 9, extra = { x = 0, y = 5 } },
 	cost = 50,
+
+	pos = { x = 0, y = 0 },
+	soul_pos = { x = 0, y = 8, extra = { x = 0, y = 4 } },
+
+	animation = {
+		macro = {
+			type = "skim",
+			pos = {
+				include = { { x1 = 0, y1 = 0, x2 = 19, y2 = 3 } },
+			},
+			soul_pos = {
+				include = { { x1 = 0, y1 = 4, x2 = 19, y2 = 7 } },
+			},
+			soul_pos_extra = {
+				include = { { x1 = 0, y1 = 8, x2 = 19, y2 = 11 } },
+			},
+		},
+	},
 
 	config = {
 		extra = {
@@ -147,21 +163,6 @@ SMODS.Joker({
 			}
 		end
 	end,
-
-	animation = {
-		macro = {
-			type = "skim",
-			pos = {
-				include = { { x1 = 0, x2 = 19, y1 = 0, y2 = 9 } },
-			},
-			soul_pos = {
-				include = { { x1 = 0, x2 = 19, y1 = 0, y2 = 9 } },
-			},
-			soul_pos_extra = {
-				include = { { x1 = 0, x2 = 19, y1 = 0, y2 = 9 } },
-			},
-		},
-	},
 
 	asc_credits = {
 		idea = {
