@@ -1,5 +1,24 @@
 return {
 	descriptions = {
+		Mod = {
+            Ascensio = {
+                name = "Ascēnsiō",
+                text = {
+                    "{C:cry_exotic,E:1,s:1.5}Exoticfy your Jokers!{}",
+                    " ",
+                    "{s:1.4,C:attention}Special thanks to:{}",
+                    "{s:1.1}{}",
+                    "{s:1.2}Tatteredlurker",
+                    "{s:1.2}Lil Mr. Slipstream",
+                    "{s:1.2}Glitchkat10",
+                    "{s:1.2}Somethingcom515",
+                    "{s:1.2}hssr", 
+                    "{s:1.2}omegalife",
+                    " ",
+                    "{s:1.1}And the rest of the Cryptid Discord!"
+                }
+            }
+        },
 		Blind = {},
 		Edition = {},
 		Enhanced = {},
@@ -18,24 +37,39 @@ return {
 					"Played cards with {C:diamond}Diamond",
 					"suit give {X:dark_edition,C:white}^#1#{} Mult",
 					"when scored",
+					"{C:mult,E:2}Rework Soon{}",
 				},
 			},
 
 			j_asc_lusty = {
 				name = "Libido",
 				text = {
-					"Played cards with {C:heart}Heart",
-					"suit give {X:dark_edition,C:white}^#1#{} Mult",
-					"when scored",
+					{
+						"Played cards with {C:heart}Heart{} suit",
+						"give {X:dark_edition,C:white}^#1#{} Mult when scored",
+					},
+					{
+						"{C:green}#2# in #3#{} chance for scored", 
+						"{C:heart}Hearts{} to give adjacent", 
+						"{C:heart}Hearts{} {C:attention}#4#{} extra trigger",
+						"{C:inactive}(Max {C:attention}#5#{} {C:inactive}retriggers)"
+					},
 				},
 			},
 
 			j_asc_wrathful = {
 				name = "Iram",
 				text = {
-					"Played cards with {C:spade}Spade",
-					"suit give {X:dark_edition,C:white}^#1#{} Mult",
-					"when scored",
+					{
+						"Played cards with {C:spade}Spade{} suit",
+						"give {X:dark_edition,C:white}^#1#{} Mult when scored",
+					},
+					{
+						"{C:green}#3# in #4#{} chance for scored {C:spade}Spades{}",
+						"to {C:attention}destroy{} a non-{C:spade}Spade{} card", 
+						"held in hand and add {X:dark_edition,C:white}^#2#{} Mult",
+						"to this Joker at end of round"
+					},
 				},
 			},
 
@@ -45,6 +79,7 @@ return {
 					"Played cards with {C:club}Club",
 					"suit give {X:dark_edition,C:white}^#1#{} Mult",
 					"when scored",
+					"{C:mult,E:2}Rework Soon{}",
 				},
 			},
 
@@ -321,16 +356,16 @@ return {
 				name = "Nebulosa Imago",
 				text = {
 					{
-						"At the start of turn, create {C:attention}#1#{} card",
-						"with the same {C:attention}rank{}, {C:attention}edition{}, {C:attention}enhancement{} and {C:attention}seal{}",
-						"as the {C:attention}last scored{} card",
-						"{C:inactive}(Maximum{} {C:attention}40{} {C:inactive}card created at once){}",
+						"This Joker gains {X:dark_edition,C:white}^#2#{} Mult",
+						"every time a {C:attention}playing card{} is",
+						"added to deck or destroyed",
+						"{C:inactive}(Currently{} {X:dark_edition,C:white}^#3#{} {C:inactive}Mult){}",
 					},
 					{
-						"Whenever a {C:attention}card{} is",
-						"{C:attention}added to deck{} or {C:attention}destroyed{}",
-						"gains {X:dark_edition,C:white}^#2#{} Mult",
-						"{C:inactive}(Currently{} {X:dark_edition,C:white}^#3#{} {C:inactive}Mult){}",
+						"Before {C:attention}first hand{} of round,", 
+						"this Joker creates {C:attention}#1#{} copy",
+						"of last scored {C:attention}playing card{}",
+						"{C:inactive}(Max{} {C:attention}#4#{} {C:inactive}cards created){}",
 					},
 				},
 			},

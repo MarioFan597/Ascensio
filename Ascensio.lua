@@ -176,6 +176,22 @@ function factorial(n)
 	end
 end
 
+function table.contains(table, item)
+  for _, card in pairs(table) do
+    if card == item then
+      return true
+    end
+  end
+  return false
+end
+
+
+--#region SMODS UI funcs (additions, config, collection) Taken from Cardsleves to make custom mode description clear.
+SMODS.current_mod.description_loc_vars = function()
+    return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2 }
+end
+
+
 ---Cryptid's Credit System----
 -- This was modified and taken from Entropy
 
