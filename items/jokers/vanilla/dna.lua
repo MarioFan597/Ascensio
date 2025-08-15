@@ -43,8 +43,14 @@ SMODS.Joker({
 								and v.seal == _card.seal
 							)
 						then
-							v:start_dissolve(nil, _first_dissolve)
-							_first_dissolve = true
+							G.E_MANAGER:add_event(Event({
+					            trigger = 'after',
+					            delay = 0.2,
+					            func = function()
+					                SMODS.destroy_cards(v)
+					                return true
+					            end
+					        }))
 						else
 							v:set_edition(_card.edition)
 						end
