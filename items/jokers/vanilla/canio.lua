@@ -19,8 +19,9 @@ SMODS.Joker({
 	end,
 
 	calculate = function(self, card, context)
-		if context.blueprint or (context.remove_playing_cards and context.removed) then --Check if face cards are removed.
+		if (context.blueprint and context.remove_playing_cards and context.removed) or (context.remove_playing_cards and context.removed) then --Check if face cards are removed.
 			local check = 0
+			local power = 0
 			for _, _card in ipairs(context.removed) do
 				if _card:is_face() then
 					local replacement = copy_card(_card)
@@ -28,9 +29,11 @@ SMODS.Joker({
 					table.insert(G.playing_cards, replacement)
 					G.hand:emplace(replacement)
 					playing_card_joker_effects({ replacement })
-					card.ability.extra.power = lenient_bignum(card.ability.extra.power)
-						+ lenient_bignum(card.ability.extra.gain)
-					check = check + 1 --We need to do a check here instead of the return statement otherwise it wouldn't count every face card
+					if not context.blueprint then
+						card.ability.extra.power = lenient_bignum(card.ability.extra.power)
+							+ lenient_bignum(card.ability.extra.gain)
+						check = check + 1 --We need to do a check here instead of the return statement otherwise it wouldn't count every face card
+					end
 				end
 			end
 			if check > 0 then

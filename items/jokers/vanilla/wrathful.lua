@@ -54,11 +54,7 @@ SMODS.Joker({
 							end
 							table.remove(asc_spade_alt_table, selected)
 							if aaa ~= nil then
-								if SMODS.shatters(aaa) then
-									aaa:shatter()
-								else
-									aaa:start_dissolve()
-								end
+								SMODS.destroy_cards(aaa)
 								--Upgrade ^mult and display upgrade message
 								card.ability.extra.e_mult = lenient_bignum(card.ability.extra.e_mult) + lenient_bignum(card.ability.extra.gain)
 								card_eval_status_text(
