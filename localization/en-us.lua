@@ -634,9 +634,15 @@ return {
 			j_asc_canio = {
 				name = "Thanatos",
 				text = {
-					"Gains {X:dark_edition,C:white}^#2#{} Mult per destroyed {C:attention}face{} card,",
-					"destroyed {C:attention}face{} cards are returned to hand",
+					{
+					"Gains {X:dark_edition,C:white}^#2#{} Mult per",
+					"destroyed {C:attention}face{} card",
 					"{C:inactive}(Currently {X:dark_edition,C:white}^#1#{}{C:inactive} Mult)",
+					},
+					{
+					"Destroyed {C:attention}face{} cards",
+					"are returned to hand",
+					},	
 				},
 			},
 
