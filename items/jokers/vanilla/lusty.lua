@@ -77,7 +77,7 @@ SMODS.Joker({
 			"MarioFan597",
 		},
 		code = {
-			"Seals on Every",
+			"Somethingcom515",
 			"MarioFan597",
 			"Glitchkat10",
 		},
