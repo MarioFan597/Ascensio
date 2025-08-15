@@ -17,7 +17,8 @@ SMODS.Joker({
 	cost = 50,
 	order = 126,
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = { key = "cry_rigged", set = "Other", vars = {} }
+		info_queue[#info_queue + 1] = { key = "cry_rigged", set = "Other"}
+		info_queue[#info_queue + 1] = { key = "asc_fixed", set = "Other" }
 		return {
 			vars = {
 				card and lenient_bignum(card.ability.extra.slot_gain),

@@ -200,6 +200,8 @@ G.ARGS.LOC_COLOURS.asc_glitchkat = HEX('f04360')
 G.ARGS.LOC_COLOURS.asc_somethingcom515 = HEX('E8463D')
 G.ARGS.LOC_COLOURS.asc_hssr = HEX('51c1ffff')
 G.ARGS.LOC_COLOURS.asc_omega = HEX('f5fffa')
+G.ARGS.LOC_COLOURS.asc_oinite = HEX('dc143c')
+G.ARGS.LOC_COLOURS.asc_hexa = HEX('52c5ff')
 
 
 
