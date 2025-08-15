@@ -186,16 +186,27 @@ function table.contains(table, item)
 end
 
 
---#region SMODS UI funcs (additions, config, collection) Taken from Cardsleves to make custom mode description clear.
+--#region SMODS UI funcs (additions, config, collection) Taken from Cardsleves to make custom mod background description clear--
 SMODS.current_mod.description_loc_vars = function()
     return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2 }
 end
 
+----------------Colours------------------
+---------Special Thanks Colours----------
+loc_colour()
+G.ARGS.LOC_COLOURS.asc_tattered = HEX('2ad5ff')
+G.ARGS.LOC_COLOURS.asc_slipstream = HEX('cc99ff')
+G.ARGS.LOC_COLOURS.asc_glitchkat = HEX('f04360')
+G.ARGS.LOC_COLOURS.asc_somethingcom515 = HEX('E8463D')
+G.ARGS.LOC_COLOURS.asc_hssr = HEX('51c1ffff')
+G.ARGS.LOC_COLOURS.asc_omega = HEX('f5fffa')
 
----Cryptid's Credit System----
--- This was modified and taken from Entropy
 
----Ascensio Tag
+
+-------Cryptid's Credit System-------
+-- This was modified and taken from Entropy--
+
+----------Ascensio Tag-------------
 local smcmb = SMODS.create_mod_badges
 function SMODS.create_mod_badges(obj, badges)
 	smcmb(obj, badges)

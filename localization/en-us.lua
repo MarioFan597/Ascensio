@@ -4,17 +4,22 @@ return {
             Ascensio = {
                 name = "Ascēnsiō",
                 text = {
-                    "{C:cry_exotic,E:1,s:1.5}Exoticfy your Jokers!{}",
-                    " ",
+                    "{C:cry_exotic,E:1,s:1.6}Exoticfy your Jokers!{}",
+                    "{s:0.4} ",
+                    "{s:1.3}Adds {C:cry_exotic,E:1,s:1.3}Exotic{s:1.3} forms to normal Jokers",
+                    "{s:1.3}and vice versa",
+                    "{s:1.2} {}",
                     "{s:1.4,C:attention}Special thanks to:{}",
-                    "{s:1.1}{}",
-                    "{s:1.2}Tatteredlurker",
-                    "{s:1.2}Lil Mr. Slipstream",
-                    "{s:1.2}Glitchkat10",
-                    "{s:1.2}Somethingcom515",
-                    "{s:1.2}hssr", 
-                    "{s:1.2}omegalife",
-                    " ",
+                    "{s:1.2} ",
+                    "{X:asc_tattered,C:black,s:1.2}Tatteredlurker{}     {X:asc_slipstream,C:black,s:1.2}Lil_Mr._Slipstream", --I know B: should be used, but it isnt working
+                                 "{C:asc_tattered,s:0.8}Art                            {C:asc_slipstream,s:0.8}Art  ",
+                    "{s:0.2} ",
+                    " {X:asc_glitchkat,C:white,s:1.2}Glitchkat10{}       {X:asc_somethingcom515,C:white,s:1.2}Somethingcom515  ",
+                    	  "{C:asc_glitchkat,s:0.8}Coding, Idea Aproval{}            {C:asc_somethingcom515,s:0.8}Coding        ",
+                    "{s:0.2} ",
+                    " {X:asc_hssr,C:black,s:1.2}hssr{}              {X:asc_omega,C:black,s:1.2}OmegaLife ",
+              "{C:asc_hssr,s:0.8}Ideas, Suggestion Sheet Creation{}     {C:asc_omega,s:0.8}Coding, Ideas          ",
+                    "{s:1.4} ",
                     "{s:1.1}And the rest of the Cryptid Discord!"
                 }
             }
@@ -853,6 +858,13 @@ return {
 					"Also gives {X:purple,C:white}Astronomica's{}",
 					"{C:attention}Type Score{} Jokers",
 					"{C:purple}+300{} Score",
+				},
+			},
+			--Special Thanks Descriptions
+			asc_tatterd = {
+				name = "Tattered Credits",
+				text = {
+					"Artist"
 				},
 			},
 		},
