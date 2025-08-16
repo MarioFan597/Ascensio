@@ -4,6 +4,7 @@
 -----bignum compatibility using cryptid-----
 Cryptid.mod_whitelist["Ascensio"] = true
 
+
 ----------Defining Multiuse Atlases------------------
 SMODS.Atlas({
 	key = "modicon",
@@ -549,7 +550,7 @@ if asc_config["Insanity Mode!!!"] == nil then
 	asc_config["Insanity Mode!!!"] = false
 end
 
-local ascensioTabs = function()
+--[[local ascensioTabs = function()
 	return {
 		{
 			label = localize("asc_config"),
@@ -583,5 +584,33 @@ local ascensioTabs = function()
 end
 
 SMODS.current_mod.extra_tabs = ascensioTabs
+]]
+
+SMODS.current_mod.config_tab = function()
+    return {n = G.UIT.ROOT, config = {r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 4}, nodes = {
+    		{n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
+            {n = G.UIT.C, config = { align = "cm", padding = 0 }, nodes = {
+                { n = G.UIT.T, config = { text = localize('asc_config_insanity_mode'), scale = 1, colour = G.C.UI.TEXT_LIGHT }},
+            }},
+        }},
+
+        {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
+        		{n = G.UIT.C, config = { align = "cm", padding = 0 }, nodes = {
+                { n = G.UIT.T, config = { text = ">", scale = 1, colour = G.C.UI.TEXT_LIGHT }},
+            }},
+            {n = G.UIT.C, config = { align = "cm", padding = 0.2 }, nodes = {
+                create_toggle{ col = true, label = "", scale = 1, w = 0, shadow = true, ref_table = asc_config, ref_value = "Insanity Mode!!!" },
+            }},
+            {n = G.UIT.C, config = { align = "cm", padding = 0.2 }, nodes = {
+                { n = G.UIT.T, config = { text = "<", scale = 1, colour = G.C.UI.TEXT_LIGHT }},
+            }},
+        }},
+        {n = G.UIT.R, config = {align = "cl", padding = 0}, nodes = {
+            {n = G.UIT.C, config = { align = "c", padding = 0.1 }, nodes = {
+                { n = G.UIT.T, config = { text = localize('asc_config_insanity_explanation'), scale = 0.4, colour = G.C.DARK_EDITION }},
+            }},
+        }},
+    }}
+end
 ----------------------------------------------
 ------------MOD CODE END----------------------

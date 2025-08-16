@@ -935,6 +935,7 @@ return {
 			asc_mossaic_stone_cards = "Mossaic Stone Cards",
 			asc_config = "Config",
 			asc_config_insanity_mode = "Insanity Mode!!!",
+			asc_config_insanity_explanation = "Stops Gateway and Ascension from destroying Jokers",
 		},
 	},
 }
