@@ -41,10 +41,14 @@ return {
 			j_asc_greedy = {
 				name = "Avarus",
 				text = {
-					"Played cards with {C:diamond}Diamond",
-					"suit give {X:dark_edition,C:white}^#1#{} Mult",
-					"when scored",
-					"{C:mult,E:2}Rework Soon{}",
+					{
+						"Played cards with {C:diamond}Diamond{} suit", 
+						"give {X:dark_edition,C:white}^#1#{} Mult when scored",
+					},
+					{
+						"Gains {X:dark_edition,C:white}^#2#{} Mult for",
+						"every {C:money}${} earned",
+					},
 				},
 			},
 
@@ -75,7 +79,7 @@ return {
 						"{C:green}#3# in #4#{} chance for scored {C:spade}Spades{}",
 						"to {C:attention}destroy{} a non-{C:spade}Spade{} card", 
 						"held in hand and add {X:dark_edition,C:white}^#2#{} Mult",
-						"to this Joker at end of round"
+						"to this Joker at end of hand"
 					},
 				},
 			},
@@ -933,9 +937,15 @@ return {
 			b_sell_stone = "-Stones",
 			b_buy_stone = "+Stones",
 			asc_mossaic_stone_cards = "Mossaic Stone Cards",
-			asc_config = "Config",
+			asc_special_thanks = "Special Thanks",
 			asc_config_insanity_mode = "Insanity Mode!!!",
 			asc_config_insanity_explanation = "Stops Gateway and Ascension from destroying Jokers",
+			--Special Thanks Credits
+			--asc_tatterd_credits = {
+					--"{X:asc_tattered,C:black,s:1.2}Tatteredlurker{}",
+					--"{C:asc_tattered,s:0.8}Art{}"
+				--},
+			--},
 		},
 	},
 }
