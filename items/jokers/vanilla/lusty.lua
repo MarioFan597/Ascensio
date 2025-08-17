@@ -8,7 +8,7 @@ SMODS.Joker({
 	soul_pos = { x = 5, y = 4, extra = { x = 4, y = 4 } },
 	cost = 50,
 	order = 3,
-	loc_vars = function(self, info_queue, card)
+	loc_vars = function(_, _, card)
 		return {
 			vars = {
 				lenient_bignum(card.ability.extra.e_mult),
@@ -19,7 +19,7 @@ SMODS.Joker({
 			},
 		}
 	end,
-	calculate = function(self, card, context)
+	calculate = function(_, card, context)
 		if context.repetition and context.cardarea == G.play and not context.repetition_only then
 			local hearts = {}
 			local my_pos
@@ -34,7 +34,7 @@ SMODS.Joker({
 			local first_card = pseudorandom("Heartache" .. G.SEED)
 				< cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged)
 					/ card.ability.extra.odds
-			local second_card = pseudorandom("Cardiac Arest" .. G.SEED)
+			local second_card = pseudorandom("Cardiac Arrest" .. G.SEED)
 				< cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged)
 					/ card.ability.extra.odds
 			if
