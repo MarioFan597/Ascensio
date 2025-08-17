@@ -10,23 +10,24 @@ SMODS.Joker({
 	cost = 50,
 	order = 4,
 	loc_vars = function(self, info_queue, card)
-		return { 
+		return {
 			vars = {
 				lenient_bignum(card.ability.extra.e_mult),
-				lenient_bignum(card.ability.extra.gain),  
+				lenient_bignum(card.ability.extra.gain),
 				cry_prob(card.ability.cry_prob, lenient_bignum(card.ability.extra.odds), card.ability.cry_rigged),
 				lenient_bignum(card.ability.extra.odds),
-			}, 
+			},
 		}
 	end,
 	calculate = function(self, card, context)
 		local flag = true
 		local to_destroy = {}
-		if 
-			(context.individual and context.cardarea == G.play and context.other_card:is_suit("Spades")) or context.forcetrigger 
+		if
+			(context.individual and context.cardarea == G.play and context.other_card:is_suit("Spades"))
+			or context.forcetrigger
 		then
-			if 
-				pseudorandom("Where are the grapes?"..G.SEED)
+			if
+				pseudorandom("Where are the grapes?" .. G.SEED)
 				< cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged)
 					/ card.ability.extra.odds
 			then
@@ -38,41 +39,45 @@ SMODS.Joker({
 						end
 					end
 				end
-			-- Destroy Cards
-			-- Don't destroy them if they were already destroyed though
+				-- Destroy Cards
+				-- Don't destroy them if they were already destroyed though
 				if flag then
 					asc_spade_alt_table = to_destroy --I think I have to make this a global variable. Doesn't want to work without it
 				end
-					G.E_MANAGER:add_event(Event({
-						trigger = "immediate",
-						--delay = 0.1,
-						func = function()
-							local selected = math.random(#asc_spade_alt_table)
-							local aaa = asc_spade_alt_table[selected]
-							if aaa == nil then
-								math.random(#asc_spade_alt_table)
-							end
-							table.remove(asc_spade_alt_table, selected)
-							if aaa ~= nil then
-								SMODS.destroy_cards(aaa)
-								--Upgrade ^mult and display upgrade message
-								card.ability.extra.e_mult = lenient_bignum(card.ability.extra.e_mult) + lenient_bignum(card.ability.extra.gain)
-								card_eval_status_text(
-									card,
-									"extra",
-									nil,
-									nil,
-									nil,
-									{ message = localize({
+				G.E_MANAGER:add_event(Event({
+					trigger = "immediate",
+					--delay = 0.1,
+					func = function()
+						local selected = math.random(#asc_spade_alt_table)
+						local aaa = asc_spade_alt_table[selected]
+						if aaa == nil then
+							math.random(#asc_spade_alt_table)
+						end
+						table.remove(asc_spade_alt_table, selected)
+						if aaa ~= nil then
+							SMODS.destroy_cards(aaa)
+							--Upgrade ^mult and display upgrade message
+							card.ability.extra.e_mult = lenient_bignum(card.ability.extra.e_mult)
+								+ lenient_bignum(card.ability.extra.gain)
+							card_eval_status_text(
+								card,
+								"extra",
+								nil,
+								nil,
+								nil,
+								{
+									message = localize({
 										type = "variable",
 										key = "a_powmult",
 										vars = { lenient_bignum(card.ability.extra.e_mult) },
-									}), colour = G.C.DARK_EDITION, }
-								)
-							end
-							return true
-						end,
-					}))
+									}),
+									colour = G.C.DARK_EDITION,
+								}
+							)
+						end
+						return true
+					end,
+				}))
 			end
 			return {
 				message = localize({

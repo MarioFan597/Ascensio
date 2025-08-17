@@ -19,7 +19,10 @@ SMODS.Joker({
 	end,
 
 	calculate = function(self, card, context)
-		if (context.blueprint and context.remove_playing_cards and context.removed) or (context.remove_playing_cards and context.removed) then --Check if face cards are removed.
+		if
+			(context.blueprint and context.remove_playing_cards and context.removed)
+			or (context.remove_playing_cards and context.removed)
+		then --Check if face cards are removed.
 			local check = 0
 			local power = 0
 			for _, _card in ipairs(context.removed) do

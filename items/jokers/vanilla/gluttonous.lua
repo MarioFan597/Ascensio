@@ -13,7 +13,7 @@ SMODS.Joker({
 		return { vars = { card.ability.extra.e_mult } }
 	end,
 	calculate = function(self, card, context)
-	--[[if context.individual and context.cardarea == G.hand and not context.end_of_round and context.other_card:is_suit("Clubs") then
+		--[[if context.individual and context.cardarea == G.hand and not context.end_of_round and context.other_card:is_suit("Clubs") then
             if context.other_card.debuff then
                 return {
                     message = localize('k_debuffed'),
@@ -49,7 +49,7 @@ SMODS.Joker({
 	asc_credits = {
 		idea = {
 			"Lexi",
-			"MarioFan597"
+			"MarioFan597",
 		},
 		art = {
 			"MarioFan597",
@@ -64,12 +64,17 @@ SMODS.Joker({
 --Thanks Somethingcom515!
 local oldsmodsscorecard = SMODS.score_card
 function SMODS.score_card(card, context)
-    if not G.scorehand and card:is_suit("Clubs") and next(SMODS.find_card('j_asc_gluttonous')) and context.cardarea == G.hand then
-        G.scorehand = true
-        context.cardarea = G.play
-        SMODS.score_card(card, context)
-        context.cardarea = G.hand
-        G.scorehand = nil
-    end
-    return oldsmodsscorecard(card, context)
+	if
+		not G.scorehand
+		and card:is_suit("Clubs")
+		and next(SMODS.find_card("j_asc_gluttonous"))
+		and context.cardarea == G.hand
+	then
+		G.scorehand = true
+		context.cardarea = G.play
+		SMODS.score_card(card, context)
+		context.cardarea = G.hand
+		G.scorehand = nil
+	end
+	return oldsmodsscorecard(card, context)
 end

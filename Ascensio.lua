@@ -4,7 +4,6 @@
 -----bignum compatibility using cryptid-----
 Cryptid.mod_whitelist["Ascensio"] = true
 
-
 ----------Defining Multiuse Atlases------------------
 SMODS.Atlas({
 	key = "modicon",
@@ -178,33 +177,30 @@ function factorial(n)
 end
 
 function table.contains(table, item)
-  for _, card in pairs(table) do
-    if card == item then
-      return true
-    end
-  end
-  return false
+	for _, card in pairs(table) do
+		if card == item then
+			return true
+		end
+	end
+	return false
 end
-
 
 --#region SMODS UI funcs (additions, config, collection) Taken from Cardsleves to make custom mod background description clear--
 SMODS.current_mod.description_loc_vars = function()
-    return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2 }
+	return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2 }
 end
 
 ----------------Colours------------------
 ---------Special Thanks Colours----------
 loc_colour()
-G.ARGS.LOC_COLOURS.asc_tattered = HEX('2ad5ff')
-G.ARGS.LOC_COLOURS.asc_slipstream = HEX('cc99ff')
-G.ARGS.LOC_COLOURS.asc_glitchkat = HEX('f04360')
-G.ARGS.LOC_COLOURS.asc_somethingcom515 = HEX('E8463D')
-G.ARGS.LOC_COLOURS.asc_hssr = HEX('51c1ffff')
-G.ARGS.LOC_COLOURS.asc_omega = HEX('f5fffa')
-G.ARGS.LOC_COLOURS.asc_oinite = HEX('dc143c')
-G.ARGS.LOC_COLOURS.asc_hexa = HEX('52c5ff')
-
-
+G.ARGS.LOC_COLOURS.asc_tattered = HEX("2ad5ff")
+G.ARGS.LOC_COLOURS.asc_slipstream = HEX("cc99ff")
+G.ARGS.LOC_COLOURS.asc_glitchkat = HEX("f04360")
+G.ARGS.LOC_COLOURS.asc_somethingcom515 = HEX("E8463D")
+G.ARGS.LOC_COLOURS.asc_hssr = HEX("51c1ffff")
+G.ARGS.LOC_COLOURS.asc_omega = HEX("f5fffa")
+G.ARGS.LOC_COLOURS.asc_oinite = HEX("dc143c")
+G.ARGS.LOC_COLOURS.asc_hexa = HEX("52c5ff")
 
 -------Cryptid's Credit System-------
 -- This was modified and taken from Entropy--
@@ -587,30 +583,88 @@ SMODS.current_mod.extra_tabs = ascensioTabs
 ]]
 
 SMODS.current_mod.config_tab = function()
-    return {n = G.UIT.ROOT, config = {r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 4}, nodes = {
-    		{n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
-            {n = G.UIT.C, config = { align = "cm", padding = 0 }, nodes = {
-                { n = G.UIT.T, config = { text = localize('asc_config_insanity_mode'), scale = 1, colour = G.C.UI.TEXT_LIGHT }},
-            }},
-        }},
+	return {
+		n = G.UIT.ROOT,
+		config = { r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 4 },
+		nodes = {
+			{
+				n = G.UIT.R,
+				config = { align = "cm", padding = 0 },
+				nodes = {
+					{
+						n = G.UIT.C,
+						config = { align = "cm", padding = 0 },
+						nodes = {
+							{
+								n = G.UIT.T,
+								config = {
+									text = localize("asc_config_insanity_mode"),
+									scale = 1,
+									colour = G.C.UI.TEXT_LIGHT,
+								},
+							},
+						},
+					},
+				},
+			},
 
-        {n = G.UIT.R, config = {align = "cm", padding = 0}, nodes = {
-        		{n = G.UIT.C, config = { align = "cm", padding = 0 }, nodes = {
-                { n = G.UIT.T, config = { text = ">", scale = 1, colour = G.C.UI.TEXT_LIGHT }},
-            }},
-            {n = G.UIT.C, config = { align = "cm", padding = 0.2 }, nodes = {
-                create_toggle{ col = true, label = "", scale = 1, w = 0, shadow = true, ref_table = asc_config, ref_value = "Insanity Mode!!!" },
-            }},
-            {n = G.UIT.C, config = { align = "cm", padding = 0.2 }, nodes = {
-                { n = G.UIT.T, config = { text = "<", scale = 1, colour = G.C.UI.TEXT_LIGHT }},
-            }},
-        }},
-        {n = G.UIT.R, config = {align = "cl", padding = 0}, nodes = {
-            {n = G.UIT.C, config = { align = "c", padding = 0.1 }, nodes = {
-                { n = G.UIT.T, config = { text = localize('asc_config_insanity_explanation'), scale = 0.4, colour = G.C.DARK_EDITION }},
-            }},
-        }},
-    }}
+			{
+				n = G.UIT.R,
+				config = { align = "cm", padding = 0 },
+				nodes = {
+					{
+						n = G.UIT.C,
+						config = { align = "cm", padding = 0 },
+						nodes = {
+							{ n = G.UIT.T, config = { text = ">", scale = 1, colour = G.C.UI.TEXT_LIGHT } },
+						},
+					},
+					{
+						n = G.UIT.C,
+						config = { align = "cm", padding = 0.2 },
+						nodes = {
+							create_toggle({
+								col = true,
+								label = "",
+								scale = 1,
+								w = 0,
+								shadow = true,
+								ref_table = asc_config,
+								ref_value = "Insanity Mode!!!",
+							}),
+						},
+					},
+					{
+						n = G.UIT.C,
+						config = { align = "cm", padding = 0.2 },
+						nodes = {
+							{ n = G.UIT.T, config = { text = "<", scale = 1, colour = G.C.UI.TEXT_LIGHT } },
+						},
+					},
+				},
+			},
+			{
+				n = G.UIT.R,
+				config = { align = "cl", padding = 0 },
+				nodes = {
+					{
+						n = G.UIT.C,
+						config = { align = "c", padding = 0.1 },
+						nodes = {
+							{
+								n = G.UIT.T,
+								config = {
+									text = localize("asc_config_insanity_explanation"),
+									scale = 0.4,
+									colour = G.C.DARK_EDITION,
+								},
+							},
+						},
+					},
+				},
+			},
+		},
+	}
 end
 ----------------------------------------------
 ------------MOD CODE END----------------------
