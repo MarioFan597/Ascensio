@@ -128,6 +128,7 @@ ascensionable = {
 
 	---Cryptid
 	j_cry_canvas = "j_asc_canvas",
+	j_cry_chad = "j_asc_chad",
 	j_cry_gardenfork = "j_asc_gardenfork",
 	j_cry_antennastoheaven = "j_asc_like_antennas_to_heaven",
 	j_cry_oil_lamp = "j_asc_oil_lamp",

@@ -737,6 +737,23 @@ return {
 				},
 			},
 
+			j_asc_chad = {
+				name = "Vir Inter Homines",
+				text = {
+					{
+						"Retrigger {C:attention}leftmost{} and {C:attention}rightmost{} jokers",
+						"{C:attention}once{} for each {C:attention}empty{} Joker slot",
+						"{C:inactive}(Currently{} {X:attention,C:white}#1#{} {C:inactive}retriggers){}",
+						"{C:inactive}(Max{} {C:attention}40{} {C:inactive}retriggers){}",
+					},
+					{
+						"Gains {X:dark_edition,C:white}+#2#{} {C:attention}Joker{} slots",
+						"at end of shop",
+						"{C:inactive}(Currently{} {X:dark_edition,C:white}+#3#{} {C:inactive}Joker slots){}",
+					},
+				},
+			},
+
 			-----Cryptid Mortals-----
 
 			j_asc_b_cake = {
