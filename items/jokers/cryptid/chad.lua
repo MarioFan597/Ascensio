@@ -15,30 +15,21 @@ SMODS.Joker({
 	},
 
 	loc_vars = function(_, _, card)
-		if card.ability then
-			return {
-				vars = {
-					math.min(
-						lenient_bignum(card.ability.extra.retriggers),
-						lenient_bignum(card.ability.immutable.max_retriggers)
-					),
-					lenient_bignum(card.ability.extra.slot_gain),
-					lenient_bignum(card.ability.extra.immutable.slots),
-				},
-			}
-		end
-
 		return {
 			vars = {
-				0,
-				1,
-				0,
+				math.min(
+					lenient_bignum(card.ability.extra.retriggers),
+					lenient_bignum(card.ability.immutable.max_retriggers)
+				),
+				lenient_bignum(card.ability.extra.slot_gain),
+				lenient_bignum(card.ability.extra.immutable.slots),
 			},
 		}
 	end,
 
 	calculate = function(self, card, context)
 		if (context.ending_shop or context.forcetrigger) and not context.blueprint then
+			card.ability.extra.immutable.slots = card.ability.extra.immutable.slots + card.ability.extra.slot_gain
 			G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.slot_gain
 			card.ability.extra.retriggers = math.min((G.jokers.config.card_limit - #G.jokers.cards), 40)
 		end
@@ -47,8 +38,9 @@ SMODS.Joker({
 			if context.other_card == G.jokers.cards[1] or context.other_card == G.jokers.cards[#G.jokers.cards] then
 				return {
 					message = localize("k_again_ex"),
-					repetitions = to_number(
-						math.min(card.ability.immutable.max_retriggers, card.ability.extra.retriggers)
+					repetitions = math.min(
+						lenient_bignum(card.ability.extra.retriggers),
+						lenient_bignum(card.ability.immutable.max_retriggers)
 					),
 					card = card,
 				}
