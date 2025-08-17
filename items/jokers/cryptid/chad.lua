@@ -10,8 +10,7 @@ SMODS.Joker({
 	atlas = "c_atlas_1",
 
 	config = {
-		extra = { retriggers = 2, immutable = { slots = 0 }, slot_gain = 1 },
-		immutable = { max_retriggers = 40 },
+		extra = { retriggers = 2, slot_gain = 1, immutable = { max_retriggers = 100, slots = 0 },},
 	},
 
 	loc_vars = function(_, _, card)
@@ -19,8 +18,9 @@ SMODS.Joker({
 			vars = {
 				math.min(
 					lenient_bignum(card.ability.extra.retriggers),
-					lenient_bignum(card.ability.immutable.max_retriggers)
+					lenient_bignum(card.ability.extra.immutable.max_retriggers)
 				),
+				lenient_bignum(card.ability.extra.immutable.max_retriggers),
 				lenient_bignum(card.ability.extra.slot_gain),
 				lenient_bignum(card.ability.extra.immutable.slots),
 			},
@@ -28,10 +28,14 @@ SMODS.Joker({
 	end,
 
 	calculate = function(self, card, context)
+		card.ability.extra.retriggers = math.min((G.jokers.config.card_limit - #G.jokers.cards), card.ability.extra.immutable.max_retriggers)
 		if (context.ending_shop or context.forcetrigger) and not context.blueprint then
 			card.ability.extra.immutable.slots = card.ability.extra.immutable.slots + card.ability.extra.slot_gain
 			G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.slot_gain
-			card.ability.extra.retriggers = math.min((G.jokers.config.card_limit - #G.jokers.cards), 40)
+			card_eval_status_text(card, "extra", nil, nil, nil, {
+				message = localize("k_upgrade_ex"),
+				colour = G.C.DARK_EDITION,
+			})
 		end
 
 		if context.retrigger_joker_check and not context.retrigger_joker and context.other_card ~= self then
@@ -40,7 +44,7 @@ SMODS.Joker({
 					message = localize("k_again_ex"),
 					repetitions = math.min(
 						lenient_bignum(card.ability.extra.retriggers),
-						lenient_bignum(card.ability.immutable.max_retriggers)
+						lenient_bignum(card.ability.extra.immutable.max_retriggers)
 					),
 					card = card,
 				}
