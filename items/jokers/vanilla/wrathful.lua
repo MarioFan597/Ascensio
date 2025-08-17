@@ -59,21 +59,14 @@ SMODS.Joker({
 							--Upgrade ^mult and display upgrade message
 							card.ability.extra.e_mult = lenient_bignum(card.ability.extra.e_mult)
 								+ lenient_bignum(card.ability.extra.gain)
-							card_eval_status_text(
-								card,
-								"extra",
-								nil,
-								nil,
-								nil,
-								{
-									message = localize({
-										type = "variable",
-										key = "a_powmult",
-										vars = { lenient_bignum(card.ability.extra.e_mult) },
-									}),
-									colour = G.C.DARK_EDITION,
-								}
-							)
+							card_eval_status_text(card, "extra", nil, nil, nil, {
+								message = localize({
+									type = "variable",
+									key = "a_powmult",
+									vars = { lenient_bignum(card.ability.extra.e_mult) },
+								}),
+								colour = G.C.DARK_EDITION,
+							})
 						end
 						return true
 					end,
