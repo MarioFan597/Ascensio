@@ -55,7 +55,7 @@ SMODS.Joker({
 				math.min(lenient_bignum(card.ability.extra.dup), card.ability.immutable.maxdup),
 				card.ability.extra.gain,
 				card.ability.extra.emult,
-				card.ability.immutable.maxdup
+				card.ability.immutable.maxdup,
 			},
 		}
 	end,
@@ -68,11 +68,11 @@ SMODS.Joker({
 		local seal
 		if context.individual and context.cardarea == G.play and context.other_card ~= nil then
 			card.ability.extra.card.rank = context.other_card.base.value
-	        card.ability.extra.card.suit = context.other_card.base.suit     
-	        card.ability.extra.card.edition  = context.other_card.edition    
-	        card.ability.extra.card.enhancement  = context.other_card.config.center.key
-	        card.ability.extra.card.seal = context.other_card.seal
-	        card.ability.extra.card.has_copy = true
+			card.ability.extra.card.suit = context.other_card.base.suit
+			card.ability.extra.card.edition = context.other_card.edition
+			card.ability.extra.card.enhancement = context.other_card.config.center.key
+			card.ability.extra.card.seal = context.other_card.seal
+			card.ability.extra.card.has_copy = true
 		end
 
 		if context.first_hand_drawn then
@@ -103,47 +103,49 @@ SMODS.Joker({
 					}))
 				end
 				return {
-				message = localize("k_duplicated_ex"),
-				func = function()
-					G.E_MANAGER:add_event(Event({
-						func = function()
-							SMODS.calculate_context({ playing_card_added = true, cards = cards })
-							return true
-						end,
-					}))
-				end,
-			}
+					message = localize("k_duplicated_ex"),
+					func = function()
+						G.E_MANAGER:add_event(Event({
+							func = function()
+								SMODS.calculate_context({ playing_card_added = true, cards = cards })
+								return true
+							end,
+						}))
+					end,
+				}
 			end
 		end
 
 		if (context.playing_card_added and not context.blueprint) or context.forcetrigger then
-			for i=1, #context.cards do
-				card.ability.extra.emult = lenient_bignum(card.ability.extra.emult) + lenient_bignum(card.ability.extra.gain)
+			for i = 1, #context.cards do
+				card.ability.extra.emult = lenient_bignum(card.ability.extra.emult)
+					+ lenient_bignum(card.ability.extra.gain)
 				return {
-				message = localize({
-									type = "variable",
-									key = "a_powmult",
-									vars = {
-										number_format(lenient_bignum(card.ability.extra.emult)),
-									},
-								}),
-								colour = G.C.DARK_EDITION,
+					message = localize({
+						type = "variable",
+						key = "a_powmult",
+						vars = {
+							number_format(lenient_bignum(card.ability.extra.emult)),
+						},
+					}),
+					colour = G.C.DARK_EDITION,
 				}
 			end
 		end
 
 		if context.remove_playing_cards and not context.blueprint then
-			for i=1, #context.removed do
-				card.ability.extra.emult = lenient_bignum(card.ability.extra.emult) + lenient_bignum(card.ability.extra.gain)
+			for i = 1, #context.removed do
+				card.ability.extra.emult = lenient_bignum(card.ability.extra.emult)
+					+ lenient_bignum(card.ability.extra.gain)
 				return {
-				message = localize({
-									type = "variable",
-									key = "a_powmult",
-									vars = {
-										number_format(lenient_bignum(card.ability.extra.emult)),
-									},
-								}),
-								colour = G.C.DARK_EDITION,
+					message = localize({
+						type = "variable",
+						key = "a_powmult",
+						vars = {
+							number_format(lenient_bignum(card.ability.extra.emult)),
+						},
+					}),
+					colour = G.C.DARK_EDITION,
 				}
 			end
 		end

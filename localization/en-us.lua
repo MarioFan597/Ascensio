@@ -1,31 +1,31 @@
 return {
 	descriptions = {
 		Mod = {
-            Ascensio = {
-                name = "Ascēnsiō",
-                text = {
-                    "{C:cry_exotic,E:1,s:1.6}Exoticfy your Jokers!{}",
-                    "{s:1.3}Adds {C:cry_exotic,E:1,s:1.3}Exotic{s:1.3} forms to normal Jokers",
-                    "{s:1.3}and vice versa",
-                    "{s:1.2} {}",
-                    "{s:1.4,C:attention}Special thanks to:{}",
-                    "{s:0.5} ",
-                    "{X:asc_tattered,C:black,s:1.2}Tatteredlurker{}     {X:asc_slipstream,C:black,s:1.2}Lil_Mr._Slipstream{}", --I know B: should be used, but it isnt working
-                                 "{C:asc_tattered,s:0.8}Art                           {C:asc_slipstream,s:0.8}Art   ",
-                    "{s:0.2} ",
-                    " {X:asc_glitchkat,C:white,s:1.2}Glitchkat10{}       {X:asc_somethingcom515,C:white,s:1.2}Somethingcom515{}",
-                    	  "{C:asc_glitchkat,s:0.8}Coding, Idea Aproval{}            {C:asc_somethingcom515,s:0.8}Coding        ",
-                    "{s:0.2} ",
-                    "   {X:asc_hssr,C:black,s:1.2}hssr{}             {X:asc_omega,C:black,s:1.2}OmegaLife{}  ",
-              "{C:asc_hssr,s:0.8}Ideas, Suggestion Sheet Creation{}      {C:asc_omega,s:0.8}Coding, Ideas          ",
-		             "{s:0.2} ",
-		                   "     {X:asc_oinite,C:white,s:1.2}Oinite12{}           {X:asc_hexa,C:black,s:1.2}HexaCryonic{}    ",
-		             "  {C:asc_oinite,s:0.8}Art, Animation Framework{}         {C:asc_hexa,s:0.8}Art, Coding          ",
-                    "{s:1.0} ",
-                    "{s:1.1}And the rest of the Cryptid Discord!"
-                }
-            }
-        },
+			Ascensio = {
+				name = "Ascēnsiō",
+				text = {
+					"{C:cry_exotic,E:1,s:1.6}Exoticfy your Jokers!{}",
+					"{s:1.3}Adds {C:cry_exotic,E:1,s:1.3}Exotic{s:1.3} forms to normal Jokers",
+					"{s:1.3}and vice versa",
+					"{s:1.2} {}",
+					"{s:1.4,C:attention}Special thanks to:{}",
+					"{s:0.5} ",
+					"{X:asc_tattered,C:black,s:1.2}Tatteredlurker{}     {X:asc_slipstream,C:black,s:1.2}Lil_Mr._Slipstream{}", --I know B: should be used, but it isnt working
+					"{C:asc_tattered,s:0.8}Art                           {C:asc_slipstream,s:0.8}Art   ",
+					"{s:0.2} ",
+					" {X:asc_glitchkat,C:white,s:1.2}Glitchkat10{}       {X:asc_somethingcom515,C:white,s:1.2}Somethingcom515{}",
+					"{C:asc_glitchkat,s:0.8}Coding, Idea Aproval{}            {C:asc_somethingcom515,s:0.8}Coding        ",
+					"{s:0.2} ",
+					"   {X:asc_hssr,C:black,s:1.2}hssr{}             {X:asc_omega,C:black,s:1.2}OmegaLife{}  ",
+					"{C:asc_hssr,s:0.8}Ideas, Suggestion Sheet Creation{}      {C:asc_omega,s:0.8}Coding, Ideas          ",
+					"{s:0.2} ",
+					"     {X:asc_oinite,C:white,s:1.2}Oinite12{}           {X:asc_hexa,C:black,s:1.2}HexaCryonic{}    ",
+					"  {C:asc_oinite,s:0.8}Art, Animation Framework{}         {C:asc_hexa,s:0.8}Art, Coding          ",
+					"{s:1.0} ",
+					"{s:1.1}And the rest of the Cryptid Discord!",
+				},
+			},
+		},
 		Blind = {},
 		Edition = {},
 		Enhanced = {},
@@ -42,7 +42,7 @@ return {
 				name = "Avarus",
 				text = {
 					{
-						"Played cards with {C:diamond}Diamond{} suit", 
+						"Played cards with {C:diamond}Diamond{} suit",
 						"give {X:dark_edition,C:white}^#1#{} Mult when scored",
 					},
 					{
@@ -60,10 +60,10 @@ return {
 						"give {X:dark_edition,C:white}^#1#{} Mult when scored",
 					},
 					{
-						"{C:green}#2# in #3#{} chance for scored", 
-						"{C:heart}Hearts{} to give adjacent", 
+						"{C:green}#2# in #3#{} chance for scored",
+						"{C:heart}Hearts{} to give adjacent",
 						"{C:heart}Hearts{} {C:attention}#4#{} extra trigger",
-						"{C:inactive}(Max {C:attention}#5#{} {C:inactive}retriggers)"
+						"{C:inactive}(Max {C:attention}#5#{} {C:inactive}retriggers)",
 					},
 				},
 			},
@@ -77,9 +77,9 @@ return {
 					},
 					{
 						"{C:green}#3# in #4#{} chance for scored {C:spade}Spades{}",
-						"to {C:attention}destroy{} a non-{C:spade}Spade{} card", 
+						"to {C:attention}destroy{} a non-{C:spade}Spade{} card",
 						"held in hand and add {X:dark_edition,C:white}^#2#{} Mult",
-						"to this Joker at end of hand"
+						"to this Joker at end of hand",
 					},
 				},
 			},
@@ -93,8 +93,8 @@ return {
 					},
 					{
 						"Cards with {C:club}Club{} suit",
-						"{C:attention}held in hand{} also score"
-					}
+						"{C:attention}held in hand{} also score",
+					},
 				},
 			},
 
@@ -377,7 +377,7 @@ return {
 						"{C:inactive}(Currently{} {X:dark_edition,C:white}^#3#{} {C:inactive}Mult){}",
 					},
 					{
-						"Before {C:attention}first hand{} of round,", 
+						"Before {C:attention}first hand{} of round,",
 						"this Joker creates {C:attention}#1#{} copy",
 						"of last scored {C:attention}playing card{}",
 						"{C:inactive}(Max{} {C:attention}#4#{} {C:inactive}cards created){}",
@@ -429,7 +429,7 @@ return {
 				name = "Bulla Aquae",
 				text = {
 					{
-						"Retriggers all cards", 
+						"Retriggers all cards",
 						"played {C:attention}#1#{} time(s)",
 						"{C:inactive}(Max {C:attention}#4#{} {C:inactive}retriggers)",
 					},
@@ -646,14 +646,14 @@ return {
 				name = "Thanatos",
 				text = {
 					{
-					"Gains {X:dark_edition,C:white}^#2#{} Mult per",
-					"destroyed {C:attention}face{} card",
-					"{C:inactive}(Currently {X:dark_edition,C:white}^#1#{}{C:inactive} Mult)",
+						"Gains {X:dark_edition,C:white}^#2#{} Mult per",
+						"destroyed {C:attention}face{} card",
+						"{C:inactive}(Currently {X:dark_edition,C:white}^#1#{}{C:inactive} Mult)",
 					},
 					{
-					"Destroyed {C:attention}face{} cards",
-					"are returned to hand",
-					},	
+						"Destroyed {C:attention}face{} cards",
+						"are returned to hand",
+					},
 				},
 			},
 
@@ -733,6 +733,23 @@ return {
 					{
 						"Increase uses by {C:attention}#2#{}",
 						"at the end of {C:attention}Boss Blind{}",
+					},
+				},
+			},
+
+			j_asc_chad = {
+				name = "Vir Inter Homines",
+				text = {
+					{
+						"Retrigger {C:attention}leftmost{} and {C:attention}rightmost{} jokers",
+						"{C:attention}once{} for each {C:attention}empty{} Joker slot",
+						"{C:inactive}(Currently{} {X:attention,C:white}#1#{} {C:inactive}retriggers){}",
+						"{C:inactive}(Max{} {C:attention}40{} {C:inactive}retriggers){}",
+					},
+					{
+						"Gains {X:dark_edition,C:white}+#2#{} {C:attention}Joker{} slots",
+						"at end of shop",
+						"{C:inactive}(Currently{} {X:dark_edition,C:white}+#3#{} {C:inactive}Joker slots){}",
 					},
 				},
 			},
@@ -881,14 +898,14 @@ return {
 				name = "Fixed",
 				text = {
 					"{C:attention}Listed{} {C:green,E:1}probabilites{}",
-					"can not be altered"
+					"can not be altered",
 				},
 			},
 			--Special Thanks Descriptions
 			asc_tatterd = {
 				name = "Tattered Credits",
 				text = {
-					"Artist"
+					"Artist",
 				},
 			},
 		},
@@ -946,9 +963,9 @@ return {
 			asc_config_insanity_explanation = "Stops Gateway and Ascension from destroying Jokers",
 			--Special Thanks Credits
 			--asc_tatterd_credits = {
-					--"{X:asc_tattered,C:black,s:1.2}Tatteredlurker{}",
-					--"{C:asc_tattered,s:0.8}Art{}"
-				--},
+			--"{X:asc_tattered,C:black,s:1.2}Tatteredlurker{}",
+			--"{C:asc_tattered,s:0.8}Art{}"
+			--},
 			--},
 		},
 	},

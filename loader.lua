@@ -51,13 +51,14 @@ local v_jokers = {
 	"canio",
 }
 
-for i, v in pairs(v_jokers) do
+for _, v in pairs(v_jokers) do
 	assert(SMODS.load_file("items/jokers/vanilla/" .. v .. ".lua"))()
 end
 
 ----------Loading Cryptid Jokers----------
 local cry_jokers = {
 	"canvas",
+	"chad",
 	"gardenfork",
 	"like_antennas_to_heaven",
 	"oil_lamp",
@@ -66,7 +67,7 @@ local cry_jokers = {
 	"code_joker",
 }
 
-for i, v in pairs(cry_jokers) do
+for _, v in pairs(cry_jokers) do
 	assert(SMODS.load_file("items/jokers/cryptid/" .. v .. ".lua"))()
 end
 
@@ -79,7 +80,7 @@ local crym_jokers = {
 	"exorcist",
 }
 
-for i, v in pairs(crym_jokers) do
+for _, v in pairs(crym_jokers) do
 	assert(SMODS.load_file("items/jokers/cryptid_mortals/" .. v .. ".lua"))()
 end
 
@@ -89,7 +90,7 @@ local asc_consumables = {
 	"ascension",
 }
 
-for i, v in pairs(asc_consumables) do
+for _, v in pairs(asc_consumables) do
 	assert(SMODS.load_file("items/consumables/ascensio/" .. v .. ".lua"))()
 end
 
@@ -99,7 +100,7 @@ local asc_decks = {
 	--"starlight"
 }
 
-for i, v in pairs(asc_decks) do
+for _, v in pairs(asc_decks) do
 	assert(SMODS.load_file("items/decks/ascensio/" .. v .. ".lua"))()
 end
 
@@ -109,7 +110,7 @@ end
 if next(SMODS.find_mod("cryptposting")) then
 	local crp_jokers = {}
 
-	for i, v in pairs(crp_jokers) do
+	for _, v in pairs(crp_jokers) do
 		assert(SMODS.load_file("items/jokers/cryptposting/" .. v .. ".lua"))()
 	end
 
@@ -117,7 +118,7 @@ if next(SMODS.find_mod("cryptposting")) then
 
 	local crp_consumables = {}
 
-	for i, v in pairs(crp_consumables) do
+	for _, v in pairs(crp_consumables) do
 		assert(SMODS.load_file("items/consumables/cryptposting/" .. v .. ".lua"))()
 	end
 end
@@ -130,7 +131,7 @@ if next(SMODS.find_mod("Astronomica")) then
 		"facsimile",
 	}
 
-	for i, v in pairs(ast_jokers) do
+	for _, v in pairs(ast_jokers) do
 		assert(SMODS.load_file("items/jokers/astronomica/" .. v .. ".lua"))()
 	end
 
@@ -138,7 +139,7 @@ if next(SMODS.find_mod("Astronomica")) then
 
 	local ast_consumables = {}
 
-	for i, v in pairs(ast_consumables) do
+	for _, v in pairs(ast_consumables) do
 		assert(SMODS.load_file("items/consumables/astronomica/" .. v .. ".lua"))()
 	end
 end
@@ -150,7 +151,7 @@ if next(SMODS.find_mod("entr")) then
 		"sunny_joker",
 	}
 
-	for i, v in pairs(entr_jokers) do
+	for _, v in pairs(entr_jokers) do
 		assert(SMODS.load_file("items/jokers/entropy/" .. v .. ".lua"))()
 	end
 
@@ -158,7 +159,7 @@ if next(SMODS.find_mod("entr")) then
 	local entr_vanilla = {
 		"marble_entr",
 	}
-	for i, v in pairs(entr_vanilla) do
+	for _, v in pairs(entr_vanilla) do
 		assert(SMODS.load_file("items/jokers/vanilla_entropics/" .. v .. ".lua"))()
 	end
 
@@ -167,7 +168,7 @@ if next(SMODS.find_mod("entr")) then
 		"sunny_joker_entr",
 	}
 
-	for i, v in pairs(entr_apoth_jokers) do
+	for _, v in pairs(entr_apoth_jokers) do
 		assert(SMODS.load_file("items/jokers/entropy_entropics/" .. v .. ".lua"))()
 	end
 
@@ -177,7 +178,7 @@ if next(SMODS.find_mod("entr")) then
 		"apotheosis",
 	}
 
-	for i, v in pairs(entr_consumables) do
+	for _, v in pairs(entr_consumables) do
 		assert(SMODS.load_file("items/consumables/entropy/" .. v .. ".lua"))()
 	end
 end
