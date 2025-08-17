@@ -23,13 +23,7 @@ SMODS.Joker({
 					trigger = "immediate",
 					func = function()
 						for i = 1, #G.hand.cards do
-							assert(
-								SMODS.change_base(
-									G.hand.cards[i],
-									_,
-									context.scoring_hand[((i - 1) % #context.scoring_hand) + 1].base.value
-								)
-							)
+							SMODS.change_base(G.hand.cards[i],_,context.scoring_hand[((i - 1) % #context.scoring_hand) + 1].base.value)
 							G.hand.cards[i]:juice_up()
 							play_sound("tarot1", 0.8, 0.4)
 						end
