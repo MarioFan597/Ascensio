@@ -36,19 +36,15 @@ SMODS.Joker({
 	calculate = function(_, card, context)
 		if context.individual and context.cardarea == G.play then
 			if context.other_card:is_face() then
-				for _, scored_card in pairs(context.scoring_hand) do
-					if scored_card == context.other_card then
-						return {
-							message = localize({
-								type = "variable",
-								key = "a_xchips",
-								vars = { number_format(card.ability.extra.xchip) },
-							}),
-							Xchip_mod = card.ability.extra.xchip,
-							colour = G.C.CHIPS,
-						}
-					end
-				end
+				return {
+					message = localize({
+						type = "variable",
+						key = "a_xchips",
+						vars = { number_format(card.ability.extra.xchip) },
+					}),
+					Xchip_mod = card.ability.extra.xchip,
+					colour = G.C.CHIPS,
+				}
 			end
 		end
 
