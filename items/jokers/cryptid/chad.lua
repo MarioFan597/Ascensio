@@ -1,7 +1,6 @@
 SMODS.Joker({
 	key = "chad",
 	order = 4,
-
 	pos = { x = 9, y = 3 },
 	soul_pos = { x = 11, y = 3, extra = { x = 10, y = 3 } },
 	rarity = "cry_exotic",
@@ -10,7 +9,7 @@ SMODS.Joker({
 	atlas = "c_atlas_1",
 
 	config = {
-		extra = { retriggers = 2, slot_gain = 1, immutable = { max_retriggers = 100, slots = 0 },},
+		extra = { retriggers = 2, slot_gain = 1, base_retriggers = 2, immutable = { max_retriggers = 100, slots = 0 },},
 	},
 
 	loc_vars = function(_, _, card)
@@ -23,12 +22,13 @@ SMODS.Joker({
 				lenient_bignum(card.ability.extra.immutable.max_retriggers),
 				lenient_bignum(card.ability.extra.slot_gain),
 				lenient_bignum(card.ability.extra.immutable.slots),
+				card.ability.extra.base_retriggers
 			},
 		}
 	end,
 
 	calculate = function(self, card, context)
-		card.ability.extra.retriggers = math.min((G.jokers.config.card_limit - #G.jokers.cards), card.ability.extra.immutable.max_retriggers)
+		card.ability.extra.retriggers = math.min(((G.jokers.config.card_limit - #G.jokers.cards) + card.ability.extra.base_retriggers), card.ability.extra.immutable.max_retriggers)
 		if (context.ending_shop or context.forcetrigger) and not context.blueprint then
 			card.ability.extra.immutable.slots = card.ability.extra.immutable.slots + card.ability.extra.slot_gain
 			G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.slot_gain

@@ -742,8 +742,8 @@ return {
 				text = {
 					{
 						"Retrigger {C:attention}leftmost{} and",
-						"{C:attention}rightmost{} Jokers {C:attention}once{}",
-						"for each {C:attention}empty{} Joker slot",
+						"{C:attention}rightmost{} Jokers {C:attention}#5#{} times and",
+						"{C:attention}once{} for each {C:attention}empty{} Joker slot",
 						"{C:inactive}(Currently{} {C:attention}#1#{} {C:inactive}retriggers){}",
 						"{C:inactive}(Max{} {C:attention}#2#{} {C:inactive}retriggers){}",
 					},
