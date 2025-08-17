@@ -87,10 +87,14 @@ return {
 			j_asc_gluttonous = {
 				name = "Gula",
 				text = {
-					"Played cards with {C:club}Club",
-					"suit give {X:dark_edition,C:white}^#1#{} Mult",
-					"when scored",
-					"{C:mult,E:2}Rework Soon{}",
+					{
+						"Played cards with {C:club}Club{} suit",
+						"give {X:dark_edition,C:white}^#1#{} Mult when scored",
+					},
+					{
+						"Cards with {C:club}Club{} suit",
+						"{C:attention}held in hand{} also score"
+					}
 				},
 			},
 
