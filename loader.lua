@@ -77,6 +77,7 @@ local crym_jokers = {
 	"b_pie",
 	"orion_pax",
 	"accomplice",
+	"duane",
 	"exorcist",
 }
 

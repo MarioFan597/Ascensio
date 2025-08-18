@@ -794,6 +794,15 @@ return {
 				},
 			},
 
+			j_asc_duane = {
+				name = "Dubious Duane",
+				text = {
+					"This Joker gains {C:mult}+#2#{} Mult",
+					"when a {C:attention}Joker{} is scored",
+					"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+				},
+			},
+
 			j_asc_exorcist = {
 				name = "Exorcist",
 				text = {
