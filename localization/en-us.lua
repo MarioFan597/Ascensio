@@ -98,6 +98,36 @@ return {
 				},
 			},
 
+			j_asc_jolly = {
+				name = "Iocōsum Balatro",
+				text = {
+					{
+						"Gains {X:mult,C:white}X#1#{} Mult per consecutive",
+						"{C:attention}#3#{} that is played",
+						"{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)"
+					},
+					{
+						"levels up {C:attention}#3#{} by the {C:attention}highest rank{}",
+						"in hand at end of round"
+					}
+				}
+			},
+
+			j_asc_zany = {
+				name = "Eccentricus",
+				text = {
+					{
+						"Gains {X:mult,C:white}X#1#{} Mult per consecutive",
+						"{C:attention}#3#{} that is played",
+						"{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)"
+					},
+					{
+						"levels up {C:attention}#3#{} by the {C:attention}highest rank{}",
+						"in hand at end of round"
+					}
+				}
+			},
+
 			j_asc_stencil = {
 				name = "Inanis",
 				text = {

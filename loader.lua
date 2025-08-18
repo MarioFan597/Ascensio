@@ -5,6 +5,8 @@ local v_jokers = {
 	"lusty",
 	"wrathful",
 	"gluttonous",
+	"jolly",
+	"zany",
 	"stencil",
 	"four_fingers",
 	"mime",
