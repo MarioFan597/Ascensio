@@ -765,7 +765,7 @@ return {
 						"{C:inactive}(Currently{} {X:dark_edition,C:white}^#1#{} {C:inactive}and{} {X:edition,C:white}^#2#{} {C:inactive}){}",
 					},
 					{
-						"Balance {C:chips}Ships{} and {C:mult}Mult{}",
+						"Balance {C:chips}Chips{} and {C:mult}Mult{}",
 					},
 				},
 			},
@@ -876,7 +876,7 @@ return {
 						"After scoring {C:attention}#2#{}",
 						"cards, increase multiplier",
 						"by {X:blue,C:white}X#3#{} and {C:attention}double{}",
-						"card scoring requirment",
+						"card scoring requirement",
 					},
 				},
 			},
