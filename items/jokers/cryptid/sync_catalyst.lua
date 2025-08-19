@@ -67,12 +67,12 @@ SMODS.Joker({
 		end
 
 		if context.setting_blind then
-			local balance1 = (G.GAME.round_resets.hands + card.ability.extra.immutable.echips) / 2
-			G.GAME.round_resets.hands = balance1
+			local balance1 = (G.GAME.current_round.hands_left + card.ability.extra.immutable.echips) / 2
+			G.GAME.current_round.hands_left = balance1
 			card.ability.extra.immutable.echips = balance1
 
-			local balance2 = (G.GAME.round_resets.discards + card.ability.extra.immutable.emult) / 2
-			G.GAME.round_resets.discards = balance2
+			local balance2 = (G.GAME.current_round.discards_left + card.ability.extra.immutable.emult) / 2
+			G.GAME.current_round.discards_left = balance2
 			card.ability.extra.immutable.emult = balance2
 
 			return {
