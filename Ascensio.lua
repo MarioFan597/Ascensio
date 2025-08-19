@@ -136,6 +136,7 @@ ascensionable = {
 	j_cry_huntingseason = "j_asc_hunting_season",
 	j_cry_highfive = "j_asc_high_five",
 	j_cry_CodeJoker = "j_asc_code_joker",
+	j_cry_sync_catalyst = "j_asc_sync_catalyst",
 
 	---Cryptid Mortals
 	j_asc_b_cake = "j_cry_crustulum",
@@ -194,6 +195,7 @@ SMODS.current_mod.description_loc_vars = function()
 	return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2 }
 end
 
+---@diagnostic disable-next-line: undefined-global
 ----------------Colours------------------
 ---------Special Thanks Colours----------
 loc_colour()
