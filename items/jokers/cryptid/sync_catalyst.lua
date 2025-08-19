@@ -58,14 +58,20 @@ SMODS.Joker({
 		end
 
 		if context.final_scoring_step then
-			local balanced = (
-				SMODS.get_scoring_parameter("chips", false)
-				or 0 + SMODS.get_scoring_parameter("mult", false)
-				or 0
-			) / 2
+			if SMODS.get_scoring_parameter ~= nil and type(SMODS.get_scoring_parameter) == "function" then
+				local balanced = (
+					SMODS.get_scoring_parameter("chips", false)
+					or 0 + SMODS.get_scoring_parameter("mult", false)
+					or 0
+				) / 2
 
-			mult, hand_chips = balanced, balanced
-			update_hand_text({ delay = 0 }, { chips = hand_chips, mult = mult })
+				mult, hand_chips = balanced, balanced
+				update_hand_text({ delay = 0 }, { chips = hand_chips, mult = mult })
+			else
+				local balanced = (mult + hand_chips) / 2
+				mult, hand_chips = balanced, balanced
+				update_hand_text({ delay = 0 }, { chips = hand_chips, mult = mult })
+			end
 
 			G.E_MANAGER:add_event(Event({
 				func = function()
