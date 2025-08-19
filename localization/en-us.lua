@@ -762,7 +762,7 @@ return {
 						"At the {C:attention}start of round{},",
 						"balances {C:chips}hands{} with this Joker's {X:dark_edition,C:white}^Chips{}",
 						"and {C:mult}discards{} with this Joker's {X:edition,C:white}^Mult{}",
-						"{C:inactive}(Currently{} {X:dark_edition,C:white}^#1#{} {C:inactive}and{} {X:edition,C:white}^#2#{}{C:inactive}){}",
+						"{C:inactive}(Currently{} {X:dark_edition,C:white}^#1#{} {C:chips}Chips{} {C:inactive}and{} {X:edition,C:white}^#2#{} {C:mult}Mult{}{C:inactive}){}",
 					},
 					{
 						"Balance {C:chips}Chips{} and {C:mult}Mult{}",
