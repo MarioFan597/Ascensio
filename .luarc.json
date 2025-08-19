@@ -15,7 +15,9 @@
         "playing_card_joker_effects",
         "copy_card",
         "draw_card",
-        "play_sound"
+        "play_sound",
+        "ease_colour",
+        "delay"
     ],
     "runtime": {
         "version": "LuaJIT"
