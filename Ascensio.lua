@@ -150,6 +150,7 @@ ascensionable = {
 	j_ast_stopwatch = "j_asc_stopwatch",
 	---Entropy
 	j_entr_sunny_joker = "j_asc_sunny_joker",
+	j_entr_chuckle_cola = "j_asc_chuckle_cola",
 }
 
 ---------Joker Apothable Dictionary-----------

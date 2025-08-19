@@ -150,6 +150,7 @@ end
 if next(SMODS.find_mod("entr")) then
 	local entr_jokers = {
 		"sunny_joker",
+		"chuckle_cola",
 	}
 
 	for _, v in pairs(entr_jokers) do
