@@ -851,20 +851,20 @@ return {
 			},
 
 			j_asc_chuckle_cola = {
-                name = "Cachinno Bulla",
-                text = {
-                	{
-	                    "Multiply the {C:blue}Chips{} of",
+				name = "Cachinno Bulla",
+				text = {
+					{
+						"Multiply the {C:blue}Chips{} of",
 						"{C:attention}scored{} cards by {X:blue,C:white}X#1#{}",
 					},
 					{
 						"After scoring {C:attention}#2#{}",
 						"cards, increase multiplier",
 						"by {X:blue,C:white}X#3#{} and {C:attention}double{}",
-						"card scoring requirment"
-                	},
-            	}
-            },
+						"card scoring requirment",
+					},
+				},
+			},
 
 			-----Entropy Entropics-----
 			j_asc_marble_entr = {
