@@ -755,6 +755,21 @@ return {
 				},
 			},
 
+			j_asc_sync_catalyst = {
+				name = "Fusio Nuclearis",
+				text = {
+					{
+                        "At the {C:attention}start of round{},"
+                        "balances {C:chips}hands{} with this Joker's {X:dark_edition,C:white}^Chips{}",
+                        "and {C:mult}discards{} with this Joker's {X:edition,C:white}^Mult{}",
+                        "{C:inactive}(Currently{} {X:dark_edition,C:white}^#1#{} {C:inactive}and{} {X:edition,C:white}^#2#{} {C:inactive}){}"
+                    },
+					{
+                        "Balance {C:chips}Ships{} and {C:mult}Mult{}"
+                    },
+				},
+			},
+
 			-----Cryptid Mortals-----
 
 			j_asc_b_cake = {

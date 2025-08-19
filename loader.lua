@@ -65,6 +65,7 @@ local cry_jokers = {
 	"hunting_season",
 	"high_five",
 	"code_joker",
+	"sync_catalyst",
 }
 
 for _, v in pairs(cry_jokers) do
