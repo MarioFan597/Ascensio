@@ -58,14 +58,14 @@ end
 ----------Loading Cryptid Jokers----------
 local cry_jokers = {
 	"canvas",
-	"chad",
+	"sync_catalyst",
 	"gardenfork",
 	"like_antennas_to_heaven",
+	"chad",
 	"oil_lamp",
 	"hunting_season",
 	"high_five",
 	"code_joker",
-	"sync_catalyst",
 }
 
 for _, v in pairs(cry_jokers) do
