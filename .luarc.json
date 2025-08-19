@@ -17,7 +17,8 @@
         "draw_card",
         "play_sound",
         "ease_colour",
-        "delay"
+        "delay",
+        "update_hand_text"
     ],
     "runtime": {
         "version": "LuaJIT"

@@ -58,14 +58,13 @@ SMODS.Joker({
 		end
 
 		if context.final_scoring_step then
-			---@diagnostic disable-next-line: undefined-global
-			local val = (hand_chips + mult) / 2
-			---@diagnostic disable-next-line: undefined-global
-			mult = mod_mult(val)
-			---@diagnostic disable-next-line: undefined-global
-			hand_chips = mod_chips(val)
+			local balanced = (
+				SMODS.get_scoring_parameter("chips", false)
+				or 0 + SMODS.get_scoring_parameter("mult", false)
+				or 0
+			) / 2
 
-			---@diagnostic disable-next-line: undefined-global
+			mult, hand_chips = balanced, balanced
 			update_hand_text({ delay = 0 }, { chips = hand_chips, mult = mult })
 
 			G.E_MANAGER:add_event(Event({
@@ -105,11 +104,10 @@ SMODS.Joker({
 				end,
 			}))
 
-			delay(0.6)
-
 			return {
 				message = "Balanced!",
 				colour = G.C.DARK_EDITION,
+				func = balance_sound,
 			}
 		end
 
