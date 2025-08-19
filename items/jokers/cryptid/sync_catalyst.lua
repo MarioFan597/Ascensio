@@ -5,17 +5,27 @@ SMODS.Atlas({
 	py = 95,
 })
 
+local function balance_sound()
+	play_sound("gong", 0.94, 0.3)
+	play_sound("gong", 1.41, 0.2)
+end
+
 SMODS.Joker({
 	key = "sync_catalyst",
 	atlas = "sync_catalyst",
 
 	pos = { x = 0, y = 0 },
 	soul_pos = { x = 0, y = 6, extra = { x = 0, y = 1 } },
+	rarity = "cry_exotic",
+	cost = 50,
+
+	blueprint_compat = false,
+	demicoloncompat = true,
 
 	animation = {
 		macro = {
 			type = "skim",
-			soul_pos = {
+			soul_pos_extra = {
 				include = { { x1 = 0, y1 = 1, x2 = 9, y2 = 5 } },
 			},
 		},
@@ -31,14 +41,20 @@ SMODS.Joker({
 	},
 
 	loc_vars = function(_, _, card)
-		return { vars = {
-			card.ability.extra.immutable.emult,
-			card.ability.extra.immutable.echips,
-		} }
+		return {
+			vars = {
+				card.ability.extra.immutable.emult,
+				card.ability.extra.immutable.echips,
+			},
+		}
 	end,
 
 	calculate = function(_, card, context)
 		if context.joker_main or context.forcetrigger then
+			return {
+				emult = card.ability.extra.immutable.emult,
+				echips = card.ability.extra.immutable.echips,
+			}
 		end
 
 		if context.final_scoring_step then
@@ -46,10 +62,24 @@ SMODS.Joker({
 				balance = true,
 				message = "Balanced!",
 				colour = G.C.DARK_EDITION,
+				func = balance_sound,
 			}
 		end
 
 		if context.setting_blind then
+			local balance1 = (G.GAME.round_resets.hands + card.ability.extra.immutable.echips) / 2
+			G.GAME.round_resets.hands = balance1
+			card.ability.extra.immutable.echips = balance1
+
+			local balance2 = (G.GAME.round_resets.discards + card.ability.extra.immutable.emult) / 2
+			G.GAME.round_resets.discards = balance2
+			card.ability.extra.immutable.emult = balance2
+
+			return {
+				message = "Balanced!",
+				colour = G.C.DARK_EDITION,
+				func = balance_sound,
+			}
 		end
 	end,
 
