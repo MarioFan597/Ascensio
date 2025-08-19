@@ -63,7 +63,7 @@ SMODS.Joker({
 			---@diagnostic disable-next-line: undefined-global
 			mult = mod_mult(val)
 			---@diagnostic disable-next-line: undefined-global
-			hand_chips = mod_chips(total / 2)
+			hand_chips = mod_chips(val)
 
 			---@diagnostic disable-next-line: undefined-global
 			update_hand_text({ delay = 0 }, { chips = hand_chips, mult = mult })
