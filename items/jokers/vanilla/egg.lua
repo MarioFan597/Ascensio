@@ -53,7 +53,7 @@ SMODS.Joker({
 		end
 
 		if context.setting_blind and not context.blueprint then
-			card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra_value:log10()
+			card.ability.extra.xmult = (card.ability.extra.xmult + card.ability.extra_value:log10()):ceil()
 
 			return {
 				message = localize("k_upgrade_ex"),
