@@ -304,9 +304,9 @@ return {
 						"{X:dark_edition,C:white}^#1#{} of it's {C:attention}sell value{}",
 					},
 					{
-						"At the {C:attention}end of round{}, also gain",
-						"it's sell value's standard logarithm",
-						"as {X:mult,C:white}XMult{} {C:inactive}(Rounded up.){}",
+						"At the {C:attention}start of round{}, gain",
+						"it's sell value's rounded up",
+						"standard logarithm as {X:mult,C:white}XMult{}",
 						"{C:inactive}(Currently{} {X:mult,C:white}X#2#{}{C:inactive}){}",
 					},
 				},
