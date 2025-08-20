@@ -17,7 +17,7 @@ local balance_chip_mult
 --
 -- This should detects whether or not we should use the (temporary) fix or not.
 -- MarioFan597 please dont delete this (at least until the next stable Smods)
-if SMODS.get_scoring_parameter and type(SMODS.get_scoring_parameter) ~= "function" then
+if SMODS.get_scoring_parameter and type(SMODS.get_scoring_parameter) == "function" then
 	-- This is ripped straight from SMODS.
 	balance_chip_mult = function()
 		local balanced = (
