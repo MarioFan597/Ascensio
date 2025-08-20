@@ -62,7 +62,7 @@ SMODS.Joker({
 		end
 
 		if context.end_of_round and context.main_eval and not (context.game_over or context.blueprint) then
-			card.ability.extra_value = to_big(card.ability.extra_value):pow(card.ability.extra.e_sell_gain):ceil()
+			card.ability.extra_value = card.ability.extra_value:pow(card.ability.extra.e_sell_gain):ceil()
 			card:set_cost()
 
 			return {
