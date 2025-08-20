@@ -64,8 +64,8 @@ SMODS.Joker({
 		end
 
 		if context.setting_blind and not context.blueprint then
-            G.E_MANAGER:add_event(Event({
-                func = function()
+			G.E_MANAGER:add_event(Event({
+				func = function()
 					local balance1 = (G.GAME.current_round.hands_left + card.ability.extra.immutable.echips) / 2
 					ease_hands_played(-(G.GAME.current_round.hands_left - balance1), nil, true)
 					card.ability.extra.immutable.echips = balance1
@@ -80,9 +80,9 @@ SMODS.Joker({
 						func = balance_sound,
 					})
 					return true
-                end
-            }))
-            return nil, true -- This is for Joker retrigger purposes
+				end,
+			}))
+			return nil, true -- This is for Joker retrigger purposes
 		end
 		--[[
 		if context.setting_blind and not context.blueprint then

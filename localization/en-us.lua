@@ -763,7 +763,7 @@ return {
 						"balances {C:chips}hands{} with this Joker's {X:dark_edition,C:white}^Chips{}",
 						"and {C:mult}discards{} with this Joker's {X:dark_edition,C:white}^Mult{}",
 						"{C:inactive}(Currently{} {X:dark_edition,C:white}^#2#{} {C:inactive}Chips and{} {X:dark_edition,C:white}^#1#{} {C:inactive}Mult){}",
-						"{C:inactive}(Resets each round){}"
+						"{C:inactive}(Resets each round){}",
 					},
 					{
 						"Balance {C:chips}Chips{} and {C:mult}Mult{}",
