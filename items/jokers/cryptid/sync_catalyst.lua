@@ -40,7 +40,7 @@ SMODS.Joker({
 		},
 	},
 
-	loc_vars = function(self, info_queue, card)
+	loc_vars = function(_, _, card)
 		return {
 			vars = {
 				card.ability.extra.immutable.emult,
@@ -49,7 +49,7 @@ SMODS.Joker({
 		}
 	end,
 
-	calculate = function(self, card, context)
+	calculate = function(_, card, context)
 		if context.joker_main or context.forcetrigger then
 			return {
 				echips = card.ability.extra.immutable.echips,
@@ -82,25 +82,8 @@ SMODS.Joker({
 					return true
 				end,
 			}))
-			return nil, true -- This is for Joker retrigger purposes
+			return nil, true
 		end
-		--[[
-		if context.setting_blind and not context.blueprint then
-			local balance1 = (G.GAME.current_round.hands_left  / 2)
-			G.GAME.current_round.hands_left = balance1
-			card.ability.extra.immutable.echips = balance1
-
-			local balance2 = (G.GAME.current_round.discards_left / 2)
-			G.GAME.current_round.discards_left = balance2
-			card.ability.extra.immutable.emult = balance2
-
-			return {
-				message = "Balanced!",
-				colour = G.C.DARK_EDITION,
-				func = balance_sound,
-			}
-		end
-		]]
 
 		if context.end_of_round and not (context.individual or context.repetition or context.blueprint) then
 			card.ability.extra.immutable.echips = 0
