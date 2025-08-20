@@ -296,6 +296,22 @@ return {
 				},
 			},
 
+			j_asc_egg = {
+				name = "Cunae",
+				text = {
+					{
+						"At the {C:attention}end of round{}, gain",
+						"{X:dark_edition,C:white}^#1#{} of it's {C:attention}sell value{}",
+					},
+					{
+						"At the {C:attention}end of round{}, also gain",
+						"it's sell value's standard logarithm",
+						"as {X:mult,C:white}XMult{} {C:inactive}(Rounded up.){}",
+						"{C:inactive}(Currently{} {X:mult,C:white}X#2#{}{C:inactive}){}",
+					},
+				},
+			},
+
 			j_asc_blackboard = {
 				name = "Tabula Lapidea",
 				text = {
@@ -732,7 +748,7 @@ return {
 					},
 					{
 						"Increase uses by {C:attention}#2#{}",
-						"at the end of {C:attention}Boss Blind{}",
+						"whenever a {C:attention}Boss Blind{} is {C:attention}defeated{}",
 					},
 				},
 			},
