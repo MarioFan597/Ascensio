@@ -296,6 +296,22 @@ return {
 				},
 			},
 
+			j_asc_egg = {
+				name = "Cunae",
+				text = {
+					{
+						"At the {C:attention}end of round{}, gain",
+						"{X:dark_edition,C:white}^#1#{} of self's {C:attention}sell value{}",
+					},
+					{
+						"At the {C:attention}start of round{}, gain",
+						"self's sell value's rounded up",
+						"standard logarithm as {X:mult,C:white}XMult{}",
+						"{C:inactive}(Currently{} {X:mult,C:white}X#2#{}{C:inactive}){}",
+					},
+				},
+			},
+
 			j_asc_blackboard = {
 				name = "Tabula Lapidea",
 				text = {
@@ -732,7 +748,7 @@ return {
 					},
 					{
 						"Increase uses by {C:attention}#2#{}",
-						"at the end of {C:attention}Boss Blind{}",
+						"whenever a {C:attention}Boss Blind{} is {C:attention}defeated{}",
 					},
 				},
 			},
@@ -763,7 +779,7 @@ return {
 						"balances {C:chips}hands{} with this Joker's {X:dark_edition,C:white}^Chips{}",
 						"and {C:mult}discards{} with this Joker's {X:dark_edition,C:white}^Mult{}",
 						"{C:inactive}(Currently{} {X:dark_edition,C:white}^#2#{} {C:inactive}Chips and{} {X:dark_edition,C:white}^#1#{} {C:inactive}Mult){}",
-						"{C:inactive}(Resets each round){}"
+						"{C:inactive}(Resets each round){}",
 					},
 					{
 						"Balance {C:chips}Chips{} and {C:mult}Mult{}",

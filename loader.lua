@@ -20,6 +20,7 @@ local v_jokers = {
 	"banana",
 	"even_steven",
 	"odd_todd",
+	"egg",
 	"blackboard",
 	"ice_cream",
 	"dna",
