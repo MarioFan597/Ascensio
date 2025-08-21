@@ -10,7 +10,9 @@ SMODS.Joker({
 	cost = 50,
 	order = 287,
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = G.P_CENTERS.e_cry_astral
+		if not card.edition or (card.edition and not card.edition.e_cry_astral) then
+			info_queue[#info_queue + 1] = G.P_CENTERS.e_cry_astral
+		end
 		return { vars = { card } }
 	end,
 	calculate = function(self, card, context)
