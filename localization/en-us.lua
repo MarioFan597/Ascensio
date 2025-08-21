@@ -419,7 +419,7 @@ return {
 				name = "Pecunia Dominus",
 				text = {
 					"Whenever you would gain {C:money}${},",
-					"gain {X:money,C:white}triple{} that amount",
+					"gain {X:money,C:white}X#1#{} that amount",
 				},
 			},
 
