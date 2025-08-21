@@ -14,7 +14,7 @@ SMODS.Joker({
 
 	config = {
 		extra = {
-			e_sell_gain = 1.1,
+			e_sell_gain = 1.005,
 			xmult = 1,
 		},
 	},
