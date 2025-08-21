@@ -93,7 +93,7 @@ SMODS.Joker({
 			if lenient_bignum(card.ability.extra.range) > 0 then
 				local operator = math.random(1, 3) --1 is +, 2 is x, 3 is ^
 				local type = math.random(1, 2) --1 is chips, 2 is mult
-				local result = lenient_bignum(math.random(1, lenient_bignum(card.ability.extra.range))) --Makes sure our result is consistant
+				local result = lenient_bignum(math.random(1, lenient_bignum(card.ability.extra.range))) --Makes sure our result is consistent
 				if operator == 1 then
 					if type == 1 then
 						return {
