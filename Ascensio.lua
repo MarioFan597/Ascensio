@@ -95,6 +95,7 @@ ascensionable = {
 	j_gros_michel = "j_asc_banana",
 	j_even_steven = "j_asc_even_steven",
 	j_odd_todd = "j_asc_odd_todd",
+	j_egg = "j_asc_egg",
 	j_scary_face = "j_asc_scary",
 	j_abstract = "j_asc_abstract",
 	j_blackboard = "j_asc_blackboard",
@@ -129,9 +130,10 @@ ascensionable = {
 
 	---Cryptid
 	j_cry_canvas = "j_asc_canvas",
-	j_cry_chad = "j_asc_chad",
+	j_cry_sync_catalyst = "j_asc_sync_catalyst",
 	j_cry_gardenfork = "j_asc_gardenfork",
 	j_cry_antennastoheaven = "j_asc_like_antennas_to_heaven",
+	j_cry_chad = "j_asc_chad",
 	j_cry_oil_lamp = "j_asc_oil_lamp",
 	j_cry_huntingseason = "j_asc_hunting_season",
 	j_cry_highfive = "j_asc_high_five",
@@ -150,6 +152,7 @@ ascensionable = {
 	j_ast_stopwatch = "j_asc_stopwatch",
 	---Entropy
 	j_entr_sunny_joker = "j_asc_sunny_joker",
+	j_entr_chuckle_cola = "j_asc_chuckle_cola",
 }
 
 ---------Joker Apothable Dictionary-----------
@@ -193,6 +196,7 @@ SMODS.current_mod.description_loc_vars = function()
 	return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2 }
 end
 
+---@diagnostic disable-next-line: undefined-global
 ----------------Colours------------------
 ---------Special Thanks Colours----------
 loc_colour()

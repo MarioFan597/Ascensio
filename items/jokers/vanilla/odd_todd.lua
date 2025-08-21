@@ -1,6 +1,5 @@
 SMODS.Joker({
 	key = "odd_todd",
-	config = { extra = { chip = 3, bonus_chip = 7 } },
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
@@ -9,9 +8,18 @@ SMODS.Joker({
 	soul_pos = { x = 11, y = 8, extra = { x = 10, y = 8 } },
 	cost = 50,
 	order = 5,
+
+	config = { extra = { chip = 3, bonus_chip = 7 } },
+
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.chip, card.ability.extra.bonus_chip } }
+		return {
+			vars = {
+				card.ability.extra.chip,
+				card.ability.extra.bonus_chip,
+			},
+		}
 	end,
+
 	calculate = function(self, card, context)
 		if context.individual or context.forcetrigger then
 			if
@@ -31,9 +39,9 @@ SMODS.Joker({
 						message = localize({
 							type = "variable",
 							key = "a_xchips",
-							vars = { lenient_bignum(card.ability.extra.bonus_chip) },
+							vars = { card.ability.extra.bonus_chip },
 						}),
-						Xchip_mod = lenient_bignum(card.ability.extra.bonus_chip),
+						Xchip_mod = card.ability.extra.bonus_chip,
 						colour = G.C.CHIPS,
 					}
 				else
@@ -41,9 +49,9 @@ SMODS.Joker({
 						message = localize({
 							type = "variable",
 							key = "a_xchips",
-							vars = { lenient_bignum(card.ability.extra.chip) },
+							vars = { card.ability.extra.chip },
 						}),
-						Xchip_mod = lenient_bignum(card.ability.extra.chip),
+						Xchip_mod = card.ability.extra.chip,
 						colour = G.C.CHIPS,
 					}
 				end

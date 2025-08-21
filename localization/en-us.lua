@@ -326,6 +326,22 @@ return {
 				},
 			},
 
+			j_asc_egg = {
+				name = "Cunae",
+				text = {
+					{
+						"At the {C:attention}end of round{}, gain",
+						"{X:dark_edition,C:white}^#1#{} of self's {C:attention}sell value{}",
+					},
+					{
+						"At the {C:attention}start of round{}, gain",
+						"self's sell value's rounded up",
+						"standard logarithm as {X:mult,C:white}XMult{}",
+						"{C:inactive}(Currently{} {X:mult,C:white}X#2#{}{C:inactive}){}",
+					},
+				},
+			},
+
 			j_asc_blackboard = {
 				name = "Tabula Lapidea",
 				text = {
@@ -433,7 +449,7 @@ return {
 				name = "Pecunia Dominus",
 				text = {
 					"Whenever you would gain {C:money}${},",
-					"gain {X:money,C:white}triple{} that amount",
+					"gain {X:money,C:white}X#1#{} that amount",
 				},
 			},
 
@@ -723,10 +739,10 @@ return {
 			},
 
 			j_asc_high_five = {
-				name = "Superioris Manus",
+				name = "Manus Superior",
 				text = {
-					"Before scoring, if played hand",
-					"contains a scoring {C:attention}5{},",
+					"Before scoring, if played",
+					"hand contains a scoring {C:attention}5{},",
 					"convert {C:attention}all{} scored",
 					"cards to {C:dark_edition}Astral {C:attention}5{}s",
 				},
@@ -762,7 +778,7 @@ return {
 					},
 					{
 						"Increase uses by {C:attention}#2#{}",
-						"at the end of {C:attention}Boss Blind{}",
+						"whenever a {C:attention}Boss Blind{} is {C:attention}defeated{}",
 					},
 				},
 			},
@@ -781,6 +797,23 @@ return {
 						"Gains {C:dark_edition}+#3#{} {C:attention}Joker{} slots",
 						"at end of shop",
 						"{C:inactive}(Currently{} {C:dark_edition}+#4#{} {C:inactive}Joker slots){}",
+					},
+				},
+			},
+
+			j_asc_sync_catalyst = {
+				name = "Fusio Nuclearis",
+				text = {
+					{
+						"At the {C:attention}start of round{},",
+						"balances {C:chips}hands{} with this Joker's {X:dark_edition,C:white}^Chips{}",
+						"and {C:mult}discards{} with this Joker's {X:dark_edition,C:white}^Mult{}",
+						"{C:inactive}(Currently{} {X:dark_edition,C:white}^#2#{} {C:inactive}Chips and{} {X:dark_edition,C:white}^#1#{} {C:inactive}Mult){}",
+						"{C:inactive}(Resets each round){}",
+					},
+					{
+						"Balance {C:chips}Chips{} and {C:mult}Mult{}",
+						"at the {C:attention}final{} scoring step",
 					},
 				},
 			},
@@ -877,6 +910,22 @@ return {
 					"Gains {X:gold,C:white}^#2#{} Ascension Power",
 					"for each {C:gold}Ascended{} hand played",
 					"{C:inactive}(Currently: {X:gold,C:white}^#1#{}{C:inactive}){}",
+				},
+			},
+
+			j_asc_chuckle_cola = {
+				name = "Cachinno Bulla",
+				text = {
+					{
+						"Multiply the {C:blue}Chips{} of",
+						"{C:attention}scored{} cards by {X:blue,C:white}X#1#{}",
+					},
+					{
+						"After scoring {C:attention}#2#{}",
+						"cards, increase multiplier",
+						"by {X:blue,C:white}X#3#{} and {C:attention}double{}",
+						"card scoring requirement",
+					},
 				},
 			},
 
@@ -995,6 +1044,7 @@ return {
 		dictionary = {
 			k_asc_banana = "Banana", --Banana Rariety Label
 			asc_banana_ex = "Banana!",
+			asc_wish_ex = "I Wish!", --Superior Manus Effect
 			b_sell_stone = "-Stones",
 			b_buy_stone = "+Stones",
 			asc_mossaic_stone_cards = "Mossaic Stone Cards",

@@ -1,4 +1,4 @@
-SMODS.Joker{
+SMODS.Joker({
 	key = "duane",
 	config = { extra = { mult = 0, mult_mod = 2 } },
 	rarity = 3,
@@ -12,7 +12,7 @@ SMODS.Joker{
 		return {
 			vars = {
 				lenient_bignum(card.ability.extra.mult),
-				lenient_bignum(card.ability.extra.mult_mod)
+				lenient_bignum(card.ability.extra.mult_mod),
 			},
 		}
 	end,
@@ -20,11 +20,9 @@ SMODS.Joker{
 		if
 			not context.blueprint
 			and (
-				(
-					context.post_trigger
-					and context.other_joker ~= card
-					and Cryptid.isNonRollProbabilityContext(context.other_context)
-				)
+				context.post_trigger
+				and context.other_joker ~= card
+				and Cryptid.isNonRollProbabilityContext(context.other_context)
 			)
 		then
 			card.ability.extra.mult = lenient_bignum(to_big(card.ability.extra.mult) + card.ability.extra.mult_mod)
@@ -32,8 +30,7 @@ SMODS.Joker{
 		end
 		if (context.joker_main and (to_big(card.ability.extra.mult) > to_big(1))) or context.forcetrigger then
 			if context.forcetrigger then
-				card.ability.extra.mult =
-					lenient_bignum(to_big(card.ability.extra.mult) + card.ability.extra.mult_mod)
+				card.ability.extra.mult = lenient_bignum(to_big(card.ability.extra.mult) + card.ability.extra.mult_mod)
 			end
 			return {
 				message = localize({
@@ -50,7 +47,7 @@ SMODS.Joker{
 	end,
 	asc_credits = {
 		idea = { "TheOfficalFem" },
-		art = { "MarioFan597", "Shellular" },
+		art = { "TatteredLurker", "MarioFan597", "Shellular" },
 		code = { "elial2", "MarioFan597" },
 	},
-}
+})

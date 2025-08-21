@@ -10,7 +10,12 @@ SMODS.Joker({
 	cost = 50,
 	order = 5,
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.mult, card.ability.extra.bonus_mult } }
+		return {
+			vars = {
+				card.ability.extra.mult,
+				card.ability.extra.bonus_mult,
+			},
+		}
 	end,
 	calculate = function(self, card, context)
 		if context.individual or context.forcetrigger then
@@ -31,9 +36,9 @@ SMODS.Joker({
 						message = localize({
 							type = "variable",
 							key = "a_xmult",
-							vars = { lenient_bignum(card.ability.extra.bonus_mult) },
+							vars = { card.ability.extra.bonus_mult },
 						}),
-						Xmult_mod = lenient_bignum(card.ability.extra.bonus_mult),
+						Xmult_mod = card.ability.extra.bonus_mult,
 						colour = G.C.MULT,
 					}
 				else
@@ -41,9 +46,9 @@ SMODS.Joker({
 						message = localize({
 							type = "variable",
 							key = "a_xmult",
-							vars = { lenient_bignum(card.ability.extra.mult) },
+							vars = { card.ability.extra.mult },
 						}),
-						Xmult_mod = lenient_bignum(card.ability.extra.mult),
+						Xmult_mod = card.ability.extra.mult,
 						colour = G.C.MULT,
 					}
 				end
