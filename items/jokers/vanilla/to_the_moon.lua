@@ -35,11 +35,14 @@ SMODS.Joker({
 local oldeasedollars = ease_dollars
 
 function ease_dollars(mod, instant)
-	local mult = 1
+	if mod < 0 then
+		local mult = 1
+		for _, card in ipairs(SMODS.find_card("j_asc_to_the_moon")) do
+			mult = mult * card.ability.extra.multiplier
+		end
 
-	for _, card in ipairs(SMODS.find_card("j_asc_to_the_moon")) do
-		mult = mult * card.ability.extra.multiplier
+		return oldeasedollars(mod * mult, instant)
 	end
 
-	return oldeasedollars(mod * mult, instant)
+	return oldeasedollars(mod, instant)
 end
