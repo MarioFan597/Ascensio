@@ -312,7 +312,6 @@ return {
 				},
 			},
 
-
 			j_asc_blackboard = {
 				name = "Tabula Lapidea",
 				text = {
