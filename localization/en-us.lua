@@ -312,6 +312,7 @@ return {
 				},
 			},
 
+
 			j_asc_blackboard = {
 				name = "Tabula Lapidea",
 				text = {
@@ -709,10 +710,10 @@ return {
 			},
 
 			j_asc_high_five = {
-				name = "Superioris Manus",
+				name = "Manus Superior",
 				text = {
-					"Before scoring, if played hand",
-					"contains a scoring {C:attention}5{},",
+					"Before scoring, if played",
+					"hand contains a scoring {C:attention}5{},",
 					"convert {C:attention}all{} scored",
 					"cards to {C:dark_edition}Astral {C:attention}5{}s",
 				},
@@ -1014,6 +1015,7 @@ return {
 		dictionary = {
 			k_asc_banana = "Banana", --Banana Rariety Label
 			asc_banana_ex = "Banana!",
+			asc_wish_ex = "I Wish!", --Superior Manus Effect
 			b_sell_stone = "-Stones",
 			b_buy_stone = "+Stones",
 			asc_mossaic_stone_cards = "Mossaic Stone Cards",

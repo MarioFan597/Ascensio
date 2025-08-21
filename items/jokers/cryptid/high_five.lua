@@ -57,7 +57,7 @@ SMODS.Joker({
 					}))
 				end
 				if converted then
-					return { message = "I Wish", colour = G.C.PURPLE }
+					return { message = localize("asc_wish_ex"), colour = G.C.PURPLE }
 				end
 			end
 		end
