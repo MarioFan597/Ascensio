@@ -5,7 +5,7 @@ SMODS.Joker({
 	blueprint_compat = true,
 	demicoloncompat = true,
 	pos = { x = 6, y = 12 },
-	soul_pos = { x = 8, y = 11, extra = { x = 7, y = 11 } },
+	soul_pos = { x = 8, y = 12, extra = { x = 7, y = 12 } },
 	config = { extra = { Xchip = 1, Xchip_mod = 8, hand_type = "Flush" } },
 	cost = 50,
 	asc_credits = {
