@@ -1179,7 +1179,11 @@ return {
 
 			sleeve_asc_starlight_alt = {
 				name = "Starlight Sleeve",
-				text = {},
+				text = {
+					"Jokers are {C:attention}10X{} more",
+					"likely to be {C:dark_edition}Negative{}",
+					"{C:attention}-1{} Joker slots",
+				},
 			},
 		},
 		Spectral = {

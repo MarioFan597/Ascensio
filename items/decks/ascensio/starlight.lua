@@ -27,7 +27,7 @@ if CardSleeves then
 
 		loc_vars = function(self)
 			if self.get_current_deck_key() == "b_asc_starlight" then
-				self.config = { cry_negative_rate = 10, joker_slot = -1, consumables = {} }
+				self.config = { cry_negative_rate = 10, joker_slot = -1 }
 				return { key = self.key .. "_alt", vars = {} }
 			else
 				self.config = { cry_negative_rate = 20, joker_slot = -2, consumables = { "c_asc_ascension" } }
@@ -39,6 +39,12 @@ if CardSleeves then
 			G.GAME.modifiers.cry_negative_rate = (G.GAME.modifiers.cry_negative_rate or 1)
 				* self.config.cry_negative_rate
 			G.GAME.starting_params.joker_slots = G.GAME.starting_params.joker_slots + self.config.joker_slot
+
+			if self.config.consumables then
+				SMODS.add_card({
+					key = self.config.consumables[1],
+				})
+			end
 		end,
 	})
 end
