@@ -40,17 +40,19 @@ if CardSleeves then
 				* self.config.cry_negative_rate
 			G.GAME.starting_params.joker_slots = G.GAME.starting_params.joker_slots + self.config.joker_slot
 
-			delay(0.4)
-			G.E_MANAGER:add_event(Event({
-				func = function()
-					for _, v in ipairs(self.config.consumables) do
-						local card = SMODS.create_card({ key = v })
-						card:add_to_deck()
-						G.consumeables:emplace(card)
-					end
-					return true
-				end,
-			}))
+			if self.config.consumables then
+				delay(0.4)
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						for _, v in ipairs(self.config.consumables) do
+							local card = SMODS.create_card({ key = v })
+							card:add_to_deck()
+							G.consumeables:emplace(card)
+						end
+						return true
+					end,
+				}))
+			end
 		end,
 	})
 end
