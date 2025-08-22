@@ -110,7 +110,7 @@ end
 ---------Loading Ascensio Decks---------------
 
 local asc_decks = {
-	"starlight"
+	"starlight",
 }
 
 for _, v in pairs(asc_decks) do
