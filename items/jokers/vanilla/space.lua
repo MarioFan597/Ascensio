@@ -29,7 +29,7 @@ SMODS.Joker({
 	end,
 
 	calculate = function(_, card, context)
-		if context.before and context.cardarea == G.play then
+		if context.before and context.main_eval then
 			card.ability.extra.immutable.hands = card.ability.extra.immutable.hands + 1
 
 			return {
