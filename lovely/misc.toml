@@ -30,16 +30,25 @@ payload ='''if not asc_config["Insanity Mode!!!"] or false then
 					< to_number(G.jokers.config.card_limit)
 			end
 		'''
-
 match_indent = true
 
 [[patches]]
 [patches.pattern]
 target = '''=[SMODS Cryptid "items/exotic.lua"]'''
+pattern = '''if not SMODS.is_eternal(v) then'''
+position = "at"
+payload ='''if not SMODS.is_eternal(v) and not asc_config["Insanity Mode!!!"] or false then'''
+match_indent = true
+
+#If astronomica is installed
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS Astronomica "items/lib.lua"]'''
 pattern = '''if not v.ability.eternal then'''
 position = "at"
-payload ='''if not v.ability.eternal and not asc_config["Insanity Mode!!!"] or false then'''
+payload ='''if not SMODS.is_eternal(v) and not asc_config["Insanity Mode!!!"] or false then'''
 match_indent = true
+
 
 #Adds the Ascensionable tooltip to all ascensionable jokers. Thank you hexacryonic for the code.
 [[patches]]
