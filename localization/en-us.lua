@@ -1170,7 +1170,7 @@ return {
 			sleeve_asc_starlight = {
 				name = "Starlight Sleeve",
 				text = {
-					"Start with an additional {C:cry_exotic,T:c_asc_ascension}Ascension{C:attention} Card",
+					"Start with an {C:cry_exotic,T:c_asc_ascension}Ascension{C:attention} Card",
 					"Jokers are {C:attention}20X{} more",
 					"likely to be {C:dark_edition}Negative{}",
 					"{C:attention}-2{} Joker slots",

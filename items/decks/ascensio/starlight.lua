@@ -8,7 +8,7 @@ SMODS.Back({
 		G.GAME.modifiers.cry_negative_rate = self.config.cry_negative_rate
 	end,
 
-	init = function(self)
+	init = function(_)
 		SMODS.Edition:take_ownership("negative", {
 			get_weight = function(self)
 				return self.weight * (G.GAME.modifiers.cry_negative_rate or 1)
