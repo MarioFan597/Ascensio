@@ -99,16 +99,18 @@ return {
 			},
 
 			j_asc_jolly = {
-				name = "Iocōsum Balatro",
+				name = "Iocosum",
 				text = {
 					{
-						"Gains {X:mult,C:white}X#1#{} Mult per consecutive",
+						"Gains {X:mult,C:white}X#1#{} Mult",
+						"per {C:attention}consecutive{}",
 						"{C:attention}#3#{} that is played",
 						"{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)"
 					},
 					{
-						"levels up {C:attention}#3#{} by the {C:attention}highest rank{}",
-						"in hand at end of round"
+						"Levels up {C:attention}#3#{} by",
+						"the {C:attention}highest rank{} in",
+						"hand at end of round"
 					}
 				}
 			},
@@ -117,13 +119,149 @@ return {
 				name = "Eccentricus",
 				text = {
 					{
-						"Gains {X:mult,C:white}X#1#{} Mult per consecutive",
+						"Gains {X:mult,C:white}X#1#{} Mult per {C:attention}consecutive{}",
 						"{C:attention}#3#{} that is played",
 						"{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)"
 					},
 					{
-						"levels up {C:attention}#3#{} by the {C:attention}highest rank{}",
-						"in hand at end of round"
+						"Levels up {C:attention}#3#{} by",
+						"the {C:attention}highest rank{} in",
+						"hand at end of round"
+					}
+				}
+			},
+
+			j_asc_mad = {
+				name = "Insanus",
+				text = {
+					{
+						"Gains {X:mult,C:white}X#1#{} Mult",
+						"per {C:attention}consecutive{}",
+						"{C:attention}#3#{} that is played",
+						"{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)"
+					},
+					{
+						"Levels up {C:attention}#3#{} by",
+						"the {C:attention}highest rank{} in",
+						"hand at end of round"
+					}
+				}
+			},
+
+			j_asc_crazy = {
+				name = "Obscuritas",
+				text = {
+					{
+						"Gains {X:mult,C:white}X#1#{} Mult",
+						"per {C:attention}consecutive{}",
+						"{C:attention}#3#{} that is played",
+						"{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)"
+					},
+					{
+						"Levels up {C:attention}#3#{} by",
+						"the {C:attention}highest rank{} in",
+						"hand at end of round"
+					}
+				}
+			},
+
+			j_asc_droll = {
+				name = "Ludibrium",
+				text = {
+					{
+						"Gains {X:mult,C:white}X#1#{} Mult",
+						"per {C:attention}consecutive{}",
+						"{C:attention}#3#{} that is played",
+						"{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)"
+					},
+					{
+						"Levels up {C:attention}#3#{} by",
+						"the {C:attention}highest rank{} in",
+						"hand at end of round"
+					}
+				}
+			},
+
+			j_asc_sly = {
+				name = "Dolosus",
+				text = {
+					{
+						"Gains {X:chips,C:white}X#1#{} Chips",
+						"per {C:attention}consecutive{}",
+						"{C:attention}#3#{} that is played",
+						"{C:inactive}(Currently {X:chips,C:white}X#2#{}{C:inactive} Chips)"
+					},
+					{
+						"Levels up {C:attention}#3#{} by",
+						"the {C:attention}highest rank{} in",
+						"hand at end of round"
+					}
+				}
+			},
+
+			j_asc_wily = {
+				name = "Versutus",
+				text = {
+					{
+						"Gains {X:chips,C:white}X#1#{} Chips per {C:attention}consecutive{}",
+						"{C:attention}#3#{} that is played",
+						"{C:inactive}(Currently {X:chips,C:white}X#2#{}{C:inactive} Chips)"
+					},
+					{
+						"Levels up {C:attention}#3#{} by",
+						"the {C:attention}highest rank{} in",
+						"hand at end of round"
+					}
+				}
+			},
+
+			j_asc_clever = {
+				name = "Calliditas",
+				text = {
+					{
+						"Gains {X:chips,C:white}X#1#{} Chips",
+						"per {C:attention}consecutive{}",
+						"{C:attention}#3#{} that is played",
+						"{C:inactive}(Currently {X:chips,C:white}X#2#{}{C:inactive} Chips)"
+					},
+					{
+						"Levels up {C:attention}#3#{} by",
+						"the {C:attention}highest rank{} in",
+						"hand at end of round"
+					}
+				}
+			},
+
+			j_asc_devious = {
+				name = "Impietas",
+				text = {
+					{
+						"Gains {X:chips,C:white}X#1#{} Chips",
+						"per {C:attention}consecutive{}",
+						"{C:attention}#3#{} that is played",
+						"{C:inactive}(Currently {X:chips,C:white}X#2#{}{C:inactive} Chips)"
+					},
+					{
+						"Levels up {C:attention}#3#{} by",
+						"the {C:attention}highest rank{} in",
+						"hand at end of round"
+					}
+				}
+			},
+
+			j_asc_crafty = {
+				name = "Astutia",
+				text = {
+					{
+						"Gains {X:chips,C:white}X#1#{} Chips",
+						"per {C:attention}consecutive{}",
+						"{C:attention}#3#{} that is played",
+						"{C:inactive}(Currently {X:chips,C:white}X#2#{}{C:inactive} Chips)"
+					},
+					{
+						"Levels up {C:attention}#3#{} by",
+						"the {C:attention}highest rank{} in",
+						"hand at end of round"
 					}
 				}
 			},
@@ -215,8 +353,9 @@ return {
 				name = "Fabulosa Radices",
 				text = {
 					"{X:dark_edition,C:white}^#1#{} Mult",
-					"Gains {X:dark_edition,C:white}^#2#{} Mult at end of round",
-					"when {C:attention}0{} discards remaining",
+					"Gains {X:dark_edition,C:white}^#2#{} Mult at",
+					"end of round when {C:attention}0{}",
+					"discards remaining",
 				},
 			},
 
@@ -258,7 +397,7 @@ return {
 					{
 						"Joker gains previous {X:mult,C:white}XMult{}",
 						"before scoring each card",
-						"Resets each hand played.",
+						"Resets each hand played",
 						"{C:inactive}(e.g: X1, X2, X3, X5, X8, etc.){}",
 					},
 				},
@@ -540,10 +679,14 @@ return {
 			j_asc_smeared = {
 				name = "Inquino",
 				text = {
-					"{C:attention}All{} cards count as",
-					"every {C:attention}suit{} and every {C:attention}rank{}",
-					"Cards with a suit or a rank",
-					"{C:attention}cannot{} be debuffed",
+					{
+						"{C:attention}All{} cards count as",
+						"every {C:attention}suit{} and every {C:attention}rank{}",
+					},
+					{
+						"Cards with a suit or a rank",
+						"{C:attention}cannot{} be debuffed",
+					},
 				},
 			},
 
@@ -578,11 +721,13 @@ return {
 				name = "Hyacintho Progressus",
 				text = {
 					{
-						"Retriggers {C:attention}Joker{} to the right",
-						"for each copy of that {C:attention}Joker{} you own",
+						"Retriggers {C:attention}Joker{} to",
+						"the right for each copy of",
+						"that {C:attention}Joker{} you own",
 					},
 					{
-						"{C:attention}Duplicate Joker{} to right at end of shop",
+						"{C:attention}Duplicate Joker{} to right",
+						"at end of shop",
 						"{C:inactive}(Must have room)",
 					},
 				},
@@ -682,9 +827,15 @@ return {
 			j_asc_bootstraps = {
 				name = "Inflatio",
 				text = {
-					"{X:mult,C:white}X#2#{} Mult for every {C:money}$1{} you have",
-					"Earn {C:money}$#3#{} at end of round",
-					"{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult)",
+					{
+						"{X:mult,C:white}X#2#{} Mult for every",
+						"{C:money}$1{} you have",
+						"{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult)",
+					},
+					{
+						"Earn {C:money}$#3#{} at",
+						"end of round",
+					},	
 				},
 			},
 
@@ -705,12 +856,13 @@ return {
 
 			-----Cryptid-----
 			j_asc_canvas = {
-				name = "Oleum Pictura",
+				name = "Pictura Olei",
 				text = {
 					{
-						"{C:attention}Retrigger{} all {C:attention}Jokers{} to the left",
-						"once for {C:attention}every{} Joker{} including itself",
-						"to the right of this Joker",
+						"{C:attention}Retrigger{} all {C:attention}Jokers{} to",
+						"the left once for {C:attention}every{}",
+						"Joker{} {C:inactive}(including itself){} to",
+						"the right of this Joker",
 					},
 					{
 						"Creates a {C:dark_edition}Negative{} {C:attention,T:j_joker}Joker{}",
@@ -751,8 +903,9 @@ return {
 			j_asc_oil_lamp = {
 				name = "Lucerna",
 				text = {
-					"Increase values of all {C:attention}Jokers",
-					"by {C:attention}X#1#{} at the end of round",
+					"Increase values of all",
+					"{C:attention}Jokers{} by {C:attention}X#1#{}",
+					"at the end of round",
 					"{C:inactive}(Does not affect self)", -- oil lamp does not say "if possible," so why should this
 				},
 			},
@@ -760,8 +913,9 @@ return {
 			j_asc_hunting_season = {
 				name = "Sine Fine Venari",
 				text = {
-					"If Hand contains odd number of cards above {C:attention}1{},",
-					"{C:red}destroy{} the {C:attention}center{} card after scoring",
+					"If Hand contains odd number of",
+					"cards above {C:attention}1{}, {C:red}destroy{} the",
+					"{C:attention}center{} card after scoring",
 					"Remaining played cards gain {X:mult,C:white}XMult{}",
 					"equal to {C:red}destroyed{} card's rank",
 					"{C:inactive}(J = 11, Q = 12, K = 13, A = 14)",
@@ -773,12 +927,12 @@ return {
 				name = "Transcriptio Virtualis",
 				text = {
 					{
-						"Creates a {C:dark_edition}Negative{} {C:cry_code}Code Card{} when",
-						"{C:attention}Blind{} is selected with {C:attention}#1#{} uses",
+						"Creates a {C:dark_edition}Negative{} {C:cry_code}Code Card{} with",
+						"{C:attention}#1#{} uses when {C:attention}Blind{} is selected",
 					},
 					{
-						"Increase uses by {C:attention}#2#{}",
-						"whenever a {C:attention}Boss Blind{} is {C:attention}defeated{}",
+						"Increase uses by {C:attention}#2#{} when",
+						"a {C:attention}Boss Blind{} is {C:attention}defeated{}",
 					},
 				},
 			},
@@ -892,11 +1046,13 @@ return {
 				name = "Coccineum Progressus",
 				text = {
 					{
-						"Retriggers {C:attention}Joker{} to the left",
-						"for each copy of that {C:attention}Joker{} you own",
+						"Retriggers {C:attention}Joker{} to",
+						"the left for each copy of",
+						"that {C:attention}Joker{} you own",
 					},
 					{
-						"{C:attention}Duplicate Joker{} to right at end of shop",
+						"{C:attention}Duplicate Joker{} to left",
+						"at end of shop",
 						"{C:inactive}(Must have room)",
 					},
 				},
