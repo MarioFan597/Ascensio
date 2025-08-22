@@ -3,6 +3,7 @@
     "diagnostics.globals": [
         "G",
         "Cryptid",
+        "CardSleeves",
         "Talisman",
         "localize",
         "lenient_bignum",

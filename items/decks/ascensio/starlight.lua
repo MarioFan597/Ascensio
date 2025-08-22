@@ -3,9 +3,11 @@ SMODS.Back({
 	atlas = "deck_atlas",
 	pos = { x = 0, y = 0 },
 	config = { cry_negative_rate = 20, joker_slot = -2, consumables = { "c_asc_ascension" } },
+
 	apply = function(self)
 		G.GAME.modifiers.cry_negative_rate = self.config.cry_negative_rate
 	end,
+
 	init = function(self)
 		SMODS.Edition:take_ownership("negative", {
 			get_weight = function(self)
@@ -14,3 +16,21 @@ SMODS.Back({
 		}, true)
 	end,
 })
+
+if CardSleeves then
+	CardSleeves.Sleeve({
+		key = "starlight",
+		atlas = "sleeves",
+		pos = { x = 0, y = 0 },
+
+		config = { cry_negative_rate = 20, joker_slot = -2, consumables = { "c_asc_ascension" } },
+
+		unlock_condition = { deck = "Starlight Deck", stake = 1 },
+
+		apply = function(self)
+			G.GAME.modifiers.cry_negative_rate = (G.GAME.modifiers.cry_negative_rate or 1)
+				* self.config.cry_negative_rate
+			G.GAME.starting_params.joker_slots = G.GAME.starting_params.joker_slots + self.config.joker_slot
+		end,
+	})
+end
