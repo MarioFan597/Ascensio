@@ -465,6 +465,17 @@ return {
 				},
 			},
 
+			j_asc_space = {
+				name = "Solutus",
+				text = {
+					"Upgrade level of current played",
+					"{C:attention}poker hand{} by {X:dark_edition,C:white}#1#{}",
+					"for each {C:attention}hand played{} this {C:attention}Ante{}",
+					"{C:inactive}(Reset when a {C:attention}Boss blind{} is {C:attention}defeated{}{C:inactive}){}",
+					"{C:inactive}(Currently {X:dark_edition,C:white}#2#{} {C:inactive}played){}",
+				},
+			},
+
 			j_asc_egg = {
 				name = "Cunae",
 				text = {

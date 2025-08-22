@@ -105,6 +105,7 @@ ascensionable = {
 	j_gros_michel = "j_asc_banana",
 	j_even_steven = "j_asc_even_steven",
 	j_odd_todd = "j_asc_odd_todd",
+	j_space = "j_asc_space",
 	j_egg = "j_asc_egg",
 	j_scary_face = "j_asc_scary",
 	j_abstract = "j_asc_abstract",
