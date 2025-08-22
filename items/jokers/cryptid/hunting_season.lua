@@ -40,19 +40,30 @@ SMODS.Joker({
 			and not context.blueprint
 			and not context.retrigger_joker
 		then
+			local upgrade = false
 			for _, c in ipairs(context.full_hand) do
 				--c.ability.perma_x_chips = c.ability.perma_x_chips or 1
 				--if type(context.full_hand[(#context.full_hand + 1) / 2]:get_id()) == number then
 				--c.ability.perma_x_chips = c.ability.perma_x_chips + (context.full_hand[(#context.full_hand + 1) / 2]:get_id()-1)
-				c.ability.perma_x_mult = c.ability.perma_x_mult
-					+ context.full_hand[(#context.full_hand + 1) / 2]:get_id()
+				if context.full_hand[(#context.full_hand + 1) / 2]:get_id() > 0 then
+					c.ability.perma_x_mult = c.ability.perma_x_mult
+						+ context.full_hand[(#context.full_hand + 1) / 2]:get_id()
+					upgrade = true
+				end
 			end
-			return {
-				extra = { message = localize("k_upgrade_ex"), colour = G.C.MULT },
-				colour = G.C.MULT,
-				card = context.other_card,
-				remove = not context.destroy_card.ability.eternal,
-			}
+			if upgrade then
+				return {
+					extra = { message = localize("k_upgrade_ex"), colour = G.C.MULT },
+					colour = G.C.MULT,
+					card = context.other_card,
+					remove = not context.destroy_card.ability.eternal,
+				}
+			else
+				return {
+					card = context.other_card,
+					remove = not context.destroy_card.ability.eternal,
+				}
+			end
 		end
 	end,
 	asc_credits = {
