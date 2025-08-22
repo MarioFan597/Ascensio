@@ -105,14 +105,14 @@ return {
 						"Gains {X:mult,C:white}X#1#{} Mult",
 						"per {C:attention}consecutive{}",
 						"{C:attention}#3#{} that is played",
-						"{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)"
+						"{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)",
 					},
 					{
 						"Levels up {C:attention}#3#{} by",
 						"the {C:attention}highest rank{} in",
-						"hand at end of round"
-					}
-				}
+						"hand at end of round",
+					},
+				},
 			},
 
 			j_asc_zany = {
@@ -121,14 +121,14 @@ return {
 					{
 						"Gains {X:mult,C:white}X#1#{} Mult per {C:attention}consecutive{}",
 						"{C:attention}#3#{} that is played",
-						"{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)"
+						"{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)",
 					},
 					{
 						"Levels up {C:attention}#3#{} by",
 						"the {C:attention}highest rank{} in",
-						"hand at end of round"
-					}
-				}
+						"hand at end of round",
+					},
+				},
 			},
 
 			j_asc_mad = {
@@ -138,14 +138,14 @@ return {
 						"Gains {X:mult,C:white}X#1#{} Mult",
 						"per {C:attention}consecutive{}",
 						"{C:attention}#3#{} that is played",
-						"{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)"
+						"{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)",
 					},
 					{
 						"Levels up {C:attention}#3#{} by",
 						"the {C:attention}highest rank{} in",
-						"hand at end of round"
-					}
-				}
+						"hand at end of round",
+					},
+				},
 			},
 
 			j_asc_crazy = {
@@ -155,14 +155,14 @@ return {
 						"Gains {X:mult,C:white}X#1#{} Mult",
 						"per {C:attention}consecutive{}",
 						"{C:attention}#3#{} that is played",
-						"{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)"
+						"{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)",
 					},
 					{
 						"Levels up {C:attention}#3#{} by",
 						"the {C:attention}highest rank{} in",
-						"hand at end of round"
-					}
-				}
+						"hand at end of round",
+					},
+				},
 			},
 
 			j_asc_droll = {
@@ -172,14 +172,14 @@ return {
 						"Gains {X:mult,C:white}X#1#{} Mult",
 						"per {C:attention}consecutive{}",
 						"{C:attention}#3#{} that is played",
-						"{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)"
+						"{C:inactive}(Currently {X:mult,C:white}X#2#{}{C:inactive} Mult)",
 					},
 					{
 						"Levels up {C:attention}#3#{} by",
 						"the {C:attention}highest rank{} in",
-						"hand at end of round"
-					}
-				}
+						"hand at end of round",
+					},
+				},
 			},
 
 			j_asc_sly = {
@@ -189,14 +189,14 @@ return {
 						"Gains {X:chips,C:white}X#1#{} Chips",
 						"per {C:attention}consecutive{}",
 						"{C:attention}#3#{} that is played",
-						"{C:inactive}(Currently {X:chips,C:white}X#2#{}{C:inactive} Chips)"
+						"{C:inactive}(Currently {X:chips,C:white}X#2#{}{C:inactive} Chips)",
 					},
 					{
 						"Levels up {C:attention}#3#{} by",
 						"the {C:attention}highest rank{} in",
-						"hand at end of round"
-					}
-				}
+						"hand at end of round",
+					},
+				},
 			},
 
 			j_asc_wily = {
@@ -205,14 +205,14 @@ return {
 					{
 						"Gains {X:chips,C:white}X#1#{} Chips per {C:attention}consecutive{}",
 						"{C:attention}#3#{} that is played",
-						"{C:inactive}(Currently {X:chips,C:white}X#2#{}{C:inactive} Chips)"
+						"{C:inactive}(Currently {X:chips,C:white}X#2#{}{C:inactive} Chips)",
 					},
 					{
 						"Levels up {C:attention}#3#{} by",
 						"the {C:attention}highest rank{} in",
-						"hand at end of round"
-					}
-				}
+						"hand at end of round",
+					},
+				},
 			},
 
 			j_asc_clever = {
@@ -222,14 +222,14 @@ return {
 						"Gains {X:chips,C:white}X#1#{} Chips",
 						"per {C:attention}consecutive{}",
 						"{C:attention}#3#{} that is played",
-						"{C:inactive}(Currently {X:chips,C:white}X#2#{}{C:inactive} Chips)"
+						"{C:inactive}(Currently {X:chips,C:white}X#2#{}{C:inactive} Chips)",
 					},
 					{
 						"Levels up {C:attention}#3#{} by",
 						"the {C:attention}highest rank{} in",
-						"hand at end of round"
-					}
-				}
+						"hand at end of round",
+					},
+				},
 			},
 
 			j_asc_devious = {
@@ -239,14 +239,14 @@ return {
 						"Gains {X:chips,C:white}X#1#{} Chips",
 						"per {C:attention}consecutive{}",
 						"{C:attention}#3#{} that is played",
-						"{C:inactive}(Currently {X:chips,C:white}X#2#{}{C:inactive} Chips)"
+						"{C:inactive}(Currently {X:chips,C:white}X#2#{}{C:inactive} Chips)",
 					},
 					{
 						"Levels up {C:attention}#3#{} by",
 						"the {C:attention}highest rank{} in",
-						"hand at end of round"
-					}
-				}
+						"hand at end of round",
+					},
+				},
 			},
 
 			j_asc_crafty = {
@@ -256,14 +256,14 @@ return {
 						"Gains {X:chips,C:white}X#1#{} Chips",
 						"per {C:attention}consecutive{}",
 						"{C:attention}#3#{} that is played",
-						"{C:inactive}(Currently {X:chips,C:white}X#2#{}{C:inactive} Chips)"
+						"{C:inactive}(Currently {X:chips,C:white}X#2#{}{C:inactive} Chips)",
 					},
 					{
 						"Levels up {C:attention}#3#{} by",
 						"the {C:attention}highest rank{} in",
-						"hand at end of round"
-					}
-				}
+						"hand at end of round",
+					},
+				},
 			},
 
 			j_asc_stencil = {
@@ -462,6 +462,17 @@ return {
 						"if played hand has an {C:attention}odd{}",
 						"amount of cards in it",
 					},
+				},
+			},
+
+			j_asc_space = {
+				name = "Solutus",
+				text = {
+					"Upgrade level of current played",
+					"{C:attention}poker hand{} by {X:dark_edition,C:white}#1#{}",
+					"for each {C:attention}hand played{} this {C:attention}Ante{}",
+					"{C:inactive}(Reset when a {C:attention}Boss blind{} is {C:attention}defeated{}{C:inactive}){}",
+					"{C:inactive}(Currently {X:dark_edition,C:white}#2#{} {C:inactive}played){}",
 				},
 			},
 
@@ -835,7 +846,7 @@ return {
 					{
 						"Earn {C:money}$#3#{} at",
 						"end of round",
-					},	
+					},
 				},
 			},
 

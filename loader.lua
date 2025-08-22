@@ -30,6 +30,7 @@ local v_jokers = {
 	"banana",
 	"even_steven",
 	"odd_todd",
+	"space",
 	"egg",
 	"blackboard",
 	"ice_cream",
@@ -110,7 +111,7 @@ end
 ---------Loading Ascensio Decks---------------
 
 local asc_decks = {
-	"starlight"
+	"starlight",
 }
 
 for _, v in pairs(asc_decks) do
