@@ -1166,6 +1166,26 @@ return {
 			},
 		},
 		Planet = {},
+		Sleeve = {
+			sleeve_asc_starlight = {
+				name = "Starlight Sleeve",
+				text = {
+					"Start with an {C:cry_exotic,T:c_asc_ascension}Ascension{C:attention} Card",
+					"Jokers are {C:attention}20X{} more",
+					"likely to be {C:dark_edition}Negative{}",
+					"{C:attention}-2{} Joker slots",
+				},
+			},
+
+			sleeve_asc_starlight_alt = {
+				name = "Starlight Sleeve",
+				text = {
+					"Jokers are {C:attention}10X{} more",
+					"likely to be {C:dark_edition}Negative{}",
+					"{C:attention}-1{} Joker slots",
+				},
+			},
+		},
 		Spectral = {
 			c_asc_ascension = {
 				name = "Ascension",
@@ -1195,10 +1215,10 @@ return {
 					"Jokers are {C:attention}20X{} more",
 					"likely to be {C:dark_edition}Negative",
 					"{C:attention}-2{} Joker slots",
-					"{C:inactive,s:0.7}Starlight, starbright,{}",
-					"{C:inactive,s:0.7}First star I see tonight;{}",
-					"{C:inactive,s:0.7} I wish I may, I wish I might{}",
-					"{C:inactive,s:0.7}have the wish I wish tonight{}",
+					"{C:inactive,s:0.6}Starlight, starbright,{}",
+					"{C:inactive,s:0.6}First star I see tonight;{}",
+					"{C:inactive,s:0.6} I wish I may, I wish I might{}",
+					"{C:inactive,s:0.6}have the wish I wish tonight{}",
 				},
 			},
 		},

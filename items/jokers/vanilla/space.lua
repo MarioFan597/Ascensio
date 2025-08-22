@@ -39,7 +39,7 @@ SMODS.Joker({
 			}
 		end
 
-		if context.beat_boss then
+		if context.beat_boss and card.ability.extra.immutable.hands ~= 0 then
 			card.ability.extra.immutable.hands = 0
 			return {
 				message = "Reset!",
