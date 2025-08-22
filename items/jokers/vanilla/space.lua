@@ -23,7 +23,7 @@ SMODS.Joker({
 		return {
 			vars = {
 				card.ability.extra.level_gain,
-				card.ability.extra.hands,
+				card.ability.extra.immutable.hands,
 			},
 		}
 	end,
