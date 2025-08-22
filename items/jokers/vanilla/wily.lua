@@ -1,16 +1,16 @@
 SMODS.Joker {
-	key = "jolly",
+	key = "wily",
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
 	demicoloncompat = true,
-	pos = { x = 0, y = 10 },
-	soul_pos = { x = 2, y = 10, extra = { x = 1, y = 10 } },
-    config = { extra = { Xmult = 1, Xmult_mod = 8, hand_type = "Pair" } },
+	pos = { x = 3, y = 11 },
+	soul_pos = { x = 5, y = 11, extra = { x = 4, y = 11 } },
+    config = { extra = { Xchip = 1, Xchip_mod = 10, hand_type = "Three of a Kind"} },
 	cost = 50,
     asc_credits = {
 			idea = {
-				"bent"
+				"TheOfficalFem"
 			},
 			art = {
 				"Tatteredlurker"
@@ -20,19 +20,19 @@ SMODS.Joker {
 			}
 	},
     loc_vars = function (self, info_queue, card)
-        return {vars = {card.ability.extra.Xmult_mod, card.ability.extra.Xmult, localize(card.ability.extra.hand_type, 'poker_hands')}}
+        return {vars = {card.ability.extra.Xchip_mod, card.ability.extra.Xchip, localize(card.ability.extra.hand_type, 'poker_hands')}}
     end,
     calculate = function (self, card, context)
         if context.before or context.forcetrigger then
             if context.scoring_name == card.ability.extra.hand_type or context.forcetrigger then
-                card.ability.extra.Xmult = lenient_bignum(to_big(card.ability.extra.Xmult) + card.ability.extra.Xmult_mod)
-                SMODS.calculate_effect({message = localize("k_upgrade_ex"), colour = G.C.MULT}, context.blueprint_card or card)
-            elseif to_big(card.ability.extra.Xmult) > to_big(1) then
-                card.ability.extra.Xmult = to_big(1)
+                card.ability.extra.Xchip = lenient_bignum(to_big(card.ability.extra.Xchip) + card.ability.extra.Xchip_mod)
+                SMODS.calculate_effect({message = localize("k_upgrade_ex"), colour = G.C.CHIPS}, context.blueprint_card or card)
+            elseif to_big(card.ability.extra.Xchip) > to_big(1) then
+                card.ability.extra.Xchip = to_big(1)
                 SMODS.calculate_effect({message = localize("k_reset")}, context.blueprint_card or card)
             end
         end
-        if (context.end_of_round and context.main_eval) or context.forcetrigger then
+         if (context.end_of_round and context.main_eval) or context.forcetrigger then
             return {
                 func = function()
                     local temprank = 0
@@ -61,10 +61,18 @@ SMODS.Joker {
                 end
             }
         end
-        if context.joker_main and to_big(card.ability.extra.Xmult) > to_big(1) then
+        if context.joker_main and to_big(card.ability.extra.Xchip) > to_big(1) then
             return {
-                xmult = card.ability.extra.Xmult
-            }
+                    message = localize({
+                        type = "variable",
+                        key = "a_xchips",
+                        vars = {
+                            card.ability.extra.Xchip,
+                        },
+                    }),
+                    Xchip_mod = lenient_bignum(card.ability.extra.Xchip),
+                    colour = G.C.CHIPS,
+                }
         end
     end
 }

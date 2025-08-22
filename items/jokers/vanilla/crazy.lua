@@ -1,12 +1,12 @@
 SMODS.Joker {
-	key = "jolly",
+	key = "crazy",
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
 	demicoloncompat = true,
-	pos = { x = 0, y = 10 },
-	soul_pos = { x = 2, y = 10, extra = { x = 1, y = 10 } },
-    config = { extra = { Xmult = 1, Xmult_mod = 8, hand_type = "Pair" } },
+	pos = { x = 9, y = 10 },
+	soul_pos = { x = 11, y = 10, extra = { x = 10, y = 10 } },
+    config = { extra = { Xmult = 1, Xmult_mod = 12, hand_type = "Straight" } },
 	cost = 50,
     asc_credits = {
 			idea = {

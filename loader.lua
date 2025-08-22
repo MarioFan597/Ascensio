@@ -7,6 +7,14 @@ local v_jokers = {
 	"gluttonous",
 	"jolly",
 	"zany",
+	"mad",
+	"crazy",
+	"droll",
+	"sly",
+	"wily",
+	"clever",
+	"devious",
+	"crafty",
 	"stencil",
 	"four_fingers",
 	"mime",
@@ -102,7 +110,7 @@ end
 ---------Loading Ascensio Decks---------------
 
 local asc_decks = {
-	--"starlight"
+	"starlight"
 }
 
 for _, v in pairs(asc_decks) do

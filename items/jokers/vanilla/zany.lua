@@ -4,8 +4,8 @@ SMODS.Joker {
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
 	demicoloncompat = true,
-	pos = { x = 6, y = 10 },
-	soul_pos = { x = 8, y = 10, extra = { x = 7, y = 10 } },
+	pos = { x = 3, y = 10 },
+    soul_pos = { x = 5, y = 10, extra = { x = 4, y = 10 } },
     config = { extra = { Xmult = 1, Xmult_mod = 12, hand_type = "Three of a Kind" } },
 	cost = 50,
     asc_credits = {
@@ -20,13 +20,13 @@ SMODS.Joker {
 			}
 	},
     loc_vars = function (self, info_queue, card)
-        return {vars = {card.ability.extra.Xmult_mod, card.ability.extra.Xmult, card.ability.extra.hand_type}}
+        return {vars = {card.ability.extra.Xmult_mod, card.ability.extra.Xmult, localize(card.ability.extra.hand_type, 'poker_hands')}}
     end,
     calculate = function (self, card, context)
         if context.before or context.forcetrigger then
             if context.scoring_name == card.ability.extra.hand_type or context.forcetrigger then
                 card.ability.extra.Xmult = lenient_bignum(to_big(card.ability.extra.Xmult) + card.ability.extra.Xmult_mod)
-                SMODS.calculate_effect({message = localize("k_upgrade_ex")}, context.blueprint_card or card)
+                SMODS.calculate_effect({message = localize("k_upgrade_ex"), colour = G.C.MULT}, context.blueprint_card or card)
             elseif to_big(card.ability.extra.Xmult) > to_big(1) then
                 card.ability.extra.Xmult = to_big(1)
                 SMODS.calculate_effect({message = localize("k_reset")}, context.blueprint_card or card)
