@@ -38,6 +38,7 @@ local v_jokers = {
 	"blue",
 	--"musa_ingens",
 	"square",
+	"seance",
 	"hologram",
 	"midas",
 	"to_the_moon",
@@ -61,7 +62,6 @@ local v_jokers = {
 	"drivers_license",
 	"bootstraps",
 	"canio",
-	"seance", --sort this later im busy
 }
 
 for _, v in pairs(v_jokers) do
