@@ -51,9 +51,9 @@ SMODS.Joker({
 	end,
 
 	add_to_deck = function(_, card, _)
-		for k, v in pairs(G.P_CENTER_POOLS.Consumeables) do
-			if type(k) == "string" and k:startswith("c_") and v.hidden then
-				table.insert(card.ability.extra.pool, k)
+		for _, v in pairs(G.P_CENTER_POOLS.Consumeables) do
+			if v.hidden and type(v.key) == "string" then
+				table.insert(card.ability.extra.pool, v.key)
 			end
 		end
 	end,
@@ -64,12 +64,12 @@ SMODS.Joker({
 			or context.forcetrigger
 		then
 			for _ = 1, card.ability.extra.amount do
-				local speccard = pseudorandom_element(card.ability.extra.pool, os.clock() .. "")
+				local speccard = pseudorandom_element(card.ability.extra.pool, "j_asc_seance")
 
 				G.E_MANAGER:add_event(Event({
 					func = function()
 						delay(0.4)
-						SMODS.add_card({ key = speccard, edition = "e_negative", set = "Spectral" })
+						SMODS.add_card({ key = speccard, edition = "e_negative" })
 						return true
 					end,
 				}))

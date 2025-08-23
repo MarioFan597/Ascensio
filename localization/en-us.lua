@@ -859,18 +859,18 @@ return {
 						"{C:inactive}(Currently {X:dark_edition,C:white}^#1#{}{C:inactive} Mult)",
 					},
 					{
-						"Destroyed {C:attention}face{} cards",
+						"destroyed {c:attention}face{} cards",
 						"are returned to hand",
 					},
 				},
 			},
 
 			j_asc_seance = {
-				name = "Praesagium",
+				name = "praesagium",
 				text = {
-					"Create {X:dark_edition,C:white}#1#{} {C:dark_edition,E:1}Negative Rare Consumable{}",
-					"whenever a {C:attention}[#2#]{} is played.",
-					"{C:inactive,S:0.7}(Hand type changes at the end of round){}",
+					"create {x:dark_edition,c:white}#1#{} {c:dark_edition,e:1}negative rare consumable{}",
+					"whenever a {c:attention}[#2#]{} is played.",
+					"{c:inactive,s:0.7}(Hand type changes at the end of round){}",
 				},
 			},
 
