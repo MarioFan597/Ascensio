@@ -61,6 +61,7 @@ local v_jokers = {
 	"drivers_license",
 	"bootstraps",
 	"canio",
+	"seance", --sort this later im busy
 }
 
 for _, v in pairs(v_jokers) do

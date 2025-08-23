@@ -865,6 +865,13 @@ return {
 				},
 			},
 
+			j_asc_seance = {
+				name = "Praesagium",
+				text = {
+					"Placeholder",
+				},
+			},
+
 			-----Cryptid-----
 			j_asc_canvas = {
 				name = "Pictura Olei",
