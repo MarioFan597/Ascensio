@@ -1,3 +1,9 @@
+---@param pat string
+---@return boolean
+function string:startswith(pat)
+	return string.sub(self, 1, string.len(pat)) == pat
+end
+
 SMODS.Atlas({
 	key = "seance",
 	path = "seance.png",
@@ -6,10 +12,9 @@ SMODS.Atlas({
 })
 
 SMODS.Joker({
-	key = "mystic_summit",
-	config = { extra = { mult = 1, gain = 0.25 } },
+	key = "seance",
 	rarity = "cry_exotic",
-	atlas = "v_atlas_1",
+	atlas = "seance",
 	blueprint_compat = true,
 	demicoloncompat = true,
 	pos = { x = 0, y = 0 },
@@ -27,15 +32,77 @@ SMODS.Joker({
 
 	cost = 50,
 	order = 23,
-	loc_vars = function(self, info_queue, card)
+
+	config = {
+		extra = {
+			hand_type = "High Card",
+			pool = {},
+		},
+	},
+
+	loc_vars = function(_, _, card)
 		return {
-			vars = {},
+			vars = {
+				card.ability.extra.hand_type,
+			},
 		}
 	end,
-	calculate = function(self, card, context) end,
+
+	add_to_deck = function(_, card, _)
+		for k, v in pairs(G.P_CENTER_POOLS.Consumeables) do
+			if type(k) == "string" and k:startswith("c_") and v.hidden then
+				table.insert(card.ability.extra.pool, k)
+			end
+		end
+	end,
+
+	calculate = function(_, card, context)
+		if
+			(context.before and context.main_eval and context.scoring_name == card.ability.extra.hand_type)
+			or context.forcetrigger
+		then
+			local speccard = pseudorandom_element(card.ability.extra.pool, os.clock() .. "")
+
+			G.E_MANAGER:add_event(Event({
+				func = function()
+					delay(0.4)
+					SMODS.add_card({ key = speccard })
+					return true
+				end,
+			}))
+
+			return {
+				message = localize(speccard) .. "Created!",
+				colour = G.C.FILTER,
+			}
+		end
+
+		if context.end_of_round and context.main_eval and not context.game_over and not context.blueprint then
+			local hands = {}
+
+			for k, _ in pairs(G.GAME.hands) do
+				if SMODS.is_poker_hand_visible(k) and k ~= card.ability.extra.hand_type then
+					table.insert(hands, k)
+				end
+			end
+
+			card.ability.extra.hand_type = pseudorandom_element(hands, "seed_seance")
+			return {
+				message = localize("k_reset"),
+				colour = G.C.DARK_EDITION,
+			}
+		end
+	end,
+
 	asc_credits = {
-		idea = {},
-		art = {},
-		code = {},
+		idea = {
+			"OmegaLife",
+		},
+		art = {
+			"Tatteredlurker",
+		},
+		code = {
+			"OmegaLife",
+		},
 	},
 })
