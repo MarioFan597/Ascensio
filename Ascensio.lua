@@ -147,6 +147,7 @@ ascensionable = {
 	j_drivers_license = "j_asc_drivers_license",
 	j_bootstraps = "j_asc_bootstraps",
 	j_caino = "j_asc_canio", --No Touchie!!!! Sic
+	j_seance = "j_asc_seance",
 
 	---Cryptid
 	j_cry_canvas = "j_asc_canvas",

@@ -865,6 +865,15 @@ return {
 				},
 			},
 
+			j_asc_seance = {
+				name = "praesagium",
+				text = {
+					"create {x:dark_edition,c:white}#1#{} {c:dark_edition,e:1}negative rare consumable{}",
+					"whenever a {c:attention}[#2#]{} is played.",
+					"{c:inactive,s:0.7}(Hand type changes at the end of round){}",
+				},
+			},
+
 			-----Cryptid-----
 			j_asc_canvas = {
 				name = "Pictura Olei",

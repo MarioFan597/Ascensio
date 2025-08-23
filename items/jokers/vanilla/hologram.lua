@@ -61,11 +61,6 @@ SMODS.Joker({
 	end,
 
 	calculate = function(self, card, context)
-		local rank
-		local suit
-		local edition
-		local enhancement
-		local seal
 		if context.individual and context.cardarea == G.play and context.other_card ~= nil then
 			card.ability.extra.card.rank = context.other_card.base.value
 			card.ability.extra.card.suit = context.other_card.base.suit

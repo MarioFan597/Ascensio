@@ -61,6 +61,7 @@ local v_jokers = {
 	"drivers_license",
 	"bootstraps",
 	"canio",
+	"seance", --sort this later im busy
 }
 
 for _, v in pairs(v_jokers) do
@@ -197,6 +198,10 @@ if next(SMODS.find_mod("entr")) then
 		assert(SMODS.load_file("items/consumables/entropy/" .. v .. ".lua"))()
 	end
 end
+
+---------Loading Helper---------
+
+assert(SMODS.load_file("lib/number.lua"))()
 
 ---------Loading Animations---------
 
