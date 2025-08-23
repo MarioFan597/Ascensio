@@ -866,11 +866,17 @@ return {
 			},
 
 			j_asc_seance = {
-				name = "praesagium",
+				name = "Praesagium",
 				text = {
-					"create {x:dark_edition,c:white}#1#{} {c:dark_edition,e:1}negative rare consumable{}",
-					"whenever a {c:attention}[#2#]{} is played.",
-					"{c:inactive,s:0.7}(Hand type changes at the end of round){}",
+					{
+						"If played hand is a {C:attention}#2#{},",
+						"{C:green}#3# in #4#{} chance to create {C:attention}#1#{}",
+						"{C:dark_edition}Negative Rare{} consumable",
+					},
+					{
+						"Poker hand changes",
+						"at end of round"
+					},
 				},
 			},
 
