@@ -35,6 +35,7 @@ SMODS.Joker({
 
 	config = {
 		extra = {
+			amount = 1,
 			hand_type = "High Card",
 			pool = {},
 		},
@@ -43,6 +44,7 @@ SMODS.Joker({
 	loc_vars = function(_, _, card)
 		return {
 			vars = {
+				card.ability.extra.amount,
 				card.ability.extra.hand_type,
 			},
 		}
@@ -61,19 +63,21 @@ SMODS.Joker({
 			(context.before and context.main_eval and context.scoring_name == card.ability.extra.hand_type)
 			or context.forcetrigger
 		then
-			local speccard = pseudorandom_element(card.ability.extra.pool, os.clock() .. "")
+			for _ = 1, card.ability.extra.amount do
+				local speccard = pseudorandom_element(card.ability.extra.pool, os.clock() .. "")
 
-			G.E_MANAGER:add_event(Event({
-				func = function()
-					delay(0.4)
-					SMODS.add_card({ key = speccard })
-					return true
-				end,
-			}))
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						delay(0.4)
+						SMODS.add_card({ key = speccard, edition = "e_negative" })
+						return true
+					end,
+				}))
+			end
 
 			return {
-				message = localize(speccard) .. "Created!",
-				colour = G.C.FILTER,
+				message = localize("k_plus_spectral"),
+				colour = G.C.SECONDARY_SET.Spectral,
 			}
 		end
 
