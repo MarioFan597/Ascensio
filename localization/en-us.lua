@@ -859,7 +859,7 @@ return {
 						"{C:inactive}(Currently {X:dark_edition,C:white}^#1#{}{C:inactive} Mult)",
 					},
 					{
-						"destroyed {c:attention}face{} cards",
+						"Destroyed {C:attention}face{} cards",
 						"are returned to hand",
 					},
 				},

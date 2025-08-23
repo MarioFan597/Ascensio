@@ -9,22 +9,22 @@ SMODS.Joker({
 	soul_pos = { x = 5, y = 2, extra = { x = 4, y = 2 } },
 	cost = 50,
 	order = 146,
-	loc_vars = function(self, info_queue, card)
+
+	loc_vars = function(_, _, card)
 		return {
 			vars = {
-				card and lenient_bignum(card.ability.extra.power),
-				card and lenient_bignum(card.ability.extra.gain),
+				card.ability.extra.power,
+				card.ability.extra.gain,
 			},
 		}
 	end,
 
-	calculate = function(self, card, context)
+	calculate = function(_, card, context)
 		if
 			(context.blueprint and context.remove_playing_cards and context.removed)
 			or (context.remove_playing_cards and context.removed)
 		then --Check if face cards are removed.
 			local check = 0
-			local power = 0
 			for _, _card in ipairs(context.removed) do
 				if _card:is_face() then
 					local replacement = copy_card(_card)
@@ -33,8 +33,7 @@ SMODS.Joker({
 					G.hand:emplace(replacement)
 					playing_card_joker_effects({ replacement })
 					if not context.blueprint then
-						card.ability.extra.power = lenient_bignum(card.ability.extra.power)
-							+ lenient_bignum(card.ability.extra.gain)
+						card.ability.extra.power = card.ability.extra.power + card.ability.extra.gain
 						check = check + 1 --We need to do a check here instead of the return statement otherwise it wouldn't count every face card
 					end
 				end
@@ -55,15 +54,15 @@ SMODS.Joker({
 				}
 			end
 		end
-		if context.joker_main or context.forcetrigger then
+		if context.joker_main then
 			if card.ability.extra.power > 1 then
 				return {
 					message = localize({
 						type = "variable",
 						key = "a_powmult",
-						vars = { lenient_bignum(card.ability.extra.power) },
+						vars = { card.ability.extra.power },
 					}),
-					Emult_mod = lenient_bignum(card.ability.extra.power),
+					Emult_mod = card.ability.extra.power,
 					colour = G.C.DARK_EDITION,
 				}
 			end
