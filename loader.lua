@@ -199,6 +199,10 @@ if next(SMODS.find_mod("entr")) then
 	end
 end
 
+---------Loading Helper---------
+
+assert(SMODS.load_file("lib/number.lua"))()
+
 ---------Loading Animations---------
 
 assert(SMODS.load_file("lib/cardanim.lua"))()
