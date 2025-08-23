@@ -69,7 +69,7 @@ SMODS.Joker({
 				G.E_MANAGER:add_event(Event({
 					func = function()
 						delay(0.4)
-						SMODS.add_card({ key = speccard, edition = "e_negative" })
+						SMODS.add_card({ key = speccard, edition = "e_negative", set = "Spectral" })
 						return true
 					end,
 				}))
