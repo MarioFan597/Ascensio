@@ -9,6 +9,7 @@
 	"priority": 114.2,
 	"badge_colour": "235bb0",
 	"badge_text_colour": "FFFFFF",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"dependencies": ["Talisman","Cryptid (>=0.5.10)", "Steamodded (>=1.0.0~BETA-0711a)"]
 }
+
