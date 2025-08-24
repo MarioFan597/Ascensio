@@ -481,7 +481,7 @@ return {
 				text = {
 					{
 						"At the {C:attention}end of round{}, gain",
-						"{X:dark_edition,C:white}^#1#{} of self's {C:attention}sell value{}",
+						"{X:dark_edition,C:white}X#1#{} of self's {C:attention}sell value{}",
 					},
 					{
 						"At the {C:attention}start of round{}, gain",
@@ -872,10 +872,13 @@ return {
 						"If played hand is a {C:attention}#2#{},",
 						"{C:green}#3# in #4#{} chance to create {C:attention}#1#{}",
 						"{C:dark_edition}Negative Rare{} consumable",
+						"{C:inactive,s:0.7}(Poker hand changes at end of round){}",
 					},
 					{
-						"Poker hand changes",
-						"at end of round",
+						"When the above probabilites {C:attention}fails{},",
+						"{C:attention}double{} the chance of creating",
+						"{C:attention}#1#{} {C:dark_edition}Negative Rare{} consumable",
+						"Otherwise, {C:attention}reset the probabilites{}",
 					},
 				},
 			},

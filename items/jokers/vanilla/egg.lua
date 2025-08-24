@@ -14,19 +14,15 @@ SMODS.Joker({
 
 	config = {
 		extra = {
-			e_sell_gain = 1.005,
+			x_sell_gain = 1.25,
 			xmult = 1,
 		},
 	},
 
-	-- Fun fact: if you dont use a variables, name it _ to throws its values away
-	-- (the value isn't getting deleted, garbage collector handle it for ya)
-	-- Also the linter doesnt yell at me
-
 	loc_vars = function(_, _, card)
 		return {
 			vars = {
-				card.ability.extra.e_sell_gain,
+				card.ability.extra.x_sell_gain,
 				card.ability.extra.xmult,
 			},
 		}
@@ -62,7 +58,7 @@ SMODS.Joker({
 		end
 
 		if context.end_of_round and context.main_eval and not (context.game_over or context.blueprint) then
-			card.ability.extra_value = card.ability.extra_value:pow(card.ability.extra.e_sell_gain):ceil()
+			card.ability.extra_value = card.ability.extra_value:mul(card.ability.extra.x_sell_gain):ceil()
 			card:set_cost()
 
 			return {

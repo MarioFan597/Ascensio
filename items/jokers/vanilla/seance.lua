@@ -11,6 +11,7 @@ SMODS.Joker({
 	atlas = "seance",
 	blueprint_compat = true,
 	demicoloncompat = true,
+
 	pos = { x = 0, y = 0 },
 	soul_pos = { x = 0, y = 5, extra = { x = 0, y = 1 } },
 
@@ -32,7 +33,11 @@ SMODS.Joker({
 			amount = 1,
 			hand_type = "High Card",
 			pool = {},
-			odds = 16,
+			odds = 2048,
+
+			immutable = {
+				std_odds = 2048,
+			},
 		},
 	},
 
@@ -65,6 +70,7 @@ SMODS.Joker({
 					< cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged) / card.ability.extra.odds
 			) or context.forcetrigger
 		then
+			card.ability.extra.odds = card.ability.extra.immutable.std_odds
 			for _ = 1, card.ability.extra.amount do
 				local speccard = pseudorandom_element(card.ability.extra.pool, "j_asc_seance" .. G.SEED)
 
@@ -80,6 +86,12 @@ SMODS.Joker({
 			return {
 				message = localize("k_plus_spectral"),
 				colour = G.C.SECONDARY_SET.Spectral,
+			}
+		else
+			card.ability.extra.odds = card.ability.extra.odds / 2
+			return {
+				message = "The World is not here...",
+				colour = G.C.FILTER,
 			}
 		end
 
