@@ -22,7 +22,7 @@ SMODS.Joker({
 	calc_dollar_bonus = function(self, card)
 		if card.ability.extra.gold > 1 then
 			if
-				pseudorandom("moooooooooooonside".. G.SEED)
+				pseudorandom("moooooooooooonside" .. G.SEED)
 				< cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged)
 					/ card.ability.extra.odds
 			then

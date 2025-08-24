@@ -875,7 +875,7 @@ return {
 					},
 					{
 						"Poker hand changes",
-						"at end of round"
+						"at end of round",
 					},
 				},
 			},
