@@ -1,4 +1,6 @@
---Borrowed and modyfied from MoreMarioJoker's powerup card and cryptid's gateway
+if not Entropy then
+	Entropy = {}
+end
 
 SMODS.Atlas({
 	key = "ascension",
@@ -16,24 +18,27 @@ SMODS.Consumable({
 	cost = 4,
 	hidden = true,
 	config = {},
-	can_use = function(self, card)
-		if #G.jokers.highlighted == 1 and ascensionable[G.jokers.highlighted[1].config.center.key] then
+
+	can_use = function(_, _)
+		if #G.jokers.highlighted == 1 and Ascensionable[G.jokers.highlighted[1].config.center.key] then
 			return true
 		end
 	end,
-	use = function(self, card, area, copier)
-		local ascendent = G.jokers.highlighted[1]
-		ascendent:set_eternal(nil)
+
+	use = function(_, _, _, _)
+		local ascendant = G.jokers.highlighted[1]
+		ascendant:set_eternal(nil)
+
 		if (#SMODS.find_card("j_jen_saint") + #SMODS.find_card("j_jen_saint_attuned")) <= 0 then
 			local deletable_jokers = {}
 			if asc_config["Insanity Mode!!!"] or false then
-				for k, v in pairs(G.jokers.cards) do
+				for _, v in pairs(G.jokers.cards) do
 					if v == G.jokers.highlighted[1] then
 						deletable_jokers[#deletable_jokers + 1] = v
 					end
 				end
 			else
-				for k, v in pairs(G.jokers.cards) do
+				for _, v in pairs(G.jokers.cards) do
 					if not v.ability.eternal then
 						if
 							next(SMODS.find_mod("entr")) and not Entropy.DeckOrSleeve("doc")
@@ -54,6 +59,7 @@ SMODS.Consumable({
 						if v.config.center.rarity == "cry_exotic" then
 							check_for_unlock({ type = "what_have_you_done" })
 						end
+
 						v:start_dissolve(nil, _first_dissolve)
 						_first_dissolve = true
 					end
@@ -61,22 +67,19 @@ SMODS.Consumable({
 				end,
 			}))
 		end
-		--SMODS.add_card({key = ascensionable[G.jokers.highlighted[1].config.center.key]})
+
 		G.E_MANAGER:add_event(Event({
 			trigger = "after",
 			delay = 0.4,
 			func = function()
 				play_sound("timpani")
-				local card = create_card(
-					"Joker",
-					G.jokers,
-					nil,
-					"cry_exotic",
-					nil,
-					nil,
-					ascensionable[ascendent.config.center.key],
-					"cry_gateway"
-				)
+				local card = SMODS.create_card({
+					set = "Joker",
+					key = Ascensionable[ascendant.config.center.key],
+				})
+
+				card:set_ability(ascendant.edition)
+
 				card:add_to_deck()
 				G.jokers:emplace(card)
 				card:juice_up(0.3, 0.5)
@@ -85,16 +88,18 @@ SMODS.Consumable({
 		}))
 		delay(0.6)
 	end,
+
 	in_pool = function()
 		if G and G.jokers and G.jokers.cards then
-			for k, v in ipairs(G.jokers.cards) do
-				if ascensionable[v.config.center.key] then
+			for _, v in ipairs(G.jokers.cards) do
+				if Ascensionable[v.config.center.key] then
 					return true
 				end
 			end
 		end
 		return false
 	end,
+
 	asc_credits = {
 		idea = {
 			"MarioFan597",

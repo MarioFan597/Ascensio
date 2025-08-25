@@ -34,7 +34,7 @@ SMODS.Joker({
 
 	config = {
 		extra = {
-			base = to_big(2),
+			base = 2,
 		},
 	},
 
@@ -43,7 +43,8 @@ SMODS.Joker({
 
 		return {
 			vars = {
-				card.ability.extra.base:pow(cnt),
+				Number.exp(card.ability.extra.base, cnt),
+				card.ability.extra.base,
 			},
 		}
 	end,
@@ -53,7 +54,7 @@ SMODS.Joker({
 			local cnt = count_mod()
 
 			return {
-				x_mult = card.ability.extra.base:pow(cnt),
+				x_mult = Number.exp(card.ability.extra.base, cnt),
 			}
 		end
 	end,

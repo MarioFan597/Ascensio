@@ -112,37 +112,35 @@ SMODS.Joker({
 		end
 
 		if (context.playing_card_added and not context.blueprint) or context.forcetrigger then
-			for i = 1, #context.cards do
-				card.ability.extra.emult = lenient_bignum(card.ability.extra.emult)
-					+ lenient_bignum(card.ability.extra.gain)
-				return {
-					message = localize({
-						type = "variable",
-						key = "a_powmult",
-						vars = {
-							number_format(lenient_bignum(card.ability.extra.emult)),
-						},
-					}),
-					colour = G.C.DARK_EDITION,
-				}
-			end
+			card.ability.extra.emult =
+				Number.add(card.ability.extra.emult, Number.mul(card.ability.extra.gain, #context.cards))
+
+			return {
+				message = localize({
+					type = "variable",
+					key = "a_powmult",
+					vars = {
+						number_format(card.ability.extra.emult),
+					},
+				}),
+				colour = G.C.DARK_EDITION,
+			}
 		end
 
 		if context.remove_playing_cards and not context.blueprint then
-			for i = 1, #context.removed do
-				card.ability.extra.emult = lenient_bignum(card.ability.extra.emult)
-					+ lenient_bignum(card.ability.extra.gain)
-				return {
-					message = localize({
-						type = "variable",
-						key = "a_powmult",
-						vars = {
-							number_format(lenient_bignum(card.ability.extra.emult)),
-						},
-					}),
-					colour = G.C.DARK_EDITION,
-				}
-			end
+			card.ability.extra.emult =
+				Number.add(card.ability.extra.emult, Number.mul(card.ability.extra.gain, #context.removed))
+
+			return {
+				message = localize({
+					type = "variable",
+					key = "a_powmult",
+					vars = {
+						number_format(card.ability.extra.emult),
+					},
+				}),
+				colour = G.C.DARK_EDITION,
+			}
 		end
 
 		if (context.joker_main or context.forcetrigger) and card.ability.extra.emult > 1 then
