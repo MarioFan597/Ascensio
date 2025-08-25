@@ -829,8 +829,8 @@ return {
 			j_asc_drivers_license = {
 				name = "Identitatis Discrimine",
 				text = {
-					"{X:mult,C:white}X#1#{} Mult",
-					"{C:attention}Doubles{} for every {C:attention}modification{}",
+					"{X:mult,C:white}X#2#{} Mult",
+					"{C:attention}X#1#{} for every {C:attention}modification{}",
 					"in remaining deck",
 				},
 			},
