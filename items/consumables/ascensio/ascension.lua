@@ -1,7 +1,3 @@
-if not Entropy then
-	Entropy = {}
-end
-
 SMODS.Atlas({
 	key = "ascension",
 	path = "ascension.png",
@@ -41,7 +37,7 @@ SMODS.Consumable({
 				for _, v in pairs(G.jokers.cards) do
 					if not v.ability.eternal then
 						if
-							next(SMODS.find_mod("entr")) and not Entropy.DeckOrSleeve("doc")
+							Entropy and Entropy.DeckOrSleeve and not Entropy.DeckOrSleeve("doc")
 							or to_big(G.GAME.entropy or 0) < to_big(100)
 						then
 							deletable_jokers[#deletable_jokers + 1] = v
