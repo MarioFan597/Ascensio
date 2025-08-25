@@ -82,7 +82,7 @@ SMODS.Consumable({
 				end
 
 				if deity.ability.eternal then
-					card:set_eternal(true)
+					card.ability.eternal = true
 				end
 
 				card:add_to_deck()
