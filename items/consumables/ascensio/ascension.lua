@@ -55,7 +55,7 @@ SMODS.Consumable({
 				trigger = "before",
 				delay = 0.75,
 				func = function()
-					for k, v in pairs(deletable_jokers) do
+					for _, v in pairs(deletable_jokers) do
 						if v.config.center.rarity == "cry_exotic" then
 							check_for_unlock({ type = "what_have_you_done" })
 						end
@@ -74,17 +74,17 @@ SMODS.Consumable({
 			func = function()
 				play_sound("timpani")
 
-				local card = SMODS.create_card({
-					key = Ascensionable[ascendant.config.center.key],
-				})
-
-				if ascendant.edition then
-					card:set_edition(ascendant.edition, true, true)
-				end
+				local stickers = {}
 
 				if ascendant.ability.eternal then
-					card.ability.eternal = true
+					table.insert(stickers, "eternal")
 				end
+
+				local card = SMODS.create_card({
+					key = Ascensionable[ascendant.config.center.key],
+					edition = ascendant.edition,
+					stickers = stickers,
+				})
 
 				card:add_to_deck()
 				G.jokers:emplace(card)
