@@ -11,6 +11,7 @@ SMODS.Joker({
 	atlas = "seance",
 	blueprint_compat = true,
 	demicoloncompat = true,
+
 	pos = { x = 0, y = 0 },
 	soul_pos = { x = 0, y = 5, extra = { x = 0, y = 1 } },
 
@@ -32,7 +33,11 @@ SMODS.Joker({
 			amount = 1,
 			hand_type = "High Card",
 			pool = {},
-			odds = 16
+			odds = 2048,
+
+			immutable = {
+				std_odds = 2048,
+			},
 		},
 	},
 
@@ -42,7 +47,7 @@ SMODS.Joker({
 				card.ability.extra.amount,
 				card.ability.extra.hand_type,
 				cry_prob(card.ability.cry_prob, lenient_bignum(card.ability.extra.odds), card.ability.cry_rigged),
-				card.ability.extra.odds
+				card.ability.extra.odds,
 			},
 		}
 	end,
@@ -57,16 +62,17 @@ SMODS.Joker({
 
 	calculate = function(_, card, context)
 		if
-			(context.before 
-			and context.main_eval 
-			and context.scoring_name == card.ability.extra.hand_type
-			and pseudorandom("future_knowledge".. G.SEED)
-				< cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged)
-					/ card.ability.extra.odds)
-			or context.forcetrigger
+			(
+				context.before
+				and context.main_eval
+				and context.scoring_name == card.ability.extra.hand_type
+				and pseudorandom("future_knowledge" .. G.SEED)
+					< cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged) / card.ability.extra.odds
+			) or context.forcetrigger
 		then
+			card.ability.extra.odds = card.ability.extra.immutable.std_odds
 			for _ = 1, card.ability.extra.amount do
-				local speccard = pseudorandom_element(card.ability.extra.pool, "j_asc_seance".. G.SEED)
+				local speccard = pseudorandom_element(card.ability.extra.pool, "j_asc_seance" .. G.SEED)
 
 				G.E_MANAGER:add_event(Event({
 					func = function()
@@ -81,6 +87,12 @@ SMODS.Joker({
 				message = localize("k_plus_spectral"),
 				colour = G.C.SECONDARY_SET.Spectral,
 			}
+		else
+			card.ability.extra.odds = card.ability.extra.odds / 2
+			return {
+				message = "The World is not here...",
+				colour = G.C.FILTER,
+			}
 		end
 
 		if context.end_of_round and context.main_eval and not context.game_over and not context.blueprint then
@@ -92,7 +104,7 @@ SMODS.Joker({
 				end
 			end
 
-			card.ability.extra.hand_type = pseudorandom_element(hands, "seed_seance".. G.SEED)
+			card.ability.extra.hand_type = pseudorandom_element(hands, "seed_seance" .. G.SEED)
 			return {
 				message = localize("k_reset"),
 				colour = G.C.DARK_EDITION,
@@ -101,19 +113,19 @@ SMODS.Joker({
 	end,
 
 	set_ability = function(self, card, initial, delay_sprites) --Taken from vanilla remade to do list
-        local _poker_hands = {}
-        for handname, _ in pairs(G.GAME.hands) do
-            if SMODS.is_poker_hand_visible(handname) and handname ~= card.ability.extra.hand_type then
-                _poker_hands[#_poker_hands + 1] = handname
-            end
-        end
-        card.ability.extra.hand_type = pseudorandom_element(_poker_hands, 'the_future_is_now'.. G.SEED)
-    end,
+		local _poker_hands = {}
+		for handname, _ in pairs(G.GAME.hands) do
+			if SMODS.is_poker_hand_visible(handname) and handname ~= card.ability.extra.hand_type then
+				_poker_hands[#_poker_hands + 1] = handname
+			end
+		end
+		card.ability.extra.hand_type = pseudorandom_element(_poker_hands, "the_future_is_now" .. G.SEED)
+	end,
 
 	asc_credits = {
 		idea = {
 			"OmegaLife",
-			"MarioFan597"
+			"MarioFan597",
 		},
 		art = {
 			"Tatteredlurker",

@@ -84,7 +84,7 @@ assert(SMODS.load_file("loader.lua"))()
 
 ---------Joker Ascension Dictionary-----------
 
-ascensionable = {
+Ascensionable = {
 	--Vanilla
 	j_joker = "j_asc_jimbo",
 	j_greedy_joker = "j_asc_greedy",
@@ -177,7 +177,7 @@ ascensionable = {
 }
 
 ---------Joker Apothable Dictionary-----------
-apothable = {
+Apothable = {
 	--Vanilla
 	j_marble = "j_asc_marble_entr",
 	j_asc_marble = "j_asc_marble_entr",
