@@ -74,15 +74,21 @@ SMODS.Consumable({
 				play_sound("timpani")
 
 				local card = SMODS.create_card({
-					set = "Joker",
-					key = Apothable[deity.config.center.key],
+					key = Ascensionable[deity.config.center.key],
 				})
 
-				card:set_edition(deity.edition)
+				if deity.edition then
+					card:set_edition(deity.edition, true, true)
+				end
+
+				if deity.ability.eternal then
+					card:set_eternal(true)
+				end
 
 				card:add_to_deck()
 				G.jokers:emplace(card)
 				card:juice_up(0.3, 0.5)
+
 				return true
 			end,
 		}))

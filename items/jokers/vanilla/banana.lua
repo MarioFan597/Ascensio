@@ -12,14 +12,14 @@ SMODS.Joker({
 	loc_vars = function(_, _, card)
 		return {
 			vars = {
-				lenient_bignum(card.ability.extra.xmult),
-				lenient_bignum(card.ability.extra.xmult_gain),
+				card.ability.extra.xmult,
+				card.ability.extra.xmult_gain,
 				cry_prob(
 					card.ability.cry_prob,
 					lenient_bignum(card.ability.extra.probability_denum),
 					card.ability.cry_rigged
 				),
-				lenient_bignum(card.ability.extra.probability_denum),
+				card.ability.extra.probability_denum,
 			},
 		}
 	end,
@@ -29,14 +29,18 @@ SMODS.Joker({
 				message = localize({
 					type = "variable",
 					key = "a_xmult",
-					vars = { number_format(lenient_bignum(card.ability.extra.xmult)) },
+					vars = { number_format(card.ability.extra.xmult) },
 				}),
-				Xmult_mod = lenient_bignum(card.ability.extra.xmult),
+				Xmult_mod = card.ability.extra.xmult,
 				colour = G.C.MULT,
 			}
 		end
 
-		if context.end_of_round and not (context.individual or context.repetition or context.blueprint) then
+		if
+			context.end_of_round
+			and context.main_eval
+			and not (context.individual or context.repetition or context.blueprint)
+		then
 			if
 				pseudorandom("ooooooooooh banana")
 					< cry_prob(card.ability.cry_prob, card.ability.extra.probability_denum, card.ability.cry_rigged) / card.ability.extra.probability_denum
@@ -52,14 +56,10 @@ SMODS.Joker({
 				local roundcreatejoker =
 					math.min(1, G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer))
 				G.GAME.joker_buffer = G.GAME.joker_buffer + roundcreatejoker
-				card_eval_status_text(
-					card,
-					"extra",
-					nil,
-					nil,
-					nil,
-					{ message = localize("asc_banana_ex"), colour = G.C.MONEY }
-				)
+				card_eval_status_text(card, "extra", nil, nil, nil, {
+					message = localize("asc_banana_ex"),
+					colour = G.C.MONEY,
+				})
 				G.E_MANAGER:add_event(Event({
 					func = function()
 						local _card = copy_card(card, nil, nil, nil, card.edition and card.edition.negative)
@@ -72,8 +72,9 @@ SMODS.Joker({
 					end,
 				}))
 
-				--card_eval_status_text(card, "extra", nil, nil, nil, { message = localize("k_duplicated_ex") })
-				return nil, true
+				return {
+					message = localize("k_duplicated_ex"),
+				}
 			else
 				card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
 
@@ -84,9 +85,16 @@ SMODS.Joker({
 			end
 		end
 	end,
+
 	asc_credits = {
-		idea = { "OmegaLife" },
-		art = { "Lil Mr. Slipstream" },
-		code = { "OmegaLife" },
+		idea = {
+			"OmegaLife",
+		},
+		art = {
+			"Lil Mr. Slipstream",
+		},
+		code = {
+			"OmegaLife",
+		},
 	},
 })

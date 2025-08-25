@@ -73,19 +73,27 @@ SMODS.Consumable({
 			delay = 0.4,
 			func = function()
 				play_sound("timpani")
+
 				local card = SMODS.create_card({
-					set = "Joker",
 					key = Ascensionable[ascendant.config.center.key],
 				})
 
-				card:set_ability(ascendant.edition)
+				if ascendant.edition then
+					card:set_edition(ascendant.edition, true, true)
+				end
+
+				if ascendant.ability.eternal then
+					card:set_eternal(true)
+				end
 
 				card:add_to_deck()
 				G.jokers:emplace(card)
 				card:juice_up(0.3, 0.5)
+
 				return true
 			end,
 		}))
+
 		delay(0.6)
 	end,
 
