@@ -14,35 +14,35 @@ SMODS.Atlas({
 
 SMODS.Atlas({
 	key = "v_atlas_1",
-	path = "vanilla_atlas_1.png",
+	path = "jokers/vanilla/vanilla_atlas_1.png",
 	px = 71,
 	py = 95,
 })
 
 SMODS.Atlas({
 	key = "c_atlas_1",
-	path = "cryptid_atlas_1.png",
+	path = "jokers/cryptid/cryptid_atlas_1.png",
 	px = 71,
 	py = 95,
 })
 
 SMODS.Atlas({
 	key = "c_atlas_mortal",
-	path = "cryptid_mortals_atlas.png",
+	path = "jokers/cryptid/cryptid_mortals_atlas.png",
 	px = 71,
 	py = 95,
 })
 
 SMODS.Atlas({
 	key = "e_atlas_1",
-	path = "entropy_atlas_1.png",
+	path = "jokers/entropy/entropy_atlas_1.png",
 	px = 71,
 	py = 95,
 })
 
 SMODS.Atlas({
-	key = "e_entr_atlas_1",
-	path = "entropy_entropic_atlas_1.png",
+	key = "v_entr_atlas_1",
+	path = "jokers/vanilla_entropics/vanilla_entropic_atlas_1.png",
 	px = 71,
 	py = 95,
 })

@@ -1,6 +1,6 @@
 SMODS.Atlas({
 	key = "hunting_season",
-	path = "hunting_season.png",
+	path = "jokers/cryptid/hunting_season.png",
 	px = 71,
 	py = 95,
 })

@@ -1,6 +1,6 @@
 SMODS.Atlas({
 	key = "like_antennas_to_heaven",
-	path = "like_antennas_to_heaven.png",
+	path = "jokers/cryptid/like_antennas_to_heaven.png",
 	px = 71,
 	py = 95,
 })

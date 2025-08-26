@@ -1,6 +1,6 @@
 SMODS.Atlas({
 	key = "sunny_joker_entr",
-	path = "sunny_joker_entr.png",
+	path = "jokers/entropy_entropics/sunny_joker_entr.png",
 	px = 71,
 	py = 95,
 })

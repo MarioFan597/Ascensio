@@ -1,6 +1,6 @@
 SMODS.Atlas({
 	key = "sync_catalyst",
-	path = "sync_catalyst.png",
+	path = "jokers/cryptid/sync_catalyst.png",
 	px = 71,
 	py = 95,
 })
