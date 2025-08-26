@@ -1,7 +1,7 @@
 SMODS.Joker({
 	key = "marble_entr",
 	rarity = "entr_entropic",
-	atlas = "e_entr_atlas_1",
+	atlas = "v_entr_atlas_1",
 	blueprint_compat = true,
 	demicoloncompat = true,
 	pos = { x = 0, y = 0 },
