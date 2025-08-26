@@ -39,6 +39,7 @@ local v_jokers = {
 	--"musa_ingens",
 	"square",
 	"seance",
+	"supernova",
 	"hologram",
 	"midas",
 	"to_the_moon",

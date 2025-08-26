@@ -553,6 +553,16 @@ return {
 				},
 			},
 
+			j_asc_supernova = {
+				name = "Singularitas",
+				text = {
+					"Gain the number of times current",
+					"{C:attention}poker hand{} has been played",
+					"this run as {X:mult,C:white}XMult{}",
+					"{C:inactive}(Currently{} {X:mult,C:white}X#1#{}{C:inactive}){}",
+				},
+			},
+
 			j_asc_square = {
 				name = "Dimensio Quattuor",
 				text = {
