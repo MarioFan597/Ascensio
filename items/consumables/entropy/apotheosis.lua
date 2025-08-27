@@ -1,6 +1,6 @@
 SMODS.Atlas({
 	key = "apotheosis",
-	path = "apotheosis.png",
+	path = "consumables/entropy/apotheosis.png",
 	px = 71,
 	py = 95,
 })

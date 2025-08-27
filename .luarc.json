@@ -21,7 +21,9 @@
         "play_sound",
         "ease_colour",
         "delay",
-        "update_hand_text"
+        "update_hand_text",
+        "ease_hands_played",
+        "ease_discard"
     ],
     "runtime": {
         "version": "LuaJIT"
