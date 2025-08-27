@@ -691,7 +691,7 @@ return {
 					{
 						"Whenever you {C:attention}lose{} to a blind",
 						"gain {X:dark_edition,C:edition}^^#2#{} chips",
-						"{C:inactive}(Currently{} {X,dark_edition,C:edition}^^#4#{}{C:inactive}){}",
+						"{C:inactive}(Currently{} {X:dark_edition,C:edition}^^#4#{}{C:inactive}){}",
 					},
 				},
 			},
