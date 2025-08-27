@@ -105,9 +105,10 @@ SMODS.Joker({
 
 	config = {
 		extra = {
+			emult = 1,
+			echips = 1,
 
-			emult = 0,
-			echips = 0,
+			gain = 0.5,
 		},
 	},
 
@@ -116,12 +117,14 @@ SMODS.Joker({
 			vars = {
 				card.ability.extra.emult,
 				card.ability.extra.echips,
+
+				card.ability.extra.gain,
 			},
 		}
 	end,
 
 	calculate = function(_, card, context)
-		if context.joker_main or context.forcetrigger then
+		if context.joker_main then
 			return {
 				echips = card.ability.extra.echips,
 				emult = card.ability.extra.emult,
@@ -135,13 +138,9 @@ SMODS.Joker({
 		if context.setting_blind and not context.blueprint then
 			G.E_MANAGER:add_event(Event({
 				func = function()
-					local balance1 = (G.GAME.current_round.hands_left + card.ability.extra.echips) / 2
-					ease_hands_played(-(G.GAME.current_round.hands_left - balance1), nil, true)
-					card.ability.extra.echips = balance1
-
-					local balance2 = (G.GAME.current_round.discards_left + card.ability.extra.emult) / 2
-					ease_discard(-(G.GAME.current_round.discards_left - balance2), nil, true)
-					card.ability.extra.emult = balance2
+					local balans = (G.GAME.current_round.hands_left + G.GAME.current_round.discards_left) / 2
+					ease_hands_played(-(G.GAME.current_round.hands_left - balans), nil, true)
+					ease_discard(-(G.GAME.current_round.discards_left - balans), nil, true)
 
 					card_eval_status_text(card, "extra", nil, nil, nil, {
 						message = "Balanced!",
@@ -151,16 +150,25 @@ SMODS.Joker({
 					return true
 				end,
 			}))
-			return nil, true
+
+			local balans = (card.ability.extra.emult + card.ability.extra.echips) / 2
+			card.ability.extra.emult = balans
+			card.ability.extra.echips = balans
+
+			return {
+				message = "Balanced!",
+				colour = G.C.DARK_EDITION,
+				func = balance_sound,
+			}
 		end
 
-		if context.end_of_round and not (context.individual or context.repetition or context.blueprint) then
-			card.ability.extra.echips = 0
-			card.ability.extra.emult = 0
-			card_eval_status_text(card, "extra", nil, nil, nil, {
-				message = localize("k_reset"),
-				colour = G.C.DARK_EDITION,
-			})
+		if (context.beat_boss and not context.blueprint) or context.forcetrigger then
+			card.ability.extra.emult = card.ability.extra.emult + card.ability.extra.gain
+
+			return {
+				message = "Upgraded!",
+				colour = G.C.MULT,
+			}
 		end
 	end,
 
