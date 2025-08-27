@@ -680,6 +680,22 @@ return {
 				},
 			},
 
+			j_asc_mr_bones = {
+				name = "Carcer Animarum",
+				text = {
+					{
+						"{C:attention}Once{} every {C:attention}Ante{}, prevent {C:attention}Death{} if",
+						"chips scored are at least {C:attention}#1#%{} of required chips.",
+						"{C:inactive}(Currently{} {C:attention}#3#{}{C:inactive}){}",
+					},
+					{
+						"Whenever you {C:attention}lose{} to a blind",
+						"gain {X:dark_edition,C:edition}^^#2#{} chips",
+						"{C:inactive}(Currently{} {X,dark_edition,C:edition}^^#4#{}{C:inactive}){}",
+					},
+				},
+			},
+
 			j_asc_sock_and_buskin = {
 				name = "Thalia et Melpomene",
 				text = {
