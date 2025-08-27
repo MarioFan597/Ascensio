@@ -8,12 +8,13 @@ SMODS.Joker({
 	soul_pos = { x = 5, y = 4, extra = { x = 4, y = 4 } },
 	cost = 50,
 	order = 3,
-	loc_vars = function(_, _, card)
+	loc_vars = function(self, info_queue, card)
+		local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "Exotic Lusty Joker")
 		return {
 			vars = {
 				lenient_bignum(card.ability.extra.e_mult),
-				cry_prob(card.ability.cry_prob, lenient_bignum(card.ability.extra.odds), card.ability.cry_rigged),
-				lenient_bignum(card.ability.extra.odds),
+				num,
+				denom,
 				math.min(card.ability.extra.rep, card.ability.extra.immutable.max_rep),
 				card.ability.extra.immutable.max_rep,
 			},
@@ -31,12 +32,8 @@ SMODS.Joker({
 					hearts[i] = v
 				end
 			end
-			local first_card = pseudorandom("Heartache" .. G.SEED)
-				< cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged)
-					/ card.ability.extra.odds
-			local second_card = pseudorandom("Cardiac Arrest" .. G.SEED)
-				< cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged)
-					/ card.ability.extra.odds
+			local first_card = SMODS.pseudorandom_probability(card, "Heartache", 1, card.ability.extra.odds, "Exotic Lusty Joker")
+			local second_card = SMODS.pseudorandom_probability(card, "Cardiac Arrest", 1, card.ability.extra.odds, "Exotic Lusty Joker")
 			if
 				table.contains(hearts, context.other_card)
 				and (hearts[my_pos + 1] or hearts[my_pos - 1])

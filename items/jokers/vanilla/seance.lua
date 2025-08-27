@@ -41,13 +41,16 @@ SMODS.Joker({
 		},
 	},
 
-	loc_vars = function(_, _, card)
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = { key = "asc_fixed", set = "Other" }
+		--local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "Exotic Seance", true)
 		return {
 			vars = {
 				card.ability.extra.amount,
 				card.ability.extra.hand_type,
-				cry_prob(card.ability.cry_prob, lenient_bignum(card.ability.extra.odds), card.ability.cry_rigged),
-				card.ability.extra.odds,
+				--num,
+				--denom
+				card.ability.extra.odds
 			},
 		}
 	end,
@@ -60,16 +63,15 @@ SMODS.Joker({
 		end
 	end,
 
-	calculate = function(_, card, context)
+	calculate = function(self, card, context)
 		if
-			(context.before and context.main_eval and context.scoring_name == card.ability.extra.hand_type)
-			or context.forcetrigger
-		then
-			if
-				pseudorandom("future_knowledge" .. G.SEED)
-				< cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged)
-					/ card.ability.extra.odds
-			then
+			( context.before
+				and context.main_eval
+				and context.scoring_name == card.ability.extra.hand_type
+			) or context.forcetrigger
+		then		--SMODS probability doesn't seem to actually prevent odds yet. As a result, I am using another method to fix until it fixes. Ha ha
+			if --SMODS.pseudorandom_probability(card, "future knowledge", 1, card.ability.extra.odds, "Exotic Seance", true) then
+				math.random(1, card.ability.extra.odds) == 1 then
 				card.ability.extra.odds = card.ability.extra.immutable.std_odds
 				for _ = 1, card.ability.extra.amount do
 					local speccard = pseudorandom_element(card.ability.extra.pool, "j_asc_seance" .. G.SEED)
@@ -82,11 +84,16 @@ SMODS.Joker({
 						end,
 					}))
 				end
+
+				return {
+					message = localize("k_plus_spectral"),
+					colour = G.C.SECONDARY_SET.Spectral,
+				}
 			else
 				card.ability.extra.odds = card.ability.extra.odds / 2
 				return {
-					message = "The World is not here...",
-					colour = G.C.FILTER,
+					message = localize("asc_seance_msg"),
+					colour = G.C.DARK_EDITION,
 				}
 			end
 		end

@@ -1,6 +1,6 @@
 SMODS.Joker({
 	key = "golden",
-	config = { extra = { gold = 2, gain = 1, odds = 7 } },
+	config = { extra = { gold = 1.2, gain = 0.1, odds = 7 } },
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = false,
@@ -10,21 +10,20 @@ SMODS.Joker({
 	cost = 50,
 	order = 90,
 	loc_vars = function(self, info_queue, card)
+		local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "Exotic Golden Joker")
 		return {
 			vars = {
-				cry_prob(card.ability.cry_prob, lenient_bignum(card.ability.extra.odds), card.ability.cry_rigged),
-				card and lenient_bignum(card.ability.extra.gold),
-				card and lenient_bignum(card.ability.extra.gain),
-				card and lenient_bignum(card.ability.extra.odds),
+				num,
+				lenient_bignum(card.ability.extra.gold),
+				lenient_bignum(card.ability.extra.gain),
+				denom,
 			},
 		}
 	end,
 	calc_dollar_bonus = function(self, card)
 		if card.ability.extra.gold > 1 then
 			if
-				pseudorandom("moooooooooooonside" .. G.SEED)
-				< cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged)
-					/ card.ability.extra.odds
+				SMODS.pseudorandom_probability(card, "mooooooooonside", 1, card.ability.extra.odds, "Exotic Golden Joker")
 			then
 				card.ability.extra.gold = lenient_bignum(card.ability.extra.gold)
 					+ lenient_bignum(card.ability.extra.gain)

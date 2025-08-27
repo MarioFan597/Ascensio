@@ -10,12 +10,13 @@ SMODS.Joker({
 	cost = 50,
 	order = 4,
 	loc_vars = function(self, info_queue, card)
+		local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "Exotic Wrathful Joker")
 		return {
 			vars = {
 				lenient_bignum(card.ability.extra.e_mult),
 				lenient_bignum(card.ability.extra.gain),
-				cry_prob(card.ability.cry_prob, lenient_bignum(card.ability.extra.odds), card.ability.cry_rigged),
-				lenient_bignum(card.ability.extra.odds),
+				num,
+				denom
 			},
 		}
 	end,
@@ -27,9 +28,7 @@ SMODS.Joker({
 			or context.forcetrigger
 		then
 			if
-				pseudorandom("Where are the grapes?" .. G.SEED)
-				< cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged)
-					/ card.ability.extra.odds
+				SMODS.pseudorandom_probability(card, "Where are the grapes?", 1, card.ability.extra.odds, "Exotic Wrathful Joker")
 			then
 				--This part was modified from Cryptid's SUS
 				if #G.hand.cards > 0 then

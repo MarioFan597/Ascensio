@@ -618,7 +618,7 @@ return {
 				text = {
 					"{X:money,C:white}X#2#{} total money at end of round,",
 					"{C:green}#1# in #4#{} chance to increase ",
-					"multiplier by {C:money}#3#{} each trigger", -- hello everybody my name is multiplier
+					"multiplier by {X:money,C:white}X#3#{} each payout", -- hello everybody my name is multiplier
 				},
 			},
 
@@ -897,9 +897,9 @@ return {
 				text = {
 					{
 						"If played hand is a {C:attention}#2#{},",
-						"{C:green}#3# in #4#{} chance to create {C:attention}#1#{}",
-						"{C:dark_edition}Negative Rare{} consumable",
-						"{C:inactive,s:0.7}(Poker hand changes at end of round){}",
+						"{C:red}fixed{} {C:green}1 in #3#{} chance to create",
+						"{C:attention}#1#{} {C:dark_edition}Negative Rare{} consumable",
+						"{C:inactive,s:0.8}(Poker hand changes at end of round){}",
 					},
 					{
 						"When the above probabilites {C:attention}fails{},",
@@ -1299,7 +1299,8 @@ return {
 			asc_saved_by_bones = "Saved by Carcer Animarum",
 			asc_chips = "Chips", --To make hyperoperators work
 			asc_mult = "Mult",
-			k_numina = "Numina",
+			asc_seance_msg = "The World is not here...",
+			k_numina = "Numina", --Numina Labels
 			b_numina_cards = "Numina Cards",
 			asc_wish_ex = "I Wish!", --Superior Manus Effect
 			b_sell_stone = "-Stones",

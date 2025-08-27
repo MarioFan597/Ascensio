@@ -10,16 +10,13 @@ SMODS.Joker({
 	cost = 50,
 	order = 3,
 	loc_vars = function(_, _, card)
+		local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "Exotic Banana")
 		return {
 			vars = {
 				card.ability.extra.xmult,
 				card.ability.extra.xmult_gain,
-				cry_prob(
-					card.ability.cry_prob,
-					lenient_bignum(card.ability.extra.probability_denum),
-					card.ability.cry_rigged
-				),
-				card.ability.extra.probability_denum,
+				num,
+				denom
 			},
 		}
 	end,
@@ -42,8 +39,7 @@ SMODS.Joker({
 			and not (context.individual or context.repetition or context.blueprint)
 		then
 			if
-				pseudorandom("ooooooooooh banana")
-					< cry_prob(card.ability.cry_prob, card.ability.extra.probability_denum, card.ability.cry_rigged) / card.ability.extra.probability_denum
+				SMODS.pseudorandom_probability(card, "OOOOOOH BANANA", 1, card.ability.extra.odds, "Exotic Ceremonial Dagger")
 				and #G.jokers.cards
 				and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit
 				and not (
