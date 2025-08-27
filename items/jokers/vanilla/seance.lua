@@ -62,37 +62,33 @@ SMODS.Joker({
 
 	calculate = function(_, card, context)
 		if
-			(
-				context.before
-				and context.main_eval
-				and context.scoring_name == card.ability.extra.hand_type
-				and pseudorandom("future_knowledge" .. G.SEED)
-					< cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged) / card.ability.extra.odds
-			) or context.forcetrigger
+			(context.before and context.main_eval and context.scoring_name == card.ability.extra.hand_type)
+			or context.forcetrigger
 		then
-			card.ability.extra.odds = card.ability.extra.immutable.std_odds
-			for _ = 1, card.ability.extra.amount do
-				local speccard = pseudorandom_element(card.ability.extra.pool, "j_asc_seance" .. G.SEED)
+			if
+				pseudorandom("future_knowledge" .. G.SEED)
+				< cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged)
+					/ card.ability.extra.odds
+			then
+				card.ability.extra.odds = card.ability.extra.immutable.std_odds
+				for _ = 1, card.ability.extra.amount do
+					local speccard = pseudorandom_element(card.ability.extra.pool, "j_asc_seance" .. G.SEED)
 
-				G.E_MANAGER:add_event(Event({
-					func = function()
-						delay(0.4)
-						SMODS.add_card({ key = speccard, edition = "e_negative" })
-						return true
-					end,
-				}))
+					G.E_MANAGER:add_event(Event({
+						func = function()
+							delay(0.4)
+							SMODS.add_card({ key = speccard, edition = "e_negative" })
+							return true
+						end,
+					}))
+				end
+			else
+				card.ability.extra.odds = card.ability.extra.odds / 2
+				return {
+					message = "The World is not here...",
+					colour = G.C.FILTER,
+				}
 			end
-
-			return {
-				message = localize("k_plus_spectral"),
-				colour = G.C.SECONDARY_SET.Spectral,
-			}
-		else
-			card.ability.extra.odds = card.ability.extra.odds / 2
-			return {
-				message = "The World is not here...",
-				colour = G.C.FILTER,
-			}
 		end
 
 		if context.end_of_round and context.main_eval and not context.game_over and not context.blueprint then
