@@ -684,7 +684,7 @@ return {
 				name = "Carcer Animarum",
 				text = {
 					{
-						"{C:attention}Once{} every {C:attention}Ante{}, prevent {C:attention}Death{} if",
+						"{C:attention}Once{} every {C:attention}#5#{} rounds {C:attention}beaten{} {C:inactive}[#6#]{}, prevent {C:attention}Death{} if",
 						"chips scored are at least {C:attention}#1#%{} of required chips.",
 						"{C:inactive}(Currently{} {C:attention}#3#{}{C:inactive}){}",
 					},

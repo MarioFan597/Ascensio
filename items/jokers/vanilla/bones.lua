@@ -19,6 +19,7 @@ SMODS.Joker({
 			eechips_gain = 0.2,
 			active = true,
 			percentage = 10,
+			immutable = { beaten = 0, requirement = 3 },
 		},
 	},
 
@@ -29,6 +30,8 @@ SMODS.Joker({
 				card.ability.extra.eechips_gain,
 				card.ability.extra.active and "active" or "inactive",
 				card.ability.extra.eechips,
+				card.ability.extra.immutable.requirement,
+				card.ability.extra.immutable.beaten,
 			},
 		}
 	end,
@@ -45,12 +48,13 @@ SMODS.Joker({
 			}
 		end
 
-		if context.ante_end then
-			card.ability.extra.active = true
-
-			return {
-				message = localize("k_reset_ex"),
-			}
+		if context.blind_defeated and context.main_eval and not card.ability.extra.active then
+			if card.ability.extra.immutable.beaten < card.ability.extra.immutable.requirement then
+				card.ability.extra.immutable.beaten = card.ability.extra.immutable.beaten + 1
+			else
+				card.ability.extra.immutable.beaten = 0
+				card.ability.extra.active = true
+			end
 		end
 
 		if context.end_of_round and context.game_over and context.main_eval or context.forcetrigger then
