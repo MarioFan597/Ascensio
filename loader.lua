@@ -48,6 +48,7 @@ local v_jokers = {
 	"seltzer",
 	"smiley_face",
 	"campfire",
+	"bones",
 	"sock_and_buskin",
 	"smeared",
 	"throwback",

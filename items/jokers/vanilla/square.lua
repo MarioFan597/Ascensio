@@ -12,21 +12,22 @@ SMODS.Joker({
 	atlas = "square",
 	blueprint_compat = true,
 	demicoloncompat = true,
+
 	pos = { x = 0, y = 0 },
 	soul_pos = { x = 0, y = 1, extra = { x = 1, y = 0 } },
 	display_size = { w = 1 * 71, h = 0.75 * 95 },
-	--pixel_size = { w =  1 * 71, h = 1 * 71},
+
 	cost = 50,
 	order = 1,
-	loc_vars = function(self, info_queue, card)
+	loc_vars = function(_, _, card)
 		return {
 			vars = {
-				card and lenient_bignum(card.ability.extra.gain),
-				card and lenient_bignum(card.ability.extra.chips),
+				card.ability.extra.gain,
+				card.ability.extra.chips,
 			},
 		}
 	end,
-	calculate = function(self, card, context)
+	calculate = function(_, card, context)
 		if
 			context.cardarea == G.jokers
 			and context.before
@@ -42,14 +43,15 @@ SMODS.Joker({
 		if context.joker_main or context.forcetrigger then
 			if card.ability.extra.chips > 1 then
 				return {
-					message = "^^" .. lenient_bignum(card.ability.extra.chips) .. " Chips",
-					EEchip_mod = lenient_bignum(card.ability.extra.chips),
+					message = "^^" .. card.ability.extra.chips .. " Chips",
+					EEchip_mod = card.ability.extra.chips,
 					colour = G.C.DARK_EDITION,
 					card = card,
 				}
 			end
 		end
 	end,
+
 	animation = {
 		macro = {
 			type = "skim",
@@ -61,6 +63,7 @@ SMODS.Joker({
 			},
 		},
 	},
+
 	asc_credits = {
 		idea = {
 			"UTNerd24 (Name)",
