@@ -101,20 +101,42 @@ for _, v in pairs(crym_jokers) do
 	assert(SMODS.load_file("items/jokers/cryptid_mortals/" .. v .. ".lua"))()
 end
 
----------Loading Ascensio Consumables---------------
+---------Loading Ascensio Spectral Consumables---------------
 
-local asc_consumables = {
+local asc_spec_consumables = {
 	"ascension",
 }
 
-for _, v in pairs(asc_consumables) do
+for _, v in pairs(asc_spec_consumables) do
 	assert(SMODS.load_file("items/consumables/ascensio/" .. v .. ".lua"))()
 end
+
+---------Loading Ascensio Numina Consumables---------------
+
+local asc_num_consumables = {
+	--"definition",
+	--"samsara"
+}
+
+for _, v in pairs(asc_num_consumables) do
+	assert(SMODS.load_file("items/consumables/ascensio/numina/" .. v .. ".lua"))()
+end
+
+---------Loading Ascensio Numina Stickers---------------
+
+local asc_num_consumables = {
+	--"cyclic"
+}
+
+for _, v in pairs(asc_num_consumables) do
+	assert(SMODS.load_file("items/stickers/ascensio/" .. v .. ".lua"))()
+end
+
 
 ---------Loading Ascensio Decks---------------
 
 local asc_decks = {
-	"starlight",
+	--"starlight",
 }
 
 for _, v in pairs(asc_decks) do

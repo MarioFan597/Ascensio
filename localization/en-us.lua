@@ -465,6 +465,16 @@ return {
 				},
 			},
 
+			j_asc_supernova = {
+				name = "Singularitas",
+				text = {
+					"Gain the number of times current",
+					"{C:attention}poker hand{} has been played",
+					"this run as {X:mult,C:white}XMult{}",
+					"{C:inactive}(Currently{} {X:mult,C:white}X#1#{}{C:inactive}){}",
+				},
+			},
+
 			j_asc_space = {
 				name = "Solutus",
 				text = {
@@ -550,16 +560,6 @@ return {
 				text = {
 					"{X:dark_edition,C:white}^#1#{} Mult",
 					"{C:money,E:2}OH, BANANA!{}",
-				},
-			},
-
-			j_asc_supernova = {
-				name = "Singularitas",
-				text = {
-					"Gain the number of times current",
-					"{C:attention}poker hand{} has been played",
-					"this run as {X:mult,C:white}XMult{}",
-					"{C:inactive}(Currently{} {X:mult,C:white}X#1#{}{C:inactive}){}",
 				},
 			},
 
@@ -684,13 +684,14 @@ return {
 				name = "Carcer Animarum",
 				text = {
 					{
-						"{C:attention}Once{} every {C:attention}#5#{} rounds {C:attention}beaten{} {C:inactive}[#6#]{}, prevent {C:attention}Death{} if",
-						"chips scored are at least {C:attention}#1#%{} of required chips.",
-						"{C:inactive}(Currently{} {C:attention}#3#{}{C:inactive}){}",
+						"{C:attention}Once{} every {C:attention}#5#{} rounds {C:attention}beaten{} {C:inactive}[#6#]{},",
+						"prevent {C:attention}Death{} if chips scored",
+						"are at least {C:attention}#1#%{} of required Chips",
+						"{C:inactive}(Currently #3#){}",
 					},
 					{
 						"Whenever you {C:attention}lose{} to a blind",
-						"gain {X:dark_edition,C:edition}^^#2#{} chips",
+						"gain {X:dark_edition,C:edition}^^#2#{} Chips",
 						"{C:inactive}(Currently{} {X:dark_edition,C:edition}^^#4#{}{C:inactive}){}",
 					},
 				},
@@ -1024,12 +1025,11 @@ return {
 						"at the {C:attention}final{} scoring step",
 					},
 					{
-						"Whenever a {C:attention}Boss Blind{} is {C:attention}defeated{}",
-						"gains {X:dark_edition,C:white}^#3#{} {C:mult}Mult{}",
+						"Whenever a {C:attention}Boss Blind{} is",
+						"{C:attention}defeated{}, gains {X:dark_edition,C:white}^#3#{} {C:mult}Mult{}",
 					},
 				},
 			},
-
 			-----Cryptid Mortals-----
 
 			j_asc_b_cake = {
@@ -1197,7 +1197,15 @@ return {
 					"{C:purple}+300{} Score",
 				},
 			},
-			asc_fixed = { --Displays astronomica compact effect for Accomplice
+			asc_cyclic = {
+				name = "Cyclic",
+				text = {
+					"Rotates between its {C:cry_exotic,E:1}Ascendant{}", 
+					"version, regular version and", 
+					"being {C:red}debuffed{} every round",
+				},
+			},
+			asc_fixed = {
 				name = "Fixed",
 				text = {
 					"{C:attention}Listed{} {C:green,E:1}probabilites{}",
@@ -1243,6 +1251,15 @@ return {
 				},
 			},
 		},
+		Numina = {
+			c_asc_samsara = {
+				name = "Samsara",
+				text = {
+					"Select a Joker",
+					"to become {C:cry_exotic,E:1}Cylcic{}"
+				},
+			},
+		},
 		Code = {},
 		Omen = {
 			c_asc_apotheosis = {
@@ -1278,6 +1295,12 @@ return {
 		dictionary = {
 			k_asc_banana = "Banana", --Banana Rariety Label
 			asc_banana_ex = "Banana!",
+			asc_inactive = "Inactive", --For exotic Bones
+			asc_saved_by_bones = "Saved by Carcer Animarum",
+			asc_chips = "Chips", --To make hyperoperators work
+			asc_mult = "Mult",
+			k_numina = "Numina",
+			b_numina_cards = "Numina Cards",
 			asc_wish_ex = "I Wish!", --Superior Manus Effect
 			b_sell_stone = "-Stones",
 			b_buy_stone = "+Stones",
@@ -1285,12 +1308,9 @@ return {
 			asc_special_thanks = "Special Thanks",
 			asc_config_insanity_mode = "Insanity Mode!!!",
 			asc_config_insanity_explanation = "Stops Gateway and Ascension from destroying Jokers",
-			--Special Thanks Credits
-			--asc_tatterd_credits = {
-			--"{X:asc_tattered,C:black,s:1.2}Tatteredlurker{}",
-			--"{C:asc_tattered,s:0.8}Art{}"
-			--},
-			--},
+		},
+		labels = {
+			numina = "Numina",
 		},
 	},
 }

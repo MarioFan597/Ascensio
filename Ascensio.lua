@@ -48,6 +48,13 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
+	key = "sticker_atlas",
+	path = "ascensio_sticker_atlas.png",
+	px = 71,
+	py = 95,
+})
+
+SMODS.Atlas({
 	key = "deck_atlas",
 	path = "deck_atlas.png",
 	px = 71,
@@ -124,7 +131,6 @@ Ascensionable = {
 	j_blue_joker = "j_asc_blue",
 	j_cavendish = "j_asc_banana",
 	j_square = "j_asc_square",
-	j_seance = "j_asc_seance",
 	j_supernova = "j_asc_supernova",
 	j_hologram = "j_asc_hologram",
 	j_midas_mask = "j_asc_midas",
@@ -134,10 +140,10 @@ Ascensionable = {
 	j_selzer = "j_asc_seltzer", --No Touchie!!!! Sic
 	j_smiley = "j_smiley_face",
 	j_campfire = "j_asc_campfire",
-	j_mr_bones = "j_asc_mr_bones",
 	j_throwback = "j_asc_throwback",
 	j_hanging_chad = "j_asc_hanging_chad",
 	j_blueprint = "j_asc_blueprint",
+	j_mr_bones = "j_asc_mr_bones",
 	j_sock_and_buskin = "j_asc_sock_and_buskin",
 	j_smeared = "j_asc_smeared",
 	j_oops = "j_asc_oops",
@@ -150,6 +156,7 @@ Ascensionable = {
 	j_drivers_license = "j_asc_drivers_license",
 	j_bootstraps = "j_asc_bootstraps",
 	j_caino = "j_asc_canio", --No Touchie!!!! Sic
+	j_seance = "j_asc_seance",
 
 	---Cryptid
 	j_cry_canvas = "j_asc_canvas",

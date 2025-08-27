@@ -16,10 +16,10 @@ SMODS.Joker({
 	config = {
 		extra = {
 			eechips = 1,
-			eechips_gain = 0.2,
+			eechips_gain = 0.02,
 			active = true,
 			percentage = 10,
-			immutable = { beaten = 0, requirement = 3 },
+			immutable = { beaten = 3, requirement = 3 },
 		},
 	},
 
@@ -28,7 +28,7 @@ SMODS.Joker({
 			vars = {
 				card.ability.extra.percentage,
 				card.ability.extra.eechips_gain,
-				card.ability.extra.active and "active" or "inactive",
+				card.ability.extra.active and localize('k_active_ex') or localize('asc_inactive'),
 				card.ability.extra.eechips,
 				card.ability.extra.immutable.requirement,
 				card.ability.extra.immutable.beaten,
@@ -36,28 +36,27 @@ SMODS.Joker({
 		}
 	end,
 
-	calculate = function(_, card, context)
-		if context.joker_main then
+	calculate = function(self, card, context) --I belive omega grabbed and modifed this from VanillaRemade
+		if (context.joker_main or context.forcetrigger) and card.ability.extra.eechips > 1 then
 			return {
-				eechips = card.ability.extra.eechips,
-				message = localize({
-					type = "variable",
-					key = "a_eechips",
-					vars = { card.ability.extra.eechips },
-				}),
-			}
+					message = "^^" .. lenient_bignum(card.ability.extra.eechips) .. " " .. localize('asc_chips'),
+					EEchip_mod = lenient_bignum(card.ability.extra.eechips),
+					colour = G.C.DARK_EDITION,
+					card = card,
+				}
 		end
 
-		if context.blind_defeated and context.main_eval and not card.ability.extra.active then
-			if card.ability.extra.immutable.beaten < card.ability.extra.immutable.requirement then
+		if context.end_of_round and context.main_eval and not card.ability.extra.active and not context.game_over then
+			if card.ability.extra.immutable.beaten < (card.ability.extra.immutable.requirement - 1) then
 				card.ability.extra.immutable.beaten = card.ability.extra.immutable.beaten + 1
 			else
-				card.ability.extra.immutable.beaten = 0
+				card.ability.extra.immutable.beaten = card.ability.extra.immutable.beaten + 1
 				card.ability.extra.active = true
 			end
 		end
 
-		if context.end_of_round and context.game_over and context.main_eval or context.forcetrigger then
+
+		if (context.end_of_round and context.game_over and context.main_eval) or context.forcetrigger then
 			card.ability.extra.eechips = card.ability.extra.eechips + card.ability.extra.eechips_gain
 
 			card_eval_status_text(card, "extra", nil, nil, nil, {
@@ -68,10 +67,13 @@ SMODS.Joker({
 			if
 				(
 					context.game_over
-					and (G.GAME.chips / G.GAME.blind.chips >= card.ability.extra.percentage / 100)
+					and (to_number(G.GAME.chips) / (to_number(G.GAME.blind.chips)) >= card.ability.extra.percentage / 100)
 					and card.ability.extra.active
 				) or context.forcetrigger
 			then
+				if not context.forcetrigger then
+					card.ability.extra.immutable.beaten = 0
+				end
 				G.E_MANAGER:add_event(Event({
 					func = function()
 						G.hand_text_area.blind_chips:juice_up()
@@ -81,13 +83,25 @@ SMODS.Joker({
 						return true
 					end,
 				}))
-
 				return {
 					message = localize("k_saved_ex"),
-					saved = "ph_mr_bones",
+					saved = "asc_saved_by_bones",
 					colour = G.C.RED,
 				}
 			end
 		end
 	end,
+	asc_credits = {
+		idea = {
+			"OmegaLife",
+			"Crabus",
+		},
+		art = {
+			"thje_axolotl",
+		},
+		code = {
+			"OmegaLife",
+			"MarioFan597",
+		},
+	},
 })
