@@ -20,7 +20,8 @@ SMODS.Joker({
 	loc_vars = function(_, _, card)
 		return {
 			vars = {
-				card.ability.extra.multiplier,
+				card.ability.extra.eechips,
+				card.ability.extra.eechips_gain,
 			},
 		}
 	end,
