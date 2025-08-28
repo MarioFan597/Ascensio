@@ -1208,8 +1208,8 @@ return {
 			asc_cyclic = {
 				name = "Cyclic",
 				text = {
-					"Rotates between its {C:cry_exotic,E:1}Ascendant{}", 
-					"version, regular version and", 
+					"Rotates between its {C:cry_exotic,E:1}Ascendant{}",
+					"version, regular version and",
 					"being {C:red}debuffed{} every round",
 				},
 			},
@@ -1264,7 +1264,7 @@ return {
 				name = "Samsara",
 				text = {
 					"Select a Joker",
-					"to become {C:cry_exotic,E:1}Cylcic{}"
+					"to become {C:cry_exotic,E:1}Cylcic{}",
 				},
 			},
 		},

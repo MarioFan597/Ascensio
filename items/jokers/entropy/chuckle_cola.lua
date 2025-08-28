@@ -27,7 +27,7 @@ SMODS.Joker({
 					ref_table = card.ability.extra,
 					ref_value = "xchip_mod",
 					scalar_value = "gain",
-					no_message = true
+					no_message = true,
 				})
 				card.ability.extra.immutable.trig_reset = card.ability.extra.immutable.trig_reset * 2
 				card.ability.extra.triggers = card.ability.extra.immutable.trig_reset

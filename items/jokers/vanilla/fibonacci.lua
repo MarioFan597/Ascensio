@@ -27,7 +27,12 @@ SMODS.Joker({
 				SMODS.scale_card(card, {
 					ref_table = card.ability.extra,
 					ref_value = "mult",
-					scalar_table = { previous_results = ((card.ability.extra.immutable.previous2 + card.ability.extra.immutable.previous) - card.ability.extra.mult) },
+					scalar_table = {
+						previous_results = (
+							(card.ability.extra.immutable.previous2 + card.ability.extra.immutable.previous)
+							- card.ability.extra.mult
+						),
+					},
 					scalar_value = "previous_results",
 					no_message = true,
 				})
@@ -52,7 +57,12 @@ SMODS.Joker({
 			SMODS.scale_card(card, {
 				ref_table = card.ability.extra,
 				ref_value = "mult",
-				scalar_table = { previous_results = ((card.ability.extra.immutable.previous2 + card.ability.extra.immutable.previous) - card.ability.extra.mult) },
+				scalar_table = {
+					previous_results = (
+						(card.ability.extra.immutable.previous2 + card.ability.extra.immutable.previous)
+						- card.ability.extra.mult
+					),
+				},
 				scalar_value = "previous_results",
 				no_message = true,
 			})

@@ -54,7 +54,7 @@ SMODS.Joker({
 				ref_table = card.ability.extra,
 				ref_value = "multiuse",
 				scalar_value = "gain",
-				no_message = true
+				no_message = true,
 			})
 			card_eval_status_text(card, "extra", nil, nil, nil, {
 				message = localize("k_upgrade_ex"),

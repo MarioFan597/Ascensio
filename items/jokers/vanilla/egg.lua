@@ -62,7 +62,9 @@ SMODS.Joker({
 			SMODS.scale_card(card, {
 				ref_table = card.ability,
 				ref_value = "extra_value",
-				scalar_table = {sell_value_gain = (card.ability.extra_value:mul(card.ability.extra.x_sell_gain):ceil())},
+				scalar_table = {
+					sell_value_gain = (card.ability.extra_value:mul(card.ability.extra.x_sell_gain):ceil()),
+				},
 				scalar_value = "gain",
 				message_colour = G.C.MONEY,
 			})

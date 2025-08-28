@@ -31,9 +31,9 @@ SMODS.Joker({
 				SMODS.scale_card(card, {
 					ref_table = card.ability.extra,
 					ref_value = "chips",
-					scalar_table = { discards = G.GAME.current_round.discards_left},
+					scalar_table = { discards = G.GAME.current_round.discards_left },
 					scalar_value = "discards",
-					no_message = true
+					no_message = true,
 				})
 				card_eval_status_text(card, "extra", nil, nil, nil, {
 					message = localize("k_upgrade_ex"),

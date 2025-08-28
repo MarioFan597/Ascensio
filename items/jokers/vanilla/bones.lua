@@ -28,7 +28,7 @@ SMODS.Joker({
 			vars = {
 				card.ability.extra.percentage,
 				card.ability.extra.eechips_gain,
-				card.ability.extra.active and localize('k_active_ex') or localize('asc_inactive'),
+				card.ability.extra.active and localize("k_active_ex") or localize("asc_inactive"),
 				card.ability.extra.eechips,
 				card.ability.extra.immutable.requirement,
 				card.ability.extra.immutable.beaten,
@@ -39,11 +39,11 @@ SMODS.Joker({
 	calculate = function(self, card, context) --I belive omega grabbed and modifed this from VanillaRemade
 		if (context.joker_main or context.forcetrigger) and card.ability.extra.eechips > 1 then
 			return {
-					message = "^^" .. lenient_bignum(card.ability.extra.eechips) .. " " .. localize('asc_chips'),
-					EEchip_mod = lenient_bignum(card.ability.extra.eechips),
-					colour = G.C.DARK_EDITION,
-					card = card,
-				}
+				message = "^^" .. lenient_bignum(card.ability.extra.eechips) .. " " .. localize("asc_chips"),
+				EEchip_mod = lenient_bignum(card.ability.extra.eechips),
+				colour = G.C.DARK_EDITION,
+				card = card,
+			}
 		end
 
 		if context.end_of_round and context.main_eval and not card.ability.extra.active and not context.game_over then
@@ -55,14 +55,13 @@ SMODS.Joker({
 			end
 		end
 
-
 		if (context.end_of_round and context.game_over and context.main_eval) or context.forcetrigger then
 			card.ability.extra.eechips = card.ability.extra.eechips + card.ability.extra.eechips_gain
 			SMODS.scale_card(card, {
 				ref_table = card.ability.extra,
 				ref_value = "eechips",
 				scalar_value = "eechips_gain",
-				no_message = true
+				no_message = true,
 			})
 			card_eval_status_text(card, "extra", nil, nil, nil, {
 				message = localize("k_upgrade_ex"),

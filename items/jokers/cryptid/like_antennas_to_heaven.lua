@@ -45,12 +45,12 @@ SMODS.Joker({
 				end
 				if number_count > 0 then
 					SMODS.scale_card(card, {
-							ref_table = card.ability.extra,
-							ref_value = "chips",
-							scalar_table = {total_gain = (card.ability.extra.gain * number_count)},
-							scalar_value = "gain",
-							no_message = true
-						})
+						ref_table = card.ability.extra,
+						ref_value = "chips",
+						scalar_table = { total_gain = (card.ability.extra.gain * number_count) },
+						scalar_value = "gain",
+						no_message = true,
+					})
 					card_eval_status_text(card, "extra", nil, nil, nil, {
 						message = localize("k_upgrade_ex"),
 						colour = G.C.DARK_EDITION,

@@ -16,7 +16,7 @@ SMODS.Joker({
 				lenient_bignum(card.ability.extra.xmult),
 				lenient_bignum(card.ability.extra.xmult_gain),
 				num,
-				denom
+				denom,
 			},
 		}
 	end,
@@ -39,7 +39,13 @@ SMODS.Joker({
 			and not (context.individual or context.repetition or context.blueprint)
 		then
 			if
-				SMODS.pseudorandom_probability(card, "OOOOOOH BANANA", 1, card.ability.extra.odds, "Exotic Ceremonial Dagger")
+				SMODS.pseudorandom_probability(
+					card,
+					"OOOOOOH BANANA",
+					1,
+					card.ability.extra.odds,
+					"Exotic Ceremonial Dagger"
+				)
 				and #G.jokers.cards
 				and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit
 				and not (
