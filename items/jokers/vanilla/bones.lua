@@ -36,7 +36,7 @@ SMODS.Joker({
 		}
 	end,
 
-	calculate = function(self, card, context) --I belive omega grabbed and modifed this from VanillaRemade
+	calculate = function(_, card, context) --I belive omega grabbed and modifed this from VanillaRemade
 		if (context.joker_main or context.forcetrigger) and card.ability.extra.eechips > 1 then
 			return {
 				message = "^^" .. lenient_bignum(card.ability.extra.eechips) .. " " .. localize("asc_chips"),
@@ -90,6 +90,7 @@ SMODS.Joker({
 			end
 		end
 	end,
+
 	asc_credits = {
 		idea = {
 			"OmegaLife",

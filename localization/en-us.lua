@@ -373,10 +373,14 @@ return {
 						"Cards {C:attention}#1#{} times",
 						"{C:inactive}(Max {C:attention}#3#{C:inactive} retriggers)",
 					},
-					--[[{
-						"{C:attention}Stone{} cards give",
-						"{X:dark_edition,C:white}^#2#{} Chips when scored.",  
-					},]]
+				},
+			},
+
+			j_asc_loyalty_card = {
+				name = "Emptor Fidelis",
+				text = {
+					"{X:mult,C:white}X#1#{}",
+					"{C:attention}X#2#{} for every {C:attention}#3#{} {C:inactive}[#4#]{} hands played",
 				},
 			},
 

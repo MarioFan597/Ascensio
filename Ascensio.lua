@@ -116,6 +116,7 @@ Ascensionable = {
 	j_banner = "j_asc_banner",
 	j_mystic_summit = "j_asc_mystic_summit",
 	j_marble = "j_asc_marble",
+	j_loyalty_card = "j_asc_loyalty_card",
 	j_misprint = "j_asc_misprint",
 	j_fibonacci = "j_asc_fibonacci",
 	j_gros_michel = "j_asc_banana",

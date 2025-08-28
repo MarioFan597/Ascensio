@@ -23,6 +23,7 @@ local v_jokers = {
 	"banner",
 	"mystic_summit",
 	"marble",
+	"loyalty_card",
 	"misprint",
 	"fibonacci",
 	"scary",
