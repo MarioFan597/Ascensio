@@ -23,6 +23,7 @@ local v_jokers = {
 	"banner",
 	"mystic_summit",
 	"marble",
+	"loyalty_card",
 	"misprint",
 	"fibonacci",
 	"scary",
@@ -131,7 +132,6 @@ local asc_num_consumables = {
 for _, v in pairs(asc_num_consumables) do
 	assert(SMODS.load_file("items/stickers/ascensio/" .. v .. ".lua"))()
 end
-
 
 ---------Loading Ascensio Decks---------------
 

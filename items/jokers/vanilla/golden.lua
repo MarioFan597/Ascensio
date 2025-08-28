@@ -9,7 +9,7 @@ SMODS.Joker({
 	soul_pos = { x = 2, y = 2, extra = { x = 1, y = 2 } },
 	cost = 50,
 	order = 90,
-	loc_vars = function(self, info_queue, card)
+	loc_vars = function(_, _, card)
 		local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "Exotic Golden Joker")
 		return {
 			vars = {
@@ -20,10 +20,17 @@ SMODS.Joker({
 			},
 		}
 	end,
-	calc_dollar_bonus = function(self, card)
+
+	calc_dollar_bonus = function(_, card)
 		if card.ability.extra.gold > 1 then
 			if
-				SMODS.pseudorandom_probability(card, "mooooooooonside", 1, card.ability.extra.odds, "Exotic Golden Joker")
+				SMODS.pseudorandom_probability(
+					card,
+					"mooooooooonside",
+					1,
+					card.ability.extra.odds,
+					"Exotic Golden Joker"
+				)
 			then
 				card.ability.extra.gold = lenient_bignum(card.ability.extra.gold)
 					+ lenient_bignum(card.ability.extra.gain)
@@ -39,12 +46,14 @@ SMODS.Joker({
 			return (lenient_bignum(card.ability.extra.gold) * (to_number(G.GAME.dollars) or 0))
 		end
 	end,
+
 	calculate = function(self, card, context)
 		if context.forcetrigger then
 			ease_dollars(G.GAME.dollars * lenient_bignum(card.ability.extra.gold))
 			return { message = "X" .. lenient_bignum(card.ability.extra.gold), colour = G.C.MONEY }
 		end
 	end,
+
 	asc_credits = {
 		idea = {
 			"yahooyowza",

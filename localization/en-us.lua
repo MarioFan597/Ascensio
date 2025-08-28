@@ -373,10 +373,14 @@ return {
 						"Cards {C:attention}#1#{} times",
 						"{C:inactive}(Max {C:attention}#3#{C:inactive} retriggers)",
 					},
-					--[[{
-						"{C:attention}Stone{} cards give",
-						"{X:dark_edition,C:white}^#2#{} Chips when scored.",  
-					},]]
+				},
+			},
+
+			j_asc_loyalty_card = {
+				name = "Emptor Fidelis",
+				text = {
+					"{X:mult,C:white}X#1#{}",
+					"{C:attention}X#2#{} for every {C:attention}#4#{} {C:inactive}[#3#]{} hands played",
 				},
 			},
 
@@ -1200,8 +1204,8 @@ return {
 			asc_cyclic = {
 				name = "Cyclic",
 				text = {
-					"Rotates between its {C:cry_exotic,E:1}Ascendant{}", 
-					"version, regular version and", 
+					"Rotates between its {C:cry_exotic,E:1}Ascendant{}",
+					"version, regular version and",
 					"being {C:red}debuffed{} every round",
 				},
 			},
@@ -1256,7 +1260,7 @@ return {
 				name = "Samsara",
 				text = {
 					"Select a Joker",
-					"to become {C:cry_exotic,E:1}Cylcic{}"
+					"to become {C:cry_exotic,E:1}Cylcic{}",
 				},
 			},
 		},

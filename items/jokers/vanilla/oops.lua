@@ -89,7 +89,7 @@ SMODS.Joker({
 
 		if context.joker_main and not context.blueprint_card then
 			if math.random(1, 6) == 1 then
-			--if SMODS.pseudorandom_probability(card, "Issac and his Issac", 1, card.ability.extra.odds, "Exotic Oops", true) then
+				--if SMODS.pseudorandom_probability(card, "Issac and his Issac", 1, card.ability.extra.odds, "Exotic Oops", true) then
 				if math.random(1, 2) == 1 then
 					card.ability.extra.immutable.joker_slots = lenient_bignum(card.ability.extra.immutable.joker_slots)
 						+ lenient_bignum(card.ability.extra.slot_gain)
