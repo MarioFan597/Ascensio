@@ -16,6 +16,21 @@ local function format_operator(arrows, rhs)
 	end
 end
 
+TranscendentGradient = SMODS.Gradient({
+	key = "transcendent",
+	colours = {
+		HEX("84ffc9"),
+		HEX("aab2ff"),
+		HEX("eca0ff"),
+	},
+})
+
+--Don't.
+SMODS.Rarity({
+	key = "transcendent",
+	badge_colour = TranscendentGradient,
+})
+
 SMODS.Joker({
 	key = "beyond_jimbo",
 	rarity = "asc_transcendent",
@@ -49,8 +64,8 @@ SMODS.Joker({
 	calculate = function(_, card, context)
 		if context.joker_main or context.forcetrigger then
 			return {
-				hypermult = { card.ability.extra.operator, card.ability.extra.rhs },
-				message = format_operator(card.ability.extra.operator, card.ability.extra.rhs),
+				hypermult = { card.ability.extra.operator, card.ability.extra.mult },
+				message = format_operator(card.ability.extra.operator, card.ability.extra.mult),
 				colour = TranscendentGradient,
 			}
 		end

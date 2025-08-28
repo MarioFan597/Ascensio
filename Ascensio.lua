@@ -210,21 +210,6 @@ SMODS.Rarity({
 	badge_colour = HEX("FFE135"),
 })
 
-TranscendentGradient = SMODS.Gradient({
-	key = "transcendent",
-	colours = {
-		HEX("84ffc9"),
-		HEX("aab2ff"),
-		HEX("eca0ff"),
-	},
-})
-
---Don't.
-SMODS.Rarity({
-	key = "transcendent",
-	badge_colour = TranscendentGradient,
-})
-
 ------Extra Functions----------
 
 -- Caching results for better perfs
