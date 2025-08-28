@@ -30,15 +30,18 @@ SMODS.Joker({
 
 	calculate = function(_, card, context)
 		if context.before and context.main_eval then
-			card.ability.extra.immutable.hands = card.ability.extra.immutable.hands + 1
-
-			SMODS.calculate_effect({ message = localize("k_level_up_ex") }, context.blueprint_card or card)
-			SMODS.smart_level_up_hand(
-				context.blueprint_card or card,
-				context.scoring_name,
-				nil,
-				card.ability.extra.immutable.hands * card.ability.extra.level_gain
-			)
+			if not context.retrigger_joker then
+				card.ability.extra.immutable.hands = card.ability.extra.immutable.hands + 1
+			end
+			return{
+				SMODS.calculate_effect({ message = localize("k_level_up_ex") }, context.blueprint_card or card),
+				SMODS.smart_level_up_hand(
+					context.blueprint_card or card,
+					context.scoring_name,
+					nil,
+					card.ability.extra.immutable.hands * card.ability.extra.level_gain
+				)
+			}
 		end
 
 		if context.beat_boss and card.ability.extra.immutable.hands ~= 0 then
