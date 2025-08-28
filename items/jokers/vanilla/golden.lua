@@ -23,7 +23,13 @@ SMODS.Joker({
 	calc_dollar_bonus = function(self, card)
 		if card.ability.extra.gold > 1 then
 			if
-				SMODS.pseudorandom_probability(card, "mooooooooonside", 1, card.ability.extra.odds, "Exotic Golden Joker")
+				SMODS.pseudorandom_probability(
+					card,
+					"mooooooooonside",
+					1,
+					card.ability.extra.odds,
+					"Exotic Golden Joker"
+				)
 			then
 				SMODS.scale_card(card, {
 					ref_table = card.ability,

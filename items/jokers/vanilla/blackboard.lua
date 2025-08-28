@@ -39,9 +39,9 @@ SMODS.Joker({
 				SMODS.scale_card(card, {
 					ref_table = card.ability.extra,
 					ref_value = "mult",
-					scalar_table = {all_black =(black_suits * card.ability.extra.black_gain)},
+					scalar_table = { all_black = (black_suits * card.ability.extra.black_gain) },
 					scalar_value = "all_black",
-					no_message = true
+					no_message = true,
 				})
 				return {
 					extra = { message = localize("k_upgrade_ex"), colour = G.C.MULT },
@@ -51,9 +51,9 @@ SMODS.Joker({
 				SMODS.scale_card(card, {
 					ref_table = card.ability.extra,
 					ref_value = "mult",
-					scalar_table = {non_all_black =(black_suits * card.ability.extra.norm_gain)},
+					scalar_table = { non_all_black = (black_suits * card.ability.extra.norm_gain) },
 					scalar_value = "non_all_black",
-					no_message = true
+					no_message = true,
 				})
 				return {
 					extra = { message = localize("k_upgrade_ex"), colour = G.C.MULT },

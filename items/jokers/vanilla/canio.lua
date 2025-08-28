@@ -38,7 +38,7 @@ SMODS.Joker({
 							ref_table = card.ability.extra,
 							ref_value = "power",
 							scalar_value = "gain",
-							no_message = true
+							no_message = true,
 						})
 						check = check + 1 --We need to do a check here instead of the return statement otherwise it wouldn't count every face card
 					end
@@ -58,7 +58,7 @@ SMODS.Joker({
 					ref_table = card.ability.extra,
 					ref_value = "power",
 					scalar_value = "gain",
-					no_message = true
+					no_message = true,
 				})
 				return {
 					message = localize({

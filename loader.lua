@@ -50,6 +50,7 @@ local v_jokers = {
 	"smiley_face",
 	"campfire",
 	"bones",
+	"wee",
 	"sock_and_buskin",
 	"smeared",
 	"throwback",
@@ -65,6 +66,8 @@ local v_jokers = {
 	"drivers_license",
 	"bootstraps",
 	"canio",
+
+	"jimbo2",
 }
 
 for _, v in pairs(v_jokers) do

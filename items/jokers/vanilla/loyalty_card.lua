@@ -51,7 +51,7 @@ SMODS.Joker({
 					ref_value = "xmult",
 					scalar_value = "multiplier",
 					operator = "*",
-					no_message = true
+					no_message = true,
 				})
 
 				return {

@@ -16,7 +16,7 @@ SMODS.Joker({
 				lenient_bignum(card.ability.extra.e_mult),
 				lenient_bignum(card.ability.extra.gain),
 				num,
-				denom
+				denom,
 			},
 		}
 	end,
@@ -28,7 +28,13 @@ SMODS.Joker({
 			or context.forcetrigger
 		then
 			if
-				SMODS.pseudorandom_probability(card, "Where are the grapes?", 1, card.ability.extra.odds, "Exotic Wrathful Joker") or context.forcetrigger
+				SMODS.pseudorandom_probability(
+					card,
+					"Where are the grapes?",
+					1,
+					card.ability.extra.odds,
+					"Exotic Wrathful Joker"
+				) or context.forcetrigger
 			then
 				--This part was modified from Cryptid's SUS
 				if #G.hand.cards > 0 then

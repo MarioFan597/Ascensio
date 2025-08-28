@@ -293,6 +293,15 @@ return {
 				},
 			},
 
+			j_asc_wee = {
+				name = "Scurra Microscopica",
+				text = {
+					"This Joker gains {X:dark_edition,C:edition}^^#2#{} {C:chips}Chips{} when each",
+					"played {C:attention}2{} is scored.",
+					"{C:inactive}(Currently{} {X:dark_edition,C:edition}^^#1#{}{C:inactive}){}",
+				},
+			},
+
 			j_asc_mime = {
 				name = "Silentium",
 				text = {
@@ -1173,12 +1182,20 @@ return {
 					},
 				},
 			},
+
 			j_asc_sunny_joker_entr = {
 				name = "Iliakos",
 				text = {
 					"{X:gold,C:white}#3##1#{} Ascension Power",
 					"Increases operator after",
 					"{C:attention}#2#{} {C:gold}Ascended{} hands played",
+				},
+			},
+
+			j_asc_beyond_jimbo = {
+				name = "{s:4}The One Above All{}",
+				text = {
+					"{X:dark_edition,C:white,s:8}#1#{} {C:mult}Mult{}",
 				},
 			},
 		},
@@ -1208,8 +1225,8 @@ return {
 			asc_cyclic = {
 				name = "Cyclic",
 				text = {
-					"Rotates between its {C:cry_exotic,E:1}Ascendant{}", 
-					"version, regular version and", 
+					"Rotates between its {C:cry_exotic,E:1}Ascendant{}",
+					"version, regular version and",
 					"being {C:red}debuffed{} every round",
 				},
 			},
@@ -1264,7 +1281,7 @@ return {
 				name = "Samsara",
 				text = {
 					"Select a Joker",
-					"to become {C:cry_exotic,E:1}Cylcic{}"
+					"to become {C:cry_exotic,E:1}Cylcic{}",
 				},
 			},
 		},
@@ -1320,6 +1337,7 @@ return {
 		},
 		labels = {
 			numina = "Numina",
+			k_asc_transcendent = "Transcendental",
 		},
 	},
 }

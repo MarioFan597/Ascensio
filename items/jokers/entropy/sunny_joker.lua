@@ -26,7 +26,7 @@ SMODS.Joker({
 					ref_table = card.ability.extra,
 					ref_value = "asc",
 					scalar_value = "gain",
-					no_message = true
+					no_message = true,
 				})
 				return {
 					extra = { focus = card, message = localize("k_upgrade_ex") },

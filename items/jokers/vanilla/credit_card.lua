@@ -50,7 +50,7 @@ SMODS.Joker({
 				SMODS.scale_card(card, {
 					ref_table = card.ability.extra,
 					ref_value = "chips",
-					scalar_table = { debt_gain = (lenient_bignum(card.ability.extra.gain) * (-1 * debt))},
+					scalar_table = { debt_gain = (lenient_bignum(card.ability.extra.gain) * (-1 * debt)) },
 					scalar_value = "debt_gain",
 					message_key = "a_xchips",
 					message_colour = G.C.CHIPS,

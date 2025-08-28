@@ -38,12 +38,12 @@ SMODS.Joker({
 		if context.after then
 			card.ability.immutable.hands = G.GAME.hands_played + 1
 			SMODS.scale_card(card, {
-					ref_table = card.ability.extra,
-					ref_value = "chips",
-					scalar_table = { hand_gain = (card.ability.extra.gain * card.ability.immutable.hands)},
-					scalar_value = "hand_gain",
-					no_message = true
-				})
+				ref_table = card.ability.extra,
+				ref_value = "chips",
+				scalar_table = { hand_gain = (card.ability.extra.gain * card.ability.immutable.hands) },
+				scalar_value = "hand_gain",
+				no_message = true,
+			})
 			card_eval_status_text(
 				card,
 				"extra",

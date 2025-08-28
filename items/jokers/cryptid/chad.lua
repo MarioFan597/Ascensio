@@ -37,7 +37,7 @@ SMODS.Joker({
 			SMODS.scale_card(card, {
 				ref_table = card.ability.extra.immutable,
 				ref_value = "slots",
-				scalar_table = {gain = (card.ability.extra.slot_gain)},
+				scalar_table = { gain = card.ability.extra.slot_gain },
 				scalar_value = "gain",
 				no_message = true
 			})
