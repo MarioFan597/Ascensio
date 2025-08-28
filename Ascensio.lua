@@ -147,6 +147,7 @@ Ascensionable = {
 	j_mr_bones = "j_asc_mr_bones",
 	j_sock_and_buskin = "j_asc_sock_and_buskin",
 	j_smeared = "j_asc_smeared",
+	j_wee = "j_asc_wee",
 	j_oops = "j_asc_oops",
 	j_duo = "j_asc_duo",
 	j_trio = "j_asc_trio",

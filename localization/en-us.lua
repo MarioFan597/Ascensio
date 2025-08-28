@@ -293,6 +293,15 @@ return {
 				},
 			},
 
+			j_asc_wee = {
+				name = "Scurra Microscopica",
+				text = {
+					"This Joker gains {X:dark_edition,C:edition}^^#1#{} {C:chips}Chips{} when each",
+					"played {C:attention}2{} is scored.",
+					"{C:inactive}(Currently{} {X:dark_edition,C:edition}^^#2#{}{C:inactive}){}",
+				},
+			},
+
 			j_asc_mime = {
 				name = "Silentium",
 				text = {
