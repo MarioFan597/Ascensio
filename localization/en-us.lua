@@ -1182,12 +1182,20 @@ return {
 					},
 				},
 			},
+
 			j_asc_sunny_joker_entr = {
 				name = "Iliakos",
 				text = {
 					"{X:gold,C:white}#3##1#{} Ascension Power",
 					"Increases operator after",
 					"{C:attention}#2#{} {C:gold}Ascended{} hands played",
+				},
+			},
+
+			j_asc_beyond_jimbo = {
+				name = "{s:4}The One Above All{}",
+				text = {
+					"{X:dark_edition,C:white,s:8}#1#{} {C:mult}Mult{}",
 				},
 			},
 		},
@@ -1329,6 +1337,7 @@ return {
 		},
 		labels = {
 			numina = "Numina",
+			k_asc_transcendent = "Transcendental",
 		},
 	},
 }

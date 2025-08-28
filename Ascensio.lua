@@ -179,12 +179,17 @@ Ascensionable = {
 	j_asc_duane = "j_cry_duplicare",
 	j_asc_exorcist = "j_cry_formidiulosus",
 	---Cryptposting
+
 	---Astronomica
 	j_ast_facsimile = "j_asc_facsimile",
 	j_ast_stopwatch = "j_asc_stopwatch",
+
 	---Entropy
 	j_entr_sunny_joker = "j_asc_sunny_joker",
 	j_entr_chuckle_cola = "j_asc_chuckle_cola",
+
+	---Secret
+	j_asc_jimbo = "j_asc_beyond_jimbo",
 }
 
 ---------Joker Apothable Dictionary-----------
@@ -199,18 +204,68 @@ Apothable = {
 
 ---------Extra Rarites-----------
 
+--Throwaway rariety for Musa Ingles
 SMODS.Rarity({
-	key = "banana", --Throwaway rariety for Musa Ingles
+	key = "banana",
 	badge_colour = HEX("FFE135"),
+})
+
+TranscendentGradient = SMODS.Gradient({
+	key = "transcendent",
+	colours = {
+		HEX("84ffc9"),
+		HEX("aab2ff"),
+		HEX("eca0ff"),
+	},
+})
+
+--Don't.
+SMODS.Rarity({
+	key = "transcendent",
+	badge_colour = TranscendentGradient,
 })
 
 ------Extra Functions----------
 
+-- Caching results for better perfs
+---@type {[number]: number}
+Factorials = {
+	-- Lua starts array with 1 instead of 0
+	[0] = 1,
+	1,
+	2,
+	6,
+	24,
+	120,
+	720,
+	5040,
+	40320,
+	362880,
+	3628800,
+	39916800,
+	479001600,
+	6227020800,
+	87178291200,
+	1307674368000,
+	20922789888000,
+	355687428096000,
+	6402373705728000,
+	121645100408832000,
+	2432902008176640000,
+}
+
+---@param n number
+---@return number
 function factorial(n)
-	if n == 0 then
-		return 1
+	local value = Factorials[n]
+
+	if value ~= nil then
+		return value
 	else
-		return n * factorial(n - 1)
+		local calculated = n * factorial(n - 1)
+		Factorials[n] = calculated
+
+		return calculated
 	end
 end
 
