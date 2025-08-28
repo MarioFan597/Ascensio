@@ -297,7 +297,7 @@ return {
 				name = "Scurra Microscopica",
 				text = {
 					"This Joker gains {X:dark_edition,C:edition}^^#2#{} {C:chips}Chips{} when each",
-					"played {C:attention}3{} is scored.",
+					"played {C:attention}2{} is scored.",
 					"{C:inactive}(Currently{} {X:dark_edition,C:edition}^^#1#{}{C:inactive}){}",
 				},
 			},
