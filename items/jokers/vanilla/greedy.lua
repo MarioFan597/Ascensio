@@ -51,7 +51,16 @@ function ease_dollars(mod, instant)
 	if to_big(mod) > to_big(0) then
 		local greed_jokers = SMODS.find_card("j_asc_greedy")
 		for _, card in pairs(greed_jokers) do
-			card.ability.extra.e_mult = card.ability.extra.e_mult + (card.ability.extra.gain * mod)
+			--card.ability.extra.e_mult = card.ability.extra.e_mult + (card.ability.extra.gain * mod)
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "e_mult",
+				scalar_table = { total = card.ability.extra.gain * mod },
+				scalar_value = "total",
+				message_key = "a_powmult",
+				message_colour = G.C.DARK_EDITION,
+			})
+			return nil, true
 		end
 	end
 end

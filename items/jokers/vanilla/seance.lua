@@ -50,7 +50,7 @@ SMODS.Joker({
 				card.ability.extra.hand_type,
 				--num,
 				--denom
-				card.ability.extra.odds,
+				card.ability.extra.odds
 			},
 		}
 	end,
@@ -65,12 +65,13 @@ SMODS.Joker({
 
 	calculate = function(self, card, context)
 		if
-			(context.before and context.main_eval and context.scoring_name == card.ability.extra.hand_type)
-			or context.forcetrigger
-		then --SMODS probability doesn't seem to actually prevent odds yet. As a result, I am using another method to fix until it fixes. Ha ha
+			( context.before
+				and context.main_eval
+				and context.scoring_name == card.ability.extra.hand_type
+			) or context.forcetrigger
+		then		--SMODS probability doesn't seem to actually prevent odds yet. As a result, I am using another method to fix until it fixes. Ha ha
 			if --SMODS.pseudorandom_probability(card, "future knowledge", 1, card.ability.extra.odds, "Exotic Seance", true) then
-				math.random(1, card.ability.extra.odds) == 1
-			then
+				math.random(1, card.ability.extra.odds) == 1 then
 				card.ability.extra.odds = card.ability.extra.immutable.std_odds
 				for _ = 1, card.ability.extra.amount do
 					local speccard = pseudorandom_element(card.ability.extra.pool, "j_asc_seance" .. G.SEED)

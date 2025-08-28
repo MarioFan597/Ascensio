@@ -23,8 +23,12 @@ SMODS.Joker({
 			context.other_card.ability.bonus = (context.other_card.ability.bonus or 0)
 				+ context.other_card:get_chip_bonus() * (card.ability.extra.xchip_mod - 1)
 			if card.ability.extra.triggers <= 0 and not context.blueprint then
-				card.ability.extra.xchip_mod = lenient_bignum(card.ability.extra.xchip_mod)
-					+ lenient_bignum(card.ability.extra.gain)
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "xchip_mod",
+					scalar_value = "gain",
+					no_message = true
+				})
 				card.ability.extra.immutable.trig_reset = card.ability.extra.immutable.trig_reset * 2
 				card.ability.extra.triggers = card.ability.extra.immutable.trig_reset
 				card_eval_status_text(card, "extra", nil, nil, nil, {

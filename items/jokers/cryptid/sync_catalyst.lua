@@ -94,12 +94,11 @@ SMODS.Joker({
 		end
 
 		if (context.beat_boss and context.main_eval and not context.blueprint) or context.forcetrigger then
-			card.ability.extra.emult = card.ability.extra.emult + card.ability.extra.gain
-
-			return {
-				message = "Upgraded!",
-				colour = G.C.MULT,
-			}
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "emult",
+				scalar_value = "gain",
+			})
 		end
 	end,
 

@@ -59,6 +59,13 @@ SMODS.Joker({
 
 		if context.end_of_round and context.main_eval and not (context.game_over or context.blueprint) then
 			card.ability.extra_value = card.ability.extra_value:mul(card.ability.extra.x_sell_gain):ceil()
+			SMODS.scale_card(card, {
+				ref_table = card.ability,
+				ref_value = "extra_value",
+				scalar_table = {sell_value_gain = (card.ability.extra_value:mul(card.ability.extra.x_sell_gain):ceil())},
+				scalar_value = "gain",
+				message_colour = G.C.MONEY,
+			})
 			card:set_cost()
 
 			return {

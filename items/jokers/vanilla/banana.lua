@@ -13,10 +13,10 @@ SMODS.Joker({
 		local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "Exotic Banana")
 		return {
 			vars = {
-				card.ability.extra.xmult,
-				card.ability.extra.xmult_gain,
+				lenient_bignum(card.ability.extra.xmult),
+				lenient_bignum(card.ability.extra.xmult_gain),
 				num,
-				denom,
+				denom
 			},
 		}
 	end,
@@ -39,13 +39,7 @@ SMODS.Joker({
 			and not (context.individual or context.repetition or context.blueprint)
 		then
 			if
-				SMODS.pseudorandom_probability(
-					card,
-					"OOOOOOH BANANA",
-					1,
-					card.ability.extra.odds,
-					"Exotic Ceremonial Dagger"
-				)
+				SMODS.pseudorandom_probability(card, "OOOOOOH BANANA", 1, card.ability.extra.odds, "Exotic Ceremonial Dagger")
 				and #G.jokers.cards
 				and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit
 				and not (
@@ -78,7 +72,13 @@ SMODS.Joker({
 					message = localize("k_duplicated_ex"),
 				}
 			else
-				card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "xmult",
+					scalar_value = "xmult_gain",
+					message_key = "a_xmult",
+					message_colour = G.C.MULT,
+				})
 
 				return {
 					message = localize("k_upgrade_ex"),

@@ -16,7 +16,7 @@ SMODS.Joker({
 				lenient_bignum(card.ability.extra.e_mult),
 				lenient_bignum(card.ability.extra.gain),
 				num,
-				denom,
+				denom
 			},
 		}
 	end,
@@ -28,13 +28,7 @@ SMODS.Joker({
 			or context.forcetrigger
 		then
 			if
-				SMODS.pseudorandom_probability(
-					card,
-					"Where are the grapes?",
-					1,
-					card.ability.extra.odds,
-					"Exotic Wrathful Joker"
-				)
+				SMODS.pseudorandom_probability(card, "Where are the grapes?", 1, card.ability.extra.odds, "Exotic Wrathful Joker") or context.forcetrigger
 			then
 				--This part was modified from Cryptid's SUS
 				if #G.hand.cards > 0 then
@@ -62,15 +56,12 @@ SMODS.Joker({
 						if aaa ~= nil then
 							SMODS.destroy_cards(aaa)
 							--Upgrade ^mult and display upgrade message
-							card.ability.extra.e_mult = lenient_bignum(card.ability.extra.e_mult)
-								+ lenient_bignum(card.ability.extra.gain)
-							card_eval_status_text(card, "extra", nil, nil, nil, {
-								message = localize({
-									type = "variable",
-									key = "a_powmult",
-									vars = { lenient_bignum(card.ability.extra.e_mult) },
-								}),
-								colour = G.C.DARK_EDITION,
+							SMODS.scale_card(card, {
+								ref_table = card.ability.extra,
+								ref_value = "e_mult",
+								scalar_value = "gain",
+								message_key = "a_powmult",
+								message_colour = G.C.DARK_EDITION,
 							})
 						end
 						return true

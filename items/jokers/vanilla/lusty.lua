@@ -32,10 +32,8 @@ SMODS.Joker({
 					hearts[i] = v
 				end
 			end
-			local first_card =
-				SMODS.pseudorandom_probability(card, "Heartache", 1, card.ability.extra.odds, "Exotic Lusty Joker")
-			local second_card =
-				SMODS.pseudorandom_probability(card, "Cardiac Arrest", 1, card.ability.extra.odds, "Exotic Lusty Joker")
+			local first_card = SMODS.pseudorandom_probability(card, "Heartache", 1, card.ability.extra.odds, "Exotic Lusty Joker")
+			local second_card = SMODS.pseudorandom_probability(card, "Cardiac Arrest", 1, card.ability.extra.odds, "Exotic Lusty Joker")
 			if
 				table.contains(hearts, context.other_card)
 				and (hearts[my_pos + 1] or hearts[my_pos - 1])

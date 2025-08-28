@@ -34,6 +34,12 @@ SMODS.Joker({
 		)
 		if (context.ending_shop or context.forcetrigger) and not context.blueprint then
 			card.ability.extra.immutable.slots = card.ability.extra.immutable.slots + card.ability.extra.slot_gain
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra.immutable,
+				ref_value = "slots",
+				scalar_table = {gain = (card.ability.extra.slot_gain)},
+				scalar_value = "gain",
+			})
 			G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.slot_gain
 			card_eval_status_text(card, "extra", nil, nil, nil, {
 				message = localize("k_upgrade_ex"),

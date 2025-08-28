@@ -22,6 +22,12 @@ SMODS.Joker({
 			local asc = G.GAME.current_round.current_hand.cry_asc_num
 			if asc ~= 0 then
 				card.ability.extra.asc = card.ability.extra.asc + card.ability.extra.gain
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "asc",
+					scalar_value = "gain",
+					no_message = true
+				})
 				return {
 					extra = { focus = card, message = localize("k_upgrade_ex") },
 					card = card,

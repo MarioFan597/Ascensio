@@ -28,7 +28,13 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		if (context.before and not context.blueprint and not context.retrigger_joker) or context.forcetrigger then
 			if G.GAME.current_round.discards_left > 0 then
-				card.ability.extra.chips = lenient_bignum(card.ability.extra.chips) + G.GAME.current_round.discards_left
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "chips",
+					scalar_table = { discards = G.GAME.current_round.discards_left},
+					scalar_value = "discards",
+					no_message = true
+				})
 				card_eval_status_text(card, "extra", nil, nil, nil, {
 					message = localize("k_upgrade_ex"),
 					colour = G.C.CHIPS,

@@ -31,12 +31,12 @@ SMODS.Joker({
 	calculate = function(self, card, context)
 		if context.before or context.forcetrigger then
 			if context.scoring_name == card.ability.extra.hand_type or context.forcetrigger then
-				card.ability.extra.Xchip =
-					lenient_bignum(to_big(card.ability.extra.Xchip) + card.ability.extra.Xchip_mod)
-				SMODS.calculate_effect(
-					{ message = localize("k_upgrade_ex"), colour = G.C.CHIPS },
-					context.blueprint_card or card
-				)
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "Xchip",
+					scalar_value = "Xchip_mod",
+					no_message = true,
+				})
 			elseif to_big(card.ability.extra.Xchip) > to_big(1) then
 				card.ability.extra.Xchip = to_big(1)
 				SMODS.calculate_effect({ message = localize("k_reset") }, context.blueprint_card or card)

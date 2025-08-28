@@ -20,8 +20,7 @@ SMODS.Joker({
 		},
 	},
 	loc_vars = function(self, info_queue, card)
-		local numerator, denominator =
-			SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "Exotic Ceremonial Dagger")
+		local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "Exotic Ceremonial Dagger")
 		return { vars = { numerator, denominator, card.ability.extra.Emult_mod, card.ability.extra.Emult } }
 	end,
 	calculate = function(self, card, context)
@@ -33,9 +32,7 @@ SMODS.Joker({
 				end
 			end
 			local destroyedcount, addedemult = 0, 0
-			if
-				SMODS.pseudorandom_probability(card, "Dagger", 1, card.ability.extra.odds, "Exotic Ceremonial Dagger")
-			then
+			if SMODS.pseudorandom_probability(card, "Dagger", 1, card.ability.extra.odds, "Exotic Ceremonial Dagger") then
 				for k, v in pairs(eligiblejokers) do
 					destroyedcount = destroyedcount + 1
 					v.getting_sliced = true

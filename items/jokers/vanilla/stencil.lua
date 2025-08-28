@@ -28,18 +28,24 @@ SMODS.Joker({
 				and not context.retrigger_joker
 			) or context.forcetrigger
 		then
-			card.ability.extra.mult = (
-				(G.jokers.config.card_limit - #G.jokers.cards) * lenient_bignum(card.ability.extra.mult_gain)
-			) + lenient_bignum(card.ability.extra.mult)
-			card_eval_status_text(card, "extra", nil, nil, nil, {
-				message = localize("k_upgrade_ex"),
-				colour = G.C.MULT,
-			})
+			SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "mult",
+					scalar_table = { empty_gain = (G.jokers.config.card_limit - #G.jokers.cards) * lenient_bignum(card.ability.extra.mult_gain) },
+					scalar_value = "empty_gain",
+					message_key = "a_xmult",
+					message_colour = G.C.MULT,
+				})
 		end
 
 		if (context.ending_shop or context.forcetrigger) and not context.blueprint then
-			card.ability.extra.immutable.joker_slots = lenient_bignum(card.ability.extra.immutable.joker_slots)
-				+ lenient_bignum(card.ability.extra.slot_gain)
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra.immutable,
+				ref_value = "joker_slots",
+				scalar_table = {gain = (card.ability.extra.slot_gain)},
+				scalar_value = "gain",
+				no_message = true
+			})
 			G.jokers.config.card_limit = G.jokers.config.card_limit + lenient_bignum(card.ability.extra.slot_gain)
 			card_eval_status_text(card, "extra", nil, nil, nil, {
 				message = localize("k_upgrade_ex"),

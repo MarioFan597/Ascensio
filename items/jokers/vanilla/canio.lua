@@ -34,23 +34,38 @@ SMODS.Joker({
 					playing_card_joker_effects({ replacement })
 					if not context.blueprint then
 						card.ability.extra.power = card.ability.extra.power + card.ability.extra.gain
+						SMODS.scale_card(card, {
+							ref_table = card.ability.extra,
+							ref_value = "power",
+							scalar_value = "gain",
+							no_message = true
+						})
 						check = check + 1 --We need to do a check here instead of the return statement otherwise it wouldn't count every face card
 					end
 				end
 			end
 			if check > 0 then
 				return {
-					message = localize("k_upgrade_ex"),
-					colour = G.C.DARK_EDITION,
-					remove = true,
+					message = localize({
+						type = "variable",
+						key = "a_powmult",
+						vars = { card.ability.extra.power },
+					}),
 				}
 			end
 			if context.forcetrigger then
-				card.ability.extra.power = card.ability.extra.power + card.ability.extra.gain
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "power",
+					scalar_value = "gain",
+					no_message = true
+				})
 				return {
-					message = localize("k_upgrade_ex"),
-					colour = G.C.DARK_EDITION,
-					remove = true,
+					message = localize({
+						type = "variable",
+						key = "a_powmult",
+						vars = { card.ability.extra.power },
+					}),
 				}
 			end
 		end

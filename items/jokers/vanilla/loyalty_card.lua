@@ -45,7 +45,14 @@ SMODS.Joker({
 				or context.forcetrigger
 			then
 				card.ability.extra.immutable.hand_played = 0
-				card.ability.extra.xmult = card.ability.extra.xmult * card.ability.extra.multiplier
+				--card.ability.extra.xmult = card.ability.extra.xmult * card.ability.extra.multiplier
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "xmult",
+					scalar_value = "multiplier",
+					operator = "*",
+					no_message = true
+				})
 
 				return {
 					message = localize("k_upgrade_ex"),

@@ -373,6 +373,10 @@ return {
 						"Cards {C:attention}#1#{} times",
 						"{C:inactive}(Max {C:attention}#3#{C:inactive} retriggers)",
 					},
+					--[[{
+						"{C:attention}Stone{} cards give",
+						"{X:dark_edition,C:white}^#2#{} Chips when scored.",  
+					},]]
 				},
 			},
 
@@ -419,8 +423,8 @@ return {
 			j_asc_abstract = {
 				name = "Aenigmatum",
 				text = {
-					"This Joker gains {X:dark_edition,C:white}^#2#{} Mult",
-					"for each {C:attention}Joker{} card",
+					"{X:dark_edition,C:white}^#2#{} Mult for",
+					"each {C:attention}Joker{} card",
 					"{C:inactive}(Currently {X:dark_edition,C:white}^#1#{} {C:inactive}Mult)",
 				},
 			},
@@ -735,7 +739,7 @@ return {
 			j_asc_throwback = {
 				name = "Desiderium",
 				text = {
-					"Gains {X:mult,C:white}X(n^#3#){} Mult for each",
+					"{X:mult,C:white}X(n^#3#){} Mult for each",
 					"{C:attention}Blind{} skipped this run",
 					"{X:attention,C:white}n{} is equal to the current",
 					"number of {C:attention}Blinds{} skipped",
@@ -1204,8 +1208,8 @@ return {
 			asc_cyclic = {
 				name = "Cyclic",
 				text = {
-					"Rotates between its {C:cry_exotic,E:1}Ascendant{}",
-					"version, regular version and",
+					"Rotates between its {C:cry_exotic,E:1}Ascendant{}", 
+					"version, regular version and", 
 					"being {C:red}debuffed{} every round",
 				},
 			},
@@ -1260,7 +1264,7 @@ return {
 				name = "Samsara",
 				text = {
 					"Select a Joker",
-					"to become {C:cry_exotic,E:1}Cylcic{}",
+					"to become {C:cry_exotic,E:1}Cylcic{}"
 				},
 			},
 		},

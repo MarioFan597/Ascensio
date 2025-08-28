@@ -47,11 +47,13 @@ SMODS.Joker({
 		then
 			local debt = to_big(G.GAME.dollars)
 			if debt < to_big(0) then
-				card.ability.extra.chips = lenient_bignum(card.ability.extra.chips)
-					+ (lenient_bignum(card.ability.extra.gain) * (-1 * debt))
-				card_eval_status_text(card, "extra", nil, nil, nil, {
-					message = localize("k_upgrade_ex"),
-					colour = G.C.CHIPS,
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "chips",
+					scalar_table = { debt_gain = (lenient_bignum(card.ability.extra.gain) * (-1 * debt))},
+					scalar_value = "debt_gain",
+					message_key = "a_xchips",
+					message_colour = G.C.CHIPS,
 				})
 			end
 		end
