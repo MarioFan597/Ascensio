@@ -27,9 +27,9 @@ SMODS.Joker({
 		return {
 			vars = {
 				card.ability.extra.percentage,
-				card.ability.extra.eechips_gain,
+				lenient_bignum(card.ability.extra.eechips_gain),
 				card.ability.extra.active and localize("k_active_ex") or localize("asc_inactive"),
-				card.ability.extra.eechips,
+				lenient_bignum(card.ability.extra.eechips),
 				card.ability.extra.immutable.requirement,
 				card.ability.extra.immutable.beaten,
 			},

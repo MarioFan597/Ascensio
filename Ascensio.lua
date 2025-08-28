@@ -189,7 +189,7 @@ Ascensionable = {
 	j_entr_chuckle_cola = "j_asc_chuckle_cola",
 
 	---Secret
-	j_asc_jimbo = "j_asc_beyond_jimbo",
+	--j_asc_jimbo = "j_asc_beyond_jimbo",
 }
 
 ---------Joker Apothable Dictionary-----------
