@@ -15,7 +15,7 @@ SMODS.Joker({
 	config = {
 		extra = {
 			xmult = 16,
-			multiplier = 4,
+			multiplier = 2,
 
 			immutable = {
 				hand_played = 0,
