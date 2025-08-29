@@ -32,19 +32,11 @@ SMODS.Joker({
 				)
 			then
 				SMODS.scale_card(card, {
-					ref_table = card.ability,
+					ref_table = card.ability.extra,
 					ref_value = "gold",
 					scalar_value = "gain",
 					message_colour = G.C.MONEY,
 				})
-				card_eval_status_text(
-					card,
-					"extra",
-					nil,
-					nil,
-					nil,
-					{ message = localize("k_upgrade_ex"), colour = G.C.GOLD }
-				)
 			end
 			return (lenient_bignum(card.ability.extra.gold) * (to_number(G.GAME.dollars) or 0))
 		end

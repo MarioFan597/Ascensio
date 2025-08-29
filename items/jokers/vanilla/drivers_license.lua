@@ -1,5 +1,5 @@
 local function count_mod()
-	local cnt = 0
+	local mod_count = 0
 
 	if G and G.deck and G.deck.cards then
 		for _, card in ipairs(G.deck.cards) do
@@ -11,14 +11,14 @@ local function count_mod()
 			if card.seal then
 				mod_count = mod_count + 1
 			end
-
+			-- enhancement
 			if next(SMODS.get_enhancements(card)) then
 				mod_count = mod_count + 1
 			end
 		end
 	end
 
-	return cnt
+	return mod_count
 end
 
 SMODS.Joker({
