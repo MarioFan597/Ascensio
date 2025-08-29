@@ -43,10 +43,10 @@ return {
 				text = {
 					{
 						"Played cards with {C:diamond}Diamond{} suit",
-						"give {X:dark_edition,C:white}^#1#{} Mult when scored",
+						"give {X:asc_emult,C:white}^#1#{} Mult when scored",
 					},
 					{
-						"Gains {X:dark_edition,C:white}^#2#{} Mult for",
+						"Gains {X:asc_emult,C:white}^#2#{} Mult for",
 						"every {C:money}${} earned",
 					},
 				},
@@ -57,7 +57,7 @@ return {
 				text = {
 					{
 						"Played cards with {C:heart}Heart{} suit",
-						"give {X:dark_edition,C:white}^#1#{} Mult when scored",
+						"give {X:asc_emult,C:white}^#1#{} Mult when scored",
 					},
 					{
 						"{C:green}#2# in #3#{} chance for scored",
@@ -73,12 +73,12 @@ return {
 				text = {
 					{
 						"Played cards with {C:spade}Spade{} suit",
-						"give {X:dark_edition,C:white}^#1#{} Mult when scored",
+						"give {X:asc_emult,C:white}^#1#{} Mult when scored",
 					},
 					{
 						"{C:green}#3# in #4#{} chance for scored {C:spade}Spades{}",
 						"to {C:attention}destroy{} a non-{C:spade}Spade{} card",
-						"held in hand and add {X:dark_edition,C:white}^#2#{} Mult",
+						"held in hand and add {X:asc_emult,C:white}^#2#{} Mult",
 						"to this Joker at end of hand",
 					},
 				},
@@ -89,7 +89,7 @@ return {
 				text = {
 					{
 						"Played cards with {C:club}Club{} suit",
-						"give {X:dark_edition,C:white}^#1#{} Mult when scored",
+						"give {X:asc_emult,C:white}^#1#{} Mult when scored",
 					},
 					{
 						"Cards with {C:club}Club{} suit",
