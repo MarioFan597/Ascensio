@@ -189,34 +189,13 @@ SMODS.Joker({
 			"MarioFan597",
 		},
 	},
+	animation = {
+		macro = {
+			type = "skim",
+			soul_pos_extra = {
+				include = { { x1 = 0, x2 = 5, y1 = 0, y2 = 4 } },
+				exclude = { { x1 = 4, x2 = 5, y1 = 4, y2 = 4 } },
+			},
+		},
+	},
 })
-
---Animation for Misprint's exotic
---This section was taken from potassium which in turn was taken from cryptid
-print_dt = 0
-local _game_update = Game.update
-function Game:update(dt)
-	_game_update(self, dt)
-	print_dt = print_dt + dt -- cryptid has a check here but im not sure what it's for
-	if G.P_CENTERS and G.P_CENTERS.j_asc_misprint and print_dt > 0.10 then
-		print_dt = print_dt - 0.10
-		local misprint = G.P_CENTERS.j_asc_misprint
-		if misprint.pos.x == 3 and misprint.pos.y == 4 then --Last frame of animation
-			misprint.pos.x = 0
-			misprint.pos.y = 0
-		elseif misprint.pos.x < 5 then --If it isnt the right most image
-			misprint.pos.x = misprint.pos.x + 1
-		elseif misprint.pos.y < 4 then --If it isnt the bottom most image
-			misprint.pos.x = 0
-			misprint.pos.y = misprint.pos.y + 1
-		end
-		-- oh my god i hate this so much but ARGH
-		-- note that this can't use find_card because it also needs to work in the collection
-		-- unless there's some other way you can do it
-		for _, card in pairs(G.I.CARD) do
-			if card.children.back and card.config.center == misprint then
-				card.children.back:set_sprite_pos(misprint.pos)
-			end
-		end
-	end
-end
