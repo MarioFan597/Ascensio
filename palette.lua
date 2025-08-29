@@ -1,17 +1,19 @@
 SMODS.Gradient({
 	key = "emult",
-	cycle = 3,
+	cycle = 5,
 	colours = {
-		HEX("ba1a1a"),
-		HEX("ff9c62"),
+		HEX("FF6F3A"),
+		HEX("F1376C"),
+		HEX("E63467"),
 	},
 })
 
 SMODS.Gradient({
 	key = "echips",
-	cycle = 3,
+	cycle = 5,
 	colours = {
-		HEX("3819ca"),
-		HEX("a1eaf4"),
+		HEX("487DDE"),
+		HEX("409FDC"),
+		HEX("36D9D3"),
 	},
 })
