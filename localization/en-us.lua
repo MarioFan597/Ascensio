@@ -686,7 +686,7 @@ return {
 					{
 						"Gains {X:asc_emult,C:white}^#2#{} Mult for each card {C:attention}sold{}",
 						"Resets when {C:attention}Boss Blind{} is defeated",
-						"{C:inactive}(Currently {}{C:white,X:dark_edition}^#1#{C:inactive} Mult)",
+						"{C:inactive}(Currently{} {X:asc_emult,C:white}^#1#{} {C:inactive}Mult){}",
 					},
 					{
 						"Increases gain after",
