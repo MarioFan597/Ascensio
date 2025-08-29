@@ -43,10 +43,10 @@ return {
 				text = {
 					{
 						"Played cards with {C:diamond}Diamond{} suit",
-						"give {X:dark_edition,C:white}^#1#{} Mult when scored",
+						"give {X:asc_emult,C:white}^#1#{} Mult when scored",
 					},
 					{
-						"Gains {X:dark_edition,C:white}^#2#{} Mult for",
+						"Gains {X:asc_emult,C:white}^#2#{} Mult for",
 						"every {C:money}${} earned",
 					},
 				},
@@ -57,7 +57,7 @@ return {
 				text = {
 					{
 						"Played cards with {C:heart}Heart{} suit",
-						"give {X:dark_edition,C:white}^#1#{} Mult when scored",
+						"give {X:asc_emult,C:white}^#1#{} Mult when scored",
 					},
 					{
 						"{C:green}#2# in #3#{} chance for scored",
@@ -73,12 +73,12 @@ return {
 				text = {
 					{
 						"Played cards with {C:spade}Spade{} suit",
-						"give {X:dark_edition,C:white}^#1#{} Mult when scored",
+						"give {X:asc_emult,C:white}^#1#{} Mult when scored",
 					},
 					{
 						"{C:green}#3# in #4#{} chance for scored {C:spade}Spades{}",
 						"to {C:attention}destroy{} a non-{C:spade}Spade{} card",
-						"held in hand and add {X:dark_edition,C:white}^#2#{} Mult",
+						"held in hand and add {X:asc_emult,C:white}^#2#{} Mult",
 						"to this Joker at end of hand",
 					},
 				},
@@ -89,7 +89,7 @@ return {
 				text = {
 					{
 						"Played cards with {C:club}Club{} suit",
-						"give {X:dark_edition,C:white}^#1#{} Mult when scored",
+						"give {X:asc_emult,C:white}^#1#{} Mult when scored",
 					},
 					{
 						"Cards with {C:club}Club{} suit",
@@ -326,9 +326,9 @@ return {
 				text = {
 					"When Blind is selected, {C:green}#1# in #2#{} chance",
 					"to destroy every other {C:attention}Joker{}",
-					"Gains {X:dark_edition,C:white}^#3#{} Mult for each",
+					"Gains {X:asc_emult,C:white}^#3#{} Mult for each",
 					"{C:attention}Joker{} destroyed this way",
-					"{C:inactive}(Currently {X:dark_edition,C:white}^#4#{}{C:inactive} Mult)",
+					"{C:inactive}(Currently {X:asc_emult,C:white}^#4#{}{C:inactive} Mult)",
 				},
 			},
 
@@ -361,8 +361,8 @@ return {
 			j_asc_mystic_summit = {
 				name = "Fabulosa Radices",
 				text = {
-					"{X:dark_edition,C:white}^#1#{} Mult",
-					"Gains {X:dark_edition,C:white}^#2#{} Mult at",
+					"{X:asc_emult,C:white}^#1#{} Mult",
+					"Gains {X:asc_emult,C:white}^#2#{} Mult at",
 					"end of round when {C:attention}0{}",
 					"discards remaining",
 				},
@@ -384,7 +384,7 @@ return {
 					},
 					--[[{
 						"{C:attention}Stone{} cards give",
-						"{X:dark_edition,C:white}^#2#{} Chips when scored.",  
+						"{X:asc_emult,C:white}^#2#{} Chips when scored.",  
 					},]]
 				},
 			},
@@ -424,7 +424,7 @@ return {
 				name = "Immanis Facies",
 				text = {
 					"Played face cards",
-					"give {X:dark_edition,C:white}^#1#{} Chips",
+					"give {X:asc_emult,C:white}^#1#{} Chips",
 					"when scored",
 				},
 			},
@@ -432,9 +432,9 @@ return {
 			j_asc_abstract = {
 				name = "Aenigmatum",
 				text = {
-					"{X:dark_edition,C:white}^#2#{} Mult for",
+					"{X:asc_emult,C:white}^#2#{} Mult for",
 					"each {C:attention}Joker{} card",
-					"{C:inactive}(Currently {X:dark_edition,C:white}^#1#{} {C:inactive}Mult)",
+					"{C:inactive}(Currently {X:asc_emult,C:white}^#1#{} {C:inactive}Mult)",
 				},
 			},
 
@@ -459,7 +459,7 @@ return {
 						"{C:inactive}(10, 8, 6, 4, 2){}",
 					},
 					{
-						"Instead gives {X:mult,C:white}X#2#{} Mult",
+						"Gives {X:mult,C:white}X#2#{} Mult instead",
 						"if played hand has an {C:attention}even{}",
 						"amount of cards in it",
 					},
@@ -475,7 +475,7 @@ return {
 						"{C:inactive}(A, 9, 7, 5, 3){}",
 					},
 					{
-						"Instead gives {X:chips,C:white}X#2#{} Chips",
+						"Gives {X:chips,C:white}X#2#{} Chips instead",
 						"if played hand has an {C:attention}odd{}",
 						"amount of cards in it",
 					},
@@ -537,8 +537,8 @@ return {
 			j_asc_ice_cream = {
 				name = "Glacies Cremoris",
 				text = {
-					"{X:dark_edition,C:white}^#1#{} Chips",
-					"Gains {X:dark_edition,C:white}^#2#{} Chips for",
+					"{X:asc_echips,C:white}^#1#{} Chips",
+					"Gains {X:asc_echips,C:white}^#2#{} Chips for",
 					"every hand played this run",
 					"after each hand played",
 					"{C:inactive}(Currently {C:attention}#3#{C:inactive} hands played)",
@@ -575,7 +575,7 @@ return {
 			j_asc_musa_ingens = {
 				name = "Musa Ingens",
 				text = {
-					"{X:dark_edition,C:white}^#1#{} Mult",
+					"{X:asc_emult,C:white}^#1#{} Mult",
 					"{C:money,E:2}OH, BANANA!{}",
 				},
 			},
@@ -594,10 +594,10 @@ return {
 				name = "Nebulosa Imago",
 				text = {
 					{
-						"This Joker gains {X:dark_edition,C:white}^#2#{} Mult",
+						"This Joker gains {X:asc_emult,C:white}^#2#{} Mult",
 						"every time a {C:attention}playing card{} is",
 						"added to deck or destroyed",
-						"{C:inactive}(Currently{} {X:dark_edition,C:white}^#3#{} {C:inactive}Mult){}",
+						"{C:inactive}(Currently{} {X:asc_emult,C:white}^#3#{} {C:inactive}Mult){}",
 					},
 					{
 						"Before {C:attention}first hand{} of round,",
@@ -617,7 +617,7 @@ return {
 					},
 					{
 						"{C:attention}Gold{} cards held in hand",
-						"give {X:dark_edition,C:white}^#1#{} Mult",
+						"give {X:asc_emult,C:white}^#1#{} Mult",
 					},
 				},
 			},
@@ -684,13 +684,13 @@ return {
 				name = "Silva Ardens",
 				text = {
 					{
-						"Gains {C:white,X:dark_edition}^#2#{} Mult for each card {C:attention}sold{}",
+						"Gains {X:asc_emult,C:white}^#2#{} Mult for each card {C:attention}sold{}",
 						"Resets when {C:attention}Boss Blind{} is defeated",
-						"{C:inactive}(Currently {}{C:white,X:dark_edition}^#1#{C:inactive} Mult)",
+						"{C:inactive}(Currently{} {X:asc_emult,C:white}^#1#{} {C:inactive}Mult){}",
 					},
 					{
 						"Increases gain after",
-						"{C:attention}Boss Blind{} by {C:white,X:dark_edition}^#3#{} Mult",
+						"{C:attention}Boss Blind{} by {X:asc_emult,C:white}^#3#{} Mult",
 						"for each card {C:attention}sold{} this {C:attention}Ante{}",
 						"{C:inactive}(Currently {C:attention}#4#{} {C:inactive}cards sold){}",
 					},
@@ -808,7 +808,7 @@ return {
 				name = "Sum Duo",
 				text = {
 					"If played hand contains a {C:attention}Pair{},",
-					"{X:dark_edition,C:white}^#1#{} Mult and convert",
+					"{X:asc_emult,C:white}^#1#{} Mult and convert",
 					"cards {C:attention}held in hand{} to the",
 					"most common {C:attention}Rank{} in played hand",
 				},
@@ -818,7 +818,7 @@ return {
 				name = "Sum Trio",
 				text = {
 					"If played hand contains a",
-					"{C:attention}Three of a Kind{}, {X:dark_edition,C:white}^#1#{} Mult and",
+					"{C:attention}Three of a Kind{}, {X:asc_emult,C:white}^#1#{} Mult and",
 					"convert cards {C:attention}held in hand{} to the",
 					"most common {C:attention}Rank{} in played hand",
 				},
@@ -828,7 +828,7 @@ return {
 				name = "Sum Quattuor",
 				text = {
 					"If played hand contains a",
-					"{C:attention}Four of a Kind{}, {X:dark_edition,C:white}^#1#{} Mult and",
+					"{C:attention}Four of a Kind{}, {X:asc_emult,C:white}^#1#{} Mult and",
 					"convert cards {C:attention}held in hand{} to the",
 					"most common {C:attention}Rank{} in played hand",
 				},
@@ -838,7 +838,7 @@ return {
 				name = "Sum Constituto",
 				text = {
 					"If played hand contains a {C:attention}Straight{},",
-					"{X:dark_edition,C:white}^#1#{} Mult and convert",
+					"{X:asc_emult,C:white}^#1#{} Mult and convert",
 					"cards {C:attention}held in hand{} to the {C:attention}Rank{}",
 					"of each card in order of played hand",
 				},
@@ -848,7 +848,7 @@ return {
 				name = "Sum Carnes Unius",
 				text = {
 					"If played hand contains a {C:attention}Flush{},",
-					"{X:dark_edition,C:white}^#1#{} Mult and convert",
+					"{X:asc_emult,C:white}^#1#{} Mult and convert",
 					"cards {C:attention}held in hand{} to the",
 					"most common {C:attention}Suit{} in played hand",
 				},
@@ -898,9 +898,9 @@ return {
 				name = "Thanatos",
 				text = {
 					{
-						"Gains {X:dark_edition,C:white}^#2#{} Mult per",
+						"Gains {X:asc_emult,C:white}^#2#{} Mult per",
 						"destroyed {C:attention}face{} card",
-						"{C:inactive}(Currently {X:dark_edition,C:white}^#1#{}{C:inactive} Mult)",
+						"{C:inactive}(Currently {X:asc_emult,C:white}^#1#{}{C:inactive} Mult)",
 					},
 					{
 						"Destroyed {C:attention}face{} cards",
@@ -956,10 +956,10 @@ return {
 			j_asc_like_antennas_to_heaven = {
 				name = "Contra Logos",
 				text = {
-					"This Joker gains {X:dark_edition,C:white}^#1#{} Chips",
+					"This Joker gains {X:asc_echips,C:white}^#1#{} Chips",
 					"for every {C:attention}7{} or {C:attention}4{}",
 					"contained in full hand",
-					"{C:inactive}(Currently {X:dark_edition,C:white}^#2#{} {C:inactive}Chips)",
+					"{C:inactive}(Currently {X:asc_echips,C:white}^#2#{} {C:inactive}Chips)",
 				},
 			},
 
@@ -1034,8 +1034,8 @@ return {
 					{
 						"At the {C:attention}start of round{},",
 						"balances {C:chips}hands{} with {C:mult}discards{} and",
-						"self's {X:dark_edition,C:white}^Chips{} with self's {X:dark_edition,C:white}^Mult{}",
-						"{C:inactive}(Currently{} {X:dark_edition,C:white}^#2#{} {C:inactive}Chips and{} {X:dark_edition,C:white}^#1#{} {C:inactive}Mult){}",
+						"self's {X:asc_echips,C:white}^Chips{} with self's {X:asc_emult,C:white}^Mult{}",
+						"{C:inactive}(Currently{} {X:asc_echips,C:white}^#2#{} {C:inactive}Chips and{} {X:asc_emult,C:white}^#1#{} {C:inactive}Mult){}",
 					},
 					{
 						"Balance {C:chips}Chips{} and {C:mult}Mult{}",
@@ -1043,7 +1043,7 @@ return {
 					},
 					{
 						"Whenever a {C:attention}Boss Blind{} is",
-						"{C:attention}defeated{}, gains {X:dark_edition,C:white}^#3#{} {C:mult}Mult{}",
+						"{C:attention}defeated{}, gains {X:asc_emult,C:white}^#3#{} {C:mult}Mult{}",
 					},
 				},
 			},
@@ -1189,13 +1189,6 @@ return {
 					"{X:gold,C:white}#3##1#{} Ascension Power",
 					"Increases operator after",
 					"{C:attention}#2#{} {C:gold}Ascended{} hands played",
-				},
-			},
-
-			j_asc_beyond_jimbo = {
-				name = "{s:4}The One Above All{}",
-				text = {
-					"{X:dark_edition,C:white,s:8}#1#{} {C:mult}Mult{}",
 				},
 			},
 		},

@@ -87,6 +87,8 @@ SMODS.Sound{
 --]]
 
 ----Load the Loader-----
+
+assert(SMODS.load_file("palette.lua"))()
 assert(SMODS.load_file("loader.lua"))()
 
 ---------Joker Ascension Dictionary-----------
