@@ -1,3 +1,15 @@
+---------Loading Helper---------
+
+assert(SMODS.load_file("lib/number.lua"))()
+
+---------Loading Animations---------
+
+assert(SMODS.load_file("lib/cardanim.lua"))()
+
+--------Loading Hooks-----------------------------
+
+assert(SMODS.load_file("lib/hooks.lua"))()
+
 ----------Loading Vanilla Jokers----------
 local v_jokers = {
 	"jimbo",
@@ -223,15 +235,3 @@ if next(SMODS.find_mod("entr")) then
 		assert(SMODS.load_file("items/consumables/entropy/" .. v .. ".lua"))()
 	end
 end
-
----------Loading Helper---------
-
-assert(SMODS.load_file("lib/number.lua"))()
-
----------Loading Animations---------
-
-assert(SMODS.load_file("lib/cardanim.lua"))()
-
---------Loading Hooks-----------------------------
-
-assert(SMODS.load_file("lib/hooks.lua"))()
