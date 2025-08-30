@@ -1,6 +1,6 @@
 SMODS.Joker({
 	key = "banana",
-	config = { extra = { xmult = 15, xmult_gain = 2.5, probability_denum = 64 } },
+	config = { extra = { xmult = 15, xmult_gain = 2.5, odds = 64 } },
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
@@ -44,7 +44,7 @@ SMODS.Joker({
 					"OOOOOOH BANANA",
 					1,
 					card.ability.extra.odds,
-					"Exotic Ceremonial Dagger"
+					"Exotic Banana"
 				)
 				and #G.jokers.cards
 				and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit
