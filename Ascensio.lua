@@ -146,7 +146,7 @@ Ascensionable = {
 	j_blueprint = "j_asc_blueprint",
 	j_mr_bones = "j_asc_mr_bones",
 	j_sock_and_buskin = "j_asc_sock_and_buskin",
-	j_smeared = "j_asc_smeared",
+	--j_smeared = "j_asc_smeared",
 	j_wee = "j_asc_wee",
 	j_oops = "j_asc_oops",
 	j_duo = "j_asc_duo",
@@ -280,6 +280,8 @@ G.ARGS.LOC_COLOURS.asc_hssr = HEX("51c1ffff")
 G.ARGS.LOC_COLOURS.asc_omega = HEX("f5fffa")
 G.ARGS.LOC_COLOURS.asc_oinite = HEX("dc143c")
 G.ARGS.LOC_COLOURS.asc_hexa = HEX("52c5ff")
+G.ARGS.LOC_COLOURS.asc_grahkon = HEX("236400")
+G.ARGS.LOC_COLOURS.asc_grahkon_bg = HEX("48CF00")
 
 -------Cryptid's Credit System-------
 -- This was modified and taken from Entropy--
