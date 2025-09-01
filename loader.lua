@@ -51,7 +51,7 @@ local v_jokers = {
 	"campfire",
 	"bones",
 	"sock_and_buskin",
-	"smeared",
+	--"smeared", --disabled due to issues on mac
 	"throwback",
 	"hanging_chad",
 	"blueprint",
