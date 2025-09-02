@@ -39,13 +39,7 @@ SMODS.Joker({
 			and not (context.individual or context.repetition or context.blueprint)
 		then
 			if
-				SMODS.pseudorandom_probability(
-					card,
-					"OOOOOOH BANANA",
-					1,
-					card.ability.extra.odds,
-					"Exotic Banana"
-				)
+				SMODS.pseudorandom_probability(card, "OOOOOOH BANANA", 1, card.ability.extra.odds, "Exotic Banana")
 				and #G.jokers.cards
 				and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit
 				and not (
