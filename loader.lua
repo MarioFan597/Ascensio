@@ -91,6 +91,7 @@ end
 
 ----------Loading Cryptid Mortal Jokers----------
 local crym_jokers = {
+	"copy_cat",
 	"b_cake",
 	"b_pie",
 	"orion_pax",

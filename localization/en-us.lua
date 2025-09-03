@@ -1051,6 +1051,21 @@ return {
 			},
 			-----Cryptid Mortals-----
 
+			j_asc_copy_cat = {
+				name = "Copy Cat",
+				text = {
+					{
+					"Retrigger all cards",
+					"played {C:attention}#2#{} time(s)",
+					"{C:inactive}(Max {C:attention}#3#{}{C:inactive} retriggers)"
+					},
+					{
+					"Each played card gives",
+					"{C:mult}+#1#{} Mult when scored",
+					},
+				},
+			},
+
 			j_asc_b_cake = {
 				name = "Birthday Cake",
 				text = {
