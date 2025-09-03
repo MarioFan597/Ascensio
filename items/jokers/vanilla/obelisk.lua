@@ -31,7 +31,7 @@ SMODS.Joker({
 
 	calculate = function(_, card, context)
 		if (context.before and context.main_eval and not context.blueprint) or context.forcetrigger then
-			if (context.scoring_name ~= (card.ability.immutable.most_played or "")) or context.forcetrigger then
+			if (context.scoring_name ~= (card.ability.extra.immutable.most_played or "")) or context.forcetrigger then
 				return SMODS.scale_card(card, {
 					ref_table = card.ability.extra,
 					ref_value = "xmult",
