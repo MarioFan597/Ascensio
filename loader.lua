@@ -42,6 +42,7 @@ local v_jokers = {
 	"seance",
 	"supernova",
 	"hologram",
+	"obelisk",
 	"midas",
 	"to_the_moon",
 	"golden",

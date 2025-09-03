@@ -134,6 +134,7 @@ Ascensionable = {
 	j_square = "j_asc_square",
 	j_supernova = "j_asc_supernova",
 	j_hologram = "j_asc_hologram",
+	j_obelisk = "j_asc_obelisk",
 	j_midas_mask = "j_asc_midas",
 	j_to_the_moon = "j_asc_to_the_moon",
 	j_golden = "j_asc_golden",
