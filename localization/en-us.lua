@@ -615,7 +615,7 @@ return {
 				text = {
 					"This Joker gains {X:mult,C:white}XMult{} equal to",
 					"the {C:attention}sum{} of total time any {C:attention}poker hands{}",
-					"that is not your {C:attention}most played poker hand{}",
+					"that is not your {C:attention}most played poker hand{} is played",
 					"Otherwise, {C:attention}reset{} this {C:attention}Joker{}",
 					"{C:inactive}(Currently {X:mult,C:white}X#1#{}{C:inactive}){}",
 				},
