@@ -172,6 +172,7 @@ Ascensionable = {
 	j_cry_CodeJoker = "j_asc_code_joker",
 
 	---Cryptid Mortals
+	j_asc_copy_cat = "j_cry_iterum",
 	j_asc_b_cake = "j_cry_crustulum",
 	j_asc_b_pie = "j_cry_circulus_pistoris",
 	j_asc_orion_pax = "j_cry_primus",
