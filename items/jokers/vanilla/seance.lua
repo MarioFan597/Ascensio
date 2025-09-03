@@ -19,8 +19,8 @@ SMODS.Joker({
 		macro = {
 			type = "skim",
 			soul_pos_extra = {
-				include = { { x1 = 0, y1 = 1, x2 = 9, y2 = 4 } },
-				exclude = { { x1 = 1, y1 = 4, x2 = 9, y2 = 4 } },
+				include = { { x1 = 0, y1 = 1, x2 = 6, y2 = 5 } },
+				exclude = { { x1 = 3, y1 = 5, x2 = 6, y2 = 5 } },
 			},
 		},
 	},
@@ -41,15 +41,12 @@ SMODS.Joker({
 		},
 	},
 
-	loc_vars = function(self, info_queue, card)
+	loc_vars = function(_, info_queue, card)
 		info_queue[#info_queue + 1] = { key = "asc_fixed", set = "Other" }
-		--local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "Exotic Seance", true)
 		return {
 			vars = {
 				card.ability.extra.amount,
 				card.ability.extra.hand_type,
-				--num,
-				--denom
 				card.ability.extra.odds,
 			},
 		}
@@ -63,7 +60,7 @@ SMODS.Joker({
 		end
 	end,
 
-	calculate = function(self, card, context)
+	calculate = function(_, card, context)
 		if
 			(context.before and context.main_eval and context.scoring_name == card.ability.extra.hand_type)
 			or context.forcetrigger
@@ -114,14 +111,14 @@ SMODS.Joker({
 		end
 	end,
 
-	set_ability = function(self, card, initial, delay_sprites) --Taken from vanilla remade to do list
-		local _poker_hands = {}
+	set_ability = function(_, card, _, _) --Taken from vanilla remade to do list
+		local poker_hands = {}
 		for handname, _ in pairs(G.GAME.hands) do
 			if SMODS.is_poker_hand_visible(handname) and handname ~= card.ability.extra.hand_type then
-				_poker_hands[#_poker_hands + 1] = handname
+				poker_hands[#poker_hands + 1] = handname
 			end
 		end
-		card.ability.extra.hand_type = pseudorandom_element(_poker_hands, "the_future_is_now" .. G.SEED)
+		card.ability.extra.hand_type = pseudorandom_element(poker_hands, "the_future_is_now" .. G.SEED)
 	end,
 
 	asc_credits = {

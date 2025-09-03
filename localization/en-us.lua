@@ -611,7 +611,7 @@ return {
 			},
 
 			j_asc_obelisk = {
-				name = "???",
+				name = "Obeliscus Calumniatus",
 				text = {
 					"This Joker gains {X:mult,C:white}XMult{} equal to",
 					"the {C:attention}sum{} of total time any {C:attention}poker hands{}",
