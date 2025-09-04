@@ -1,3 +1,6 @@
+-- Compability
+Cryptid.mod_whitelist["Ascensio"] = true
+
 Ascensionable = {}
 
 if Entropy then
@@ -40,7 +43,7 @@ Source = {
 ---@param key string
 ---@param source Source
 ---@return string
-function get_source_file(key, source)
+local function get_source_file(key, source)
     if source == "vanilla/" then
         return string.sub(key, 3)
     else
