@@ -43,7 +43,7 @@ SMODS.Joker({
 				end
 			end
 
-			if reset then
+			if reset and not context.forcetrigger then
 				card.ability.immutable.consecutive = 0
 				return {
 					message = localize("k_reset"),
