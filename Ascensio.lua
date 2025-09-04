@@ -62,10 +62,6 @@ local function get_source_file(key, source)
     end
 end
 
--- This will process the entries.
----@type AscensionEntry[]
-AscensionIndex = {}
-
 -- TODO: Reclarify the fields.
 
 ---@class AscensionEntry
@@ -77,10 +73,26 @@ AscensionIndex = {}
 ---@field entropic_file? string Where the Entropic Joker is defined in. Defaults to the key of the Mortal Joker with the leading `"j_"` removed and the `"_entr"` appended. `".lua"` file extension are not to be added.
 ---@overload fun(self: AscensionEntry): AscensionEntry
 Ascension = setmetatable({}, {
-    ---@param self AscensionEntry
-    __call = function(_, self)
-        table.insert(AscensionIndex, self)
-        return self
+    ---@param asc AscensionEntry
+    __call = function(_, asc)
+        local source_file = asc.source_file or get_source_file(asc.from, asc.source)
+        if source_file ~= "skip" then
+            loadFile("items/jokers/" .. asc.source .. source_file .. ".lua")
+        end
+
+        Ascensionable[asc.from] = asc.to_exotic
+
+        if Apothable and asc.to_entropic ~= nil then
+            local entr_source_file = asc.entropic_file or (get_source_file(asc.from, asc.source) .. "_entr")
+            if entr_source_file ~= "skip" then
+                loadFile("items/jokers/" .. asc.source .. "entr/" .. entr_source_file .. ".lua")
+            end
+
+            Apothable[asc.from] = asc.to_entropic
+            Apothable[asc.to_exotic] = asc.to_entropic
+        end
+
+        return asc
     end,
 })
 
@@ -181,25 +193,6 @@ end
 if next(SMODS.find_mod("Astronomica")) then
     Ascension({ source = Source.Astronomica, from = "j_ast_facsimile", to_exotic = "j_asc_facsimile" })
     Ascension({ source = Source.Astronomica, from = "j_ast_stopwatch", to_exotic = "j_asc_stopwatch" })
-end
-
-for _, asc in ipairs(AscensionIndex) do
-    local source_file = asc.source_file or get_source_file(asc.from, asc.source)
-    if source_file ~= "skip" then
-        loadFile("items/jokers/" .. asc.source .. source_file .. ".lua")
-    end
-
-    Ascensionable[asc.from] = asc.to_exotic
-
-    if Apothable and asc.to_entropic ~= nil then
-        local entr_source_file = asc.entropic_file or (get_source_file(asc.from, asc.source) .. "_entr")
-        if entr_source_file ~= "skip" then
-            loadFile("items/jokers/" .. asc.source .. "entr/" .. entr_source_file .. ".lua")
-        end
-
-        Apothable[asc.from] = asc.to_entropic
-        Apothable[asc.to_exotic] = asc.to_entropic
-    end
 end
 
 ---@diagnostic disable-next-line: undefined-global
