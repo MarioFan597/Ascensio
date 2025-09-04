@@ -613,11 +613,16 @@ return {
 			j_asc_obelisk = {
 				name = "Obeliscus Calumniatus",
 				text = {
-					"This Joker gains {X:mult,C:white}XMult{} equal to",
-					"the {C:attention}sum{} of total time any {C:attention}poker hands{}",
-					"that is not your {C:attention}most played poker hand{} is played",
-					"Otherwise, {C:attention}reset{} this {C:attention}Joker{}",
-					"{C:inactive}(Currently {X:mult,C:white}X#1#{}{C:inactive}){}",
+					{
+						"This Joker gains {X:mult,C:white}XMult{} equal to",
+						"the {C:attention}sum{} of total time any {C:attention}poker hands{}",
+						"that is not your {C:attention}most played poker hand{} is played",
+						"{C:inactive}(Currently {X:mult,C:white}X#1#{}{C:inactive}){}",
+					},
+					{
+						"This {C:attention}Joker{} is {C:attention}reset{} when",
+						"your {C:attention}most played poker hand{} is played.",
+					},
 				},
 			},
 
