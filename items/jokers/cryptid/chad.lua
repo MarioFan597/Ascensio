@@ -39,7 +39,7 @@ SMODS.Joker({
 				ref_value = "slots",
 				scalar_table = { gain = card.ability.extra.slot_gain },
 				scalar_value = "gain",
-				no_message = true
+				no_message = true,
 			})
 			G.jokers.config.card_limit = G.jokers.config.card_limit + card.ability.extra.slot_gain
 			card_eval_status_text(card, "extra", nil, nil, nil, {

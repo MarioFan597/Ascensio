@@ -71,12 +71,14 @@ SMODS.Joker({
 		then
 			card.ability.extra.mult = 1
 			SMODS.scale_card(card, {
-					ref_table = card.ability.extra,
-					ref_value = "temp_gain",
-					scalar_table = {card_sold_gain = (card.ability.extra.perm_gain * card.ability.extra.immutable.cards_sold)},
-					scalar_value = "card_sold_gain",
-					no_message = true
-				})
+				ref_table = card.ability.extra,
+				ref_value = "temp_gain",
+				scalar_table = {
+					card_sold_gain = (card.ability.extra.perm_gain * card.ability.extra.immutable.cards_sold),
+				},
+				scalar_value = "card_sold_gain",
+				no_message = true,
+			})
 
 			card.ability.extra.immutable.cards_sold = 0
 			card_eval_status_text(card, "extra", nil, nil, nil, {

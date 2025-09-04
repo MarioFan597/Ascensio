@@ -610,6 +610,16 @@ return {
 				},
 			},
 
+			j_asc_obelisk = {
+				name = "Obeliscus Calumniatus",
+				text = {
+					"This Joker gains {X:mult,C:white}XMult{} equal to",
+					"{C:attention}consecutive{} hands played",
+					"without playing your {C:attention}most played poker hand{}",
+					"{C:inactive}(Currently {}{X:mult,C:white}X#1#{}{C:inactive}){}",
+				},
+			},
+
 			j_asc_midas = {
 				name = "Rex Midas",
 				text = {
@@ -1055,13 +1065,13 @@ return {
 				name = "Copy Cat",
 				text = {
 					{
-					"Retrigger all cards",
-					"played {C:attention}#2#{} time(s)",
-					"{C:inactive}(Max {C:attention}#3#{}{C:inactive} retriggers)"
+						"Retrigger all cards",
+						"played {C:attention}#2#{} time(s)",
+						"{C:inactive}(Max {C:attention}#3#{}{C:inactive} retriggers)",
 					},
 					{
-					"Each played card gives",
-					"{C:mult}+#1#{} Mult when scored",
+						"Each played card gives",
+						"{C:mult}+#1#{} Mult when scored",
 					},
 				},
 			},

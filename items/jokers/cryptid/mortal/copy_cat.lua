@@ -1,6 +1,6 @@
 SMODS.Joker({
 	key = "copy_cat",
-	config = { extra = { mult = 2, rep = 1, immutable = {max_rep = 40} } },
+	config = { extra = { mult = 2, rep = 1, immutable = { max_rep = 40 } } },
 	rarity = 3,
 	atlas = "c_atlas_mortal",
 	blueprint_compat = true,
@@ -13,7 +13,7 @@ SMODS.Joker({
 			vars = {
 				lenient_bignum(card.ability.extra.mult),
 				math.min(card.ability.extra.rep, card.ability.extra.immutable.max_rep),
-				card.ability.extra.immutable.max_rep
+				card.ability.extra.immutable.max_rep,
 			},
 		}
 	end,
@@ -22,9 +22,7 @@ SMODS.Joker({
 			if context.cardarea == G.play then
 				return {
 					message = localize("k_again_ex"),
-					repetitions = to_number(
-						math.min(card.ability.extra.rep, card.ability.extra.immutable.max_rep)
-					),
+					repetitions = to_number(math.min(card.ability.extra.rep, card.ability.extra.immutable.max_rep)),
 					card = card,
 				}
 			end
