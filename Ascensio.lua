@@ -10,7 +10,7 @@ end
 ---@param path string Path to the file
 ---@param id? string Mod ID. Defaults to `SMODS.current_mod`.
 ---@return any?
-function loadFile(path, id)
+local function loadFile(path, id)
     local chunk, err = SMODS.load_file(path, id)
     if err ~= nil or chunk == nil then
         return err
