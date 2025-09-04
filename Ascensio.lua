@@ -16,13 +16,16 @@ function loadFile(path, id)
     chunk()
 end
 
-loadFile("Atlas.lua")
+-- Load Atlases.
+loadFile("atlas.lua")
 
 -- Load libraries.
+loadFile("lib/utils.lua")
 loadFile("lib/cardanim.lua")
 loadFile("lib/number.lua")
 loadFile("lib/hooks.lua")
 
+-- Define crossmods.
 ---@enum Source
 Source = {
     Vanilla = "vanilla/",
@@ -61,11 +64,12 @@ end
 ---@overload fun(self: AscensionEntry): AscensionEntry
 Ascension = setmetatable({}, {
     ---@param self AscensionEntry
-    __call = function(self)
+    __call = function(_, self)
         return self
     end,
 })
 
+-- This will process the entries.
 ---@type AscensionEntry[]
 AscensionIndex = {}
 
@@ -181,4 +185,407 @@ for _, asc in ipairs(AscensionIndex) do
         Apothable[asc.from] = asc.to_entropic
         Apothable[asc.to_exotic] = asc.to_entropic
     end
+end
+
+-- Credits system
+local smcmb = SMODS.create_mod_badges
+function SMODS.create_mod_badges(obj, badges)
+    smcmb(obj, badges)
+    if not SMODS.config.no_mod_badges and obj and obj.asc_credits then
+        local function calc_scale_fac(text)
+            local size = 0.9
+            local font = G.LANG.font
+            local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
+            local calced_text_width = 0
+            -- Math reproduced from DynaText:update_text
+            for _, c in utf8.chars(text) do
+                local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE + 2.7 * 1 * G.TILESCALE * font.FONTSCALE
+                calced_text_width = calced_text_width + tx / (G.TILESIZE * G.TILESCALE)
+            end
+            local scale_fac = calced_text_width > max_text_width and max_text_width / calced_text_width or 1
+            return scale_fac
+        end
+        if obj.asc_credits.art or obj.asc_credits.code or obj.asc_credits.idea or obj.asc_credits.name or obj.asc_credits.custom then
+            local scale_fac = {}
+            local min_scale_fac = 1
+            local strings = { "Ascēnsiō" }
+            for _, v in ipairs({ "name", "idea", "art", "code" }) do
+                if obj.asc_credits[v] then
+                    for i = 1, #obj.asc_credits[v] do
+                        strings[#strings + 1] = localize({ type = "variable", key = "cry_" .. v, vars = { obj.asc_credits[v][i] } })[1]
+                    end
+                end
+            end
+            if obj.asc_credits.custom then
+                strings[#strings + 1] = localize({
+                    type = "variable",
+                    key = obj.asc_credits.custom.key,
+                    vars = { obj.asc_credits.custom.text },
+                })
+            end
+            for i = 1, #strings do
+                scale_fac[i] = calc_scale_fac(strings[i])
+                min_scale_fac = math.min(min_scale_fac, scale_fac[i])
+            end
+            local ct = {}
+            for i = 1, #strings do
+                ct[i] = {
+                    string = strings[i],
+                }
+            end
+            local cry_badge = {
+                n = G.UIT.R,
+                config = { align = "cm" },
+                nodes = {
+                    {
+                        n = G.UIT.R,
+                        config = {
+                            align = "cm",
+                            colour = HEX("235bb0"),
+                            r = 0.1,
+                            minw = 2 / min_scale_fac,
+                            minh = 0.36,
+                            emboss = 0.05,
+                            padding = 0.03 * 0.9,
+                        },
+                        nodes = {
+                            { n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
+                            {
+                                n = G.UIT.O,
+                                config = {
+                                    object = DynaText({
+                                        string = ct or "ERROR",
+                                        colours = { obj.asc_credits and obj.asc_credits.text_colour or G.C.WHITE },
+                                        silent = true,
+                                        float = true,
+                                        shadow = true,
+                                        offset_y = -0.03,
+                                        spacing = 1,
+                                        scale = 0.33 * 0.9,
+                                    }),
+                                },
+                            },
+                            { n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
+                        },
+                    },
+                },
+            }
+            local function eq_col(x, y)
+                for _ = 1, 4 do
+                    if x[1] ~= y[1] then
+                        return false
+                    end
+                end
+                return true
+            end
+            for i = 1, #badges do
+                if eq_col(badges[i].nodes[1].config.colour, HEX("235bb0")) then
+                    badges[i].nodes[1].nodes[2].config.object:remove()
+                    badges[i] = cry_badge
+                    break
+                end
+            end
+        end
+    end
+end
+
+-- Ascēnsiō X Astronomica badge
+local smcmb2 = SMODS.create_mod_badges
+function SMODS.create_mod_badges(obj, badges)
+    smcmb2(obj, badges)
+    if not SMODS.config.no_mod_badges and obj and obj.ascxast_credits then
+        local function calc_scale_fac(text)
+            local size = 0.9
+            local font = G.LANG.font
+            local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
+            local calced_text_width = 0
+
+            -- Math reproduced from DynaText:update_text
+            for _, c in utf8.chars(text) do
+                local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE + 2.7 * 1 * G.TILESCALE * font.FONTSCALE
+                calced_text_width = calced_text_width + tx / (G.TILESIZE * G.TILESCALE)
+            end
+            local scale_fac = calced_text_width > max_text_width and max_text_width / calced_text_width or 1
+            return scale_fac
+        end
+        if obj.ascxast_credits.art or obj.ascxast_credits.code or obj.ascxast_credits.idea or obj.ascxast_credits.name or obj.ascxast_credits.custom then
+            local scale_fac = {}
+            local min_scale_fac = 1
+            local strings = { "Ascēnsiō X Astronomica" }
+            for _, v in ipairs({ "name", "idea", "art", "code" }) do
+                if obj.ascxast_credits[v] then
+                    for i = 1, #obj.ascxast_credits[v] do
+                        strings[#strings + 1] = localize({ type = "variable", key = "cry_" .. v, vars = { obj.ascxast_credits[v][i] } })[1]
+                    end
+                end
+            end
+            if obj.ascxast_credits.custom then
+                strings[#strings + 1] = localize({
+                    type = "variable",
+                    key = obj.ascxast_credits.custom.key,
+                    vars = { obj.ascxast_credits.custom.text },
+                })
+            end
+            for i = 1, #strings do
+                scale_fac[i] = calc_scale_fac(strings[i])
+                min_scale_fac = math.min(min_scale_fac, scale_fac[i])
+            end
+            local ct = {}
+            for i = 1, #strings do
+                ct[i] = {
+                    string = strings[i],
+                }
+            end
+            local cry_badge = {
+                n = G.UIT.R,
+                config = { align = "cm" },
+                nodes = {
+                    {
+                        n = G.UIT.R,
+                        config = {
+                            align = "cm",
+                            colour = HEX("7664AC"),
+                            r = 0.1,
+                            minw = 2 / min_scale_fac,
+                            minh = 0.36,
+                            emboss = 0.05,
+                            padding = 0.03 * 0.9,
+                        },
+                        nodes = {
+                            { n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
+                            {
+                                n = G.UIT.O,
+                                config = {
+                                    object = DynaText({
+                                        string = ct or "ERROR",
+                                        colours = {
+                                            obj.ascxast_credits and obj.ascxast_credits.text_colour or G.C.WHITE,
+                                        },
+                                        silent = true,
+                                        float = true,
+                                        shadow = true,
+                                        offset_y = -0.03,
+                                        spacing = 1,
+                                        scale = 0.33 * 0.9,
+                                    }),
+                                },
+                            },
+                            { n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
+                        },
+                    },
+                },
+            }
+            local function eq_col(x, y)
+                for _ = 1, 4 do
+                    if x[1] ~= y[1] then
+                        return false
+                    end
+                end
+                return true
+            end
+            for i = 1, #badges do
+                if eq_col(badges[i].nodes[1].config.colour, HEX("235bb0")) then
+                    badges[i].nodes[1].nodes[2].config.object:remove()
+                    badges[i] = cry_badge
+                    break
+                end
+            end
+        end
+    end
+end
+
+-- Ascēnsiō X Entropy Tag
+local smcmb3 = SMODS.create_mod_badges
+function SMODS.create_mod_badges(obj, badges)
+    smcmb3(obj, badges)
+    if not SMODS.config.no_mod_badges and obj and obj.ascxentr_credits then
+        local function calc_scale_fac(text)
+            local size = 0.9
+            local font = G.LANG.font
+            local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
+            local calced_text_width = 0
+            -- Math reproduced from DynaText:update_text
+            for _, c in utf8.chars(text) do
+                local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE + 2.7 * 1 * G.TILESCALE * font.FONTSCALE
+                calced_text_width = calced_text_width + tx / (G.TILESIZE * G.TILESCALE)
+            end
+            local scale_fac = calced_text_width > max_text_width and max_text_width / calced_text_width or 1
+            return scale_fac
+        end
+        if obj.ascxentr_credits.art or obj.ascxentr_credits.code or obj.ascxentr_credits.idea or obj.ascxentr_credits.name or obj.ascxentr_credits.custom then
+            local scale_fac = {}
+            local min_scale_fac = 1
+            local strings = { "Ascēnsiō X Entropy" }
+            for _, v in ipairs({ "name", "idea", "art", "code" }) do
+                if obj.ascxentr_credits[v] then
+                    for i = 1, #obj.ascxentr_credits[v] do
+                        strings[#strings + 1] = localize({ type = "variable", key = "cry_" .. v, vars = { obj.ascxentr_credits[v][i] } })[1]
+                    end
+                end
+            end
+            if obj.ascxentr_credits.custom then
+                strings[#strings + 1] = localize({
+                    type = "variable",
+                    key = obj.ascxentr_credits.custom.key,
+                    vars = { obj.ascxentr_credits.custom.text },
+                })
+            end
+            for i = 1, #strings do
+                scale_fac[i] = calc_scale_fac(strings[i])
+                min_scale_fac = math.min(min_scale_fac, scale_fac[i])
+            end
+            local ct = {}
+            for i = 1, #strings do
+                ct[i] = {
+                    string = strings[i],
+                }
+            end
+            local cry_badge = {
+                n = G.UIT.R,
+                config = { align = "cm" },
+                nodes = {
+                    {
+                        n = G.UIT.R,
+                        config = {
+                            align = "cm",
+                            colour = HEX("912E59"),
+                            r = 0.1,
+                            minw = 2 / min_scale_fac,
+                            minh = 0.36,
+                            emboss = 0.05,
+                            padding = 0.03 * 0.9,
+                        },
+                        nodes = {
+                            { n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
+                            {
+                                n = G.UIT.O,
+                                config = {
+                                    object = DynaText({
+                                        string = ct or "ERROR",
+                                        colours = {
+                                            obj.ascxentr_credits and obj.ascxentr_credits.text_colour or G.C.WHITE,
+                                        },
+                                        silent = true,
+                                        float = true,
+                                        shadow = true,
+                                        offset_y = -0.03,
+                                        spacing = 1,
+                                        scale = 0.33 * 0.9,
+                                    }),
+                                },
+                            },
+                            { n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
+                        },
+                    },
+                },
+            }
+            local function eq_col(x, y)
+                for _ = 1, 4 do
+                    if x[1] ~= y[1] then
+                        return false
+                    end
+                end
+                return true
+            end
+            for i = 1, #badges do
+                if eq_col(badges[i].nodes[1].config.colour, HEX("235bb0")) then
+                    badges[i].nodes[1].nodes[2].config.object:remove()
+                    badges[i] = cry_badge
+                    break
+                end
+            end
+        end
+    end
+end
+
+-- Mod Menu
+
+asc_config = SMODS.current_mod and SMODS.current_mod.config or {}
+if asc_config["Insanity Mode!!!"] == nil then
+    asc_config["Insanity Mode!!!"] = false
+end
+
+SMODS.current_mod.config_tab = function()
+    return {
+        n = G.UIT.ROOT,
+        config = { r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 4 },
+        nodes = {
+            {
+                n = G.UIT.R,
+                config = { align = "cm", padding = 0 },
+                nodes = {
+                    {
+                        n = G.UIT.C,
+                        config = { align = "cm", padding = 0 },
+                        nodes = {
+                            {
+                                n = G.UIT.T,
+                                config = {
+                                    text = localize("asc_config_insanity_mode"),
+                                    scale = 1,
+                                    colour = G.C.UI.TEXT_LIGHT,
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+
+            {
+                n = G.UIT.R,
+                config = { align = "cm", padding = 0 },
+                nodes = {
+                    {
+                        n = G.UIT.C,
+                        config = { align = "cm", padding = 0 },
+                        nodes = {
+                            { n = G.UIT.T, config = { text = ">", scale = 1, colour = G.C.UI.TEXT_LIGHT } },
+                        },
+                    },
+                    {
+                        n = G.UIT.C,
+                        config = { align = "cm", padding = 0.2 },
+                        nodes = {
+                            create_toggle({
+                                col = true,
+                                label = "",
+                                scale = 1,
+                                w = 0,
+                                shadow = true,
+                                ref_table = asc_config,
+                                ref_value = "Insanity Mode!!!",
+                            }),
+                        },
+                    },
+                    {
+                        n = G.UIT.C,
+                        config = { align = "cm", padding = 0.2 },
+                        nodes = {
+                            { n = G.UIT.T, config = { text = "<", scale = 1, colour = G.C.UI.TEXT_LIGHT } },
+                        },
+                    },
+                },
+            },
+            {
+                n = G.UIT.R,
+                config = { align = "cl", padding = 0 },
+                nodes = {
+                    {
+                        n = G.UIT.C,
+                        config = { align = "c", padding = 0.1 },
+                        nodes = {
+                            {
+                                n = G.UIT.T,
+                                config = {
+                                    text = localize("asc_config_insanity_explanation"),
+                                    scale = 0.4,
+                                    colour = G.C.DARK_EDITION,
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+    }
 end
