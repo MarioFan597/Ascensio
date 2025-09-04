@@ -614,7 +614,9 @@ return {
 				name = "Obeliscus Calumniatus",
 				text = {
 					"This Joker gains {X:mult,C:white}XMult{} equal to",
-					"{C:attention}consecutive{}",
+					"{C:attention}consecutive{} hands played",
+					"without playing your {C:attention}most played poker hand{}",
+					"{C:inactive}(Currently {}{X:mult,C:white}X#1#{}{C:inactive}){}",
 				},
 			},
 
