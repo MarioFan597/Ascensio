@@ -144,6 +144,7 @@ Ascension({ source = Source.Vanilla, from = "j_to_the_moon", to_exotic = "j_asc_
 Ascension({ source = Source.Vanilla, from = "j_golden", to_exotic = "j_asc_golden" })
 Ascension({ source = Source.Vanilla, from = "j_bull", to_exotic = "j_asc_bull" })
 Ascension({ source = Source.Vanilla, from = "j_selzer", to_exotic = "j_asc_seltzer", source_file = "seltzer" }) -- Sic! Don't correct!
+Ascension({ source = Source.Vanilla, from = "j_smiley_face", to_exotic = "j_asc_smiley_face" })
 Ascension({ source = Source.Vanilla, from = "j_campfire", to_exotic = "j_asc_campfire" })
 Ascension({ source = Source.Vanilla, from = "j_throwback", to_exotic = "j_asc_throwback" })
 Ascension({ source = Source.Vanilla, from = "j_hanging_chad", to_exotic = "j_asc_hanging_chad" })
@@ -170,7 +171,7 @@ Ascension({ source = Source.Cryptid, from = "j_cry_gardenfork", to_exotic = "j_a
 Ascension({ source = Source.Cryptid, from = "j_cry_antennastoheaven", to_exotic = "j_asc_like_antennas_to_heaven", source_file = "like_antennas_to_heaven" })
 Ascension({ source = Source.Cryptid, from = "j_cry_chad", to_exotic = "j_asc_chad" })
 Ascension({ source = Source.Cryptid, from = "j_cry_oil_lamp", to_exotic = "j_asc_oil_lamp" })
-Ascension({ source = Source.Cryptid, from = "j_cry_huntingseason", to_exotic = "j_asc_hunting_season" })
+Ascension({ source = Source.Cryptid, from = "j_cry_huntingseason", to_exotic = "j_asc_hunting_season", source_file = "hunting_season" })
 Ascension({ source = Source.Cryptid, from = "j_cry_highfive", to_exotic = "j_asc_high_five", source_file = "high_five" })
 Ascension({ source = Source.Cryptid, from = "j_cry_CodeJoker", to_exotic = "j_asc_code_joker", source_file = "code_joker" })
 
