@@ -28,6 +28,13 @@ loadFile("lib/cardanim.lua")
 loadFile("lib/number.lua")
 loadFile("lib/hooks.lua")
 
+-- Load consumable.
+loadFile("items/consumables/ascensio/ascension.lua")
+
+if Entropy then
+    loadFile("items/consumables/entropy/apotheosis.lua")
+end
+
 -- Define crossmods.
 ---@enum Source
 Source = {
@@ -55,142 +62,162 @@ local function get_source_file(key, source)
     end
 end
 
+-- This will process the entries.
+---@type AscensionEntry[]
+AscensionIndex = {}
+
 -- TODO: Reclarify the fields.
 
 ---@class AscensionEntry
 ---@field source Source Where is the source of the Mortal version of the Joker. Defaults to `Source.Vanilla`.
 ---@field from string The key of the Mortal joker.
 ---@field to_exotic string The key of the Ascended joker.
----@field source_file? string Where the Joker is defined in. Defaults to the key of the Mortal Joker with the leading `"j_"` removed. `".lua"` file extension are not to be added.
+---@field source_file? string Where the Joker is defined in. Defaults to the key of the Mortal Joker with the leading `"j_"` removed. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
 ---@field to_entropic? string The key of the Apotheosis joker.
 ---@field entropic_file? string Where the Entropic Joker is defined in. Defaults to the key of the Mortal Joker with the leading `"j_"` removed and the `"_entr"` appended. `".lua"` file extension are not to be added.
 ---@overload fun(self: AscensionEntry): AscensionEntry
 Ascension = setmetatable({}, {
     ---@param self AscensionEntry
     __call = function(_, self)
+        table.insert(AscensionIndex, self)
         return self
     end,
 })
 
--- This will process the entries.
----@type AscensionEntry[]
-AscensionIndex = {}
-
 -- Vanilla Ascensions
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_joker", to_exotic = "j_asc_jimbo", source_file = "jimbo" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_greedy_joker", to_exotic = "j_asc_greedy" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_lusty_joker", to_exotic = "j_asc_lusty" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_wrathful_joker", to_exotic = "j_asc_wrathful" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_gluttenous_joker", to_exotic = "j_asc_gluttonous", source_file = "gluttonous" })) -- Sic! Don't correct!
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_jolly", to_exotic = "j_asc_jolly" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_zany", to_exotic = "j_asc_zany" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_mad", to_exotic = "j_asc_mad" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_crazy", to_exotic = "j_asc_crazy" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_droll", to_exotic = "j_asc_droll" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_sly", to_exotic = "j_asc_sly" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_wily", to_exotic = "j_asc_wily" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_clever", to_exotic = "j_asc_clever" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_devious", to_exotic = "j_asc_devious" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_crafty", to_exotic = "j_asc_crafty" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_stencil", to_exotic = "j_asc_stencil" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_four_fingers", to_exotic = "j_asc_four_fingers" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_mime", to_exotic = "j_asc_mime" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_credit_card", to_exotic = "j_asc_credit_card" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_ceremonial", to_exotic = "j_asc_ceremonial" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_banner", to_exotic = "j_asc_banner" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_mystic_summit", to_exotic = "j_asc_mystic_summit" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_marble", to_exotic = "j_asc_marble", to_entropic = "j_asc_marble_entr" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_loyalty_card", to_exotic = "j_asc_loyalty_card" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_misprint", to_exotic = "j_asc_misprint" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_fibonacci", to_exotic = "j_asc_fibonacci" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_gros_michel", to_exotic = "j_asc_banana" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_even_steven", to_exotic = "j_asc_even_steven" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_odd_todd", to_exotic = "j_asc_odd_todd" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_space", to_exotic = "j_asc_space" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_egg", to_exotic = "j_asc_egg" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_scary_face", to_exotic = "j_asc_scary" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_abstract", to_exotic = "j_asc_abstract" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_blackboard", to_exotic = "j_asc_blackboard" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_ice_cream", to_exotic = "j_asc_ice_cream" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_dna", to_exotic = "j_asc_dna" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_blue_joker", to_exotic = "j_asc_blue", source_file = "blue" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_cavendish", to_exotic = "j_asc_banana" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_square", to_exotic = "j_asc_square" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_supernova", to_exotic = "j_asc_supernova" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_hologram", to_exotic = "j_asc_hologram" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_obelisk", to_exotic = "j_asc_obelisk" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_midas_mask", to_exotic = "j_asc_midas" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_to_the_moon", to_exotic = "j_asc_to_the_moon" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_golden", to_exotic = "j_asc_golden" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_bull", to_exotic = "j_asc_bull" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_selzer", to_exotic = "j_asc_seltzer", source_file = "seltzer" })) -- Sic! Don't correct!
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_campfire", to_exotic = "j_asc_campfire" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_throwback", to_exotic = "j_asc_throwback" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_hanging_chad", to_exotic = "j_asc_hanging_chad" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_blueprint", to_exotic = "j_asc_blueprint" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_mr_bones", to_exotic = "j_asc_mr_bones" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_sock_and_buskin", to_exotic = "j_asc_sock_and_buskin" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_wee", to_exotic = "j_asc_wee" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_oops", to_exotic = "j_asc_oops" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_duo", to_exotic = "j_asc_duo" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_trio", to_exotic = "j_asc_trio" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_family", to_exotic = "j_asc_family" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_order", to_exotic = "j_asc_order" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_tribe", to_exotic = "j_asc_tribe" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_brainstorm", to_exotic = "j_asc_brainstorm" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_drivers_license", to_exotic = "j_asc_drivers_license" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_bootstraps", to_exotic = "j_asc_bootstraps" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_caino", to_exotic = "j_asc_canio", source_file = "canio" })) -- Sic! Don't correct!
-table.insert(AscensionIndex, Ascension({ source = Source.Vanilla, from = "j_seance", to_exotic = "j_asc_seance" }))
+Ascension({ source = Source.Vanilla, from = "j_joker", to_exotic = "j_asc_jimbo", source_file = "jimbo" })
+Ascension({ source = Source.Vanilla, from = "j_greedy_joker", to_exotic = "j_asc_greedy", source_file = "greedy" })
+Ascension({ source = Source.Vanilla, from = "j_lusty_joker", to_exotic = "j_asc_lusty", source_file = "lusty" })
+Ascension({ source = Source.Vanilla, from = "j_wrathful_joker", to_exotic = "j_asc_wrathful", source_file = "wrathful" })
+Ascension({ source = Source.Vanilla, from = "j_gluttenous_joker", to_exotic = "j_asc_gluttonous", source_file = "gluttonous" }) -- Sic! Don't correct!
+Ascension({ source = Source.Vanilla, from = "j_jolly", to_exotic = "j_asc_jolly" })
+Ascension({ source = Source.Vanilla, from = "j_zany", to_exotic = "j_asc_zany" })
+Ascension({ source = Source.Vanilla, from = "j_mad", to_exotic = "j_asc_mad" })
+Ascension({ source = Source.Vanilla, from = "j_crazy", to_exotic = "j_asc_crazy" })
+Ascension({ source = Source.Vanilla, from = "j_droll", to_exotic = "j_asc_droll" })
+Ascension({ source = Source.Vanilla, from = "j_sly", to_exotic = "j_asc_sly" })
+Ascension({ source = Source.Vanilla, from = "j_wily", to_exotic = "j_asc_wily" })
+Ascension({ source = Source.Vanilla, from = "j_clever", to_exotic = "j_asc_clever" })
+Ascension({ source = Source.Vanilla, from = "j_devious", to_exotic = "j_asc_devious" })
+Ascension({ source = Source.Vanilla, from = "j_crafty", to_exotic = "j_asc_crafty" })
+Ascension({ source = Source.Vanilla, from = "j_stencil", to_exotic = "j_asc_stencil" })
+Ascension({ source = Source.Vanilla, from = "j_four_fingers", to_exotic = "j_asc_four_fingers" })
+Ascension({ source = Source.Vanilla, from = "j_mime", to_exotic = "j_asc_mime" })
+Ascension({ source = Source.Vanilla, from = "j_credit_card", to_exotic = "j_asc_credit_card" })
+Ascension({ source = Source.Vanilla, from = "j_ceremonial", to_exotic = "j_asc_ceremonial" })
+Ascension({ source = Source.Vanilla, from = "j_banner", to_exotic = "j_asc_banner" })
+Ascension({ source = Source.Vanilla, from = "j_mystic_summit", to_exotic = "j_asc_mystic_summit" })
+Ascension({ source = Source.Vanilla, from = "j_marble", to_exotic = "j_asc_marble", to_entropic = "j_asc_marble_entr" })
+Ascension({ source = Source.Vanilla, from = "j_loyalty_card", to_exotic = "j_asc_loyalty_card" })
+Ascension({ source = Source.Vanilla, from = "j_misprint", to_exotic = "j_asc_misprint" })
+Ascension({ source = Source.Vanilla, from = "j_fibonacci", to_exotic = "j_asc_fibonacci" })
+Ascension({ source = Source.Vanilla, from = "j_gros_michel", to_exotic = "j_asc_banana", source_file = "banana" })
+Ascension({ source = Source.Vanilla, from = "j_even_steven", to_exotic = "j_asc_even_steven" })
+Ascension({ source = Source.Vanilla, from = "j_odd_todd", to_exotic = "j_asc_odd_todd" })
+Ascension({ source = Source.Vanilla, from = "j_space", to_exotic = "j_asc_space" })
+Ascension({ source = Source.Vanilla, from = "j_egg", to_exotic = "j_asc_egg" })
+Ascension({ source = Source.Vanilla, from = "j_scary_face", to_exotic = "j_asc_scary", source_file = "scary" })
+Ascension({ source = Source.Vanilla, from = "j_abstract", to_exotic = "j_asc_abstract" })
+Ascension({ source = Source.Vanilla, from = "j_blackboard", to_exotic = "j_asc_blackboard" })
+Ascension({ source = Source.Vanilla, from = "j_ice_cream", to_exotic = "j_asc_ice_cream" })
+Ascension({ source = Source.Vanilla, from = "j_dna", to_exotic = "j_asc_dna" })
+Ascension({ source = Source.Vanilla, from = "j_blue_joker", to_exotic = "j_asc_blue", source_file = "blue" })
+Ascension({ source = Source.Vanilla, from = "j_cavendish", to_exotic = "j_asc_banana", source_file = "skip" })
+Ascension({ source = Source.Vanilla, from = "j_square", to_exotic = "j_asc_square" })
+Ascension({ source = Source.Vanilla, from = "j_supernova", to_exotic = "j_asc_supernova" })
+Ascension({ source = Source.Vanilla, from = "j_hologram", to_exotic = "j_asc_hologram" })
+Ascension({ source = Source.Vanilla, from = "j_obelisk", to_exotic = "j_asc_obelisk" })
+Ascension({ source = Source.Vanilla, from = "j_midas_mask", to_exotic = "j_asc_midas", source_file = "midas" })
+Ascension({ source = Source.Vanilla, from = "j_to_the_moon", to_exotic = "j_asc_to_the_moon" })
+Ascension({ source = Source.Vanilla, from = "j_golden", to_exotic = "j_asc_golden" })
+Ascension({ source = Source.Vanilla, from = "j_bull", to_exotic = "j_asc_bull" })
+Ascension({ source = Source.Vanilla, from = "j_selzer", to_exotic = "j_asc_seltzer", source_file = "seltzer" }) -- Sic! Don't correct!
+Ascension({ source = Source.Vanilla, from = "j_campfire", to_exotic = "j_asc_campfire" })
+Ascension({ source = Source.Vanilla, from = "j_throwback", to_exotic = "j_asc_throwback" })
+Ascension({ source = Source.Vanilla, from = "j_hanging_chad", to_exotic = "j_asc_hanging_chad" })
+Ascension({ source = Source.Vanilla, from = "j_blueprint", to_exotic = "j_asc_blueprint" })
+Ascension({ source = Source.Vanilla, from = "j_mr_bones", to_exotic = "j_asc_mr_bones", source_file = "bones" })
+Ascension({ source = Source.Vanilla, from = "j_sock_and_buskin", to_exotic = "j_asc_sock_and_buskin" })
+Ascension({ source = Source.Vanilla, from = "j_wee", to_exotic = "j_asc_wee" })
+Ascension({ source = Source.Vanilla, from = "j_oops", to_exotic = "j_asc_oops" })
+Ascension({ source = Source.Vanilla, from = "j_duo", to_exotic = "j_asc_duo" })
+Ascension({ source = Source.Vanilla, from = "j_trio", to_exotic = "j_asc_trio" })
+Ascension({ source = Source.Vanilla, from = "j_family", to_exotic = "j_asc_family" })
+Ascension({ source = Source.Vanilla, from = "j_order", to_exotic = "j_asc_order" })
+Ascension({ source = Source.Vanilla, from = "j_tribe", to_exotic = "j_asc_tribe" })
+Ascension({ source = Source.Vanilla, from = "j_brainstorm", to_exotic = "j_asc_brainstorm" })
+Ascension({ source = Source.Vanilla, from = "j_drivers_license", to_exotic = "j_asc_drivers_license" })
+Ascension({ source = Source.Vanilla, from = "j_bootstraps", to_exotic = "j_asc_bootstraps" })
+Ascension({ source = Source.Vanilla, from = "j_caino", to_exotic = "j_asc_canio", source_file = "canio" }) -- Sic! Don't correct!
+Ascension({ source = Source.Vanilla, from = "j_seance", to_exotic = "j_asc_seance" })
 
 -- Cryptid Ascensions
-table.insert(AscensionIndex, Ascension({ source = Source.Cryptid, from = "j_cry_canvas", to_exotic = "j_asc_canvas" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Cryptid, from = "j_cry_sync_catalyst", to_exotic = "j_asc_sync_catalyst" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Cryptid, from = "j_cry_gardenfork", to_exotic = "j_asc_gardenfork" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Cryptid, from = "j_cry_antennastoheaven", to_exotic = "j_asc_like_antennas_to_heaven" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Cryptid, from = "j_cry_chad", to_exotic = "j_asc_chad" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Cryptid, from = "j_cry_oil_lamp", to_exotic = "j_asc_oil_lamp" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Cryptid, from = "j_cry_huntingseason", to_exotic = "j_asc_hunting_season" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Cryptid, from = "j_cry_highfive", to_exotic = "j_asc_high_five" }))
-table.insert(AscensionIndex, Ascension({ source = Source.Cryptid, from = "j_cry_CodeJoker", to_exotic = "j_asc_code_joker" }))
+Ascension({ source = Source.Cryptid, from = "j_cry_canvas", to_exotic = "j_asc_canvas" })
+Ascension({ source = Source.Cryptid, from = "j_cry_sync_catalyst", to_exotic = "j_asc_sync_catalyst" })
+Ascension({ source = Source.Cryptid, from = "j_cry_gardenfork", to_exotic = "j_asc_gardenfork" })
+Ascension({ source = Source.Cryptid, from = "j_cry_antennastoheaven", to_exotic = "j_asc_like_antennas_to_heaven", source_file = "like_antennas_to_heaven" })
+Ascension({ source = Source.Cryptid, from = "j_cry_chad", to_exotic = "j_asc_chad" })
+Ascension({ source = Source.Cryptid, from = "j_cry_oil_lamp", to_exotic = "j_asc_oil_lamp" })
+Ascension({ source = Source.Cryptid, from = "j_cry_huntingseason", to_exotic = "j_asc_hunting_season" })
+Ascension({ source = Source.Cryptid, from = "j_cry_highfive", to_exotic = "j_asc_high_five", source_file = "high_five" })
+Ascension({ source = Source.Cryptid, from = "j_cry_CodeJoker", to_exotic = "j_asc_code_joker", source_file = "code_joker" })
 
 -- Mortals for Cryptid Exotics
-table.insert(AscensionIndex, Ascension({ source = Source.MortalCryptid, from = "j_asc_copy_cat", to_exotic = "j_cry_iterum", source_file = "copy_cat" }))
-table.insert(AscensionIndex, Ascension({ source = Source.MortalCryptid, from = "j_asc_b_cake", to_exotic = "j_cry_crustulum" }))
-table.insert(AscensionIndex, Ascension({ source = Source.MortalCryptid, from = "j_asc_b_pie", to_exotic = "j_cry_circulus_pistoris" }))
-table.insert(AscensionIndex, Ascension({ source = Source.MortalCryptid, from = "j_asc_orion_pax", to_exotic = "j_cry_primus" }))
-table.insert(AscensionIndex, Ascension({ source = Source.MortalCryptid, from = "j_asc_accomplice", to_exotic = "j_cry_gemino" }))
-table.insert(AscensionIndex, Ascension({ source = Source.MortalCryptid, from = "j_asc_duane", to_exotic = "j_cry_duplicare" }))
-table.insert(AscensionIndex, Ascension({ source = Source.MortalCryptid, from = "j_asc_exorcist", to_exotic = "j_cry_formidiulosus" }))
+Ascension({ source = Source.MortalCryptid, from = "j_asc_copy_cat", to_exotic = "j_cry_iterum", source_file = "copy_cat" })
+Ascension({ source = Source.MortalCryptid, from = "j_asc_b_cake", to_exotic = "j_cry_crustulum" })
+Ascension({ source = Source.MortalCryptid, from = "j_asc_b_pie", to_exotic = "j_cry_circulus_pistoris" })
+Ascension({ source = Source.MortalCryptid, from = "j_asc_orion_pax", to_exotic = "j_cry_primus" })
+Ascension({ source = Source.MortalCryptid, from = "j_asc_accomplice", to_exotic = "j_cry_gemino" })
+Ascension({ source = Source.MortalCryptid, from = "j_asc_duane", to_exotic = "j_cry_duplicare" })
+Ascension({ source = Source.MortalCryptid, from = "j_asc_exorcist", to_exotic = "j_cry_formidiulosus" })
 
 -- Entropy Ascensions
 if Entropy then
-    table.insert(AscensionIndex, Ascension({ source = Source.Entropy, from = "j_entr_sunny_joker", to_exotic = "j_asc_sunny_joker", to_entropic = "j_asc_sunny_joker_entr" }))
-    table.insert(AscensionIndex, Ascension({ source = Source.Entropy, from = "j_entr_chuckle_cola", to_exotic = "j_asc_chuckle_cola" }))
+    Ascension({ source = Source.Entropy, from = "j_entr_sunny_joker", to_exotic = "j_asc_sunny_joker", to_entropic = "j_asc_sunny_joker_entr" })
+    Ascension({ source = Source.Entropy, from = "j_entr_chuckle_cola", to_exotic = "j_asc_chuckle_cola" })
 end
 
 -- Astronomica Ascensions
 if next(SMODS.find_mod("Astronomica")) then
-    table.insert(AscensionIndex, Ascension({ source = Source.Astronomica, from = "j_ast_facsimile", to_exotic = "j_asc_facsimile" }))
-    table.insert(AscensionIndex, Ascension({ source = Source.Astronomica, from = "j_ast_stopwatch", to_exotic = "j_asc_stopwatch" }))
+    Ascension({ source = Source.Astronomica, from = "j_ast_facsimile", to_exotic = "j_asc_facsimile" })
+    Ascension({ source = Source.Astronomica, from = "j_ast_stopwatch", to_exotic = "j_asc_stopwatch" })
 end
 
 for _, asc in ipairs(AscensionIndex) do
     local source_file = asc.source_file or get_source_file(asc.from, asc.source)
-    loadFile("items/jokers/" .. asc.source .. source_file .. ".lua")
+    if source_file ~= "skip" then
+        loadFile("items/jokers/" .. asc.source .. source_file .. ".lua")
+    end
 
     Ascensionable[asc.from] = asc.to_exotic
 
     if Apothable and asc.to_entropic ~= nil then
         local entr_source_file = asc.entropic_file or (get_source_file(asc.from, asc.source) .. "_entr")
-        loadFile("items/jokers/" .. asc.source .. "entr/" .. entr_source_file .. ".lua")
+        if entr_source_file ~= "skip" then
+            loadFile("items/jokers/" .. asc.source .. "entr/" .. entr_source_file .. ".lua")
+        end
 
         Apothable[asc.from] = asc.to_entropic
         Apothable[asc.to_exotic] = asc.to_entropic
     end
 end
 
--- Credits system
+---@diagnostic disable-next-line: undefined-global
+----------------Colours------------------
+---------Special Thanks Colours----------
+loc_colour()
+G.ARGS.LOC_COLOURS.asc_tattered = HEX("2ad5ff")
+G.ARGS.LOC_COLOURS.asc_slipstream = HEX("cc99ff")
+G.ARGS.LOC_COLOURS.asc_glitchkat = HEX("f04360")
+G.ARGS.LOC_COLOURS.asc_somethingcom515 = HEX("E8463D")
+G.ARGS.LOC_COLOURS.asc_hssr = HEX("51c1ffff")
+G.ARGS.LOC_COLOURS.asc_omega = HEX("f5fffa")
+G.ARGS.LOC_COLOURS.asc_oinite = HEX("dc143c")
+G.ARGS.LOC_COLOURS.asc_hexa = HEX("52c5ff")
+G.ARGS.LOC_COLOURS.asc_grahkon = HEX("236400")
+G.ARGS.LOC_COLOURS.asc_grahkon_bg = HEX("48CF00")
+
+-- Credits system (Origin: Entropy)
 local smcmb = SMODS.create_mod_badges
 function SMODS.create_mod_badges(obj, badges)
     smcmb(obj, badges)
