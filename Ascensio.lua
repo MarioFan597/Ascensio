@@ -35,6 +35,9 @@ if Entropy then
     loadFile("items/consumables/entropy/apotheosis.lua")
 end
 
+-- Load deck.
+loadFile("items/decks/ascensio/starlight.lua")
+
 -- Define crossmods.
 ---@enum Source
 Source = {
@@ -48,34 +51,26 @@ Source = {
 }
 
 ---@param key string
----@param source Source
 ---@return string
-local function get_source_file(key, source)
-    if source == "vanilla/" then
-        return string.sub(key, 3)
-    else
-        if source == "entropy/" then
-            return string.sub(key, 8)
-        else
-            return string.sub(key, 7)
-        end
-    end
+local function get_source_file(key)
+    return string.sub(key, 7)
 end
 
 -- TODO: Reclarify the fields.
+-- TODO: New source_file API
 
 ---@class AscensionEntry
 ---@field source Source Where is the source of the Mortal version of the Joker. Defaults to `Source.Vanilla`.
 ---@field from string The key of the Mortal joker.
 ---@field to_exotic string The key of the Ascended joker.
----@field source_file? string Where the Joker is defined in. Defaults to the key of the Mortal Joker with the leading `"j_"` removed. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
+---@field source_file? string Where the Joker is defined in. Defaults to the key of the Ascended Joker with the leading `"j_asc"` removed. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
 ---@field to_entropic? string The key of the Apotheosis joker.
 ---@field entropic_file? string Where the Entropic Joker is defined in. Defaults to the key of the Mortal Joker with the leading `"j_"` removed and the `"_entr"` appended. `".lua"` file extension are not to be added.
 ---@overload fun(self: AscensionEntry): AscensionEntry
 Ascension = setmetatable({}, {
     ---@param asc AscensionEntry
     __call = function(_, asc)
-        local source_file = asc.source_file or get_source_file(asc.from, asc.source)
+        local source_file = asc.source_file or get_source_file(asc.to_exotic)
         if source_file ~= "skip" then
             loadFile("items/jokers/" .. asc.source .. source_file .. ".lua")
         end
@@ -83,9 +78,9 @@ Ascension = setmetatable({}, {
         Ascensionable[asc.from] = asc.to_exotic
 
         if Apothable and asc.to_entropic ~= nil then
-            local entr_source_file = asc.entropic_file or (get_source_file(asc.from, asc.source) .. "_entr")
+            local entr_source_file = asc.entropic_file or get_source_file(asc.to_exotic)
             if entr_source_file ~= "skip" then
-                loadFile("items/jokers/" .. asc.source .. "entr/" .. entr_source_file .. ".lua")
+                loadFile("items/jokers/" .. asc.source .. "entr/" .. entr_source_file .. "_entr.lua")
             end
 
             Apothable[asc.from] = asc.to_entropic
@@ -97,11 +92,11 @@ Ascension = setmetatable({}, {
 })
 
 -- Vanilla Ascensions
-Ascension({ source = Source.Vanilla, from = "j_joker", to_exotic = "j_asc_jimbo", source_file = "jimbo" })
-Ascension({ source = Source.Vanilla, from = "j_greedy_joker", to_exotic = "j_asc_greedy", source_file = "greedy" })
-Ascension({ source = Source.Vanilla, from = "j_lusty_joker", to_exotic = "j_asc_lusty", source_file = "lusty" })
-Ascension({ source = Source.Vanilla, from = "j_wrathful_joker", to_exotic = "j_asc_wrathful", source_file = "wrathful" })
-Ascension({ source = Source.Vanilla, from = "j_gluttenous_joker", to_exotic = "j_asc_gluttonous", source_file = "gluttonous" }) -- Sic! Don't correct!
+Ascension({ source = Source.Vanilla, from = "j_joker", to_exotic = "j_asc_jimbo" })
+Ascension({ source = Source.Vanilla, from = "j_greedy_joker", to_exotic = "j_asc_greedy" })
+Ascension({ source = Source.Vanilla, from = "j_lusty_joker", to_exotic = "j_asc_lusty" })
+Ascension({ source = Source.Vanilla, from = "j_wrathful_joker", to_exotic = "j_asc_wrathful" })
+Ascension({ source = Source.Vanilla, from = "j_gluttenous_joker", to_exotic = "j_asc_gluttonous" }) -- Sic! Don't correct!
 Ascension({ source = Source.Vanilla, from = "j_jolly", to_exotic = "j_asc_jolly" })
 Ascension({ source = Source.Vanilla, from = "j_zany", to_exotic = "j_asc_zany" })
 Ascension({ source = Source.Vanilla, from = "j_mad", to_exotic = "j_asc_mad" })
@@ -123,33 +118,33 @@ Ascension({ source = Source.Vanilla, from = "j_marble", to_exotic = "j_asc_marbl
 Ascension({ source = Source.Vanilla, from = "j_loyalty_card", to_exotic = "j_asc_loyalty_card" })
 Ascension({ source = Source.Vanilla, from = "j_misprint", to_exotic = "j_asc_misprint" })
 Ascension({ source = Source.Vanilla, from = "j_fibonacci", to_exotic = "j_asc_fibonacci" })
-Ascension({ source = Source.Vanilla, from = "j_gros_michel", to_exotic = "j_asc_banana", source_file = "banana" })
+Ascension({ source = Source.Vanilla, from = "j_gros_michel", to_exotic = "j_asc_banana" })
 Ascension({ source = Source.Vanilla, from = "j_even_steven", to_exotic = "j_asc_even_steven" })
 Ascension({ source = Source.Vanilla, from = "j_odd_todd", to_exotic = "j_asc_odd_todd" })
 Ascension({ source = Source.Vanilla, from = "j_space", to_exotic = "j_asc_space" })
 Ascension({ source = Source.Vanilla, from = "j_egg", to_exotic = "j_asc_egg" })
-Ascension({ source = Source.Vanilla, from = "j_scary_face", to_exotic = "j_asc_scary", source_file = "scary" })
+Ascension({ source = Source.Vanilla, from = "j_scary_face", to_exotic = "j_asc_scary" })
 Ascension({ source = Source.Vanilla, from = "j_abstract", to_exotic = "j_asc_abstract" })
 Ascension({ source = Source.Vanilla, from = "j_blackboard", to_exotic = "j_asc_blackboard" })
 Ascension({ source = Source.Vanilla, from = "j_ice_cream", to_exotic = "j_asc_ice_cream" })
 Ascension({ source = Source.Vanilla, from = "j_dna", to_exotic = "j_asc_dna" })
-Ascension({ source = Source.Vanilla, from = "j_blue_joker", to_exotic = "j_asc_blue", source_file = "blue" })
-Ascension({ source = Source.Vanilla, from = "j_cavendish", to_exotic = "j_asc_banana", source_file = "skip" })
+Ascension({ source = Source.Vanilla, from = "j_blue_joker", to_exotic = "j_asc_blue" })
+Ascension({ source = Source.Vanilla, from = "j_cavendish", to_exotic = "j_asc_banana" })
 Ascension({ source = Source.Vanilla, from = "j_square", to_exotic = "j_asc_square" })
 Ascension({ source = Source.Vanilla, from = "j_supernova", to_exotic = "j_asc_supernova" })
 Ascension({ source = Source.Vanilla, from = "j_hologram", to_exotic = "j_asc_hologram" })
 Ascension({ source = Source.Vanilla, from = "j_obelisk", to_exotic = "j_asc_obelisk" })
-Ascension({ source = Source.Vanilla, from = "j_midas_mask", to_exotic = "j_asc_midas", source_file = "midas" })
+Ascension({ source = Source.Vanilla, from = "j_midas_mask", to_exotic = "j_asc_midas" })
 Ascension({ source = Source.Vanilla, from = "j_to_the_moon", to_exotic = "j_asc_to_the_moon" })
 Ascension({ source = Source.Vanilla, from = "j_golden", to_exotic = "j_asc_golden" })
 Ascension({ source = Source.Vanilla, from = "j_bull", to_exotic = "j_asc_bull" })
-Ascension({ source = Source.Vanilla, from = "j_selzer", to_exotic = "j_asc_seltzer", source_file = "seltzer" }) -- Sic! Don't correct!
+Ascension({ source = Source.Vanilla, from = "j_selzer", to_exotic = "j_asc_seltzer" }) -- Sic! Don't correct!
 Ascension({ source = Source.Vanilla, from = "j_smiley_face", to_exotic = "j_asc_smiley_face" })
 Ascension({ source = Source.Vanilla, from = "j_campfire", to_exotic = "j_asc_campfire" })
 Ascension({ source = Source.Vanilla, from = "j_throwback", to_exotic = "j_asc_throwback" })
 Ascension({ source = Source.Vanilla, from = "j_hanging_chad", to_exotic = "j_asc_hanging_chad" })
 Ascension({ source = Source.Vanilla, from = "j_blueprint", to_exotic = "j_asc_blueprint" })
-Ascension({ source = Source.Vanilla, from = "j_mr_bones", to_exotic = "j_asc_mr_bones", source_file = "bones" })
+Ascension({ source = Source.Vanilla, from = "j_mr_bones", to_exotic = "j_asc_mr_bones" })
 Ascension({ source = Source.Vanilla, from = "j_sock_and_buskin", to_exotic = "j_asc_sock_and_buskin" })
 Ascension({ source = Source.Vanilla, from = "j_wee", to_exotic = "j_asc_wee" })
 Ascension({ source = Source.Vanilla, from = "j_oops", to_exotic = "j_asc_oops" })
@@ -161,28 +156,28 @@ Ascension({ source = Source.Vanilla, from = "j_tribe", to_exotic = "j_asc_tribe"
 Ascension({ source = Source.Vanilla, from = "j_brainstorm", to_exotic = "j_asc_brainstorm" })
 Ascension({ source = Source.Vanilla, from = "j_drivers_license", to_exotic = "j_asc_drivers_license" })
 Ascension({ source = Source.Vanilla, from = "j_bootstraps", to_exotic = "j_asc_bootstraps" })
-Ascension({ source = Source.Vanilla, from = "j_caino", to_exotic = "j_asc_canio", source_file = "canio" }) -- Sic! Don't correct!
+Ascension({ source = Source.Vanilla, from = "j_caino", to_exotic = "j_asc_canio" }) -- Sic! Don't correct!
 Ascension({ source = Source.Vanilla, from = "j_seance", to_exotic = "j_asc_seance" })
 
 -- Cryptid Ascensions
 Ascension({ source = Source.Cryptid, from = "j_cry_canvas", to_exotic = "j_asc_canvas" })
 Ascension({ source = Source.Cryptid, from = "j_cry_sync_catalyst", to_exotic = "j_asc_sync_catalyst" })
 Ascension({ source = Source.Cryptid, from = "j_cry_gardenfork", to_exotic = "j_asc_gardenfork" })
-Ascension({ source = Source.Cryptid, from = "j_cry_antennastoheaven", to_exotic = "j_asc_like_antennas_to_heaven", source_file = "like_antennas_to_heaven" })
+Ascension({ source = Source.Cryptid, from = "j_cry_antennastoheaven", to_exotic = "j_asc_like_antennas_to_heaven" })
 Ascension({ source = Source.Cryptid, from = "j_cry_chad", to_exotic = "j_asc_chad" })
 Ascension({ source = Source.Cryptid, from = "j_cry_oil_lamp", to_exotic = "j_asc_oil_lamp" })
-Ascension({ source = Source.Cryptid, from = "j_cry_huntingseason", to_exotic = "j_asc_hunting_season", source_file = "hunting_season" })
-Ascension({ source = Source.Cryptid, from = "j_cry_highfive", to_exotic = "j_asc_high_five", source_file = "high_five" })
-Ascension({ source = Source.Cryptid, from = "j_cry_CodeJoker", to_exotic = "j_asc_code_joker", source_file = "code_joker" })
+Ascension({ source = Source.Cryptid, from = "j_cry_huntingseason", to_exotic = "j_asc_hunting_season" })
+Ascension({ source = Source.Cryptid, from = "j_cry_highfive", to_exotic = "j_asc_high_five" })
+Ascension({ source = Source.Cryptid, from = "j_cry_CodeJoker", to_exotic = "j_asc_code_joker" })
 
 -- Mortals for Cryptid Exotics
 Ascension({ source = Source.MortalCryptid, from = "j_asc_copy_cat", to_exotic = "j_cry_iterum", source_file = "copy_cat" })
-Ascension({ source = Source.MortalCryptid, from = "j_asc_b_cake", to_exotic = "j_cry_crustulum" })
-Ascension({ source = Source.MortalCryptid, from = "j_asc_b_pie", to_exotic = "j_cry_circulus_pistoris" })
-Ascension({ source = Source.MortalCryptid, from = "j_asc_orion_pax", to_exotic = "j_cry_primus" })
-Ascension({ source = Source.MortalCryptid, from = "j_asc_accomplice", to_exotic = "j_cry_gemino" })
-Ascension({ source = Source.MortalCryptid, from = "j_asc_duane", to_exotic = "j_cry_duplicare" })
-Ascension({ source = Source.MortalCryptid, from = "j_asc_exorcist", to_exotic = "j_cry_formidiulosus" })
+Ascension({ source = Source.MortalCryptid, from = "j_asc_b_cake", to_exotic = "j_cry_crustulum", source_file = "b_cake" })
+Ascension({ source = Source.MortalCryptid, from = "j_asc_b_pie", to_exotic = "j_cry_circulus_pistoris", source_file = "b_pie" })
+Ascension({ source = Source.MortalCryptid, from = "j_asc_orion_pax", to_exotic = "j_cry_primus", source_file = "orion_pax" })
+Ascension({ source = Source.MortalCryptid, from = "j_asc_accomplice", to_exotic = "j_cry_gemino", source_file = "accomplice" })
+Ascension({ source = Source.MortalCryptid, from = "j_asc_duane", to_exotic = "j_cry_duplicare", source_file = "duane" })
+Ascension({ source = Source.MortalCryptid, from = "j_asc_exorcist", to_exotic = "j_cry_formidiulosus", source_file = "exorcist" })
 
 -- Entropy Ascensions
 if Entropy then
