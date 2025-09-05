@@ -11,3 +11,8 @@ function table.contains(tbl, item)
 
     return false
 end
+
+---@param amount number
+function ease_joker_slot(amount)
+    G.jokers.config.card_limit = G.jokers.config.card_limit + amount
+end
