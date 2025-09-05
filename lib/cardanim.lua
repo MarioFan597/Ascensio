@@ -1,4 +1,5 @@
 -- CARDANIM - Card animation system
+-- Documentation can be found at https://github.com/Oinite12/balatro-modding-modules/
 
 -- == CONFIG
 local cardanim_cfg = {
