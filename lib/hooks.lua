@@ -264,17 +264,20 @@ end
 G.FUNCS.buy_stone = function(e)
 	is_buying_stone = true
 	local ref = e.config.ref_table
-	ease_dollars(-e.config.ref_table.ability.buycost)
+	ease_dollars(-ref.ability.buycost)
+
 	local stone = SMODS.create_card({
 		set = "Base",
 		enhancement = "m_stone",
 		seal = "entr_crimson",
 		area = G.discard,
 	})
+
 	stone:set_edition("e_cry_mosaic", nil, true)
 	G.playing_card = (G.playing_card and G.playing_card + 1) or 1
 	stone.playing_card = G.playing_card
 	table.insert(G.playing_cards, stone)
+
 	G.E_MANAGER:add_event(Event({
 		func = function()
 			stone:start_materialize({ G.C.SECONDARY_SET.Enhanced })
@@ -282,14 +285,16 @@ G.FUNCS.buy_stone = function(e)
 			return true
 		end,
 	}))
+
 	G.E_MANAGER:add_event(Event({
 		func = function()
 			G.deck.config.card_limit = G.deck.config.card_limit + 1
 			return true
 		end,
 	}))
+
 	draw_card(G.play, G.deck, 90, "up")
-	SMODS.calculate_context({ playing_card_added = true, cards = stones })
+	SMODS.calculate_context({ playing_card_added = true, cards = { stone } })
 	is_buying_stone = false
 end
 

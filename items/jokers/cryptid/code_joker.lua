@@ -1,6 +1,6 @@
 SMODS.Atlas({
 	key = "code_joker",
-	path = "code_joker.png",
+	path = "jokers/cryptid/code_joker.png",
 	px = 71,
 	py = 95,
 })
@@ -50,6 +50,12 @@ SMODS.Joker({
 			and not (context.individual or context.repetition or context.blueprint)
 		then
 			card.ability.extra.multiuse = card.ability.extra.multiuse + card.ability.extra.gain
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "multiuse",
+				scalar_value = "gain",
+				no_message = true,
+			})
 			card_eval_status_text(card, "extra", nil, nil, nil, {
 				message = localize("k_upgrade_ex"),
 				colour = G.C.CODE,

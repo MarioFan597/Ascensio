@@ -1,6 +1,6 @@
 SMODS.Atlas({
 	key = "blueprint",
-	path = "blueprint.png",
+	path = "jokers/vanilla/blueprint.png",
 	px = 71,
 	py = 95,
 })

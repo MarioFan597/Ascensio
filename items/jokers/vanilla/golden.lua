@@ -10,32 +10,33 @@ SMODS.Joker({
 	cost = 50,
 	order = 90,
 	loc_vars = function(self, info_queue, card)
+		local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "Exotic Golden Joker")
 		return {
 			vars = {
-				cry_prob(card.ability.cry_prob, lenient_bignum(card.ability.extra.odds), card.ability.cry_rigged),
-				card and lenient_bignum(card.ability.extra.gold),
-				card and lenient_bignum(card.ability.extra.gain),
-				card and lenient_bignum(card.ability.extra.odds),
+				num,
+				lenient_bignum(card.ability.extra.gold),
+				lenient_bignum(card.ability.extra.gain),
+				denom,
 			},
 		}
 	end,
 	calc_dollar_bonus = function(self, card)
 		if card.ability.extra.gold > 1 then
 			if
-				pseudorandom("moooooooooooonside")
-				< cry_prob(card.ability.cry_prob, card.ability.extra.odds, card.ability.cry_rigged)
-					/ card.ability.extra.odds
-			then
-				card.ability.extra.gold = lenient_bignum(card.ability.extra.gold)
-					+ lenient_bignum(card.ability.extra.gain)
-				card_eval_status_text(
+				SMODS.pseudorandom_probability(
 					card,
-					"extra",
-					nil,
-					nil,
-					nil,
-					{ message = localize("k_upgrade_ex"), colour = G.C.GOLD }
+					"mooooooooonside",
+					1,
+					card.ability.extra.odds,
+					"Exotic Golden Joker"
 				)
+			then
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "gold",
+					scalar_value = "gain",
+					message_colour = G.C.MONEY,
+				})
 			end
 			return (lenient_bignum(card.ability.extra.gold) * (to_number(G.GAME.dollars) or 0))
 		end
