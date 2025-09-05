@@ -3,6 +3,8 @@
     "diagnostics.globals": [
         "G",
         "Cryptid",
+        "CardSleeves",
+        "Entropy",
         "Talisman",
         "localize",
         "lenient_bignum",
@@ -11,10 +13,17 @@
         "cry_prob",
         "pseudorandom",
         "card_eval_status_text",
+        "check_for_unlock",
         "create_toggle",
         "playing_card_joker_effects",
         "copy_card",
-        "draw_card"
+        "draw_card",
+        "play_sound",
+        "ease_colour",
+        "delay",
+        "update_hand_text",
+        "ease_hands_played",
+        "ease_discard"
     ],
     "runtime": {
         "version": "LuaJIT"

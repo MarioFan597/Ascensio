@@ -1,6 +1,6 @@
 SMODS.Atlas({
 	key = "throwback",
-	path = "throwback.png",
+	path = "jokers/vanilla/throwback.png",
 	px = 71,
 	py = 95,
 })

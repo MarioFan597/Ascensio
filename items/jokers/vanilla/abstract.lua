@@ -12,17 +12,16 @@ SMODS.Joker({
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = {
-				card and lenient_bignum(card.ability.extra.power),
-				card and lenient_bignum(card.ability.extra.gain),
+				card.ability.extra.power,
+				card.ability.extra.gain,
 			},
 		}
 	end,
 	calculate = function(self, card, context)
 		card.ability.extra.power = 1
-		--for i = 1, #G.jokers.cards do
-		card.ability.extra.power = lenient_bignum(card.ability.extra.power)
-			+ (#G.jokers.cards * lenient_bignum(card.ability.extra.gain))
-		--end
+
+		card.ability.extra.power = Number.toBig(card.ability.extra.power)
+			+ Number.toBig(#G.jokers.cards * card.ability.extra.gain)
 
 		if context.joker_main or context.forcetrigger then
 			return {

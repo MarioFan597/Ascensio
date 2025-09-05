@@ -43,8 +43,14 @@ SMODS.Joker({
 								and v.seal == _card.seal
 							)
 						then
-							v:start_dissolve(nil, _first_dissolve)
-							_first_dissolve = true
+							G.E_MANAGER:add_event(Event({
+								trigger = "after",
+								delay = 0.2,
+								func = function()
+									SMODS.destroy_cards(v)
+									return true
+								end,
+							}))
 						else
 							v:set_edition(_card.edition)
 						end
@@ -52,7 +58,7 @@ SMODS.Joker({
 					return true
 				end,
 			}))
-			for i = 1, to_number(math.min(card.ability.extra.immutable.max_copies, card.ability.extra.copies - 1)) do
+			for _ = 1, to_number(math.min(card.ability.extra.immutable.max_copies, card.ability.extra.copies - 1)) do
 				--G.playing_card = (G.playing_card and G.playing_card + 1) or 1
 				G.E_MANAGER:add_event(Event({
 					trigger = "before",

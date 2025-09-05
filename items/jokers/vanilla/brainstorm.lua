@@ -1,6 +1,6 @@
 SMODS.Atlas({
 	key = "brainstorm",
-	path = "brainstorm.png",
+	path = "jokers/vanilla/brainstorm.png",
 	px = 71,
 	py = 95,
 })

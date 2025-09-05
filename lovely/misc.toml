@@ -1,28 +1,27 @@
 [manifest]
-version = "1.0.0"
-dump_lua = true
-priority = -1
+    dump_lua = true
+    priority = -1
+    version  = "1.0.0"
 
 #Adds Birthday Cake to cryptid's override file to get it to work like Crustulum
 [[patches]]
-[patches.pattern]
-target = '''=[SMODS Cryptid "lib/overrides.lua"]'''
-pattern = '''if next(find_joker("cry-crustulum")) or G.GAME.current_round.free_rerolls > 0 then'''
-position = "before"
-payload ='''	if next(find_joker("j_asc_b_cake")) or G.GAME.current_round.free_rerolls > 0 then
+    [patches.pattern]
+        match_indent = true
+        pattern = '''if next(find_joker("cry-crustulum")) or G.GAME.current_round.free_rerolls > 0 then'''
+        payload = '''	if next(find_joker("j_asc_b_cake")) or G.GAME.current_round.free_rerolls > 0 then
 		G.GAME.current_round.reroll_cost = 0
 		return
 	end'''
-match_indent = true
+        position = "before"
+        target = '''=[SMODS Cryptid "lib/overrides.lua"]'''
 
-#Adds Insanity Mode!!! functionality to cryptid's gateway
+        #Adds Insanity Mode!!! functionality to cryptid's gateway
 
 [[patches]]
-[patches.pattern]
-target = '''=[SMODS Cryptid "items/exotic.lua"]'''
-pattern = '''return #Cryptid.advanced_find_joker(nil, nil, nil, { "eternal" }, true, "j") < G.jokers.config.card_limit'''
-position = "at"
-payload ='''if not asc_config["Insanity Mode!!!"] or false then
+    [patches.pattern]
+        match_indent = true
+        pattern = '''return #Cryptid.advanced_find_joker(nil, nil, nil, { "eternal" }, true, "j") < G.jokers.config.card_limit'''
+        payload = '''if not asc_config["Insanity Mode!!!"] or false then
 				return #Cryptid.advanced_find_joker(nil, nil, nil, { "eternal" }, true, "j")
 					< to_number(G.jokers.config.card_limit)
 			else
@@ -30,66 +29,77 @@ payload ='''if not asc_config["Insanity Mode!!!"] or false then
 					< to_number(G.jokers.config.card_limit)
 			end
 		'''
-
-match_indent = true
+        position = "at"
+        target = '''=[SMODS Cryptid "items/exotic.lua"]'''
 
 [[patches]]
-[patches.pattern]
-target = '''=[SMODS Cryptid "items/exotic.lua"]'''
-pattern = '''if not v.ability.eternal then'''
-position = "at"
-payload ='''if not v.ability.eternal and not asc_config["Insanity Mode!!!"] or false then'''
-match_indent = true
+    [patches.pattern]
+        match_indent = true
+        pattern      = '''if not SMODS.is_eternal(v) then'''
+        payload      = '''if not SMODS.is_eternal(v) and not asc_config["Insanity Mode!!!"] or false then'''
+        position     = "at"
+        target       = '''=[SMODS Cryptid "items/exotic.lua"]'''
+
+#If astronomica is installed
+[[patches]]
+    [patches.pattern]
+        match_indent = true
+        pattern      = '''if not v.ability.eternal then'''
+        payload      = '''if not SMODS.is_eternal(v) and not asc_config["Insanity Mode!!!"] or false then'''
+        position     = "at"
+        target       = '''=[SMODS Astronomica "items/lib.lua"]'''
+
 
 #Adds the Ascensionable tooltip to all ascensionable jokers. Thank you hexacryonic for the code.
 [[patches]]
-[patches.pattern]
-target = "functions/common_events.lua"
-pattern = "for _, v in ipairs(info_queue) do"
-position = "before"
-payload = '''for k, _ in pairs(ascensionable) do
+    [patches.pattern]
+        match_indent = true
+        pattern = "for _, v in ipairs(info_queue) do"
+        payload = '''for k, _ in pairs(Ascensionable) do
   if _c.key == k then
     info_queue[#info_queue+1] = {key = 'asc_ascensionable', set = 'Other'}
   end
 end
 '''
-match_indent = true
+        position = "before"
+        target = "functions/common_events.lua"
 
 #Adds the Apothable tooltip to all apothable jokers. Thank you hexacryonic for the code.
 [[patches]]
-[patches.pattern]
-target = "functions/common_events.lua"
-pattern = "for _, v in ipairs(info_queue) do"
-position = "before"
-payload = '''for k, _ in pairs(apothable) do
+    [patches.pattern]
+        match_indent = true
+        pattern = "for _, v in ipairs(info_queue) do"
+        payload = '''for k, _ in pairs(Apothable) do
   if _c.key == k and next(SMODS.find_mod("entr")) then
     info_queue[#info_queue+1] = {key = 'asc_apothable', set = 'Other'}
   end
 end
 '''
-match_indent = true
+        position = "before"
+        target = "functions/common_events.lua"
 
 #Allows Four finger exotic's extra cards to give ascension power.
 [[patches]]
-[patches.pattern]
-target = '=[SMODS Cryptid "lib/ascended.lua"]'
-pattern = '''["Straight"] = next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5,'''
-position = "at"
-payload = '''["Straight"] = next(SMODS.find_card("j_asc_four_fingers")) and 2 or next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5,'''
-match_indent = true 
+    [patches.pattern]
+        match_indent = true
+        pattern      = '''["Straight"] = next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5,'''
+        payload      = '''["Straight"] = next(SMODS.find_card("j_asc_four_fingers")) and 2 or next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5,'''
+        position     = "at"
+        target       = '=[SMODS Cryptid "lib/ascended.lua"]'
 
 [[patches]]
-[patches.pattern]
-target = '=[SMODS Cryptid "lib/ascended.lua"]'
-pattern = '''["Flush"] = next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5,'''
-position = "at"
-payload = '''["Flush"] = next(SMODS.find_card("j_asc_four_fingers")) and 2 or next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5,'''
-match_indent = true
+    [patches.pattern]
+        match_indent = true
+        pattern      = '''["Flush"] = next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5,'''
+        payload      = '''["Flush"] = next(SMODS.find_card("j_asc_four_fingers")) and 2 or next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5,'''
+        position     = "at"
+        target       = '=[SMODS Cryptid "lib/ascended.lua"]'
 
 [[patches]]
-[patches.pattern]
-target = '=[SMODS Cryptid "lib/ascended.lua"]'
-pattern = '''["Straight Flush"] = next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5, --debatable'''
-position = "at"
-payload = '''["Straight Flush"] = next(SMODS.find_card("j_asc_four_fingers")) and 2 or next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5,'''
-match_indent = true 
+    [patches.pattern]
+        match_indent = true
+        pattern      = '''["Straight Flush"] = next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5, --debatable'''
+        payload      = '''["Straight Flush"] = next(SMODS.find_card("j_asc_four_fingers")) and 2 or next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5,'''
+        position     = "at"
+        target       = '=[SMODS Cryptid "lib/ascended.lua"]'
+

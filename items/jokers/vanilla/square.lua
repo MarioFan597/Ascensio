@@ -1,6 +1,6 @@
 SMODS.Atlas({
 	key = "square",
-	path = "square.png",
+	path = "jokers/vanilla/square.png",
 	px = 71,
 	py = 71,
 })
@@ -35,6 +35,12 @@ SMODS.Joker({
 			and not context.retrigger_joker
 		then
 			card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.gain
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "chips",
+				scalar_value = "gain",
+				no_message = true,
+			})
 			return {
 				extra = { message = localize("k_upgrade_ex"), colour = G.C.DARK_EDITION },
 			}
@@ -42,7 +48,7 @@ SMODS.Joker({
 		if context.joker_main or context.forcetrigger then
 			if card.ability.extra.chips > 1 then
 				return {
-					message = "^^" .. lenient_bignum(card.ability.extra.chips) .. " Chips",
+					message = "^^" .. lenient_bignum(card.ability.extra.chips) .. " " .. localize("asc_chips"),
 					EEchip_mod = lenient_bignum(card.ability.extra.chips),
 					colour = G.C.DARK_EDITION,
 					card = card,

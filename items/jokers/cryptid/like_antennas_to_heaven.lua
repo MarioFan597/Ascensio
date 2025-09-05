@@ -1,6 +1,6 @@
 SMODS.Atlas({
 	key = "like_antennas_to_heaven",
-	path = "like_antennas_to_heaven.png",
+	path = "jokers/cryptid/like_antennas_to_heaven.png",
 	px = 71,
 	py = 95,
 })
@@ -19,8 +19,8 @@ SMODS.Joker({
 	loc_vars = function(self, info_queue, card)
 		return {
 			vars = {
-				card and lenient_bignum(card.ability.extra.gain),
-				card and lenient_bignum(card.ability.extra.chips),
+				lenient_bignum(card.ability.extra.gain),
+				lenient_bignum(card.ability.extra.chips),
 			},
 		}
 	end,
@@ -34,7 +34,7 @@ SMODS.Joker({
 		},
 	},
 	calculate = function(self, card, context) --Taken in part from roffeltro's thanks for the primes joker
-		if context.cardarea == G.jokers and context.before and not context.blueprint or context.forcetrigger then
+		if context.cardarea == G.play and context.individual and not context.blueprint then
 			if #context.scoring_hand >= 1 then
 				local number_count = 0
 				for _, c in pairs(context.full_hand) do
@@ -44,7 +44,12 @@ SMODS.Joker({
 					end
 				end
 				if number_count > 0 then
-					card.ability.extra.chips = card.ability.extra.chips + (card.ability.extra.gain * number_count)
+					SMODS.scale_card(card, {
+						ref_table = card.ability.extra,
+						ref_value = "chips",
+						scalar_value = "gain",
+						no_message = true,
+					})
 					card_eval_status_text(card, "extra", nil, nil, nil, {
 						message = localize("k_upgrade_ex"),
 						colour = G.C.DARK_EDITION,
@@ -55,12 +60,15 @@ SMODS.Joker({
 		if context.joker_main or context.forcetrigger then
 			if card.ability.extra.chips > 1 then
 				return {
-					Echip_mod = lenient_bignum(card.ability.extra.chips),
 					message = localize({
 						type = "variable",
 						key = "a_powchips",
-						vars = { lenient_bignum(card.ability.extra.chips) },
+						vars = {
+							card.ability.extra.chips,
+						},
 					}),
+					Echips_mod = lenient_bignum(card.ability.extra.chips),
+					colour = G.C.DARK_EDITION,
 				}
 			end
 		end

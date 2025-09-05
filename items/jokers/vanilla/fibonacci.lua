@@ -24,6 +24,18 @@ SMODS.Joker({
 				card.ability.extra.mult = (
 					card.ability.extra.immutable.previous2 + card.ability.extra.immutable.previous
 				)
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "mult",
+					scalar_table = {
+						previous_results = (
+							(card.ability.extra.immutable.previous2 + card.ability.extra.immutable.previous)
+							- card.ability.extra.mult
+						),
+					},
+					scalar_value = "previous_results",
+					no_message = true,
+				})
 				return {
 					message = localize({
 						type = "variable",
@@ -42,7 +54,18 @@ SMODS.Joker({
 			end
 			card.ability.extra.immutable.previous2 = card.ability.extra.immutable.previous
 			card.ability.extra.immutable.previous = card.ability.extra.mult
-			card.ability.extra.mult = (card.ability.extra.immutable.previous2 + card.ability.extra.immutable.previous)
+			SMODS.scale_card(card, {
+				ref_table = card.ability.extra,
+				ref_value = "mult",
+				scalar_table = {
+					previous_results = (
+						(card.ability.extra.immutable.previous2 + card.ability.extra.immutable.previous)
+						- card.ability.extra.mult
+					),
+				},
+				scalar_value = "previous_results",
+				no_message = true,
+			})
 			return {
 				message = localize({
 					type = "variable",

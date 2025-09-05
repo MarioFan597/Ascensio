@@ -1,6 +1,6 @@
 SMODS.Joker({
 	key = "banana",
-	config = { extra = { xmult = 15, xmult_gain = 2.5, probability_denum = 64 } },
+	config = { extra = { xmult = 15, xmult_gain = 2.5, odds = 64 } },
 	rarity = "cry_exotic",
 	atlas = "v_atlas_1",
 	blueprint_compat = true,
@@ -10,16 +10,13 @@ SMODS.Joker({
 	cost = 50,
 	order = 3,
 	loc_vars = function(_, _, card)
+		local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "Exotic Banana")
 		return {
 			vars = {
 				lenient_bignum(card.ability.extra.xmult),
 				lenient_bignum(card.ability.extra.xmult_gain),
-				cry_prob(
-					card.ability.cry_prob,
-					lenient_bignum(card.ability.extra.probability_denum),
-					card.ability.cry_rigged
-				),
-				lenient_bignum(card.ability.extra.probability_denum),
+				num,
+				denom,
 			},
 		}
 	end,
@@ -29,17 +26,20 @@ SMODS.Joker({
 				message = localize({
 					type = "variable",
 					key = "a_xmult",
-					vars = { number_format(lenient_bignum(card.ability.extra.xmult)) },
+					vars = { number_format(card.ability.extra.xmult) },
 				}),
-				Xmult_mod = lenient_bignum(card.ability.extra.xmult),
+				Xmult_mod = card.ability.extra.xmult,
 				colour = G.C.MULT,
 			}
 		end
 
-		if context.end_of_round and not (context.individual or context.repetition or context.blueprint) then
+		if
+			context.end_of_round
+			and context.main_eval
+			and not (context.individual or context.repetition or context.blueprint)
+		then
 			if
-				pseudorandom("ooooooooooh banana")
-					< cry_prob(card.ability.cry_prob, card.ability.extra.probability_denum, card.ability.cry_rigged) / card.ability.extra.probability_denum
+				SMODS.pseudorandom_probability(card, "OOOOOOH BANANA", 1, card.ability.extra.odds, "Exotic Banana")
 				and #G.jokers.cards
 				and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit
 				and not (
@@ -52,14 +52,10 @@ SMODS.Joker({
 				local roundcreatejoker =
 					math.min(1, G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer))
 				G.GAME.joker_buffer = G.GAME.joker_buffer + roundcreatejoker
-				card_eval_status_text(
-					card,
-					"extra",
-					nil,
-					nil,
-					nil,
-					{ message = localize("asc_banana_ex"), colour = G.C.MONEY }
-				)
+				card_eval_status_text(card, "extra", nil, nil, nil, {
+					message = localize("asc_banana_ex"),
+					colour = G.C.MONEY,
+				})
 				G.E_MANAGER:add_event(Event({
 					func = function()
 						local _card = copy_card(card, nil, nil, nil, card.edition and card.edition.negative)
@@ -72,10 +68,17 @@ SMODS.Joker({
 					end,
 				}))
 
-				--card_eval_status_text(card, "extra", nil, nil, nil, { message = localize("k_duplicated_ex") })
-				return nil, true
+				return {
+					message = localize("k_duplicated_ex"),
+				}
 			else
-				card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+				SMODS.scale_card(card, {
+					ref_table = card.ability.extra,
+					ref_value = "xmult",
+					scalar_value = "xmult_gain",
+					message_key = "a_xmult",
+					message_colour = G.C.MULT,
+				})
 
 				return {
 					message = localize("k_upgrade_ex"),
@@ -84,9 +87,16 @@ SMODS.Joker({
 			end
 		end
 	end,
+
 	asc_credits = {
-		idea = { "OmegaLife" },
-		art = { "Lil Mr. Slipstream" },
-		code = { "OmegaLife" },
+		idea = {
+			"OmegaLife",
+		},
+		art = {
+			"Lil Mr. Slipstream",
+		},
+		code = {
+			"OmegaLife",
+		},
 	},
 })
