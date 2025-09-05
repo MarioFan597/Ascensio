@@ -634,6 +634,13 @@ return {
                 },
             },
 
+            j_asc_photograph = {
+                name = "Charta Memoria",
+                text = {
+                    "{C:attention}+#1#{} card selection limit.",
+                },
+            },
+
             j_asc_to_the_moon = {
                 name = "Pecunia Dominus",
                 text = {
@@ -654,7 +661,7 @@ return {
             j_asc_baseball_card = {
                 name = "Autographum Pretiosum",
                 text = {
-                    "{C:attention}All Jokers{} gives {X:edition,C:dark_edition}^^#1#{}",
+                    "{C:attention}All Jokers{} gives {X:edition,C:dark_edition}^^#1#{} Mult",
                 },
             },
 
