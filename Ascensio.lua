@@ -66,7 +66,7 @@ end
 ---@field source_file? string Where the Joker is defined in. Defaults to the key of the Ascended Joker with the leading `"j_asc"` removed. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
 ---@field to_entropic? string The key of the Apotheosis joker.
 ---@field entropic_file? string Where the Entropic Joker is defined in. Defaults to the key of the Mortal Joker with the leading `"j_"` removed and the `"_entr"` appended. `".lua"` file extension are not to be added.
----@overload fun(self: AscensionEntry): AscensionEntry
+---@overload fun(o: AscensionEntry): AscensionEntry
 Ascension = setmetatable({}, {
     ---@param asc AscensionEntry
     __call = function(_, asc)
@@ -137,6 +137,7 @@ Ascension({ source = Source.Vanilla, from = "j_obelisk", to_exotic = "j_asc_obel
 Ascension({ source = Source.Vanilla, from = "j_midas_mask", to_exotic = "j_asc_midas" })
 Ascension({ source = Source.Vanilla, from = "j_to_the_moon", to_exotic = "j_asc_to_the_moon" })
 Ascension({ source = Source.Vanilla, from = "j_golden", to_exotic = "j_asc_golden" })
+Ascension({ source = Source.Vanilla, from = "j_baseball", to_exotic = "j_asc_baseball_card" })
 Ascension({ source = Source.Vanilla, from = "j_bull", to_exotic = "j_asc_bull" })
 Ascension({ source = Source.Vanilla, from = "j_selzer", to_exotic = "j_asc_seltzer" }) -- Sic! Don't correct!
 Ascension({ source = Source.Vanilla, from = "j_smiley_face", to_exotic = "j_asc_smiley_face" })
@@ -144,7 +145,7 @@ Ascension({ source = Source.Vanilla, from = "j_campfire", to_exotic = "j_asc_cam
 Ascension({ source = Source.Vanilla, from = "j_throwback", to_exotic = "j_asc_throwback" })
 Ascension({ source = Source.Vanilla, from = "j_hanging_chad", to_exotic = "j_asc_hanging_chad" })
 Ascension({ source = Source.Vanilla, from = "j_blueprint", to_exotic = "j_asc_blueprint" })
-Ascension({ source = Source.Vanilla, from = "j_mr_bones", to_exotic = "j_asc_mr_bones" })
+Ascension({ source = Source.Vanilla, from = "j_mr_bones", to_exotic = "j_asc_mr_bones", source_file = "bones" })
 Ascension({ source = Source.Vanilla, from = "j_sock_and_buskin", to_exotic = "j_asc_sock_and_buskin" })
 Ascension({ source = Source.Vanilla, from = "j_wee", to_exotic = "j_asc_wee" })
 Ascension({ source = Source.Vanilla, from = "j_oops", to_exotic = "j_asc_oops" })
