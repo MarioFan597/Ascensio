@@ -49,4 +49,16 @@ SMODS.Joker({
             })
         end
     end,
+
+    asc_credit = {
+        idea = {
+            "OmegaLife",
+        },
+        art = {
+            "???",
+        },
+        coding = {
+            "OmegaLife",
+        },
+    },
 })

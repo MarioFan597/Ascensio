@@ -666,7 +666,7 @@ return {
             j_asc_baseball_card = {
                 name = "Autographum Pretiosum",
                 text = {
-                    { "{C:attention}All{} Jokers gives {X:mult}X#1#{}" },
+                    { "{C:attention}All{} Jokers gives {X:mult,C:white}X#1#{}" },
                     {
                         "At the {C:attention}end of round{}, increase that {C:attention}amount{}",
                         "by {X:mult,C:white}X#2#{} for every {X:uncommon,C:white}Uncommon{} Joker you have",
