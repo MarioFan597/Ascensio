@@ -8,7 +8,7 @@ else
 
     ---@param mod integer
     ---@param stroverride string
-    local function change_play_limit_no_bs(mod, stroverride)
+    local function ease_playing_card_selection_limit(mod, stroverride)
         if SMODS.hand_limit_strings then
             G.GAME.starting_params.play_limit = (G.GAME.starting_params.play_limit or 5) + mod
             G.hand.config.highlighted_limit = math.max(G.GAME.starting_params.discard_limit or 5, G.GAME.starting_params.play_limit or 5)
@@ -21,7 +21,7 @@ else
 
     ---@param mod integer
     ---@param stroverride string
-    local function change_discard_limit_no_bs(mod, stroverride)
+    local function ease_discard_selection_limit(mod, stroverride)
         G.GAME.starting_params.discard_limit = (G.GAME.starting_params.discard_limit or 5) + mod
         G.hand.config.highlighted_limit = math.max(G.GAME.starting_params.discard_limit or 5, G.GAME.starting_params.play_limit or 5)
         local str = stroverride or G.GAME.starting_params.discard_limit or ""
@@ -35,8 +35,8 @@ else
             SMODS.hand_limit_strings = {}
         end
 
-        change_play_limit_no_bs(mod, stroverride)
-        change_discard_limit_no_bs(mod, stroverride)
+        ease_playing_card_selection_limit(mod, stroverride)
+        ease_discard_selection_limit(mod, stroverride)
     end
 end
 
