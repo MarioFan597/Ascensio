@@ -29,7 +29,7 @@ SMODS.Joker({
 
     calculate = function(_, card, ctx)
         if (ctx.other_joker or ctx.joker_main) or ctx.forcetrigger then
-            return { eemult = card.ability.extra.xmult }
+            return { xmult = card.ability.extra.xmult }
         end
 
         if ctx.end_of_round and ctx.main_eval then

@@ -22,6 +22,9 @@ end
 -- Load Atlases.
 loadFile("atlas.lua")
 
+-- Load Gradients.
+loadFile("Palette.lua")
+
 -- Load libraries.
 loadFile("lib/utils.lua")
 loadFile("lib/cardanim.lua")
