@@ -13,21 +13,40 @@ SMODS.Joker({
 
     config = {
         extra = {
-            eemult = 1.15,
+            xmult = 10,
+            gain = 1,
         },
     },
 
     loc_vars = function(_, _, card)
         return {
             vars = {
-                card.ability.extra.eemult,
+                card.ability.extra.xmult,
+                card.ability.extra.gain,
             },
         }
     end,
 
     calculate = function(_, card, ctx)
         if (ctx.other_joker or ctx.joker_main) or ctx.forcetrigger then
-            return { eemult = card.ability.extra.eemult }
+            return { eemult = card.ability.extra.xmult }
+        end
+
+        if ctx.end_of_round and ctx.main_eval then
+            local scale_amount = 0
+
+            for _, joker in ipairs(G.jokers.cards) do
+                if joker.config.center.rarity == 2 or joker.config.center.rarity == "Uncommon" then
+                    scale_amount = scale_amount + 1
+                end
+            end
+
+            return SMODS.scale_card(card, {
+                ref_table = card.ability.extra,
+                ref_value = "xmult",
+                scalar_value = "gain",
+                scalar_table = { gain = card.ability.extra.gain * scale_amount },
+            })
         end
     end,
 })

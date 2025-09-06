@@ -637,7 +637,12 @@ return {
             j_asc_photograph = {
                 name = "Charta Memoria",
                 text = {
-                    "{C:attention}+#1#{} card selection limit.",
+                    { "{C:attention}+#1#{} card selection limit" },
+                    {
+                        "If {C:attention}scored hand{} contains at least a {C:attention}face{} card",
+                        "all cards {C:attention}before{} it give {X:mult,C:white}X#2#{} Mult when {C:attention}scored{}",
+                        "{C:attention}it{} and all cards {C:attention}after{} it give {X:dark_edition,C:white}^#3#{} Mult when {C:attention}scored{}",
+                    },
                 },
             },
 
@@ -661,7 +666,11 @@ return {
             j_asc_baseball_card = {
                 name = "Autographum Pretiosum",
                 text = {
-                    "{C:attention}All Jokers{} gives {X:edition,C:dark_edition}^^#1#{} Mult",
+                    { "{C:attention}All{} Jokers gives {X:mult}X#1#{}" },
+                    {
+                        "At the {C:attention}end of round{}, increase that {C:attention}amount{}",
+                        "by {X:mult,C:white}X#2#{} for every {X:uncommon,C:white}Uncommon{} Joker you have",
+                    },
                 },
             },
 
