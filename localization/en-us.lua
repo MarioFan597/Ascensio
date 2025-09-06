@@ -723,13 +723,13 @@ return {
                 name = "Silva Ardens",
                 text = {
                     {
-                        "Gains {C:white,X:dark_edition}^#2#{} Mult for each card {C:attention}sold{}",
+                        "Gains {X:asc_emult,C:white}^#2#{} Mult for each card {C:attention}sold{}",
                         "Resets when {C:attention}Boss Blind{} is defeated",
-                        "{C:inactive}(Currently {}{C:white,X:dark_edition}^#1#{C:inactive} Mult)",
+                        "{C:inactive}(Currently{} {X:asc_emult,C:white}^#1#{} {C:inactive}Mult){}",
                     },
                     {
                         "Increases gain after",
-                        "{C:attention}Boss Blind{} by {C:white,X:dark_edition}^#3#{} Mult",
+                        "{C:attention}Boss Blind{} by {X:asc_emult,C:white}^#3#{} Mult",
                         "for each card {C:attention}sold{} this {C:attention}Ante{}",
                         "{C:inactive}(Currently {C:attention}#4#{} {C:inactive}cards sold){}",
                     },

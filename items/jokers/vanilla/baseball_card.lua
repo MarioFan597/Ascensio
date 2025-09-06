@@ -28,7 +28,7 @@ SMODS.Joker({
     end,
 
     calculate = function(_, card, ctx)
-        if (ctx.other_joker or ctx.joker_main) or ctx.forcetrigger then
+        if ctx.other_joker or ctx.forcetrigger then
             return { xmult = card.ability.extra.xmult }
         end
 
