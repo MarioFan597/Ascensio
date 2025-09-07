@@ -8,8 +8,8 @@ SMODS.Joker({
     cost = 50,
     order = 23,
 
-    pos = { x = 3, y = 14 },
-    soul_pos = { x = 5, y = 14, extra = { x = 4, y = 14 } },
+    pos = { x = 9, y = 14 },
+    soul_pos = { x = 11, y = 14, extra = { x = 10, y = 14 } },
 
     config = {
         extra = {
