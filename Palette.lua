@@ -12,6 +12,6 @@ SMODS.Gradient({
     cycle = 3,
     colours = {
         HEX("F40752"),
-        HEX("FF5282"),
+        HEX("FFA7D4"),
     },
 })
