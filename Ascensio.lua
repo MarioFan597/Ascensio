@@ -137,6 +137,7 @@ Ascension({ source = Source.Vanilla, from = "j_cavendish", to_exotic = "j_asc_ba
 Ascension({ source = Source.Vanilla, from = "j_square", to_exotic = "j_asc_square" })
 Ascension({ source = Source.Vanilla, from = "j_supernova", to_exotic = "j_asc_supernova" })
 Ascension({ source = Source.Vanilla, from = "j_hologram", to_exotic = "j_asc_hologram" })
+Ascension({ source = Source.Vanilla, from = "j_cloud_9", to_exotic = "j_asc_cloud_nine" })
 Ascension({ source = Source.Vanilla, from = "j_obelisk", to_exotic = "j_asc_obelisk" })
 Ascension({ source = Source.Vanilla, from = "j_midas_mask", to_exotic = "j_asc_midas" })
 Ascension({ source = Source.Vanilla, from = "j_photograph", to_exotic = "j_asc_photograph" })
@@ -144,6 +145,7 @@ Ascension({ source = Source.Vanilla, from = "j_to_the_moon", to_exotic = "j_asc_
 Ascension({ source = Source.Vanilla, from = "j_golden", to_exotic = "j_asc_golden" })
 Ascension({ source = Source.Vanilla, from = "j_baseball", to_exotic = "j_asc_baseball_card" })
 Ascension({ source = Source.Vanilla, from = "j_bull", to_exotic = "j_asc_bull" })
+Ascension({ source = Source.Vanilla, from = "j_trading", to_exotic = "j_asc_trading" })
 Ascension({ source = Source.Vanilla, from = "j_selzer", to_exotic = "j_asc_seltzer" }) -- Sic! Don't correct!
 Ascension({ source = Source.Vanilla, from = "j_smiley_face", to_exotic = "j_asc_smiley_face" })
 Ascension({ source = Source.Vanilla, from = "j_campfire", to_exotic = "j_asc_campfire" })
@@ -152,6 +154,7 @@ Ascension({ source = Source.Vanilla, from = "j_hanging_chad", to_exotic = "j_asc
 Ascension({ source = Source.Vanilla, from = "j_blueprint", to_exotic = "j_asc_blueprint" })
 Ascension({ source = Source.Vanilla, from = "j_mr_bones", to_exotic = "j_asc_mr_bones", source_file = "bones" })
 Ascension({ source = Source.Vanilla, from = "j_sock_and_buskin", to_exotic = "j_asc_sock_and_buskin" })
+Ascension({ source = Source.Vanilla, from = "j_swashbuckler", to_exotic = "j_asc_swashbuckler" })
 Ascension({ source = Source.Vanilla, from = "j_wee", to_exotic = "j_asc_wee" })
 Ascension({ source = Source.Vanilla, from = "j_oops", to_exotic = "j_asc_oops" })
 Ascension({ source = Source.Vanilla, from = "j_duo", to_exotic = "j_asc_duo" })
@@ -529,7 +532,6 @@ end
 SMODS.current_mod.description_loc_vars = function()
     return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2 }
 end
-
 
 asc_config = SMODS.current_mod and SMODS.current_mod.config or {}
 if asc_config["Insanity Mode!!!"] == nil then

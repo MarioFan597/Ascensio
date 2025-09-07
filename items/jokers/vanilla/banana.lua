@@ -13,14 +13,14 @@ SMODS.Joker({
         local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "Exotic Banana")
         return {
             vars = {
-                lenient_bignum(card.ability.extra.xmult),
-                lenient_bignum(card.ability.extra.xmult_gain),
+                card.ability.extra.xmult,
+                card.ability.extra.xmult_gain,
                 num,
                 denom,
             },
         }
     end,
-    calculate = function(self, card, context)
+    calculate = function(_, card, context)
         if context.joker_main or context.forcetrigger then
             return {
                 message = localize({

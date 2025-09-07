@@ -31,6 +31,8 @@ return {
         Blind = {},
         Edition = {},
         Enhanced = {},
+
+        ---@type {[string]: { name: string|string[], text: string[]|string[][] }}
         Joker = {
             -----Vanilla-----
             j_asc_jimbo = {
@@ -620,6 +622,21 @@ return {
                 },
             },
 
+            j_asc_cloud_nine = {
+                name = "Supra Nubem",
+                text = {
+                    {
+                        "Gain {X:money,C:white}X$#1#{} for each {C:attention}9{} in",
+                        "{C:attention}full deck{} at the {C:attention}end of round{}",
+                        "{C:inactive}(Currently{} {X:money,C:white}X$#2#{}{C:inactive}){}",
+                    },
+                    {
+                        "Increase amount by {X:money,C:white}X$#3#{}",
+                        "whenever a {C:attention}9{} is {C:attention}scored{}",
+                    },
+                },
+            },
+
             j_asc_obelisk = {
                 name = "Obeliscus Calumniatus",
                 text = {
@@ -703,6 +720,40 @@ return {
                 },
             },
 
+            j_asc_trading = {
+                name = "Fraxinus Aureus",
+                text = {
+                    {
+                        "If {C:attention}first discard{} of round has",
+                        "{C:attention}exactly 1{} card, {C:attention}destroy{} it and apply",
+                        "one of the following effects:",
+                    },
+                    {
+                        "If the {C:attention}card{} is a {C:spades}Spades{}",
+                        "gain {X:asc_echips,C:white}^Chips{} based on card's rank",
+                        "{C:inactive}(Currently{} {X:asc_echips,C:white}^#1#{} {C:inactive}Chips){}",
+                        "{C:inactive,s:0.75}(J = 1.1, Q = 1.2, K = 1.3, A = 1.4){}",
+                    },
+                    {
+                        "If the {C:attention}card{} is a {C:hearts}Hearts{}",
+                        "gain {X:asc_emult,C:white}^Mult{} based on card's rank",
+                        "{C:inactive}(Currently{} {X:asc_emult,C:white}^#2#{} {C:inactive}Mult){}",
+                        "{C:inactive,s:0.75}(J = 1.1, Q = 1.2, K = 1.3, A = 1.4){}",
+                    },
+                    {
+                        "If the {C:attention}card{} is a {C:clubs}Clubs{}",
+                        "all cards {C:attention}held in hand{} gain {X:chips,C:white}XChips{} based card's rank",
+                        "{C:inactive,s:0.75}(J = 11, Q = 12, K = 13, A = 14){}",
+                    },
+                    {
+                        "If the {C:attention}card{} is a {C:diamonds}Diamonds{}",
+                        "increase {C:money}money earned{} at the {C:attention}end of round{}",
+                        "{C:inactive}(Currently{} {X:money,C:white}+$#3#{} {C:inactive}){}",
+                        "{C:inactive,s:0.75}(J = 11, Q = 12, K = 13, A = 14){}",
+                    },
+                },
+            },
+
             j_asc_seltzer = {
                 name = "Bulla Aquae",
                 text = {
@@ -773,7 +824,6 @@ return {
                 name = "Thalia et Melpomene",
                 text = {
                     {
-
                         "Retrigger all played",
                         "{C:attention}face{} cards {C:attention}#1#{} times",
                         "{C:inactive}(Max {C:attention}#4#{} {C:inactive}retriggers)",
@@ -786,6 +836,17 @@ return {
                 },
             },
 
+            j_asc_swashbuckler = {
+                name = "Ultimus Pirata",
+                text = {
+                    "At the {C:attention}end of round{}",
+                    "Gain {X:mult,C:white}XMult{} equal to {C:attention}X#3#{}",
+                    "of {C:attention}total sell value{} of {C:attention}all owned #1#{}",
+                    "{C:inactive}(Currently{} {X:mult,C:white}X#2#{} {C:inactive}Mult){}",
+                },
+            },
+
+            --[[
             j_asc_smeared = {
                 name = "Inquino",
                 text = {
@@ -799,6 +860,7 @@ return {
                     },
                 },
             },
+            ]]
 
             j_asc_throwback = {
                 name = "Desiderium",
