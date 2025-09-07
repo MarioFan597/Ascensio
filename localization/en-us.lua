@@ -611,8 +611,18 @@ return {
             },
 
             j_asc_cloud_nine = {
-                name = "",
-                text = {},
+                name = "Supra Nubem",
+                text = {
+                    {
+                        "Gain {X:money,C:white}X#1#${} for each {C:attention}9{} in",
+                        "{C:attention}full deck{} at the {C:attention}end of round{}",
+                        "{C:inactive}(Currently{} {X:money,C:white}X#2#${}{C:inactive}){}",
+                    },
+                    {
+                        "Increase amount by {X:money,C:white}X#3#${}",
+                        "whenever a {C:attention}9{} is {C:attention}scored{}",
+                    },
+                },
             },
 
             j_asc_obelisk = {
