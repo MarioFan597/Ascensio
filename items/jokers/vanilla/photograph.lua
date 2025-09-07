@@ -44,8 +44,8 @@ SMODS.Joker({
     cost = 50,
     order = 23,
 
-    pos = { x = 6, y = 14 },
-    soul_pos = { x = 8, y = 14, extra = { x = 7, y = 14 } },
+    pos = { x = 12, y = 14 },
+    soul_pos = { x = 14, y = 14, extra = { x = 13, y = 14 } },
 
     config = {
         extra = {
