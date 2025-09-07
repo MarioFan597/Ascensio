@@ -9,11 +9,11 @@ SMODS.Consumable({
     key = "ascension",
     set = "Spectral",
     atlas = "ascension",
+
     pos = { x = 0, y = 0 },
     soul_pos = { x = 2, y = 0, extra = { x = 1, y = 0 } },
     cost = 4,
     hidden = true,
-    config = {},
 
     can_use = function(_, _)
         if #G.jokers.highlighted == 1 and Ascensionable[G.jokers.highlighted[1].config.center.key] then
@@ -36,7 +36,7 @@ SMODS.Consumable({
             else
                 for _, v in pairs(G.jokers.cards) do
                     if not v.ability.eternal then
-                        if Entropy and Entropy.DeckOrSleeve and not Entropy.DeckOrSleeve("doc") or to_big(G.GAME.entropy or 0) < to_big(100) then
+                        if Entropy and (Entropy.DeckOrSleeve and not Entropy.DeckOrSleeve("doc") or to_big(G.GAME.entropy or 0) < to_big(100)) then
                             deletable_jokers[#deletable_jokers + 1] = v
                         end
                     end
