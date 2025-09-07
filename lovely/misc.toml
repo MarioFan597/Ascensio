@@ -69,11 +69,14 @@ end
     [patches.pattern]
         match_indent = true
         pattern = "for _, v in ipairs(info_queue) do"
-        payload = '''for k, _ in pairs(Apothable) do
-  if _c.key == k and next(SMODS.find_mod("entr")) then
-    info_queue[#info_queue+1] = {key = 'asc_apothable', set = 'Other'}
-  end
-end
+        payload = '''
+        if Entropy then
+            for k, _ in pairs(Apothable) do
+                if _c.key == k and next(SMODS.find_mod("entr")) then
+                    info_queue[#info_queue+1] = {key = 'asc_apothable', set = 'Other'}
+                end
+            end
+        end
 '''
         position = "before"
         target = "functions/common_events.lua"
@@ -102,4 +105,3 @@ end
         payload      = '''["Straight Flush"] = next(SMODS.find_card("j_asc_four_fingers")) and 2 or next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5,'''
         position     = "at"
         target       = '=[SMODS Cryptid "lib/ascended.lua"]'
-
