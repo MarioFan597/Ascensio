@@ -50,7 +50,7 @@ SMODS.Joker({
         end
     end,
 
-    asc_credit = {
+    asc_credits = {
         idea = {
             "OmegaLife",
         },

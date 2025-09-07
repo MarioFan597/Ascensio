@@ -524,6 +524,12 @@ end
 
 -- Mod Menu
 
+--#region SMODS UI funcs (additions, config, collection) Taken from Cardsleves to make custom mod background description clear--
+SMODS.current_mod.description_loc_vars = function()
+    return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2 }
+end
+
+
 asc_config = SMODS.current_mod and SMODS.current_mod.config or {}
 if asc_config["Insanity Mode!!!"] == nil then
     asc_config["Insanity Mode!!!"] = false

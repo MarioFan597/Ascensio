@@ -613,9 +613,10 @@ return {
             j_asc_obelisk = {
                 name = "Obeliscus Calumniatus",
                 text = {
-                    "This Joker gains {X:mult,C:white}XMult{} equal to",
-                    "{C:attention}consecutive{} hands played",
-                    "without playing your {C:attention}most played poker hand{}",
+                    "This Joker gains {X:mult,C:white}XMult{} equal",
+                    "to {C:attention}consecutive{} hands played",
+                    "without playing your",
+                    "most played {C:attention}poker hand{}",
                     "{C:inactive}(Currently {}{X:mult,C:white}X#1#{}{C:inactive}){}",
                 },
             },
@@ -638,12 +639,16 @@ return {
                 name = "Charta Memoria",
                 text = {
                     {
-                        "{C:attention}+#1#{} card selection limit",
+                        "Cards scored {C:attention}before{} first",
+                        "scoring {C:attention}face{} card give {X:mult,C:white}X#2#{} Mult",
                     },
                     {
-                        "If {C:attention}scored hand{} contains at least {C:attention,E:1}one{} {C:attention}face card{}",
-                        "all cards {C:attention}before{} the {C:attention}first scored face card{} give {X:mult,C:white}X#2#{} Mult",
-                        "all {C:attention}other{} cards give {X:asc_emult,C:white}^#3#{} Mult",
+                        "Cards scored {C:attention}after{} first",
+                        "scoring {C:attention}face{} card give {X:asc_emult,C:white}^#3#{} Mult",
+                        "{C:inactive}(Includes face card)",
+                    },
+                    {
+                        "{C:attention}+#1#{} card selection limit",
                     },
                 },
             },
@@ -669,11 +674,12 @@ return {
                 name = "Autographum Pretiosum",
                 text = {
                     {
-                        "{C:attention}All{} Jokers gives {X:mult,C:white}X#1#{} Mult",
+                        "All Jokers each give {X:mult,C:white}X#1#{} Mult",
                     },
                     {
-                        "At the {C:attention}end of round{}, increase that {C:attention}amount{}",
-                        "by {X:mult,C:white}X#2#{} for every {X:uncommon,C:white}Uncommon{} Joker you have",
+                        "At the {C:attention}end of round{}, increases",
+                        "Mult per Joker by {X:mult,C:white}X#2#{} for",
+                        "every {C:uncommon}Uncommon{} Joker you have",
                     },
                 },
             },
