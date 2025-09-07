@@ -610,6 +610,11 @@ return {
                 },
             },
 
+            j_asc_cloud_nine = {
+                name = "",
+                text = {},
+            },
+
             j_asc_obelisk = {
                 name = "Obeliscus Calumniatus",
                 text = {
