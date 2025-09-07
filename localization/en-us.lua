@@ -268,6 +268,16 @@ return {
                 },
             },
 
+            j_asc_half = {
+                name = "Scinditur In Duos",
+                text = {
+                    {
+                        "{X:dark_edition,C:edition}^^#1#{} mult if hand contains",
+                        "{C:attention}#2#{} or fewer cards.",
+                    },
+                },
+            },
+
             j_asc_stencil = {
                 name = "Inanis",
                 text = {
