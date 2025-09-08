@@ -27,8 +27,8 @@ SMODS.Joker({
         return {
             vars = {
                 localize(card.ability.immutable.suit, "suits_singular"),
-                card.ability.extra.extra,
-                card.ability.extra.extra_gain,
+                card.ability.extra.emult,
+                card.ability.extra.emult_gain,
 
                 colours = {
                     G.C.SUITS[card.ability.immutable.suit],

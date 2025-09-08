@@ -1,5 +1,5 @@
 SMODS.Joker({
-    key = "trading",
+    key = "hiker",
     rarity = "cry_exotic",
     atlas = "v_atlas_1",
     blueprint_compat = true,

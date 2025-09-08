@@ -770,13 +770,13 @@ return {
                 name = "Hereditas Oblita",
                 text = {
                     {
-                        "Each played card with {B:1}#1#{} gives",
-                        "{X:asc_emult}^#2#{} Mult when scored",
+                        "Each played card with {V:1}#1#{} gives",
+                        "{X:asc_emult,C:white}^#2#{} Mult when scored",
                         "{C:inactive,s:0.75}(Suit changes at end of round){}",
                     },
                     {
-                        "Each played card with {B:1}#1#{} also",
-                        "{C:attention}increase{} that amount by {X:asc_emult}^#3#{}.",
+                        "Each played card with {V:1}#1#{} also",
+                        "{C:attention}increase{} that amount by {X:asc_emult,C:white}^#3#{}.",
                     },
                 },
             },
@@ -944,6 +944,20 @@ return {
                         "grant {C:dark_edition}+#1#{} {C:attention}Joker{} or consumable slot",
                         "{C:inactive}(Currently {C:dark_edition}+#2#{}{C:attention} Joker{}{C:inactive} slot(s)",
                         "{C:inactive}and {C:attention}+#3#{} {C:inactive}consumable slot(s))",
+                    },
+                },
+            },
+
+            j_asc_idols = {
+                name = "Statua Sacra",
+                text = {
+                    {
+                        "Each scored {C:attention}#1#{} of {V:1}#2#{} randomly give",
+                        "{C:attention}one{} of these effects:",
+                        "> {X:asc_emult,C:white}^#3#{} Mult <",
+                        "> {X:asc_echips,C:white}^#3#{} Chips <",
+                        "> {X:money,C:white}X$#3#{} <",
+                        "> Increase this {C:attention}Joker's{} value by {C:attention}#4#{} <",
                     },
                 },
             },

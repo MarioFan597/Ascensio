@@ -159,6 +159,7 @@ Ascension({ source = Source.Vanilla, from = "j_sock_and_buskin", to_exotic = "j_
 Ascension({ source = Source.Vanilla, from = "j_swashbuckler", to_exotic = "j_asc_swashbuckler" })
 Ascension({ source = Source.Vanilla, from = "j_wee", to_exotic = "j_asc_wee" })
 Ascension({ source = Source.Vanilla, from = "j_oops", to_exotic = "j_asc_oops" })
+Ascension({ source = Source.Vanilla, from = "j_idol", to_exotic = "j_asc_idols" })
 Ascension({ source = Source.Vanilla, from = "j_duo", to_exotic = "j_asc_duo" })
 Ascension({ source = Source.Vanilla, from = "j_trio", to_exotic = "j_asc_trio" })
 Ascension({ source = Source.Vanilla, from = "j_family", to_exotic = "j_asc_family" })

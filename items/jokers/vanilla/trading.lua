@@ -13,7 +13,7 @@ SMODS.Joker({
     demicoloncompat = true,
 
     cost = 50,
-    order = 23,
+    order = 92,
 
     pos = { x = 0, y = 0 },
     soul_pos = { x = 0, y = 1, extra = { x = 1, y = 0 } },
