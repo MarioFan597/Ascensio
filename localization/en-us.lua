@@ -766,6 +766,11 @@ return {
                 },
             },
 
+            j_asc_ancient = {
+                name = "",
+                text = {},
+            },
+
             j_asc_seltzer = {
                 name = "Bulla Aquae",
                 text = {
