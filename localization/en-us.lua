@@ -660,6 +660,9 @@ return {
                         "for each {C:money}$1{} you have at the {C:attention}end of round{}",
                         "{C:inactive}(Currently{} {X:chips,C:white}X#4#{} {C:inactive}Chips){}",
                     },
+                    {
+                        "Good night, Terra.",
+                    },
                 },
             },
 
