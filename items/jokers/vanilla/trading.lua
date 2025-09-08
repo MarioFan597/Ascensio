@@ -124,7 +124,7 @@ SMODS.Joker({
             "OmegaLife",
         },
         art = {
-            "???",
+            "Tatteredlurker",
         },
         code = {
             "OmegaLife",
