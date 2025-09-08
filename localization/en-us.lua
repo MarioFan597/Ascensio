@@ -346,7 +346,7 @@ return {
                 },
             },
 
-             j_asc_ceremonial = {
+            j_asc_ceremonial = {
                 name = "Fractus Capulo",
                 text = {
                     "When Blind is selected, {C:green}#1# in #2#{} chance",
@@ -767,8 +767,18 @@ return {
             },
 
             j_asc_ancient = {
-                name = "",
-                text = {},
+                name = "Hereditas Oblita",
+                text = {
+                    {
+                        "Each played card with {B:1}#1#{} gives",
+                        "{X:asc_emult}^#2#{} Mult when scored",
+                        "{C:inactive,s:0.75}(Suit changes at end of round){}",
+                    },
+                    {
+                        "Each played card with {B:1}#1#{} also",
+                        "{C:attention}increase{} that amount by {X:asc_emult}^#3#{}.",
+                    },
+                },
             },
 
             j_asc_seltzer = {

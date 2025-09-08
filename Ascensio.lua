@@ -147,6 +147,7 @@ Ascension({ source = Source.Vanilla, from = "j_golden", to_exotic = "j_asc_golde
 Ascension({ source = Source.Vanilla, from = "j_baseball", to_exotic = "j_asc_baseball_card" })
 Ascension({ source = Source.Vanilla, from = "j_bull", to_exotic = "j_asc_bull" })
 Ascension({ source = Source.Vanilla, from = "j_trading", to_exotic = "j_asc_trading" })
+Ascension({ source = Source.Vanilla, from = "j_ancient", to_exotic = "j_asc_ancient" })
 Ascension({ source = Source.Vanilla, from = "j_selzer", to_exotic = "j_asc_seltzer" }) -- Sic! Don't correct!
 Ascension({ source = Source.Vanilla, from = "j_smiley_face", to_exotic = "j_asc_smiley_face" })
 Ascension({ source = Source.Vanilla, from = "j_campfire", to_exotic = "j_asc_campfire" })

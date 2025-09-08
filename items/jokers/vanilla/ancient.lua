@@ -1,5 +1,5 @@
 SMODS.Joker({
-    key = "trading",
+    key = "ancient",
     rarity = "cry_exotic",
     atlas = "v_atlas_1",
     blueprint_compat = true,
@@ -13,93 +13,52 @@ SMODS.Joker({
 
     config = {
         extra = {
-            echips = 1,
             emult = 1,
-            money = 1,
+            emult_gain = 0.005,
+        },
+
+        immutable = {
+            suits = { "Spades", "Hearts", "Clubs", "Diamonds" },
+            suit = "Spades",
         },
     },
 
     loc_vars = function(_, _, card)
         return {
             vars = {
-                card.ability.extra.echips,
-                card.ability.extra.emult,
-                card.ability.extra.money,
+                localize(card.ability.immutable.suit, "suits_singular"),
+                card.ability.extra.extra,
+                card.ability.extra.extra_gain,
+
+                colours = {
+                    G.C.SUITS[card.ability.immutable.suit],
+                },
             },
         }
     end,
 
     calculate = function(_, card, context)
-        if context.first_hand_drawn then
-            local eval = function()
-                return G.GAME.current_round.discards_used == 0 and not G.RESET_JIGGLES
-            end
-            ---@diagnostic disable-next-line: undefined-global
-            juice_card_until(card, eval, true)
-        end
-
-        if (context.discard and not context.blueprint and G.GAME.current_round.discards_used <= 0 and #context.full_hand == 1) or context.forcetrigger then
-            local removed
-
-            if context.forcetrigger then
-                removed = G.deck.cards[1]
-            else
-                removed = context.full_hand[1]
-            end
-
-            if removed:is_suit("Spades") or context.forcetrigger then
-                SMODS.scale_card(card, {
-                    ref_table = card.ability.extra,
-                    ref_value = "echips",
-                    scalar_value = "gain",
-                    scalar_table = { gain = (removed:get_id() / 10) },
-                })
-            end
-
-            if removed:is_suit("Hearts") or context.forcetrigger then
+        if (context.individual and context.cardarea == G.play) or context.forcetrigger then
+            if context.other_card:is_suit(card.ability.immutable.suit) or context.forcetrigger then
                 SMODS.scale_card(card, {
                     ref_table = card.ability.extra,
                     ref_value = "emult",
-                    scalar_value = "gain",
-                    scalar_table = { gain = (removed:get_id() / 10) },
+                    scalar_value = "emult_gain",
                 })
-            end
 
-            if removed:is_suit("Clubs") or context.forcetrigger then
-                for _, held in ipairs(G.hand.cards) do
-                    SMODS.scale_card(held, {
-                        ref_table = held.ability,
-                        ref_value = "perma_x_chips",
-                        scalar_value = "gain",
-                        scalar_table = { gain = removed:get_id() },
-                    })
-                end
-            end
-
-            if removed:is_suit("Diamonds") or context.forcetrigger then
-                SMODS.scale_card(card, {
-                    ref_table = card.ability.extra,
-                    ref_value = "money",
-                    scalar_value = "gain",
-                    scalar_table = { gain = removed:get_id() },
-                })
-            end
-
-            if not context.forcetrigger then
-                SMODS.destroy_cards(removed)
+                return {
+                    emult = card.ability.extra.emult,
+                }
             end
         end
 
-        if context.joker_main then
+        if context.end_of_round and context.main_eval then
+            card.ability.immutable.suit = pseudorandom_element(card.ability.immutable.suits, "vremade_ancient" .. G.GAME.round_resets.ante, {})
             return {
-                echips = card.ability.extra.echips,
-                emult = card.ability.extra.emult,
+                message = localize("k_reset_ex"),
+                colour = G.C.SUITS[card.ability.immutable.suit],
             }
         end
-    end,
-
-    calc_dollar_bonus = function(_, card)
-        return card.ability.extra.money
     end,
 
     asc_credits = {
