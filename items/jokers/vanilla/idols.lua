@@ -14,7 +14,7 @@ SMODS.Joker({
     config = {
         extra = {
             value = 1,
-            value_gain = 0.1,
+            value_gain = 0.05,
         },
 
         immutable = {
