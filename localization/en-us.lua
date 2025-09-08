@@ -647,6 +647,22 @@ return {
                 },
             },
 
+            j_asc_rocket = {
+                name = "Via Solitaria",
+                text = {
+                    {
+                        "Earn {C:money}$#1#{} at the {C:attention}end of round{}",
+                        "Payout increases by {C:money}$#2#{} whenever a card is {C:attention}scored{}",
+                        "{C:inactive,s:0.75}(Reset every Ante){}",
+                    },
+                    {
+                        "Gain {X:chips,C:white}X#3#{} Chips",
+                        "for each {C:money}$1{} you have at the {C:attention}end of round{}",
+                        "{C:inactive}(Currently{} {X:chips,C:white}X#4#{} {C:inactive}Chips){}",
+                    },
+                },
+            },
+
             j_asc_obelisk = {
                 name = "Obeliscus Calumniatus",
                 text = {
@@ -793,6 +809,22 @@ return {
                         "Increase retriggers",
                         "after {C:attention}#3#{} hands",
                         "{C:inactive}(Hands until upgrade: {C:attention}#2#{C:inactive})",
+                    },
+                },
+            },
+
+            j_asc_castle = {
+                name = "Arx Cineris",
+                text = {
+                    {
+                        "This Joker gains {X:asc_echips,C:white}^#1#{} Chips per {C:attention}discarded{}",
+                        "{C:spades}Spades{} or {C:clubs}Clubs{}",
+                        "{C:inactive}(Currently{} {X:asc_echips,C:white}^#2#{} {C:inactive}Chips){}",
+                    },
+                    {
+                        "This Joker gains {X:asc_emult,C:white}^#1#{} Mult per {C:attention}discarded{}",
+                        "{C:hearts}Hearts{} or {C:diamonds}Diamonds{}",
+                        "{C:inactive}(Currently{} {X:asc_emult,C:white}^#2#{} {C:inactive}Mult){}",
                     },
                 },
             },

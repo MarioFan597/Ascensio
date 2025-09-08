@@ -38,6 +38,7 @@ SMODS.Joker({
             end
         end
     end,
+
     asc_credits = {
         idea = {
             "TheOfficialfem",

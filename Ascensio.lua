@@ -139,6 +139,7 @@ Ascension({ source = Source.Vanilla, from = "j_square", to_exotic = "j_asc_squar
 Ascension({ source = Source.Vanilla, from = "j_supernova", to_exotic = "j_asc_supernova" })
 Ascension({ source = Source.Vanilla, from = "j_hologram", to_exotic = "j_asc_hologram" })
 Ascension({ source = Source.Vanilla, from = "j_cloud_9", to_exotic = "j_asc_cloud_nine" })
+Ascension({ source = Source.Vanilla, from = "j_rocket", to_exotic = "j_asc_rocket" })
 Ascension({ source = Source.Vanilla, from = "j_obelisk", to_exotic = "j_asc_obelisk" })
 Ascension({ source = Source.Vanilla, from = "j_midas_mask", to_exotic = "j_asc_midas" })
 Ascension({ source = Source.Vanilla, from = "j_photograph", to_exotic = "j_asc_photograph" })
@@ -149,6 +150,7 @@ Ascension({ source = Source.Vanilla, from = "j_bull", to_exotic = "j_asc_bull" }
 Ascension({ source = Source.Vanilla, from = "j_trading", to_exotic = "j_asc_trading" })
 Ascension({ source = Source.Vanilla, from = "j_ancient", to_exotic = "j_asc_ancient" })
 Ascension({ source = Source.Vanilla, from = "j_selzer", to_exotic = "j_asc_seltzer" }) -- Sic! Don't correct!
+Ascension({ source = Source.Vanilla, from = "j_castle", to_exotic = "j_asc_castle" })
 Ascension({ source = Source.Vanilla, from = "j_smiley_face", to_exotic = "j_asc_smiley_face" })
 Ascension({ source = Source.Vanilla, from = "j_campfire", to_exotic = "j_asc_campfire" })
 Ascension({ source = Source.Vanilla, from = "j_throwback", to_exotic = "j_asc_throwback" })
