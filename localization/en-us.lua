@@ -586,6 +586,16 @@ return {
                 },
             },
 
+            j_asc_hiker = {
+                name = "Agentia Viatorum",
+                text = {
+                    "Whenever a hand is {C:attention}played{}",
+                    "all {C:attention}scored{} cards gain permanent {X:chips,C:white}XChips{}",
+                    "equal to {C:attention}total rank{} of {C:attention}scored cards{}.",
+                    "{C:inactive,s:0.75}(J = 11, Q = 12, K = 13, A = 14){}",
+                },
+            },
+
             j_asc_musa_ingens = {
                 name = "Musa Ingens",
                 text = {
