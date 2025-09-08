@@ -346,7 +346,7 @@ return {
                 },
             },
 
-             j_asc_ceremonial = {
+            j_asc_ceremonial = {
                 name = "Fractus Capulo",
                 text = {
                     "When Blind is selected, {C:green}#1# in #2#{} chance",
@@ -586,6 +586,16 @@ return {
                 },
             },
 
+            j_asc_hiker = {
+                name = "Agentia Viatorum",
+                text = {
+                    "Whenever a hand is {C:attention}played{}",
+                    "all {C:attention}scored{} cards gain permanent {X:chips,C:white}XChips{}",
+                    "equal to {C:attention}total rank{} of {C:attention}scored cards{}.",
+                    "{C:inactive,s:0.75}(J = 11, Q = 12, K = 13, A = 14){}",
+                },
+            },
+
             j_asc_musa_ingens = {
                 name = "Musa Ingens",
                 text = {
@@ -633,6 +643,25 @@ return {
                     {
                         "Increase amount by {X:money,C:white}X#3#{}",
                         "whenever a {C:attention}9{} is scored",
+                    },
+                },
+            },
+
+            j_asc_rocket = {
+                name = "Via Solitaria",
+                text = {
+                    {
+                        "Earn {C:money}$#1#{} at the {C:attention}end of round{}",
+                        "Payout increases by {C:money}$#2#{} whenever a card is {C:attention}scored{}",
+                        "{C:inactive,s:0.75}(Reset every Ante){}",
+                    },
+                    {
+                        "Gain {X:chips,C:white}X#3#{} Chips",
+                        "for each {C:money}$1{} you have at the {C:attention}end of round{}",
+                        "{C:inactive}(Currently{} {X:chips,C:white}X#4#{} {C:inactive}Chips){}",
+                    },
+                    {
+                        "Good night, Terra.",
                     },
                 },
             },
@@ -756,6 +785,21 @@ return {
                 },
             },
 
+            j_asc_ancient = {
+                name = "Hereditas Oblita",
+                text = {
+                    {
+                        "Each played card with {V:1}#1#{} gives",
+                        "{X:asc_emult,C:white}^#2#{} Mult when scored",
+                        "{C:inactive,s:0.75}(Suit changes at end of round){}",
+                    },
+                    {
+                        "Each played card with {V:1}#1#{} also",
+                        "{C:attention}increase{} that amount by {X:asc_emult,C:white}^#3#{}.",
+                    },
+                },
+            },
+
             j_asc_seltzer = {
                 name = "Bulla Aquae",
                 text = {
@@ -768,6 +812,22 @@ return {
                         "Increase retriggers",
                         "after {C:attention}#3#{} hands",
                         "{C:inactive}(Hands until upgrade: {C:attention}#2#{C:inactive})",
+                    },
+                },
+            },
+
+            j_asc_castle = {
+                name = "Arx Cineris",
+                text = {
+                    {
+                        "This Joker gains {X:asc_echips,C:white}^#1#{} Chips per {C:attention}discarded{}",
+                        "{C:spades}Spades{} or {C:clubs}Clubs{}",
+                        "{C:inactive}(Currently{} {X:asc_echips,C:white}^#2#{} {C:inactive}Chips){}",
+                    },
+                    {
+                        "This Joker gains {X:asc_emult,C:white}^#1#{} Mult per {C:attention}discarded{}",
+                        "{C:hearts}Hearts{} or {C:diamonds}Diamonds{}",
+                        "{C:inactive}(Currently{} {X:asc_emult,C:white}^#2#{} {C:inactive}Mult){}",
                     },
                 },
             },
@@ -919,6 +979,20 @@ return {
                         "grant {C:dark_edition}+#1#{} {C:attention}Joker{} or consumable slot",
                         "{C:inactive}(Currently {C:dark_edition}+#2#{}{C:attention} Joker{}{C:inactive} slot(s)",
                         "{C:inactive}and {C:attention}+#3#{} {C:inactive}consumable slot(s))",
+                    },
+                },
+            },
+
+            j_asc_idols = {
+                name = "Statua Sacra",
+                text = {
+                    {
+                        "Each scored {C:attention}#1#{} of {V:1}#2#{} randomly give",
+                        "{C:attention}one{} of these effects:",
+                        "> {X:asc_emult,C:white}^#3#{} Mult <",
+                        "> {X:asc_echips,C:white}^#3#{} Chips <",
+                        "> {X:money,C:white}X$#3#{} <",
+                        "> Increase this {C:attention}Joker's{} value by {C:attention}#4#{} <",
                     },
                 },
             },
