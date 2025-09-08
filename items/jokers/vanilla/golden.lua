@@ -35,7 +35,7 @@ SMODS.Joker({
     end,
     calculate = function(self, card, context)
         if context.forcetrigger then
-            ease_dollars(G.GAME.dollars * lenient_bignum(card.ability.extra.gold))
+            ease_dollars_mult(lenient_bignum(card.ability.extra.gold))
             return { message = "X" .. lenient_bignum(card.ability.extra.gold), colour = G.C.MONEY }
         end
     end,

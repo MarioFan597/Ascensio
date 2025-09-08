@@ -1,15 +1,22 @@
+SMODS.Atlas({
+    key = "trading_card",
+    path = "jokers/vanilla/trading_card.png",
+    px = 71,
+    py = 95,
+})
+
 SMODS.Joker({
     key = "trading",
     rarity = "cry_exotic",
-    atlas = "v_atlas_1",
+    atlas = "trading_card",
     blueprint_compat = true,
     demicoloncompat = true,
 
     cost = 50,
     order = 23,
 
-    pos = { x = 3, y = 15 },
-    soul_pos = { x = 5, y = 15, extra = { x = 4, y = 15 } },
+    pos = { x = 0, y = 0},
+    soul_pos = { x = 0, y = 1, extra = { x = 1, y = 0 } },
 
     config = {
         extra = {
@@ -101,6 +108,16 @@ SMODS.Joker({
     calc_dollar_bonus = function(_, card)
         return card.ability.extra.money
     end,
+
+     animation = {
+        macro = {
+            type = "skim",
+            soul_pos = {
+                include = { { x1 = 0, x2 = 6, y1 = 1, y2 = 7 } },
+                exclude = { { x1 = 2, x2 = 6, y1 = 7, y2 = 7 } },
+            },
+        },
+    },
 
     asc_credits = {
         idea = {

@@ -13,21 +13,14 @@ SMODS.Joker({
 
     config = {
         extra = {
-            xmult = 0,
+            xmult = 1,
             multiplier = 0.25,
         },
     },
 
     loc_vars = function(_, _, card)
-        local thunk = false
-
-        if G and G.jokers and G.jokers.cards then
-            thunk = #G.jokers.cards > 1
-        end
-
         return {
             vars = {
-                thunk and "Jokers" or "Joker",
                 card.ability.extra.xmult,
                 card.ability.extra.multiplier,
             },
