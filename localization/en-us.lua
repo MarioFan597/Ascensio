@@ -274,8 +274,8 @@ return {
                 name = "Scinditur In Duos",
                 text = {
                     {
-                        "{X:dark_edition,C:edition}^^#1#{} mult if hand contains",
-                        "{C:attention}#2#{} or fewer cards.",
+                        "{X:dark_edition,C:edition}^^#1#{} Mult if hand contains",
+                        "{C:attention}#2#{} or fewer cards",
                     },
                 },
             },
@@ -335,17 +335,6 @@ return {
                 },
             },
 
-            j_asc_ceremonial = {
-                name = "Fractus Capulo",
-                text = {
-                    "When Blind is selected, {C:green}#1# in #2#{} chance",
-                    "to destroy every other {C:attention}Joker{}",
-                    "Gains {X:asc_emult,C:white}^#3#{} Mult for each",
-                    "{C:attention}Joker{} destroyed this way",
-                    "{C:inactive}(Currently {X:dark_edition,C:white}^#4#{}{C:inactive} Mult)",
-                },
-            },
-
             j_asc_credit_card = {
                 name = "Debitum Accepi",
                 text = {
@@ -354,6 +343,17 @@ return {
                     "dollar of debt you have",
                     "when leaving the shop",
                     "{C:inactive}(Currently {X:chips,C:white}X#2#{}{C:inactive} Chips)",
+                },
+            },
+
+             j_asc_ceremonial = {
+                name = "Fractus Capulo",
+                text = {
+                    "When Blind is selected, {C:green}#1# in #2#{} chance",
+                    "to destroy every other {C:attention}Joker{}",
+                    "Gains {X:asc_emult,C:white}^#3#{} Mult for each",
+                    "{C:attention}Joker{} destroyed this way",
+                    "{C:inactive}(Currently {X:asc_emult,C:white}^#4#{}{C:inactive} Mult)",
                 },
             },
 
@@ -636,13 +636,13 @@ return {
                 name = "Supra Nubem",
                 text = {
                     {
-                        "Gain {X:money,C:white}X$#1#{} for each {C:attention}9{} in",
-                        "{C:attention}full deck{} at the {C:attention}end of round{}",
-                        "{C:inactive}(Currently{} {X:money,C:white}X$#2#{}{C:inactive}){}",
+                        "Gain {X:money,C:white}X#1#{} total money for each",
+                        "{C:attention}9{} in {C:attention}full deck{} at the end of round",
+                        "{C:inactive}(Currently{} {X:money,C:white}X#2#{}{C:inactive}){}",
                     },
                     {
-                        "Increase amount by {X:money,C:white}X$#3#{}",
-                        "whenever a {C:attention}9{} is {C:attention}scored{}",
+                        "Increase amount by {X:money,C:white}X#3#{}",
+                        "whenever a {C:attention}9{} is scored",
                     },
                 },
             },
@@ -752,12 +752,14 @@ return {
                     },
                     {
                         "If the {C:attention}card{} is a {C:clubs}Clubs{}",
-                        "all cards {C:attention}held in hand{} gain {X:chips,C:white}XChips{} based card's rank",
+                        "all cards {C:attention}held in hand{}",
+                        "gain {X:chips,C:white}XChips{} based card's rank",
                         "{C:inactive,s:0.75}(J = 11, Q = 12, K = 13, A = 14){}",
                     },
                     {
                         "If the {C:attention}card{} is a {C:diamonds}Diamonds{}",
-                        "increase {C:money}money earned{} at the {C:attention}end of round{}",
+                        "increase {C:money}money earned{}",
+                        "at the {C:attention}end of round{}",
                         "{C:inactive}(Currently{} {X:money,C:white}+$#3#{} {C:inactive}){}",
                         "{C:inactive,s:0.75}(J = 11, Q = 12, K = 13, A = 14){}",
                     },
@@ -849,10 +851,10 @@ return {
             j_asc_swashbuckler = {
                 name = "Ultimus Pirata",
                 text = {
-                    "At the {C:attention}end of round{}",
-                    "Gain {X:mult,C:white}XMult{} equal to {C:attention}X#3#{}",
-                    "of {C:attention}total sell value{} of {C:attention}all owned #1#{}",
-                    "{C:inactive}(Currently{} {X:mult,C:white}X#2#{} {C:inactive}Mult){}",
+                    "Gains {X:mult,C:white}XMult{} equal to {X:money,C:white}X#2#{}",
+                    "of sell value of all owned",
+                    "{C:attention}Jokers{} at end of round",
+                    "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
                 },
             },
 

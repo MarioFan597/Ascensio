@@ -24,7 +24,7 @@ SMODS.Joker({
                 end
             end
             if ((has_ace or has_7) and G.GAME.dollars > to_big(0)) or context.forcetrigger then
-                ease_dollars(G.GAME.dollars * lenient_bignum(card.ability.extra.money))
+                ease_dollars_mult(lenient_bignum(card.ability.extra.money))
                 return { message = "X" .. lenient_bignum(card.ability.extra.money), colour = G.C.MONEY }
             end
         end
