@@ -655,6 +655,20 @@ return {
                 },
             },
 
+            j_asc_baron = {
+                name = "Primus Archidux",
+                text = {
+                    {
+                        "Each {C:attention}Kings{} held in hand",
+                        "give {X:asc_emult,C:white}^#1#{} Mult",
+                    },
+                    {
+                        "Each {C:attention}Kings{} held in hand",
+                        "also increases that amount by {X:asc_emult,C:white}^#2#{}",
+                    },
+                },
+            },
+
             j_asc_cloud_nine = {
                 name = "Supra Nubem",
                 text = {
