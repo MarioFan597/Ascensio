@@ -21,7 +21,7 @@
     [patches.pattern]
         match_indent = true
         pattern = '''return #Cryptid.advanced_find_joker(nil, nil, nil, { "eternal" }, true, "j") < G.jokers.config.card_limit'''
-        payload = '''if not asc_config["Insanity Mode!!!"] or false then
+        payload = '''if ( ( not AscConfig["Insanity Mode!!!"] ) or false ) then
 				return #Cryptid.advanced_find_joker(nil, nil, nil, { "eternal" }, true, "j")
 					< to_number(G.jokers.config.card_limit)
 			else
@@ -36,7 +36,7 @@
     [patches.pattern]
         match_indent = true
         pattern      = '''if not SMODS.is_eternal(v) then'''
-        payload      = '''if not SMODS.is_eternal(v) and not asc_config["Insanity Mode!!!"] or false then'''
+        payload      = '''if not SMODS.is_eternal(v) and ( ( not AscConfig["Insanity Mode!!!"] ) or false ) then'''
         position     = "at"
         target       = '''=[SMODS Cryptid "items/exotic.lua"]'''
 
@@ -45,7 +45,7 @@
     [patches.pattern]
         match_indent = true
         pattern      = '''if not v.ability.eternal then'''
-        payload      = '''if not SMODS.is_eternal(v) and not asc_config["Insanity Mode!!!"] or false then'''
+        payload      = '''if not SMODS.is_eternal(v) and ( ( not AscConfig["Insanity Mode!!!"] ) or false ) then'''
         position     = "at"
         target       = '''=[SMODS Astronomica "items/lib.lua"]'''
 
