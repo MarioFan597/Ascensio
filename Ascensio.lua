@@ -542,10 +542,11 @@ SMODS.current_mod.description_loc_vars = function()
     return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2 }
 end
 
-asc_config = SMODS.current_mod and SMODS.current_mod.config or {}
-if asc_config["Insanity Mode!!!"] == nil then
-    asc_config["Insanity Mode!!!"] = false
+if SMODS.current_mod.config == nil then
+    SMODS.current_mod.config = { ["Insanity Mode!!!"] = false }
 end
+
+AscConfig = SMODS.current_mod.config
 
 SMODS.current_mod.config_tab = function()
     return {
@@ -594,7 +595,7 @@ SMODS.current_mod.config_tab = function()
                                 scale = 1,
                                 w = 0,
                                 shadow = true,
-                                ref_table = asc_config,
+                                ref_table = AscConfig,
                                 ref_value = "Insanity Mode!!!",
                             }),
                         },

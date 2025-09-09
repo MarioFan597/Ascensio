@@ -34,7 +34,7 @@ SMODS.Consumable({
         if (#SMODS.find_card("j_jen_saint") + #SMODS.find_card("j_jen_saint_attuned")) <= 0 then
             local deletable_jokers = {}
 
-            if asc_config["Insanity Mode!!!"] or false then
+            if type(AscConfig["Insanity Mode!!!"]) == "boolean" and AscConfig["Insanity Mode!!!"] then
                 for _, v in pairs(G.jokers.cards) do
                     if v == G.jokers.highlighted[1] then
                         deletable_jokers[#deletable_jokers + 1] = v
@@ -73,16 +73,9 @@ SMODS.Consumable({
             func = function()
                 play_sound("timpani")
 
-                local stickers = {}
-
-                if deity.ability.eternal then
-                    table.insert(stickers, "eternal")
-                end
-
                 local card = SMODS.create_card({
                     key = Ascensionable[deity.config.center.key],
                     edition = deity.edition,
-                    stickers = stickers,
                 })
 
                 card:add_to_deck()

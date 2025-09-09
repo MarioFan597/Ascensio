@@ -19,11 +19,15 @@ end
 
 if Cryptid and Cryptid.manipulate then
     ---@param region Card[]
-    ---@param args number|{type: "+"|"X"|"^"|"hyper", value: number|{arrows:number, height:number}}
+    ---@param args number|{type?: "+"|"X"|"^"|"hyper", value: number|{arrows:number, height:number}}
     function Debug.manipulateAll(region, args)
         for _, card in ipairs(region) do
             if Card.no(card, "immutable", true) then
-                Cryptid.manipulate(card, args)
+                if type(args) == "number" then
+                    Cryptid.manipulate(card, { value = args })
+                else
+                    Cryptid.manipulate(card, args)
+                end
             end
         end
     end
