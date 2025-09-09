@@ -33,7 +33,7 @@ SMODS.Joker({
             return { emult = card.ability.extra.emult }
         end
 
-        if (context.after and context.cardarea == G.hand) or context.forcetrigger then
+        if context.after or context.forcetrigger then
             local scalar = 0
 
             for _, cardx in ipairs(G.hand.cards) do
