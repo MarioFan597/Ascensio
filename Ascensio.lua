@@ -179,6 +179,7 @@ Ascension({ source = Source.Vanilla, from = "j_drivers_license", to_exotic = "j_
 Ascension({ source = Source.Vanilla, from = "j_bootstraps", to_exotic = "j_asc_bootstraps" })
 Ascension({ source = Source.Vanilla, from = "j_caino", to_exotic = "j_asc_canio" }) -- Sic! Don't correct!
 Ascension({ source = Source.Vanilla, from = "j_seance", to_exotic = "j_asc_seance" })
+Ascension({ source = Source.Vanilla, from = "j_vampire", to_exotic = "j_asc_vampire" })
 
 -- Cryptid Ascensions
 Ascension({ source = Source.Cryptid, from = "j_cry_canvas", to_exotic = "j_asc_canvas" })

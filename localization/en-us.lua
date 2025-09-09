@@ -1157,6 +1157,21 @@ return {
                 },
             },
 
+            j_asc_vampire = {
+                name = "Proavus Sanguinis",
+                text = {
+                    {
+                        "Gain {X:dark_edition,C:edition}^^#2#{} Mult per scored {C:attention}enhanced{} card",
+                        "and removes card {C:attention}enhancement{}",
+                        "{C:inactive}(Currently{} {X:dark_edition,C:edition}^^#1#{} {C:inactive}Mult){}",
+                    },
+                    {
+                        "Decrease by {X:dark_edition,C:edition}^^#3#{} Mult for each hand without",
+                        "{C:attention}enhanced{} card scoring",
+                    },
+                },
+            },
+
             -----Cryptid-----
             j_asc_canvas = {
                 name = "Pictura Olei",
