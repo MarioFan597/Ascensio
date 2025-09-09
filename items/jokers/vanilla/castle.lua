@@ -41,7 +41,7 @@ SMODS.Joker({
                 })
             end
 
-            if context.other_card:is_suit("Spades") or context.other_card:is_suit("Clubs") or context.forcetrigger then
+            if context.other_card:is_suit("Hearts") or context.other_card:is_suit("Diamonds") or context.forcetrigger then
                 SMODS.scale_card(card, {
                     ref_table = card.ability.extra,
                     ref_value = "emult",
