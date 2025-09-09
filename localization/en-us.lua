@@ -418,6 +418,15 @@ return {
                 },
             },
 
+            j_asc_raised_fist = {
+                name = "Pugnus Populi",
+                text = {
+                    "Gain {X:attention,C:white}X#1#{} the rank of {C:attention}lowest{} ranked",
+                    "card held in hand as {X:mult,C:white}XMult{}",
+                    "{C:inactive}(Currently{} {X:mult,C:white}X#2#{} {C:inactive}Mult){}",
+                },
+            },
+
             j_asc_fibonacci = {
                 name = "Proportio Aurea",
                 text = {
@@ -430,6 +439,20 @@ return {
                         "before scoring each card",
                         "Resets each hand played",
                         "{C:inactive}(e.g: X1, X2, X3, X5, X8, etc.){}",
+                    },
+                },
+            },
+
+            j_asc_steel_joker = {
+                name = "Tegumentum Inoxidabile",
+                text = {
+                    {
+                        "Convert all cards {C:attention}held in hand{} without an {C:attention}enhancement{}",
+                        "into {C:attention}Steel Cards{}",
+                    },
+                    {
+                        "{C:attention}Steel Cards{} held in hand",
+                        "give {X:asc_emult,C:white}^#1#{} Mult",
                     },
                 },
             },
@@ -832,7 +855,7 @@ return {
                 },
             },
 
-            j_asc_smiley_face = {
+            j_asc_smiley = {
                 name = "Acclamatio",
                 text = {
                     {
