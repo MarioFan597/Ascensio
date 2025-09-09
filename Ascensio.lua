@@ -25,6 +25,10 @@ loadFile("atlas.lua")
 -- Load Gradients.
 loadFile("Palette.lua")
 
+if next(SMODS.find_mod("DebugPlus")) then
+    loadFile("lib/debug.lua")
+end
+
 -- Load libraries.
 loadFile("lib/utils.lua")
 loadFile("lib/cardanim.lua")
@@ -121,7 +125,9 @@ Ascension({ source = Source.Vanilla, from = "j_mystic_summit", to_exotic = "j_as
 Ascension({ source = Source.Vanilla, from = "j_marble", to_exotic = "j_asc_marble", to_entropic = "j_asc_marble_entr" })
 Ascension({ source = Source.Vanilla, from = "j_loyalty_card", to_exotic = "j_asc_loyalty_card" })
 Ascension({ source = Source.Vanilla, from = "j_misprint", to_exotic = "j_asc_misprint" })
+Ascension({ source = Source.Vanilla, from = "j_raised_fist", to_exotic = "j_asc_raised_fist" })
 Ascension({ source = Source.Vanilla, from = "j_fibonacci", to_exotic = "j_asc_fibonacci" })
+Ascension({ source = Source.Vanilla, from = "j_steel_joker", to_exotic = "j_asc_steel_joker" })
 Ascension({ source = Source.Vanilla, from = "j_gros_michel", to_exotic = "j_asc_banana" })
 Ascension({ source = Source.Vanilla, from = "j_even_steven", to_exotic = "j_asc_even_steven" })
 Ascension({ source = Source.Vanilla, from = "j_odd_todd", to_exotic = "j_asc_odd_todd" })
@@ -151,7 +157,7 @@ Ascension({ source = Source.Vanilla, from = "j_trading", to_exotic = "j_asc_trad
 Ascension({ source = Source.Vanilla, from = "j_ancient", to_exotic = "j_asc_ancient" })
 Ascension({ source = Source.Vanilla, from = "j_selzer", to_exotic = "j_asc_seltzer" }) -- Sic! Don't correct!
 Ascension({ source = Source.Vanilla, from = "j_castle", to_exotic = "j_asc_castle" })
-Ascension({ source = Source.Vanilla, from = "j_smiley_face", to_exotic = "j_asc_smiley_face" })
+Ascension({ source = Source.Vanilla, from = "j_smiley", to_exotic = "j_asc_smiley" })
 Ascension({ source = Source.Vanilla, from = "j_campfire", to_exotic = "j_asc_campfire" })
 Ascension({ source = Source.Vanilla, from = "j_throwback", to_exotic = "j_asc_throwback" })
 Ascension({ source = Source.Vanilla, from = "j_hanging_chad", to_exotic = "j_asc_hanging_chad" })
@@ -538,10 +544,11 @@ SMODS.current_mod.description_loc_vars = function()
     return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2 }
 end
 
-asc_config = SMODS.current_mod and SMODS.current_mod.config or {}
-if asc_config["Insanity Mode!!!"] == nil then
-    asc_config["Insanity Mode!!!"] = false
+if SMODS.current_mod.config == nil then
+    SMODS.current_mod.config = { ["Insanity Mode!!!"] = false }
 end
+
+AscConfig = SMODS.current_mod.config
 
 SMODS.current_mod.config_tab = function()
     return {
@@ -590,7 +597,7 @@ SMODS.current_mod.config_tab = function()
                                 scale = 1,
                                 w = 0,
                                 shadow = true,
-                                ref_table = asc_config,
+                                ref_table = AscConfig,
                                 ref_value = "Insanity Mode!!!",
                             }),
                         },

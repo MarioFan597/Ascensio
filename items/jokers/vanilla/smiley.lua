@@ -1,5 +1,5 @@
 SMODS.Joker({
-    key = "smiley_face",
+    key = "smiley",
     rarity = "cry_exotic",
     atlas = "v_atlas_1",
     blueprint_compat = true,
