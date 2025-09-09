@@ -25,6 +25,10 @@ loadFile("atlas.lua")
 -- Load Gradients.
 loadFile("Palette.lua")
 
+if next(SMODS.find_mod("DebugPlus")) then
+    loadFile("lib/debug.lua")
+end
+
 -- Load libraries.
 loadFile("lib/utils.lua")
 loadFile("lib/cardanim.lua")
@@ -151,7 +155,7 @@ Ascension({ source = Source.Vanilla, from = "j_trading", to_exotic = "j_asc_trad
 Ascension({ source = Source.Vanilla, from = "j_ancient", to_exotic = "j_asc_ancient" })
 Ascension({ source = Source.Vanilla, from = "j_selzer", to_exotic = "j_asc_seltzer" }) -- Sic! Don't correct!
 Ascension({ source = Source.Vanilla, from = "j_castle", to_exotic = "j_asc_castle" })
-Ascension({ source = Source.Vanilla, from = "j_smiley_face", to_exotic = "j_asc_smiley_face" })
+Ascension({ source = Source.Vanilla, from = "j_smiley", to_exotic = "j_asc_smiley" })
 Ascension({ source = Source.Vanilla, from = "j_campfire", to_exotic = "j_asc_campfire" })
 Ascension({ source = Source.Vanilla, from = "j_throwback", to_exotic = "j_asc_throwback" })
 Ascension({ source = Source.Vanilla, from = "j_hanging_chad", to_exotic = "j_asc_hanging_chad" })

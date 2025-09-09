@@ -825,9 +825,9 @@ return {
                         "{C:inactive}(Currently{} {X:asc_echips,C:white}^#2#{} {C:inactive}Chips){}",
                     },
                     {
-                        "This Joker gains {X:asc_emult,C:white}^#1#{} Mult per {C:attention}discarded{}",
+                        "This Joker gains {X:asc_emult,C:white}^#3#{} Mult per {C:attention}discarded{}",
                         "{C:hearts}Hearts{} or {C:diamonds}Diamonds{}",
-                        "{C:inactive}(Currently{} {X:asc_emult,C:white}^#2#{} {C:inactive}Mult){}",
+                        "{C:inactive}(Currently{} {X:asc_emult,C:white}^#4#{} {C:inactive}Mult){}",
                     },
                 },
             },
