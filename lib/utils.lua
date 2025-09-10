@@ -54,11 +54,48 @@ function ease_dollars_mult(amount, instant) --By Omega. Pretty much thunk's ease
         _amount(amount)
     else
         G.E_MANAGER:add_event(Event({
-        trigger = 'immediate',
-        func = function()
-            _amount(amount)
-            return true
-        end
+            trigger = "immediate",
+            func = function()
+                _amount(amount)
+                return true
+            end,
         }))
     end
 end
+
+-- This is ripped off Entropy.
+-- Original by LordRuby
+
+---@param mod integer
+---@param stroverride? string
+local function ease_playing_card_selection_limit(mod, stroverride)
+    if SMODS.hand_limit_strings then
+        G.GAME.starting_params.play_limit = (G.GAME.starting_params.play_limit or 5) + mod
+        G.hand.config.highlighted_limit = math.max(G.GAME.starting_params.discard_limit or 5, G.GAME.starting_params.play_limit or 5)
+        local str = stroverride or G.GAME.starting_params.play_limit or ""
+        SMODS.hand_limit_strings.play = G.GAME.starting_params.play_limit ~= 5 and localize("b_limit") .. str or ""
+    else
+        G.hand.config.highlighted_limit = G.hand.config.highlighted_limit + mod
+    end
+end
+
+---@param mod integer
+---@param stroverride? string
+local function ease_discard_selection_limit(mod, stroverride)
+    G.GAME.starting_params.discard_limit = (G.GAME.starting_params.discard_limit or 5) + mod
+    G.hand.config.highlighted_limit = math.max(G.GAME.starting_params.discard_limit or 5, G.GAME.starting_params.play_limit or 5)
+    local str = stroverride or G.GAME.starting_params.discard_limit or ""
+    SMODS.hand_limit_strings.discard = G.GAME.starting_params.discard_limit ~= 5 and localize("b_limit") .. str or ""
+end
+
+---@param mod integer
+---@param stroverride? string
+ease_selection_limit = function(mod, stroverride)
+    if not SMODS.hand_limit_strings then
+        SMODS.hand_limit_strings = {}
+    end
+
+    ease_playing_card_selection_limit(mod, stroverride)
+    ease_discard_selection_limit(mod, stroverride)
+end
+

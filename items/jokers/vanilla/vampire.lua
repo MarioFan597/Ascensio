@@ -84,7 +84,7 @@ SMODS.Joker({
             "OmegaLife",
         },
         art = {
-            "???",
+            "Lil Mr. Slipstream",
         },
         code = {
             "OmegaLife",

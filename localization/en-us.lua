@@ -593,6 +593,25 @@ return {
                 },
             },
 
+            j_asc_splash = {
+                name = "Oceanus Infinitus",
+                text = {
+                    {
+                        "Every time a {C:attention}Boss Blind{} is defeated",
+                        "or on {C:attention}acquisition{}",
+                        "{C:attention}+#1#{} card selection limit.",
+                        "{C:inactive}(Currently{} {C:attention}+#2#{} {C:inactive}card selection limit){}",
+                    },
+                    {
+                        "Every played card {C:attention}counts{} in scoring",
+                    },
+                    {
+                        "Every card scored also give {X:mult,C:white}XMult{}",
+                        "equal to total card selected",
+                    },
+                },
+            },
+
             j_asc_blue = {
                 name = "Magnus Sapphirus",
                 text = {
