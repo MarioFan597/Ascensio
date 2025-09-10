@@ -151,3 +151,6 @@ function Number.max(a, b)
 
     return Number.toBig(a):max(b)
 end
+
+Number.bigZero = to_big(0)
+Number.bigOne = to_big(1)

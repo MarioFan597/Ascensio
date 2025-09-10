@@ -58,14 +58,16 @@ SMODS.Joker({
         if context.beat_boss and context.main_eval then
             local csl_gain = card.ability.extra.csl_gain
 
-            ease_selection_limit(csl_gain)
-
             SMODS.scale_card(card, {
                 ref_table = card.ability.immutable,
                 ref_value = "cumulative_csl_gained",
                 scalar_value = "gain",
                 scalar_table = { gain = csl_gain },
             })
+
+            return {
+                csl = card.ability.extra.csl_gain,
+            }
         end
 
         if context.individual and context.cardarea == G.play then

@@ -37,7 +37,7 @@ SMODS.Joker({
             if
                 SMODS.pseudorandom_probability(card, "OOOOOOH BANANA", 1, card.ability.extra.odds, "Exotic Banana")
                 and #G.jokers.cards
-                and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit
+                and G.jokers.config.card_limit > Number.toBig(#G.jokers.cards + G.GAME.joker_buffer)
                 and not (context.blueprint or context.repetition or context.retrigger_joker_check or context.retrigger_joker)
             then
                 local roundcreatejoker = math.min(1, G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer))
