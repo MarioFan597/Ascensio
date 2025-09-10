@@ -50,7 +50,7 @@ SMODS.Joker({
 })
 
 SMODS.current_mod.set_debuff = function(card)
-    if next(SMODS.find_card("j_asc_smeard")) and card.playing_card and SMODS.has_enhancement(card, "m_wild") then
+    if next(SMODS.find_card("j_asc_smeared")) and card.playing_card and SMODS.has_enhancement(card, "m_wild") then
         return "prevent_debuff"
     end
 end
