@@ -58,6 +58,18 @@ SMODS.Joker({
                 xchips = card.ability.extra.xchips,
             }
         end
+
+        if context.beat_boss and context.main_eval then
+            card.ability.extra.money = card.ability.immutable.money
+
+            return {
+                message = localize("k_reset_ex"),
+            }
+        end
+    end,
+
+    calc_dollar_bonus = function(_, card)
+        return card.ability.extra.money
     end,
 
     asc_credits = {
