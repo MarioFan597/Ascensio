@@ -35,6 +35,7 @@ SMODS.Joker({
     end,
 
     add_to_deck = function(_, card, _)
+        card.ability.immutable.oldcsl = G.GAME.starting_params.play_limit
         local csl_gain = card.ability.extra.csl_gain
 
         ease_selection_limit(csl_gain)
@@ -75,11 +76,6 @@ SMODS.Joker({
 
     remove_from_deck = function(_, card, _)
         set_selection_limit(card.ability.immutable.oldcsl)
-
-        return {
-            message = "Dried Up!",
-            colour = G.C.RED,
-        }
     end,
 
     asc_credits = {
