@@ -945,21 +945,20 @@ return {
                 },
             },
 
-            --[[
             j_asc_smeared = {
                 name = "Inquino",
                 text = {
                     {
-                        "{C:attention}All{} cards count as",
-                        "every {C:attention}suit{} and every {C:attention}rank{}",
+                        "Scored cards are converted into {C:attention}Wild{} Cards",
                     },
                     {
-                        "Cards with a suit or a rank",
-                        "{C:attention}cannot{} be debuffed",
+                        "{C:attention}Wild{} Cards cannot be {C:attention}debuffed{}",
+                    },
+                    {
+                        "{C:attention}Wild{} Cards gives {X:dark_edition,C:edition}^^#1#{} Mult when scored",
                     },
                 },
             },
-            ]]
 
             j_asc_throwback = {
                 name = "Desiderium",
