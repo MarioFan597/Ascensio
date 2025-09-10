@@ -50,6 +50,7 @@ function ease_dollars_mult(amount, instant) --By Omega. Pretty much thunk's ease
             play_sound("coin1")
         end
     end
+
     if instant then
         _amount(amount)
     else
@@ -99,3 +100,35 @@ ease_selection_limit = function(mod, stroverride)
     ease_discard_selection_limit(mod, stroverride)
 end
 
+---@param to integer
+---@param stroverride? string
+local function set_playing_card_selection_limit(to, stroverride)
+    if SMODS.hand_limit_strings then
+        G.GAME.starting_params.play_limit = to
+        G.hand.config.highlighted_limit = math.max(G.GAME.starting_params.discard_limit or 5, G.GAME.starting_params.play_limit or 5)
+        local str = stroverride or G.GAME.starting_params.play_limit or ""
+        SMODS.hand_limit_strings.play = G.GAME.starting_params.play_limit ~= 5 and localize("b_limit") .. str or ""
+    else
+        G.hand.config.highlighted_limit = to
+    end
+end
+
+---@param to integer
+---@param stroverride? string
+local function set_discard_selection_limit(to, stroverride)
+    G.GAME.starting_params.discard_limit = to
+    G.hand.config.highlighted_limit = math.max(G.GAME.starting_params.discard_limit or 5, G.GAME.starting_params.play_limit or 5)
+    local str = stroverride or G.GAME.starting_params.discard_limit or ""
+    SMODS.hand_limit_strings.discard = G.GAME.starting_params.discard_limit ~= 5 and localize("b_limit") .. str or ""
+end
+
+---@param to integer
+---@param stroverride? string
+set_selection_limit = function(to, stroverride)
+    if not SMODS.hand_limit_strings then
+        SMODS.hand_limit_strings = {}
+    end
+
+    set_playing_card_selection_limit(to, stroverride)
+    set_discard_selection_limit(to, stroverride)
+end

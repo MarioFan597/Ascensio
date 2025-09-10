@@ -19,6 +19,7 @@ SMODS.Joker({
 
         immutable = {
             cumulative_csl_gained = 0,
+            oldcsl = 5,
         },
     },
 
@@ -73,7 +74,7 @@ SMODS.Joker({
     end,
 
     remove_from_deck = function(_, card, _)
-        ease_selection_limit(-card.ability.immutable.cumulative_csl_gained)
+        set_selection_limit(card.ability.immutable.oldcsl)
 
         return {
             message = "Dried Up!",
