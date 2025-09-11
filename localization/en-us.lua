@@ -716,6 +716,8 @@ return {
                         "Payout increases by {C:money}$#2#{}",
                         "whenever a card is {C:attention}scored{}",
                         "{C:inactive}(Reset every Ante){}",
+                        "Payout increases by {C:money}$#2#{} whenever a card is {C:attention}scored{}",
+                        "{C:inactive,s:0.75}(Reset whenever Boss Blind is defeated){}",
                     },
                     {
                         "Gains {X:chips,C:white}X#3#{} Chips",
@@ -1327,6 +1329,7 @@ return {
                 },
             },
 
+<<<<<<< HEAD
             j_asc_krusty = {
                 name = "Iura Ideae",
                 text = {
@@ -1341,6 +1344,9 @@ return {
                 },
             },
 
+||||||| parent of 6c8d09d (Resolving conflicts.)
+=======
+>>>>>>> 6c8d09d (Resolving conflicts.)
             -----Cryptid Mortals-----
 
             j_asc_copy_cat = {
