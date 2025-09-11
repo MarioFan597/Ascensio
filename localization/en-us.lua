@@ -1,3 +1,5 @@
+local circusDesc = asc_circus_desc()
+
 return {
     descriptions = {
         Mod = {
@@ -709,7 +711,7 @@ return {
                     {
                         "Earn {C:money}$#1#{} at the {C:attention}end of round{}",
                         "Payout increases by {C:money}$#2#{} whenever a card is {C:attention}scored{}",
-                        "{C:inactive,s:0.75}(Reset every Ante){}",
+                        "{C:inactive,s:0.75}(Reset whenever Boss Blind is defeated){}",
                     },
                     {
                         "Gain {X:chips,C:white}X#3#{} Chips",
@@ -1310,6 +1312,17 @@ return {
                     },
                 },
             },
+
+            j_asc_circus = {
+                name = "Grex Vagans",
+                text = {
+                    circusDesc,
+                    {
+                        string.format("Increase Base by {C:attention}#%d#{} at the end of round", #circusDesc + 1),
+                    },
+                },
+            },
+
             -----Cryptid Mortals-----
 
             j_asc_copy_cat = {
@@ -1612,6 +1625,8 @@ return {
             asc_special_thanks = "Special Thanks",
             asc_config_insanity_mode = "Insanity Mode!!!",
             asc_config_insanity_explanation = "Stops Gateway and Ascension from destroying Jokers",
+
+            asc_circus_tmpl = "{C:${1}}${2}{} Jokers each gives {X:asc_emult,C:white}^${3}{} Mult {C:inactive}(Base^${4}){}",
         },
         labels = {
             numina = "Numina",

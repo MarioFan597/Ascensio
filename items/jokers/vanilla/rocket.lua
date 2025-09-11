@@ -48,8 +48,11 @@ SMODS.Joker({
             SMODS.scale_card(card, {
                 ref_table = card.ability.extra,
                 ref_value = "xchips",
-                scalar_value = "gain",
-                scalar_table = { gain = G.GAME.dollars * card.ability.xchips_scalar },
+                scalar_value = "xchips_scalar",
+
+                operation = function(ref_table, ref_value, initial, change)
+                    ref_table[ref_value] = (G.GAME.dollars or 0) * change + initial
+                end,
             })
         end
 
@@ -63,7 +66,7 @@ SMODS.Joker({
             card.ability.extra.money = card.ability.immutable.money
 
             return {
-                message = localize("k_reset_ex"),
+                message = "Reset!",
             }
         end
     end,
