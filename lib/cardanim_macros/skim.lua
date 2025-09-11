@@ -4,7 +4,8 @@ function error_messages.skim_invalid_str(key, type, found_string, is_sub)
 end
 local mod_prefix = SMODS.current_mod.prefix
 
--- Returns all coordinates within a rectangle
+-- Returns all coordinates within a rectangle.
+---@param coords { x1: number, x2: number, y1: number, y2: number }
 local function coord_rect(coords)
     local x1 = coords.x1
     local x2 = coords.x2
@@ -22,7 +23,10 @@ local function coord_rect(coords)
     return coord_list
 end
 
--- Determines if main is equivalent to any of the items in the options sequence
+-- Determines if <main> is equivalent to any of the items in the <options> sequence.
+---@param main string
+---@param options string[]
+---@return boolean
 local function string_any(main, options)
     for _, v in ipairs(options) do
         if main == v then

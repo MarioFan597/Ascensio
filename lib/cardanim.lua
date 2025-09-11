@@ -1,6 +1,43 @@
 -- CARDANIM - Card animation system
 -- Documentation can be found at https://github.com/Oinite12/balatro-modding-modules/
 
+---@class Coords
+---@field x integer
+---@field y integer
+
+---@class Rect
+---@field x1 integer
+---@field y1 integer
+---@field x2 integer
+---@field y2 integer
+
+---@class CardAnimationFrames
+---@field pos? { x: integer, y: integer, t: number }[]
+---@field soul_pos? { x: integer, y: integer, t: number }[]
+---@field soul_pos_extra? { x: integer, y: integer, t: number }[]
+
+---@alias GroupType "row"|"col"|"r"|"c"
+---@alias IterationType "forward"|"backward"|"f"|"b"
+
+---@class CardAnimationSkimMacro
+---@field pos? CardAnimationSkimMacroSubTable
+---@field soul_pos? CardAnimationSkimMacroSubTable
+---@field soul_pos_extra? CardAnimationSkimMacroSubTable
+
+---@class CardAnimationSkimMacroSubTable
+---@field include (Coords|Rect)[]
+---@field exclude? (Coords|Rect)[]
+---@field timing? integer[]
+---@field is_periodic? boolean
+---@field direction? { [1]: GroupType, [2]: IterationType, [3]: IterationType }
+
+---@class CardAnimationMacro
+---@field type "skim"|string
+
+---@class CardAnimation
+---@field frames? CardAnimationFrames
+---@field macro? CardAnimationSkimMacro
+
 -- == CONFIG
 local cardanim_cfg = {
     macro_directory = "lib/cardanim_macros",
