@@ -24,7 +24,7 @@ SMODS.Joker({
     atlas = "c_atlas_1",
 
     config = {
-        extra = { base = to_big(1.2), base_gain = 0.05 },
+        extra = { base = to_big(1.1), base_gain = 0.01 },
         immutable = {},
     },
 

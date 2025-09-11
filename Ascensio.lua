@@ -194,6 +194,7 @@ Ascension({ source = Source.Cryptid, from = "j_cry_huntingseason", to_exotic = "
 Ascension({ source = Source.Cryptid, from = "j_cry_highfive", to_exotic = "j_asc_high_five" })
 Ascension({ source = Source.Cryptid, from = "j_cry_CodeJoker", to_exotic = "j_asc_code_joker" })
 Ascension({ source = Source.Cryptid, from = "j_cry_circus", to_exotic = "j_asc_circus" })
+Ascension({ source = Source.Cryptid, from = "j_cry_krustytheclown", to_exotic = "j_asc_krusty" })
 
 -- Mortals for Cryptid Exotics
 Ascension({ source = Source.MortalCryptid, from = "j_asc_copy_cat", to_exotic = "j_cry_iterum", source_file = "copy_cat" })

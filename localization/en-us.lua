@@ -1323,6 +1323,20 @@ return {
                 },
             },
 
+            j_asc_krusty = {
+                name = "Iura Ideae",
+                text = {
+                    {
+                        "Gain {X:mult,C:white}X#2#{} Mult whenever a card is {C:attention}scored{}",
+                        "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult)",
+                    },
+                    {
+                        "Whenever {C:attention}Boss Blind{} is defeated, increase",
+                        "{X:mult,C:white}XMult{} {C:attention}gain{} by {C:attention}#3#{}",
+                    },
+                },
+            },
+
             -----Cryptid Mortals-----
 
             j_asc_copy_cat = {
