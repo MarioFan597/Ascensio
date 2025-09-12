@@ -711,13 +711,9 @@ return {
                 text = {
                     {
                         "Earn {C:money}$#1#{} at the {C:attention}end of round{}",
-                        "Payout increases by {C:money}$#2#{} whenever a card is {C:attention}scored{}",
-                        "{C:inactive,s:0.75}(Reset whenever Boss Blind is defeated){}",
                         "Payout increases by {C:money}$#2#{}",
                         "whenever a card is {C:attention}scored{}",
                         "{C:inactive}(Reset every Ante){}",
-                        "Payout increases by {C:money}$#2#{} whenever a card is {C:attention}scored{}",
-                        "{C:inactive,s:0.75}(Reset whenever Boss Blind is defeated){}",
                     },
                     {
                         "Gains {X:chips,C:white}X#3#{} Chips",
@@ -1051,7 +1047,7 @@ return {
                         "randomly either gives",
                         "{X:asc_emult,C:white}^#3#{} Mult, {X:asc_echips,C:white}^#3#{} Chips, {X:money,C:white}X#3#{} Money,",
                         "or increases Joker values {C:attention}+#4#{}",
-                        "{C:inactive}(Card changes every round)",
+                        "{C:inactive}(Card changes every round)"
                     },
                 },
             },
@@ -1192,7 +1188,7 @@ return {
                         "Decreases {X:dark_edition,C:edition}^^Mult{} by {X:dark_edition,C:edition}^^#3#{}",
                         "each hand without a",
                         "scoring {C:attention}Enhanced{} card",
-                        "{C:inactive}(Can't go below {X:dark_edition,C:edition}^^1{}{C:inactive}){}",
+                        "{C:inactive}(Can't go below {X:dark_edition,C:edition}^^1{}{C:inactive}){}"
                     },
                 },
             },
@@ -1329,7 +1325,7 @@ return {
                 },
             },
 
-<<<<<<< HEAD
+
             j_asc_krusty = {
                 name = "Iura Ideae",
                 text = {
@@ -1344,9 +1340,6 @@ return {
                 },
             },
 
-||||||| parent of 6c8d09d (Resolving conflicts.)
-=======
->>>>>>> 6c8d09d (Resolving conflicts.)
             -----Cryptid Mortals-----
 
             j_asc_copy_cat = {
