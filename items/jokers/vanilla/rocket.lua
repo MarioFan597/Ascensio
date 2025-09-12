@@ -13,61 +13,48 @@ SMODS.Joker({
 
     config = {
         extra = {
-            money = 5,
-            money_gain = 2,
-            xchips_scalar = 0.1,
-            xchips = 1,
-        },
-
-        immutable = {
-            money = 5,
+            manipulate = 5,
+            manipulate_multiplier = 1.1,
+            money = 20,
         },
     },
 
     loc_vars = function(_, _, card)
         return {
             vars = {
+                card.ability.extra.manipulate,
                 card.ability.extra.money,
-                card.ability.extra.money_gain,
-                card.ability.extra.xchips_scalar,
-                card.ability.extra.xchips,
+                card.ability.extra.manipulate_multiplier,
             },
         }
     end,
 
     calculate = function(_, card, context)
-        if (context.individual and context.cardarea == G.play) or context.forcetrigger then
+        if (context.end_of_round and not context.repetition and not context.individual and not context.blueprint) or context.forcetrigger then
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+                    SMODS.scale_card(card, {
+                        ref_table = card.ability.extra,
+                        ref_value = "money",
+                        scalar_value = "manipulate",
+                    })
+                else
+                    if not Card.no(G.jokers.cards[i], "immutable", true) then
+                        Cryptid.with_deck_effects(G.jokers.cards[i], function(cards)
+                            Cryptid.manipulate(cards, { value = card.ability.extra.manipulate, type = "+" })
+                        end)
+                    end
+                end
+            end
+        end
+
+        if (context.beat_boss and not context.repetition and not context.individual and not context.blueprint) or context.forcetrigger then
             SMODS.scale_card(card, {
                 ref_table = card.ability.extra,
-                ref_value = "money",
-                scalar_value = "money_gain",
+                ref_value = "manipulate",
+                scalar_value = "manipulate_multiplier",
+                operation = "x",
             })
-        end
-
-        if (context.end_of_round and context.main_eval) or context.forcetrigger then
-            SMODS.scale_card(card, {
-                ref_table = card.ability.extra,
-                ref_value = "xchips",
-                scalar_value = "xchips_scalar",
-
-                operation = function(ref_table, ref_value, initial, change)
-                    ref_table[ref_value] = (G.GAME.dollars or 0) * change + initial
-                end,
-            })
-        end
-
-        if context.joker_main or context.forcetrigger then
-            return {
-                xchips = card.ability.extra.xchips,
-            }
-        end
-
-        if context.beat_boss and context.main_eval then
-            card.ability.extra.money = card.ability.immutable.money
-
-            return {
-                message = "Reset!",
-            }
         end
     end,
 
