@@ -33,12 +33,14 @@ SMODS.Joker({
             }
         end
 
-        if context.end_of_round and context.main_eval and not (context.individual or context.repetition or context.blueprint) then
+        if (context.end_of_round and context.main_eval and not (context.individual or context.repetition or context.blueprint)) or context.forcetrigger then
             if
-                SMODS.pseudorandom_probability(card, "OOOOOOH BANANA", 1, card.ability.extra.odds, "Exotic Banana")
-                and #G.jokers.cards
-                and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit
-                and not (context.blueprint or context.repetition or context.retrigger_joker_check or context.retrigger_joker)
+                (
+                    SMODS.pseudorandom_probability(card, "OOOOOOH BANANA", 1, card.ability.extra.odds, "Exotic Banana")
+                    and #G.jokers.cards
+                    and G.jokers.config.card_limit > Number.toBig(#G.jokers.cards + G.GAME.joker_buffer)
+                    and not (context.blueprint or context.repetition or context.retrigger_joker_check or context.retrigger_joker)
+                ) or context.forcetrigger
             then
                 local roundcreatejoker = math.min(1, G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer))
                 G.GAME.joker_buffer = G.GAME.joker_buffer + roundcreatejoker

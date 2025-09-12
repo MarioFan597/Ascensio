@@ -29,7 +29,7 @@ SMODS.Joker({
         extra = {
             xdollars = 1,
             xdollars_gain_gain = 0.01,
-            xdollars_gain = 0.1
+            xdollars_gain = 0.1,
         },
     },
 
@@ -38,7 +38,7 @@ SMODS.Joker({
 
         return {
             vars = {
-                card.ability.extra.xdollars + card.ability.extra.xdollars_gain,
+                card.ability.extra.xdollars_gain,
                 card.ability.extra.xdollars + (card.ability.extra.xdollars_gain * nines),
                 card.ability.extra.xdollars_gain_gain,
             },
@@ -47,8 +47,9 @@ SMODS.Joker({
 
     calculate = function(_, card, ctx)
         if (ctx.end_of_round and ctx.main_eval) or ctx.forcetrigger then
-            ease_dollars_mult(card.ability.extra.xdollars + card.ability.extra.xdollars_gain * count_nines())
-            return { message = "X" .. lenient_bignum(card.ability.extra.xdollars + card.ability.extra.xdollars_gain * count_nines()), colour = G.C.MONEY }
+            local nines = count_nines()
+            ease_dollars_mult(card.ability.extra.xdollars + card.ability.extra.xdollars_gain * nines)
+            return { message = "X" .. lenient_bignum(card.ability.extra.xdollars + card.ability.extra.xdollars_gain * nines), colour = G.C.MONEY }
         end
 
         if (ctx.individual and ctx.cardarea == G.play) or ctx.forcetrigger then

@@ -48,8 +48,11 @@ SMODS.Joker({
             SMODS.scale_card(card, {
                 ref_table = card.ability.extra,
                 ref_value = "xchips",
-                scalar_value = "gain",
-                scalar_table = { gain = G.GAME.dollars * card.ability.xchips_scalar },
+                scalar_value = "xchips_scalar",
+
+                operation = function(ref_table, ref_value, initial, change)
+                    ref_table[ref_value] = (G.GAME.dollars or 0) * change + initial
+                end,
             })
         end
 
@@ -58,6 +61,18 @@ SMODS.Joker({
                 xchips = card.ability.extra.xchips,
             }
         end
+
+        if context.beat_boss and context.main_eval then
+            card.ability.extra.money = card.ability.immutable.money
+
+            return {
+                message = "Reset!",
+            }
+        end
+    end,
+
+    calc_dollar_bonus = function(_, card)
+        return card.ability.extra.money
     end,
 
     asc_credits = {
@@ -65,7 +80,7 @@ SMODS.Joker({
             "OmegaLife",
         },
         art = {
-            "???",
+            "Lil Mr. Slipstream",
         },
         code = {
             "OmegaLife",

@@ -50,15 +50,147 @@ function ease_dollars_mult(amount, instant) --By Omega. Pretty much thunk's ease
             play_sound("coin1")
         end
     end
+
     if instant then
         _amount(amount)
     else
         G.E_MANAGER:add_event(Event({
-        trigger = 'immediate',
-        func = function()
-            _amount(amount)
-            return true
-        end
+            trigger = "immediate",
+            func = function()
+                _amount(amount)
+                return true
+            end,
         }))
     end
+end
+
+-- This is ripped off Entropy.
+-- Original by LordRuby
+
+---@param mod integer
+---@param stroverride? string
+local function ease_playing_card_selection_limit(mod, stroverride)
+    if SMODS.hand_limit_strings then
+        G.GAME.starting_params.play_limit = (G.GAME.starting_params.play_limit or 5) + mod
+        G.hand.config.highlighted_limit = math.max(G.GAME.starting_params.discard_limit or 5, G.GAME.starting_params.play_limit or 5)
+        local str = stroverride or G.GAME.starting_params.play_limit or ""
+        SMODS.hand_limit_strings.play = G.GAME.starting_params.play_limit ~= 5 and localize("b_limit") .. str or ""
+    else
+        G.hand.config.highlighted_limit = G.hand.config.highlighted_limit + mod
+    end
+end
+
+---@param mod integer
+---@param stroverride? string
+local function ease_discard_selection_limit(mod, stroverride)
+    G.GAME.starting_params.discard_limit = (G.GAME.starting_params.discard_limit or 5) + mod
+    G.hand.config.highlighted_limit = math.max(G.GAME.starting_params.discard_limit or 5, G.GAME.starting_params.play_limit or 5)
+    local str = stroverride or G.GAME.starting_params.discard_limit or ""
+    SMODS.hand_limit_strings.discard = G.GAME.starting_params.discard_limit ~= 5 and localize("b_limit") .. str or ""
+end
+
+---@param mod integer
+---@param stroverride? string
+ease_selection_limit = function(mod, stroverride)
+    if not SMODS.hand_limit_strings then
+        SMODS.hand_limit_strings = {}
+    end
+
+    ease_playing_card_selection_limit(mod, stroverride)
+    ease_discard_selection_limit(mod, stroverride)
+end
+
+---@param to integer
+---@param stroverride? string
+local function set_playing_card_selection_limit(to, stroverride)
+    if SMODS.hand_limit_strings then
+        G.GAME.starting_params.play_limit = to
+        G.hand.config.highlighted_limit = math.max(G.GAME.starting_params.discard_limit or 5, G.GAME.starting_params.play_limit or 5)
+        local str = stroverride or G.GAME.starting_params.play_limit or ""
+        SMODS.hand_limit_strings.play = G.GAME.starting_params.play_limit ~= 5 and localize("b_limit") .. str or ""
+    else
+        G.hand.config.highlighted_limit = to
+    end
+end
+
+---@param to integer
+---@param stroverride? string
+local function set_discard_selection_limit(to, stroverride)
+    G.GAME.starting_params.discard_limit = to
+    G.hand.config.highlighted_limit = math.max(G.GAME.starting_params.discard_limit or 5, G.GAME.starting_params.play_limit or 5)
+    local str = stroverride or G.GAME.starting_params.discard_limit or ""
+    SMODS.hand_limit_strings.discard = G.GAME.starting_params.discard_limit ~= 5 and localize("b_limit") .. str or ""
+end
+
+---@param to integer
+---@param stroverride? string
+set_selection_limit = function(to, stroverride)
+    if not SMODS.hand_limit_strings then
+        SMODS.hand_limit_strings = {}
+    end
+
+    set_playing_card_selection_limit(to, stroverride)
+    set_discard_selection_limit(to, stroverride)
+end
+
+---@param prebase? any
+---@return { rarity: string, emult: number }[]
+function asc_circus_mult_tbl(prebase)
+    local base = prebase or to_big(1.2)
+    local rarities = { 1, 2, 3, "cry_epic", 4, "cry_exotic" }
+
+    if Entropy then
+        rarities[#rarities + 1] = "entr_entropic"
+    end
+
+    ---@type { rarity: string, emult: number, col_map: any }[]
+    local data = {}
+
+    for i, rarity in ipairs(rarities) do
+        data[#data + 1] = {
+            rarity = localize(({
+                [1] = "k_common",
+                [2] = "k_uncommon",
+                [3] = "k_rare",
+                [4] = "k_legendary",
+            })[rarity] or "k_" .. rarity),
+            emult = base:pow(i),
+        }
+    end
+
+    return data
+end
+
+---@param base? any
+---@return string[]
+function asc_circus_desc(base)
+    local desc = {}
+    local rarities = {
+        "common",
+        "uncommon",
+        "rare",
+        "cry_epic",
+        "legendary",
+        "cry_exotic",
+
+        Entropy and "entr_entropic" or nil,
+    }
+
+    for i, val in ipairs(asc_circus_mult_tbl(base)) do
+        local tmpl = localize("asc_circus_tmpl")
+
+        tmpl = string.gsub(tmpl, "${1}", rarities[i])
+        tmpl = string.gsub(tmpl, "${2}", val.rarity)
+        tmpl = string.gsub(tmpl, "${3}", string.format("#%d#", i))
+        tmpl = string.gsub(tmpl, "${4}", i)
+
+        -- hacky fix, somebody give a real fix later
+        tmpl = string.gsub(tmpl, "ERROR", "Entropic")
+
+        desc[#desc + 1] = tmpl
+    end
+
+    desc[#desc + 1] = string.format("{C:inactive,s:0.8}(Current base: #%d#){}", #desc + 1)
+
+    return desc
 end

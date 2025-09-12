@@ -38,7 +38,7 @@ SMODS.Joker({
                 end
 
                 if not has_enh then
-                    card:set_ability(G.P_CENTERS.m_steel)
+                    card:set_ability(G.P_CENTERS.m_steel, nil, true)
                 end
             end
         end

@@ -26,7 +26,7 @@ SMODS.Joker({
         if context.joker_main or context.forcetrigger then
             card.ability.extra.chips = 1 + ((G.GAME.dollars or 0) * card.ability.extra.gain)
 
-            if card.ability.extra.chips > 1 then
+            if card.ability.extra.chips > Number.bigOne then
                 return {
                     Echip_mod = card.ability.extra.chips,
                     message = localize({

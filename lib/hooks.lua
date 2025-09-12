@@ -330,3 +330,33 @@ G.FUNCS.sell_stone = function(e)
         end,
     }))
 end
+
+local calc = SMODS.calculate_individual_effect
+
+SMODS.calculate_individual_effect = function(effect, scored_card, key, amount, from_edition)
+    local ret = calc(effect, scored_card, key, amount, from_edition)
+
+    if ret then
+        return ret
+    end
+
+    if (key == "xdollars" or key == "Xdollars") and amount ~= 1 then
+        if effect.card then
+            juice_card(effect.card)
+        end
+
+        ease_dollars_mult(amount)
+    end
+
+    if (key == "csl") and amount ~= 0 then
+        if effect.card then
+            juice_card(effect.card)
+        end
+
+        ease_selection_limit(lenient_bignum(amount))
+    end
+
+    for _, v in ipairs({ "xdollars", "Xdollars", "csl" }) do
+        table.insert(SMODS.scoring_parameter_keys or SMODS.calculation_keys, v)
+    end
+end

@@ -138,6 +138,7 @@ Ascension({ source = Source.Vanilla, from = "j_abstract", to_exotic = "j_asc_abs
 Ascension({ source = Source.Vanilla, from = "j_blackboard", to_exotic = "j_asc_blackboard" })
 Ascension({ source = Source.Vanilla, from = "j_ice_cream", to_exotic = "j_asc_ice_cream" })
 Ascension({ source = Source.Vanilla, from = "j_dna", to_exotic = "j_asc_dna" })
+Ascension({ source = Source.Vanilla, from = "j_splash", to_exotic = "j_asc_splash" })
 Ascension({ source = Source.Vanilla, from = "j_blue_joker", to_exotic = "j_asc_blue" })
 Ascension({ source = Source.Vanilla, from = "j_hiker", to_exotic = "j_asc_hiker" })
 Ascension({ source = Source.Vanilla, from = "j_cavendish", to_exotic = "j_asc_banana" })
@@ -166,6 +167,7 @@ Ascension({ source = Source.Vanilla, from = "j_blueprint", to_exotic = "j_asc_bl
 Ascension({ source = Source.Vanilla, from = "j_mr_bones", to_exotic = "j_asc_mr_bones", source_file = "bones" })
 Ascension({ source = Source.Vanilla, from = "j_sock_and_buskin", to_exotic = "j_asc_sock_and_buskin" })
 Ascension({ source = Source.Vanilla, from = "j_swashbuckler", to_exotic = "j_asc_swashbuckler" })
+Ascension({ source = Source.Vanilla, from = "j_smeared", to_exotic = "j_asc_smeared" })
 Ascension({ source = Source.Vanilla, from = "j_wee", to_exotic = "j_asc_wee" })
 Ascension({ source = Source.Vanilla, from = "j_oops", to_exotic = "j_asc_oops" })
 Ascension({ source = Source.Vanilla, from = "j_idol", to_exotic = "j_asc_idols" })
@@ -191,6 +193,8 @@ Ascension({ source = Source.Cryptid, from = "j_cry_oil_lamp", to_exotic = "j_asc
 Ascension({ source = Source.Cryptid, from = "j_cry_huntingseason", to_exotic = "j_asc_hunting_season" })
 Ascension({ source = Source.Cryptid, from = "j_cry_highfive", to_exotic = "j_asc_high_five" })
 Ascension({ source = Source.Cryptid, from = "j_cry_CodeJoker", to_exotic = "j_asc_code_joker" })
+Ascension({ source = Source.Cryptid, from = "j_cry_circus", to_exotic = "j_asc_circus" })
+Ascension({ source = Source.Cryptid, from = "j_cry_krustytheclown", to_exotic = "j_asc_krusty" })
 
 -- Mortals for Cryptid Exotics
 Ascension({ source = Source.MortalCryptid, from = "j_asc_copy_cat", to_exotic = "j_cry_iterum", source_file = "copy_cat" })

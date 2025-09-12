@@ -1,3 +1,5 @@
+local circusDesc = asc_circus_desc()
+
 return {
     descriptions = {
         Mod = {
@@ -595,6 +597,25 @@ return {
                 },
             },
 
+            j_asc_splash = {
+                name = "Oceanus Infinitus",
+                text = {
+                    {
+                        "Every time a {C:attention}Boss Blind{} is defeated",
+                        "or on {C:attention}acquisition{}",
+                        "{C:attention}+#1#{} card selection limit.",
+                        "{C:inactive}(Currently{} {C:attention}+#2#{} {C:inactive}card selection limit){}",
+                    },
+                    {
+                        "Every played card {C:attention}counts{} in scoring",
+                    },
+                    {
+                        "Every card scored also give {X:mult,C:white}XMult{}",
+                        "equal to total card selected",
+                    },
+                },
+            },
+
             j_asc_blue = {
                 name = "Magnus Sapphirus",
                 text = {
@@ -665,7 +686,7 @@ return {
                         "Each {C:attention}King{} held in hand",
                         "gives {X:asc_emult,C:white}^#1#{} Mult and",
                         "increases Joker's {X:asc_emult,C:white}^Mult{}",
-                        "by {X:asc_emult,C:white}^#2#{} each hand played"
+                        "by {X:asc_emult,C:white}^#2#{} each hand played",
                     },
                 },
             },
@@ -829,7 +850,7 @@ return {
                         "Each played card with {V:1}#1#{} suit",
                         "gives {X:asc_emult,C:white}^#2#{} Mult when scored",
                         "and increases amount by {X:asc_emult,C:white}^#3#{}",
-                        "{C:inactive}(Suit changes at end of round)"
+                        "{C:inactive}(Suit changes at end of round)",
                     },
                 },
             },
@@ -944,21 +965,20 @@ return {
                 },
             },
 
-            --[[
             j_asc_smeared = {
                 name = "Inquino",
                 text = {
                     {
-                        "{C:attention}All{} cards count as",
-                        "every {C:attention}suit{} and every {C:attention}rank{}",
+                        "Scored cards are converted into {C:attention}Wild{} Cards",
                     },
                     {
-                        "Cards with a suit or a rank",
-                        "{C:attention}cannot{} be debuffed",
+                        "{C:attention}Wild{} Cards cannot be {C:attention}debuffed{}",
+                    },
+                    {
+                        "{C:attention}Wild{} Cards gives {X:dark_edition,C:edition}^^#1#{} Mult when scored",
                     },
                 },
             },
-            ]]
 
             j_asc_throwback = {
                 name = "Desiderium",
@@ -1294,6 +1314,32 @@ return {
                     },
                 },
             },
+
+            j_asc_circus = {
+                name = "Grex Vagans",
+                text = {
+                    circusDesc,
+                    {
+                        string.format("Increase Base by {C:attention}#%d#{} at the end of round", #circusDesc + 1),
+                    },
+                },
+            },
+
+
+            j_asc_krusty = {
+                name = "Iura Ideae",
+                text = {
+                    {
+                        "Gain {X:mult,C:white}X#2#{} Mult whenever a card is {C:attention}scored{}",
+                        "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult)",
+                    },
+                    {
+                        "Whenever {C:attention}Boss Blind{} is defeated, increase",
+                        "{X:mult,C:white}XMult{} {C:attention}gain{} by {C:attention}#3#{}",
+                    },
+                },
+            },
+
             -----Cryptid Mortals-----
 
             j_asc_copy_cat = {
@@ -1596,6 +1642,8 @@ return {
             asc_special_thanks = "Special Thanks",
             asc_config_insanity_mode = "Insanity Mode!!!",
             asc_config_insanity_explanation = "Stops Gateway and Ascension from destroying Jokers",
+
+            asc_circus_tmpl = "{C:${1}}${2}{} Jokers each gives {X:asc_emult,C:white}^${3}{} Mult {C:inactive}(Base^${4}){}",
         },
         labels = {
             numina = "Numina",
