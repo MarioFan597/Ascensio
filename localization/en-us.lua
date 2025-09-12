@@ -710,16 +710,20 @@ return {
                 name = "Via Solitaria",
                 text = {
                     {
-                        "Earn {C:money}$#1#{} at the {C:attention}end of round{}",
-                        "Payout increases by {C:money}$#2#{}",
-                        "whenever a card is {C:attention}scored{}",
-                        "{C:inactive}(Reset every Ante){}",
+                        "Increase all other Jokers' values",
+                        "by {C:attention}+#1#{} at the {C:attention}end of round{}",
+                        "{C:inactive,s:0.7}(If possible){}",
+                        "{C:inactive}(Does not affect self){}",
                     },
                     {
-                        "Gains {X:chips,C:white}X#3#{} Chips",
-                        "for each {C:money}$1{} you have",
-                        "at the {C:attention}end of round{}",
-                        "{C:inactive}(Currently{} {X:chips,C:white}X#4#{} {C:inactive}Chips){}",
+                        "Gain {C:money}$#2#{} at the {C:attention}end of round{}",
+                        "Payout increases by {C:money}$#1#{}",
+                        "whenever {C:attention}Blind{} is defeated",
+                        "{C:inactive,s:0.5}Good night, Terra{}",
+                    },
+                    {
+                        "{C:attention}Manipulation value{} and {C:attention}payout increment{}",
+                        "increase by {C:attention}X#3#{} when {C:attention}Boss Blind{} is defeated",
                     },
                 },
             },
@@ -1046,8 +1050,8 @@ return {
                         "Each scored {C:attention}#1#{} of {V:1}#2#{}",
                         "randomly either gives",
                         "{X:asc_emult,C:white}^#3#{} Mult, {X:asc_echips,C:white}^#3#{} Chips, {X:money,C:white}X#3#{} Money,",
-                        "or increases Joker values {C:attention}+#4#{}",
-                        "{C:inactive}(Card changes every round)"
+                        "or increases Joker values {C:attention}+#4#{} {C:inactive}(Does not affect this value){}",
+                        "{C:inactive}(Card changes every round)",
                     },
                 },
             },
@@ -1188,7 +1192,7 @@ return {
                         "Decreases {X:dark_edition,C:edition}^^Mult{} by {X:dark_edition,C:edition}^^#3#{}",
                         "each hand without a",
                         "scoring {C:attention}Enhanced{} card",
-                        "{C:inactive}(Can't go below {X:dark_edition,C:edition}^^1{}{C:inactive}){}"
+                        "{C:inactive}(Can't go below {X:dark_edition,C:edition}^^1{}{C:inactive}){}",
                     },
                 },
             },
@@ -1324,7 +1328,6 @@ return {
                     },
                 },
             },
-
 
             j_asc_krusty = {
                 name = "Iura Ideae",
