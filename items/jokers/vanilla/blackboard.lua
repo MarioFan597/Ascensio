@@ -69,6 +69,8 @@ SMODS.Joker({
             }
         end
     end,
+
+    ---@type CardAnimation
     animation = {
         macro = {
             type = "skim",
@@ -78,6 +80,7 @@ SMODS.Joker({
             },
         },
     },
+
     asc_credits = {
         idea = {
             "CycloneShocke",

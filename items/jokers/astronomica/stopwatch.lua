@@ -17,6 +17,7 @@ SMODS.Joker({
     cost = 50,
     order = 703,
 
+    ---@type CardAnimation
     animation = {
         macro = {
             type = "skim",

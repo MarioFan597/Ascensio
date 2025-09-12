@@ -109,6 +109,7 @@ SMODS.Joker({
         return card.ability.extra.money
     end,
 
+    ---@type CardAnimation
     animation = {
         macro = {
             type = "skim",
