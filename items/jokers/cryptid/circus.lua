@@ -5,7 +5,7 @@ local function createMultTbl(base)
             tbl["cry_exotic"] = v.emult
         elseif i == 7 then
             tbl["entr_entropic"] = v.emult
-        elseif i == 5 then
+        elseif i == 4 then
             tbl["cry_epic"] = v.emult
         else
             tbl[i] = v.emult
