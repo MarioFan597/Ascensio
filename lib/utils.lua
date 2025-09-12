@@ -136,7 +136,8 @@ end
 ---@param prebase? any
 ---@return { rarity: string, emult: number }[]
 function asc_circus_mult_tbl(prebase)
-    local base = prebase or to_big(1.2)
+    local base = Big:ensureBig(prebase)
+
     local rarities = { 1, 2, 3, "cry_epic", 4, "cry_exotic" }
 
     if Entropy then

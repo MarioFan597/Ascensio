@@ -1,10 +1,12 @@
 local function createMultTbl(base)
     local tbl = {}
     for i, v in ipairs(asc_circus_mult_tbl(base)) do
-        if i == 5 then
+        if i == 6 then
             tbl["cry_exotic"] = v.emult
-        elseif i == 6 then
+        elseif i == 7 then
             tbl["entr_entropic"] = v.emult
+        elseif i == 5 then
+            tbl["cry_epic"] = v.emult
         else
             tbl[i] = v.emult
         end
@@ -33,6 +35,8 @@ SMODS.Joker({
     end,
 
     loc_vars = function(_, _, card)
+        card.ability.immutable = createMultTbl(card.ability.extra.base)
+
         local mult_tbl = asc_circus_mult_tbl(card.ability.extra.base)
         local mult_tbls = {}
 
@@ -72,6 +76,8 @@ SMODS.Joker({
                 ref_value = "base",
                 scalar_value = "base_gain",
             })
+
+            card.ability.immutable = createMultTbl(card.ability.extra.base)
         end
 
         if context.forcetrigger then
