@@ -41,7 +41,7 @@ SMODS.Joker({
                     scalar = scalar + 1
                 end
             end
-            
+
             if scalar > 0 then
                 return SMODS.scale_card(card, {
                     ref_table = card.ability.extra,

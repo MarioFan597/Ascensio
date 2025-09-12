@@ -57,6 +57,7 @@ SMODS.Joker({
             end
         end
     end,
+    ---@type CardAnimation
     animation = {
         macro = {
             type = "skim",

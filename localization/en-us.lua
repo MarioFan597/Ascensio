@@ -491,6 +491,26 @@ return {
                 },
             },
 
+            j_asc_madness = {
+                name = "Furor Hominis",
+                text = {
+                    {
+                        "{X:mult,C:white}X#1#{} Mult",
+                    },
+                    {
+                        "Whenever a Blind is {C:attention}selected{}",
+                        "gains {X:mult,C:white}X#2#{} Mult and destroy",
+                        "a {C:attention}random{} Joker",
+                    },
+                    {
+                        "Whenever a Joker is {C:attention}destroyed{} in that way",
+                        "{C:attention}Xn{} {X:mult,C:white}XMult{} gain",
+                        "with {C:attention}n{} equal to {C:attention}log(x){}",
+                        "with {C:attention}x{} being the {C:attention}destroyed{} Joker's sell value",
+                    },
+                },
+            },
+
             j_asc_even_steven = {
                 name = "Sinistra",
                 text = {
@@ -1050,7 +1070,8 @@ return {
                         "Each scored {C:attention}#1#{} of {V:1}#2#{}",
                         "randomly either gives",
                         "{X:asc_emult,C:white}^#3#{} Mult, {X:asc_echips,C:white}^#3#{} Chips, {X:money,C:white}X#3#{} Money,",
-                        "or increases Joker values {C:attention}+#4#{} {C:inactive}(Does not affect this value){}",
+                        "or increases Joker values by {C:attention}+#4#{}",
+                        "{C:inactive,s:0.75}(Does not affect this value){}",
                         "{C:inactive}(Card changes every round)",
                     },
                 },

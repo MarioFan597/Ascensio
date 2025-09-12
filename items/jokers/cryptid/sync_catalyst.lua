@@ -22,6 +22,7 @@ SMODS.Joker({
     blueprint_compat = false,
     demicoloncompat = true,
 
+    ---@type CardAnimation
     animation = {
         macro = {
             type = "skim",

@@ -17,6 +17,7 @@ SMODS.Joker({
     demicoloncompat = false,
     atlas = "hunting_season",
 
+    ---@type CardAnimation
     animation = {
         macro = {
             type = "skim",
