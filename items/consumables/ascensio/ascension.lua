@@ -16,7 +16,7 @@ SMODS.Consumable({
     hidden = true,
 
     can_use = function(_, _)
-        if #G.jokers.highlighted == 1 and Ascensionable[G.jokers.highlighted[1].config.center.key] then
+        if #G.jokers.highlighted == 1 and Ascensio.Ascensionable[G.jokers.highlighted[1].config.center.key] then
             return true
         end
     end,
@@ -66,16 +66,7 @@ SMODS.Consumable({
             delay = 0.4,
             func = function()
                 play_sound("timpani")
-
-                local card = SMODS.create_card({
-                    key = Ascensionable[ascendant.config.center.key],
-                    edition = ascendant.edition,
-                })
-
-                card:add_to_deck()
-                G.jokers:emplace(card)
-                card:juice_up(0.3, 0.5)
-
+                Ascensio.ascendJoker(ascendant)
                 return true
             end,
         }))
@@ -86,7 +77,7 @@ SMODS.Consumable({
     in_pool = function()
         if G and G.jokers and G.jokers.cards then
             for _, v in ipairs(G.jokers.cards) do
-                if Ascensionable[v.config.center.key] then
+                if Ascensio.Ascensionable[v.config.center.key] then
                     return true
                 end
             end
