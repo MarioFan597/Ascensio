@@ -423,8 +423,9 @@ return {
             j_asc_raised_fist = {
                 name = "Pugnus Populi",
                 text = {
-                    "Gain {X:attention,C:white}X#1#{} the rank of {C:attention}lowest{} ranked",
-                    "card held in hand as {X:mult,C:white}XMult{}",
+                    "Gain {X:attention,C:white}X#1#{} the rank",
+                    "of {C:attention}lowest{} ranked card",
+                    "held in hand as {X:mult,C:white}XMult{}",
                     "{C:inactive}(Currently{} {X:mult,C:white}X#2#{} {C:inactive}Mult){}",
                 },
             },
@@ -449,12 +450,13 @@ return {
                 name = "Tegumentum Inoxidabile",
                 text = {
                     {
-                        "Convert all cards {C:attention}held in hand{} without an {C:attention}enhancement{}",
-                        "into {C:attention}Steel Cards{}",
-                    },
-                    {
                         "{C:attention}Steel Cards{} held in hand",
                         "give {X:asc_emult,C:white}^#1#{} Mult",
+                    },
+                    {
+                        "Convert all cards held in hand",
+                        "without an {C:attention}Enhancement{}", --Capitlizing Enhancment. My refrence is Vampire.
+                        "into {C:attention}Steel Cards{}",
                     },
                 },
             },
@@ -633,9 +635,10 @@ return {
             j_asc_hiker = {
                 name = "Agentia Viatorum",
                 text = {
-                    "Whenever a hand is {C:attention}played{}",
-                    "all {C:attention}scored{} cards gain permanent {X:chips,C:white}XChips{}",
-                    "equal to {C:attention}total rank{} of {C:attention}scored cards{}.",
+                    "Whenever a hand is played,",
+                    "all scored cards gain",
+                    "permanent {X:chips,C:white}XChips{} equal to",
+                    "{C:attention}total rank{} of scored cards{}.",
                     "{C:inactive,s:0.75}(J = 11, Q = 12, K = 13, A = 14){}",
                 },
             },
@@ -680,12 +683,10 @@ return {
                 name = "Primus Archidux",
                 text = {
                     {
-                        "Each {C:attention}Kings{} held in hand",
-                        "give {X:asc_emult,C:white}^#1#{} Mult",
-                    },
-                    {
-                        "Each {C:attention}Kings{} held in hand",
-                        "also increases that amount by {X:asc_emult,C:white}^#2#{}",
+                        "Each {C:attention}King{} held in hand",
+                        "gives {X:asc_emult,C:white}^#1#{} Mult and",
+                        "increases Joker's {X:asc_emult,C:white}^Mult{}",
+                        "by {X:asc_emult,C:white}^#2#{} each hand played",
                     },
                 },
             },
@@ -712,14 +713,15 @@ return {
                         "Earn {C:money}$#1#{} at the {C:attention}end of round{}",
                         "Payout increases by {C:money}$#2#{} whenever a card is {C:attention}scored{}",
                         "{C:inactive,s:0.75}(Reset whenever Boss Blind is defeated){}",
+                        "Payout increases by {C:money}$#2#{}",
+                        "whenever a card is {C:attention}scored{}",
+                        "{C:inactive}(Reset every Ante){}",
                     },
                     {
-                        "Gain {X:chips,C:white}X#3#{} Chips",
-                        "for each {C:money}$1{} you have at the {C:attention}end of round{}",
+                        "Gains {X:chips,C:white}X#3#{} Chips",
+                        "for each {C:money}$1{} you have",
+                        "at the {C:attention}end of round{}",
                         "{C:inactive}(Currently{} {X:chips,C:white}X#4#{} {C:inactive}Chips){}",
-                    },
-                    {
-                        "Good night, Terra.",
                     },
                 },
             },
@@ -847,13 +849,10 @@ return {
                 name = "Hereditas Oblita",
                 text = {
                     {
-                        "Each played card with {V:1}#1#{} gives",
-                        "{X:asc_emult,C:white}^#2#{} Mult when scored",
-                        "{C:inactive,s:0.75}(Suit changes at end of round){}",
-                    },
-                    {
-                        "Each played card with {V:1}#1#{} also",
-                        "{C:attention}increase{} that amount by {X:asc_emult,C:white}^#3#{}.",
+                        "Each played card with {V:1}#1#{} suit",
+                        "gives {X:asc_emult,C:white}^#2#{} Mult when scored",
+                        "and increases amount by {X:asc_emult,C:white}^#3#{}",
+                        "{C:inactive}(Suit changes at end of round)",
                     },
                 },
             },
@@ -878,13 +877,15 @@ return {
                 name = "Arx Cineris",
                 text = {
                     {
-                        "This Joker gains {X:asc_echips,C:white}^#1#{} Chips per {C:attention}discarded{}",
-                        "{C:spades}Spades{} or {C:clubs}Clubs{}",
+                        "This Joker gains",
+                        "{X:asc_echips,C:white}^#1#{} Chips per {C:attention}discarded{}",
+                        "{C:spades}Spade{} or {C:clubs}Club{} card",
                         "{C:inactive}(Currently{} {X:asc_echips,C:white}^#2#{} {C:inactive}Chips){}",
                     },
                     {
-                        "This Joker gains {X:asc_emult,C:white}^#3#{} Mult per {C:attention}discarded{}",
-                        "{C:hearts}Hearts{} or {C:diamonds}Diamonds{}",
+                        "This Joker gains",
+                        "{X:asc_emult,C:white}^#3#{} Mult per {C:attention}discarded{}",
+                        "{C:hearts}Heart{} or {C:diamonds}Diamond{} card",
                         "{C:inactive}(Currently{} {X:asc_emult,C:white}^#4#{} {C:inactive}Mult){}",
                     },
                 },
@@ -1044,12 +1045,11 @@ return {
                 name = "Statua Sacra",
                 text = {
                     {
-                        "Each scored {C:attention}#1#{} of {V:1}#2#{} randomly give",
-                        "{C:attention}one{} of these effects:",
-                        "> {X:asc_emult,C:white}^#3#{} Mult <",
-                        "> {X:asc_echips,C:white}^#3#{} Chips <",
-                        "> {X:money,C:white}X$#3#{} <",
-                        "> Increase this {C:attention}Joker's{} value by {C:attention}#4#{} <",
+                        "Each scored {C:attention}#1#{} of {V:1}#2#{}",
+                        "randomly either gives",
+                        "{X:asc_emult,C:white}^#3#{} Mult, {X:asc_echips,C:white}^#3#{} Chips, {X:money,C:white}X#3#{} Money,",
+                        "or increases Joker values {C:attention}+#4#{}",
+                        "{C:inactive}(Card changes every round)",
                     },
                 },
             },
@@ -1181,13 +1181,16 @@ return {
                 name = "Proavus Sanguinis",
                 text = {
                     {
-                        "Gain {X:dark_edition,C:edition}^^#2#{} Mult per scored {C:attention}enhanced{} card",
-                        "and removes card {C:attention}enhancement{}",
+                        "Gains {X:dark_edition,C:edition}^^#2#{} Mult per",
+                        "scored {C:attention}Enhanced{} card and",
+                        "removes card {C:attention}Enhancement{}",
                         "{C:inactive}(Currently{} {X:dark_edition,C:edition}^^#1#{} {C:inactive}Mult){}",
                     },
                     {
-                        "Decrease by {X:dark_edition,C:edition}^^#3#{} Mult for each hand without",
-                        "{C:attention}enhanced{} card scoring",
+                        "Decreases {X:dark_edition,C:edition}^^Mult{} by {X:dark_edition,C:edition}^^#3#{}",
+                        "each hand without a",
+                        "scoring {C:attention}Enhanced{} card",
+                        "{C:inactive}(Can't go below {X:dark_edition,C:edition}^^1{}{C:inactive}){}",
                     },
                 },
             },
@@ -1213,7 +1216,8 @@ return {
             j_asc_gardenfork = {
                 name = "Contra Homo",
                 text = {
-                    "{X:money,C:white}X#1#{} total money if played hand",
+                    "{X:money,C:white}X#1#{} total money",
+                    "if played hand",
                     "contains an {C:attention}Ace{} or {C:attention}7{}",
                 },
             },

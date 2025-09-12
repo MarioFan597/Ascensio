@@ -41,13 +41,15 @@ SMODS.Joker({
                     scalar = scalar + 1
                 end
             end
-
-            return SMODS.scale_card(card, {
-                ref_table = card.ability.extra,
-                ref_value = "emult",
-                scalar_value = "gain",
-                scalar_table = { gain = card.ability.extra.emult_gain * scalar },
-            })
+            
+            if scalar > 0 then
+                return SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = "emult",
+                    scalar_value = "gain",
+                    scalar_table = { gain = card.ability.extra.emult_gain * scalar },
+                })
+            end
         end
     end,
 
