@@ -142,6 +142,7 @@ Ascension({ source = Source.Vanilla, from = "j_splash", to_exotic = "j_asc_splas
 Ascension({ source = Source.Vanilla, from = "j_blue_joker", to_exotic = "j_asc_blue" })
 Ascension({ source = Source.Vanilla, from = "j_hiker", to_exotic = "j_asc_hiker" })
 Ascension({ source = Source.Vanilla, from = "j_cavendish", to_exotic = "j_asc_banana" })
+Ascension({ source = Source.Vanilla, from = "j_madness", to_exotic = "j_asc_madness" })
 Ascension({ source = Source.Vanilla, from = "j_square", to_exotic = "j_asc_square" })
 Ascension({ source = Source.Vanilla, from = "j_supernova", to_exotic = "j_asc_supernova" })
 Ascension({ source = Source.Vanilla, from = "j_hologram", to_exotic = "j_asc_hologram" })
