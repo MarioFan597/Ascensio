@@ -1,5 +1,3 @@
-local circusDesc = asc_circus_desc(to_big(1.2))
-
 return {
     descriptions = {
         Mod = {
@@ -1350,9 +1348,18 @@ return {
             j_asc_circus = {
                 name = "Grex Vagans",
                 text = {
-                    circusDesc,
                     {
-                        string.format("Increase Base by {C:attention}#%d#{} at the end of round", #circusDesc + 1),
+                        "{C:common}Common{} Jokers gives {X:asc_emult,C:white}^#1#{} Mult",
+                        "{C:uncommon}Uncommon{} Jokers gives {X:asc_emult,C:white}^#2#{} Mult",
+                        "{C:rare}Rare{} Jokers gives {X:asc_emult,C:white}^#3#{} Mult",
+                        "{C:cry_epic}Epic{} Jokers gives {X:asc_emult,C:white}^#4#{} Mult",
+                        "{C:legendary}Legendary{} Jokers gives {X:asc_emult,C:white}^#5#{} Mult",
+                        "{C:cry_exotic}Exotic{} Jokers gives {X:asc_emult,C:white}^#6#{} Mult",
+                        Entropy and "{C:entr_entropic}Entropic{} Jokers gives {X:asc_emult,C:white}^#7#{} Mult" or nil,
+                    },
+                    {
+                        string.format("Increase {C:attention}base{} by {C:attention}#%d#{}", Entropy and 8 or 7),
+                        "{C:inactive}(Base: #1#){}",
                     },
                 },
             },

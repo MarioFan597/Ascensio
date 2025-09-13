@@ -1,19 +1,14 @@
-local function createMultTbl(base)
-    local tbl = {}
+local rarity_mapping = {
+    [1] = 1,
+    [2] = 2,
+    [3] = 3,
+    ["cry_epic"] = 4,
+    [4] = 5,
+    ["cry_exotic"] = 6,
+}
 
-    for i, v in ipairs(asc_circus_mult_tbl(base)) do
-        if i == 6 then
-            tbl["cry_exotic"] = v.emult
-        elseif i == 7 then
-            tbl["entr_entropic"] = v.emult
-        elseif i == 4 then
-            tbl["cry_epic"] = v.emult
-        else
-            tbl[i] = v.emult
-        end
-    end
-
-    return tbl
+if Entropy then
+    rarity_mapping["entr_entropic"] = 7
 end
 
 SMODS.Joker({
@@ -27,48 +22,47 @@ SMODS.Joker({
     atlas = "c_atlas_1",
 
     config = {
-        extra = { base = to_big(1.2), base_gain = to_big(0.1) },
+        extra = { base = 1.2, base_gain = 0.1 },
         immutable = {},
+        bignum_flag = false,
     },
 
-    set_ability = function(_, card)
-        card.ability.immutable = createMultTbl(card.ability.extra.base)
-    end,
-
     loc_vars = function(_, _, card)
-        card.ability.immutable = createMultTbl(card.ability.extra.base)
+        local mult_tbl = {}
 
-        local mult_tbl = asc_circus_mult_tbl(card.ability.extra.base)
-        local mult_tbls = {}
-
-        for i, v in ipairs(mult_tbl) do
-            mult_tbls[i] = v.emult
+        for _, idx in pairs(rarity_mapping) do
+            mult_tbl[#mult_tbl + 1] = math.pow(card.ability.extra.base, idx)
         end
 
-        mult_tbls[#mult_tbls + 1] = number_format(card.ability.extra.base)
-        mult_tbls[#mult_tbls + 1] = card.ability.extra.base_gain
+        for i, v in ipairs(mult_tbl) do
+            card.ability.immutable[i] = v
+        end
+
+        mult_tbl[#mult_tbl + 1] = card.ability.extra.base_gain
 
         return {
-            vars = mult_tbls,
+            vars = mult_tbl,
         }
     end,
 
-    calculate = function(self, card, context)
-        if context.other_joker and card ~= context.other_joker and not context.other_joker.debuff and (card.ability.immutable[context.other_joker.config.center.rarity] or 0) > 1 then
-            if not Talisman.config_file.disable_anims then
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        context.other_joker:juice_up(0.5, 0.5)
-                        return true
-                    end,
-                }))
+    calculate = function(_, card, context)
+        if context.other_joker and card ~= context.other_joker and not context.other_joker.debuff then
+            local emult = card.ability.immutable[rarity_mapping[context.other_joker.config.center.rarity] or 1] or 1
+
+            if emult > 1 then
+                if not Talisman.config_file.disable_anims then
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            context.other_joker:juice_up(0.5, 0.5)
+                            return true
+                        end,
+                    }))
+                end
+
+                return {
+                    emult = emult,
+                }
             end
-
-            local emult = card.ability.immutable[context.other_joker.config.center.rarity] or 1
-
-            return {
-                emult = emult,
-            }
         end
 
         if (context.end_of_round and context.main_eval) or context.forcetrigger then
@@ -78,7 +72,13 @@ SMODS.Joker({
                 scalar_value = "base_gain",
             })
 
-            card.ability.immutable = createMultTbl(card.ability.extra.base)
+            local mult_tbl = {}
+
+            for _, idx in pairs(rarity_mapping) do
+                mult_tbl[#mult_tbl + 1] = math.pow(card.ability.extra.base, idx)
+            end
+
+            card.ability.immutable = mult_tbl
         end
 
         if context.forcetrigger then
@@ -92,7 +92,7 @@ SMODS.Joker({
         end
 
         if context.joker_main then
-            return { emult = card.ability.immutable["cry_exotic"] }
+            return { emult = card.ability.immutable[6] }
         end
     end,
 
