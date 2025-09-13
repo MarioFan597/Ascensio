@@ -133,10 +133,10 @@ set_selection_limit = function(to, stroverride)
     set_discard_selection_limit(to, stroverride)
 end
 
----@param prebase? any
----@return { rarity: string, emult: number }[]
+---@param prebase any
+---@return { rarity: string, emult: any }[]
 function asc_circus_mult_tbl(prebase)
-    local base = Big:ensureBig(prebase)
+    local base = Big:ensureBig(prebase):max()
 
     local rarities = { 1, 2, 3, "cry_epic", 4, "cry_exotic" }
 
@@ -144,7 +144,7 @@ function asc_circus_mult_tbl(prebase)
         rarities[#rarities + 1] = "entr_entropic"
     end
 
-    ---@type { rarity: string, emult: number, col_map: any }[]
+    ---@type { rarity: string, emult: any, col_map: any }[]
     local data = {}
 
     for i, rarity in ipairs(rarities) do

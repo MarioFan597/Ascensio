@@ -1,4 +1,4 @@
-local circusDesc = asc_circus_desc()
+local circusDesc = asc_circus_desc(to_big(1.2))
 
 return {
     descriptions = {
@@ -556,11 +556,18 @@ return {
             j_asc_space = {
                 name = "Solutus",
                 text = {
-                    "Upgrade level of current played",
-                    "{C:attention}poker hand{} by {X:dark_edition,C:white}#1#{}",
-                    "for each {C:attention}hand played{} this {C:attention}Ante{}",
-                    "{C:inactive}(Reset when a {C:attention}Boss blind{} {C:inactive}is{} {C:attention}defeated{}{C:inactive}){}",
-                    "{C:inactive}(Currently {X:dark_edition,C:white}#2#{} {C:inactive}hand played){}",
+                    {
+                        "Upgrade level of current played",
+                        "{C:attention}poker hand{} by {X:dark_edition,C:white}#1#{}",
+                        "for each {C:attention}hand played{} this {C:attention}Ante{}",
+                        "{C:inactive}(Reset when a {C:attention}Boss blind{} {C:inactive}is{} {C:attention}defeated{}{C:inactive}){}",
+                        "{C:inactive}(Currently {X:dark_edition,C:white}#2#{} {C:inactive}hand played){}",
+                        "{C:inactive}(Cannot be retriggered){}",
+                    },
+                    {
+                        "Every {C:attention}#3#{} {C:inactive}(#4#){} Antes",
+                        "increase hand upgrade {C:attention}modifier{} by {C:attention}#5#{}",
+                    },
                 },
             },
 

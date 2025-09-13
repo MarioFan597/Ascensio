@@ -1,5 +1,6 @@
 local function createMultTbl(base)
     local tbl = {}
+
     for i, v in ipairs(asc_circus_mult_tbl(base)) do
         if i == 6 then
             tbl["cry_exotic"] = v.emult
@@ -26,7 +27,7 @@ SMODS.Joker({
     atlas = "c_atlas_1",
 
     config = {
-        extra = { base = to_big(1.1), base_gain = 0.01 },
+        extra = { base = to_big(1.2), base_gain = to_big(0.1) },
         immutable = {},
     },
 
@@ -53,7 +54,7 @@ SMODS.Joker({
     end,
 
     calculate = function(self, card, context)
-        if context.other_joker and card ~= context.other_joker and (card.ability.immutable[context.other_joker.config.center.rarity] or 0) > 1 then
+        if context.other_joker and card ~= context.other_joker and not context.other_joker.debuff and (card.ability.immutable[context.other_joker.config.center.rarity] or 0) > 1 then
             if not Talisman.config_file.disable_anims then
                 G.E_MANAGER:add_event(Event({
                     func = function()
