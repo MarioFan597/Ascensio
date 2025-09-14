@@ -1,3 +1,11 @@
+local function has_any_enhancement(card)
+    for _, _ in pairs(SMODS.get_enhancements(card)) do
+        return false
+    end
+
+    return true
+end
+
 SMODS.Joker({
     key = "smeared",
     rarity = "cry_exotic",
@@ -8,14 +16,14 @@ SMODS.Joker({
     soul_pos = { x = 11, y = 7, extra = { x = 10, y = 7 } },
     cost = 50,
 
-    config = { extra = { eemult = 1.1 } },
+    config = { extra = { emult = 1.25 } },
 
     loc_vars = function(_, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
 
         return {
             vars = {
-                card.ability.extra.eemult,
+                card.ability.extra.emult,
             },
         }
     end,
@@ -23,13 +31,15 @@ SMODS.Joker({
     calculate = function(_, card, context)
         if (context.individual and context.cardarea == G.play) or context.forcetrigger then
             if (SMODS.has_enhancement(context.other_card, "m_wild")) or context.forcetrigger then
-                return { eemult = card.ability.extra.eemult }
+                return { emult = card.ability.extra.emult }
             end
         end
 
-        if context.after and not context.blueprint then
+        if context.before and not context.blueprint or context.forcetrigger then
             for _, scored in ipairs(context.scoring_hand or {}) do
-                scored:set_ability(G.P_CENTERS.m_wild, nil, true)
+                if has_any_enhancement(card) then
+                    scored:set_ability(G.P_CENTERS.m_wild, nil, true)
+                end
             end
         end
     end,

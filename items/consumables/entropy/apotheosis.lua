@@ -20,7 +20,7 @@ SMODS.Consumable({
     soul_rate = 0,
 
     can_use = function(_, _)
-        if #G.jokers.highlighted == 1 and Apothable[G.jokers.highlighted[1].config.center.key] then
+        if #G.jokers.highlighted == 1 and Ascensio.Apothable[G.jokers.highlighted[1].config.center.key] then
             return true
         end
 
@@ -72,16 +72,7 @@ SMODS.Consumable({
             delay = 0.4,
             func = function()
                 play_sound("timpani")
-
-                local card = SMODS.create_card({
-                    key = Ascensionable[deity.config.center.key],
-                    edition = deity.edition,
-                })
-
-                card:add_to_deck()
-                G.jokers:emplace(card)
-                card:juice_up(0.3, 0.5)
-
+                Ascensio.apotheosisJoker(deity)
                 return true
             end,
         }))
@@ -91,7 +82,7 @@ SMODS.Consumable({
     in_pool = function()
         if G and G.jokers and G.jokers.cards then
             for _, v in ipairs(G.jokers.cards) do
-                if Apothable[v.config.center.key] then
+                if Ascensio.Apothable[v.config.center.key] then
                     return true
                 end
             end

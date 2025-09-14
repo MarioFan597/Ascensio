@@ -59,15 +59,36 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
-    key = "sticker_atlas",
+    key = "sticker",
     path = "ascensio_sticker_atlas.png",
     px = 71,
     py = 95,
 })
 
 SMODS.Atlas({
-    key = "deck_atlas",
+    key = "deck",
     path = "deck_atlas.png",
     px = 71,
     py = 95,
 })
+
+SMODS.Atlas({
+    key = "ascension",
+    path = "consumables/ascensio/ascension.png",
+    px = 71,
+    py = 95,
+})
+
+SMODS.Atlas({
+    key = "numina",
+    path = "consumables/ascensio/numina_atlas.png",
+    px = 71,
+    py = 95,
+})
+
+--SMODS.Atlas({
+--  key = "asc_stickers",
+--  path = "asc_stickers.png",
+--  px = 71,
+--  py = 95
+--})

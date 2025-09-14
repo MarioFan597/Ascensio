@@ -55,7 +55,7 @@
     [patches.pattern]
         match_indent = true
         pattern = "for _, v in ipairs(info_queue) do"
-        payload = '''for k, _ in pairs(Ascensionable) do
+        payload = '''for k, _ in pairs(Ascensio.Ascensionable) do
   if _c.key == k then
     info_queue[#info_queue+1] = {key = 'asc_ascensionable', set = 'Other'}
   end
@@ -71,7 +71,7 @@ end
         pattern = "for _, v in ipairs(info_queue) do"
         payload = '''
         if Entropy then
-            for k, _ in pairs(Apothable) do
+            for k, _ in pairs(Ascensio.Apothable) do
                 if _c.key == k and next(SMODS.find_mod("entr")) then
                     info_queue[#info_queue+1] = {key = 'asc_apothable', set = 'Other'}
                 end

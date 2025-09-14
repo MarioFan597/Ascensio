@@ -1,12 +1,3 @@
--- Compability
-Cryptid.mod_whitelist["Ascensio"] = true
-
-Ascensionable = {}
-
-if Entropy then
-    Apothable = {}
-end
-
 ---@param path string Path to the file
 ---@param id? string Mod ID. Defaults to `SMODS.current_mod`.
 ---@return any?
@@ -18,6 +9,20 @@ local function loadFile(path, id)
 
     chunk()
 end
+
+-- Compability
+Cryptid.mod_whitelist["Ascensio"] = true
+
+Ascensio = {}
+loadFile("lib/core.lua")
+
+Ascensio.Ascensionable = {}
+
+if Entropy then
+    Ascensio.Apothable = {}
+end
+
+Ascensio.Descensions = {}
 
 -- Load Atlases.
 loadFile("atlas.lua")
@@ -37,6 +42,7 @@ loadFile("lib/hooks.lua")
 
 -- Load consumable.
 loadFile("items/consumables/ascensio/ascension.lua")
+loadFile("items/consumables/ascensio/numina.lua")
 
 if Entropy then
     loadFile("items/consumables/entropy/apotheosis.lua")
@@ -81,16 +87,19 @@ local AscensionInternal = setmetatable({}, {
             loadFile("items/jokers/" .. asc.source .. source_file .. ".lua")
         end
 
-        Ascensionable[asc.from] = asc.to_exotic
+        Ascensio.Ascensionable[asc.from] = asc.to_exotic
+        Ascensio.Descensions[asc.to_exotic] = asc.from
 
-        if Apothable and asc.to_entropic ~= nil then
+        if Ascensio.Apothable and asc.to_entropic ~= nil then
             local entr_source_file = asc.entropic_file or get_source_file(asc.to_exotic)
             if entr_source_file ~= "skip" then
                 loadFile("items/jokers/" .. asc.source .. "entr/" .. entr_source_file .. "_entr.lua")
             end
 
-            Apothable[asc.from] = asc.to_entropic
-            Apothable[asc.to_exotic] = asc.to_entropic
+            Ascensio.Apothable[asc.from] = asc.to_entropic
+            Ascensio.Apothable[asc.to_exotic] = asc.to_entropic
+
+            Ascensio.Descensions[asc.to_entropic] = asc.from
         end
 
         return asc
@@ -646,7 +655,7 @@ end
 ---@field to string The key of the Ascended joker.
 ---@field to_entropic? string The key of the Apotheosis joker.
 ---@overload fun(o: Ascension): Ascension
-Ascension = setmetatable({}, {
+Ascensio.Ascension = setmetatable({}, {
     ---@param o Ascension
     __call = function(_, o)
         return AscensionInternal({ source = Source.Other, source_file = "skip", entropic_file = "skip", from = o.from, to_exotic = o.to, to_entropic = o.to_entropic })

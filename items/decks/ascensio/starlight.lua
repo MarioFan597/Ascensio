@@ -1,6 +1,6 @@
 SMODS.Back({
     key = "starlight",
-    atlas = "deck_atlas",
+    atlas = "deck",
     pos = { x = 0, y = 0 },
     config = { cry_negative_rate = 20, joker_slot = -2, consumables = { "c_asc_ascension" } },
 

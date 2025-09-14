@@ -53,7 +53,7 @@ SMODS.Joker({
                 ref_table = card.ability.extra,
                 ref_value = "manipulate",
                 scalar_value = "manipulate_multiplier",
-                operation = "x",
+                operation = "X",
             })
         end
     end,

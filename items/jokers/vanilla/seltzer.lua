@@ -9,17 +9,19 @@ SMODS.Joker({
     soul_pos = { x = 5, y = 0, extra = { x = 4, y = 0 } },
     cost = 50,
     order = 102,
-    loc_vars = function(self, info_queue, card)
+    loc_vars = function(_, _, card)
+        card.ability.extra.retriggers = math.min(card.ability.extra.retriggers, card.ability.extra.immutable.max_rep)
+
         return {
             vars = {
-                card and lenient_bignum(card.ability.extra.retriggers),
-                card and lenient_bignum(card.ability.extra.played_hands),
-                card and lenient_bignum(card.ability.extra.goal_hands),
-                card and lenient_bignum(card.ability.extra.immutable.max_rep),
+                card.ability.extra.retriggers,
+                card.ability.extra.played_hands,
+                card.ability.extra.goal_hands,
+                card.ability.extra.immutable.max_rep,
             },
         }
     end,
-    calculate = function(self, card, context)
+    calculate = function(_, card, context)
         if context.cardarea == G.play and context.repetition and not context.repetition_only then
             return {
                 message = localize("k_again_ex"),

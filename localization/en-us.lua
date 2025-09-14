@@ -1,5 +1,3 @@
-local circusDesc = asc_circus_desc()
-
 return {
     descriptions = {
         Mod = {
@@ -556,11 +554,18 @@ return {
             j_asc_space = {
                 name = "Solutus",
                 text = {
-                    "Upgrade level of current played",
-                    "{C:attention}poker hand{} by {X:dark_edition,C:white}#1#{}",
-                    "for each {C:attention}hand played{} this {C:attention}Ante{}",
-                    "{C:inactive}(Reset when a {C:attention}Boss blind{} {C:inactive}is{} {C:attention}defeated{}{C:inactive}){}",
-                    "{C:inactive}(Currently {X:dark_edition,C:white}#2#{} {C:inactive}hand played){}",
+                    {
+                        "Upgrade level of current played",
+                        "{C:attention}poker hand{} by {X:dark_edition,C:white}#1#{}",
+                        "for each {C:attention}hand played{} this {C:attention}Ante{}",
+                        "{C:inactive}(Reset when a {C:attention}Boss blind{} {C:inactive}is{} {C:attention}defeated{}{C:inactive}){}",
+                        "{C:inactive}(Currently {X:dark_edition,C:white}#2#{} {C:inactive}hand played){}",
+                        "{C:inactive}(Cannot be retriggered){}",
+                    },
+                    {
+                        "Every {C:attention}#3#{} {C:inactive}(#4#){} Antes",
+                        "increase hand upgrade {C:attention}modifier{} by {C:attention}#5#{}",
+                    },
                 },
             },
 
@@ -993,13 +998,12 @@ return {
                 name = "Inquino",
                 text = {
                     {
-                        "Scored cards are converted into {C:attention}Wild{} Cards",
+                        "Scored cards without an {C:attention}enhancement{}",
+                        "are converted into {C:attention}Wild{} Cards",
                     },
                     {
                         "{C:attention}Wild{} Cards cannot be {C:attention}debuffed{}",
-                    },
-                    {
-                        "{C:attention}Wild{} Cards gives {X:dark_edition,C:edition}^^#1#{} Mult when scored",
+                        "and give {X:dark_edition,C:edition}^#1#{} Mult when scored",
                     },
                 },
             },
@@ -1343,9 +1347,18 @@ return {
             j_asc_circus = {
                 name = "Grex Vagans",
                 text = {
-                    circusDesc,
                     {
-                        string.format("Increase Base by {C:attention}#%d#{} at the end of round", #circusDesc + 1),
+                        "{C:common}Common{} Jokers gives {X:asc_emult,C:white}^#1#{} Mult",
+                        "{C:uncommon}Uncommon{} Jokers gives {X:asc_emult,C:white}^#2#{} Mult",
+                        "{C:rare}Rare{} Jokers gives {X:asc_emult,C:white}^#3#{} Mult",
+                        "{C:cry_epic}Epic{} Jokers gives {X:asc_emult,C:white}^#4#{} Mult",
+                        "{C:legendary}Legendary{} Jokers gives {X:asc_emult,C:white}^#5#{} Mult",
+                        "{C:cry_exotic}Exotic{} Jokers gives {X:asc_emult,C:white}^#6#{} Mult",
+                        Entropy and "{C:entr_entropic}Entropic{} Jokers gives {X:asc_emult,C:white}^#7#{} Mult" or nil,
+                    },
+                    {
+                        string.format("Increase {C:attention}base{} by {C:attention}#%d#{}", Entropy and 8 or 7),
+                        "{C:inactive}(Base: #1#){}",
                     },
                 },
             },
@@ -1539,6 +1552,7 @@ return {
                     "a {C:cry_exotic,E:1}Higher Form{}",
                 },
             },
+
             asc_apothable = {
                 name = "Apotheosis Candidate",
                 text = {
@@ -1546,6 +1560,7 @@ return {
                     "an {C:entr_entropic,E:1}Even Higher Form{}",
                 },
             },
+
             asc_astronomica_compat = { --Displays astronomica compact effect for Accomplice
                 name = "Astronomica Compat",
                 text = {
@@ -1554,14 +1569,7 @@ return {
                     "{C:purple}+300{} Score",
                 },
             },
-            asc_cyclic = {
-                name = "Cyclic",
-                text = {
-                    "Rotates between its {C:cry_exotic,E:1}Ascendant{}",
-                    "version, regular version and",
-                    "being {C:red}debuffed{} every round",
-                },
-            },
+
             asc_fixed = {
                 name = "Fixed",
                 text = {
@@ -1569,11 +1577,20 @@ return {
                     "can not be altered",
                 },
             },
-            --Special Thanks Descriptions
-            asc_tatterd = {
-                name = "Tattered Credits",
+
+            asc_samsara = {
+                name = "Samsara",
                 text = {
-                    "Artist",
+                    "Rotates between its {C:cry_exotic,E:1}Ascendant{}",
+                    "version, regular version and",
+                    "being {C:red}debuffed{} every round",
+                },
+            },
+
+            asc_skibidi = {
+                name = "Skibidi",
+                text = {
+                    "{X:dark_edition,C:white,s:2,E:2}Skibidi{}",
                 },
             },
         },
@@ -1613,7 +1630,85 @@ return {
                 name = "Samsara",
                 text = {
                     "Select a Joker",
-                    "to become {C:cry_exotic,E:1}Cylcic{}",
+                    "to become {C:cry_exotic,E:1}Samsara{}",
+                },
+            },
+
+            c_asc_rapture = {
+                name = "Rapture",
+                text = {
+                    "I don't know what this does",
+                    "{E:2}So stop asking{}",
+                },
+            },
+
+            c_asc_mandala = {
+                name = "Mandala",
+                text = {
+                    "Select a Joker",
+                    "to become {X:dark_edition,C:white,s:2,E:2}Skibidi{}",
+                },
+            },
+
+            c_asc_punya = {
+                name = "Punya",
+                text = {
+                    "{E:2}I don't know what this does{}",
+                    "{E:2}So stop asking{}",
+                },
+            },
+
+            c_asc_prana = {
+                name = "Prana",
+                text = {
+                    "{E:2}I don't know what this does{}",
+                    "{E:2}So stop asking{}",
+                },
+            },
+
+            c_asc_karma = {
+                name = "Karma",
+                text = {
+                    "{E:2}I don't know what this does{}",
+                    "{E:2}So stop asking{}",
+                },
+            },
+
+            c_asc_samadhi = {
+                name = "Samadhi",
+                text = {
+                    "{E:2}I don't know what this does{}",
+                    "{E:2}So stop asking{}",
+                },
+            },
+
+            c_asc_valhalla = {
+                name = "Valhalla",
+                text = {
+                    "{X:dark_edition,C:edition,s:8,E:2}???{}",
+                },
+            },
+
+            c_asc_punarbhava = {
+                name = "Punarbhava",
+                text = {
+                    "{E:2}I don't know what this does{}",
+                    "{E:2}So stop asking{}",
+                },
+            },
+
+            c_asc_nirvana = {
+                name = "Nirvana",
+                text = {
+                    "{s:4,E:2}Mon3tr Pits{} :drool:",
+                },
+            },
+
+            c_asc_syncretisa = {
+                name = "Syncretisa",
+                text = {
+                    "{C:red,E:2}Obliterate all sense of balance off Balatro{}",
+                    "{X:dark_edition,C:white}#1#44{} all values on screen",
                 },
             },
         },
@@ -1650,16 +1745,15 @@ return {
     },
     misc = {
         dictionary = {
-            k_asc_banana = "Banana", --Banana Rariety Label
             asc_banana_ex = "Banana!",
             asc_inactive = "Inactive", --For exotic Bones
             asc_saved_by_bones = "Saved by Carcer Animarum",
             asc_chips = "Chips", --To make hyperoperators work
             asc_mult = "Mult",
+
             asc_seance_msg = "The World is not here...",
-            k_numina = "Numina", --Numina Labels
-            b_numina_cards = "Numina Cards",
-            asc_wish_ex = "I Wish!", --Superior Manus Effect
+
+            asc_wish_ex = "I Wish!",
             b_sell_stone = "-Stones",
             b_buy_stone = "+Stones",
             asc_mossaic_stone_cards = "Mossaic Stone Cards",
@@ -1667,7 +1761,8 @@ return {
             asc_config_insanity_mode = "Insanity Mode!!!",
             asc_config_insanity_explanation = "Stops Gateway and Ascension from destroying Jokers",
 
-            asc_circus_tmpl = "{C:${1}}${2}{} Jokers each gives {X:asc_emult,C:white}^${3}{} Mult {C:inactive}(Base^${4}){}",
+            k_numina = "Numina",
+            b_numina_cards = "Numina Cards",
         },
         labels = {
             numina = "Numina",

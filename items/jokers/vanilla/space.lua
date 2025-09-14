@@ -15,33 +15,70 @@ SMODS.Joker({
     config = {
         extra = {
             level_gain = 1,
+            gain = 1,
+            antes = { req = 2, done = 0 },
             immutable = { hands = 0 },
         },
     },
 
     loc_vars = function(_, _, card)
+        card.ability.extra.antes.done = math.min(card.ability.extra.antes.done, card.ability.extra.antes.req)
+
         return {
             vars = {
                 card.ability.extra.level_gain,
                 card.ability.extra.immutable.hands,
+                card.ability.extra.antes.req,
+                card.ability.extra.antes.done,
+                card.ability.extra.gain,
             },
         }
     end,
 
     calculate = function(_, card, context)
-        if context.before and context.main_eval then
+        if context.before or context.forcetrigger then
             if not context.retrigger_joker then
-                card.ability.extra.immutable.hands = card.ability.extra.immutable.hands + 1
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra.immutable,
+                    ref_value = "hands",
+                    scalar_value = "gain",
+
+                    scalar_table = { gain = 1 },
+                })
             end
+
             SMODS.calculate_effect({ message = localize("k_level_up_ex") }, context.blueprint_card or card)
             SMODS.smart_level_up_hand(context.blueprint_card or card, context.scoring_name, nil, card.ability.extra.immutable.hands * card.ability.extra.level_gain)
-            return nil, true
         end
 
-        if context.beat_boss and card.ability.extra.immutable.hands ~= 0 then
+        if context.beat_boss and context.main_eval and not context.forcetrigger then
+            local message = ""
+            if card.ability.extra.antes.done > card.ability.extra.antes.req then
+                message = "Incremented!"
+                card.ability.extra.antes.done = 0
+
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = "level_gain",
+                    scalar_value = "gain",
+                })
+            else
+                message = "Reset!"
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra.antes,
+                    ref_value = "done",
+                    scalar_value = "gain",
+
+                    scalar_table = { gain = 1 },
+
+                    no_message = true,
+                })
+            end
+
             card.ability.extra.immutable.hands = 0
+
             return {
-                message = "Reset!",
+                message = message,
                 colour = G.C.FILTER,
             }
         end
