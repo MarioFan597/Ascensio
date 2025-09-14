@@ -19,7 +19,7 @@ SMODS.Joker({
             "Somethingcom515",
         },
     },
-    loc_vars = function(self, info_queue, card)
+    loc_vars = function(_, _, card)
         return {
             vars = {
                 card.ability.extra.Xmult_mod,
@@ -28,7 +28,7 @@ SMODS.Joker({
             },
         }
     end,
-    calculate = function(self, card, context)
+    calculate = function(_, card, context)
         if context.before or context.forcetrigger then
             if context.scoring_name == card.ability.extra.hand_type or context.forcetrigger then
                 SMODS.scale_card(card, {
