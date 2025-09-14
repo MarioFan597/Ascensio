@@ -11,6 +11,14 @@ if Entropy then
     rarity_mapping["entr_entropic"] = 7
 end
 
+local function pow(a, b)
+    if type(a) == "number" and type(b) == "number" then
+        return math.pow(a, b)
+    end
+
+    return Big:ensureBig(a):pow(b)
+end
+
 SMODS.Joker({
     key = "circus",
     order = 4,
@@ -28,10 +36,18 @@ SMODS.Joker({
     },
 
     loc_vars = function(_, _, card)
+        if type(card.ability.extra.base) == "number" and card.ability.extra.base > 1e40 then
+            card.ability.extra.base = to_big(card.ability.extra.base)
+        end
+
+        if type(card.ability.extra.base_gain) == "number" and card.ability.extra.base_gain > 1e40 then
+            card.ability.extra.base_gain = to_big(card.ability.extra.base_gain)
+        end
+
         local mult_tbl = {}
 
         for _, idx in pairs(rarity_mapping) do
-            mult_tbl[#mult_tbl + 1] = math.pow(card.ability.extra.base, idx)
+            mult_tbl[#mult_tbl + 1] = pow(card.ability.extra.base, idx)
         end
 
         for i, v in ipairs(mult_tbl) do
@@ -75,7 +91,7 @@ SMODS.Joker({
             local mult_tbl = {}
 
             for _, idx in pairs(rarity_mapping) do
-                mult_tbl[#mult_tbl + 1] = math.pow(card.ability.extra.base, idx)
+                mult_tbl[#mult_tbl + 1] = pow(card.ability.extra.base, idx)
             end
 
             card.ability.immutable = mult_tbl
