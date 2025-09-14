@@ -1709,7 +1709,8 @@ return {
             c_asc_syncretisa = {
                 name = "Syncretisa",
                 text = {
-                    "{s:2,E:2}Instantly release Balatro{} {s:2,E:2,C:attention}1.1{}",
+                    "{C:red,E:2}Obliterate all sense of balance off Balatro{}",
+                    "{X:dark_edition,C:white}#1#44{} all values on screen",
                 },
             },
         },

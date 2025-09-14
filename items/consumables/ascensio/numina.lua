@@ -108,4 +108,12 @@ SMODS.Consumable({
     soul_pos = { x = 1, y = 5 },
 
     cost = 4,
+
+    loc_vars = function(_, _, _)
+        return {
+            vars = {
+                "{444}",
+            },
+        }
+    end,
 })
