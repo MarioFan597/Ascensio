@@ -90,20 +90,18 @@ SMODS.Joker({
                 emult = 1
             end
 
-            if emult > 1 then
-                if not Talisman.config_file.disable_anims then
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            context.other_joker:juice_up(0.5, 0.5)
-                            return true
-                        end,
-                    }))
-                end
-
-                return {
-                    emult = emult,
-                }
+            if not Talisman.config_file.disable_anims then
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        context.other_joker:juice_up(0.5, 0.5)
+                        return true
+                    end,
+                }))
             end
+
+            return {
+                emult = emult,
+            }
         end
 
         if (context.end_of_round and context.main_eval) or context.forcetrigger then
