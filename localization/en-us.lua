@@ -1675,7 +1675,7 @@ return {
             },
 
             c_asc_samadhi = {
-                name = "Prana",
+                name = "Samadhi",
                 text = {
                     "{E:2}I don't know what this does{}",
                     "{E:2}So stop asking{}",
@@ -1685,8 +1685,7 @@ return {
             c_asc_valhalla = {
                 name = "Valhalla",
                 text = {
-                    "{E:2}I don't know what this does{}",
-                    "{E:2}So stop asking{}",
+                    "{X:dark_edition,C:edition,s:8,E:2}???{}",
                 },
             },
 
@@ -1701,8 +1700,7 @@ return {
             c_asc_nirvana = {
                 name = "Nirvana",
                 text = {
-                    "{E:2}I don't know what this does{}",
-                    "{E:2}So stop asking{}",
+                    "{s:4,E:2}Mon3tr Pits{} :drool:",
                 },
             },
 

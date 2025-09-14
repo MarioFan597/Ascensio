@@ -34,8 +34,8 @@ SMODS.Consumable({
     set = "Numina",
     atlas = "numina",
 
-    pos = { x = 4, y = 2 },
-    soul_pos = { x = 5, y = 2 },
+    pos = { x = 4, y = 0 },
+    soul_pos = { x = 5, y = 0 },
 
     cost = 4,
 })
@@ -60,8 +60,8 @@ SMODS.Consumable({
     set = "Numina",
     atlas = "numina",
 
-    pos = { x = 4, y = 2 },
-    soul_pos = { x = 5, y = 2 },
+    pos = { x = 4, y = 1 },
+    soul_pos = { x = 5, y = 1 },
 
     cost = 4,
 })
@@ -78,6 +78,17 @@ SMODS.Consumable({
 })
 
 SMODS.Consumable({
+    key = "karma",
+    set = "Numina",
+    atlas = "numina",
+
+    pos = { x = 4, y = 2 },
+    soul_pos = { x = 5, y = 2 },
+
+    cost = 4,
+})
+
+SMODS.Consumable({
     key = "samadhi",
     set = "Numina",
     atlas = "numina",
@@ -89,12 +100,34 @@ SMODS.Consumable({
 })
 
 SMODS.Consumable({
+    key = "valhalla",
+    set = "Numina",
+    atlas = "numina",
+
+    pos = { x = 4, y = 3 },
+    soul_pos = { x = 5, y = 3 },
+
+    cost = 4,
+})
+
+SMODS.Consumable({
     key = "punarbhava",
     set = "Numina",
     atlas = "numina",
 
     pos = { x = 0, y = 4 },
     soul_pos = { x = 1, y = 4 },
+
+    cost = 4,
+})
+
+SMODS.Consumable({
+    key = "nirvana",
+    set = "Numina",
+    atlas = "numina",
+
+    pos = { x = 4, y = 4 },
+    soul_pos = { x = 5, y = 4 },
 
     cost = 4,
 })
