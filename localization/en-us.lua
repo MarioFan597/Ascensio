@@ -1552,6 +1552,7 @@ return {
                     "a {C:cry_exotic,E:1}Higher Form{}",
                 },
             },
+
             asc_apothable = {
                 name = "Apotheosis Candidate",
                 text = {
@@ -1559,6 +1560,7 @@ return {
                     "an {C:entr_entropic,E:1}Even Higher Form{}",
                 },
             },
+
             asc_astronomica_compat = { --Displays astronomica compact effect for Accomplice
                 name = "Astronomica Compat",
                 text = {
@@ -1567,26 +1569,21 @@ return {
                     "{C:purple}+300{} Score",
                 },
             },
-            asc_cyclic = {
-                name = "Cyclic",
+
+            asc_samsara = {
+                name = "Samsara",
                 text = {
                     "Rotates between its {C:cry_exotic,E:1}Ascendant{}",
                     "version, regular version and",
                     "being {C:red}debuffed{} every round",
                 },
             },
+
             asc_fixed = {
                 name = "Fixed",
                 text = {
                     "{C:attention}Listed{} {C:green,E:1}probabilites{}",
                     "can not be altered",
-                },
-            },
-            --Special Thanks Descriptions
-            asc_tatterd = {
-                name = "Tattered Credits",
-                text = {
-                    "Artist",
                 },
             },
         },
@@ -1626,7 +1623,7 @@ return {
                 name = "Samsara",
                 text = {
                     "Select a Joker",
-                    "to become {C:cry_exotic,E:1}Cylcic{}",
+                    "to become {C:cry_exotic,E:1}Samsara{}",
                 },
             },
         },
@@ -1663,16 +1660,15 @@ return {
     },
     misc = {
         dictionary = {
-            k_asc_banana = "Banana", --Banana Rariety Label
             asc_banana_ex = "Banana!",
             asc_inactive = "Inactive", --For exotic Bones
             asc_saved_by_bones = "Saved by Carcer Animarum",
             asc_chips = "Chips", --To make hyperoperators work
             asc_mult = "Mult",
+
             asc_seance_msg = "The World is not here...",
-            k_numina = "Numina", --Numina Labels
-            b_numina_cards = "Numina Cards",
-            asc_wish_ex = "I Wish!", --Superior Manus Effect
+
+            asc_wish_ex = "I Wish!",
             b_sell_stone = "-Stones",
             b_buy_stone = "+Stones",
             asc_mossaic_stone_cards = "Mossaic Stone Cards",
@@ -1680,7 +1676,8 @@ return {
             asc_config_insanity_mode = "Insanity Mode!!!",
             asc_config_insanity_explanation = "Stops Gateway and Ascension from destroying Jokers",
 
-            asc_circus_tmpl = "{C:${1}}${2}{} Jokers each gives {X:asc_emult,C:white}^${3}{} Mult {C:inactive}(Base^${4}){}",
+            k_numina = "Numina",
+            b_numina_cards = "Numina Cards",
         },
         labels = {
             numina = "Numina",

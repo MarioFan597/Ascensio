@@ -42,6 +42,7 @@ loadFile("lib/hooks.lua")
 
 -- Load consumable.
 loadFile("items/consumables/ascensio/ascension.lua")
+loadFile("items/consumables/ascensio/numina.lua")
 
 if Entropy then
     loadFile("items/consumables/entropy/apotheosis.lua")

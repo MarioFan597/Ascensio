@@ -1,10 +1,3 @@
-SMODS.Atlas({
-    key = "ascension",
-    path = "consumables/ascensio/ascension.png",
-    px = 71,
-    py = 95,
-})
-
 SMODS.Consumable({
     key = "ascension",
     set = "Spectral",
