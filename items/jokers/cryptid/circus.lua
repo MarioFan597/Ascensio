@@ -36,11 +36,13 @@ SMODS.Joker({
 
     loc_vars = function(_, _, card)
         if type(card.ability.extra.base) == "number" and card.ability.extra.base > 1e40 then
-            card.ability.extra.base = to_big(card.ability.extra.base)
+            card.ability.extra.bignum = true
+            card.ability.extra.base = Big:create(card.ability.extra.base)
         end
 
         if type(card.ability.extra.base_gain) == "number" and card.ability.extra.base_gain > 1e40 then
-            card.ability.extra.base_gain = to_big(card.ability.extra.base_gain)
+            card.ability.extra.bignum = true
+            card.ability.extra.base_gain = Big:create(card.ability.extra.base_gain)
         end
 
         local mult_tbl = {}
@@ -61,26 +63,32 @@ SMODS.Joker({
     end,
 
     calculate = function(_, card, context)
-        if context.other_joker and card ~= context.other_joker and not context.other_joker.debuff then
-            if not card.ability.extra.bignum then
-                if type(card.ability.extra.base) == "number" and card.ability.extra.base > 1e40 then
-                    card.ability.extra.base = to_big(card.ability.extra.base)
-                end
-
-                if type(card.ability.extra.base_gain) == "number" and card.ability.extra.base_gain > 1e40 then
-                    card.ability.extra.base_gain = to_big(card.ability.extra.base_gain)
-                end
-
-                local mult_tbl = {}
-
-                for _, idx in pairs(rarity_mapping) do
-                    mult_tbl[#mult_tbl + 1] = pow(card.ability.extra.base, idx)
-                end
-
-                card.ability.immutable = mult_tbl
+        if not card.ability.extra.bignum or type(card.ability.extra.base) == "number" then
+            if type(card.ability.extra.base) == "number" and card.ability.extra.base > 1e40 then
+                card.ability.extra.bignum = true
+                card.ability.extra.base = Big:create(card.ability.extra.base)
             end
 
+            if type(card.ability.extra.base_gain) == "number" and card.ability.extra.base_gain > 1e40 then
+                card.ability.extra.bignum = true
+                card.ability.extra.base_gain = Big:create(card.ability.extra.base_gain)
+            end
+
+            local mult_tbl = {}
+
+            for _, idx in pairs(rarity_mapping) do
+                mult_tbl[#mult_tbl + 1] = pow(card.ability.extra.base, idx)
+            end
+
+            card.ability.immutable = mult_tbl
+        end
+
+        if context.other_joker and card ~= context.other_joker and not context.other_joker.debuff then
             local emult = card.ability.immutable[rarity_mapping[context.other_joker.config.center.rarity] or 1] or 1
+
+            if type(emult) == "string" then
+                emult = 1
+            end
 
             if emult > 1 then
                 if not Talisman.config_file.disable_anims then
@@ -115,7 +123,7 @@ SMODS.Joker({
         end
 
         if context.forcetrigger then
-            local x = to_big(1)
+            local x = Big:create(1)
 
             for _, item in pairs(card.ability.immutable) do
                 x:pow(item)
