@@ -1570,6 +1570,14 @@ return {
                 },
             },
 
+            asc_fixed = {
+                name = "Fixed",
+                text = {
+                    "{C:attention}Listed{} {C:green,E:1}probabilites{}",
+                    "can not be altered",
+                },
+            },
+
             asc_samsara = {
                 name = "Samsara",
                 text = {
@@ -1579,11 +1587,10 @@ return {
                 },
             },
 
-            asc_fixed = {
-                name = "Fixed",
+            asc_skibidi = {
+                name = "Skibidi",
                 text = {
-                    "{C:attention}Listed{} {C:green,E:1}probabilites{}",
-                    "can not be altered",
+                    "{X:dark_edition,C:white,s:2,E:2}Skibidi{}",
                 },
             },
         },
@@ -1624,6 +1631,85 @@ return {
                 text = {
                     "Select a Joker",
                     "to become {C:cry_exotic,E:1}Samsara{}",
+                },
+            },
+
+            c_asc_rapture = {
+                name = "Rapture",
+                text = {
+                    "I don't know what this does",
+                    "{E:2}So stop asking{}",
+                },
+            },
+
+            c_asc_mandala = {
+                name = "Mandala",
+                text = {
+                    "Select a Joker",
+                    "to become {X:dark_edition,C:white,s:2,E:2}Skibidi{}",
+                },
+            },
+
+            c_asc_punya = {
+                name = "Punya",
+                text = {
+                    "{E:2}I don't know what this does{}",
+                    "{E:2}So stop asking{}",
+                },
+            },
+
+            c_asc_prana = {
+                name = "Prana",
+                text = {
+                    "{E:2}I don't know what this does{}",
+                    "{E:2}So stop asking{}",
+                },
+            },
+
+            c_asc_karma = {
+                name = "Karma",
+                text = {
+                    "{E:2}I don't know what this does{}",
+                    "{E:2}So stop asking{}",
+                },
+            },
+
+            c_asc_samadhi = {
+                name = "Prana",
+                text = {
+                    "{E:2}I don't know what this does{}",
+                    "{E:2}So stop asking{}",
+                },
+            },
+
+            c_asc_valhalla = {
+                name = "Valhalla",
+                text = {
+                    "{E:2}I don't know what this does{}",
+                    "{E:2}So stop asking{}",
+                },
+            },
+
+            c_asc_punarbhava = {
+                name = "Punarbhava",
+                text = {
+                    "{E:2}I don't know what this does{}",
+                    "{E:2}So stop asking{}",
+                },
+            },
+
+            c_asc_nirvana = {
+                name = "Nirvana",
+                text = {
+                    "{E:2}I don't know what this does{}",
+                    "{E:2}So stop asking{}",
+                },
+            },
+
+            c_asc_syncretisa = {
+                name = "Syncretisa",
+                text = {
+                    "{s:2,E:2}Instantly release Balatro{} {s:2,E:2,C:attention}1.1{}",
                 },
             },
         },
