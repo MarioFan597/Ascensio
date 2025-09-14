@@ -30,9 +30,8 @@ SMODS.Joker({
     atlas = "c_atlas_1",
 
     config = {
-        extra = { base = 1.2, base_gain = 0.1 },
+        extra = { base = 1.2, base_gain = 0.1, bignum = false },
         immutable = {},
-        bignum_flag = false,
     },
 
     loc_vars = function(_, _, card)
@@ -63,6 +62,24 @@ SMODS.Joker({
 
     calculate = function(_, card, context)
         if context.other_joker and card ~= context.other_joker and not context.other_joker.debuff then
+            if not card.ability.extra.bignum then
+                if type(card.ability.extra.base) == "number" and card.ability.extra.base > 1e40 then
+                    card.ability.extra.base = to_big(card.ability.extra.base)
+                end
+
+                if type(card.ability.extra.base_gain) == "number" and card.ability.extra.base_gain > 1e40 then
+                    card.ability.extra.base_gain = to_big(card.ability.extra.base_gain)
+                end
+
+                local mult_tbl = {}
+
+                for _, idx in pairs(rarity_mapping) do
+                    mult_tbl[#mult_tbl + 1] = pow(card.ability.extra.base, idx)
+                end
+
+                card.ability.immutable = mult_tbl
+            end
+
             local emult = card.ability.immutable[rarity_mapping[context.other_joker.config.center.rarity] or 1] or 1
 
             if emult > 1 then
