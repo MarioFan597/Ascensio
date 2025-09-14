@@ -998,13 +998,12 @@ return {
                 name = "Inquino",
                 text = {
                     {
-                        "Scored cards are converted into {C:attention}Wild{} Cards",
+                        "Scored cards without an {C:attention}enhancement{}",
+                        "are converted into {C:attention}Wild{} Cards",
                     },
                     {
                         "{C:attention}Wild{} Cards cannot be {C:attention}debuffed{}",
-                    },
-                    {
-                        "{C:attention}Wild{} Cards gives {X:dark_edition,C:edition}^^#1#{} Mult when scored",
+                        "and give {X:dark_edition,C:edition}^#1#{} Mult when scored",
                     },
                 },
             },
