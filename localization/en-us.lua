@@ -1506,6 +1506,21 @@ return {
             },
 
             -----Entropy Entropics-----
+            j_asc_jimbo_entr = {
+                name = "Gelotopoios",
+                text = {
+                    { "{C:mult}+4 Mult{}" },
+                    {
+                        "Set scoring operator to {C:dark_edition}^{}",
+                        "upon acquisition",
+                    },
+                    {
+                        "Set scoring operator to {C:dark_edition}X{}",
+                        "when {C:attention}removed{}",
+                    },
+                },
+            },
+
             j_asc_marble_entr = {
                 name = "Petrinos Vlemma",
                 text = {

@@ -107,7 +107,7 @@ local AscensionInternal = setmetatable({}, {
 })
 
 -- Vanilla Ascensions
-AscensionInternal({ source = Source.Vanilla, from = "j_joker", to_exotic = "j_asc_jimbo" })
+AscensionInternal({ source = Source.Vanilla, from = "j_joker", to_exotic = "j_asc_jimbo", to_entropic = "j_asc_jimbo_entr" })
 AscensionInternal({ source = Source.Vanilla, from = "j_greedy_joker", to_exotic = "j_asc_greedy" })
 AscensionInternal({ source = Source.Vanilla, from = "j_lusty_joker", to_exotic = "j_asc_lusty" })
 AscensionInternal({ source = Source.Vanilla, from = "j_wrathful_joker", to_exotic = "j_asc_wrathful" })
