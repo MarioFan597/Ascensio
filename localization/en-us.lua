@@ -623,20 +623,15 @@ return {
             },
 
             j_asc_splash = {
-                name = "Oceanus Infinitus",
+                name = "Lacus Fractalis",
                 text = {
-                    {
-                        "Every time a {C:attention}Boss Blind{} is defeated",
-                        "or on {C:attention}acquisition{}",
-                        "{C:attention}+#1#{} card selection limit.",
-                        "{C:inactive}(Currently{} {C:attention}+#2#{} {C:inactive}card selection limit){}",
-                    },
                     {
                         "Every played card {C:attention}counts{} in scoring",
                     },
                     {
-                        "Every card scored also give {X:mult,C:white}XMult{}",
-                        "equal to total card selected",
+                        "For every {C:attention}#3#{} {C:inactive}(#4#){} cards scored",
+                        "{C:attention}+#1#{} card selection limit",
+                        "{C:inactive}(Currently{} {C:attention}+#2#{} {C:inactive}card selection limit){}",
                     },
                 },
             },
@@ -985,12 +980,18 @@ return {
             },
 
             j_asc_swashbuckler = {
-                name = "Ultimus Pirata",
+                name = "Flagellum Maris",
                 text = {
-                    "Gains {X:mult,C:white}XMult{} equal to {X:money,C:white}X#2#{}",
-                    "of sell value of all owned",
-                    "{C:attention}Jokers{} at end of round",
-                    "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
+                    {
+                        "Gains {X:mult,C:white}XMult{} equal to {X:money,C:white}X#2#{}",
+                        "of sell value of all owned",
+                        "{C:attention}Jokers{} at end of round",
+                        "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
+                    },
+                    {
+                        "When {C:attention}Boss Blind{} is {C:attention}defeated{}",
+                        "increase all shop prices by {C:money}$#3#{}",
+                    },
                 },
             },
 
