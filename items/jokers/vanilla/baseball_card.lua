@@ -1,3 +1,14 @@
+---@generic T
+---@param f fun(jokers: balatro.Card): T
+---@param ctx? CalcContext
+local function uncommons(f, ctx)
+    for _, jokers in ipairs(G.jokers.cards) do
+        if jokers.config.center.rarity == 2 or (ctx and ctx.forcetrigger) then
+            f(jokers)
+        end
+    end
+end
+
 SMODS.Joker({
     key = "baseball_card",
     rarity = "cry_exotic",
@@ -15,7 +26,7 @@ SMODS.Joker({
         extra = {
             xval = 1.5,
             xmult = 1,
-            xmult_gain = 1,
+            xmult_gain = 1.5,
         },
     },
 
@@ -32,11 +43,10 @@ SMODS.Joker({
     calculate = function(_, card, ctx)
         if (ctx.end_of_round and ctx.main_eval) or ctx.forcetrigger then
             local gain = 0
-            for _, other_joker in ipairs(G.jokers.cards) do
-                if (other_joker.config.center.rarity == 2) or ctx.forcetrigger then
-                    gain = gain + 1
-                end
-            end
+
+            uncommons(function(_)
+                gain = gain + 1
+            end)
 
             SMODS.scale_card(card, {
                 ref_table = card.ability.extra,
@@ -50,11 +60,9 @@ SMODS.Joker({
         end
 
         if (ctx.beat_boss and ctx.main_eval) or ctx.forcetrigger then
-            for _, other_joker in ipairs(G.jokers.cards) do
-                if (other_joker.config.center.rarity == 2) or ctx.forcetrigger then
-                    Cryptid.manipulate(other_joker, card.ability.extra.xval)
-                end
-            end
+            uncommons(function(jkr)
+                Cryptid.manipulate(jkr, { value = card.ability.extra.xval })
+            end, ctx)
 
             return {
                 message = "Upgraded!",

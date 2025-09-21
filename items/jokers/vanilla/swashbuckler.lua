@@ -14,17 +14,19 @@ SMODS.Joker({
     config = {
         extra = {
             xmult = 1,
-            multiplier = 0.25,
-            inflation = 1,
+            multiplier = 0.5,
+            multiplier_gain = 0.1,
         },
     },
 
     loc_vars = function(_, _, card)
+        local neg = card.ability.extra.negative
+
         return {
             vars = {
                 card.ability.extra.xmult,
                 card.ability.extra.multiplier,
-                card.ability.extra.inflation,
+                card.ability.extra.multiplier_gain,
             },
         }
     end,
@@ -34,28 +36,30 @@ SMODS.Joker({
             return { xmult = card.ability.extra.xmult }
         end
 
-        if (context.end_of_round and context.main_eval) or context.forcetrigger then
-            local price_of_peace_or_something_i_dont_know = 0
+        if context.buying_card and context.card.ability.set == "Joker" then
+            SMODS.scale_card(card, {
+                ref_table = card.ability.extra,
+                ref_value = "multiplier",
+                scalar_value = "multiplier_gain",
+            })
+        end
+
+        if (context.end_of_round and context.main_eval and not context.blueprint) or context.forcetrigger then
+            local asset = 0
 
             for _, joker in ipairs(G.jokers.cards) do
-                price_of_peace_or_something_i_dont_know = price_of_peace_or_something_i_dont_know + joker.sell_cost
+                asset = asset + joker.sell_cost
             end
 
             SMODS.scale_card(card, {
                 ref_table = card.ability.extra,
                 ref_value = "xmult",
-                scalar_value = "gain",
-                scalar_table = { gain = card.ability.extra.multiplier * price_of_peace_or_something_i_dont_know },
+                scalar_value = "multiplier",
+
+                operation = function(ref_table, ref_value, initial, change)
+                    ref_table[ref_value] = initial + change * asset
+                end,
             })
-        end
-
-        if (context.beat_boss and context.main_eval and not context.blueprint) or context.forcetrigger then
-            G.GAME.inflation = (G.GAME.inflation or 0) + card.ability.extra.inflation
-
-            return {
-                message = "Inflation!",
-                colour = G.C.MONEY,
-            }
         end
     end,
 

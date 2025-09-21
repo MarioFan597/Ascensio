@@ -813,14 +813,14 @@ return {
                 name = "Una Quaedam",
                 text = {
                     {
-                        "{X:attention,C:white}X#1#{} all {C:uncommon}Uncommon{} owned Jokers values",
-                        "when {C:attention}Boss Blind{} is defeated",
+                        "When {C:attention}Boss Blind{} is defeated",
+                        "{X:attention,C:white}X#1#{} all {C:uncommon}Uncommon{} owned Jokers' values",
                     },
                     {
-                        "Gain {X:mult,C:white}X#2#{} Mult for",
+                        "Gain {X:mult,C:white}X#3#{} Mult for",
                         "each {C:uncommon}Uncommon{} Joker owned at",
                         "the {C:attention}end of round{}",
-                        "{C:inactive}(Currently{} {X:mult,C:white}X#3#{} {C:inactive}Mult){}",
+                        "{C:inactive}(Currently{} {X:mult,C:white}X#2#{} {C:inactive}Mult){}",
                     },
                 },
             },
@@ -992,8 +992,8 @@ return {
                         "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
                     },
                     {
-                        "When {C:attention}Boss Blind{} is {C:attention}defeated{}",
-                        "increase all shop prices by {C:money}$#3#{}",
+                        "Increase {C:attention}multiplier{} by {X:money,C:white}#3#{}",
+                        "when a Joker is {C:attention}purchased{}",
                     },
                 },
             },
@@ -1514,14 +1514,7 @@ return {
                 name = "Gelotopoios",
                 text = {
                     { "{C:mult}+4 Mult{}" },
-                    {
-                        "Set scoring operator to {C:dark_edition}^{}",
-                        "upon acquisition",
-                    },
-                    {
-                        "Set scoring operator to {C:dark_edition}X{}",
-                        "when {C:attention}removed{}",
-                    },
+                    { "Set scoring operator to {C:dark_edition}^{}" },
                 },
             },
 
