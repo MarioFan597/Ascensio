@@ -445,16 +445,18 @@ return {
             },
 
             j_asc_steel_joker = {
-                name = "Tegumentum Inoxidabile",
+                name = "Chalybs Fusus",
                 text = {
                     {
-                        "{C:attention}Steel Cards{} held in hand",
-                        "give {X:asc_emult,C:white}^#1#{} Mult",
+                        "Scored and held in hand {C:attention}Steel{} cards",
+                        "give {X:mult,C:white}X#1#{} for each {C:attention}owned{}",
+                        "{C:attention}Steel{} cards",
+                        "{C:inactive}(Currently{} {X:mult,C:white}X#2#{} {C:inactive}Mult){}",
                     },
                     {
-                        "Convert all cards held in hand",
-                        "without an {C:attention}Enhancement{}", --Capitlizing Enhancment. My refrence is Vampire.
-                        "into {C:attention}Steel Cards{}",
+                        "Gain {X:mult,C:white}X#3#{} Mult for each",
+                        "{C:attention}Steel{} card in your {C:attention}Full Deck{}",
+                        "{C:inactive}(Currently{} {X:mult,C:white}X#4#{} {C:inactive}Mult){}",
                     },
                 },
             },
@@ -493,18 +495,15 @@ return {
                 name = "Furor Hominis",
                 text = {
                     {
-                        "{X:mult,C:white}X#1#{} Mult",
+                        "When {C:attention}Blind{} is selected, gain",
+                        "{X:mult,C:white}X#2#{} Mult",
+                        "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
                     },
                     {
-                        "Whenever a Blind is {C:attention}selected{}",
-                        "gains {X:mult,C:white}X#2#{} Mult and destroy",
-                        "a {C:attention}random{} Joker",
-                    },
-                    {
-                        "Whenever a Joker is {C:attention}destroyed{} in that way",
-                        "{C:attention}Xn{} {X:mult,C:white}XMult{} gain",
-                        "with {C:attention}n{} equal to {C:attention}log(x){}",
-                        "with {C:attention}x{} being the {C:attention}destroyed{} Joker's sell value",
+                        "When {C:attention}Small Blind{} or {C:attention}Big Blind{} is",
+                        "selected, destroy a {C:attention}random{} Joker",
+                        "and increase self {X:mult,C:white}XMult{} gain by",
+                        "that Joker's {C:money}sell value{}",
                     },
                 },
             },
@@ -817,10 +816,7 @@ return {
                         "{X:attention,C:white}X#1#{} all {C:uncommon}Uncommon{} owned Jokers' values",
                     },
                     {
-                        "Gain {X:mult,C:white}X#3#{} Mult for",
-                        "each {C:uncommon}Uncommon{} Joker owned at",
-                        "the {C:attention}end of round{}",
-                        "{C:inactive}(Currently{} {X:mult,C:white}X#2#{} {C:inactive}Mult){}",
+                        "All {C:uncommon}Uncommon{} Jokers gives {X:asc_emult,C:white}^#2#{} Mult",
                     },
                 },
             },

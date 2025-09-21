@@ -25,8 +25,7 @@ SMODS.Joker({
     config = {
         extra = {
             xval = 1.5,
-            xmult = 1,
-            xmult_gain = 1.5,
+            emult = 1.25,
         },
     },
 
@@ -34,29 +33,16 @@ SMODS.Joker({
         return {
             vars = {
                 card.ability.extra.xval,
-                card.ability.extra.xmult,
-                card.ability.extra.xmult_gain,
+                card.ability.extra.emult,
             },
         }
     end,
 
     calculate = function(_, card, ctx)
-        if (ctx.end_of_round and ctx.main_eval) or ctx.forcetrigger then
-            local gain = 0
-
-            uncommons(function(_)
-                gain = gain + 1
-            end)
-
-            SMODS.scale_card(card, {
-                ref_table = card.ability.extra,
-                ref_value = "xmult",
-                scalar_value = "xmult_gain",
-
-                operation = function(ref_table, ref_value, initial, change)
-                    ref_table[ref_value] = initial + gain * change
-                end,
-            })
+        if ctx.other_joker then
+            if ctx.other_joker.config.center.rarity == 2 or ctx.forcetrigger then
+                return { emult = card.ability.extra.emult }
+            end
         end
 
         if (ctx.beat_boss and ctx.main_eval) or ctx.forcetrigger then
@@ -67,10 +53,6 @@ SMODS.Joker({
             return {
                 message = "Upgraded!",
             }
-        end
-
-        if ctx.joker_main then
-            return { xmult = card.ability.extra.xmult }
         end
     end,
 
