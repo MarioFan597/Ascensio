@@ -132,3 +132,16 @@ set_selection_limit = function(to, stroverride)
     set_playing_card_selection_limit(to, stroverride)
     set_discard_selection_limit(to, stroverride)
 end
+
+---@class AscensioCredits
+---@field idea? string[]
+---@field art? string[]
+---@field code? string[]
+---@overload fun(self: AscensioCredits): AscensioCredits
+Ascensio.Credit = setmetatable({}, {
+    ---@param this AscensioCredits
+    ---@return AscensioCredits
+    __call = function(_, this)
+        return this
+    end,
+})

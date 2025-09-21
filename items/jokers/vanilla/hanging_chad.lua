@@ -9,7 +9,7 @@ SMODS.Joker({
     soul_pos = { x = 8, y = 5, extra = { x = 7, y = 5 } },
     cost = 50,
     order = 115,
-    loc_vars = function(self, info_queue, card)
+    loc_vars = function(_, _, card)
         return {
             vars = {
                 card and lenient_bignum(card.ability.extra.retriggers),
@@ -18,7 +18,7 @@ SMODS.Joker({
             },
         }
     end,
-    calculate = function(self, card, context)
+    calculate = function(_, card, context)
         card.ability.extra.retriggers = G.hand.config.card_limit
         if context.repetition and context.cardarea == G.play and (context.other_card == context.scoring_hand[1]) then
             return {

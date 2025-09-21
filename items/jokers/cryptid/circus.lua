@@ -19,6 +19,14 @@ local function pow(a, b)
     return Big:ensureBig(a):pow(b)
 end
 
+local function add(a, b)
+    if type(a) == "number" and type(b) == "number" then
+        return a + b
+    end
+
+    return Big:ensureBig(a):add(b)
+end
+
 SMODS.Joker({
     key = "circus",
     order = 4,
@@ -109,6 +117,10 @@ SMODS.Joker({
                 ref_table = card.ability.extra,
                 ref_value = "base",
                 scalar_value = "base_gain",
+
+                operation = function(ref_table, ref_value, initial, change)
+                    ref_table[ref_value] = add(initial, change)
+                end,
             })
 
             local mult_tbl = {}

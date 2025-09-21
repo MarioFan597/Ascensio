@@ -14,37 +14,42 @@ SMODS.Joker({
 
     config = {
         extra = {
-            csl_gain = 1,
+            hand_mod = 1,
+            card_requirement = {
+                current = 0,
+                requirement = 20,
+            },
         },
 
         immutable = {
-            cumulative_csl_gained = 0,
+            total_mod = 0,
             oldcsl = 5,
         },
     },
 
     loc_vars = function(_, _, card)
-        card.ability.extra.csl_gain = math.floor(card.ability.extra.csl_gain)
+        card.ability.extra.hand_mod = math.floor(card.ability.extra.hand_mod)
 
         return {
             vars = {
-                card.ability.extra.csl_gain,
-                card.ability.immutable.cumulative_csl_gained,
+                card.ability.extra.hand_mod,
+                card.ability.immutable.total_mod,
+                card.ability.extra.card_requirement.requirement,
+                card.ability.extra.card_requirement.current,
             },
         }
     end,
 
     add_to_deck = function(_, card, _)
         card.ability.immutable.oldcsl = G.GAME.starting_params.play_limit
-        local csl_gain = card.ability.extra.csl_gain
-
-        ease_selection_limit(csl_gain)
+        ease_selection_limit(card.ability.extra.hand_mod)
+        G.hand:change_size(card.ability.extra.hand_mod)
 
         SMODS.scale_card(card, {
             ref_table = card.ability.immutable,
-            ref_value = "cumulative_csl_gained",
-            scalar_value = "gain",
-            scalar_table = { gain = csl_gain },
+            ref_value = "total_mod",
+            scalar_value = "hand_mod",
+            scalar_table = card.ability.extra,
         })
     end,
 
@@ -55,40 +60,39 @@ SMODS.Joker({
             }
         end
 
-        if context.beat_boss and context.main_eval then
-            local csl_gain = card.ability.extra.csl_gain
-
-            SMODS.scale_card(card, {
-                ref_table = card.ability.immutable,
-                ref_value = "cumulative_csl_gained",
-                scalar_value = "gain",
-                scalar_table = { gain = csl_gain },
-            })
-
-            return {
-                csl = card.ability.extra.csl_gain,
-            }
-        end
-
         if context.individual and context.cardarea == G.play then
-            local xmult = math.max(#(context.scoring_hand or {}), 1)
-            return { xmult = xmult }
+            if card.ability.extra.card_requirement.current < card.ability.extra.card_requirement.requirement then
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra.card_requirement,
+                    ref_value = "current",
+                    scalar_value = "gain",
+                    scalar_table = { gain = 1 },
+
+                    no_message = true,
+                })
+            else
+                card.ability.extra.card_requirement.current = 0
+                ease_selection_limit(card.ability.extra.hand_mod)
+                G.hand:change_size(card.ability.extra.hand_mod)
+
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.immutable,
+                    ref_value = "total_mod",
+                    scalar_value = "hand_mod",
+                    scalar_table = card.ability.extra,
+                })
+            end
         end
     end,
 
     remove_from_deck = function(_, card, _)
         set_selection_limit(card.ability.immutable.oldcsl)
+        G.hand:change_size(-card.ability.immutable.total_mod)
     end,
 
-    asc_credits = {
-        idea = {
-            "OmegaLife",
-        },
-        art = {
-            "???",
-        },
-        code = {
-            "OmegaLife",
-        },
-    },
+    asc_credits = Ascensio.Credit({
+        idea = { "OmegaLife", "Grahkon" },
+        art = { "???" },
+        code = { "OmegaLife" },
+    }),
 })

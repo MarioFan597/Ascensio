@@ -13,52 +13,62 @@ SMODS.Joker({
 
     config = {
         extra = {
-            xmult = 10,
-            gain = 1,
+            xval = 1.5,
+            xmult = 1,
+            xmult_gain = 1,
         },
     },
 
     loc_vars = function(_, _, card)
         return {
             vars = {
+                card.ability.extra.xval,
                 card.ability.extra.xmult,
-                card.ability.extra.gain,
+                card.ability.extra.xmult_gain,
             },
         }
     end,
 
     calculate = function(_, card, ctx)
-        if ctx.other_joker or ctx.forcetrigger then
-            return { xmult = card.ability.extra.xmult }
-        end
-
-        if ctx.end_of_round and ctx.main_eval then
-            local scale_amount = 0
-
-            for _, joker in ipairs(G.jokers.cards) do
-                if joker.config.center.rarity == 2 or joker.config.center.rarity == "Uncommon" then
-                    scale_amount = scale_amount + 1
+        if (ctx.end_of_round and ctx.main_eval) or ctx.forcetrigger then
+            local gain = 0
+            for _, other_joker in ipairs(G.jokers.cards) do
+                if (other_joker.config.center.rarity == 2) or ctx.forcetrigger then
+                    gain = gain + 1
                 end
             end
 
-            return SMODS.scale_card(card, {
+            SMODS.scale_card(card, {
                 ref_table = card.ability.extra,
                 ref_value = "xmult",
-                scalar_value = "gain",
-                scalar_table = { gain = card.ability.extra.gain * scale_amount },
+                scalar_value = "xmult_gain",
+
+                operation = function(ref_table, ref_value, initial, change)
+                    ref_table[ref_value] = initial + gain * change
+                end,
             })
+        end
+
+        if (ctx.beat_boss and ctx.main_eval) or ctx.forcetrigger then
+            for _, other_joker in ipairs(G.jokers.cards) do
+                if (other_joker.config.center.rarity == 2) or ctx.forcetrigger then
+                    Cryptid.manipulate(other_joker, card.ability.extra.xval)
+                end
+            end
+
+            return {
+                message = "Upgraded!",
+            }
+        end
+
+        if ctx.joker_main then
+            return { xmult = card.ability.extra.xmult }
         end
     end,
 
-    asc_credits = {
-        idea = {
-            "OmegaLife",
-        },
-        art = {
-            "???",
-        },
-        coding = {
-            "OmegaLife",
-        },
-    },
+    asc_credits = Ascensio.Credit({
+        idea = { "OmegaLife", "Grahkon" },
+        art = { "???" },
+        coding = { "OmegaLife" },
+    }),
 })
