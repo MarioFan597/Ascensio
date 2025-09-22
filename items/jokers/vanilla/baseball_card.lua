@@ -1,3 +1,14 @@
+---@generic T
+---@param f fun(jokers: balatro.Card): T
+---@param ctx? CalcContext
+local function uncommons(f, ctx)
+    for _, jokers in ipairs(G.jokers.cards) do
+        if jokers.config.center.rarity == 2 or (ctx and ctx.forcetrigger) then
+            f(jokers)
+        end
+    end
+end
+
 SMODS.Joker({
     key = "baseball_card",
     rarity = "cry_exotic",
@@ -14,8 +25,7 @@ SMODS.Joker({
     config = {
         extra = {
             xval = 1.5,
-            xmult = 1,
-            xmult_gain = 1,
+            emult = 1.25,
         },
     },
 
@@ -23,46 +33,26 @@ SMODS.Joker({
         return {
             vars = {
                 card.ability.extra.xval,
-                card.ability.extra.xmult,
-                card.ability.extra.xmult_gain,
+                card.ability.extra.emult,
             },
         }
     end,
 
     calculate = function(_, card, ctx)
-        if (ctx.end_of_round and ctx.main_eval) or ctx.forcetrigger then
-            local gain = 0
-            for _, other_joker in ipairs(G.jokers.cards) do
-                if (other_joker.config.center.rarity == 2) or ctx.forcetrigger then
-                    gain = gain + 1
-                end
+        if ctx.other_joker then
+            if ctx.other_joker.config.center.rarity == 2 or ctx.forcetrigger then
+                return { emult = card.ability.extra.emult }
             end
-
-            SMODS.scale_card(card, {
-                ref_table = card.ability.extra,
-                ref_value = "xmult",
-                scalar_value = "xmult_gain",
-
-                operation = function(ref_table, ref_value, initial, change)
-                    ref_table[ref_value] = initial + gain * change
-                end,
-            })
         end
 
         if (ctx.beat_boss and ctx.main_eval) or ctx.forcetrigger then
-            for _, other_joker in ipairs(G.jokers.cards) do
-                if (other_joker.config.center.rarity == 2) or ctx.forcetrigger then
-                    Cryptid.manipulate(other_joker, card.ability.extra.xval)
-                end
-            end
+            uncommons(function(jkr)
+                Cryptid.manipulate(jkr, { value = card.ability.extra.xval })
+            end, ctx)
 
             return {
                 message = "Upgraded!",
             }
-        end
-
-        if ctx.joker_main then
-            return { xmult = card.ability.extra.xmult }
         end
     end,
 

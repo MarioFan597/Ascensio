@@ -445,16 +445,18 @@ return {
             },
 
             j_asc_steel_joker = {
-                name = "Tegumentum Inoxidabile",
+                name = "Chalybs Fusus",
                 text = {
                     {
-                        "{C:attention}Steel Cards{} held in hand",
-                        "give {X:asc_emult,C:white}^#1#{} Mult",
+                        "Scored and held in hand {C:attention}Steel{} cards",
+                        "give {X:mult,C:white}X#1#{} for each {C:attention}owned{}",
+                        "{C:attention}Steel{} cards",
+                        "{C:inactive}(Currently{} {X:mult,C:white}X#2#{} {C:inactive}Mult){}",
                     },
                     {
-                        "Convert all cards held in hand",
-                        "without an {C:attention}Enhancement{}", --Capitlizing Enhancment. My refrence is Vampire.
-                        "into {C:attention}Steel Cards{}",
+                        "Gain {X:mult,C:white}X#3#{} Mult for each",
+                        "{C:attention}Steel{} card in your {C:attention}Full Deck{}",
+                        "{C:inactive}(Currently{} {X:mult,C:white}X#4#{} {C:inactive}Mult){}",
                     },
                 },
             },
@@ -493,18 +495,15 @@ return {
                 name = "Furor Hominis",
                 text = {
                     {
-                        "{X:mult,C:white}X#1#{} Mult",
+                        "When {C:attention}Blind{} is selected, gain",
+                        "{X:mult,C:white}X#2#{} Mult",
+                        "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
                     },
                     {
-                        "Whenever a Blind is {C:attention}selected{}",
-                        "gains {X:mult,C:white}X#2#{} Mult and destroy",
-                        "a {C:attention}random{} Joker",
-                    },
-                    {
-                        "Whenever a Joker is {C:attention}destroyed{} in that way",
-                        "{C:attention}Xn{} {X:mult,C:white}XMult{} gain",
-                        "with {C:attention}n{} equal to {C:attention}log(x){}",
-                        "with {C:attention}x{} being the {C:attention}destroyed{} Joker's sell value",
+                        "When {C:attention}Small Blind{} or {C:attention}Big Blind{} is",
+                        "selected, destroy a {C:attention}random{} Joker",
+                        "and increase self {X:mult,C:white}XMult{} gain by",
+                        "that Joker's {C:money}sell value{}",
                     },
                 },
             },
@@ -813,14 +812,11 @@ return {
                 name = "Una Quaedam",
                 text = {
                     {
-                        "{X:attention,C:white}X#1#{} all {C:uncommon}Uncommon{} owned Jokers values",
-                        "when {C:attention}Boss Blind{} is defeated",
+                        "When {C:attention}Boss Blind{} is defeated",
+                        "{X:attention,C:white}X#1#{} owned {C:uncommon}Uncommon{} Jokers' values",
                     },
                     {
-                        "Gain {X:mult,C:white}X#2#{} Mult for",
-                        "each {C:uncommon}Uncommon{} Joker owned at",
-                        "the {C:attention}end of round{}",
-                        "{C:inactive}(Currently{} {X:mult,C:white}X#3#{} {C:inactive}Mult){}",
+                        "All {C:uncommon}Uncommon{} Jokers gives {X:asc_emult,C:white}^#2#{} Mult",
                     },
                 },
             },
@@ -857,7 +853,7 @@ return {
                     {
                         "If the {C:attention}card{} is a {C:clubs}Clubs{}",
                         "all cards {C:attention}held in hand{}",
-                        "gain {X:chips,C:white}XChips{} based card's rank",
+                        "gain {X:chips,C:white}XChips{} based on card's rank",
                         "{C:inactive,s:0.75}(J = 11, Q = 12, K = 13, A = 14){}",
                     },
                     {
@@ -992,8 +988,8 @@ return {
                         "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
                     },
                     {
-                        "When {C:attention}Boss Blind{} is {C:attention}defeated{}",
-                        "increase all shop prices by {C:money}$#3#{}",
+                        "Increase {C:attention}multiplier{} by {X:money,C:white}#3#{}",
+                        "when a Joker is {C:attention}purchased{}",
                     },
                 },
             },
@@ -1078,7 +1074,7 @@ return {
                         "Each scored {C:attention}#1#{} of {V:1}#2#{}",
                         "randomly either gives",
                         "{X:asc_emult,C:white}^#3#{} Mult, {X:asc_echips,C:white}^#3#{} Chips, {X:money,C:white}X#3#{} Money,",
-                        "or increases Joker values by {C:attention}+#4#{}",
+                        "or increases self values by {C:attention}+#4#{}",
                         "{C:inactive,s:0.75}(Does not affect this value){}",
                         "{C:inactive}(Card changes every round)",
                     },
@@ -1200,7 +1196,7 @@ return {
                         "{C:inactive,s:0.8}(Poker hand changes at end of round){}",
                     },
                     {
-                        "When the above probabilites {C:attention}fails{},",
+                        "When the above probability {C:attention}fails{},",
                         "{C:attention}double{} the chance of creating",
                         "{C:attention}#1#{} {C:dark_edition}Negative Rare{} consumable",
                         "Otherwise, {C:attention}reset the probabilites{}",
@@ -1362,6 +1358,7 @@ return {
                     },
                     {
                         string.format("Increase {C:attention}base{} by {C:attention}#%d#{}", Entropy and 8 or 7),
+                        "at the {C:attention}end of round{}",
                         "{C:inactive}(Base: #1#){}",
                     },
                 },
@@ -1514,14 +1511,7 @@ return {
                 name = "Gelotopoios",
                 text = {
                     { "{C:mult}+4 Mult{}" },
-                    {
-                        "Set scoring operator to {C:dark_edition}^{}",
-                        "upon acquisition",
-                    },
-                    {
-                        "Set scoring operator to {C:dark_edition}X{}",
-                        "when {C:attention}removed{}",
-                    },
+                    { "Set scoring operator to {C:dark_edition}^{}" },
                 },
             },
 
