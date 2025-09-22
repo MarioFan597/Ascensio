@@ -813,7 +813,7 @@ return {
                 text = {
                     {
                         "When {C:attention}Boss Blind{} is defeated",
-                        "{X:attention,C:white}X#1#{} all {C:uncommon}Uncommon{} owned Jokers' values",
+                        "{X:attention,C:white}X#1#{} owned {C:uncommon}Uncommon{} Jokers' values",
                     },
                     {
                         "All {C:uncommon}Uncommon{} Jokers gives {X:asc_emult,C:white}^#2#{} Mult",
@@ -853,7 +853,7 @@ return {
                     {
                         "If the {C:attention}card{} is a {C:clubs}Clubs{}",
                         "all cards {C:attention}held in hand{}",
-                        "gain {X:chips,C:white}XChips{} based card's rank",
+                        "gain {X:chips,C:white}XChips{} based on card's rank",
                         "{C:inactive,s:0.75}(J = 11, Q = 12, K = 13, A = 14){}",
                     },
                     {
@@ -1074,7 +1074,7 @@ return {
                         "Each scored {C:attention}#1#{} of {V:1}#2#{}",
                         "randomly either gives",
                         "{X:asc_emult,C:white}^#3#{} Mult, {X:asc_echips,C:white}^#3#{} Chips, {X:money,C:white}X#3#{} Money,",
-                        "or increases Joker values by {C:attention}+#4#{}",
+                        "or increases self values by {C:attention}+#4#{}",
                         "{C:inactive,s:0.75}(Does not affect this value){}",
                         "{C:inactive}(Card changes every round)",
                     },
@@ -1196,7 +1196,7 @@ return {
                         "{C:inactive,s:0.8}(Poker hand changes at end of round){}",
                     },
                     {
-                        "When the above probabilites {C:attention}fails{},",
+                        "When the above probability {C:attention}fails{},",
                         "{C:attention}double{} the chance of creating",
                         "{C:attention}#1#{} {C:dark_edition}Negative Rare{} consumable",
                         "Otherwise, {C:attention}reset the probabilites{}",
@@ -1358,6 +1358,7 @@ return {
                     },
                     {
                         string.format("Increase {C:attention}base{} by {C:attention}#%d#{}", Entropy and 8 or 7),
+                        "at the {C:attention}end of round{}",
                         "{C:inactive}(Base: #1#){}",
                     },
                 },
