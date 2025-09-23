@@ -1,15 +1,35 @@
+SMODS.Atlas({
+    key = "obelisk",
+    path = "jokers/vanilla/obelisk.png",
+    px = 71,
+    py = 95,
+})
+
 SMODS.Joker({
     key = "obelisk",
     rarity = "cry_exotic",
-    atlas = "v_atlas_1",
+    atlas = "obelisk",
     blueprint_compat = true,
     demicoloncompat = true,
 
     cost = 50,
     order = 23,
 
-    pos = { x = 0, y = 14 },
-    soul_pos = { x = 2, y = 14, extra = { x = 1, y = 14 } },
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 0, y = 1, extra = { x = 0, y = 4 } },
+
+    ---@type CardAnimation
+    animation = {
+        macro = {
+            type = "skim",
+            soul_pos = {
+                include = { Rect({ x1 = 0, y1 = 1, x2 = 9, y2 = 3 }) },
+            },
+            soul_pos_extra = {
+                include = { Rect({ x1 = 0, y1 = 4, x2 = 9, y2 = 6 }) },
+            },
+        },
+    },
 
     config = {
         extra = {
@@ -68,7 +88,7 @@ SMODS.Joker({
             "OmegaLife",
         },
         art = {
-            "Lil Mr. Slipstream",
+            "Tatteredlurker",
         },
         code = {
             "OmegaLife",
