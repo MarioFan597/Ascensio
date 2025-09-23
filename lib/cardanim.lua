@@ -5,11 +5,25 @@
 ---@field x integer
 ---@field y integer
 
+---@overload fun(coords: Coords): Coords
+---@param coords Coords
+---@return Coords
+Coords = function(coords)
+    return coords
+end
+
 ---@class Rect
 ---@field x1 integer
 ---@field y1 integer
 ---@field x2 integer
 ---@field y2 integer
+
+---@overload fun(rect: Rect): Rect
+---@param rect Rect
+---@return Rect
+Rect = function(rect)
+    return rect
+end
 
 ---@class CardAnimationFrames
 ---@field pos? { x: integer, y: integer, t: number }[]
@@ -20,6 +34,7 @@
 ---@alias IterationType "forward"|"backward"|"f"|"b"
 
 ---@class CardAnimationSkimMacro
+---@field type "skim"
 ---@field pos? CardAnimationSkimMacroSubTable
 ---@field soul_pos? CardAnimationSkimMacroSubTable
 ---@field soul_pos_extra? CardAnimationSkimMacroSubTable
@@ -31,12 +46,12 @@
 ---@field is_periodic? boolean
 ---@field direction? { [1]: GroupType, [2]: IterationType, [3]: IterationType }
 
----@class CardAnimationMacro
----@field type "skim"|string
-
 ---@class CardAnimation
 ---@field frames? CardAnimationFrames
 ---@field macro? CardAnimationSkimMacro
+
+---@class (partial) SMODS.Joker
+---@field animation CardAnimation
 
 -- == CONFIG
 local cardanim_cfg = {
