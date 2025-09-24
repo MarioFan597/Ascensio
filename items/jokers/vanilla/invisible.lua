@@ -1,3 +1,4 @@
+---@diagnostic disable: need-check-nil
 SMODS.Joker({
     key = "invisible",
     rarity = "cry_exotic",
@@ -15,7 +16,7 @@ SMODS.Joker({
     config = {
         extra = {
             rounds = {
-                req = 2,
+                req = 1,
                 cur = 0,
             },
         },
@@ -32,10 +33,15 @@ SMODS.Joker({
             end
 
             card.sell_cost = 0
-            card:set_cost()
         end
 
-        return { vars = { 1 } }
+        return {
+            vars = {
+                card.ability.extra.rounds.req,
+                card.ability.extra.rounds.cur,
+                (card.ability.extra.rounds.req > 2) and "rounds" or "round",
+            },
+        }
     end,
 
     add_to_deck = function(_, card, _)
@@ -53,7 +59,7 @@ SMODS.Joker({
 
     calculate = function(_, card, context)
         if (context.selling_self and not context.blueprint) or context.forcetrigger then
-            if #G.jokers.cards <= G.jokers.config.card_limit then
+            if (#G.jokers.cards <= G.jokers.config.card_limit and card.ability.extra.rounds.cur >= card.ability.extra.rounds.req) or context.forcetrigger then
                 local i = 0
                 for x, v in ipairs(G.jokers.cards) do
                     if v == card then
@@ -72,6 +78,17 @@ SMODS.Joker({
                 return { message = localize("k_duplicated_ex") }
             else
                 return { message = localize("k_no_room_ex") }
+            end
+        end
+
+        ---@diagnostic disable-next-line: unnecessary-if
+        if (context.end_of_round and context.main_eval and not context.blueprint) or context.forcetrigger then
+            if card.ability.extra.rounds.cur < card.ability.extra.rounds.req then
+                card.ability.extra.rounds.cur = card.ability.extra.rounds.cur + 1
+            else
+                juice_card_until(card, function(this)
+                    return not this.REMOVED
+                end, true)
             end
         end
     end,

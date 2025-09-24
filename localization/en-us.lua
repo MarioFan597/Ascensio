@@ -1141,16 +1141,15 @@ return {
                 name = "Immaculatus",
                 text = {
                     {
-                        "{C:attention}Sell{} this card to duplicate",
+                        "After {C:attention}#1#{} {C:inactive}(#2#){} #3#",
+                        "{C:attention}sell{} this card to duplicate",
                         "the next Joker {C:attention}to the right{}",
                         "{C:inactive}(Removes{} {C:dark_edition}Negative{} {C:inactive}from copy){}",
                     },
                     {
                         "When {C:attention}removed{}, create a {C:dark_edition}Negative{}",
                         "copy of itself",
-                    },
-                    {
-                        "Can only own {C:attention}#1#{} copy of this card",
+                        "{C:inactive,s:0.7}Can only own 1 copy of this card{}",
                     },
                 },
             },
