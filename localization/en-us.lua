@@ -1147,9 +1147,8 @@ return {
                         "{C:inactive}(Removes{} {C:dark_edition}Negative{} {C:inactive}from copy){}",
                     },
                     {
-                        "When {C:attention}removed{}, create a {C:dark_edition}Negative{}",
-                        "copy of itself",
-                        "{C:inactive,s:0.7}(Can only own 1 copy of this card){}",
+                        "When {C:attention}removed{}, create",
+                        "{C:attention}#4#{} {C:dark_edition}Negative{} #5# of itself",
                     },
                 },
             },

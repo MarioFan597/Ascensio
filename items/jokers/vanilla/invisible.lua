@@ -18,41 +18,24 @@ SMODS.Joker({
             rounds = {
                 req = 1,
                 cur = 0,
+                copy = 1,
             },
         },
     },
 
     loc_vars = function(_, _, card)
-        if G.jokers and G.jokers.cards then
-            for _, other in ipairs(G.jokers.cards) do
-                if other ~= card and other.config.center.key == card.config.center.key then
-                    other:start_dissolve()
-                    juice_card(card)
-                    return
-                end
-            end
-
-            card.sell_cost = 0
-        end
-
         return {
             vars = {
                 card.ability.extra.rounds.req,
                 card.ability.extra.rounds.cur,
                 (card.ability.extra.rounds.req > 2) and "rounds" or "round",
+                card.ability.extra.copy,
+                (card.ability.extra.copy > 2) and "copies" or "copy",
             },
         }
     end,
 
     add_to_deck = function(_, card, _)
-        for _, other in ipairs(G.jokers.cards) do
-            if other ~= card and other.config.center.key == card.config.center.key then
-                other:start_dissolve()
-                juice_card(card)
-                return
-            end
-        end
-
         card:set_edition("e_negative")
         card.sell_cost = 0
     end,
