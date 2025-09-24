@@ -1137,6 +1137,24 @@ return {
                 },
             },
 
+            j_asc_invisible = {
+                name = "Immaculatus",
+                text = {
+                    {
+                        "{C:attention}Sell{} this card to duplicate",
+                        "the next Joker {C:attention}to the right{}",
+                        "{C:inactive}(Removes{} {C:dark_edition}Negative{} {C:inactive}from copy){}",
+                    },
+                    {
+                        "When {C:attention}removed{}, create a {C:dark_edition}Negative{}",
+                        "copy of itself",
+                    },
+                    {
+                        "Can only own {C:attention}#1#{} copy of this card",
+                    },
+                },
+            },
+
             j_asc_brainstorm = {
                 name = "Magnum Opus",
                 text = {

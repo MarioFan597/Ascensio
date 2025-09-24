@@ -185,6 +185,7 @@ AscensionInternal({ source = Source.Vanilla, from = "j_trio", to_exotic = "j_asc
 AscensionInternal({ source = Source.Vanilla, from = "j_family", to_exotic = "j_asc_family" })
 AscensionInternal({ source = Source.Vanilla, from = "j_order", to_exotic = "j_asc_order" })
 AscensionInternal({ source = Source.Vanilla, from = "j_tribe", to_exotic = "j_asc_tribe" })
+AscensionInternal({ source = Source.Vanilla, from = "j_invisible", to_exotic = "j_asc_invisible" })
 AscensionInternal({ source = Source.Vanilla, from = "j_brainstorm", to_exotic = "j_asc_brainstorm" })
 AscensionInternal({ source = Source.Vanilla, from = "j_drivers_license", to_exotic = "j_asc_drivers_license" })
 AscensionInternal({ source = Source.Vanilla, from = "j_bootstraps", to_exotic = "j_asc_bootstraps" })
