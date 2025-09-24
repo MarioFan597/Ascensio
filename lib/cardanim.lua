@@ -51,7 +51,7 @@ end
 ---@field macro? CardAnimationSkimMacro
 
 ---@class (partial) SMODS.Joker
----@field animation CardAnimation
+---@field animation? CardAnimation
 
 -- == CONFIG
 local cardanim_cfg = {

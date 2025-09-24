@@ -1365,7 +1365,7 @@ return {
                     {
                         string.format("Increase {C:common}Common{} Joker {X:asc_emult,C:white}^Mult{} by {X:asc_emult,C:white}^#%d#{}", Entropy and 8 or 7),
                         "at the {C:attention}end of round{}",
-                        "{C:inactive,s:0.9}(Mutipliers derrived from Common Joker ^Mult)"
+                        "{C:inactive,s:0.9}(Mutipliers derrived from Common Joker ^Mult)",
                     },
                 },
             },
@@ -1594,19 +1594,12 @@ return {
                 },
             },
 
-            asc_samsara = {
+            samsara = {
                 name = "Samsara",
                 text = {
                     "Rotates between its {C:cry_exotic,E:1}Ascendant{}",
                     "version, regular version and",
                     "being {C:red}debuffed{} every round",
-                },
-            },
-
-            asc_skibidi = {
-                name = "Skibidi",
-                text = {
-                    "{X:dark_edition,C:white,s:2,E:2}Skibidi{}",
                 },
             },
         },
@@ -1645,7 +1638,7 @@ return {
             c_asc_samsara = {
                 name = "Samsara",
                 text = {
-                    "Select a Joker",
+                    "Select {C:attention}#1#{} #2#",
                     "to become {C:cry_exotic,E:1}Samsara{}",
                 },
             },
@@ -1782,7 +1775,7 @@ return {
         },
         labels = {
             numina = "Numina",
-            k_asc_transcendent = "Transcendental",
+            samsara = "Samsara",
         },
     },
 }

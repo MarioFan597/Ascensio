@@ -12,6 +12,13 @@ SMODS.Sticker({
     atlas = "sticker",
     pos = { x = 1, y = 0 },
     soul_pos = { x = 0, y = 0 },
+    badge_colour = G.C.CRY_EXOTIC,
+    no_sticker_sheet = true,
+
+    apply = function(_, card)
+        card.ability.samsara = true
+        card.ability.debuff = true
+    end,
 })
 
 SMODS.Consumable({
@@ -24,8 +31,28 @@ SMODS.Consumable({
 
     cost = 4,
 
-    loc_vars = function(_, info_queue, _)
+    config = { extra = { max_sl = 1 } },
+
+    loc_vars = function(_, info_queue, card)
         info_queue[#info_queue + 1] = { key = "asc_samsara", set = "Other" }
+
+        return {
+            vars = {
+                card.ability.extra.max_sl,
+                (card.ability.extra.max_sl == 1) and "Joker" or "Jokers",
+            },
+        }
+    end,
+
+    can_use = function(_, card)
+        -- todo: use something else, this is kinda rudimentary
+        return G.jokers and Ascensio.isInRange(#G.jokers.highlighted, { min = 1, max = card.ability.extra.max_sl })
+    end,
+
+    use = function(_, card, cardarea, _)
+        for _, other_card in ipairs(G.jokers.highlighted) do
+            other_card.ability.samsara = true
+        end
     end,
 })
 
@@ -49,10 +76,6 @@ SMODS.Consumable({
     soul_pos = { x = 1, y = 1 },
 
     cost = 4,
-
-    loc_vars = function(_, info_queue, _)
-        info_queue[#info_queue + 1] = { key = "asc_skibidi", set = "Other" }
-    end,
 })
 
 SMODS.Consumable({

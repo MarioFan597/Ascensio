@@ -345,7 +345,10 @@ SMODS.calculate_individual_effect = function(effect, scored_card, key, amount, f
             juice_card(effect.card)
         end
 
-        ease_dollars_mult(amount)
+        if type(amount) ~= "boolean" then
+            ease_dollars_mult(amount)
+        end
+        return true
     end
 
     if (key == "csl") and amount ~= 0 then
@@ -354,9 +357,39 @@ SMODS.calculate_individual_effect = function(effect, scored_card, key, amount, f
         end
 
         ease_selection_limit(lenient_bignum(amount))
+        return true
     end
+end
 
-    for _, v in ipairs({ "xdollars", "Xdollars", "csl" }) do
-        table.insert(SMODS.scoring_parameter_keys or SMODS.calculation_keys, v)
+for _, v in ipairs({ "xdollars", "Xdollars", "csl" }) do
+    table.insert(SMODS.scoring_parameter_keys or SMODS.calculation_keys, v)
+end
+
+local er = end_round
+function end_round()
+    er()
+
+    for _, area in ipairs({ G.jokers, G.hand, G.consumeables, G.discard, G.deck }) do
+        for _, card in pairs(area.cards) do
+            if card.ability then
+                if card.ability.samsara then
+                    if card.ability.debuff then
+                        card:set_debuff(nil)
+                        card.ability.samsara = true
+                    else
+                        if Ascensio.isAscendable(card) then
+                            local ascref = Ascensio.ascendJoker(card)
+                            ascref.ability.samsara = true
+                        else
+                            if Ascensio.Descensions[card] then
+                                local desref = Ascensio.descendJoker(card)
+                                desref.ability.samsara = true
+                                desref:set_debuff(true)
+                            end
+                        end
+                    end
+                end
+            end
+        end
     end
 end

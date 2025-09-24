@@ -145,3 +145,13 @@ Ascensio.Credit = setmetatable({}, {
         return this
     end,
 })
+
+---@param num number
+---@param range { min?: number, max?: number }
+---@return boolean
+function Ascensio.isInRange(num, range)
+    range.min = range.min or -math.huge
+    range.max = range.max or math.huge
+
+    return num >= range.min and num <= range.max
+end
