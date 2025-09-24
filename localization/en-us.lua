@@ -421,7 +421,7 @@ return {
             j_asc_raised_fist = {
                 name = "Pugnus Populi",
                 text = {
-                    "Gain {X:attention,C:white}X#1#{} the rank",
+                    "Gains {X:attention,C:white}X#1#{} the rank",
                     "of {C:attention}lowest{} ranked card",
                     "held in hand as {X:mult,C:white}XMult{}",
                     "{C:inactive}(Currently{} {X:mult,C:white}X#2#{} {C:inactive}Mult){}",
@@ -448,15 +448,15 @@ return {
                 name = "Chalybs Fusus",
                 text = {
                     {
-                        "Scored and held in hand {C:attention}Steel{} cards",
-                        "give {X:mult,C:white}X#1#{} for each {C:attention}owned{}",
-                        "{C:attention}Steel{} cards",
-                        "{C:inactive}(Currently{} {X:mult,C:white}X#2#{} {C:inactive}Mult){}",
+                        "Gives {X:mult,C:white}X#3#{} Mult for each",
+                        "{C:attention}Steel{} card in {C:attention}full deck{}",
+                        "{C:inactive}(Currently{} {X:mult,C:white}X#4#{} {C:inactive}Mult){}",
                     },
                     {
-                        "Gain {X:mult,C:white}X#3#{} Mult for each",
-                        "{C:attention}Steel{} card in your {C:attention}Full Deck{}",
-                        "{C:inactive}(Currently{} {X:mult,C:white}X#4#{} {C:inactive}Mult){}",
+                        "Scored and held in hand {C:attention}Steel{}",
+                        "cards give {X:mult,C:white}X#1#{} for each",
+                        "{C:attention}Steel{} card in full deck",
+                        "{C:inactive}(Currently{} {X:mult,C:white}X#2#{} {C:inactive}Mult){}",
                     },
                 },
             },
@@ -495,14 +495,14 @@ return {
                 name = "Furor Hominis",
                 text = {
                     {
-                        "When {C:attention}Blind{} is selected, gain",
-                        "{X:mult,C:white}X#2#{} Mult",
+                        "When {C:attention}Blind{} is selected,",
+                        "this Joker gains {X:mult,C:white}X#2#{} Mult",
                         "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
                     },
                     {
                         "When {C:attention}Small Blind{} or {C:attention}Big Blind{} is",
                         "selected, destroy a {C:attention}random{} Joker",
-                        "and increase self {X:mult,C:white}XMult{} gain by",
+                        "and increase {X:mult,C:white}XMult{} gain by",
                         "that Joker's {C:money}sell value{}",
                     },
                 },
@@ -625,13 +625,15 @@ return {
                 name = "Lacus Fractalis",
                 text = {
                     {
-                        "Every played card {C:attention}counts{} in scoring",
+                        "Every {C:attention}played card{}",
+                        "counts in scoring",
                     },
                     {
-                        "For every {C:attention}#3#{} {C:inactive}(#4#){} cards scored",
-                        "{C:attention}+#1#{} card selection limit and hand size",
-                        "{C:inactive}(Currently{} {C:attention}+#2#{} {C:inactive} card selection limit){}",
-                        "{C:inactive}(Currently{} {C:attention}+#2#{} {C:inactive} hand size){}",
+                        "Every {C:attention}#3#{} {C:inactive}(#4#){} cards scored:",
+                        "{C:attention}+#1#{} card selection limit",
+                        "and {C:attention}+#1#{} hand size",
+                        "{C:inactive,s:0.8}(Currently{} {C:attention,s:0.8}+#2#{}{C:inactive,s:0.8} card selection limit){}",
+                        "{C:inactive}(Currently{} {C:attention}+#2#{}{C:inactive} hand size){}",
                     },
                 },
             },
@@ -715,12 +717,13 @@ return {
                 name = "Supra Nubem",
                 text = {
                     {
-                        "Gain {X:money,C:white}X#1#{} total money for each",
-                        "{C:attention}9{} in {C:attention}full deck{} at the end of round",
+                        "Gain {X:money,C:white}X#1#{} total money",
+                        "for each {C:attention}9{} in {C:attention}full deck{}",
+                        "at the end of round",
                         "{C:inactive}(Currently{} {X:money,C:white}X#2#{}{C:inactive}){}",
                     },
                     {
-                        "Increase amount by {X:money,C:white}X#3#{}",
+                        "Increases {X:money,C:white}XMoney{} by {X:money,C:white}X#3#{}",
                         "whenever a {C:attention}9{} is scored",
                     },
                 },
@@ -732,18 +735,18 @@ return {
                     {
                         "Increase all other Jokers' values",
                         "by {C:attention}+#1#{} at the {C:attention}end of round{}",
-                        "{C:inactive,s:0.7}(If possible){}",
+                        "{C:inactive}(If possible){}",
                         "{C:inactive}(Does not affect self){}",
                     },
                     {
                         "Gain {C:money}$#2#{} at the {C:attention}end of round{}",
                         "Payout increases by {C:money}$#1#{}",
                         "whenever {C:attention}Blind{} is defeated",
-                        "{C:inactive,s:0.5}Good night, Terra{}",
+                        "{C:inactive,s:0.7}Good night, Terra{}",
                     },
                     {
-                        "{C:attention}Manipulation value{} and {C:attention}payout increment{}",
-                        "increase by {C:attention}X#3#{} when {C:attention}Boss Blind{} is defeated",
+                        "Increases Joker's values by {X:attention,C:white}X#3#{}",
+                        "when {C:attention}Boss Blind{} is defeated",
                     },
                 },
             },
@@ -812,11 +815,12 @@ return {
                 name = "Una Quaedam",
                 text = {
                     {
-                        "When {C:attention}Boss Blind{} is defeated",
-                        "{X:attention,C:white}X#1#{} owned {C:uncommon}Uncommon{} Jokers' values",
+                        "When {C:attention}Boss Blind{} is defeated,",
+                        "{X:attention,C:white}X#1#{} {C:uncommon}Uncommon{} Joker values",
                     },
                     {
-                        "All {C:uncommon}Uncommon{} Jokers gives {X:asc_emult,C:white}^#2#{} Mult",
+                        "All {C:uncommon}Uncommon{} Jokers",
+                        "give {X:asc_emult,C:white}^#2#{} Mult",
                     },
                 },
             },
@@ -955,8 +959,8 @@ return {
                         "{C:inactive}(Currently #3#){}",
                     },
                     {
-                        "Whenever you {C:attention}lose{} to a blind",
-                        "gain {X:dark_edition,C:edition}^^#2#{} Chips",
+                        "This Joker gains {X:dark_edition,C:edition}^^#2#{} Chips",
+                        "whenever you {C:attention}lose{} a blind",
                         "{C:inactive}(Currently{} {X:dark_edition,C:edition}^^#4#{}{C:inactive}){}",
                     },
                 },
@@ -988,8 +992,8 @@ return {
                         "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
                     },
                     {
-                        "Increase {C:attention}multiplier{} by {X:money,C:white}#3#{}",
-                        "when a Joker is {C:attention}purchased{}",
+                        "Increase gain by {X:money,C:white}X#3#{}",
+                        "when a Joker is {C:attention}bought{}",
                     },
                 },
             },
@@ -998,12 +1002,14 @@ return {
                 name = "Inquino",
                 text = {
                     {
-                        "Scored cards without an {C:attention}enhancement{}",
-                        "are converted into {C:attention}Wild{} Cards",
+                        "Scored cards without",
+                        "an {C:attention}Enhancement{} are",
+                        "turned to {C:attention}Wild{} Cards",
                     },
                     {
-                        "{C:attention}Wild{} Cards cannot be {C:attention}debuffed{}",
-                        "and give {X:dark_edition,C:edition}^#1#{} Mult when scored",
+                        "{C:attention}Wild{} Cards cannot",
+                        "be {C:attention}debuffed{} and give",
+                        "{X:dark_edition,C:edition}^#1#{} Mult when scored",
                     },
                 },
             },
@@ -1074,8 +1080,8 @@ return {
                         "Each scored {C:attention}#1#{} of {V:1}#2#{}",
                         "randomly either gives",
                         "{X:asc_emult,C:white}^#3#{} Mult, {X:asc_echips,C:white}^#3#{} Chips, {X:money,C:white}X#3#{} Money,",
-                        "or increases self values by {C:attention}+#4#{}",
-                        "{C:inactive,s:0.75}(Does not affect this value){}",
+                        "{s:0.9}or increases self values by {C:attention,s:0.9}+#4#{}",
+                        "{C:inactive,s:0.75}(Can't change own manipulation value){}",
                         "{C:inactive}(Card changes every round)",
                     },
                 },
@@ -1348,18 +1354,18 @@ return {
                 name = "Grex Vagans",
                 text = {
                     {
-                        "{C:common}Common{} Jokers gives {X:asc_emult,C:white}^#1#{} Mult",
-                        "{C:uncommon}Uncommon{} Jokers gives {X:asc_emult,C:white}^#2#{} Mult",
-                        "{C:rare}Rare{} Jokers gives {X:asc_emult,C:white}^#3#{} Mult",
-                        "{C:cry_epic}Epic{} Jokers gives {X:asc_emult,C:white}^#4#{} Mult",
-                        "{C:legendary}Legendary{} Jokers gives {X:asc_emult,C:white}^#5#{} Mult",
-                        "{C:cry_exotic}Exotic{} Jokers gives {X:asc_emult,C:white}^#6#{} Mult",
-                        Entropy and "{C:entr_entropic}Entropic{} Jokers gives {X:asc_emult,C:white}^#7#{} Mult" or nil,
+                        "{C:common}Common{} Jokers give {X:asc_emult,C:white}^#1#{} Mult",
+                        "{C:uncommon}Uncommon{} Jokers give {X:asc_emult,C:white}^#2#{} Mult",
+                        "{C:rare}Rare{} Jokers give {X:asc_emult,C:white}^#3#{} Mult",
+                        "{C:cry_epic}Epic{} Jokers give {X:asc_emult,C:white}^#4#{} Mult",
+                        "{C:legendary}Legendary{} Jokers give {X:asc_emult,C:white}^#5#{} Mult",
+                        "{C:cry_exotic}Exotic{} Jokers give {X:asc_emult,C:white}^#6#{} Mult",
+                        Entropy and "{C:entr_entropic}Entropic{} Jokers give {X:asc_emult,C:white}^#7#{} Mult" or nil,
                     },
                     {
-                        string.format("Increase {C:attention}base{} by {C:attention}#%d#{}", Entropy and 8 or 7),
+                        string.format("Increase {C:common}Common{} Joker {X:asc_emult,C:white}^Mult{} by {X:asc_emult,C:white}^#%d#{}", Entropy and 8 or 7),
                         "at the {C:attention}end of round{}",
-                        "{C:inactive}(Base: #1#){}",
+                        "{C:inactive,s:0.9}(Mutipliers derrived from Common Joker ^Mult)"
                     },
                 },
             },
@@ -1368,12 +1374,13 @@ return {
                 name = "Iura Ideae",
                 text = {
                     {
-                        "Gain {X:mult,C:white}X#2#{} Mult whenever a card is {C:attention}scored{}",
+                        "This Joker gains {X:mult,C:white}X#2#{} Mult",
+                        "whenever a card is {C:attention}scored{}",
                         "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult)",
                     },
                     {
-                        "Whenever {C:attention}Boss Blind{} is defeated, increase",
-                        "{X:mult,C:white}XMult{} {C:attention}gain{} by {C:attention}#3#{}",
+                        "Whenever {C:attention}Boss Blind{} is defeated,",
+                        "increases {X:mult,C:white}XMult{} {C:attention}gain{} by {X:mult,C:white}X#3#{}",
                     },
                 },
             },
