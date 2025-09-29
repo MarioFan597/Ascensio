@@ -50,7 +50,7 @@ SMODS.Joker({
         }
     end,
 
-    calculate = function(self, card, context)
+    calculate = function(_, card, context)
         if context.joker_main or context.forcetrigger then
             local steels = total_steel(context.forcetrigger ~= nil)
             return { xmult = 1 + card.ability.extra.xmult * steels }
@@ -58,14 +58,14 @@ SMODS.Joker({
         if ((context.individual and context.cardarea == G.hand) or (context.individual and context.cardarea == G.play)) and not context.end_of_round then
             if context.other_card.debuff then
                 return {
-                    message = localize('k_debuffed'),
-                    colour = G.C.RED
+                    message = localize("k_debuffed"),
+                    colour = G.C.RED,
                 }
             else
                 local steels = total_steel(context.forcetrigger ~= nil)
                 if SMODS.has_enhancement(context.other_card, "m_steel") and steels > 0 then
                     return {
-                        x_mult = 1 + card.ability.extra.extern_xmult * steels
+                        x_mult = 1 + card.ability.extra.extern_xmult * steels,
                     }
                 end
             end
@@ -81,7 +81,7 @@ SMODS.Joker({
         },
         code = {
             "OmegaLife",
-            "MarioFan597"
+            "MarioFan597",
         },
     },
 })
