@@ -16,10 +16,39 @@ SMODS.Sticker({
     no_sticker_sheet = true,
 
     apply = function(_, card)
-        card.ability.samsara = true
-        card.ability.debuff = true
+        if card.ability then
+            ---@cast card.ability table
+            card.ability.samsara = true
+            card.ability.debuff = true
+        end
     end,
 })
+
+---@class NuminaCard
+---@field key string
+---@field pos {x: number, y: number}
+---@field soul_pos? {x: number, y: number}
+---@field config? table<string, any>
+---@field loc_vars? fun(self: SMODS.Center|table, info_queue: table, card: Card|table): { vars: table }
+---@field can_use fun(self: SMODS.Consumable|table, card: Card|table): boolean
+---@field use fun(self: SMODS.Consumable|table, card: Card|table, cardarea: CardArea|table, copier: table): any?
+---@overload fun(o: NuminaCard): SMODS.Consumable
+function Ascensio.NuminaCard(o)
+    return SMODS.Consumable({
+        key = o.key,
+        set = "Numina",
+        atlas = "numina",
+
+        pos = o.pos,
+        soul_pos = o.soul_pos or nil,
+
+        config = o.config,
+
+        cost = 4,
+
+        loc_vars = o.loc_vars or nil,
+    })
+end
 
 SMODS.Consumable({
     key = "samsara",
@@ -34,6 +63,7 @@ SMODS.Consumable({
     config = { extra = { max_sl = 1 } },
 
     loc_vars = function(_, info_queue, card)
+        ---@cast card.ability table
         info_queue[#info_queue + 1] = { key = "asc_samsara", set = "Other" }
 
         return {
@@ -49,7 +79,7 @@ SMODS.Consumable({
         return G.jokers and Ascensio.isInRange(#G.jokers.highlighted, { min = 1, max = card.ability.extra.max_sl })
     end,
 
-    use = function(_, card, cardarea, _)
+    use = function(self, card, cardarea, _)
         for _, other_card in ipairs(G.jokers.highlighted) do
             other_card.ability.samsara = true
         end
