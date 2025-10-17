@@ -29,8 +29,8 @@ SMODS.Joker({
                 card.ability.extra.rounds.req,
                 card.ability.extra.rounds.cur,
                 (card.ability.extra.rounds.req > 2) and "rounds" or "round",
-                card.ability.extra.copy,
-                (card.ability.extra.copy > 2) and "copies" or "copy",
+                card.ability.extra.rounds.copy,
+                (card.ability.extra.rounds.copy > 2) and "copies" or "copy",
             },
         }
     end,
