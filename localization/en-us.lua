@@ -395,7 +395,8 @@ return {
 				name = "Emptor Fidelis",
 				text = {
 					"{X:mult,C:white}X#1#{}",
-					"{C:attention}X#2#{} for every {C:attention}#4#{} {C:inactive}[#3#]{} hands played",
+					"After every {C:attention}#4#{} {C:inactive}[#3#]{}",
+					"hands played, {C:attention}X#2#{}",
 				},
 			},
 
