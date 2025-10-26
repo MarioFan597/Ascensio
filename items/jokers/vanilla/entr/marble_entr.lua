@@ -121,7 +121,7 @@ SMODS.Joker({
 
     ascxentr_credits = {
         idea = {
-            "OmegaLife",
+            "Rhelvetican",
         },
         art = {
             "Lil Mr. Slipstream",
