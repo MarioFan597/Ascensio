@@ -20,7 +20,7 @@ SMODS.Joker({
 		return {
 			vars = {
 				lenient_bignum(card.ability.extra.gain),
-				lenient_bignum(card.ability.extra.chips)
+				lenient_bignum(card.ability.extra.chips),
 			},
 		}
 	end,
@@ -61,11 +61,11 @@ SMODS.Joker({
 			if card.ability.extra.chips > 1 then
 				return {
 					message = localize({
-					type = "variable",
-					key = "a_powchips",
-					vars = {
-						card.ability.extra.chips,
-					},
+						type = "variable",
+						key = "a_powchips",
+						vars = {
+							card.ability.extra.chips,
+						},
 					}),
 					Echips_mod = lenient_bignum(card.ability.extra.chips),
 					colour = G.C.DARK_EDITION,
@@ -87,4 +87,3 @@ SMODS.Joker({
 		},
 	},
 })
-
