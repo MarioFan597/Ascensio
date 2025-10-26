@@ -1,3 +1,3 @@
 return {
-    ["Insanity Mode!!!"] = false,
+	["Insanity Mode!!!"] = false,
 }

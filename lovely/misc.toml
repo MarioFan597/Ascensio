@@ -21,7 +21,7 @@
     [patches.pattern]
         match_indent = true
         pattern = '''return #Cryptid.advanced_find_joker(nil, nil, nil, { "eternal" }, true, "j") < G.jokers.config.card_limit'''
-        payload = '''if ( ( not AscConfig["Insanity Mode!!!"] ) or false ) then
+        payload = '''if not asc_config["Insanity Mode!!!"] or false then
 				return #Cryptid.advanced_find_joker(nil, nil, nil, { "eternal" }, true, "j")
 					< to_number(G.jokers.config.card_limit)
 			else
@@ -36,7 +36,7 @@
     [patches.pattern]
         match_indent = true
         pattern      = '''if not SMODS.is_eternal(v) then'''
-        payload      = '''if not SMODS.is_eternal(v) and ( ( not AscConfig["Insanity Mode!!!"] ) or false ) then'''
+        payload      = '''if not SMODS.is_eternal(v) and not asc_config["Insanity Mode!!!"] or false then'''
         position     = "at"
         target       = '''=[SMODS Cryptid "items/exotic.lua"]'''
 
@@ -45,7 +45,7 @@
     [patches.pattern]
         match_indent = true
         pattern      = '''if not v.ability.eternal then'''
-        payload      = '''if not SMODS.is_eternal(v) and ( ( not AscConfig["Insanity Mode!!!"] ) or false ) then'''
+        payload      = '''if not SMODS.is_eternal(v) and not asc_config["Insanity Mode!!!"] or false then'''
         position     = "at"
         target       = '''=[SMODS Astronomica "items/lib.lua"]'''
 
@@ -55,7 +55,7 @@
     [patches.pattern]
         match_indent = true
         pattern = "for _, v in ipairs(info_queue) do"
-        payload = '''for k, _ in pairs(Ascensio.Ascensionable) do
+        payload = '''for k, _ in pairs(Ascensionable) do
   if _c.key == k then
     info_queue[#info_queue+1] = {key = 'asc_ascensionable', set = 'Other'}
   end
@@ -69,14 +69,11 @@ end
     [patches.pattern]
         match_indent = true
         pattern = "for _, v in ipairs(info_queue) do"
-        payload = '''
-        if Entropy then
-            for k, _ in pairs(Ascensio.Apothable) do
-                if _c.key == k and next(SMODS.find_mod("entr")) then
-                    info_queue[#info_queue+1] = {key = 'asc_apothable', set = 'Other'}
-                end
-            end
-        end
+        payload = '''for k, _ in pairs(Apothable) do
+  if _c.key == k and next(SMODS.find_mod("entr")) then
+    info_queue[#info_queue+1] = {key = 'asc_apothable', set = 'Other'}
+  end
+end
 '''
         position = "before"
         target = "functions/common_events.lua"
@@ -105,3 +102,4 @@ end
         payload      = '''["Straight Flush"] = next(SMODS.find_card("j_asc_four_fingers")) and 2 or next(SMODS.find_card("j_four_fingers")) and Cryptid.gameset() ~= "modest" and 4 or 5,'''
         position     = "at"
         target       = '=[SMODS Cryptid "lib/ascended.lua"]'
+
