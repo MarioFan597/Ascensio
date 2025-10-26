@@ -76,7 +76,7 @@ end
 ---@field to_exotic string The key of the Ascended joker.
 ---@field source_file? "skip"|string Where the Joker is defined in. Defaults to the key of the Ascended Joker with the leading `"j_asc"` removed. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
 ---@field to_entropic? string The key of the Apotheosis joker.
----@field entropic_file? string Where the Entropic Joker is defined in. Defaults to the key of the Mortal Joker with the leading `"j_"` removed and the `"_entr"` appended. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
+---@field entropic_file? "skip"|string Where the Entropic Joker is defined in. Defaults to the key of the Mortal Joker with the leading `"j_"` removed and the `"_entr"` appended. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
 
 ---@overload fun(o: AscensionInternal): AscensionInternal
 local AscensionInternal = setmetatable({}, {
@@ -205,8 +205,8 @@ AscensionInternal({ source = Source.Cryptid, from = "j_cry_highfive", to_exotic 
 AscensionInternal({ source = Source.Cryptid, from = "j_cry_CodeJoker", to_exotic = "j_asc_code_joker" })
 AscensionInternal({ source = Source.Cryptid, from = "j_cry_circus", to_exotic = "j_asc_circus" })
 AscensionInternal({ source = Source.Cryptid, from = "j_cry_krustytheclown", to_exotic = "j_asc_krusty" })
-AscensionInternal({ source = Source.Cryptid, from = "j_cry_undefined", to_exotic = "j_asc_undefined" })
-AscensionInternal({ source = Source.Cryptid, from = "j_cry_negative", to_exotic = "j_cry_tenebris", source_file = "skip" })
+AscensionInternal({ source = Source.Cryptid, from = "j_cry_the", to_exotic = "j_asc_the" })
+AscensionInternal({ source = Source.Cryptid, from = "j_cry_negative", to_exotic = "j_cry_tenebris", source_file = "skip", to_entropic = "j_entr_akyros", entropic_file = "skip" })
 
 -- Mortals for Cryptid Exotics
 AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_copy_cat", to_exotic = "j_cry_iterum", source_file = "copy_cat" })
@@ -232,6 +232,7 @@ end
 ---@diagnostic disable-next-line: undefined-global
 ----------------Colours------------------
 ---------Special Thanks Colours----------
+loc_colour("inactive")
 G.ARGS.LOC_COLOURS.asc_tattered = HEX("2ad5ff")
 G.ARGS.LOC_COLOURS.asc_slipstream = HEX("cc99ff")
 G.ARGS.LOC_COLOURS.asc_glitchkat = HEX("f04360")

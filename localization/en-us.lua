@@ -1401,6 +1401,17 @@ return {
                 },
             },
 
+            j_asc_the = {
+                name = "Nihil Sum",
+                text = {
+                    "If played hand is {C:attention}None{}",
+                    "destroy all cards {C:attention}held in hand{}",
+                    "and gain {X:asc_emult,C:white}^#2#{} Mult",
+                    "for each {C:attention}destroyed{} card",
+                    "{C:inactive}(Currently {X:asc_emult,C:white}^#1#{} {C:inactive}Mult){}",
+                },
+            },
+
             -----Cryptid Mortals-----
 
             j_asc_copy_cat = {
