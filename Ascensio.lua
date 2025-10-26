@@ -1,271 +1,230 @@
-----------------------------------------------
-------------MOD CODE -------------------------
+---@param path string Path to the file
+---@param id? string Mod ID. Defaults to `SMODS.current_mod`.
+---@return any?
+local function loadFile(path, id)
+    local chunk, err = SMODS.load_file(path, id)
+    if err ~= nil or chunk == nil then
+        return err
+    end
 
------bignum compatibility using cryptid-----
+    chunk()
+end
+
+-- Compability
 Cryptid.mod_whitelist["Ascensio"] = true
 
-----------Defining Multiuse Atlases------------------
-SMODS.Atlas({
-	key = "modicon",
-	path = "modicon.png",
-	px = 34,
-	py = 34,
-})
+Ascensio = {}
+loadFile("lib/core.lua")
 
-SMODS.Atlas({
-	key = "v_atlas_1",
-	path = "jokers/vanilla/vanilla_atlas_1.png",
-	px = 71,
-	py = 95,
-})
+Ascensio.Ascensionable = {}
 
-SMODS.Atlas({
-	key = "c_atlas_1",
-	path = "jokers/cryptid/cryptid_atlas_1.png",
-	px = 71,
-	py = 95,
-})
-
-SMODS.Atlas({
-	key = "c_atlas_mortal",
-	path = "jokers/cryptid/cryptid_mortals_atlas.png",
-	px = 71,
-	py = 95,
-})
-
-SMODS.Atlas({
-	key = "e_atlas_1",
-	path = "jokers/entropy/entropy_atlas_1.png",
-	px = 71,
-	py = 95,
-})
-
-SMODS.Atlas({
-	key = "v_entr_atlas_1",
-	path = "jokers/vanilla_entropics/vanilla_entropic_atlas_1.png",
-	px = 71,
-	py = 95,
-})
-
-SMODS.Atlas({
-	key = "sticker_atlas",
-	path = "ascensio_sticker_atlas.png",
-	px = 71,
-	py = 95,
-})
-
-SMODS.Atlas({
-	key = "deck_atlas",
-	path = "deck_atlas.png",
-	px = 71,
-	py = 95,
-})
-
-if CardSleeves then
-	SMODS.Atlas({
-		key = "sleeves",
-		path = "sleeves.png",
-		px = 73,
-		py = 95,
-	})
+if Entropy then
+    Ascensio.Apothable = {}
 end
 
---[[
-SMODS.Atlas {
-	key = "gluttony",
-	path = "gluttony.png",
-	px = 71,
-	py = 95
+Ascensio.Descensions = {}
+
+-- Load Atlases.
+loadFile("atlas.lua")
+
+-- Load Gradients.
+loadFile("Palette.lua")
+
+if next(SMODS.find_mod("DebugPlus")) then
+    loadFile("lib/debug.lua")
+end
+
+-- Load libraries.
+loadFile("lib/utils.lua")
+loadFile("lib/cardanim.lua")
+loadFile("lib/number.lua")
+loadFile("lib/hooks.lua")
+
+-- Load consumable.
+loadFile("items/consumables/ascensio/ascension.lua")
+loadFile("items/consumables/ascensio/numina.lua")
+
+if Entropy then
+    loadFile("items/consumables/entropy/apotheosis.lua")
+end
+
+-- Load deck.
+loadFile("items/decks/ascensio/starlight.lua")
+
+-- Define crossmods.
+---@enum Source
+local Source = {
+    Vanilla = "vanilla/",
+    Cryptid = "cryptid/",
+    Entropy = "entropy/",
+    Astronomica = "astronomica/",
+    Cryptposting = "cryptposting/",
+
+    MortalCryptid = "cryptid/mortal/",
+    Other = "",
 }
 
+---@param key string
+---@return string
+local function get_source_file(key)
+    return string.sub(key, 7)
+end
 
------Defining Sounds------
-SMODS.Sound{
-	key = "mani",
-	path = "mani.ogg"
-}
---]]
+---@class AscensionInternal
+---@field source Source Where is the source of the Mortal version of the Joker. Defaults to `Source.Vanilla`.
+---@field from string The key of the Mortal joker.
+---@field to_exotic string The key of the Ascended joker.
+---@field source_file? string Where the Joker is defined in. Defaults to the key of the Ascended Joker with the leading `"j_asc"` removed. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
+---@field to_entropic? string The key of the Apotheosis joker.
+---@field entropic_file? string Where the Entropic Joker is defined in. Defaults to the key of the Mortal Joker with the leading `"j_"` removed and the `"_entr"` appended. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
 
-----Load the Loader-----
-assert(SMODS.load_file("loader.lua"))()
+---@overload fun(o: AscensionInternal): AscensionInternal
+local AscensionInternal = setmetatable({}, {
+    ---@param asc AscensionInternal
+    __call = function(_, asc)
+        local source_file = asc.source_file or get_source_file(asc.to_exotic)
+        if source_file ~= "skip" then
+            loadFile("items/jokers/" .. asc.source .. source_file .. ".lua")
+        end
 
----------Joker Ascension Dictionary-----------
+        Ascensio.Ascensionable[asc.from] = asc.to_exotic
+        Ascensio.Descensions[asc.to_exotic] = asc.from
 
-Ascensionable = {
-	--Vanilla
-	j_joker = "j_asc_jimbo",
-	j_greedy_joker = "j_asc_greedy",
-	j_lusty_joker = "j_asc_lusty",
-	j_wrathful_joker = "j_asc_wrathful",
-	j_gluttenous_joker = "j_asc_gluttonous", --No Touchie!!!! Sic
-	j_jolly = "j_asc_jolly",
-	j_zany = "j_asc_zany",
-	j_mad = "j_asc_mad",
-	j_crazy = "j_asc_crazy",
-	j_droll = "j_asc_droll",
-	j_sly = "j_asc_sly",
-	j_wily = "j_asc_wily",
-	j_clever = "j_asc_clever",
-	j_devious = "j_asc_devious",
-	j_crafty = "j_asc_crafty",
-	j_stencil = "j_asc_stencil",
-	j_four_fingers = "j_asc_four_fingers",
-	j_mime = "j_asc_mime",
-	j_credit_card = "j_asc_credit_card",
-	j_ceremonial = "j_asc_ceremonial",
-	j_banner = "j_asc_banner",
-	j_mystic_summit = "j_asc_mystic_summit",
-	j_marble = "j_asc_marble",
-	j_loyalty_card = "j_asc_loyalty_card",
-	j_misprint = "j_asc_misprint",
-	j_fibonacci = "j_asc_fibonacci",
-	j_gros_michel = "j_asc_banana",
-	j_even_steven = "j_asc_even_steven",
-	j_odd_todd = "j_asc_odd_todd",
-	j_space = "j_asc_space",
-	j_egg = "j_asc_egg",
-	j_scary_face = "j_asc_scary",
-	j_abstract = "j_asc_abstract",
-	j_blackboard = "j_asc_blackboard",
-	j_ice_cream = "j_asc_ice_cream",
-	j_dna = "j_asc_dna",
-	j_blue_joker = "j_asc_blue",
-	j_cavendish = "j_asc_banana",
-	j_square = "j_asc_square",
-	j_supernova = "j_asc_supernova",
-	j_hologram = "j_asc_hologram",
-	j_midas_mask = "j_asc_midas",
-	j_to_the_moon = "j_asc_to_the_moon",
-	j_golden = "j_asc_golden",
-	j_bull = "j_asc_bull",
-	j_selzer = "j_asc_seltzer", --No Touchie!!!! Sic
-	j_smiley = "j_smiley_face",
-	j_campfire = "j_asc_campfire",
-	j_throwback = "j_asc_throwback",
-	j_hanging_chad = "j_asc_hanging_chad",
-	j_blueprint = "j_asc_blueprint",
-	j_mr_bones = "j_asc_mr_bones",
-	j_sock_and_buskin = "j_asc_sock_and_buskin",
-	--j_smeared = "j_asc_smeared",
-	j_wee = "j_asc_wee",
-	j_oops = "j_asc_oops",
-	j_duo = "j_asc_duo",
-	j_trio = "j_asc_trio",
-	j_family = "j_asc_family",
-	j_order = "j_asc_order",
-	j_tribe = "j_asc_tribe",
-	j_brainstorm = "j_asc_brainstorm",
-	j_drivers_license = "j_asc_drivers_license",
-	j_bootstraps = "j_asc_bootstraps",
-	j_caino = "j_asc_canio", --No Touchie!!!! Sic
-	j_seance = "j_asc_seance",
+        if Ascensio.Apothable and asc.to_entropic ~= nil then
+            local entr_source_file = asc.entropic_file or get_source_file(asc.to_exotic)
+            if entr_source_file ~= "skip" then
+                loadFile("items/jokers/" .. asc.source .. "entr/" .. entr_source_file .. "_entr.lua")
+            end
 
-	---Cryptid
-	j_cry_canvas = "j_asc_canvas",
-	j_cry_sync_catalyst = "j_asc_sync_catalyst",
-	j_cry_gardenfork = "j_asc_gardenfork",
-	j_cry_antennastoheaven = "j_asc_like_antennas_to_heaven",
-	j_cry_chad = "j_asc_chad",
-	j_cry_oil_lamp = "j_asc_oil_lamp",
-	j_cry_huntingseason = "j_asc_hunting_season",
-	j_cry_highfive = "j_asc_high_five",
-	j_cry_CodeJoker = "j_asc_code_joker",
+            Ascensio.Apothable[asc.from] = asc.to_entropic
+            Ascensio.Apothable[asc.to_exotic] = asc.to_entropic
 
-	---Cryptid Mortals
-	j_asc_b_cake = "j_cry_crustulum",
-	j_asc_b_pie = "j_cry_circulus_pistoris",
-	j_asc_orion_pax = "j_cry_primus",
-	j_asc_accomplice = "j_cry_gemino",
-	j_asc_duane = "j_cry_duplicare",
-	j_asc_exorcist = "j_cry_formidiulosus",
-	---Cryptposting
+            Ascensio.Descensions[asc.to_entropic] = asc.from
+        end
 
-	---Astronomica
-	j_ast_facsimile = "j_asc_facsimile",
-	j_ast_stopwatch = "j_asc_stopwatch",
-
-	---Entropy
-	j_entr_sunny_joker = "j_asc_sunny_joker",
-	j_entr_chuckle_cola = "j_asc_chuckle_cola",
-
-	---Secret
-	--j_asc_jimbo = "j_asc_beyond_jimbo",
-}
-
----------Joker Apothable Dictionary-----------
-Apothable = {
-	--Vanilla
-	j_marble = "j_asc_marble_entr",
-	j_asc_marble = "j_asc_marble_entr",
-	---Entropy
-	j_entr_sunny_joker = "j_asc_sunny_joker_entr",
-	j_asc_sunny_joker = "j_asc_sunny_joker_entr",
-}
-
----------Extra Rarites-----------
-
---Throwaway rariety for Musa Ingles
-SMODS.Rarity({
-	key = "banana",
-	badge_colour = HEX("FFE135"),
+        return asc
+    end,
 })
 
-------Extra Functions----------
+-- Vanilla Ascensions
+AscensionInternal({ source = Source.Vanilla, from = "j_joker", to_exotic = "j_asc_jimbo", to_entropic = "j_asc_jimbo_entr" })
+AscensionInternal({ source = Source.Vanilla, from = "j_greedy_joker", to_exotic = "j_asc_greedy" })
+AscensionInternal({ source = Source.Vanilla, from = "j_lusty_joker", to_exotic = "j_asc_lusty" })
+AscensionInternal({ source = Source.Vanilla, from = "j_wrathful_joker", to_exotic = "j_asc_wrathful" })
+AscensionInternal({ source = Source.Vanilla, from = "j_gluttenous_joker", to_exotic = "j_asc_gluttonous" }) -- Sic! Don't correct!
+AscensionInternal({ source = Source.Vanilla, from = "j_jolly", to_exotic = "j_asc_jolly" })
+AscensionInternal({ source = Source.Vanilla, from = "j_zany", to_exotic = "j_asc_zany" })
+AscensionInternal({ source = Source.Vanilla, from = "j_mad", to_exotic = "j_asc_mad" })
+AscensionInternal({ source = Source.Vanilla, from = "j_crazy", to_exotic = "j_asc_crazy" })
+AscensionInternal({ source = Source.Vanilla, from = "j_droll", to_exotic = "j_asc_droll" })
+AscensionInternal({ source = Source.Vanilla, from = "j_sly", to_exotic = "j_asc_sly" })
+AscensionInternal({ source = Source.Vanilla, from = "j_wily", to_exotic = "j_asc_wily" })
+AscensionInternal({ source = Source.Vanilla, from = "j_clever", to_exotic = "j_asc_clever" })
+AscensionInternal({ source = Source.Vanilla, from = "j_devious", to_exotic = "j_asc_devious" })
+AscensionInternal({ source = Source.Vanilla, from = "j_crafty", to_exotic = "j_asc_crafty" })
+AscensionInternal({ source = Source.Vanilla, from = "j_half", to_exotic = "j_asc_half" })
+AscensionInternal({ source = Source.Vanilla, from = "j_stencil", to_exotic = "j_asc_stencil" })
+AscensionInternal({ source = Source.Vanilla, from = "j_four_fingers", to_exotic = "j_asc_four_fingers" })
+AscensionInternal({ source = Source.Vanilla, from = "j_mime", to_exotic = "j_asc_mime" })
+AscensionInternal({ source = Source.Vanilla, from = "j_credit_card", to_exotic = "j_asc_credit_card" })
+AscensionInternal({ source = Source.Vanilla, from = "j_ceremonial", to_exotic = "j_asc_ceremonial" })
+AscensionInternal({ source = Source.Vanilla, from = "j_banner", to_exotic = "j_asc_banner" })
+AscensionInternal({ source = Source.Vanilla, from = "j_mystic_summit", to_exotic = "j_asc_mystic_summit" })
+AscensionInternal({ source = Source.Vanilla, from = "j_marble", to_exotic = "j_asc_marble", to_entropic = "j_asc_marble_entr" })
+AscensionInternal({ source = Source.Vanilla, from = "j_loyalty_card", to_exotic = "j_asc_loyalty_card" })
+AscensionInternal({ source = Source.Vanilla, from = "j_misprint", to_exotic = "j_asc_misprint" })
+AscensionInternal({ source = Source.Vanilla, from = "j_raised_fist", to_exotic = "j_asc_raised_fist" })
+AscensionInternal({ source = Source.Vanilla, from = "j_fibonacci", to_exotic = "j_asc_fibonacci" })
+AscensionInternal({ source = Source.Vanilla, from = "j_steel_joker", to_exotic = "j_asc_steel_joker" })
+AscensionInternal({ source = Source.Vanilla, from = "j_gros_michel", to_exotic = "j_asc_banana" })
+AscensionInternal({ source = Source.Vanilla, from = "j_even_steven", to_exotic = "j_asc_even_steven" })
+AscensionInternal({ source = Source.Vanilla, from = "j_odd_todd", to_exotic = "j_asc_odd_todd" })
+AscensionInternal({ source = Source.Vanilla, from = "j_space", to_exotic = "j_asc_space" })
+AscensionInternal({ source = Source.Vanilla, from = "j_egg", to_exotic = "j_asc_egg" })
+AscensionInternal({ source = Source.Vanilla, from = "j_scary_face", to_exotic = "j_asc_scary" })
+AscensionInternal({ source = Source.Vanilla, from = "j_abstract", to_exotic = "j_asc_abstract" })
+AscensionInternal({ source = Source.Vanilla, from = "j_blackboard", to_exotic = "j_asc_blackboard" })
+AscensionInternal({ source = Source.Vanilla, from = "j_ice_cream", to_exotic = "j_asc_ice_cream" })
+AscensionInternal({ source = Source.Vanilla, from = "j_dna", to_exotic = "j_asc_dna" })
+AscensionInternal({ source = Source.Vanilla, from = "j_splash", to_exotic = "j_asc_splash" })
+AscensionInternal({ source = Source.Vanilla, from = "j_blue_joker", to_exotic = "j_asc_blue" })
+AscensionInternal({ source = Source.Vanilla, from = "j_hiker", to_exotic = "j_asc_hiker" })
+AscensionInternal({ source = Source.Vanilla, from = "j_cavendish", to_exotic = "j_asc_banana" })
+AscensionInternal({ source = Source.Vanilla, from = "j_madness", to_exotic = "j_asc_madness" })
+AscensionInternal({ source = Source.Vanilla, from = "j_square", to_exotic = "j_asc_square" })
+AscensionInternal({ source = Source.Vanilla, from = "j_supernova", to_exotic = "j_asc_supernova" })
+AscensionInternal({ source = Source.Vanilla, from = "j_hologram", to_exotic = "j_asc_hologram" })
+AscensionInternal({ source = Source.Vanilla, from = "j_baron", to_exotic = "j_asc_baron" })
+AscensionInternal({ source = Source.Vanilla, from = "j_cloud_9", to_exotic = "j_asc_cloud_nine" })
+AscensionInternal({ source = Source.Vanilla, from = "j_rocket", to_exotic = "j_asc_rocket" })
+AscensionInternal({ source = Source.Vanilla, from = "j_obelisk", to_exotic = "j_asc_obelisk" })
+AscensionInternal({ source = Source.Vanilla, from = "j_midas_mask", to_exotic = "j_asc_midas" })
+AscensionInternal({ source = Source.Vanilla, from = "j_photograph", to_exotic = "j_asc_photograph" })
+AscensionInternal({ source = Source.Vanilla, from = "j_to_the_moon", to_exotic = "j_asc_to_the_moon" })
+AscensionInternal({ source = Source.Vanilla, from = "j_golden", to_exotic = "j_asc_golden" })
+AscensionInternal({ source = Source.Vanilla, from = "j_baseball", to_exotic = "j_asc_baseball_card" })
+AscensionInternal({ source = Source.Vanilla, from = "j_bull", to_exotic = "j_asc_bull" })
+AscensionInternal({ source = Source.Vanilla, from = "j_trading", to_exotic = "j_asc_trading" })
+AscensionInternal({ source = Source.Vanilla, from = "j_ancient", to_exotic = "j_asc_ancient" })
+AscensionInternal({ source = Source.Vanilla, from = "j_selzer", to_exotic = "j_asc_seltzer" }) -- Sic! Don't correct!
+AscensionInternal({ source = Source.Vanilla, from = "j_castle", to_exotic = "j_asc_castle" })
+AscensionInternal({ source = Source.Vanilla, from = "j_smiley", to_exotic = "j_asc_smiley" })
+AscensionInternal({ source = Source.Vanilla, from = "j_campfire", to_exotic = "j_asc_campfire" })
+AscensionInternal({ source = Source.Vanilla, from = "j_throwback", to_exotic = "j_asc_throwback" })
+AscensionInternal({ source = Source.Vanilla, from = "j_hanging_chad", to_exotic = "j_asc_hanging_chad" })
+AscensionInternal({ source = Source.Vanilla, from = "j_blueprint", to_exotic = "j_asc_blueprint" })
+AscensionInternal({ source = Source.Vanilla, from = "j_mr_bones", to_exotic = "j_asc_mr_bones", source_file = "bones" })
+AscensionInternal({ source = Source.Vanilla, from = "j_sock_and_buskin", to_exotic = "j_asc_sock_and_buskin" })
+AscensionInternal({ source = Source.Vanilla, from = "j_swashbuckler", to_exotic = "j_asc_swashbuckler" })
+AscensionInternal({ source = Source.Vanilla, from = "j_smeared", to_exotic = "j_asc_smeared" })
+AscensionInternal({ source = Source.Vanilla, from = "j_wee", to_exotic = "j_asc_wee" })
+AscensionInternal({ source = Source.Vanilla, from = "j_oops", to_exotic = "j_asc_oops" })
+AscensionInternal({ source = Source.Vanilla, from = "j_idol", to_exotic = "j_asc_idols" })
+AscensionInternal({ source = Source.Vanilla, from = "j_duo", to_exotic = "j_asc_duo" })
+AscensionInternal({ source = Source.Vanilla, from = "j_trio", to_exotic = "j_asc_trio" })
+AscensionInternal({ source = Source.Vanilla, from = "j_family", to_exotic = "j_asc_family" })
+AscensionInternal({ source = Source.Vanilla, from = "j_order", to_exotic = "j_asc_order" })
+AscensionInternal({ source = Source.Vanilla, from = "j_tribe", to_exotic = "j_asc_tribe" })
+AscensionInternal({ source = Source.Vanilla, from = "j_invisible", to_exotic = "j_asc_invisible" })
+AscensionInternal({ source = Source.Vanilla, from = "j_brainstorm", to_exotic = "j_asc_brainstorm" })
+AscensionInternal({ source = Source.Vanilla, from = "j_drivers_license", to_exotic = "j_asc_drivers_license" })
+AscensionInternal({ source = Source.Vanilla, from = "j_bootstraps", to_exotic = "j_asc_bootstraps" })
+AscensionInternal({ source = Source.Vanilla, from = "j_caino", to_exotic = "j_asc_canio" }) -- Sic! Don't correct!
+AscensionInternal({ source = Source.Vanilla, from = "j_seance", to_exotic = "j_asc_seance" })
+AscensionInternal({ source = Source.Vanilla, from = "j_vampire", to_exotic = "j_asc_vampire" })
 
--- Caching results for better perfs
----@type {[number]: number}
-Factorials = {
-	-- Lua starts array with 1 instead of 0
-	[0] = 1,
-	1,
-	2,
-	6,
-	24,
-	120,
-	720,
-	5040,
-	40320,
-	362880,
-	3628800,
-	39916800,
-	479001600,
-	6227020800,
-	87178291200,
-	1307674368000,
-	20922789888000,
-	355687428096000,
-	6402373705728000,
-	121645100408832000,
-	2432902008176640000,
-}
+-- Cryptid Ascensions
+AscensionInternal({ source = Source.Cryptid, from = "j_cry_canvas", to_exotic = "j_asc_canvas" })
+AscensionInternal({ source = Source.Cryptid, from = "j_cry_sync_catalyst", to_exotic = "j_asc_sync_catalyst" })
+AscensionInternal({ source = Source.Cryptid, from = "j_cry_gardenfork", to_exotic = "j_asc_gardenfork" })
+AscensionInternal({ source = Source.Cryptid, from = "j_cry_antennastoheaven", to_exotic = "j_asc_like_antennas_to_heaven" })
+AscensionInternal({ source = Source.Cryptid, from = "j_cry_chad", to_exotic = "j_asc_chad" })
+AscensionInternal({ source = Source.Cryptid, from = "j_cry_oil_lamp", to_exotic = "j_asc_oil_lamp" })
+AscensionInternal({ source = Source.Cryptid, from = "j_cry_huntingseason", to_exotic = "j_asc_hunting_season" })
+AscensionInternal({ source = Source.Cryptid, from = "j_cry_highfive", to_exotic = "j_asc_high_five" })
+AscensionInternal({ source = Source.Cryptid, from = "j_cry_CodeJoker", to_exotic = "j_asc_code_joker" })
+AscensionInternal({ source = Source.Cryptid, from = "j_cry_circus", to_exotic = "j_asc_circus" })
+AscensionInternal({ source = Source.Cryptid, from = "j_cry_krustytheclown", to_exotic = "j_asc_krusty" })
 
----@param n number
----@return number
-function factorial(n)
-	local value = Factorials[n]
+-- Mortals for Cryptid Exotics
+AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_copy_cat", to_exotic = "j_cry_iterum", source_file = "copy_cat" })
+AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_b_cake", to_exotic = "j_cry_crustulum", source_file = "b_cake" })
+AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_b_pie", to_exotic = "j_cry_circulus_pistoris", source_file = "b_pie" })
+AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_orion_pax", to_exotic = "j_cry_primus", source_file = "orion_pax" })
+AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_accomplice", to_exotic = "j_cry_gemino", source_file = "accomplice" })
+AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_duane", to_exotic = "j_cry_duplicare", source_file = "duane" })
+AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_exorcist", to_exotic = "j_cry_formidiulosus", source_file = "exorcist" })
 
-	if value ~= nil then
-		return value
-	else
-		local calculated = n * factorial(n - 1)
-		Factorials[n] = calculated
-
-		return calculated
-	end
+-- Entropy Ascensions
+if Entropy then
+    AscensionInternal({ source = Source.Entropy, from = "j_entr_sunny_joker", to_exotic = "j_asc_sunny_joker", to_entropic = "j_asc_sunny_joker_entr" })
+    AscensionInternal({ source = Source.Entropy, from = "j_entr_chuckle_cola", to_exotic = "j_asc_chuckle_cola" })
 end
 
-function table.contains(table, item)
-	for _, card in pairs(table) do
-		if card == item then
-			return true
-		end
-	end
-	return false
-end
-
---#region SMODS UI funcs (additions, config, collection) Taken from Cardsleves to make custom mod background description clear--
-SMODS.current_mod.description_loc_vars = function()
-	return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2 }
+-- Astronomica Ascensions
+if next(SMODS.find_mod("Astronomica")) then
+    AscensionInternal({ source = Source.Astronomica, from = "j_ast_facsimile", to_exotic = "j_asc_facsimile" })
+    AscensionInternal({ source = Source.Astronomica, from = "j_ast_stopwatch", to_exotic = "j_asc_stopwatch" })
 end
 
 ---@diagnostic disable-next-line: undefined-global
@@ -283,469 +242,423 @@ G.ARGS.LOC_COLOURS.asc_hexa = HEX("52c5ff")
 G.ARGS.LOC_COLOURS.asc_grahkon = HEX("236400")
 G.ARGS.LOC_COLOURS.asc_grahkon_bg = HEX("48CF00")
 
--------Cryptid's Credit System-------
--- This was modified and taken from Entropy--
-
-----------Ascensio Tag-------------
+-- Credits system (Origin: Entropy)
 local smcmb = SMODS.create_mod_badges
 function SMODS.create_mod_badges(obj, badges)
-	smcmb(obj, badges)
-	if not SMODS.config.no_mod_badges and obj and obj.asc_credits then
-		local function calc_scale_fac(text)
-			local size = 0.9
-			local font = G.LANG.font
-			local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
-			local calced_text_width = 0
-			-- Math reproduced from DynaText:update_text
-			for _, c in utf8.chars(text) do
-				local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE
-					+ 2.7 * 1 * G.TILESCALE * font.FONTSCALE
-				calced_text_width = calced_text_width + tx / (G.TILESIZE * G.TILESCALE)
-			end
-			local scale_fac = calced_text_width > max_text_width and max_text_width / calced_text_width or 1
-			return scale_fac
-		end
-		if
-			obj.asc_credits.art
-			or obj.asc_credits.code
-			or obj.asc_credits.idea
-			or obj.asc_credits.name
-			or obj.asc_credits.custom
-		then
-			local scale_fac = {}
-			local min_scale_fac = 1
-			local strings = { "Ascēnsiō" }
-			for _, v in ipairs({ "name", "idea", "art", "code" }) do
-				if obj.asc_credits[v] then
-					for i = 1, #obj.asc_credits[v] do
-						strings[#strings + 1] =
-							localize({ type = "variable", key = "cry_" .. v, vars = { obj.asc_credits[v][i] } })[1]
-					end
-				end
-			end
-			if obj.asc_credits.custom then
-				strings[#strings + 1] = localize({
-					type = "variable",
-					key = obj.asc_credits.custom.key,
-					vars = { obj.asc_credits.custom.text },
-				})
-			end
-			for i = 1, #strings do
-				scale_fac[i] = calc_scale_fac(strings[i])
-				min_scale_fac = math.min(min_scale_fac, scale_fac[i])
-			end
-			local ct = {}
-			for i = 1, #strings do
-				ct[i] = {
-					string = strings[i],
-				}
-			end
-			local cry_badge = {
-				n = G.UIT.R,
-				config = { align = "cm" },
-				nodes = {
-					{
-						n = G.UIT.R,
-						config = {
-							align = "cm",
-							colour = HEX("235bb0"),
-							r = 0.1,
-							minw = 2 / min_scale_fac,
-							minh = 0.36,
-							emboss = 0.05,
-							padding = 0.03 * 0.9,
-						},
-						nodes = {
-							{ n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
-							{
-								n = G.UIT.O,
-								config = {
-									object = DynaText({
-										string = ct or "ERROR",
-										colours = { obj.asc_credits and obj.asc_credits.text_colour or G.C.WHITE },
-										silent = true,
-										float = true,
-										shadow = true,
-										offset_y = -0.03,
-										spacing = 1,
-										scale = 0.33 * 0.9,
-									}),
-								},
-							},
-							{ n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
-						},
-					},
-				},
-			}
-			local function eq_col(x, y)
-				for i = 1, 4 do
-					if x[1] ~= y[1] then
-						return false
-					end
-				end
-				return true
-			end
-			for i = 1, #badges do
-				if eq_col(badges[i].nodes[1].config.colour, HEX("235bb0")) then
-					badges[i].nodes[1].nodes[2].config.object:remove()
-					badges[i] = cry_badge
-					break
-				end
-			end
-		end
-	end
+    smcmb(obj, badges)
+    if not SMODS.config.no_mod_badges and obj and obj.asc_credits then
+        local function calc_scale_fac(text)
+            local size = 0.9
+            local font = G.LANG.font
+            local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
+            local calced_text_width = 0
+            -- Math reproduced from DynaText:update_text
+            for _, c in utf8.chars(text) do
+                local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE + 2.7 * 1 * G.TILESCALE * font.FONTSCALE
+                calced_text_width = calced_text_width + tx / (G.TILESIZE * G.TILESCALE)
+            end
+            local scale_fac = calced_text_width > max_text_width and max_text_width / calced_text_width or 1
+            return scale_fac
+        end
+        if obj.asc_credits.art or obj.asc_credits.code or obj.asc_credits.idea or obj.asc_credits.name or obj.asc_credits.custom then
+            local scale_fac = {}
+            local min_scale_fac = 1
+            local strings = { "Ascēnsiō" }
+            for _, v in ipairs({ "name", "idea", "art", "code" }) do
+                if obj.asc_credits[v] then
+                    for i = 1, #obj.asc_credits[v] do
+                        strings[#strings + 1] = localize({ type = "variable", key = "cry_" .. v, vars = { obj.asc_credits[v][i] } })[1]
+                    end
+                end
+            end
+            if obj.asc_credits.custom then
+                strings[#strings + 1] = localize({
+                    type = "variable",
+                    key = obj.asc_credits.custom.key,
+                    vars = { obj.asc_credits.custom.text },
+                })
+            end
+            for i = 1, #strings do
+                scale_fac[i] = calc_scale_fac(strings[i])
+                min_scale_fac = math.min(min_scale_fac, scale_fac[i])
+            end
+            local ct = {}
+            for i = 1, #strings do
+                ct[i] = {
+                    string = strings[i],
+                }
+            end
+            local cry_badge = {
+                n = G.UIT.R,
+                config = { align = "cm" },
+                nodes = {
+                    {
+                        n = G.UIT.R,
+                        config = {
+                            align = "cm",
+                            colour = HEX("235bb0"),
+                            r = 0.1,
+                            minw = 2 / min_scale_fac,
+                            minh = 0.36,
+                            emboss = 0.05,
+                            padding = 0.03 * 0.9,
+                        },
+                        nodes = {
+                            { n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
+                            {
+                                n = G.UIT.O,
+                                config = {
+                                    object = DynaText({
+                                        string = ct or "ERROR",
+                                        colours = { obj.asc_credits and obj.asc_credits.text_colour or G.C.WHITE },
+                                        silent = true,
+                                        float = true,
+                                        shadow = true,
+                                        offset_y = -0.03,
+                                        spacing = 1,
+                                        scale = 0.33 * 0.9,
+                                    }),
+                                },
+                            },
+                            { n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
+                        },
+                    },
+                },
+            }
+            local function eq_col(x, y)
+                for _ = 1, 4 do
+                    if x[1] ~= y[1] then
+                        return false
+                    end
+                end
+                return true
+            end
+            for i = 1, #badges do
+                if eq_col(badges[i].nodes[1].config.colour, HEX("235bb0")) then
+                    badges[i].nodes[1].nodes[2].config.object:remove()
+                    badges[i] = cry_badge
+                    break
+                end
+            end
+        end
+    end
 end
 
----Ascensio X Astronomica Tag
+-- Ascēnsiō X Astronomica badge
 local smcmb2 = SMODS.create_mod_badges
 function SMODS.create_mod_badges(obj, badges)
-	smcmb2(obj, badges)
-	if not SMODS.config.no_mod_badges and obj and obj.ascxast_credits then
-		local function calc_scale_fac(text)
-			local size = 0.9
-			local font = G.LANG.font
-			local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
-			local calced_text_width = 0
-			-- Math reproduced from DynaText:update_text
-			for _, c in utf8.chars(text) do
-				local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE
-					+ 2.7 * 1 * G.TILESCALE * font.FONTSCALE
-				calced_text_width = calced_text_width + tx / (G.TILESIZE * G.TILESCALE)
-			end
-			local scale_fac = calced_text_width > max_text_width and max_text_width / calced_text_width or 1
-			return scale_fac
-		end
-		if
-			obj.ascxast_credits.art
-			or obj.ascxast_credits.code
-			or obj.ascxast_credits.idea
-			or obj.ascxast_credits.name
-			or obj.ascxast_credits.custom
-		then
-			local scale_fac = {}
-			local min_scale_fac = 1
-			local strings = { "Ascēnsiō X Astronomica" }
-			for _, v in ipairs({ "name", "idea", "art", "code" }) do
-				if obj.ascxast_credits[v] then
-					for i = 1, #obj.ascxast_credits[v] do
-						strings[#strings + 1] =
-							localize({ type = "variable", key = "cry_" .. v, vars = { obj.ascxast_credits[v][i] } })[1]
-					end
-				end
-			end
-			if obj.ascxast_credits.custom then
-				strings[#strings + 1] = localize({
-					type = "variable",
-					key = obj.ascxast_credits.custom.key,
-					vars = { obj.ascxast_credits.custom.text },
-				})
-			end
-			for i = 1, #strings do
-				scale_fac[i] = calc_scale_fac(strings[i])
-				min_scale_fac = math.min(min_scale_fac, scale_fac[i])
-			end
-			local ct = {}
-			for i = 1, #strings do
-				ct[i] = {
-					string = strings[i],
-				}
-			end
-			local cry_badge = {
-				n = G.UIT.R,
-				config = { align = "cm" },
-				nodes = {
-					{
-						n = G.UIT.R,
-						config = {
-							align = "cm",
-							colour = HEX("7664AC"),
-							r = 0.1,
-							minw = 2 / min_scale_fac,
-							minh = 0.36,
-							emboss = 0.05,
-							padding = 0.03 * 0.9,
-						},
-						nodes = {
-							{ n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
-							{
-								n = G.UIT.O,
-								config = {
-									object = DynaText({
-										string = ct or "ERROR",
-										colours = {
-											obj.ascxast_credits and obj.ascxast_credits.text_colour or G.C.WHITE,
-										},
-										silent = true,
-										float = true,
-										shadow = true,
-										offset_y = -0.03,
-										spacing = 1,
-										scale = 0.33 * 0.9,
-									}),
-								},
-							},
-							{ n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
-						},
-					},
-				},
-			}
-			local function eq_col(x, y)
-				for _ = 1, 4 do
-					if x[1] ~= y[1] then
-						return false
-					end
-				end
-				return true
-			end
-			for i = 1, #badges do
-				if eq_col(badges[i].nodes[1].config.colour, HEX("235bb0")) then
-					badges[i].nodes[1].nodes[2].config.object:remove()
-					badges[i] = cry_badge
-					break
-				end
-			end
-		end
-	end
+    smcmb2(obj, badges)
+    if not SMODS.config.no_mod_badges and obj and obj.ascxast_credits then
+        local function calc_scale_fac(text)
+            local size = 0.9
+            local font = G.LANG.font
+            local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
+            local calced_text_width = 0
+
+            -- Math reproduced from DynaText:update_text
+            for _, c in utf8.chars(text) do
+                local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE + 2.7 * 1 * G.TILESCALE * font.FONTSCALE
+                calced_text_width = calced_text_width + tx / (G.TILESIZE * G.TILESCALE)
+            end
+            local scale_fac = calced_text_width > max_text_width and max_text_width / calced_text_width or 1
+            return scale_fac
+        end
+        if obj.ascxast_credits.art or obj.ascxast_credits.code or obj.ascxast_credits.idea or obj.ascxast_credits.name or obj.ascxast_credits.custom then
+            local scale_fac = {}
+            local min_scale_fac = 1
+            local strings = { "Ascēnsiō X Astronomica" }
+            for _, v in ipairs({ "name", "idea", "art", "code" }) do
+                if obj.ascxast_credits[v] then
+                    for i = 1, #obj.ascxast_credits[v] do
+                        strings[#strings + 1] = localize({ type = "variable", key = "cry_" .. v, vars = { obj.ascxast_credits[v][i] } })[1]
+                    end
+                end
+            end
+            if obj.ascxast_credits.custom then
+                strings[#strings + 1] = localize({
+                    type = "variable",
+                    key = obj.ascxast_credits.custom.key,
+                    vars = { obj.ascxast_credits.custom.text },
+                })
+            end
+            for i = 1, #strings do
+                scale_fac[i] = calc_scale_fac(strings[i])
+                min_scale_fac = math.min(min_scale_fac, scale_fac[i])
+            end
+            local ct = {}
+            for i = 1, #strings do
+                ct[i] = {
+                    string = strings[i],
+                }
+            end
+            local cry_badge = {
+                n = G.UIT.R,
+                config = { align = "cm" },
+                nodes = {
+                    {
+                        n = G.UIT.R,
+                        config = {
+                            align = "cm",
+                            colour = HEX("7664AC"),
+                            r = 0.1,
+                            minw = 2 / min_scale_fac,
+                            minh = 0.36,
+                            emboss = 0.05,
+                            padding = 0.03 * 0.9,
+                        },
+                        nodes = {
+                            { n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
+                            {
+                                n = G.UIT.O,
+                                config = {
+                                    object = DynaText({
+                                        string = ct or "ERROR",
+                                        colours = {
+                                            obj.ascxast_credits and obj.ascxast_credits.text_colour or G.C.WHITE,
+                                        },
+                                        silent = true,
+                                        float = true,
+                                        shadow = true,
+                                        offset_y = -0.03,
+                                        spacing = 1,
+                                        scale = 0.33 * 0.9,
+                                    }),
+                                },
+                            },
+                            { n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
+                        },
+                    },
+                },
+            }
+            local function eq_col(x, y)
+                for _ = 1, 4 do
+                    if x[1] ~= y[1] then
+                        return false
+                    end
+                end
+                return true
+            end
+            for i = 1, #badges do
+                if eq_col(badges[i].nodes[1].config.colour, HEX("235bb0")) then
+                    badges[i].nodes[1].nodes[2].config.object:remove()
+                    badges[i] = cry_badge
+                    break
+                end
+            end
+        end
+    end
 end
 
----Ascensio X Entropy Tag
+-- Ascēnsiō X Entropy Tag
 local smcmb3 = SMODS.create_mod_badges
 function SMODS.create_mod_badges(obj, badges)
-	smcmb3(obj, badges)
-	if not SMODS.config.no_mod_badges and obj and obj.ascxentr_credits then
-		local function calc_scale_fac(text)
-			local size = 0.9
-			local font = G.LANG.font
-			local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
-			local calced_text_width = 0
-			-- Math reproduced from DynaText:update_text
-			for _, c in utf8.chars(text) do
-				local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE
-					+ 2.7 * 1 * G.TILESCALE * font.FONTSCALE
-				calced_text_width = calced_text_width + tx / (G.TILESIZE * G.TILESCALE)
-			end
-			local scale_fac = calced_text_width > max_text_width and max_text_width / calced_text_width or 1
-			return scale_fac
-		end
-		if
-			obj.ascxentr_credits.art
-			or obj.ascxentr_credits.code
-			or obj.ascxentr_credits.idea
-			or obj.ascxentr_credits.name
-			or obj.ascxentr_credits.custom
-		then
-			local scale_fac = {}
-			local min_scale_fac = 1
-			local strings = { "Ascēnsiō X Entropy" }
-			for _, v in ipairs({ "name", "idea", "art", "code" }) do
-				if obj.ascxentr_credits[v] then
-					for i = 1, #obj.ascxentr_credits[v] do
-						strings[#strings + 1] =
-							localize({ type = "variable", key = "cry_" .. v, vars = { obj.ascxentr_credits[v][i] } })[1]
-					end
-				end
-			end
-			if obj.ascxentr_credits.custom then
-				strings[#strings + 1] = localize({
-					type = "variable",
-					key = obj.ascxentr_credits.custom.key,
-					vars = { obj.ascxentr_credits.custom.text },
-				})
-			end
-			for i = 1, #strings do
-				scale_fac[i] = calc_scale_fac(strings[i])
-				min_scale_fac = math.min(min_scale_fac, scale_fac[i])
-			end
-			local ct = {}
-			for i = 1, #strings do
-				ct[i] = {
-					string = strings[i],
-				}
-			end
-			local cry_badge = {
-				n = G.UIT.R,
-				config = { align = "cm" },
-				nodes = {
-					{
-						n = G.UIT.R,
-						config = {
-							align = "cm",
-							colour = HEX("912E59"),
-							r = 0.1,
-							minw = 2 / min_scale_fac,
-							minh = 0.36,
-							emboss = 0.05,
-							padding = 0.03 * 0.9,
-						},
-						nodes = {
-							{ n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
-							{
-								n = G.UIT.O,
-								config = {
-									object = DynaText({
-										string = ct or "ERROR",
-										colours = {
-											obj.ascxentr_credits and obj.ascxentr_credits.text_colour or G.C.WHITE,
-										},
-										silent = true,
-										float = true,
-										shadow = true,
-										offset_y = -0.03,
-										spacing = 1,
-										scale = 0.33 * 0.9,
-									}),
-								},
-							},
-							{ n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
-						},
-					},
-				},
-			}
-			local function eq_col(x, y)
-				for i = 1, 4 do
-					if x[1] ~= y[1] then
-						return false
-					end
-				end
-				return true
-			end
-			for i = 1, #badges do
-				if eq_col(badges[i].nodes[1].config.colour, HEX("235bb0")) then
-					badges[i].nodes[1].nodes[2].config.object:remove()
-					badges[i] = cry_badge
-					break
-				end
-			end
-		end
-	end
+    smcmb3(obj, badges)
+    if not SMODS.config.no_mod_badges and obj and obj.ascxentr_credits then
+        local function calc_scale_fac(text)
+            local size = 0.9
+            local font = G.LANG.font
+            local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
+            local calced_text_width = 0
+            -- Math reproduced from DynaText:update_text
+            for _, c in utf8.chars(text) do
+                local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE + 2.7 * 1 * G.TILESCALE * font.FONTSCALE
+                calced_text_width = calced_text_width + tx / (G.TILESIZE * G.TILESCALE)
+            end
+            local scale_fac = calced_text_width > max_text_width and max_text_width / calced_text_width or 1
+            return scale_fac
+        end
+        if obj.ascxentr_credits.art or obj.ascxentr_credits.code or obj.ascxentr_credits.idea or obj.ascxentr_credits.name or obj.ascxentr_credits.custom then
+            local scale_fac = {}
+            local min_scale_fac = 1
+            local strings = { "Ascēnsiō X Entropy" }
+            for _, v in ipairs({ "name", "idea", "art", "code" }) do
+                if obj.ascxentr_credits[v] then
+                    for i = 1, #obj.ascxentr_credits[v] do
+                        strings[#strings + 1] = localize({ type = "variable", key = "cry_" .. v, vars = { obj.ascxentr_credits[v][i] } })[1]
+                    end
+                end
+            end
+            if obj.ascxentr_credits.custom then
+                strings[#strings + 1] = localize({
+                    type = "variable",
+                    key = obj.ascxentr_credits.custom.key,
+                    vars = { obj.ascxentr_credits.custom.text },
+                })
+            end
+            for i = 1, #strings do
+                scale_fac[i] = calc_scale_fac(strings[i])
+                min_scale_fac = math.min(min_scale_fac, scale_fac[i])
+            end
+            local ct = {}
+            for i = 1, #strings do
+                ct[i] = {
+                    string = strings[i],
+                }
+            end
+            local cry_badge = {
+                n = G.UIT.R,
+                config = { align = "cm" },
+                nodes = {
+                    {
+                        n = G.UIT.R,
+                        config = {
+                            align = "cm",
+                            colour = HEX("912E59"),
+                            r = 0.1,
+                            minw = 2 / min_scale_fac,
+                            minh = 0.36,
+                            emboss = 0.05,
+                            padding = 0.03 * 0.9,
+                        },
+                        nodes = {
+                            { n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
+                            {
+                                n = G.UIT.O,
+                                config = {
+                                    object = DynaText({
+                                        string = ct or "ERROR",
+                                        colours = {
+                                            obj.ascxentr_credits and obj.ascxentr_credits.text_colour or G.C.WHITE,
+                                        },
+                                        silent = true,
+                                        float = true,
+                                        shadow = true,
+                                        offset_y = -0.03,
+                                        spacing = 1,
+                                        scale = 0.33 * 0.9,
+                                    }),
+                                },
+                            },
+                            { n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
+                        },
+                    },
+                },
+            }
+            local function eq_col(x, y)
+                for _ = 1, 4 do
+                    if x[1] ~= y[1] then
+                        return false
+                    end
+                end
+                return true
+            end
+            for i = 1, #badges do
+                if eq_col(badges[i].nodes[1].config.colour, HEX("235bb0")) then
+                    badges[i].nodes[1].nodes[2].config.object:remove()
+                    badges[i] = cry_badge
+                    break
+                end
+            end
+        end
+    end
 end
 
-------Mod Menu Tabs (Taken directly and modified from more mario jokers)
+-- Mod Menu
 
-asc_config = SMODS.current_mod.config
-if asc_config["Insanity Mode!!!"] == nil then
-	asc_config["Insanity Mode!!!"] = false
+--#region SMODS UI funcs (additions, config, collection) Taken from Cardsleves to make custom mod background description clear--
+SMODS.current_mod.description_loc_vars = function()
+    return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2 }
 end
 
---[[local ascensioTabs = function()
-	return {
-		{
-			label = localize("asc_config"),
-			chosen = true,
-			tab_definition_function = function()
-				asc_nodes = {}
-				settings = { n = G.UIT.C, config = { align = "tm", padding = 0.05 }, nodes = {} }
-				settings.nodes[#settings.nodes + 1] = create_toggle({
-					label = localize("asc_config_insanity_mode"),
-					ref_table = asc_config,
-					ref_value = "Insanity Mode!!!",
-				})
-				config = { n = G.UIT.R, config = { align = "tm", padding = 0 }, nodes = { settings } }
-				asc_nodes[#asc_nodes + 1] = config
-				return {
-					n = G.UIT.ROOT,
-					config = {
-						emboss = 0.05,
-						minh = 6,
-						r = 0.1,
-						minw = 10,
-						align = "cm",
-						padding = 0.2,
-						colour = G.C.BLACK,
-					},
-					nodes = asc_nodes,
-				}
-			end,
-		},
-	}
+if SMODS.current_mod.config == nil then
+    SMODS.current_mod.config = { ["Insanity Mode!!!"] = false }
 end
 
-SMODS.current_mod.extra_tabs = ascensioTabs
-]]
+AscConfig = SMODS.current_mod.config
 
 SMODS.current_mod.config_tab = function()
-	return {
-		n = G.UIT.ROOT,
-		config = { r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 4 },
-		nodes = {
-			{
-				n = G.UIT.R,
-				config = { align = "cm", padding = 0 },
-				nodes = {
-					{
-						n = G.UIT.C,
-						config = { align = "cm", padding = 0 },
-						nodes = {
-							{
-								n = G.UIT.T,
-								config = {
-									text = localize("asc_config_insanity_mode"),
-									scale = 1,
-									colour = G.C.UI.TEXT_LIGHT,
-								},
-							},
-						},
-					},
-				},
-			},
+    return {
+        n = G.UIT.ROOT,
+        config = { r = 0.1, align = "cm", padding = 0.1, colour = G.C.BLACK, minw = 8, minh = 4 },
+        nodes = {
+            {
+                n = G.UIT.R,
+                config = { align = "cm", padding = 0 },
+                nodes = {
+                    {
+                        n = G.UIT.C,
+                        config = { align = "cm", padding = 0 },
+                        nodes = {
+                            {
+                                n = G.UIT.T,
+                                config = {
+                                    text = localize("asc_config_insanity_mode"),
+                                    scale = 1,
+                                    colour = G.C.UI.TEXT_LIGHT,
+                                },
+                            },
+                        },
+                    },
+                },
+            },
 
-			{
-				n = G.UIT.R,
-				config = { align = "cm", padding = 0 },
-				nodes = {
-					{
-						n = G.UIT.C,
-						config = { align = "cm", padding = 0 },
-						nodes = {
-							{ n = G.UIT.T, config = { text = ">", scale = 1, colour = G.C.UI.TEXT_LIGHT } },
-						},
-					},
-					{
-						n = G.UIT.C,
-						config = { align = "cm", padding = 0.2 },
-						nodes = {
-							create_toggle({
-								col = true,
-								label = "",
-								scale = 1,
-								w = 0,
-								shadow = true,
-								ref_table = asc_config,
-								ref_value = "Insanity Mode!!!",
-							}),
-						},
-					},
-					{
-						n = G.UIT.C,
-						config = { align = "cm", padding = 0.2 },
-						nodes = {
-							{ n = G.UIT.T, config = { text = "<", scale = 1, colour = G.C.UI.TEXT_LIGHT } },
-						},
-					},
-				},
-			},
-			{
-				n = G.UIT.R,
-				config = { align = "cl", padding = 0 },
-				nodes = {
-					{
-						n = G.UIT.C,
-						config = { align = "c", padding = 0.1 },
-						nodes = {
-							{
-								n = G.UIT.T,
-								config = {
-									text = localize("asc_config_insanity_explanation"),
-									scale = 0.4,
-									colour = G.C.DARK_EDITION,
-								},
-							},
-						},
-					},
-				},
-			},
-		},
-	}
+            {
+                n = G.UIT.R,
+                config = { align = "cm", padding = 0 },
+                nodes = {
+                    {
+                        n = G.UIT.C,
+                        config = { align = "cm", padding = 0 },
+                        nodes = {
+                            { n = G.UIT.T, config = { text = ">", scale = 1, colour = G.C.UI.TEXT_LIGHT } },
+                        },
+                    },
+                    {
+                        n = G.UIT.C,
+                        config = { align = "cm", padding = 0.2 },
+                        nodes = {
+                            create_toggle({
+                                col = true,
+                                label = "",
+                                scale = 1,
+                                w = 0,
+                                shadow = true,
+                                ref_table = AscConfig,
+                                ref_value = "Insanity Mode!!!",
+                            }),
+                        },
+                    },
+                    {
+                        n = G.UIT.C,
+                        config = { align = "cm", padding = 0.2 },
+                        nodes = {
+                            { n = G.UIT.T, config = { text = "<", scale = 1, colour = G.C.UI.TEXT_LIGHT } },
+                        },
+                    },
+                },
+            },
+            {
+                n = G.UIT.R,
+                config = { align = "cl", padding = 0 },
+                nodes = {
+                    {
+                        n = G.UIT.C,
+                        config = { align = "c", padding = 0.1 },
+                        nodes = {
+                            {
+                                n = G.UIT.T,
+                                config = {
+                                    text = localize("asc_config_insanity_explanation"),
+                                    scale = 0.4,
+                                    colour = G.C.DARK_EDITION,
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+    }
 end
-----------------------------------------------
-------------MOD CODE END----------------------
+
+---@class Ascension
+---@field from string The key of the Mortal joker.
+---@field to string The key of the Ascended joker.
+---@field to_entropic? string The key of the Apotheosis joker.
+---@overload fun(o: Ascension): Ascension
+Ascensio.Ascension = setmetatable({}, {
+    ---@param o Ascension
+    __call = function(_, o)
+        return AscensionInternal({ source = Source.Other, source_file = "skip", entropic_file = "skip", from = o.from, to_exotic = o.to, to_entropic = o.to_entropic })
+    end,
+})

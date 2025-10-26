@@ -1,15 +1,20 @@
 {
-	"id": "Ascensio",
-	"name": "Ascēnsiō",
-	"display_name": "Ascēnsiō",
-	"author": ["MarioFan597"],
-	"description": "Exoticfy your Jokers! Special thanks to Tatteredlurker, Lil Mr. Slipstream, Glitchkat10, Somethingcom515, hssr, omegalife, and the rest of the Cryptid Discord!",
-	"prefix": "asc",
-	"main_file": "Ascensio.lua",
-	"priority": 114.2,
-	"badge_colour": "235bb0",
-	"badge_text_colour": "FFFFFF",
-	"version": "0.1.1",
-	"dependencies": ["Talisman","Cryptid (>=0.5.12)", "Steamodded (>=1.0.0~BETA-0827c)"]
+    "id": "Ascensio",
+    "name": "Ascēnsiō",
+    "display_name": "Ascēnsiō",
+    "author": [
+        "MarioFan597"
+    ],
+    "description": "Exoticfy your Jokers! Special thanks to Tatteredlurker, Lil Mr. Slipstream, Glitchkat10, Somethingcom515, hssr, OmegaLife, and the rest of the Cryptid Discord!",
+    "prefix": "asc",
+    "main_file": "Ascensio.lua",
+    "priority": 114.2,
+    "badge_colour": "235bb0",
+    "badge_text_colour": "FFFFFF",
+    "version": "0.2.0~alpha2",
+    "dependencies": [
+        "Talisman",
+        "Cryptid (>=0.5.12)",
+        "Steamodded (>=1.0.0~BETA-0827c)"
+    ]
 }
-
