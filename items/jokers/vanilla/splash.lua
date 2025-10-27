@@ -91,8 +91,8 @@ SMODS.Joker({
     end,
 
     asc_credits = Ascensio.Credit({
-        idea = { "OmegaLife", "Grahkon" },
+        idea = { "Rhelvetican", "Grahkon" },
         art = { "???" },
-        code = { "OmegaLife" },
+        code = { "Rhelvetican" },
     }),
 })

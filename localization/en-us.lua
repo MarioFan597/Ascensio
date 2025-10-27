@@ -16,7 +16,7 @@ return {
                     " {X:asc_glitchkat,C:white,s:1.2}Glitchkat10{}       {X:asc_somethingcom515,C:white,s:1.2}Somethingcom515{}",
                     "{C:asc_glitchkat,s:0.8}Coding, Idea Aproval{}            {C:asc_somethingcom515,s:0.8}Coding        ",
                     "{s:0.2} ",
-                    "   {X:asc_hssr,C:black,s:1.2}hssr{}             {X:asc_omega,C:black,s:1.2}OmegaLife{}  ",
+                    "   {X:asc_hssr,C:black,s:1.2}hssr{}             {X:asc_omega,C:black,s:1.2}Rhelvetican{}  ",
                     "{C:asc_hssr,s:0.8}Ideas, Suggestion Sheet Creation{}      {C:asc_omega,s:0.8}Coding, Ideas          ",
                     "{s:0.2} ",
                     "     {X:asc_oinite,C:white,s:1.2}Oinite12{}           {X:asc_hexa,C:black,s:1.2}HexaCryonic{}    ",
@@ -1398,6 +1398,17 @@ return {
                         "Whenever {C:attention}Boss Blind{} is defeated,",
                         "increases {X:mult,C:white}XMult{} {C:attention}gain{} by {X:mult,C:white}X#3#{}",
                     },
+                },
+            },
+
+            j_asc_the = {
+                name = "Nihil Sum",
+                text = {
+                    "If played hand is {C:attention}None{}",
+                    "destroy all cards {C:attention}held in hand{}",
+                    "and gain {X:asc_emult,C:white}^#2#{} Mult",
+                    "for each {C:attention}destroyed{} card",
+                    "{C:inactive}(Currently {X:asc_emult,C:white}^#1#{} {C:inactive}Mult){}",
                 },
             },
 

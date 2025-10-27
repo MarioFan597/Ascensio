@@ -68,7 +68,7 @@ SMODS.Joker({
         },
         code = {
             "Glitchkat10",
-            "OmegaLife",
+            "Rhelvetican",
         },
     },
 })

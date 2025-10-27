@@ -9,18 +9,19 @@ SMODS.Joker({
     soul_pos = { x = 11, y = 0, extra = { x = 10, y = 0 } },
     cost = 50,
     order = 131,
-    loc_vars = function(self, info_queue, card)
+    loc_vars = function(_, _, card)
+        ---@cast card.ability table<string, any>
         return { vars = { card and lenient_bignum(card.ability.extra.power) } }
     end,
-    calculate = function(self, card, context)
+    calculate = function(_, card, context)
+        ---@cast card.ability table<string, any>
         if --The card transformation apspect of this was taken and modifed in part from the Waterfall Joker from the Celesete Card Collection
             context.before
             and context.poker_hands ~= nil
             and next(context.poker_hands["Pair"])
         then
             local rank_count = {}
-            for i = 1, #context.scoring_hand do
-                local _card = context.scoring_hand[i]
+            for _, _card in ipairs(context.scoring_hand) do
                 if rank_count[_card.base.value] == nil then
                     rank_count[_card.base.value] = 1
                 else

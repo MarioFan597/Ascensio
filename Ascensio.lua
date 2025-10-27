@@ -74,9 +74,9 @@ end
 ---@field source Source Where is the source of the Mortal version of the Joker. Defaults to `Source.Vanilla`.
 ---@field from string The key of the Mortal joker.
 ---@field to_exotic string The key of the Ascended joker.
----@field source_file? string Where the Joker is defined in. Defaults to the key of the Ascended Joker with the leading `"j_asc"` removed. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
+---@field source_file? "skip"|string Where the Joker is defined in. Defaults to the key of the Ascended Joker with the leading `"j_asc"` removed. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
 ---@field to_entropic? string The key of the Apotheosis joker.
----@field entropic_file? string Where the Entropic Joker is defined in. Defaults to the key of the Mortal Joker with the leading `"j_"` removed and the `"_entr"` appended. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
+---@field entropic_file? "skip"|string Where the Entropic Joker is defined in. Defaults to the key of the Mortal Joker with the leading `"j_"` removed and the `"_entr"` appended. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
 
 ---@overload fun(o: AscensionInternal): AscensionInternal
 local AscensionInternal = setmetatable({}, {
@@ -149,7 +149,7 @@ AscensionInternal({ source = Source.Vanilla, from = "j_dna", to_exotic = "j_asc_
 AscensionInternal({ source = Source.Vanilla, from = "j_splash", to_exotic = "j_asc_splash" })
 AscensionInternal({ source = Source.Vanilla, from = "j_blue_joker", to_exotic = "j_asc_blue" })
 AscensionInternal({ source = Source.Vanilla, from = "j_hiker", to_exotic = "j_asc_hiker" })
-AscensionInternal({ source = Source.Vanilla, from = "j_cavendish", to_exotic = "j_asc_banana" })
+AscensionInternal({ source = Source.Vanilla, from = "j_cavendish", to_exotic = "j_asc_banana", source_file = "skip" })
 AscensionInternal({ source = Source.Vanilla, from = "j_madness", to_exotic = "j_asc_madness" })
 AscensionInternal({ source = Source.Vanilla, from = "j_square", to_exotic = "j_asc_square" })
 AscensionInternal({ source = Source.Vanilla, from = "j_supernova", to_exotic = "j_asc_supernova" })
@@ -205,6 +205,8 @@ AscensionInternal({ source = Source.Cryptid, from = "j_cry_highfive", to_exotic 
 AscensionInternal({ source = Source.Cryptid, from = "j_cry_CodeJoker", to_exotic = "j_asc_code_joker" })
 AscensionInternal({ source = Source.Cryptid, from = "j_cry_circus", to_exotic = "j_asc_circus" })
 AscensionInternal({ source = Source.Cryptid, from = "j_cry_krustytheclown", to_exotic = "j_asc_krusty" })
+AscensionInternal({ source = Source.Cryptid, from = "j_cry_the", to_exotic = "j_asc_the" })
+AscensionInternal({ source = Source.Cryptid, from = "j_cry_negative", to_exotic = "j_cry_tenebris", source_file = "skip", to_entropic = "j_entr_akyros", entropic_file = "skip" })
 
 -- Mortals for Cryptid Exotics
 AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_copy_cat", to_exotic = "j_cry_iterum", source_file = "copy_cat" })
@@ -230,7 +232,7 @@ end
 ---@diagnostic disable-next-line: undefined-global
 ----------------Colours------------------
 ---------Special Thanks Colours----------
-loc_colour()
+loc_colour("inactive")
 G.ARGS.LOC_COLOURS.asc_tattered = HEX("2ad5ff")
 G.ARGS.LOC_COLOURS.asc_slipstream = HEX("cc99ff")
 G.ARGS.LOC_COLOURS.asc_glitchkat = HEX("f04360")
@@ -252,10 +254,11 @@ function SMODS.create_mod_badges(obj, badges)
             local font = G.LANG.font
             local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
             local calced_text_width = 0
+            ---@diagnostic disable-next-line: access-invisible, undefined-field
             -- Math reproduced from DynaText:update_text
             for _, c in utf8.chars(text) do
                 local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE + 2.7 * 1 * G.TILESCALE * font.FONTSCALE
-                calced_text_width = calced_text_width + tx / (G.TILESIZE * G.TILESCALE)
+                calced_text_width = math.floor(calced_text_width + tx / (G.TILESIZE * G.TILESCALE))
             end
             local scale_fac = calced_text_width > max_text_width and max_text_width / calced_text_width or 1
             return scale_fac

@@ -91,14 +91,14 @@ SMODS.Joker({
     end,
     asc_credits = {
         idea = {
-            "OmegaLife",
+            "Rhelvetican",
             "Crabus",
         },
         art = {
             "thje_axolotl",
         },
         code = {
-            "OmegaLife",
+            "Rhelvetican",
             "MarioFan597",
         },
     },
