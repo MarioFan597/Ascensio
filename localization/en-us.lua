@@ -1544,8 +1544,8 @@ return {
             j_asc_jimbo_entr = {
                 name = "Gelotopoios",
                 text = {
-                    { "{C:mult}+4 Mult{}" },
-                    { "Set scoring operator to {C:dark_edition}^{}" },
+                    { "Set scoring operation to", "{X:dark_edition,C:white}Exponentiation{}" },
+                    { "{C:mult}+4{} Mult" },
                 },
             },
 
