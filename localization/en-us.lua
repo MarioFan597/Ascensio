@@ -1141,14 +1141,15 @@ return {
                 name = "Immaculatus",
                 text = {
                     {
-                        "After {C:attention}#1#{} {C:inactive}(#2#){} #3#",
+                        "After {C:attention}#1#{} {C:inactive}(#2#){} #3#,",
                         "{C:attention}sell{} this card to duplicate",
-                        "the next Joker {C:attention}to the right{}",
-                        "{C:inactive}(Removes{} {C:dark_edition}Negative{} {C:inactive}from copy){}",
+                        "{C:attention}Joker{} to the right",
+                        --"{C:inactive,s:0.9}(Removes{} {C:dark_edition,s:0.9}Negative{} {C:inactive,s:0.9}from copy){}",
                     },
                     {
-                        "When {C:attention}removed{}, create",
-                        "{C:attention}#4#{} {C:dark_edition}Negative{} #5# of itself",
+                        "Creates {C:attention}#4#{} {C:dark_edition}Negative{} #5#",
+                        "of this Joker when sold",
+                        "if above ability is active"
                     },
                 },
             },
@@ -1378,11 +1379,16 @@ return {
                         "{C:cry_exotic}Exotic{} Jokers give {X:asc_emult,C:white}^#6#{} Mult",
                         Entropy and "{C:entr_entropic}Entropic{} Jokers give {X:asc_emult,C:white}^#7#{} Mult" or nil,
                     },
-                    {
+                    --[[{
                         string.format("Increase {C:common}Common{} Joker {X:asc_emult,C:white}^Mult{} by {X:asc_emult,C:white}^#%d#{}", Entropy and 8 or 7),
                         "at the {C:attention}end of round{}",
                         "{C:inactive,s:0.9}(Mutipliers derrived from Common Joker ^Mult)",
                     },
+                    ]]
+                    {
+                        "Increase base {X:asc_emult,C:white}^Mult{} by{X:asc_emult,C:white}^#%d#{}",
+                        "at the {C:attention}end of round{}"
+                    }
                 },
             },
 

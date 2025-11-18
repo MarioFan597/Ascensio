@@ -66,7 +66,9 @@ SMODS.Joker({
             if --SMODS.pseudorandom_probability(card, "future knowledge", 1, card.ability.extra.odds, "Exotic Seance", true) then
                 math.random(1, card.ability.extra.odds) == 1
             then
-                card.ability.extra.odds = card.ability.extra.immutable.std_odds
+                if not context.blueprint then
+                    card.ability.extra.odds = card.ability.extra.immutable.std_odds
+                end
                 for _ = 1, card.ability.extra.amount do
                     local speccard = pseudorandom_element(card.ability.extra.pool, "j_asc_seance" .. G.SEED)
 
@@ -84,7 +86,9 @@ SMODS.Joker({
                     colour = G.C.SECONDARY_SET.Spectral,
                 }
             else
-                card.ability.extra.odds = card.ability.extra.odds / 2
+                if not context.blueprint then
+                    card.ability.extra.odds = card.ability.extra.odds / 2
+                end
                 return {
                     message = localize("asc_seance_msg"),
                     colour = G.C.DARK_EDITION,
