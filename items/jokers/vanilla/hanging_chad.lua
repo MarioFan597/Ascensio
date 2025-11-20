@@ -12,7 +12,7 @@ SMODS.Joker({
     loc_vars = function(_, _, card)
         return {
             vars = {
-                card and lenient_bignum(card.ability.extra.retriggers),
+                card and lenient_bignum(math.min(card.ability.extra.immutable.max_rep, card.ability.extra.retriggers)),
                 card and lenient_bignum(card.ability.extra.hand_gain),
                 card and lenient_bignum(card.ability.extra.immutable.max_rep),
             },
