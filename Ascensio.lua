@@ -180,6 +180,7 @@ AscensionInternal({ source = Source.Vanilla, from = "j_smeared", to_exotic = "j_
 AscensionInternal({ source = Source.Vanilla, from = "j_wee", to_exotic = "j_asc_wee" })
 AscensionInternal({ source = Source.Vanilla, from = "j_oops", to_exotic = "j_asc_oops" })
 AscensionInternal({ source = Source.Vanilla, from = "j_idol", to_exotic = "j_asc_idols" })
+AscensionInternal({ source = Source.Vanilla, from = "j_seeing_double", to_exotic = "j_asc_seeing_double" })
 AscensionInternal({ source = Source.Vanilla, from = "j_duo", to_exotic = "j_asc_duo" })
 AscensionInternal({ source = Source.Vanilla, from = "j_trio", to_exotic = "j_asc_trio" })
 AscensionInternal({ source = Source.Vanilla, from = "j_family", to_exotic = "j_asc_family" })
