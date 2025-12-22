@@ -479,6 +479,21 @@ return {
                 },
             },
 
+            j_asc_hack = {
+                name = "Non Ridiculum",
+                -- TODO: reclarify this, i wrote this slop at 4am lmfao
+                text = {
+                    {
+                        "Retriggers each played {C:attention}2{}, {C:attention}3{}, {C:attention}4{} and {C:attention}5{}",
+                        "{C:attention}equal{} to rank",
+                    },
+                    {
+                        "Gains {X:mult,C:white}X1{} Mult per each scored {C:attention}2{}, {C:attention}3{}, {C:attention}4{} and {C:attention}5{}",
+                        "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
+                    },
+                },
+            },
+
             j_asc_banana = {
                 name = "Musa Acuminata",
                 text = {

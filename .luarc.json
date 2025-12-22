@@ -1,29 +1,7 @@
 {
     "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
     "diagnostics.globals": [
-        "G",
-        "Cryptid",
-        "CardSleeves",
-        "Entropy",
-        "Talisman",
-        "localize",
-        "lenient_bignum",
-        "to_number",
-        "to_big",
-        "cry_prob",
-        "pseudorandom",
-        "card_eval_status_text",
-        "check_for_unlock",
-        "create_toggle",
-        "playing_card_joker_effects",
-        "copy_card",
-        "draw_card",
-        "play_sound",
-        "ease_colour",
-        "delay",
-        "update_hand_text",
-        "ease_hands_played",
-        "ease_discard"
+
     ],
     "runtime": {
         "version": "LuaJIT"

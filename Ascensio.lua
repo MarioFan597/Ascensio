@@ -143,6 +143,7 @@ AscensionInternal({ source = Source.Vanilla, from = "j_space", to_exotic = "j_as
 AscensionInternal({ source = Source.Vanilla, from = "j_egg", to_exotic = "j_asc_egg" })
 AscensionInternal({ source = Source.Vanilla, from = "j_scary_face", to_exotic = "j_asc_scary" })
 AscensionInternal({ source = Source.Vanilla, from = "j_abstract", to_exotic = "j_asc_abstract" })
+AscensionInternal({ source = Source.Vanilla, from = "j_hack", to_exotic = "j_asc_hack" })
 AscensionInternal({ source = Source.Vanilla, from = "j_blackboard", to_exotic = "j_asc_blackboard" })
 AscensionInternal({ source = Source.Vanilla, from = "j_ice_cream", to_exotic = "j_asc_ice_cream" })
 AscensionInternal({ source = Source.Vanilla, from = "j_dna", to_exotic = "j_asc_dna" })
