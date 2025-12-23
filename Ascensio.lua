@@ -197,6 +197,7 @@ AscensionInternal({ source = Source.Vanilla, from = "j_vampire", to_exotic = "j_
 AscensionInternal({ source = Source.Cryptid, from = "j_cry_canvas", to_exotic = "j_asc_canvas" })
 AscensionInternal({ source = Source.Cryptid, from = "j_cry_sync_catalyst", to_exotic = "j_asc_sync_catalyst" })
 AscensionInternal({ source = Source.Cryptid, from = "j_cry_gardenfork", to_exotic = "j_asc_gardenfork" })
+AscensionInternal({ source = Source.Cryptid, from = "j_cry_nosound", to_exotic = "j_asc_nosound" })
 AscensionInternal({ source = Source.Cryptid, from = "j_cry_antennastoheaven", to_exotic = "j_asc_like_antennas_to_heaven" })
 AscensionInternal({ source = Source.Cryptid, from = "j_cry_chad", to_exotic = "j_asc_chad" })
 AscensionInternal({ source = Source.Cryptid, from = "j_cry_oil_lamp", to_exotic = "j_asc_oil_lamp" })

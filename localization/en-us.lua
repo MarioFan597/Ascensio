@@ -65,8 +65,8 @@ return {
                     },
                     {
                         "{C:green}#2# in #3#{} chance for scored",
-                        "{C:heart}Hearts{} to give adjacent",
-                        "{C:heart}Hearts{} {C:attention}#4#{} extra trigger",
+                        "{C:hearts}Hearts{} to give adjacent",
+                        "{C:hearts}Hearts{} {C:attention}#4#{} extra trigger",
                         "{C:inactive}(Max {C:attention}#5#{} {C:inactive}retriggers)",
                     },
                 },
@@ -1264,7 +1264,7 @@ return {
             },
 
             j_asc_gardenfork = {
-                name = "Contra Homo",
+                name = "Contra Homo", --Against Neighbors
                 text = {
                     "{X:money,C:white}X#1#{} total money",
                     "if played hand",
@@ -1272,8 +1272,28 @@ return {
                 },
             },
 
+            j_asc_nosound = {
+                name = "Contra Ipsum", --Against Self
+                text = {
+                    {
+                        "Retrigger each played {C:attention}7{}",
+                        "{C:attention}#1#{} additional times",
+                        "{C:inactive}(Max{} {C:attention}#2#{} {C:inactive}retriggers){}"
+                    },
+                    {
+                        "Scored {C:attention}7{}s have a {C:green}#3# in #4#{}",
+                        "chance to {C:attention}multiply{} values",
+                        "of random Joker by {C:attention}#5#{}",
+                        "{C:inactive}(Includes self)"
+                    },
+                    {
+                        "{C:red}Destroy{} scored {C:attention}7{}s"
+                    },
+                },
+            },
+
             j_asc_like_antennas_to_heaven = {
-                name = "Contra Logos",
+                name = "Contra Logos", -- Against Reason
                 text = {
                     "This Joker gains {X:asc_echips,C:white}^#1#{} Chips",
                     "for every {C:attention}7{} or {C:attention}4{}",
