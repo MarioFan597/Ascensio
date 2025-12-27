@@ -66,7 +66,7 @@ SMODS.Joker({
             "Rhelvetican",
         },
         art = {
-            "???",
+            "MarioFan597",
         },
         code = {
             "Rhelvetican",
