@@ -479,6 +479,21 @@ return {
                 },
             },
 
+            j_asc_hack = {
+                name = "Non Ridiculum",
+                -- TODO: reclarify this, i wrote this slop at 4am lmfao
+                text = {
+                    {
+                        "Retriggers each played {C:attention}2{}, {C:attention}3{}, {C:attention}4{} and {C:attention}5{}",
+                        "{C:attention}equal{} to rank",
+                    },
+                    {
+                        "Gains {X:mult,C:white}X1{} Mult per each scored {C:attention}2{}, {C:attention}3{}, {C:attention}4{} and {C:attention}5{}",
+                        "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
+                    },
+                },
+            },
+
             j_asc_banana = {
                 name = "Musa Acuminata",
                 text = {
@@ -1076,14 +1091,24 @@ return {
             j_asc_idols = {
                 name = "Statua Sacra",
                 text = {
-                    {
-                        "Each scored {C:attention}#1#{} of {V:1}#2#{}",
-                        "randomly either gives",
-                        "{X:asc_emult,C:white}^#3#{} Mult, {X:asc_echips,C:white}^#3#{} Chips, {X:money,C:white}X#3#{} Money,",
-                        "{s:0.9}or increases self values by {C:attention,s:0.9}+#4#{}",
-                        "{C:inactive,s:0.75}(Can't change own manipulation value){}",
-                        "{C:inactive}(Card changes every round)",
-                    },
+                    "Each scored {C:attention}#1#{} of {V:1}#2#{}",
+                    "randomly either gives",
+                    "{X:asc_emult,C:white}^#3#{} Mult, {X:asc_echips,C:white}^#3#{} Chips, {X:money,C:white}X#3#{} Money,",
+                    "{s:0.9}or increases self values by {C:attention,s:0.9}+#4#{}",
+                    "{C:inactive,s:0.75}(Can't change own manipulation value){}",
+                    "{C:inactive}(Card changes every round)",
+                },
+            },
+
+            j_asc_seeing_double = {
+                name = "Duplex Visio",
+                text = {
+                    "When played hand has a scoring {C:club}Clubs{} card",
+                    "and a scoring card of any other suit",
+                    "gains {X:mult,C:white}XMult{} equal to the difference between",
+                    "the amount of scored {C:club}Clubs{} cards",
+                    "and the amount of other scored cards",
+                    "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
                 },
             },
 
@@ -1149,7 +1174,7 @@ return {
                     {
                         "Creates {C:attention}#4#{} {C:dark_edition}Negative{} #5#",
                         "of this Joker when sold",
-                        "if above ability is active"
+                        "if above ability is active",
                     },
                 },
             },
@@ -1407,8 +1432,8 @@ return {
                     ]]
                     {
                         "Increase base {X:asc_emult,C:white}^Mult{} by{X:asc_emult,C:white}^#%d#{}",
-                        "at the {C:attention}end of round{}"
-                    }
+                        "at the {C:attention}end of round{}",
+                    },
                 },
             },
 
@@ -1570,8 +1595,8 @@ return {
             j_asc_jimbo_entr = {
                 name = "Gelotopoios",
                 text = {
-                    { "{C:mult}+4 Mult{}" },
-                    { "Set scoring operator to {C:dark_edition}^{}" },
+                    { "Set scoring operation to", "{X:dark_edition,C:white}Exponentiation{}" },
+                    { "{C:mult}+4{} Mult" },
                 },
             },
 
