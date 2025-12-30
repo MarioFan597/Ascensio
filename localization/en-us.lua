@@ -484,11 +484,13 @@ return {
                 -- TODO: reclarify this, i wrote this slop at 4am lmfao
                 text = {
                     {
-                        "Retriggers each played {C:attention}2{}, {C:attention}3{}, {C:attention}4{} and {C:attention}5{}",
+                        "Retriggers each played",
+                        "{C:attention}2{}, {C:attention}3{}, {C:attention}4{} and {C:attention}5{}",
                         "{C:attention}equal{} to rank",
                     },
                     {
-                        "Gains {X:mult,C:white}X1{} Mult per each scored {C:attention}2{}, {C:attention}3{}, {C:attention}4{} and {C:attention}5{}",
+                        "Gains {X:mult,C:white}X1{} Mult per each",
+                        "scored {C:attention}2{}, {C:attention}3{}, {C:attention}4{} and {C:attention}5{}",
                         "{C:inactive}(Currently {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
                     },
                 },
@@ -1103,11 +1105,11 @@ return {
             j_asc_seeing_double = {
                 name = "Duplex Visio",
                 text = {
-                    "When played hand has a scoring {C:club}Clubs{} card",
-                    "and a scoring card of any other suit",
-                    "gains {X:mult,C:white}XMult{} equal to the difference between",
-                    "the amount of scored {C:club}Clubs{} cards",
-                    "and the amount of other scored cards",
+                    "This Joker gains {X:mult,C:white}XMult{} equal to",
+                    "{C:attention}difference{} in number of scored",
+                    "{C:clubs}Club{} cards and scored cards",
+                    "{s:0.9}of any other {C:attention,s:0.9}suit {s:0.9}in played hand",
+                    "{C:inactive,s:0.9}(Must have at least one of each)",
                     "{C:inactive}(Currently{} {X:mult,C:white}X#1#{} {C:inactive}Mult){}",
                 },
             },
