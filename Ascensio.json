@@ -13,8 +13,9 @@
     "badge_text_colour": "FFFFFF",
     "version": "0.2.0~alpha2",
     "dependencies": [
-        "Talisman",
-        "Cryptid (>=0.5.12)",
-        "Steamodded (>=1.0.0~BETA-0827c)"
+        "Talisman (>=2.7)",
+        "Cryptid (>=0.5.14)",
+        "Steamodded (>=1.0.0~BETA-1224a)"
     ]
 }
+
