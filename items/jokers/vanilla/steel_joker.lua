@@ -14,16 +14,23 @@ local total_steel = function(force)
     return accum
 end
 
+SMODS.Atlas({
+    key = "steel",
+    path = "jokers/vanilla/steel.png",
+    px = 71,
+    py = 95,
+})
+
 SMODS.Joker({
     key = "steel_joker",
     rarity = "cry_exotic",
-    atlas = "v_atlas_2",
+    atlas = "steel",
 
     blueprint_compat = true,
     demicoloncompat = true,
 
-    pos = { x = 9, y = 0 },
-    soul_pos = { x = 11, y = 0, extra = { x = 10, y = 0 } },
+    pos = { x = 0, y = 0 },
+    soul_pos = { x = 0, y = 5, extra = { x = 0, y = 4 } },
 
     cost = 50,
     order = 1,
@@ -32,6 +39,17 @@ SMODS.Joker({
         extra = {
             extern_xmult = 0.1,
             xmult = 1,
+        },
+    },
+
+     ---@type CardAnimation
+    animation = {
+        macro = {
+            type = "skim",
+            pos = {
+                include = { { x1 = 0, y1 = 0, x2 = 9, y2 = 3 } },
+                exclude = { { x1 = 2, y1 = 3, x2 = 9, y2 = 3 } },
+            },
         },
     },
 
@@ -77,7 +95,7 @@ SMODS.Joker({
             "Rhelvetican",
         },
         art = {
-            "???",
+            "Tatteredlurker",
         },
         code = {
             "Rhelvetican",
