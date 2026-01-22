@@ -1433,7 +1433,7 @@ return {
                     },
                     ]]
                     {
-                        "Increase base {X:asc_emult,C:white}^Mult{} by{X:asc_emult,C:white}^#%d#{}",
+                        Entropy and "Increase base {X:asc_emult,C:white}^Mult{} by {X:asc_emult,C:white}^#8#{}" or "Increase base {X:asc_emult,C:white}^Mult{} by {X:asc_emult,C:white}^#7#{}",
                         "at the {C:attention}end of round{}",
                     },
                 },
