@@ -41,27 +41,26 @@ SMODS.Joker({
     end,
 
     calculate = function(_, card, context)
-        if (context.selling_self and not context.blueprint) or context.forcetrigger then
-            if (#G.jokers.cards <= G.jokers.config.card_limit and card.ability.extra.rounds.cur >= card.ability.extra.rounds.req) or context.forcetrigger then
+        if (context.selling_self and (card.ability.extra.rounds.cur >= card.ability.extra.rounds.req) and not context.blueprint) or context.forcetrigger then
                 local i = 0
                 for x, v in ipairs(G.jokers.cards) do
                     if v == card then
                         i = x
                     end
                 end
-
                 local copied = G.jokers.cards[i + 1]
                 if copied then
-                    local recopied = copy_card(copied, nil, nil, nil, copied.ability and copied.ability.negative)
-                    recopied:add_to_deck()
-                    G.jokers:emplace(recopied)
+                    if ((#G.jokers.cards < G.jokers.config.card_limit) or (#G.jokers.cards <= G.jokers.config.card_limit and copied.edition and copied.edition.negative)) then
+                        local recopied = copy_card(copied, nil, nil, nil, nil) --copied.edition and copied.edition.negative (Replace last nil woth this if we want non negative copies)
+                        recopied:add_to_deck()
+                        G.jokers:emplace(recopied)
+                    else
+                        return { message = localize("k_no_room_ex") }
+                    end
                 else
                     return { message = localize("k_no_other_jokers") }
                 end
                 return { message = localize("k_duplicated_ex") }
-            else
-                return { message = localize("k_no_room_ex") }
-            end
         end
 
         ---@diagnostic disable-next-line: unnecessary-if
@@ -76,11 +75,14 @@ SMODS.Joker({
         end
     end,
 
-    remove_from_deck = function(_, _)
-        local other_self = SMODS.add_card({ key = "j_asc_invisible" })
-        juice_card(other_self)
-        other_self:set_edition("e_negative")
-        other_self.sell_cost = 0
+
+    remove_from_deck = function(self, card, from_debuff)
+        if card.ability.extra.rounds.cur >= card.ability.extra.rounds.req then
+            local other_self = SMODS.add_card({ key = "j_asc_invisible" })
+            juice_card(other_self)
+            other_self:set_edition("e_negative")
+            other_self.sell_cost = 0
+        end
     end,
 
     asc_credits = {
@@ -92,6 +94,7 @@ SMODS.Joker({
         },
         code = {
             "Rhelvetican",
+            "MarioFan597"
         },
     },
 })
