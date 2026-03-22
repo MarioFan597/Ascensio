@@ -1,7 +1,7 @@
 SMODS.Joker({
     key = "lusty",
     config = { extra = { e_mult = 1.2, odds = 2, rep = 1, immutable = { max_rep = 40 } } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "v_atlas_1",
     blueprint_compat = true,
     pos = { x = 3, y = 4 },

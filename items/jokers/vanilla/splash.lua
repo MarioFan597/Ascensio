@@ -1,6 +1,6 @@
 SMODS.Joker({
     key = "splash",
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "v_atlas_2",
 
     blueprint_compat = true,
@@ -90,9 +90,9 @@ SMODS.Joker({
         G.hand:change_size(-card.ability.immutable.total_mod)
     end,
 
-    asc_credits = Ascensio.Credit({
+    asc_credits = {
         idea = { "Rhelvetican", "Grahkon" },
         art = { "???" },
         code = { "Rhelvetican" },
-    }),
+    },
 })

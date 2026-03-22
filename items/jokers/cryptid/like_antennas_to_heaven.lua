@@ -8,7 +8,7 @@ SMODS.Atlas({
 SMODS.Joker({
     key = "like_antennas_to_heaven",
     config = { extra = { chips = 1, gain = 0.01 } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "like_antennas_to_heaven",
     blueprint_compat = true,
     demicoloncompat = true,

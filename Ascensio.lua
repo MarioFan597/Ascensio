@@ -10,8 +10,21 @@ local function loadFile(path, id)
     chunk()
 end
 
+--
+SMODS.current_mod.spectrallib_features = { "ascension_power" }
+print("Ascended hands should be on if this is true:")
+print(Spectrallib.optional_feature("ascension_power"))
+
+--Base Rarity
+SMODS.Rarity({
+    key = "ascended",
+    badge_colour = HEX("DCC659"),
+})
+
 -- Compability
-Cryptid.mod_whitelist["Ascensio"] = true
+if next(SMODS.find_mod("Cryptid")) then
+    Cryptid.mod_whitelist["Ascensio"] = true
+end
 
 Ascensio = {}
 loadFile("lib/core.lua")
@@ -44,7 +57,7 @@ loadFile("lib/hooks.lua")
 loadFile("items/consumables/ascensio/ascension.lua")
 loadFile("items/consumables/ascensio/numina.lua")
 
-if Entropy then
+if next(SMODS.find_mod("Entropy")) then
     loadFile("items/consumables/entropy/apotheosis.lua")
 end
 
@@ -59,7 +72,6 @@ local Source = {
     Entropy = "entropy/",
     Astronomica = "astronomica/",
     Cryptposting = "cryptposting/",
-
     MortalCryptid = "cryptid/mortal/",
     Other = "",
 }
@@ -92,7 +104,7 @@ local AscensionInternal = setmetatable({}, {
 
         if Ascensio.Apothable and asc.to_entropic ~= nil then
             local entr_source_file = asc.entropic_file or get_source_file(asc.to_exotic)
-            if entr_source_file ~= "skip" then
+            if entr_source_file ~= "skip" and next(SMODS.find_mod("Entropy")) then
                 loadFile("items/jokers/" .. asc.source .. "entr/" .. entr_source_file .. "_entr.lua")
             end
 
@@ -153,6 +165,8 @@ AscensionInternal({ source = Source.Vanilla, from = "j_hiker", to_exotic = "j_as
 AscensionInternal({ source = Source.Vanilla, from = "j_cavendish", to_exotic = "j_asc_banana", source_file = "skip" })
 AscensionInternal({ source = Source.Vanilla, from = "j_madness", to_exotic = "j_asc_madness" })
 AscensionInternal({ source = Source.Vanilla, from = "j_square", to_exotic = "j_asc_square" })
+AscensionInternal({ source = Source.Vanilla, from = "j_seance", to_exotic = "j_asc_seance" })
+AscensionInternal({ source = Source.Vanilla, from = "j_vampire", to_exotic = "j_asc_vampire" })
 AscensionInternal({ source = Source.Vanilla, from = "j_supernova", to_exotic = "j_asc_supernova" })
 AscensionInternal({ source = Source.Vanilla, from = "j_hologram", to_exotic = "j_asc_hologram" })
 AscensionInternal({ source = Source.Vanilla, from = "j_baron", to_exotic = "j_asc_baron" })
@@ -192,36 +206,36 @@ AscensionInternal({ source = Source.Vanilla, from = "j_brainstorm", to_exotic = 
 AscensionInternal({ source = Source.Vanilla, from = "j_drivers_license", to_exotic = "j_asc_drivers_license" })
 AscensionInternal({ source = Source.Vanilla, from = "j_bootstraps", to_exotic = "j_asc_bootstraps" })
 AscensionInternal({ source = Source.Vanilla, from = "j_caino", to_exotic = "j_asc_canio" }) -- Sic! Don't correct!
-AscensionInternal({ source = Source.Vanilla, from = "j_seance", to_exotic = "j_asc_seance" })
-AscensionInternal({ source = Source.Vanilla, from = "j_vampire", to_exotic = "j_asc_vampire" })
 
 -- Cryptid Ascensions
-AscensionInternal({ source = Source.Cryptid, from = "j_cry_canvas", to_exotic = "j_asc_canvas" })
-AscensionInternal({ source = Source.Cryptid, from = "j_cry_sync_catalyst", to_exotic = "j_asc_sync_catalyst" })
-AscensionInternal({ source = Source.Cryptid, from = "j_cry_gardenfork", to_exotic = "j_asc_gardenfork" })
-AscensionInternal({ source = Source.Cryptid, from = "j_cry_nosound", to_exotic = "j_asc_nosound" })
-AscensionInternal({ source = Source.Cryptid, from = "j_cry_antennastoheaven", to_exotic = "j_asc_like_antennas_to_heaven" })
-AscensionInternal({ source = Source.Cryptid, from = "j_cry_chad", to_exotic = "j_asc_chad" })
-AscensionInternal({ source = Source.Cryptid, from = "j_cry_oil_lamp", to_exotic = "j_asc_oil_lamp" })
-AscensionInternal({ source = Source.Cryptid, from = "j_cry_huntingseason", to_exotic = "j_asc_hunting_season" })
-AscensionInternal({ source = Source.Cryptid, from = "j_cry_highfive", to_exotic = "j_asc_high_five" })
-AscensionInternal({ source = Source.Cryptid, from = "j_cry_CodeJoker", to_exotic = "j_asc_code_joker" })
-AscensionInternal({ source = Source.Cryptid, from = "j_cry_circus", to_exotic = "j_asc_circus" })
-AscensionInternal({ source = Source.Cryptid, from = "j_cry_krustytheclown", to_exotic = "j_asc_krusty" })
-AscensionInternal({ source = Source.Cryptid, from = "j_cry_the", to_exotic = "j_asc_the" })
-AscensionInternal({ source = Source.Cryptid, from = "j_cry_negative", to_exotic = "j_cry_tenebris", source_file = "skip", to_entropic = "j_entr_akyros", entropic_file = "skip" })
+if next(SMODS.find_mod("Cryptid")) then
+    AscensionInternal({ source = Source.Cryptid, from = "j_cry_canvas", to_exotic = "j_asc_canvas" })
+    AscensionInternal({ source = Source.Cryptid, from = "j_cry_sync_catalyst", to_exotic = "j_asc_sync_catalyst" })
+    AscensionInternal({ source = Source.Cryptid, from = "j_cry_gardenfork", to_exotic = "j_asc_gardenfork" })
+    AscensionInternal({ source = Source.Cryptid, from = "j_cry_nosound", to_exotic = "j_asc_nosound" })
+    AscensionInternal({ source = Source.Cryptid, from = "j_cry_antennastoheaven", to_exotic = "j_asc_like_antennas_to_heaven" })
+    AscensionInternal({ source = Source.Cryptid, from = "j_cry_chad", to_exotic = "j_asc_chad" })
+    AscensionInternal({ source = Source.Cryptid, from = "j_cry_oil_lamp", to_exotic = "j_asc_oil_lamp" })
+    AscensionInternal({ source = Source.Cryptid, from = "j_cry_huntingseason", to_exotic = "j_asc_hunting_season" })
+    AscensionInternal({ source = Source.Cryptid, from = "j_cry_highfive", to_exotic = "j_asc_high_five" })
+    AscensionInternal({ source = Source.Cryptid, from = "j_cry_CodeJoker", to_exotic = "j_asc_code_joker" })
+    AscensionInternal({ source = Source.Cryptid, from = "j_cry_circus", to_exotic = "j_asc_circus" })
+    AscensionInternal({ source = Source.Cryptid, from = "j_cry_krustytheclown", to_exotic = "j_asc_krusty" })
+    AscensionInternal({ source = Source.Cryptid, from = "j_cry_the", to_exotic = "j_asc_the" })
+    AscensionInternal({ source = Source.Cryptid, from = "j_cry_negative", to_exotic = "j_cry_tenebris", source_file = "skip", to_entropic = "j_entr_akyros", entropic_file = "skip" })
 
--- Mortals for Cryptid Exotics
-AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_copy_cat", to_exotic = "j_cry_iterum", source_file = "copy_cat" })
-AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_b_cake", to_exotic = "j_cry_crustulum", source_file = "b_cake" })
-AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_b_pie", to_exotic = "j_cry_circulus_pistoris", source_file = "b_pie" })
-AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_orion_pax", to_exotic = "j_cry_primus", source_file = "orion_pax" })
-AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_accomplice", to_exotic = "j_cry_gemino", source_file = "accomplice" })
-AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_duane", to_exotic = "j_cry_duplicare", source_file = "duane" })
-AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_exorcist", to_exotic = "j_cry_formidiulosus", source_file = "exorcist" })
+    -- Mortals for Cryptid Exotics
+    AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_copy_cat", to_exotic = "j_cry_iterum", source_file = "copy_cat" })
+    AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_b_cake", to_exotic = "j_cry_crustulum", source_file = "b_cake" })
+    AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_b_pie", to_exotic = "j_cry_circulus_pistoris", source_file = "b_pie" })
+    AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_orion_pax", to_exotic = "j_cry_primus", source_file = "orion_pax" })
+    AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_accomplice", to_exotic = "j_cry_gemino", source_file = "accomplice" })
+    AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_duane", to_exotic = "j_cry_duplicare", source_file = "duane" })
+    AscensionInternal({ source = Source.MortalCryptid, from = "j_asc_exorcist", to_exotic = "j_cry_formidiulosus", source_file = "exorcist" })
+end
 
 -- Entropy Ascensions
-if Entropy then
+if next(SMODS.find_mod("Entropy")) then
     AscensionInternal({ source = Source.Entropy, from = "j_entr_sunny_joker", to_exotic = "j_asc_sunny_joker", to_entropic = "j_asc_sunny_joker_entr" })
     AscensionInternal({ source = Source.Entropy, from = "j_entr_chuckle_cola", to_exotic = "j_asc_chuckle_cola" })
 end
@@ -251,39 +265,39 @@ G.ARGS.LOC_COLOURS.asc_grahkon_bg = HEX("48CF00")
 local smcmb = SMODS.create_mod_badges
 function SMODS.create_mod_badges(obj, badges)
     smcmb(obj, badges)
-    if not SMODS.config.no_mod_badges and obj and obj.asc_credits then
+    if not SMODS.config.no_mod_badges and obj and obj.original_mod and obj.original_mod.id == "asc" then
         local function calc_scale_fac(text)
             local size = 0.9
             local font = G.LANG.font
             local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
             local calced_text_width = 0
-            ---@diagnostic disable-next-line: access-invisible, undefined-field
             -- Math reproduced from DynaText:update_text
             for _, c in utf8.chars(text) do
-                local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE + 2.7 * 1 * G.TILESCALE * font.FONTSCALE
-                calced_text_width = math.floor(calced_text_width + tx / (G.TILESIZE * G.TILESCALE))
+                local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE
+                    + 2.7 * 1 * G.TILESCALE * font.FONTSCALE
+                calced_text_width = calced_text_width + tx / (G.TILESIZE * G.TILESCALE)
             end
             local scale_fac = calced_text_width > max_text_width and max_text_width / calced_text_width or 1
             return scale_fac
         end
-        if obj.asc_credits.art or obj.asc_credits.code or obj.asc_credits.idea or obj.asc_credits.name or obj.asc_credits.custom then
+        if not obj.asc_credit or (obj.asc_credits.art or obj.asc_credits.code or obj.asc_credits.idea or obj.asc_credits.custom) then
             local scale_fac = {}
             local min_scale_fac = 1
-            local strings = { "Ascēnsiō" }
-            for _, v in ipairs({ "name", "idea", "art", "code" }) do
-                if obj.asc_credits[v] then
-                    for i = 1, #obj.asc_credits[v] do
-                        strings[#strings + 1] = localize({ type = "variable", key = "cry_" .. v, vars = { obj.asc_credits[v][i] } })[1]
+            local strings = (G.only_display_credit) and {} or {Ascensio.display_name}
+                for _, v in ipairs({ "idea", "art", "code" }) do
+                    if obj.asc_credits and obj.asc_credits[v] then
+                        if type(obj.asc_credits[v]) == "string" then obj.asc_credits[v] = {obj.asc_credits[v]} end
+                        for i = 1, #obj.asc_credits[v] do
+                            if not G.only_display_credit or G.only_display_credit == obj.asc_credits[v][i] then
+                                strings[#strings + 1] =
+                                    localize({ type = "variable", key = "asc_" .. v, vars = { obj.asc_credits[v][i] } })[1]
+                            end
+                        end
                     end
                 end
-            end
-            if obj.asc_credits.custom then
-                strings[#strings + 1] = localize({
-                    type = "variable",
-                    key = obj.asc_credits.custom.key,
-                    vars = { obj.asc_credits.custom.text },
-                })
-            end
+                if obj.asc_credits and obj.asc_credits.custom then
+                    strings[#strings + 1] = localize({ type="variable", key = obj.asc_credits.custom.key, vars = { obj.asc_credits.custom.text } })
+                end
             for i = 1, #strings do
                 scale_fac[i] = calc_scale_fac(strings[i])
                 min_scale_fac = math.min(min_scale_fac, scale_fac[i])
@@ -294,7 +308,10 @@ function SMODS.create_mod_badges(obj, badges)
                     string = strings[i],
                 }
             end
-            local cry_badge = {
+            if #strings == 0 then
+                strings = {Ascensio.display_name}
+            end
+            local asc_badge = {
                 n = G.UIT.R,
                 config = { align = "cm" },
                 nodes = {
@@ -308,6 +325,7 @@ function SMODS.create_mod_badges(obj, badges)
                             minh = 0.36,
                             emboss = 0.05,
                             padding = 0.03 * 0.9,
+                            --shader = "asc_brimstone_badge"
                         },
                         nodes = {
                             { n = G.UIT.B, config = { h = 0.1, w = 0.03 } },
@@ -331,18 +349,10 @@ function SMODS.create_mod_badges(obj, badges)
                     },
                 },
             }
-            local function eq_col(x, y)
-                for _ = 1, 4 do
-                    if x[1] ~= y[1] then
-                        return false
-                    end
-                end
-                return true
-            end
-            for i = 1, #badges do
-                if eq_col(badges[i].nodes[1].config.colour, HEX("235bb0")) then
+            for i = 1, #badges do   
+                if badges[i].nodes[1].nodes[2].config.object.string == Ascensio.display_name then --this was meant to be a hex code but it just doesnt work for like no reason so its hardcoded
                     badges[i].nodes[1].nodes[2].config.object:remove()
-                    badges[i] = cry_badge
+                    badges[i] = asc_badge
                     break
                 end
             end

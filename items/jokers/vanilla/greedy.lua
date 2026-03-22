@@ -1,7 +1,7 @@
 SMODS.Joker({
     key = "greedy",
     config = { extra = { e_mult = 1.2, gain = 0.001 } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "v_atlas_1",
     blueprint_compat = true,
     demicoloncompat = true,

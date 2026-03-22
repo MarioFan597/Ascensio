@@ -3,7 +3,7 @@ SMODS.Joker({
     config = { extra = { retriggers = 3, odds = 7, },
                immutable = { max_retriggers = 40, multiplier = 1.3 } 
     },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "c_atlas_1",
     blueprint_compat = true,
     demicoloncompat = true,

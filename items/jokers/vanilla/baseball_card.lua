@@ -11,7 +11,7 @@ end
 
 SMODS.Joker({
     key = "baseball_card",
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "v_atlas_1",
     blueprint_compat = true,
     demicoloncompat = true,
@@ -56,9 +56,9 @@ SMODS.Joker({
         end
     end,
 
-    asc_credits = Ascensio.Credit({
+    asc_credits = {
         idea = { "Rhelvetican", "Grahkon" },
         art = { "???" },
         coding = { "Rhelvetican" },
-    }),
+    },
 })

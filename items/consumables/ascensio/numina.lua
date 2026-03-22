@@ -12,7 +12,7 @@ SMODS.Sticker({
     atlas = "sticker",
     pos = { x = 1, y = 0 },
     soul_pos = { x = 0, y = 0 },
-    badge_colour = G.C.CRY_EXOTIC,
+    badge_colour = G.C.asc_ascended,
     no_sticker_sheet = true,
 
     apply = function(_, card)

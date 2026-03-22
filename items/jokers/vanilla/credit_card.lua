@@ -1,7 +1,7 @@
 SMODS.Joker({
     key = "credit_card",
     config = { extra = { debt = 5000, chips = 1, gain = 0.002 } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "v_atlas_1",
     blueprint_compat = true,
     demicoloncompat = true,

@@ -4,8 +4,8 @@ return {
             Ascensio = {
                 name = "Ascēnsiō",
                 text = {
-                    "{C:cry_exotic,E:1,s:1.6}Exoticfy your Jokers!{}",
-                    "{s:1.3}Adds {C:cry_exotic,E:1,s:1.3}Exotic{s:1.3} forms to normal Jokers",
+                    "{C:asc_ascended,E:1,s:1.6}Exoticfy your Jokers!{}",
+                    "{s:1.3}Adds {C:asc_ascended,E:1,s:1.3}Exotic{s:1.3} forms to normal Jokers",
                     "{s:1.3}and vice versa",
                     "{s:1.2} {}",
                     "{s:1.4,C:attention}Special thanks to:{}",
@@ -1423,7 +1423,7 @@ return {
                         "{C:rare}Rare{} Jokers give {X:asc_emult,C:white}^#3#{} Mult",
                         "{C:cry_epic}Epic{} Jokers give {X:asc_emult,C:white}^#4#{} Mult",
                         "{C:legendary}Legendary{} Jokers give {X:asc_emult,C:white}^#5#{} Mult",
-                        "{C:cry_exotic}Exotic{} Jokers give {X:asc_emult,C:white}^#6#{} Mult",
+                        "{C:asc_ascended}Exotic{} Jokers give {X:asc_emult,C:white}^#6#{} Mult",
                         Entropy and "{C:entr_entropic}Entropic{} Jokers give {X:asc_emult,C:white}^#7#{} Mult" or nil,
                     },
                     --[[{
@@ -1645,7 +1645,7 @@ return {
                 name = "Ascension Candidate",
                 text = {
                     "This Joker can reach",
-                    "a {C:cry_exotic,E:1}Higher Form{}",
+                    "a {C:asc_ascended,E:1}Higher Form{}",
                 },
             },
 
@@ -1677,7 +1677,7 @@ return {
             samsara = {
                 name = "Samsara",
                 text = {
-                    "Rotates between its {C:cry_exotic,E:1}Ascendant{}",
+                    "Rotates between its {C:asc_ascended,E:1}Ascendant{}",
                     "version, regular version and",
                     "being {C:red}debuffed{} every round",
                 },
@@ -1688,7 +1688,7 @@ return {
             sleeve_asc_starlight = {
                 name = "Starlight Sleeve",
                 text = {
-                    "Start with an {C:cry_exotic,T:c_asc_ascension}Ascension{C:attention} Card",
+                    "Start with an {C:asc_ascended,T:c_asc_ascension}Ascension{C:attention} Card",
                     "Jokers are {C:attention}20X{} more",
                     "likely to be {C:dark_edition}Negative{}",
                     "{C:attention}-2{} Joker slots",
@@ -1709,7 +1709,7 @@ return {
                 name = "Ascension",
                 text = {
                     "Transforms viable {C:attention}Jokers{} to",
-                    "their {C:cry_exotic,E:1}Exotic{} counterpart",
+                    "their {C:asc_ascended,E:1}Exotic{} counterpart",
                     "Destroy all other held {C:attention}Jokers{}",
                 },
             },
@@ -1719,7 +1719,7 @@ return {
                 name = "Samsara",
                 text = {
                     "Select {C:attention}#1#{} #2#",
-                    "to become {C:cry_exotic,E:1}Samsara{}",
+                    "to become {C:asc_ascended,E:1}Samsara{}",
                 },
             },
 
@@ -1816,7 +1816,7 @@ return {
             b_asc_starlight = {
                 name = "Starlight Deck",
                 text = {
-                    "Start with an {C:cry_exotic,T:c_asc_ascension}Ascension{C:attention} Card",
+                    "Start with an {C:asc_ascended,T:c_asc_ascension}Ascension{C:attention} Card",
                     "Jokers are {C:attention}20X{} more",
                     "likely to be {C:dark_edition}Negative",
                     "{C:attention}-2{} Joker slots",
@@ -1852,10 +1852,21 @@ return {
 
             k_numina = "Numina",
             b_numina_cards = "Numina Cards",
+            k_asc_ascended = "Ascended",
         },
         labels = {
             numina = "Numina",
             samsara = "Samsara",
+            k_asc_ascended = "Ascended",
         },
+        v_dictionary = {
+            a_xchips = "X#1# Chips",
+            a_powmult = "^#1# Mult",
+            a_powchips = "^#1# Chips",
+            a_powmultchips = "^#1# Mult+Chips",
+            asc_idea = { "Idea: #1#" },
+            asc_art = { "Art: #1#" },
+            asc_code = { "Code: #1#" },
+        }
     },
 }

@@ -1,7 +1,7 @@
 SMODS.Joker({
     key = "mystic_summit",
     config = { extra = { mult = 1, gain = 0.25 } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "v_atlas_1",
     blueprint_compat = true,
     demicoloncompat = true,

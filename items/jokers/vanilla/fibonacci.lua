@@ -1,7 +1,7 @@
 SMODS.Joker({
     key = "fibonacci",
     config = { extra = { mult = 1, start_mult = 1, start_previous = 1, immutable = { previous = 0, previous2 = 0 } } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "v_atlas_1",
     blueprint_compat = true,
     demicoloncompat = true,

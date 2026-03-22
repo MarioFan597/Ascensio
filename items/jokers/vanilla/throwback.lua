@@ -8,7 +8,7 @@ SMODS.Atlas({
 SMODS.Joker({
     key = "throwback",
     config = { extra = { mult = 1, rounds = 0, exp = 2 } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "throwback",
     blueprint_compat = true,
     demicoloncompat = true,

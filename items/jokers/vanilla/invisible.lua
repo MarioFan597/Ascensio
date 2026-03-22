@@ -1,7 +1,7 @@
 ---@diagnostic disable: need-check-nil
 SMODS.Joker({
     key = "invisible",
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "v_atlas_2",
 
     blueprint_compat = false,

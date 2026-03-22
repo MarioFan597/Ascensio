@@ -1,6 +1,6 @@
 SMODS.Joker({
     key = "hack",
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "v_atlas_2",
 
     pos = { x = 0, y = 3 }, -- todo: replace with next index, mariofan do this for me im lazy af

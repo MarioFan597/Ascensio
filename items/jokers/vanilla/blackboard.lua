@@ -8,7 +8,7 @@ SMODS.Atlas({
 SMODS.Joker({
     key = "blackboard",
     config = { extra = { mult = 1, black_gain = 2, norm_gain = 1 } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "blackboard",
     blueprint_compat = true,
     demicoloncompat = true,

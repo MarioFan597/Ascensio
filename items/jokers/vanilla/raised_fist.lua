@@ -1,6 +1,6 @@
 SMODS.Joker({
     key = "raised_fist",
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "v_atlas_2",
 
     blueprint_compat = true,

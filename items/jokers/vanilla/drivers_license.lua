@@ -25,7 +25,7 @@ SMODS.Joker({
     key = "drivers_license",
     pos = { x = 0, y = 5 },
     soul_pos = { x = 2, y = 5, extra = { x = 1, y = 5 } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     cost = 50,
     order = 141,
     blueprint_compat = true,

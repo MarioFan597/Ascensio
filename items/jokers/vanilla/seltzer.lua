@@ -1,7 +1,7 @@
 SMODS.Joker({
     key = "seltzer",
     config = { extra = { retriggers = 1, played_hands = 10, goal_hands = 10, immutable = { max_rep = 40 } } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "v_atlas_1",
     blueprint_compat = true,
     demicoloncompat = false,

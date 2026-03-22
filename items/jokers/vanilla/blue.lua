@@ -2,7 +2,7 @@ SMODS.Joker({
     key = "blue",
     pos = { x = 3, y = 6 },
     soul_pos = { x = 5, y = 6, extra = { x = 4, y = 6 } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     cost = 50,
     order = 53,
     config = { extra = { x_chips = 0, x_chips_mod = 0.1 } },

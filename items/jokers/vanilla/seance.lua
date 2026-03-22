@@ -7,7 +7,7 @@ SMODS.Atlas({
 
 SMODS.Joker({
     key = "seance",
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "seance",
     blueprint_compat = true,
     demicoloncompat = true,

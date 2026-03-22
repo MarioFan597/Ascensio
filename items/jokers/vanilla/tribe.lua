@@ -1,7 +1,7 @@
 SMODS.Joker({
     key = "tribe",
     config = { extra = { e_mult = 2 } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "v_atlas_1",
     pos = { x = 9, y = 3 },
     soul_pos = { x = 11, y = 3, extra = { x = 10, y = 3 } },

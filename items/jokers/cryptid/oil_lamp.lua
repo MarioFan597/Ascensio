@@ -3,7 +3,7 @@ SMODS.Joker({
     pos = { x = 3, y = 0 },
     soul_pos = { x = 5, y = 0, extra = { x = 4, y = 0 } },
     config = { extra = { increase = 1.2 } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     cost = 50,
     order = 277,
     blueprint_compat = false,

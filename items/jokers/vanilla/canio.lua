@@ -1,7 +1,7 @@
 SMODS.Joker({
     key = "canio",
     config = { extra = { power = 1, gain = 1 } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "v_atlas_1",
     blueprint_compat = true,
     demicoloncompat = true,

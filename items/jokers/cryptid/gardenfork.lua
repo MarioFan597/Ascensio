@@ -1,7 +1,7 @@
 SMODS.Joker({
     key = "gardenfork",
     config = { extra = { money = 1.7 } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "c_atlas_1",
     blueprint_compat = true,
     demicoloncompat = true,

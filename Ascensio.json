@@ -13,9 +13,8 @@
     "badge_text_colour": "FFFFFF",
     "version": "0.2.0~alpha2",
     "dependencies": [
-        "Talisman (>=2.7)",
-        "Cryptid (>=0.5.14)",
-        "Steamodded (>=1.0.0~BETA-1224a)"
+        "Steamodded (>=1.0.0~BETA-1503a)",
+        "Spectrallib (>=1.1.2)",
     ]
 }
 

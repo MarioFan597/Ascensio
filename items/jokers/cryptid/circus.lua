@@ -4,7 +4,7 @@ local rarity_mapping = {
     [3] = 3,
     ["cry_epic"] = 4,
     [4] = 5,
-    ["cry_exotic"] = 6,
+    ["asc_ascended"] = 6,
 }
 
 if Entropy then
@@ -32,7 +32,7 @@ SMODS.Joker({
     order = 4,
     pos = { x = 0, y = 4 },
     soul_pos = { x = 2, y = 4, extra = { x = 1, y = 4 } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     cost = 50,
     blueprint_compat = true,
     atlas = "c_atlas_1",

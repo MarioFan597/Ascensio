@@ -7,7 +7,7 @@ SMODS.Atlas({
 
 SMODS.Joker({
     key = "trading",
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "trading_card",
     blueprint_compat = true,
     demicoloncompat = true,

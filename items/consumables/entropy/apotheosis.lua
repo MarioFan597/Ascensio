@@ -56,7 +56,7 @@ SMODS.Consumable({
                 delay = 0.75,
                 func = function()
                     for _, v in pairs(deletable_jokers) do
-                        if v.config.center.rarity == "cry_exotic" then
+                        if v.config.center.rarity == "asc_ascended" then
                             check_for_unlock({ type = "what_have_you_done" })
                         end
                         v:start_dissolve(nil, _first_dissolve)

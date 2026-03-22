@@ -8,7 +8,7 @@ SMODS.Atlas({
 SMODS.Joker({
     key = "square",
     config = { extra = { gain = 0.004, chips = 1 } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "square",
     blueprint_compat = true,
     demicoloncompat = true,

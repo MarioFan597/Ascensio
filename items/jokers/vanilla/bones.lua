@@ -4,7 +4,7 @@ SMODS.Joker({
     pos = { x = 3, y = 13 },
     soul_pos = { x = 5, y = 13, extra = { x = 4, y = 13 } },
 
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "v_atlas_1",
 
     blueprint_compat = true,

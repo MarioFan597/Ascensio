@@ -1,7 +1,7 @@
 SMODS.Joker({
     key = "hanging_chad",
     config = { extra = { retriggers = 0, hand_gain = 1, immutable = { max_rep = 200 } } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "v_atlas_1",
     blueprint_compat = true,
     demicoloncompat = false,

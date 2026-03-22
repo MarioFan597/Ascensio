@@ -1,7 +1,7 @@
 SMODS.Joker({
     key = "chuckle_cola",
     config = { extra = { triggers = 20, xchip_mod = 2, gain = 1, immutable = { trig_reset = 20 } } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "e_atlas_1",
     blueprint_compat = true,
     demicoloncompat = true,

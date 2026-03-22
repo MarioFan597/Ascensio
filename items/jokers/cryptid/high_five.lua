@@ -1,7 +1,7 @@
 SMODS.Joker({
     key = "high_five",
     config = { extra = {} },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "c_atlas_1",
     blueprint_compat = false,
     demicoloncompat = false,

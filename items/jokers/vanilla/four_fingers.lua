@@ -1,6 +1,6 @@
 SMODS.Joker({
     key = "four_fingers",
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "v_atlas_1",
     blueprint_compat = false,
     demicoloncompat = false,
@@ -20,6 +20,8 @@ SMODS.Joker({
         },
     },
 })
+
+Spectrallib.optional_feature("ascension_power")
 
 local oldsmodsfourfingers = SMODS.four_fingers
 function SMODS.four_fingers()

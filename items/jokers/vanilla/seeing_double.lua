@@ -3,7 +3,7 @@ local flag = false
 
 SMODS.Joker({
     key = "seeing_double",
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "v_atlas_2",
 
     pos = { x = 9, y = 2 }, -- todo: replace with next index, mariofan do this for me im lazy af

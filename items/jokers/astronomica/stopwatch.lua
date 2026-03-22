@@ -8,7 +8,7 @@ SMODS.Atlas({
 SMODS.Joker({
     key = "stopwatch",
     config = { extra = { chips = 0, gold_count = 0, chip_mod = 1 } },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "stopwatch",
     blueprint_compat = true,
     demicoloncompat = true,

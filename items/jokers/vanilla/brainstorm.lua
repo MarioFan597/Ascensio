@@ -8,7 +8,7 @@ SMODS.Atlas({
 SMODS.Joker({
     key = "brainstorm",
     config = { extra = {} },
-    rarity = "cry_exotic",
+    rarity = "asc_ascended",
     atlas = "brainstorm",
     blueprint_compat = true,
     demicoloncompat = true,
@@ -54,7 +54,7 @@ SMODS.Joker({
 
         --[[
 		local unallowed_rarietes = {
-			"cry_exotic",
+			"asc_ascended",
 			'jen_wondrous',
 			'jen_extraordinary',
 			'jen_ritualistic',
