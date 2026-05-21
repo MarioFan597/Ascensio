@@ -263,6 +263,7 @@ function SMODS.create_mod_badges(obj, badges)
                 local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE + 2.7 * 1 * G.TILESCALE * font.FONTSCALE
                 calced_text_width = math.floor(calced_text_width + tx / (G.TILESIZE * G.TILESCALE))
             end
+            ---@diagnostic disable-next-line: assign-type-mismatch
             local scale_fac = calced_text_width > max_text_width and max_text_width / calced_text_width or 1
             return scale_fac
         end
@@ -361,11 +362,14 @@ function SMODS.create_mod_badges(obj, badges)
             local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
             local calced_text_width = 0
 
+            ---@diagnostic disable-next-line: access-invisible, undefined-field
             -- Math reproduced from DynaText:update_text
             for _, c in utf8.chars(text) do
                 local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE + 2.7 * 1 * G.TILESCALE * font.FONTSCALE
+                ---@diagnostic disable-next-line: assign-type-mismatch
                 calced_text_width = calced_text_width + tx / (G.TILESIZE * G.TILESCALE)
             end
+            ---@diagnostic disable-next-line: assign-type-mismatch
             local scale_fac = calced_text_width > max_text_width and max_text_width / calced_text_width or 1
             return scale_fac
         end
@@ -465,11 +469,15 @@ function SMODS.create_mod_badges(obj, badges)
             local font = G.LANG.font
             local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
             local calced_text_width = 0
+
+            ---@diagnostic disable-next-line: access-invisible, undefined-field
             -- Math reproduced from DynaText:update_text
             for _, c in utf8.chars(text) do
                 local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE + 2.7 * 1 * G.TILESCALE * font.FONTSCALE
+                ---@diagnostic disable-next-line: assign-type-mismatch
                 calced_text_width = calced_text_width + tx / (G.TILESIZE * G.TILESCALE)
             end
+            ---@diagnostic disable-next-line: assign-type-mismatch
             local scale_fac = calced_text_width > max_text_width and max_text_width / calced_text_width or 1
             return scale_fac
         end
@@ -560,6 +568,7 @@ function SMODS.create_mod_badges(obj, badges)
 end
 
 -- Mod Menu
+SMODS.current_mod = SMODS.current_mod or {}
 
 --#region SMODS UI funcs (additions, config, collection) Taken from Cardsleves to make custom mod background description clear--
 SMODS.current_mod.description_loc_vars = function()
