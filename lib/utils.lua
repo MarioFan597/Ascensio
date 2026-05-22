@@ -1,36 +1,49 @@
----@generic T
----@param tbl T[]
----@param item T
----@return boolean
-function table.contains(tbl, item)
-    for _, tbl_item in ipairs(tbl) do
-        if tbl_item == item then
-            return true
+--- @generic T
+---
+--- Check if array contains an item
+---
+--- @param tbl T[] Array of items.
+--- @param item T Item to check.
+--- @param cmp? fun(a: T, b: T): boolean Optional comparator function.
+--- @return boolean
+function table.contains(tbl, item, cmp)
+    if not cmp then
+        for _, tbl_item in ipairs(tbl) do
+            if tbl_item == item then
+                return true
+            end
+        end
+    else
+        for _, tbl_item in ipairs(tbl) do
+            if cmp(tbl_item, item) then
+                return true
+            end
         end
     end
 
     return false
 end
 
----@param amount number
+--- @param amount number
 function ease_joker_slot(amount)
     G.jokers.config.card_limit = G.jokers.config.card_limit + amount
 end
 
----@param amount number|table?
+--- @param amount number|table?
+--- @param instant any?
 function ease_dollars_mult(amount, instant) --By Omega. Pretty much thunk's ease dollars but with mutiplication
-    local function _amount(amount)
+    local function __inner(__inner_amount)
         local one = 1
-        amount = amount or 1
-        if amount > one then
+        __inner_amount = __inner_amount or 1
+        if __inner_amount > one then
             local ui = G.HUD:get_UIE_by_ID("dollar_text_UI")
             local text = "X" .. localize("$")
             local col = G.C.MONEY
 
             ---@diagnostic disable-next-line: undefined-global
-            inc_career_stat("c_dollars_earned", (amount - one) * G.GAME.dollars)
+            inc_career_stat("c_dollars_earned", (__inner_amount - one) * G.GAME.dollars)
 
-            G.GAME.dollars = G.GAME.dollars * amount
+            G.GAME.dollars = G.GAME.dollars * __inner_amount
             ---@diagnostic disable-next-line: undefined-global
             check_and_set_high_score("most_money", G.GAME.dollars)
             check_for_unlock({ type = "money" })
@@ -39,7 +52,7 @@ function ease_dollars_mult(amount, instant) --By Omega. Pretty much thunk's ease
 
             ---@diagnostic disable-next-line: undefined-global
             attention_text({
-                text = text .. amount,
+                text = text .. __inner_amount,
                 scale = 0.8,
                 hold = 0.7,
                 cover = ui.parent,
@@ -52,12 +65,12 @@ function ease_dollars_mult(amount, instant) --By Omega. Pretty much thunk's ease
     end
 
     if instant then
-        _amount(amount)
+        __inner(amount)
     else
         G.E_MANAGER:add_event(Event({
             trigger = "immediate",
             func = function()
-                _amount(amount)
+                __inner(amount)
                 return true
             end,
         }))
