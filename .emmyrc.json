@@ -1,0 +1,8 @@
+{
+    "diagnostics": {
+        "disable": ["need-check-nil"]
+    },
+    "workspace": {
+        "library": ["~/.emmylua/3rd"]
+    }
+}
