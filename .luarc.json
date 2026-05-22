@@ -1,7 +1,9 @@
 {
-    "diagnostics.globals": ["Cryptid", "Entropy", "NFS", "CardSleeves", "lenient_bignum"],
+    "diagnostics.globals": ["Cryptid", "Entropy", "NFS", "CardSleeves", "lenient_bignum", "Big", "Talisman", "to_big", "to_number"],
 
     "runtime": {
         "version": "LuaJIT"
-    }
+    },
+
+    "workspace.checkThirdParty": true
 }
