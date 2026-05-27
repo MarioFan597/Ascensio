@@ -1,3 +1,11 @@
+--- Returns the larger value of 2 numbers
+--- @param a number
+--- @param b number
+--- @return number max
+function max(a, b)
+    return (a > b) and a or b
+end
+
 --- @generic T
 ---
 --- Check if array contains an item
@@ -22,6 +30,16 @@ function table.contains(tbl, item, cmp)
     end
 
     return false
+end
+
+--- @generic K, V
+--- @param tbl table<K, V>?
+--- @param key K
+--- @return V?
+function table.safe_get(tbl, key)
+    if tbl then
+        return tbl[key]
+    end
 end
 
 --- @param amount number

@@ -398,7 +398,7 @@ return {
                     },
                     --[[{
 						"{C:attention}Stone{} cards give",
-						"{X:asc_echips,C:white}^#2#{} Chips when scored.",  
+						"{X:asc_echips,C:white}^#2#{} Chips when scored.",
 					},]]
                 },
             },
@@ -408,6 +408,23 @@ return {
                 text = {
                     "{X:mult,C:white}X#1#{}",
                     "{C:attention}X#2#{} for every {C:attention}#4#{} {C:inactive}[#3#]{} hands played",
+                },
+            },
+
+            j_asc_eight_ball = {
+                name = "Octo Caelestes",
+                text = {
+                    {
+                        "Each played {C:attention}8{} has a {C:green}#1# in #2#{}",
+                        "chance of creating a random",
+                        "{C:dark_edition}Negative{} {C:tarot}Tarot{} or {C:planet}Planet{} card",
+                    },
+                    {
+                        "Gain {X:mult,C:white}X#3#{} Mult whenever",
+                        "a {C:tarot}Tarot{} or {C:planet}Planet{}",
+                        "is used.",
+                        "{C:inactive}(Currently{} {X:mult,C:white}X#4#{} {C:inactive}Mult){}",
+                    },
                 },
             },
 
@@ -476,6 +493,26 @@ return {
                     "{X:asc_emult,C:white}^#2#{} Mult for",
                     "each {C:attention}Joker{} card",
                     "{C:inactive}(Currently {X:asc_emult,C:white}^#1#{} {C:inactive}Mult){}",
+                },
+            },
+
+            j_asc_delayed_grat = {
+                name = "Voluptas Dilata",
+                text = {
+                    {
+                        "On {C:attention}blind{} select",
+                        "Gain all unused {C:red}discards{} from last round",
+                        "{C:inactive}(Currently {C:red}#1#{} discards){}",
+                    },
+                    {
+                        "Gain {X:asc_emult,C:white}^#2#{} Mult",
+                        "for each {C:red}discards{} you have.",
+                        "{C:inactive}(Currently {X:asc_emult,C:white}^#3#{} Mult){}",
+                    },
+                    {
+                        "Earn {C:money}$#4#{} per {C:red}discard{}",
+                        "if no discards are used by end of the round",
+                    },
                 },
             },
 
@@ -1305,16 +1342,16 @@ return {
                     {
                         "Retrigger each played {C:attention}7{}",
                         "{C:attention}#1#{} additional times",
-                        "{C:inactive}(Max{} {C:attention}#2#{} {C:inactive}retriggers){}"
+                        "{C:inactive}(Max{} {C:attention}#2#{} {C:inactive}retriggers){}",
                     },
                     {
                         "Scored {C:attention}7{}s have a {C:green}#3# in #4#{}",
                         "chance to {C:attention}multiply{} values",
                         "of random Joker by {C:attention}#5#{}",
-                        "{C:inactive}(Includes self)"
+                        "{C:inactive}(Includes self)",
                     },
                     {
-                        "{C:red}Destroy{} scored {C:attention}7{}s"
+                        "{C:red}Destroy{} scored {C:attention}7{}s",
                     },
                 },
             },

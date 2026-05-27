@@ -31,7 +31,8 @@ SMODS.Joker({
 
     --Taken from old blueprint and Chad
     calculate = function(self, card, context)
-        local other_joker = nil
+        ---@type balatro.Card?
+        local other_joker
         for i = 1, #G.jokers.cards do
             if G.jokers.cards[i] == card then
                 other_joker = G.jokers.cards[i - 1]
