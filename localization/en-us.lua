@@ -506,7 +506,7 @@ return {
                     },
                     {
                         "Gain {X:asc_emult,C:white}^#2#{} Mult",
-                        "for each {C:red}discards{} you have.",
+                        "for each {C:red}discard{} you have.",
                         "{C:inactive}(Currently {X:asc_emult,C:white}^#3#{} Mult){}",
                     },
                     {
