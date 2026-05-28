@@ -444,7 +444,7 @@ return {
                         "{C:inactive}(Currently {C:blue}#1#{} hands){}",
                     },
                     {
-                        "Retrigger all played card for {X:attention,C:white}#2#^X{}",
+                        "Retrigger all played cards {X:attention,C:white}#2#^X{}",
                         "times, where {X:attention,C:white}X{} is hand played this round.",
                         "{C:inactive}(Maximum 32 retriggers){}",
                         "{C:inactive}(Currently {C:attention}#3#{} retriggers){}",
@@ -1248,6 +1248,15 @@ return {
                         "of same rarity as leftmost",
                         "{C:inactive,s:0.9}(Cannot affect self; must have room)",
                     },
+                },
+            },
+
+            j_asc_satellite = {
+                name = "Luna Artificialis",
+                text = {
+                    "Earn {C:money}$#1#{} at end of round per",
+                    "{C:planet}Planet{} card used this run",
+                    "{C:inactive}(Currently {C:money}$#2#{}){}",
                 },
             },
 
