@@ -77,7 +77,6 @@ end
 ---@field source_file? "skip"|string Where the Joker is defined in. Defaults to the key of the Ascended Joker with the leading `"j_asc"` removed. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
 ---@field to_entropic? string The key of the Apotheosis joker.
 ---@field entropic_file? "skip"|string Where the Entropic Joker is defined in. Defaults to the key of the Mortal Joker with the leading `"j_"` removed and the `"_entr"` appended. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
-
 ---@overload fun(o: AscensionInternal): AscensionInternal
 local AscensionInternal = setmetatable({}, {
     ---@param asc AscensionInternal
@@ -134,6 +133,7 @@ AscensionInternal({ source = Source.Vanilla, from = "j_marble", to_exotic = "j_a
 AscensionInternal({ source = Source.Vanilla, from = "j_loyalty_card", to_exotic = "j_asc_loyalty_card" })
 AscensionInternal({ source = Source.Vanilla, from = "j_8_ball", to_exotic = "j_asc_eight_ball" })
 AscensionInternal({ source = Source.Vanilla, from = "j_misprint", to_exotic = "j_asc_misprint" })
+AscensionInternal({ source = Source.Vanilla, from = "j_dusk", to_exotic = "j_asc_dusk" })
 AscensionInternal({ source = Source.Vanilla, from = "j_raised_fist", to_exotic = "j_asc_raised_fist" })
 AscensionInternal({ source = Source.Vanilla, from = "j_fibonacci", to_exotic = "j_asc_fibonacci" })
 AscensionInternal({ source = Source.Vanilla, from = "j_steel_joker", to_exotic = "j_asc_steel_joker" })

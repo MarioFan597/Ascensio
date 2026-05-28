@@ -435,6 +435,23 @@ return {
                 },
             },
 
+            j_asc_dusk = {
+                name = "Finis Dierum",
+                text = {
+                    {
+                        "On {C:attention}blind{} select",
+                        "Gain all unused {C:blue}hands{} from last round",
+                        "{C:inactive}(Currently {C:blue}#1#{} hands){}",
+                    },
+                    {
+                        "Retrigger all played card for {X:attention,C:white}#2#^X{}",
+                        "times, where {X:attention,C:white}X{} is hand played this round.",
+                        "{C:inactive}(Maximum 32 retriggers){}",
+                        "{C:inactive}(Currently {C:attention}#3#{} retriggers){}",
+                    },
+                },
+            },
+
             j_asc_raised_fist = {
                 name = "Pugnus Populi",
                 text = {
