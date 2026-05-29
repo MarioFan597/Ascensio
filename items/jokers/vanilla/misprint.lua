@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-global
 SMODS.Atlas({
     key = "misprint",
     path = "jokers/vanilla/misprint.png",

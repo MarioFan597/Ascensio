@@ -77,7 +77,6 @@ end
 ---@field source_file? "skip"|string Where the Joker is defined in. Defaults to the key of the Ascended Joker with the leading `"j_asc"` removed. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
 ---@field to_entropic? string The key of the Apotheosis joker.
 ---@field entropic_file? "skip"|string Where the Entropic Joker is defined in. Defaults to the key of the Mortal Joker with the leading `"j_"` removed and the `"_entr"` appended. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
-
 ---@overload fun(o: AscensionInternal): AscensionInternal
 local AscensionInternal = setmetatable({}, {
     ---@param asc AscensionInternal
@@ -132,7 +131,9 @@ AscensionInternal({ source = Source.Vanilla, from = "j_banner", to_exotic = "j_a
 AscensionInternal({ source = Source.Vanilla, from = "j_mystic_summit", to_exotic = "j_asc_mystic_summit" })
 AscensionInternal({ source = Source.Vanilla, from = "j_marble", to_exotic = "j_asc_marble", to_entropic = "j_asc_marble_entr" })
 AscensionInternal({ source = Source.Vanilla, from = "j_loyalty_card", to_exotic = "j_asc_loyalty_card" })
+AscensionInternal({ source = Source.Vanilla, from = "j_8_ball", to_exotic = "j_asc_eight_ball" })
 AscensionInternal({ source = Source.Vanilla, from = "j_misprint", to_exotic = "j_asc_misprint" })
+AscensionInternal({ source = Source.Vanilla, from = "j_dusk", to_exotic = "j_asc_dusk" })
 AscensionInternal({ source = Source.Vanilla, from = "j_raised_fist", to_exotic = "j_asc_raised_fist" })
 AscensionInternal({ source = Source.Vanilla, from = "j_fibonacci", to_exotic = "j_asc_fibonacci" })
 AscensionInternal({ source = Source.Vanilla, from = "j_steel_joker", to_exotic = "j_asc_steel_joker" })
@@ -143,6 +144,7 @@ AscensionInternal({ source = Source.Vanilla, from = "j_space", to_exotic = "j_as
 AscensionInternal({ source = Source.Vanilla, from = "j_egg", to_exotic = "j_asc_egg" })
 AscensionInternal({ source = Source.Vanilla, from = "j_scary_face", to_exotic = "j_asc_scary" })
 AscensionInternal({ source = Source.Vanilla, from = "j_abstract", to_exotic = "j_asc_abstract" })
+AscensionInternal({ source = Source.Vanilla, from = "j_delayed_grat", to_exotic = "j_asc_delayed_grat" })
 AscensionInternal({ source = Source.Vanilla, from = "j_hack", to_exotic = "j_asc_hack" })
 AscensionInternal({ source = Source.Vanilla, from = "j_blackboard", to_exotic = "j_asc_blackboard" })
 AscensionInternal({ source = Source.Vanilla, from = "j_ice_cream", to_exotic = "j_asc_ice_cream" })
@@ -189,6 +191,7 @@ AscensionInternal({ source = Source.Vanilla, from = "j_order", to_exotic = "j_as
 AscensionInternal({ source = Source.Vanilla, from = "j_tribe", to_exotic = "j_asc_tribe" })
 AscensionInternal({ source = Source.Vanilla, from = "j_invisible", to_exotic = "j_asc_invisible" })
 AscensionInternal({ source = Source.Vanilla, from = "j_brainstorm", to_exotic = "j_asc_brainstorm" })
+AscensionInternal({ source = Source.Vanilla, from = "j_satellite", to_exotic = "j_asc_satellite" })
 AscensionInternal({ source = Source.Vanilla, from = "j_drivers_license", to_exotic = "j_asc_drivers_license" })
 AscensionInternal({ source = Source.Vanilla, from = "j_bootstraps", to_exotic = "j_asc_bootstraps" })
 AscensionInternal({ source = Source.Vanilla, from = "j_caino", to_exotic = "j_asc_canio" }) -- Sic! Don't correct!
@@ -263,6 +266,7 @@ function SMODS.create_mod_badges(obj, badges)
                 local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE + 2.7 * 1 * G.TILESCALE * font.FONTSCALE
                 calced_text_width = math.floor(calced_text_width + tx / (G.TILESIZE * G.TILESCALE))
             end
+            ---@diagnostic disable-next-line: assign-type-mismatch
             local scale_fac = calced_text_width > max_text_width and max_text_width / calced_text_width or 1
             return scale_fac
         end
@@ -361,11 +365,14 @@ function SMODS.create_mod_badges(obj, badges)
             local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
             local calced_text_width = 0
 
+            ---@diagnostic disable-next-line: access-invisible, undefined-field
             -- Math reproduced from DynaText:update_text
             for _, c in utf8.chars(text) do
                 local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE + 2.7 * 1 * G.TILESCALE * font.FONTSCALE
+                ---@diagnostic disable-next-line: assign-type-mismatch
                 calced_text_width = calced_text_width + tx / (G.TILESIZE * G.TILESCALE)
             end
+            ---@diagnostic disable-next-line: assign-type-mismatch
             local scale_fac = calced_text_width > max_text_width and max_text_width / calced_text_width or 1
             return scale_fac
         end
@@ -465,11 +472,15 @@ function SMODS.create_mod_badges(obj, badges)
             local font = G.LANG.font
             local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
             local calced_text_width = 0
+
+            ---@diagnostic disable-next-line: access-invisible, undefined-field
             -- Math reproduced from DynaText:update_text
             for _, c in utf8.chars(text) do
                 local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE + 2.7 * 1 * G.TILESCALE * font.FONTSCALE
+                ---@diagnostic disable-next-line: assign-type-mismatch
                 calced_text_width = calced_text_width + tx / (G.TILESIZE * G.TILESCALE)
             end
+            ---@diagnostic disable-next-line: assign-type-mismatch
             local scale_fac = calced_text_width > max_text_width and max_text_width / calced_text_width or 1
             return scale_fac
         end
@@ -560,6 +571,7 @@ function SMODS.create_mod_badges(obj, badges)
 end
 
 -- Mod Menu
+SMODS.current_mod = SMODS.current_mod or {}
 
 --#region SMODS UI funcs (additions, config, collection) Taken from Cardsleves to make custom mod background description clear--
 SMODS.current_mod.description_loc_vars = function()

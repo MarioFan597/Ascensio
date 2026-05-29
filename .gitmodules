@@ -1,0 +1,3 @@
+[submodule "lsp/balatro"]
+	path = lsp/balatro
+	url = https://github.com/frostice482/balatro-lsp

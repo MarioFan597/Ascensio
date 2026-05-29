@@ -1,9 +1,9 @@
 {
-    "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
-    "diagnostics.globals": [
+    "diagnostics.globals": ["Cryptid", "Entropy", "NFS", "CardSleeves", "lenient_bignum", "Big", "Talisman", "AST", "to_big", "to_number"],
 
-    ],
     "runtime": {
         "version": "LuaJIT"
-    }
+    },
+
+    "workspace.checkThirdParty": true
 }
