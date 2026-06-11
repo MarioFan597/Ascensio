@@ -847,6 +847,14 @@ return {
                 },
             },
 
+            j_asc_mail = {
+                name = "Promotio Venditionis",
+                text = {
+                    "Earn {X:money,C:white}$X#1#{} the amount of {C:chips}chips{} value",
+                    "of each {C:attention}discarded{} card",
+                },
+            },
+
             j_asc_photograph = {
                 name = "Charta Memoria",
                 text = {
