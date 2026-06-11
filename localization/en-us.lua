@@ -1343,6 +1343,20 @@ return {
                 },
             },
 
+            j_asc_burnt = {
+                name = "Reliquiae Ustae",
+                text = {
+                    {
+                        "Level up the level of {C:attention}discarded{} hand",
+                        "equal to {C:red}discards{} left",
+                    },
+                    {
+                        "Gain {C:red}discards{} equal to the {C:attention}lowest{}",
+                        "hand level whenever a {C:attention}Blind{} is selected",
+                    },
+                },
+            },
+
             -----Cryptid-----
             j_asc_canvas = {
                 name = "Pictura Olei",
