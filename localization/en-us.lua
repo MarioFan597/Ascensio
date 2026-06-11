@@ -1347,12 +1347,13 @@ return {
                 name = "Reliquiae Ustae",
                 text = {
                     {
-                        "Level up the level of {C:attention}discarded{} hand",
-                        "equal to {C:red}discards{} left",
+                        "Upgrade the level of {C:attention}discarded{} hand",
+                        "by the number of remaining {C:red}discards{}",
                     },
                     {
-                        "Gain {C:red}discards{} equal to the {C:attention}lowest{}",
-                        "hand level whenever a {C:attention}Blind{} is selected",
+                        "When blind is selected",
+                        "gain {C:red}discards{} equal to the {C:attention}level{} of",
+                        "the {C:attention}lowest leveled hand{",
                     },
                 },
             },
