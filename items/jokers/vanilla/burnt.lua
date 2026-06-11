@@ -15,11 +15,7 @@ SMODS.Joker({
     calculate = function(_, card, ctx)
         if (ctx.pre_discard and not ctx.hook) or ctx.forcetrigger then
             local text, _ = G.FUNCS.get_poker_hand_info(G.hand.highlighted)
-
-            return {
-                level_up = G.GAME.current_round.discards_left,
-                level_up_hand = text,
-            }
+            level_up_hand(card, text, nil, G.GAME.current_round.discards_left)
         end
 
         if ctx.blind then

@@ -266,6 +266,7 @@ AscensionInternal({ source = Source.Vanilla, from = "j_bootstraps", to_exotic = 
 AscensionInternal({ source = Source.Vanilla, from = "j_caino", to_exotic = "j_asc_canio" }) -- Sic! Don't correct!
 AscensionInternal({ source = Source.Vanilla, from = "j_seance", to_exotic = "j_asc_seance" })
 AscensionInternal({ source = Source.Vanilla, from = "j_vampire", to_exotic = "j_asc_vampire" })
+AscensionInternal({ source = Source.Vanilla, from = "j_burnt", to_exotic = "j_asc_burnt" })
 
 -- Cryptid Ascensions
 AscensionInternal({ source = Source.Cryptid, from = "j_cry_canvas", to_exotic = "j_asc_canvas" })
