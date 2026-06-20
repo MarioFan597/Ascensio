@@ -70,6 +70,73 @@ local function get_source_file(key)
     return string.sub(key, 7)
 end
 
+---@alias AscensionSource "vanilla"|"cryptid"|"cryptid_mortals"|"entropy"|"astronomica"|string
+
+---@class Ascension
+---@field exotic string The key of the Ascended joker.
+---@field entropic? string The key of the Apotheosis joker.
+---@field exotic_file? "skip"|string Where the Joker is defined in. If the source file is `"skip"` then loading will be skipped.
+---@field entropic_file? "skip"|string Where the Entropic Joker is defined in. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
+---@overload fun(asc: Ascension): Ascension
+Ascensio.Ascension = setmetatable({}, {
+    ---@param asc Ascension
+    __call = function(_, asc)
+        return asc
+    end,
+})
+
+--- Register Ascensions. Internal use only
+---@param o table<AscensionSource, table<string, Ascension>>
+local function ascensioRegisterInternal(o)
+    for source, ascensionEntries in pairs(o) do
+        ---@diagnostic disable-next-line: redefined-local
+        ---@type string
+        local source = source
+        for mortal, ascensions in pairs(ascensionEntries) do
+            ---@diagnostic disable-next-line: redefined-local
+            ---@type string, Ascension
+            local mortal, ascensions = mortal, ascensions
+            if ascensions.exotic_file ~= "skip" then
+                local source_file = ascensions.exotic_file or get_source_file(ascensions.exotic)
+                loadFile(string.format("items/jokers/%s/%s.lua", source, source_file))
+            end
+
+            Ascensio.Ascensionable[mortal] = ascensions.exotic
+            Ascensio.Descensions[ascensions.exotic] = mortal
+
+            if Ascensio.Apothable and ascensions.entropic ~= nil then
+                if ascensions.entropic_file ~= "skip" then
+                    local entr_src = ascensions.entropic_file or get_source_file(ascensions.entropic)
+                    loadFile(string.format("items/jokers/%s/entr/%s.lua"))
+                end
+
+                Ascensio.Apothable[mortal] = ascensions.entropic
+                Ascensio.Apothable[ascensions.exotic] = ascensions.entropic
+
+                Ascensio.Descensions[ascensions.entropic] = mortal
+            end
+        end
+    end
+end
+
+--- Register Ascensions.
+--- The input table should be in format:
+--- `{ [mortal_key]: { exotic: ascended_key, entropic?: entropic_key } }`
+--- where:
+--- - `mortal_key` is the key of the mortal Joker.
+--- - `ascended_key` is the key of the ascended Joker.
+--- - `entropic_key` is the key of the apotheosis Joker.    (Require Entropy).
+---@param o  table<string, Ascension>
+function Ascensio.register(o)
+    local processed = {}
+
+    for mortal, ascension in pairs(processed) do
+        processed[mortal] = { exotic = ascension.exotic, entropic = ascension.entropic, exotic_file = "skip", entropic_file = "skip" }
+    end
+
+    ascensioRegisterInternal(processed)
+end
+
 ---@class AscensionInternal
 ---@field source Source Where is the source of the Mortal version of the Joker. Defaults to `Source.Vanilla`.
 ---@field from string The key of the Mortal joker.
@@ -105,6 +172,7 @@ local AscensionInternal = setmetatable({}, {
     end,
 })
 
+-- todo: port this whole mess to the newer api i js wrote above
 -- Vanilla Ascensions
 AscensionInternal({ source = Source.Vanilla, from = "j_joker", to_exotic = "j_asc_jimbo", to_entropic = "j_asc_jimbo_entr" })
 AscensionInternal({ source = Source.Vanilla, from = "j_greedy_joker", to_exotic = "j_asc_greedy" })
@@ -162,6 +230,7 @@ AscensionInternal({ source = Source.Vanilla, from = "j_cloud_9", to_exotic = "j_
 AscensionInternal({ source = Source.Vanilla, from = "j_rocket", to_exotic = "j_asc_rocket" })
 AscensionInternal({ source = Source.Vanilla, from = "j_obelisk", to_exotic = "j_asc_obelisk" })
 AscensionInternal({ source = Source.Vanilla, from = "j_midas_mask", to_exotic = "j_asc_midas" })
+AscensionInternal({ source = Source.Vanilla, from = "j_mail", to_exotic = "j_asc_mail" })
 AscensionInternal({ source = Source.Vanilla, from = "j_photograph", to_exotic = "j_asc_photograph" })
 AscensionInternal({ source = Source.Vanilla, from = "j_to_the_moon", to_exotic = "j_asc_to_the_moon" })
 AscensionInternal({ source = Source.Vanilla, from = "j_golden", to_exotic = "j_asc_golden" })
@@ -197,6 +266,7 @@ AscensionInternal({ source = Source.Vanilla, from = "j_bootstraps", to_exotic = 
 AscensionInternal({ source = Source.Vanilla, from = "j_caino", to_exotic = "j_asc_canio" }) -- Sic! Don't correct!
 AscensionInternal({ source = Source.Vanilla, from = "j_seance", to_exotic = "j_asc_seance" })
 AscensionInternal({ source = Source.Vanilla, from = "j_vampire", to_exotic = "j_asc_vampire" })
+AscensionInternal({ source = Source.Vanilla, from = "j_burnt", to_exotic = "j_asc_burnt" })
 
 -- Cryptid Ascensions
 AscensionInternal({ source = Source.Cryptid, from = "j_cry_canvas", to_exotic = "j_asc_canvas" })
@@ -668,15 +738,3 @@ SMODS.current_mod.config_tab = function()
         },
     }
 end
-
----@class Ascension
----@field from string The key of the Mortal joker.
----@field to string The key of the Ascended joker.
----@field to_entropic? string The key of the Apotheosis joker.
----@overload fun(o: Ascension): Ascension
-Ascensio.Ascension = setmetatable({}, {
-    ---@param o Ascension
-    __call = function(_, o)
-        return AscensionInternal({ source = Source.Other, source_file = "skip", entropic_file = "skip", from = o.from, to_exotic = o.to, to_entropic = o.to_entropic })
-    end,
-})

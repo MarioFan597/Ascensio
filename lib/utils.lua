@@ -6,6 +6,14 @@ function max(a, b)
     return (a > b) and a or b
 end
 
+--- Returns the smaller value of 2 numbers
+--- @param a number
+--- @param b number
+--- @return number max
+function min(a, b)
+    return (a < b) and a or b
+end
+
 --- @generic T
 ---
 --- Check if array contains an item

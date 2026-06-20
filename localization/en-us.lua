@@ -847,6 +847,14 @@ return {
                 },
             },
 
+            j_asc_mail = {
+                name = "Promotio Venditionis",
+                text = {
+                    "Earn {X:money,C:white}$X#1#{} the amount of {C:chips}chips{} value",
+                    "of each {C:attention}discarded{} card",
+                },
+            },
+
             j_asc_photograph = {
                 name = "Charta Memoria",
                 text = {
@@ -1331,6 +1339,21 @@ return {
                         "each hand without a",
                         "scoring {C:attention}Enhanced{} card",
                         "{C:inactive}(Can't go below {X:dark_edition,C:edition}^^1{}{C:inactive}){}",
+                    },
+                },
+            },
+
+            j_asc_burnt = {
+                name = "Reliquiae Ustae",
+                text = {
+                    {
+                        "Upgrade the level of {C:attention}discarded{} hand",
+                        "by the number of remaining {C:red}discards{}",
+                    },
+                    {
+                        "When blind is selected",
+                        "gain {C:red}discards{} equal to the {C:attention}level{} of",
+                        "the {C:attention}lowest leveled hand{",
                     },
                 },
             },
