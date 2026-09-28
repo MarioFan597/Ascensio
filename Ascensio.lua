@@ -754,8 +754,3 @@ SMODS.current_mod.config_tab = function()
         },
     }
 end
-
-local f = assert(io.open("./dumped.json", "w"))
-f:write(Ascensio.JSON.encode(dumped))
-f:flush()
-f:close()

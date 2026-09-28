@@ -524,12 +524,12 @@ return {
                     {
                         "On {C:attention}blind{} select",
                         "Gain all unused {C:red}discards{} from last round",
-                        "{C:inactive}(Currently {C:red}#1#{} discards){}",
+                        "{C:inactive}(Currently {C:red}#1#{C:inactive} discards){}",
                     },
                     {
                         "Gain {X:asc_emult,C:white}^#2#{} Mult",
                         "for each {C:red}discard{} you have.",
-                        "{C:inactive}(Currently {X:asc_emult,C:white}^#3#{} Mult){}",
+                        "{C:inactive}(Currently {X:asc_emult,C:white}^#3#{C:inactive} Mult){}",
                     },
                     {
                         "Earn {C:money}$#4#{} per {C:red}discard{}",
@@ -832,17 +832,16 @@ return {
                         "Increase all other Jokers' values",
                         "by {C:attention}+#1#{} at the {C:attention}end of round{}",
                         "{C:inactive}(If possible){}",
-                        "{C:inactive}(Does not affect self){}",
+                        "{C:inactive}(This effect is immutable){}",
                     },
                     {
                         "Gain {C:money}$#2#{} at the {C:attention}end of round{}",
                         "Payout increases by {C:money}$#1#{}",
                         "whenever {C:attention}Blind{} is defeated",
-                        "{C:inactive,s:0.7}Good night, Terra{}",
                     },
                     {
-                        "Increases Joker's values by {X:attention,C:white}X#3#{}",
-                        "when {C:attention}Boss Blind{} is defeated",
+
+                        "{C:inactive,s:0.7}Good night, Terra{}",
                     },
                 },
             },
@@ -1401,14 +1400,12 @@ return {
                     {
                         "If played hand is a {C:attention}#2#{},",
                         "{C:red}fixed{} {C:green}1 in #3#{} chance to create",
-                        "{C:attention}#1#{} {C:dark_edition}Negative Rare{} consumable",
+                        "{C:attention}#1#{} {C:dark_edition}Negative {C:tarot,E:2}hidden{} consumable",
                         "{C:inactive,s:0.8}(Poker hand changes at end of round){}",
                     },
                     {
-                        "When the above probability {C:attention}fails{},",
-                        "{C:attention}X#4#{} the chance of creating",
-                        "{C:attention}#1#{} {C:dark_edition}Negative Rare{} consumable",
-                        "Otherwise, {C:attention}reset the probabilites{}",
+                        "{C:green}Double{} odds on failure",
+                        "On success, {C:attention}reset{} the odds",
                     },
                 },
             },

@@ -1,8 +1,3 @@
-local pair_ref = pairs
-function pairs(any)
-    return pair_ref(any or {})
-end
-
 ---@param jkr Card | string
 ---@return boolean
 function Ascensio.isAscendable(jkr)
@@ -74,6 +69,6 @@ function Ascensio.descendJoker(jkr)
 end
 
 ---@param samsara? boolean
-function Card:set_samsara(samsara)
+function Card:setSamsara(samsara)
     self.ability.samsara = ((samsara ~= nil) and samsara or false)
 end

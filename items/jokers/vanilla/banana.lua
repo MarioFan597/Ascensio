@@ -1,14 +1,19 @@
 SMODS.Joker({
     key = "banana",
+
     config = { extra = { xmult = 15, xmult_gain = 2.5, odds = 64 } },
     rarity = "cry_exotic",
-    atlas = "v_atlas_1",
+    atlas  = "v_atlas_1",
+
     blueprint_compat = true,
-    demicoloncompat = true,
-    pos = { x = 3, y = 8 },
+    demicoloncompat  = true,
+
+    pos      = { x = 3, y = 8 },
     soul_pos = { x = 5, y = 8, extra = { x = 4, y = 8 } },
-    cost = 50,
+
+    cost  = 50,
     order = 3,
+
     loc_vars = function(_, _, card)
         local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "Exotic Banana")
         return {
@@ -20,6 +25,7 @@ SMODS.Joker({
             },
         }
     end,
+
     calculate = function(_, card, context)
         if context.joker_main or context.forcetrigger then
             return {

@@ -1,3 +1,6 @@
+---@class (partial) balatro.Card
+---@field get_id fun(self: balatro.Card): number?
+
 SMODS.Joker({
     key = "mad",
     rarity = "cry_exotic",
@@ -19,7 +22,7 @@ SMODS.Joker({
             "Somethingcom515",
         },
     },
-    loc_vars = function(self, info_queue, card)
+    loc_vars = function(_, _, card)
         return {
             vars = {
                 card.ability.extra.Xmult_mod,
@@ -61,7 +64,7 @@ SMODS.Joker({
                         end,
                     }))
                     SMODS.calculate_effect({ message = localize("k_level_up_ex") }, context.blueprint_card or card)
-                    SMODS.smart_level_up_hand(context.blueprint_card or card, card.ability.extra.hand_type, nil, temprank)
+                    SMODS.smart_level_up_hand(context.blueprint_card or card, card.ability.extra.hand_type, false, temprank)
                     G.E_MANAGER:add_event(Event({
                         func = function()
                             G.hand:remove_from_highlighted(tempcard)

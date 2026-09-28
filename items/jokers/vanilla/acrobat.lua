@@ -1,18 +1,18 @@
 SMODS.Joker({
-    key = "acrobat",
+    key    = "acrobat",
     rarity = "cry_exotic",
-    atlas = "v_atlas_2",
+    atlas  = "v_atlas_2",
 
-    pos = { x = 0, y = 3 }, -- todo: replace with next index, mariofan do this for me im lazy af
+    pos      = { x = 0, y = 3 }, -- todo: replace with next index, mariofan do this for me im lazy af
     soul_pos = { x = 2, y = 3, extra = { x = 1, y = 3 } },
 
-    cost = 50,
+    cost  = 50,
     order = 1,
 
     config = { extra = { emult = 1, emult_gain = 0.25, multiplier = 2 } },
 
     blueprint_compat = true,
-    demicoloncompat = true,
+    demicoloncompat  = true,
 
     loc_vars = function(_, _, card)
         return { vars = table.get(card.ability.extra, { "emult", "emult_gain", "multiplier" }) or {} }

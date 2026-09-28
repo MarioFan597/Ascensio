@@ -51,10 +51,6 @@ SMODS.Joker({
     },
 
     loc_vars = function(_, info_queue, card)
-        for _, v in ipairs(card.ability.extra.card_pool) do
-            info_queue[#info_queue + 1] = { key = v, set = "Spectral" }
-        end
-
         info_queue[#info_queue + 1] = { key = "asc_fixed", set = "Other" }
 
         return {
