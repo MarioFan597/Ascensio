@@ -61,28 +61,8 @@ SMODS.Joker({
     end,
 
     calculate = function(_, card, context)
-        if not card.ability.extra.bignum or type(card.ability.extra.base) == "number" then
-            if type(card.ability.extra.base) == "number" and card.ability.extra.base > 1e40 then
-                card.ability.extra.bignum = true
-                card.ability.extra.base   = Big:create(card.ability.extra.base)
-            end
-
-            if type(card.ability.extra.base_gain) == "number" and card.ability.extra.base_gain > 1e40 then
-                card.ability.extra.bignum    = true
-                card.ability.extra.base_gain = Big:create(card.ability.extra.base_gain)
-            end
-
-            local mult_tbl = {}
-
-            for _, idx in pairs(rarity_mapping) do
-                mult_tbl[#mult_tbl + 1] = pow(card.ability.extra.base, idx)
-            end
-
-            card.ability.immutable = mult_tbl
-        end
-
         if context.other_joker and card ~= context.other_joker and not context.other_joker.debuff then
-            local emult = card.ability.immutable[rarity_mapping[context.other_joker.config.center.rarity] or 1] or 1
+            local emult = card.ability.immutable[card.ability.mapping[context.other_joker.config.center.rarity] or 1] or 1
 
             if type(emult) == "string" then emult = 1 end
 
@@ -126,7 +106,29 @@ SMODS.Joker({
             return { emult = x }
         end
 
-        if context.joker_main then return { emult = card.ability.immutable[6] } end
+        if context.joker_main then
+            if #card.ability.immutable == 0 and not card.ability.extra.bignum or type(card.ability.extra.base) == "number" then
+                if type(card.ability.extra.base) == "number" and card.ability.extra.base > 1e40 then
+                    card.ability.extra.bignum = true
+                    card.ability.extra.base   = Big:create(card.ability.extra.base)
+                end
+
+                if type(card.ability.extra.base_gain) == "number" and card.ability.extra.base_gain > 1e40 then
+                    card.ability.extra.bignum    = true
+                    card.ability.extra.base_gain = Big:create(card.ability.extra.base_gain)
+                end
+
+                local mult_tbl = {}
+
+                for _, idx in pairs(card.ability.mapping) do
+                    mult_tbl[#mult_tbl + 1] = pow(card.ability.extra.base, idx)
+                end
+
+                card.ability.immutable = mult_tbl
+            end
+
+            return { emult = card.ability.immutable[6] }
+        end
     end,
 
     asc_credits = {

@@ -23,7 +23,7 @@ SMODS.Joker({
         return {
             vars = {
                 card.ability.extra.immutable.manipulate,
-                card.ability.extra.immutable.money,
+                card.ability.extra.money,
             },
         }
     end,
@@ -33,9 +33,10 @@ SMODS.Joker({
             for i = 1, #G.jokers.cards do
                 if G.jokers.cards[i] == card then
                     SMODS.scale_card(card, {
-                        ref_table = card.ability.extra.immutable,
+                        ref_table = card.ability.extra,
                         ref_value = "money",
                         scalar_value = "manipulate",
+                        scalar_table = card.ability.extra.immutable,
                     })
                 else
                     if not Card.no(G.jokers.cards[i], "immutable", true) then

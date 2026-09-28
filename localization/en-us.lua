@@ -836,11 +836,9 @@ return {
                     },
                     {
                         "Gain {C:money}$#2#{} at the {C:attention}end of round{}",
-                        "Payout increases by {C:money}$#1#{}",
-                        "whenever {C:attention}Blind{} is defeated",
                     },
                     {
-
+                        "{C:inactive,s:1.1}Over the Frontier, Into the Front{}",
                         "{C:inactive,s:0.7}Good night, Terra{}",
                     },
                 },
