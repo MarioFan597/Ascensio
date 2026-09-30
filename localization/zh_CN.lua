@@ -32,7 +32,7 @@ return {
         Edition = {},
         Enhanced = {},
 
-        ---@type {[string]: { name: string|string[], text: string[]|string[][] }}
+        ---@type { [string]: { name: string | string[], text: string[] | string[][] } }
         Joker = {
             -----Vanilla-----
             j_asc_jimbo = {

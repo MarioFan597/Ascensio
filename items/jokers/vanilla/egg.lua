@@ -51,10 +51,7 @@ SMODS.Joker({
         if context.setting_blind and not context.blueprint then
             card.ability.extra.xmult = (card.ability.extra.xmult + card.ability.extra_value:log10()):ceil()
 
-            return {
-                message = localize("k_upgrade_ex"),
-                colour = G.C.MULT,
-            }
+            return { message = localize("k_upgrade_ex"), colour = G.C.MULT }
         end
 
         if context.end_of_round and context.main_eval and not (context.game_over or context.blueprint) then
@@ -70,10 +67,7 @@ SMODS.Joker({
             })
             card:set_cost()
 
-            return {
-                message = localize("k_val_up"),
-                colour = G.C.MONEY,
-            }
+            return { message = localize("k_val_up"), colour = G.C.MONEY }
         end
     end,
 

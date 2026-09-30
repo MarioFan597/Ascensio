@@ -4,13 +4,13 @@ return {
             Ascensio = {
                 name = "Ascēnsiō",
                 text = {
-                    "{C:cry_exotic,E:1,s:1.6}Exoticfy your Jokers!{}",
+                    "{C:cry_exotic,E:1,s:1.6}Exoticify your Jokers!{}",
                     "{s:1.3}Adds {C:cry_exotic,E:1,s:1.3}Exotic{s:1.3} forms to normal Jokers",
                     "{s:1.3}and vice versa",
-                    "{s:1.2} {}",
+                    "{s:1.2} ",
                     "{s:1.4,C:attention}Special thanks to:{}",
                     "{s:0.5} ",
-                    "{X:asc_tattered,C:black,s:1.2}Tatteredlurker{}     {X:asc_slipstream,C:black,s:1.2}Lil_Mr._Slipstream{}", --I know B: should be used, but it isnt working
+                    "{X:asc_tattered,C:black,s:1.2}Tatteredlurker{}     {X:asc_slipstream,C:black,s:1.2}Lil_Mr._Slipstream{}", -- I know B: should be used, but it isnt working
                     "{C:asc_tattered,s:0.8}Art                           {C:asc_slipstream,s:0.8}Art   ",
                     "{s:0.2} ",
                     " {X:asc_glitchkat,C:white,s:1.2}Glitchkat10{}       {X:asc_somethingcom515,C:white,s:1.2}Somethingcom515{}",
@@ -28,11 +28,12 @@ return {
                 },
             },
         },
+
         Blind = {},
         Edition = {},
         Enhanced = {},
 
-        ---@type {[string]: { name: string|string[], text: string[]|string[][] }}
+        ---@type { [string]: { name: string | string[], text: string[] | string[][] } }
         Joker = {
             -----Vanilla-----
             j_asc_jimbo = {
@@ -274,7 +275,7 @@ return {
                 name = "Scinditur In Duos",
                 text = {
                     {
-                        "{X:dark_edition,C:edition}^^#1#{} Mult if hand contains",
+                        "{X:asc_emult,C:asc_echips}^^#1#{} Mult if hand contains",
                         "{C:attention}#2#{} or fewer cards",
                     },
                 },
@@ -310,9 +311,9 @@ return {
             j_asc_wee = {
                 name = "Scurra Microscopica",
                 text = {
-                    "This Joker gains {X:dark_edition,C:edition}^^#2#{} {C:chips}Chips{}",
+                    "This Joker gains {X:asc_emult,C:asc_echips}^^#2#{} {C:chips}Chips{}",
                     "when each played {C:attention}2{} is scored",
-                    "{C:inactive}(Currently{} {X:dark_edition,C:edition}^^#1#{}{C:inactive} Chips){}",
+                    "{C:inactive}(Currently{} {X:asc_emult,C:asc_echips}^^#1#{}{C:inactive} Chips){}",
                 },
             },
 
@@ -375,10 +376,14 @@ return {
             j_asc_mystic_summit = {
                 name = "Fabulosa Radices",
                 text = {
-                    "{X:asc_emult,C:white}^#1#{} Mult",
-                    "Gains {X:asc_emult,C:white}^#2#{} Mult at",
-                    "end of round when {C:attention}0{}",
-                    "discards remaining",
+                    {
+                        "{X:asc_emult,C:white}^#1#{} Mult",
+                    },
+                    {
+                        "Gains {X:asc_emult,C:white}^#2#{} Mult at",
+                        "end of round when {C:attention}0{}",
+                        "discards remaining",
+                    },
                 },
             },
 
@@ -389,7 +394,7 @@ return {
                         "Creates {C:attention}#2#{} {C:dark_edition}Mosaic{}",
                         "{C:attention}Stone{} cards when",
                         "{C:attention}Blind{} is selected",
-                        "{C:inactive}(Max {C:attention}#4#{C:inactive} cards)",
+                        "{C:inactive,s:0.8}(Max {C:attention,s:0.8}#4#{C:inactive,s:0.8} cards created at once)",
                     },
                     {
                         "Retrigger played {C:attention}Stone{}",
@@ -519,16 +524,16 @@ return {
                     {
                         "On {C:attention}blind{} select",
                         "Gain all unused {C:red}discards{} from last round",
-                        "{C:inactive}(Currently {C:red}#1#{} discards){}",
+                        "{C:inactive}(Currently {C:red}#1#{C:inactive} discards){}",
                     },
                     {
                         "Gain {X:asc_emult,C:white}^#2#{} Mult",
                         "for each {C:red}discard{} you have.",
-                        "{C:inactive}(Currently {X:asc_emult,C:white}^#3#{} Mult){}",
+                        "{C:inactive}(Currently {X:asc_emult,C:white}^#3#{C:inactive} Mult){}",
                     },
                     {
                         "Earn {C:money}$#4#{} per {C:red}discard{}",
-                        "if no discards are used by end of the round",
+                        "if no {C:red}discards{} are used {C:attention}during round",
                     },
                 },
             },
@@ -767,10 +772,10 @@ return {
             j_asc_square = {
                 name = "Dimensio Quattuor",
                 text = {
-                    "This Joker gains {X:dark_edition,C:edition}^^#1#{} Chips",
+                    "This Joker gains {X:asc_emult,C:asc_echips}^^#1#{} Chips",
                     "if played hand has",
                     "exactly {C:attention}4{} cards",
-                    "{C:inactive}(Currently {X:dark_edition,C:edition}^^#2#{} {C:inactive}Chips)",
+                    "{C:inactive}(Currently {X:asc_emult,C:asc_echips}^^#2#{} {C:inactive}Chips)",
                 },
             },
 
@@ -827,17 +832,14 @@ return {
                         "Increase all other Jokers' values",
                         "by {C:attention}+#1#{} at the {C:attention}end of round{}",
                         "{C:inactive}(If possible){}",
-                        "{C:inactive}(Does not affect self){}",
+                        "{C:inactive}(This effect is immutable){}",
                     },
                     {
                         "Gain {C:money}$#2#{} at the {C:attention}end of round{}",
-                        "Payout increases by {C:money}$#1#{}",
-                        "whenever {C:attention}Blind{} is defeated",
-                        "{C:inactive,s:0.7}Good night, Terra{}",
                     },
                     {
-                        "Increases Joker's values by {X:attention,C:white}X#3#{}",
-                        "when {C:attention}Boss Blind{} is defeated",
+                        "{C:inactive,s:1.1}Over the Frontier, Into the Front{}",
+                        "{C:inactive,s:0.7}Good night, Terra{}",
                     },
                 },
             },
@@ -967,25 +969,25 @@ return {
                         "one of the following effects:",
                     },
                     {
-                        "If the {C:attention}card{} is a {C:spades}Spades{}",
+                        "If the {C:attention}card{} is a {C:spades}Spade{}",
                         "gain {X:asc_echips,C:white}^Chips{} based on card's rank",
                         "{C:inactive}(Currently{} {X:asc_echips,C:white}^#1#{} {C:inactive}Chips){}",
                         "{C:inactive,s:0.75}(J = 1.1, Q = 1.2, K = 1.3, A = 1.4){}",
                     },
                     {
-                        "If the {C:attention}card{} is a {C:hearts}Hearts{}",
+                        "If the {C:attention}card{} is a {C:hearts}Heart{}",
                         "gain {X:asc_emult,C:white}^Mult{} based on card's rank",
                         "{C:inactive}(Currently{} {X:asc_emult,C:white}^#2#{} {C:inactive}Mult){}",
                         "{C:inactive,s:0.75}(J = 1.1, Q = 1.2, K = 1.3, A = 1.4){}",
                     },
                     {
-                        "If the {C:attention}card{} is a {C:clubs}Clubs{}",
+                        "If the {C:attention}card{} is a {C:clubs}Club{}",
                         "all cards {C:attention}held in hand{}",
                         "gain {X:chips,C:white}XChips{} based on card's rank",
                         "{C:inactive,s:0.75}(J = 11, Q = 12, K = 13, A = 14){}",
                     },
                     {
-                        "If the {C:attention}card{} is a {C:diamonds}Diamonds{}",
+                        "If the {C:attention}card{} is a {C:diamonds}Diamond{}",
                         "increase {C:money}money earned{}",
                         "at the {C:attention}end of round{}",
                         "{C:inactive}(Currently{} {X:money,C:white}+$#3#{} {C:inactive}){}",
@@ -994,15 +996,23 @@ return {
                 },
             },
 
+            j_asc_flash = {
+                name = "Codicillus Tritus",
+                text = {
+                    "Gains {C:attention}reroll cost{} as {X:mult,C:white}XMult{}",
+                    "when you {C:attention}reroll{} in {C:dollar}shop{}",
+                    "{C:inactive,s:0.75}(Minimum increment is 1){}",
+                    "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult){}",
+                },
+            },
+
             j_asc_ancient = {
                 name = "Hereditas Oblita",
                 text = {
-                    {
-                        "Each played card with {V:1}#1#{} suit",
-                        "gives {X:asc_emult,C:white}^#2#{} Mult when scored",
-                        "and increases amount by {X:asc_emult,C:white}^#3#{}",
-                        "{C:inactive}(Suit changes at end of round)",
-                    },
+                    "Each played card with {V:1}#1#{} suit",
+                    "gives {X:asc_emult,C:white}^#2#{} Mult when scored",
+                    "and increases amount by {X:asc_emult,C:white}^#3#{}",
+                    "{C:inactive}(Suit changes at end of round)",
                 },
             },
 
@@ -1083,9 +1093,9 @@ return {
                         "{C:inactive}(Currently #3#){}",
                     },
                     {
-                        "This Joker gains {X:dark_edition,C:edition}^^#2#{} Chips",
+                        "This Joker gains {X:asc_emult,C:asc_echips}^^#2#{} Chips",
                         "whenever you {C:attention}lose{} a blind",
-                        "{C:inactive}(Currently{} {X:dark_edition,C:edition}^^#4#{}{C:inactive}){}",
+                        "{C:inactive}(Currently{} {X:asc_emult,C:asc_echips}^^#4#{}{C:inactive}){}",
                     },
                 },
             },
@@ -1149,7 +1159,7 @@ return {
                     {
                         "{C:attention}Wild{} Cards cannot",
                         "be {C:attention}debuffed{} and give",
-                        "{X:dark_edition,C:edition}^#1#{} Mult when scored",
+                        "{X:asc_emult,C:white}^#1#{} Mult when scored",
                     },
                 },
             },
@@ -1177,6 +1187,20 @@ return {
                     {
                         "{C:attention}+#2#{} permanent hand size when",
                         "{C:attention}Boss Blind{} is defeated",
+                    },
+                },
+            },
+
+            j_asc_ring_master = {
+                name = "Magister Catervae",
+                text = {
+                    {
+                        "{C:attention}Jokers{} or {C:attention}Consumables{} may appear multiple times.",
+                    },
+                    {
+                        "Whenever a {C:attention}duplicated{} card is {C:attention}purchased{}",
+                        "gain {X:attention,C:white}X#1#{} of that card's cost as {X:asc_emult,C:white}^Mult{}",
+                        "{C:inactive}(Currently {X:asc_emult,C:white}^#2#{C:inactive} Mult)",
                     },
                 },
             },
@@ -1374,14 +1398,12 @@ return {
                     {
                         "If played hand is a {C:attention}#2#{},",
                         "{C:red}fixed{} {C:green}1 in #3#{} chance to create",
-                        "{C:attention}#1#{} {C:dark_edition}Negative Rare{} consumable",
+                        "{C:attention}#1#{} {C:dark_edition}Negative {C:tarot,E:2}hidden{} consumable",
                         "{C:inactive,s:0.8}(Poker hand changes at end of round){}",
                     },
                     {
-                        "When the above probability {C:attention}fails{},",
-                        "{C:attention}double{} the chance of creating",
-                        "{C:attention}#1#{} {C:dark_edition}Negative Rare{} consumable",
-                        "Otherwise, {C:attention}reset the probabilites{}",
+                        "{C:green}Double{} odds on failure",
+                        "On success, {C:attention}reset{} the odds",
                     },
                 },
             },
@@ -1390,16 +1412,16 @@ return {
                 name = "Proavus Sanguinis",
                 text = {
                     {
-                        "Gains {X:dark_edition,C:edition}^^#2#{} Mult per",
+                        "Gains {X:asc_emult,C:asc_echips}^^#2#{} Mult per",
                         "scored {C:attention}Enhanced{} card and",
                         "removes card {C:attention}Enhancement{}",
-                        "{C:inactive}(Currently{} {X:dark_edition,C:edition}^^#1#{} {C:inactive}Mult){}",
+                        "{C:inactive}(Currently{} {X:asc_emult,C:asc_echips}^^#1#{} {C:inactive}Mult){}",
                     },
                     {
-                        "Decreases {X:dark_edition,C:edition}^^Mult{} by {X:dark_edition,C:edition}^^#3#{}",
+                        "Decreases {X:asc_emult,C:asc_echips}^^Mult{} by {X:asc_emult,C:asc_echips}^^#3#{}",
                         "each hand without a",
                         "scoring {C:attention}Enhanced{} card",
-                        "{C:inactive}(Can't go below {X:dark_edition,C:edition}^^1{}{C:inactive}){}",
+                        "{C:inactive}(Can't go below {X:asc_emult,C:asc_echips}^^1{}{C:inactive}){}",
                     },
                 },
             },
@@ -1438,7 +1460,7 @@ return {
             },
 
             j_asc_gardenfork = {
-                name = "Contra Homo", --Against Neighbors
+                name = "Contra Homo", -- Against Neighbors
                 text = {
                     "{X:money,C:white}X#1#{} total money",
                     "if played hand",
@@ -1447,7 +1469,7 @@ return {
             },
 
             j_asc_nosound = {
-                name = "Contra Ipsum", --Against Self
+                name = "Contra Ipsum", -- Against Self
                 text = {
                     {
                         "Retrigger each played {C:attention}7{}",
@@ -1641,7 +1663,7 @@ return {
                 text = {
                     "{C:chips}+#1#{} Chips",
                     "{C:chips}-#2#{} Chips per {C:attention}reroll{}", -- see flash card for {c} formatting on "reroll" when used in reference to gaining/losing values
-                    "{C:green}Rerolls{} are free", -- see choas the clown for {c} formatting on "reroll" when used in reference to free rerolls
+                    "{C:green}Rerolls{} are free",                     -- see choas the clown for {c} formatting on "reroll" when used in reference to free rerolls
                 },
             },
 
@@ -1751,7 +1773,7 @@ return {
             j_asc_jimbo_entr = {
                 name = "Gelotopoios",
                 text = {
-                    { "Set scoring operation to", "{X:dark_edition,C:white}Exponentiation{}" },
+                    { "Set {C:attention}scoring operator{} to {X:dark_edition,C:white}^{}" },
                     { "{C:mult}+4{} Mult" },
                 },
             },
@@ -1952,6 +1974,7 @@ return {
                 text = {
                     "{C:red,E:2}Obliterate all sense of balance off Balatro{}",
                     "{X:dark_edition,C:white}#1#44{} all values on screen",
+                    "{C:inactive,S:0.5}It doesn't do shit.{}",
                 },
             },
         },
@@ -1990,9 +2013,9 @@ return {
     misc = {
         dictionary = {
             asc_banana_ex = "Banana!",
-            asc_inactive = "Inactive", --For exotic Bones
+            asc_inactive = "Inactive", -- For exotic Bones
             asc_saved_by_bones = "Saved by Carcer Animarum",
-            asc_chips = "Chips", --To make hyperoperators work
+            asc_chips = "Chips",       -- To make hyperoperators work
             asc_mult = "Mult",
 
             asc_seance_msg = "The World is not here...",

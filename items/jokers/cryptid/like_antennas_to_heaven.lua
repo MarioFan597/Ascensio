@@ -36,7 +36,8 @@ SMODS.Joker({
         },
     },
 
-    calculate = function(self, card, context) --Taken in part from roffeltro's thanks for the primes joker
+    calculate = function(self, card, context)
+        -- Taken in part from roffeltro's thanks for the primes joker
         if context.cardarea == G.play and context.individual and not context.blueprint then
             if #context.scoring_hand >= 1 then
                 local number_count = 0

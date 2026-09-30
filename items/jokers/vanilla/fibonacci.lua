@@ -9,15 +9,17 @@ SMODS.Joker({
     soul_pos = { x = 8, y = 6, extra = { x = 7, y = 6 } },
     cost = 55,
     order = 31,
-    loc_vars = function(self, info_queue, card) return { vars = { lenient_bignum(card.ability.extra.mult), lenient_bignum(card.ability.extra.start_mult) } } end,
-    calculate = function(self, card, context)
+    loc_vars = function(_, _, card)
+        return { vars = { lenient_bignum(card.ability.extra.mult), lenient_bignum(card.ability.extra.start_mult) } }
+    end,
+    calculate = function(_, card, context)
         if (context.individual and context.cardarea == G.play) and not context.blueprint then
             local rank = context.other_card:get_id()
             if rank == 14 or rank == 2 or rank == 3 or rank == 5 or rank == 8 then
                 if card.ability.extra.immutable.previous == 0 then card.ability.extra.immutable.previous = card.ability.extra.start_previous end
                 card.ability.extra.immutable.previous2 = card.ability.extra.immutable.previous
-                card.ability.extra.immutable.previous = card.ability.extra.mult
-                card.ability.extra.mult = (card.ability.extra.immutable.previous2 + card.ability.extra.immutable.previous)
+                card.ability.extra.immutable.previous  = card.ability.extra.mult
+                card.ability.extra.mult                = (card.ability.extra.immutable.previous2 + card.ability.extra.immutable.previous)
                 SMODS.scale_card(card, {
                     ref_table = card.ability.extra,
                     ref_value = "mult",
@@ -42,7 +44,7 @@ SMODS.Joker({
         if context.forcetrigger then
             if card.ability.extra.immutable.previous == 0 then card.ability.extra.immutable.previous = card.ability.extra.start_previous end
             card.ability.extra.immutable.previous2 = card.ability.extra.immutable.previous
-            card.ability.extra.immutable.previous = card.ability.extra.mult
+            card.ability.extra.immutable.previous  = card.ability.extra.mult
             SMODS.scale_card(card, {
                 ref_table = card.ability.extra,
                 ref_value = "mult",
@@ -78,16 +80,15 @@ SMODS.Joker({
             end
         end
 
-        if
-            context.after and not context.blueprint --and card.ability.extra.mult ~= 1
+        if context.after and not context.blueprint -- and card.ability.extra.mult ~= 1
         then
-            card.ability.extra.mult = card.ability.extra.start_mult
-            card.ability.extra.immutable.previous = 0
+            card.ability.extra.mult                = card.ability.extra.start_mult
+            card.ability.extra.immutable.previous  = 0
             card.ability.extra.immutable.previous2 = 0
-            --return {
-            --card = self,
-            --message = localize("k_reset"),
-            --}
+            -- return {
+            -- card = self,
+            -- message = localize("k_reset"),
+            -- }
         end
     end,
     asc_credits = {

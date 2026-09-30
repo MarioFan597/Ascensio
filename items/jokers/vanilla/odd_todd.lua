@@ -22,12 +22,10 @@ SMODS.Joker({
 
     calculate = function(self, card, context)
         if context.individual or context.forcetrigger then
-            if
-                (
-                    context.cardarea == G.play
-                    and (context.other_card:get_id() == 3 or context.other_card:get_id() == 5 or context.other_card:get_id() == 7 or context.other_card:get_id() == 9 or context.other_card:get_id() == 14)
-                ) or context.forcetrigger
-            then
+            if (context.cardarea == G.play
+                and (context.other_card:get_id() == 3 or context.other_card:get_id() == 5
+                    or context.other_card:get_id() == 7 or context.other_card:get_id() == 9
+                    or context.other_card:get_id() == 14)) or context.forcetrigger then
                 if #context.full_hand % 2 ~= 0 then
                     return {
                         message = localize({

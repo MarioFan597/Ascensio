@@ -1,5 +1,5 @@
 SMODS.Joker({
-    key = "oil_lamp", --This is mostly just taken straight from oil lamp's code
+    key = "oil_lamp", -- This is mostly just taken straight from oil lamp's code
     pos = { x = 3, y = 0 },
     soul_pos = { x = 5, y = 0, extra = { x = 4, y = 0 } },
     config = { extra = { increase = 1.2 } },
@@ -10,11 +10,9 @@ SMODS.Joker({
     demicoloncompat = true,
     atlas = "c_atlas_1",
     loc_vars = function(self, info_queue, card)
-        card.ability.blueprint_compat_ui = card.ability.blueprint_compat_ui or ""
+        card.ability.blueprint_compat_ui    = card.ability.blueprint_compat_ui or ""
         card.ability.blueprint_compat_check = nil
-        return {
-            vars = { lenient_bignum(card.ability.extra.increase) },
-        }
+        return { vars = { lenient_bignum(card.ability.extra.increase) } }
     end,
     calculate = function(self, card, context)
         if (context.end_of_round and not context.repetition and not context.individual and not context.blueprint) or context.forcetrigger then
@@ -23,15 +21,13 @@ SMODS.Joker({
                 if not (G.jokers.cards[i] == card) then
                     if not Card.no(G.jokers.cards[i], "immutable", true) then
                         check = true
-                        Cryptid.with_deck_effects(
-                            G.jokers.cards[i],
-                            function(cards)
-                                Cryptid.misprintize(cards, {
-                                    min = lenient_bignum(card.ability.extra.increase),
-                                    max = lenient_bignum(card.ability.extra.increase),
-                                }, nil, true)
-                            end
-                        )
+                        Cryptid.with_deck_effects(G.jokers.cards[i], function(cards)
+                            Cryptid.misprintize(cards, {
+                                min = lenient_bignum(card.ability.extra.increase),
+                                max = lenient_bignum(card.ability.extra.increase),
+                            }, nil, true
+                            )
+                        end)
                     end
                 end
             end

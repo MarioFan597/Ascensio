@@ -3,7 +3,7 @@
         "disable": ["need-check-nil", "undefined-global", "undefined-field", "unnecessary-if"]
     },
     "runtime": {
-        "version": "LuaJIT2"
+        "version": "LuaJIT3"
     },
     "workspace": {
         "library": ["~/.emmylua/3rd"]

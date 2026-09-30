@@ -59,15 +59,15 @@ SMODS.Joker({
     },
 })
 
---Thanks Somethingcom515!
+-- Thanks Somethingcom515!
 local oldsmodsscorecard = SMODS.score_card
 function SMODS.score_card(card, context)
     if not G.scorehand and card:is_suit("Clubs") and next(SMODS.find_card("j_asc_gluttonous")) and context.cardarea == G.hand then
-        G.scorehand = true
+        G.scorehand      = true
         context.cardarea = G.play
         SMODS.score_card(card, context)
         context.cardarea = G.hand
-        G.scorehand = nil
+        G.scorehand      = nil
     end
     return oldsmodsscorecard(card, context)
 end

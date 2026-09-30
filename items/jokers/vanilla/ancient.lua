@@ -46,18 +46,13 @@ SMODS.Joker({
                     scalar_value = "emult_gain",
                 })
 
-                return {
-                    emult = card.ability.extra.emult,
-                }
+                return { emult = card.ability.extra.emult }
             end
         end
 
         if context.end_of_round and context.main_eval then
             card.ability.immutable.suit = pseudorandom_element(card.ability.immutable.suits, "vremade_ancient" .. G.GAME.round_resets.ante, {})
-            return {
-                message = localize("k_reset_ex"),
-                colour = G.C.SUITS[card.ability.immutable.suit],
-            }
+            return { message = localize("k_reset_ex"), colour = G.C.SUITS[card.ability.immutable.suit] }
         end
     end,
 

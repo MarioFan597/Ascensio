@@ -33,18 +33,14 @@ SMODS.Joker({
     --Taken from old blueprint and Chad
     calculate = function(self, card, context)
         local other_joker = G.jokers.cards[1]
-        local position = 0
+        local position    = 0
 
         if context.retrigger_joker_check and not context.retrigger_joker and other_joker ~= nil then
             for i = 1, #G.jokers.cards do
                 if G.jokers.cards[i] == card then position = i end
             end
             if context.other_card == other_joker and position > 0 then
-                return {
-                    message = localize("k_again_ex"),
-                    repetitions = position,
-                    card = card,
-                }
+                return { message = localize("k_again_ex"), repetitions = position, card = card }
             else
                 return nil, true
             end
@@ -81,15 +77,16 @@ SMODS.Joker({
 		end
 		]]
 
-        --Taken and modifed from Cryptid's smile (:D)
-        if
-            (context.ending_shop and not context.individual and not context.repetition and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit and #G.jokers.cards and other_joker ~= nil and other_joker ~= card)
-            or context.forcetrigger
-            --and rarity_check
-            --and not position == #G.jokers.cards
+        -- Taken and modifed from Cryptid's smile (:D)
+        if (context.ending_shop and not context.individual
+            and not context.repetition and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit
+            and #G.jokers.cards and other_joker ~= nil
+            and other_joker ~= card) or context.forcetrigger
+        -- and rarity_check
+        -- and not position == #G.jokers.cards
         then
             local roundcreatejoker = math.min(1, G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer))
-            G.GAME.joker_buffer = G.GAME.joker_buffer + roundcreatejoker
+            G.GAME.joker_buffer    = G.GAME.joker_buffer + roundcreatejoker
             G.E_MANAGER:add_event(Event({
                 func = function()
                     if roundcreatejoker > 0 then

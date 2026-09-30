@@ -34,30 +34,27 @@ SMODS.Joker({
     calculate = function(_, card, context)
         if (context.discard and not context.blueprint and not context.other_card.debuff) or context.forcetrigger then
             if (context.other_card:is_suit("Spades") or context.other_card:is_suit("Clubs")) or context.forcetrigger then
-                local msg = SMODS.scale_card(card, {
+                SMODS.scale_card(card, {
                     ref_table = card.ability.extra,
                     ref_value = "echips",
                     scalar_value = "echips_gain",
                 })
 
-                if not context.forcetrigger then return msg end
+                if not context.forcetrigger then return end
             end
 
             if (context.other_card:is_suit("Hearts") or context.other_card:is_suit("Diamonds")) or context.forcetrigger then
-                local msg = SMODS.scale_card(card, {
+                SMODS.scale_card(card, {
                     ref_table = card.ability.extra,
                     ref_value = "emult",
                     scalar_value = "emult_gain",
                 })
-
-                if not context.forcetrigger then return msg end
             end
         end
 
-        if context.joker_main or context.forcetrigger then return {
-            echips = card.ability.extra.echips,
-            emult = card.ability.extra.emult,
-        } end
+        if context.joker_main or context.forcetrigger then
+            return { echips = card.ability.extra.echips, emult = card.ability.extra.emult }
+        end
     end,
 
     asc_credits = {

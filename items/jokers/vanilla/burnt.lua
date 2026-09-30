@@ -6,11 +6,11 @@ SMODS.Joker({
     pos = { x = 0, y = 3 }, -- todo: replace with next index, mariofan do this for me im lazy af
     soul_pos = { x = 2, y = 3, extra = { x = 1, y = 3 } },
 
-    cost = 50,
+    cost  = 50,
     order = 1,
 
     blueprint_compat = true,
-    demicoloncompat = true,
+    demicoloncompat  = true,
 
     calculate = function(_, card, ctx)
         if (ctx.pre_discard and not ctx.hook) or ctx.forcetrigger then

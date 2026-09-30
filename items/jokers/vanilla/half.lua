@@ -20,7 +20,8 @@ SMODS.Joker({
         }
     end,
 
-    calculate = function(_, card, context) --I LOVE LUASLOP!!!! LUASLOP MY BELOVED!!!
+    calculate = function(_, card, context)
+        -- I LOVE LUASLOP!!!! LUASLOP MY BELOVED!!!
         if context.joker_main or context.forcetrigger then
             if #context.full_hand <= card.ability.extra.max_play or context.forcetrigger then
                 return {

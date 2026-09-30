@@ -1,15 +1,15 @@
 SMODS.Joker({
-    key = "raised_fist",
+    key    = "raised_fist",
     rarity = "cry_exotic",
-    atlas = "v_atlas_2",
+    atlas  = "v_atlas_2",
 
     blueprint_compat = true,
-    demicoloncompat = true,
+    demicoloncompat  = true,
 
-    pos = { x = 6, y = 0 },
+    pos      = { x = 6, y = 0 },
     soul_pos = { x = 8, y = 0, extra = { x = 7, y = 0 } },
 
-    cost = 50,
+    cost  = 50,
     order = 1,
 
     config = {
@@ -33,18 +33,15 @@ SMODS.Joker({
             local id, mult, this_card = 999, 999, nil
             for _, _card in ipairs(G.hand.cards) do
                 if id > _card.base.id and not SMODS.has_no_rank(_card) then
-                    id = _card.base.id
-                    mult = _card.base.nominal
+                    id        = _card.base.id
+                    mult      = _card.base.nominal
                     this_card = _card
                 end
             end
 
             if (context.other_card == this_card) or context.forcetrigger then
                 if context.other_card.debuff and not context.forcetrigger then
-                    return {
-                        message = localize("k_debuffed"),
-                        colour = G.C.RED,
-                    }
+                    return { message = localize("k_debuffed"), colour = G.C.RED }
                 else
                     SMODS.scale_card(card, {
                         ref_table = card.ability.extra,

@@ -28,17 +28,13 @@ SMODS.Joker({
                     scalar_value = "gain",
                     no_message = true,
                 })
-                return {
-                    extra = { focus = card, message = localize("k_upgrade_ex") },
-                    card = card,
-                    colour = G.C.GOLD,
-                }
+                return { extra = { focus = card, message = localize("k_upgrade_ex") }, card = card, colour = G.C.GOLD }
             end
         end
         if context.joker_main or context.forcetrigger then
-            if card.ability.extra.asc > 1 then return {
-                exp_asc = lenient_bignum(card.ability.extra.asc),
-            } end
+            if card.ability.extra.asc > 1 then
+                return { exp_asc = lenient_bignum(card.ability.extra.asc) }
+            end
         end
     end,
     ascxentr_credits = {

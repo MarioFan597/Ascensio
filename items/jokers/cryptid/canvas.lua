@@ -11,18 +11,15 @@ SMODS.Joker({
         if not card.edition or (card.edition and not card.edition.e_negative) then info_queue[#info_queue + 1] = G.P_CENTERS.e_negative end
         info_queue[#info_queue + 1] = G.P_CENTERS.j_joker
     end,
-    calculate = function(self, card, context) --Just taken and modifed from canvas since it is just canvas without restirctions
+    calculate = function(self, card, context)
+        -- Just taken and modifed from canvas since it is just canvas without restirctions
         if context.retrigger_joker_check and not context.retrigger_joker then
             local num_retriggers = 1
             for i = 1, #G.jokers.cards do
                 if card.T.x + card.T.w / 2 < G.jokers.cards[i].T.x + G.jokers.cards[i].T.w / 2 then num_retriggers = num_retriggers + 1 end
             end
             if card.T and context.other_card.T and (card.T.x + card.T.w / 2 > context.other_card.T.x + context.other_card.T.w / 2) then
-                return {
-                    message = localize("k_again_ex"),
-                    repetitions = num_retriggers,
-                    card = card,
-                }
+                return { message = localize("k_again_ex"), repetitions = num_retriggers, card = card }
             end
         end
         if context.ending_shop and not (context.blueprint or context.retrigger_joker_check or context.retrigger_joker) then

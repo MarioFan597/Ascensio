@@ -1,21 +1,23 @@
 ---@alias TalismanNumber number|table
----@alias fn<T> fun(...): T
+---@alias fn fun(...: unknown): unknown
 
 -- Cache the function for performance and stuffs.
----@type fn<any>, fn<number>, fn<any>
+---@type fn, fn, fn
 local to_big, to_number, lenient_bignum = to_big, to_number, lenient_bignum
 
 -- Ensure the Number table exists.
-if not Number then Number = {} end
+if not Number then
+    Number = {}
+end
 
----Positive Infinity value.
+--- Positive Infinity value.
 ---@type number
 Number.Inf = 1 / 0
----Negative Infinity value.
+--- Negative Infinity value.
 ---@type number
 Number.NegInf = -Number.Inf
 
----Return the largest integer that is smaller than the given number.
+--- Return the largest integer that is smaller than the given number.
 ---@param n TalismanNumber
 ---@return TalismanNumber
 function Number.floor(n)
@@ -24,7 +26,7 @@ function Number.floor(n)
     return n:floor()
 end
 
----Return the smallest integer that is bigger than the given number.
+--- Return the smallest integer that is bigger than the given number.
 ---@param n TalismanNumber
 ---@return TalismanNumber?
 function Number.ceil(n)
@@ -33,65 +35,85 @@ function Number.ceil(n)
     return n:ceil()
 end
 
----Add two given numbers.
+--- Add two given numbers.
 ---@param a TalismanNumber
 ---@param b TalismanNumber
 ---@return TalismanNumber
-function Number.add(a, b) return a + b end
+function Number.add(a, b)
+    return a + b
+end
 
----Substract two given numbers.
+--- Substract two given numbers.
 ---@param a TalismanNumber
 ---@param b TalismanNumber
 ---@return TalismanNumber
-function Number.sub(a, b) return a - b end
+function Number.sub(a, b)
+    return a - b
+end
 
----Multiply two given numbers.
+--- Multiply two given numbers.
 ---@param a TalismanNumber
 ---@param b TalismanNumber
 ---@return TalismanNumber
-function Number.mul(a, b) return a * b end
+function Number.mul(a, b)
+    return a * b
+end
 
----Divide two given numbers.
+--- Divide two given numbers.
 ---@param a TalismanNumber
 ---@param b TalismanNumber
 ---@return TalismanNumber
-function Number.div(a, b) return a / b end
+function Number.div(a, b)
+    return a / b
+end
 
----Convert the given number into an instance of BigNum/OmegaNum.
+--- Convert the given number into an instance of BigNum/OmegaNum.
 ---@param n TalismanNumber
 ---@return TalismanNumber
-function Number.toBig(n) return to_big(n) end
+function Number.toBig(n)
+    return to_big(n)
+end
 
----Convert the given number into a Lua number.
+--- Convert the given number into a Lua number.
 ---@param n TalismanNumber
 ---@return number
-function Number.toNumber(n) return to_number(n) end
+function Number.toNumber(n)
+    return to_number(n)
+end
 
----Convert the given number into a number.
+--- Convert the given number into a number.
 ---@param n TalismanNumber
 ---@return number
-function Number.lenientBignum(n) return lenient_bignum(n) end
+function Number.lenientBignum(n)
+    return lenient_bignum(n)
+end
 
----Exponentiate two given numbers.
+--- Exponentiate two given numbers.
 ---@param a TalismanNumber
 ---@param b TalismanNumber
 ---@return TalismanNumber
-function Number.exp(a, b) return Number.toBig(a):pow(b) end
+function Number.exp(a, b)
+    return Number.toBig(a):pow(b)
+end
 
----Tetrate two given numbers.
+--- Tetrate two given numbers.
 ---@param a TalismanNumber
 ---@param b TalismanNumber
 ---@return TalismanNumber
-function Number.tetrate(a, b) return Number.toBig(a):tetrate(b) end
+function Number.tetrate(a, b)
+    return Number.toBig(a):tetrate(b)
+end
 
----Perform a hyperoperation on two given numbers.
----@param a TalismanNumber
----@param b TalismanNumber
+--- Perform a hyperoperation on two given numbers.
+---@param a      TalismanNumber
+---@param b      TalismanNumber
 ---@param arrows number
 ---@return TalismanNumber
-function Number.hyper(a, b, arrows) return Number.toBig(a):arrow(arrows, b) end
+function Number.hyper(a, b, arrows)
+    return Number.toBig(a):arrow(arrows, b)
+end
 
----Checks if the given number is NaN.
+--- Checks if the given number is NaN.
 ---@param n TalismanNumber
 ---@return boolean
 function Number.isNaN(n)
@@ -100,7 +122,7 @@ function Number.isNaN(n)
     return n:isNaN()
 end
 
----Returns the smaller value of two supplied numbers.
+--- Returns the smaller value of two supplied numbers.
 ---@param a TalismanNumber
 ---@param b TalismanNumber
 ---@return TalismanNumber
@@ -110,7 +132,7 @@ function Number.min(a, b)
     return Number.toBig(a):min(b)
 end
 
----Returns the bigger value of two supplied numbers.
+--- Returns the bigger value of two supplied numbers.
 ---@param a TalismanNumber
 ---@param b TalismanNumber
 ---@return TalismanNumber
@@ -121,4 +143,4 @@ function Number.max(a, b)
 end
 
 Number.bigZero = to_big(0)
-Number.bigOne = to_big(1)
+Number.bigOne  = to_big(1)

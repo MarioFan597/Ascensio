@@ -20,7 +20,7 @@ SMODS.Joker({
     end,
 
     calculate = function(_, card, context)
-        if (context.blueprint and context.remove_playing_cards and context.removed) or (context.remove_playing_cards and context.removed) then --Check if face cards are removed.
+        if (context.blueprint and context.remove_playing_cards and context.removed) or (context.remove_playing_cards and context.removed) then -- Check if face cards are removed.
             local check = 0
             for _, _card in ipairs(context.removed) do
                 if _card:is_face() then
@@ -37,7 +37,7 @@ SMODS.Joker({
                             scalar_value = "gain",
                             no_message = true,
                         })
-                        check = check + 1 --We need to do a check here instead of the return statement otherwise it wouldn't count every face card
+                        check = check + 1 -- We need to do a check here instead of the return statement otherwise it wouldn't count every face card
                     end
                 end
             end

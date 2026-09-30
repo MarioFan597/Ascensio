@@ -1,9 +1,11 @@
-if CardSleeves then SMODS.Atlas({
-    key = "sleeves",
-    path = "sleeves.png",
-    px = 73,
-    py = 95,
-}) end
+if CardSleeves then
+    SMODS.Atlas({
+        key = "sleeves",
+        path = "sleeves.png",
+        px = 73,
+        py = 95,
+    })
+end
 
 if Entropy then
     SMODS.Atlas({
@@ -84,9 +86,9 @@ SMODS.Atlas({
     py = 95,
 })
 
---SMODS.Atlas({
+-- SMODS.Atlas({
 --  key = "asc_stickers",
 --  path = "asc_stickers.png",
 --  px = 71,
 --  py = 95
---})
+-- })

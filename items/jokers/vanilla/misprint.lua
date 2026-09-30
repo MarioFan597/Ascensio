@@ -29,7 +29,7 @@ SMODS.Joker({
     },
 
     loc_vars = function(self, info_queue, card)
-        --Taken directly, modified, and uses dependencies from Cryptid's ERROR
+        -- Taken directly, modified, and uses dependencies from Cryptid's ERROR
         local ok, ret = pcall(Cryptid.predict_card_for_shop)
         if Cryptid.safe_get(G.GAME, "pseudorandom") and G.STAGE == G.STAGES.RUN and ok then
             cry_error_msgs[#cry_error_msgs].string = "%%" .. ret
@@ -92,9 +92,9 @@ SMODS.Joker({
     calculate = function(self, card, context)
         if context.joker_main or context.forcetrigger then
             if lenient_bignum(card.ability.extra.range) > 0 then
-                local operator = math.random(1, 3) --1 is +, 2 is x, 3 is ^
-                local type = math.random(1, 2) --1 is chips, 2 is mult
-                local result = lenient_bignum(math.random(1, lenient_bignum(card.ability.extra.range))) --Makes sure our result is consistent
+                local operator = math.random(1, 3)                                                        -- 1 is +, 2 is x, 3 is ^
+                local type     = math.random(1, 2)                                                        -- 1 is chips, 2 is mult
+                local result   = lenient_bignum(math.random(1, lenient_bignum(card.ability.extra.range))) -- Makes sure our result is consistent
                 if operator == 1 then
                     if type == 1 then
                         return {

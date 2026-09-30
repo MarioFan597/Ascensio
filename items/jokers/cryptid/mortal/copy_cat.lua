@@ -20,24 +20,16 @@ SMODS.Joker({
     calculate = function(self, card, context)
         if context.repetition then
             if context.cardarea == G.play then
-                return {
-                    message = localize("k_again_ex"),
-                    repetitions = to_number(math.min(card.ability.extra.rep, card.ability.extra.immutable.max_rep)),
-                    card = card,
-                }
+                return { message = localize("k_again_ex"), repetitions = to_number(math.min(card.ability.extra.rep, card.ability.extra.immutable.max_rep)), card = card }
             end
         elseif context.individual then
-            if context.cardarea == G.play then return {
-                mult = card.ability.extra.mult,
-                colour = G.C.RED,
-                card = card,
-            } end
+            if context.cardarea == G.play then
+                return { mult = card.ability.extra.mult, colour = G.C.RED, card = card }
+            end
         end
-        if context.forcetrigger then return {
-            mult = card.ability.extra.x_mult,
-            colour = G.C.RED,
-            card = card,
-        } end
+        if context.forcetrigger then
+            return { mult = card.ability.extra.x_mult, colour = G.C.RED, card = card }
+        end
     end,
 
     asc_credits = {

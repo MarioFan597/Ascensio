@@ -18,7 +18,7 @@ SMODS.Joker({
 
     calculate = function(_, card, ctx)
         if (ctx.before and not ctx.blueprint and next(ctx.poker_hands["Straight"])) or ctx.forcetrigger then
-            return SMODS.scale_card(card, {
+            SMODS.scale_card(card, {
                 ref_table = card.ability.extra,
                 ref_value = "echip",
                 scalar_value = "echip_gain",

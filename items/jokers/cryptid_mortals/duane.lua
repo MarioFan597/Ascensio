@@ -23,7 +23,7 @@ SMODS.Joker({
                 ref_value = "mult",
                 scalar_value = "mult_mod",
             })
-            --card_eval_status_text(card, "extra", nil, nil, nil, { message = localize("k_upgrade_ex") })
+            -- card_eval_status_text(card, "extra", nil, nil, nil, { message = localize("k_upgrade_ex") })
         end
         if (context.joker_main and (to_big(card.ability.extra.mult) > to_big(1))) or context.forcetrigger then
             if context.forcetrigger then card.ability.extra.mult = lenient_bignum(to_big(card.ability.extra.mult) + card.ability.extra.mult_mod) end

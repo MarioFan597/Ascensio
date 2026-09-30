@@ -1,14 +1,19 @@
 SMODS.Joker({
     key = "banana",
+
     config = { extra = { xmult = 15, xmult_gain = 2.5, odds = 64 } },
     rarity = "cry_exotic",
-    atlas = "v_atlas_1",
+    atlas  = "v_atlas_1",
+
     blueprint_compat = true,
-    demicoloncompat = true,
-    pos = { x = 3, y = 8 },
+    demicoloncompat  = true,
+
+    pos      = { x = 3, y = 8 },
     soul_pos = { x = 5, y = 8, extra = { x = 4, y = 8 } },
-    cost = 50,
+
+    cost  = 50,
     order = 3,
+
     loc_vars = function(_, _, card)
         local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "Exotic Banana")
         return {
@@ -20,6 +25,7 @@ SMODS.Joker({
             },
         }
     end,
+
     calculate = function(_, card, context)
         if context.joker_main or context.forcetrigger then
             return {
@@ -36,16 +42,12 @@ SMODS.Joker({
         ---@diagnostic disable-next-line: unnecessary-if
         if (context.end_of_round and context.main_eval and not (context.individual or context.repetition or context.blueprint)) or context.forcetrigger then
             if
-                ---@diagnostic disable-next-line: unnecessary-if
-                (
-                    SMODS.pseudorandom_probability(card, "OOOOOOH BANANA", 1, card.ability.extra.odds, "Exotic Banana")
-                    and #G.jokers.cards
-                    and G.jokers.config.card_limit > Number.toBig(#G.jokers.cards + G.GAME.joker_buffer)
-                    and not (context.blueprint or context.repetition or context.retrigger_joker_check or context.retrigger_joker)
-                ) or context.forcetrigger
-            then
+            ---@diagnostic disable-next-line: unnecessary-if
+            (SMODS.pseudorandom_probability(card, "OOOOOOH BANANA", 1, card.ability.extra.odds, "Exotic Banana") and #G.jokers.cards
+                and G.jokers.config.card_limit > Number.toBig(#G.jokers.cards + G.GAME.joker_buffer) and not (context.blueprint or context.repetition
+                    or context.retrigger_joker_check or context.retrigger_joker)) or context.forcetrigger then
                 local roundcreatejoker = math.min(1, G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer))
-                G.GAME.joker_buffer = G.GAME.joker_buffer + roundcreatejoker
+                G.GAME.joker_buffer    = G.GAME.joker_buffer + roundcreatejoker
                 card_eval_status_text(card, "extra", nil, nil, nil, {
                     message = localize("asc_banana_ex"),
                     colour = G.C.MONEY,
@@ -62,9 +64,7 @@ SMODS.Joker({
                     end,
                 }))
 
-                return {
-                    message = localize("k_duplicated_ex"),
-                }
+                return { message = localize("k_duplicated_ex") }
             else
                 SMODS.scale_card(card, {
                     ref_table = card.ability.extra,
@@ -74,10 +74,7 @@ SMODS.Joker({
                     message_colour = G.C.MULT,
                 })
 
-                return {
-                    message = localize("k_upgrade_ex"),
-                    colour = G.C.MULT,
-                }
+                return { message = localize("k_upgrade_ex"), colour = G.C.MULT }
             end
         end
     end,

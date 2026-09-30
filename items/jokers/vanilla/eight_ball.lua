@@ -12,7 +12,7 @@ SMODS.Joker({
     config = { extra = { prob = { num = 1, denum = 2 }, xmult_gain = 8, xmult = 8 } },
 
     blueprint_compat = true,
-    demicoloncompat = true,
+    demicoloncompat  = true,
 
     loc_vars = function(_, _, card)
         return {
@@ -26,18 +26,12 @@ SMODS.Joker({
     end,
 
     calculate = function(_, card, ctx)
-        if ctx.joker_main then return {
-            xmult = lenient_bignum(card.ability.extra.xmult),
-        } end
+        if ctx.joker_main then
+            return { xmult = lenient_bignum(card.ability.extra.xmult) }
+        end
 
-        if
-            (
-                ctx.individual
-                and ctx.cardarea == G.play
-                and ctx.other_card:get_id() == 8
-                and SMODS.pseudorandom_probability(card, "8 Planets __(subpcall rdx abx ctx)__ // dummy seed", card.ability.extra.prob.num, card.ability.extra.prob.denum)
-            ) or ctx.forcetrigger
-        then
+        if (ctx.individual and ctx.cardarea == G.play and ctx.other_card:get_id() == 8
+            and SMODS.pseudorandom_probability(card, "8 Planets __(subpcall rdx abx ctx)__ // dummy seed", card.ability.extra.prob.num, card.ability.extra.prob.denum)) or ctx.forcetrigger then
             local localized, set = localize("k_plus_tarot"), "Tarot"
             if SMODS.pseudorandom_probability(card, "planet or tarot", 1, 2) then
                 localized, set = localize("k_plus_planet"), "Planet"
@@ -59,8 +53,8 @@ SMODS.Joker({
             }
         end
 
-        if ctx.using_consumeable and not ctx.blueprint and (ctx.consumeable.ability.set == "Tarot" or ctx.consumeable.ability.set == "Planet") then
-            return SMODS.scale_card(card, {
+        if ctx.forcetrigger or (ctx.using_consumeable and not ctx.blueprint and (ctx.consumeable.ability.set == "Tarot" or ctx.consumeable.ability.set == "Planet")) then
+            SMODS.scale_card(card, {
                 ref_table = card.ability.extra,
                 ref_value = "xmult",
                 scalar_value = "xmult_gain",

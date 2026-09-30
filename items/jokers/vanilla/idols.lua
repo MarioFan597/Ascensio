@@ -45,7 +45,7 @@ SMODS.Joker({
         if idol_card ~= nil then
             card.ability.immutable.rank = idol_card.base.value
             card.ability.immutable.suit = idol_card.base.suit
-            card.ability.immutable.id = idol_card.base.id
+            card.ability.immutable.id   = idol_card.base.id
         end
     end,
 
@@ -67,7 +67,8 @@ SMODS.Joker({
     end,
 
     calculate = function(_, card, context)
-        if (context.individual and context.cardarea == G.play) and ((context.other_card:get_id() == card.ability.immutable.id and context.other_card:is_suit(card.ability.immutable.suit)) or context.forcetrigger) then
+        if (context.individual and context.cardarea == G.play)
+            and ((context.other_card:get_id() == card.ability.immutable.id and context.other_card:is_suit(card.ability.immutable.suit)) or context.forcetrigger) then
             local effect = pseudorandom_element(card.ability.immutable.effects, "what the statue hides" .. G.GAME.round_resets.ante)
             local result = {}
 
@@ -102,7 +103,7 @@ SMODS.Joker({
             if idol_card ~= nil then
                 card.ability.immutable.rank = idol_card.base.value
                 card.ability.immutable.suit = idol_card.base.suit
-                card.ability.immutable.id = idol_card.base.id
+                card.ability.immutable.id   = idol_card.base.id
             end
         end
     end,

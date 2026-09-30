@@ -93,10 +93,9 @@ SMODS.Joker({
             if not context.forcetrigger then SMODS.destroy_cards(removed) end
         end
 
-        if context.joker_main then return {
-            echips = card.ability.extra.echips,
-            emult = card.ability.extra.emult,
-        } end
+        if context.joker_main then
+            return { echips = card.ability.extra.echips, emult = card.ability.extra.emult }
+        end
     end,
 
     calc_dollar_bonus = function(_, card) return card.ability.extra.money end,

@@ -1,12 +1,12 @@
 SMODS.Joker({
-    key = "madness",
+    key    = "madness",
     rarity = "cry_exotic",
-    atlas = "v_atlas_2",
+    atlas  = "v_atlas_2",
 
     blueprint_compat = true,
-    demicoloncompat = true,
+    demicoloncompat  = true,
 
-    pos = { x = 6, y = 1 },
+    pos      = { x = 6, y = 1 },
     soul_pos = { x = 8, y = 1, extra = { x = 7, y = 1 } },
 
     cost = 50,
@@ -29,22 +29,33 @@ SMODS.Joker({
     end,
 
     calculate = function(_, card, context)
-        if context.setting_blind and not context.blueprint then
+        if context.forcetrigger then
+            SMODS.scale_card(card, {
+                ref_table = card.ability.extra,
+                ref_value = "xmult_gain",
+                scalar_value = "gain",
+                scalar_table = { gain = card.sell_cost },
+            })
+
             SMODS.scale_card(card, {
                 ref_table = card.ability.extra,
                 ref_value = "xmult",
                 scalar_value = "xmult_gain",
             })
+        end
 
+        if context.setting_blind and not context.blueprint then
             if not context.blind.boss then
-                local destructable_jokers = {}
+                local destructible = {}
 
                 for _, jkr in ipairs(G.jokers.cards) do
-                    if jkr ~= card and SMODS.is_eternal(jkr, card) and not jkr.getting_sliced then destructable_jokers[#destructable_jokers + 1] = jkr end
+                    if jkr ~= card and not SMODS.is_eternal(jkr, card) and not jkr.getting_sliced then
+                        destructible[#destructible + 1] = jkr
+                    end
                 end
 
-                ---@type Card|nil
-                local joker_to_destroy = pseudorandom_element(destructable_jokers, "the madness of man knows no bound", {})
+                ---@type Card | nil
+                local joker_to_destroy, _ = pseudorandom_element(destructible, G.SEED)
 
                 if joker_to_destroy then
                     joker_to_destroy.getting_sliced = true
@@ -56,15 +67,21 @@ SMODS.Joker({
                         scalar_table = { gain = joker_to_destroy.sell_cost },
                     })
 
-                    G.E_MANAGER:add_event(Event({
+                    Ascensio.addEvent({
                         func = function()
                             (context.blueprint_card or card):juice_up(0.8, 0.8)
                             joker_to_destroy:start_dissolve({ G.C.RED }, nil, 1.6)
                             return true
                         end,
-                    }))
+                    })
                 end
             end
+
+            SMODS.scale_card(card, {
+                ref_table = card.ability.extra,
+                ref_value = "xmult",
+                scalar_value = "xmult_gain",
+            })
         end
 
         if context.joker_main then return { xmult = card.ability.extra.xmult } end

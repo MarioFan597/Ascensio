@@ -4,47 +4,49 @@
 ---@class Coords
 ---@field x integer
 ---@field y integer
-
 ---@overload fun(coords: Coords): Coords
----@param coords Coords
----@return Coords
-Coords = function(coords) return coords end
+Coords = setmetatable({}, {
+    ---@param tbl Coords
+    ---@return Coords
+    __call = function(_, tbl) return setmetatable(tbl, { __index = Coords }) end,
+})
 
 ---@class Rect
 ---@field x1 integer
 ---@field y1 integer
 ---@field x2 integer
 ---@field y2 integer
-
 ---@overload fun(rect: Rect): Rect
----@param rect Rect
----@return Rect
-Rect = function(rect) return rect end
+Rect = setmetatable({}, {
+    ---@param tbl Rect
+    ---@return Rect
+    __call = function(_, tbl) return setmetatable(tbl, { __index = Rect }) end,
+})
 
 ---@class CardAnimationFrames
----@field pos? { x: integer, y: integer, t: number }[]
----@field soul_pos? { x: integer, y: integer, t: number }[]
----@field soul_pos_extra? { x: integer, y: integer, t: number }[]
+---@field pos?            { x: integer, y: integer, t: number } []
+---@field soul_pos?       { x: integer, y: integer, t: number } []
+---@field soul_pos_extra? { x: integer, y: integer, t: number } []
 
----@alias GroupType "row"|"col"|"r"|"c"
----@alias IterationType "forward"|"backward"|"f"|"b"
+---@alias GroupType "row"|"r"|"col"|"c"
+---@alias IterationType "forward"|"f"|"backward"|"b"
 
 ---@class CardAnimationSkimMacro
----@field type "skim"
----@field pos? CardAnimationSkimMacroSubTable
----@field soul_pos? CardAnimationSkimMacroSubTable
+---@field type            "skim"
+---@field pos?            CardAnimationSkimMacroSubTable
+---@field soul_pos?       CardAnimationSkimMacroSubTable
 ---@field soul_pos_extra? CardAnimationSkimMacroSubTable
 
 ---@class CardAnimationSkimMacroSubTable
----@field include (Coords[]|Rect[])
----@field exclude? (Coords[]|Rect[])
----@field timing? integer[]
+---@field include      (Coords[] | Rect[])
+---@field exclude?     (Coords[] | Rect[])
+---@field timing?      integer[]
 ---@field is_periodic? boolean
----@field direction? { [1]: GroupType, [2]: IterationType, [3]: IterationType }
+---@field direction?   { [1]: GroupType, [2]: IterationType, [3]: IterationType }
 
 ---@class CardAnimation
 ---@field frames? CardAnimationFrames
----@field macro? CardAnimationSkimMacro
+---@field macro?  CardAnimationSkimMacro
 
 ---@class (partial) SMODS.Joker
 ---@field animation? CardAnimation
@@ -58,17 +60,14 @@ local cardanim_cfg = {
         -- child is the child of the card center that has the "set_sprite_pos" method
         pos = {
             coords = function(p_center) return p_center.pos end,
-
             child = function(children) return children.center end,
         },
         soul_pos = {
             coords = function(p_center) return p_center.soul_pos end,
-
             child = function(children) return children.floating_sprite end,
         },
         soul_pos_extra = {
             coords = function(p_center) return p_center.soul_pos and p_center.soul_pos.extra or nil end,
-
             child = function(children) return children.floating_sprite2 end,
         },
     },
@@ -80,18 +79,18 @@ local cardanim_cfg = {
 local mod_prefix = SMODS.current_mod.prefix
 -- Create global cardanim tables
 G[mod_prefix .. "_cardanim_cfg"] = cardanim_cfg
-G[mod_prefix .. "_cardanim"] = {
+G[mod_prefix .. "_cardanim"]     = {
     DEBUG = {}, -- Modules can add entries to this table for debugging purposes
 }
-local cardanim_tbl = G[mod_prefix .. "_cardanim"]
+local cardanim_tbl               = G[mod_prefix .. "_cardanim"]
 
 -- Load macros
 cardanim_tbl.macro_functions = {}
-local current_mod_path = tostring(SMODS.current_mod.path)
-local files = NFS.getDirectoryItems(current_mod_path .. cardanim_cfg.macro_directory)
+local current_mod_path       = tostring(SMODS.current_mod.path)
+local files                  = NFS.getDirectoryItems(current_mod_path .. cardanim_cfg.macro_directory)
 for _, file_name in ipairs(files) do
     local macro_name = file_name:gsub(".lua", "")
-    local f, err = SMODS.load_file(cardanim_cfg.macro_directory .. "/" .. file_name)
+    local f, err     = SMODS.load_file(cardanim_cfg.macro_directory .. "/" .. file_name)
     if err then error(err) end
     cardanim_tbl.macro_functions[macro_name] = f()
 end
@@ -103,32 +102,27 @@ G.E_MANAGER:add_event(Event({
     func = function()
         -- [[ ANIMATION REGISTRATION ]]
         cardanim_tbl.animation_details = {}
-        local anim_details = cardanim_tbl.animation_details
+        local anim_details             = cardanim_tbl.animation_details
         for card_key, card_center in pairs(G.P_CENTERS) do
             local card_anim = card_center.animation
-            if
-                not card_anim or not card_key:match("_" .. mod_prefix .. "_") -- only target centers from this mod
+            if not card_anim or not card_key:match("_" .. mod_prefix .. "_") -- only target centers from this mod
             then
                 goto continue_centers
             end
 
             -- Run macro
             if card_anim.macro and card_anim.macro.type then
-                local macro_obj = card_anim.macro
+                local macro_obj    = card_anim.macro
                 macro_obj.card_key = card_key
 
                 local macro_frames = cardanim_tbl.macro_functions[macro_obj.type](macro_obj)
                 if macro_frames then card_anim.frames = macro_frames end
             end
 
-            anim_details[card_key] = {
-                current_frame_id = {},
-                current_frame_duration = {},
-                sequence = card_anim.frames,
-            }
+            anim_details[card_key] = { current_frame_id = {}, current_frame_duration = {}, sequence = card_anim.frames }
 
             for layer_name, _ in pairs(cardanim_cfg.card_layers) do
-                anim_details[card_key].current_frame_id[layer_name] = 1
+                anim_details[card_key].current_frame_id[layer_name]       = 1
                 anim_details[card_key].current_frame_duration[layer_name] = 1
             end
 
@@ -137,8 +131,8 @@ G.E_MANAGER:add_event(Event({
 
         -- [[ ANIMATION UPDATING ]]
         -- Start animation update
-        local sprite_dt = 0
-        local sprite_spf = 0.1 / cardanim_cfg.granularity -- seconds per frame
+        local sprite_dt    = 0
+        local sprite_spf   = 0.1 / cardanim_cfg.granularity -- seconds per frame
         local _game_update = Game.update
 
         function Game:update(dt) -- hella sus, akin to performing brain surgery on yourself
@@ -147,18 +141,19 @@ G.E_MANAGER:add_event(Event({
             -- hence this is required for constant animations across all devices
             sprite_dt = sprite_dt + dt
             if sprite_dt < sprite_spf then goto skip_update end
+            ---@diagnostic disable-next-line: assign-type-mismatch
             sprite_dt = sprite_dt - sprite_spf
 
             for card_key, card_anim_d in pairs(anim_details) do
-                local card_def = G.P_CENTERS[card_key]
-                local frame_id = card_anim_d.current_frame_id
+                local card_def       = G.P_CENTERS[card_key]
+                local frame_id       = card_anim_d.current_frame_id
                 local frame_duration = card_anim_d.current_frame_duration
                 local frame_sequence = card_anim_d.sequence
 
                 for layer_name, part in pairs(cardanim_cfg.card_layers) do
                     if frame_sequence[layer_name] and part.coords(card_def) then
                         local pos_table = part.coords(card_def)
-                        local frame = frame_sequence[layer_name][frame_id[layer_name]]
+                        local frame     = frame_sequence[layer_name][frame_id[layer_name]]
 
                         -- basically just change x and y coords of a table
                         if frame_duration[layer_name] == 1 then
@@ -190,15 +185,24 @@ G.E_MANAGER:add_event(Event({
 
                 local card_key = card.config.center.key
                 -- If the card has no animation, skip
-                if not anim_details[card_key] or card.facing == "back" or not card.config.center.unlocked or not card.config.center.discovered then goto i_card_continue end
+                if not anim_details[card_key] or card.facing == "back" or not card.config.center.unlocked or not card
+                        .config
+                        .center
+                        .discovered then
+                    goto i_card_continue
+                end
 
                 -- Grab card center and its frames
-                local card_def = G.P_CENTERS[card_key]
+                local card_def       = G.P_CENTERS[card_key]
                 local frame_sequence = anim_details[card_key].sequence
 
                 -- Update each layer, but only if frames are defined for that layer
                 for kw, part in pairs(cardanim_cfg.card_layers) do
-                    if frame_sequence[kw] and part.coords(card_def) then part.child(card.children):set_sprite_pos(part.coords(card_def)) end
+                    if frame_sequence[kw] and part.coords(card_def) then
+                        part
+                            .child(card.children)
+                            :set_sprite_pos(part.coords(card_def))
+                    end
                 end
 
                 ::i_card_continue::

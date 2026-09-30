@@ -1,22 +1,22 @@
 SMODS.Joker({
-    key = "splash",
+    key    = "splash",
     rarity = "cry_exotic",
-    atlas = "v_atlas_2",
+    atlas  = "v_atlas_2",
 
     blueprint_compat = true,
-    demicoloncompat = true,
+    demicoloncompat  = true,
 
-    pos = { x = 6, y = 1 },
+    pos      = { x = 6, y = 1 },
     soul_pos = { x = 8, y = 1, extra = { x = 7, y = 1 } },
 
-    cost = 50,
+    cost  = 50,
     order = 1,
 
     config = {
         extra = {
             hand_mod = 1,
             card_requirement = {
-                current = 0,
+                current     = 0,
                 requirement = 20,
             },
         },

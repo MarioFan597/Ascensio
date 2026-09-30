@@ -15,11 +15,8 @@ SMODS.Joker({
     end,
     calculate = function(_, card, context)
         ---@cast card.ability table<string, any>
-        if --The card transformation apspect of this was taken and modifed in part from the Waterfall Joker from the Celesete Card Collection
-            context.before
-            and context.poker_hands ~= nil
-            and next(context.poker_hands["Pair"])
-        then
+        if-- The card transformation apspect of this was taken and modifed in part from the Waterfall Joker from the Celesete Card Collection
+        context.before and context.poker_hands ~= nil and next(context.poker_hands["Pair"]) then
             local rank_count = {}
 
             for _, _card in ipairs(context.scoring_hand) do

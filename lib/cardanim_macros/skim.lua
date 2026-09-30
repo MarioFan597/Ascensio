@@ -1,5 +1,7 @@
 local error_messages = {}
-function error_messages.skim_invalid_str(key, type, found_string, is_sub) return ('Animation macro "SKIM": Card ' .. key .. " specifies an incorrect " .. type .. ' "' .. found_string .. '"') end
+function error_messages.skim_invalid_str(key, type, found_string, is_sub)
+    return ('Animation macro "SKIM": Card ' .. key .. " specifies an incorrect " .. type .. ' "' .. found_string .. '"')
+end
 local mod_prefix = SMODS.current_mod.prefix
 
 -- Returns all coordinates within a rectangle.
@@ -11,8 +13,8 @@ local function coord_rect(coords)
     local y2 = coords.y2
 
     local coord_list = {}
-    local x_inc = x2 >= x1 and 1 or -1
-    local y_inc = y2 >= y1 and 1 or -1
+    local x_inc      = x2 >= x1 and 1 or -1
+    local y_inc      = y2 >= y1 and 1 or -1
     for x = x1, x2, x_inc do
         for y = y1, y2, y_inc do
             table.insert(coord_list, { ["x"] = x, ["y"] = y })
@@ -22,7 +24,7 @@ local function coord_rect(coords)
 end
 
 -- Determines if <main> is equivalent to any of the items in the <options> sequence.
----@param main string
+---@param main    string
 ---@param options string[]
 ---@return boolean
 local function string_any(main, options)
@@ -42,15 +44,15 @@ return function(macro_obj)
         if (not macro_obj[layer_name]) or next(macro_obj[layer_name]) == nil then goto skimmacrocontinue end
         seq[layer_name] = {}
 
-        local err_msg = error_messages
+        local err_msg    = error_messages
         local part_table = macro_obj[layer_name]
-        local card_key = macro_obj.card_key
+        local card_key   = macro_obj.card_key
 
-        local include = part_table.include or {}
-        local exclude = part_table.exclude or {}
-        local timing = part_table.timing or { 1 }
+        local include     = part_table.include or {}
+        local exclude     = part_table.exclude or {}
+        local timing      = part_table.timing or { 1 }
         local is_periodic = part_table.is_periodic or false
-        local direction = part_table.direction or { "row", "forward", "forward" }
+        local direction   = part_table.direction or { "row", "forward", "forward" }
 
         --[[ DIRECTION DECOMPOSITION:
             default is {"row", "down", "col", "right"}
@@ -63,15 +65,21 @@ return function(macro_obj)
             V row 4    col 1   col 2   col 3   col 4
         ]]
         -- ERROR - Do not accept anything other than col, c, row, or r
-        if not string_any(direction[1], { "col", "c", "row", "r" }) then error(err_msg.skim_invalid_str(card_key, "group type", direction[1], false)) end
+        if not string_any(direction[1], { "col", "c", "row", "r" }) then
+            error(err_msg.skim_invalid_str(card_key, "group type", direction[1], false))
+        end
         -- now determine axis
         local iter_axis = string_any(direction[1], { "col", "c" }) and "x" or "y"
 
         -- ERROR - Do not accept anything other than forward, f, backward, or b
-        if not string_any(direction[2], { "forward", "f", "backward", "b" }) then error(err_msg.skim_invalid_str(card_key, "group direction", direction[2], false)) end
-        if not string_any(direction[3], { "forward", "f", "backward", "b" }) then error(err_msg.skim_invalid_str(card_key, "lane direction", direction[3], false)) end
+        if not string_any(direction[2], { "forward", "f", "backward", "b" }) then
+            error(err_msg.skim_invalid_str(card_key, "group direction", direction[2], false))
+        end
+        if not string_any(direction[3], { "forward", "f", "backward", "b" }) then
+            error(err_msg.skim_invalid_str(card_key, "lane direction", direction[3], false))
+        end
         -- then determine direction
-        local iter_direction = string_any(direction[2], { "backward", "b" }) and -1 or 1
+        local iter_direction    = string_any(direction[2], { "backward", "b" }) and -1 or 1
         local subiter_direction = string_any(direction[3], { "backward", "b" }) and -1 or 1
 
         --[[ ACTIVE AREA FORMATION]]
@@ -81,10 +89,14 @@ return function(macro_obj)
             local x = coords.x
             local y = coords.y
             if iter_axis == "x" then
-                if not active_area[x] then active_area[x] = {} end
+                if not active_area[x] then
+                    active_area[x] = {}
+                end
                 active_area[x][y] = 1
             elseif iter_axis == "y" then
-                if not active_area[y] then active_area[y] = {} end
+                if not active_area[y] then
+                    active_area[y] = {}
+                end
                 active_area[y][x] = 1
             end
         end
@@ -136,7 +148,7 @@ return function(macro_obj)
 
             That being said, for sake of space, timings shoud NOT be strictly periodic
             (i.e. lcd(highest_timing, #frames) could be a bloody massive number)
-            
+
             For example, given {1,1,1,1,5} over 12 frames, the timing per frame could look like
             {1,1,1,1,5,1,1,1,1,5,1,1} which is not strictly periodic
             (that is, there exists a sequence of six 1-long frames, even though we specified a sequence of four 1-long frames)
@@ -147,12 +159,17 @@ return function(macro_obj)
         -- Rely on this variable instead of #timing
         local highest_timing = 1
         for k, _ in pairs(timing) do
+            ---@cast k int
             if type(k) == "number" and k > highest_timing then highest_timing = k end
         end
 
         -- needed for conditional sorting
-        local function normal_sort_dir(a, b) return a < b end
-        local function reverse_sort_dir(a, b) return a > b end
+        local function normal_sort_dir(a, b)
+            return a < b
+        end
+        local function reverse_sort_dir(a, b)
+            return a > b
+        end
 
         local time_id = 1
 

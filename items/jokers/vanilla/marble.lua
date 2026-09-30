@@ -20,7 +20,7 @@ SMODS.Joker({
         },
     },
 
-    loc_vars = function(self, info_queue, card)
+    loc_vars = function(_, info_queue, card)
         if not card.edition or (card.edition and not card.edition.e_cry_mosaic) then info_queue[#info_queue + 1] = G.P_CENTERS.e_cry_mosaic end
         info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
         return {
@@ -33,17 +33,15 @@ SMODS.Joker({
         }
     end,
 
-    calculate = function(self, card, context)
+    calculate = function(_, card, context)
         if context.repetition and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, "m_stone") then
-            return {
-                message = localize("k_again_ex"),
-                repetitions = to_number(math.min(card.ability.immutable.recap, card.ability.extra.retrigger)),
-            }
+            return { message = localize("k_again_ex"), repetitions = to_number(math.min(card.ability.immutable.recap, card.ability.extra.retrigger)) }
         end
 
         if context.setting_blind then
             if card.ability.extra.retrigger > card.ability.immutable.recap then card.ability.extra.retrigger = card.ability.immutable.recap end
             if card.ability.extra.create > card.ability.immutable.cacap then card.ability.extra.create = card.ability.immutable.cacap end
+
             local stones = {}
             for _ = 1, to_number(card.ability.extra.create) do
                 local stone = SMODS.create_card({
@@ -53,15 +51,18 @@ SMODS.Joker({
                     --seal = "Red", --Not using this as stone gives all the retriggers we need
                     area = G.discard,
                 })
+
                 if card.ability.extra.create <= 5 and not Talisman.config_file.disable_anims then
                     stone:set_edition("e_cry_mosaic")
                 else
                     stone:set_edition("e_cry_mosaic", nil, true)
                 end
+
                 table.insert(stones, stone)
-                --Modifed VanillaRemade Stone Joker for the visual aspect
-                G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+                -- Modifed VanillaRemade Stone Joker for the visual aspect
+                G.playing_card     = (G.playing_card and G.playing_card + 1) or 1
                 stone.playing_card = G.playing_card
+
                 table.insert(G.playing_cards, stone)
                 G.E_MANAGER:add_event(Event({
                     func = function()

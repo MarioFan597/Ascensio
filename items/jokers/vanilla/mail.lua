@@ -32,7 +32,7 @@ SMODS.Joker({
                 if base == 14 then base = 11 end
             end
 
-            local money = base * card.ability.extra.multiplier
+            local money          = base * card.ability.extra.multiplier
             G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + money
 
             return {

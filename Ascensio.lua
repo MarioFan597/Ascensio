@@ -4,7 +4,7 @@
 Ascensio = {}
 
 ---@param path string Path of the source file to load. Relative from project root.
----@param id? string Mod ID. Defaults to `SMODS.current_mod`.
+---@param id?  string Mod ID. Defaults to `SMODS.current_mod`.
 ---@return string?
 function Ascensio.loadFile(path, id)
     local chunk, err = SMODS.load_file(path, id)
@@ -21,7 +21,9 @@ Ascensio.loadFile("lib/core.lua")
 
 Ascensio.Ascensionable = {}
 
-if Entropy then Ascensio.Apothable = {} end
+if Entropy then
+    Ascensio.Apothable = {}
+end
 
 Ascensio.Descensions = {}
 
@@ -35,6 +37,7 @@ if next(SMODS.find_mod("DebugPlus")) then Ascensio.loadFile("lib/debug.lua") end
 
 -- Load libraries.
 Ascensio.loadFile("lib/utils.lua")
+Ascensio.loadFile("lib/event.lua")
 Ascensio.loadFile("lib/cardanim.lua")
 Ascensio.loadFile("lib/number.lua")
 Ascensio.loadFile("lib/hooks.lua")
@@ -58,35 +61,38 @@ Ascensio.Source = setmetatable({
     Cryptposting = "cryptposting/",
 
     MortalCryptid = "cryptid/mortal/",
-}, {
-    ---@param self Source
-    ---@param variant string|number
-    ---@return string
-    __index = function(self, variant)
-        ---@diagnostic disable-next-line: undefined-field
-        local _res = self[variant]
-        if _res ~= nil then
-            return _res
-        else
-            return ""
-        end
-    end,
+},
+    {
+        ---@param self    Source
+        ---@param variant string | number
+        ---@return string
+        __index = function(self, variant)
+            ---@diagnostic disable-next-line: undefined-field
+            local _res = self[variant]
+            if _res ~= nil then
+                return _res
+            else
+                return ""
+            end
+        end,
 
-    -- Does nothing.
-    __newindex = function(_, _, _) end,
-})
+        -- Does nothing.
+        __newindex = function(_, _, _) end
+    })
 
 ---@param key string
 ---@return string
-local function get_source_file(key) return string.sub(key, 7) end
+local function get_source_file(key)
+    return string.sub(key, 7)
+end
 
----@alias AscensionSource "vanilla"|"cryptid"|"cryptid_mortals"|"entropy"|"astronomica"|string
+---@alias AscensionSource "vanilla" | "cryptid" | "cryptid_mortals" | "entropy" | "astronomica" | string
 
 ---@class Ascension
----@field exotic string The key of the Ascended joker.
----@field entropic? string The key of the Apotheosis joker.
----@field exotic_file? "skip"|string Where the Joker is defined in. If the value `"skip"` is provided then loading will be skipped.
----@field entropic_file? "skip"|string Where the Entropic Joker is defined in. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
+---@field exotic         string          The key of the Ascended joker.
+---@field entropic?      string          The key of the Apotheosis joker.
+---@field exotic_file?   "skip" | string Where the Joker is defined in. If the value `"skip"` is provided then loading will be skipped.
+---@field entropic_file? "skip" | string Where the Entropic Joker is defined in. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
 ---@overload fun(asc: Ascension): Ascension
 Ascensio.Ascension = setmetatable({}, {
     ---@param asc Ascension
@@ -106,7 +112,7 @@ local function ascensioRegisterInternal(o)
                 Ascensio.loadFile(string.format("items/jokers/%s/%s.lua", source, source_file))
             end
 
-            Ascensio.Ascensionable[mortal] = ascensions.exotic
+            Ascensio.Ascensionable[mortal]          = ascensions.exotic
             Ascensio.Descensions[ascensions.exotic] = mortal
 
             if Ascensio.Apothable and ascensions.entropic ~= nil then
@@ -115,7 +121,7 @@ local function ascensioRegisterInternal(o)
                     Ascensio.loadFile(string.format("items/jokers/%s/entr/%s.lua", source, entr_src))
                 end
 
-                Ascensio.Apothable[mortal] = ascensions.entropic
+                Ascensio.Apothable[mortal]            = ascensions.entropic
                 Ascensio.Apothable[ascensions.exotic] = ascensions.entropic
 
                 Ascensio.Descensions[ascensions.entropic] = mortal
@@ -142,30 +148,38 @@ function Ascensio.register(o)
     ascensioRegisterInternal(processed)
 end
 
+local dumped = {}
+
 ---@class AscensionInternal
----@field source Source Where is the source of the Mortal version of the Joker. Defaults to `Source.Vanilla`.
----@field from string The key of the Mortal joker.
----@field to_exotic string The key of the Ascended joker.
----@field source_file? "skip"|string Where the Joker is defined in. Defaults to the key of the Ascended Joker with the leading `"j_asc"` removed. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
----@field to_entropic? string The key of the Apotheosis joker.
----@field entropic_file? "skip"|string Where the Entropic Joker is defined in. Defaults to the key of the Mortal Joker with the leading `"j_"` removed and the `"_entr"` appended. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
+---@field source         Source          Where is the source of the Mortal version of the Joker. Defaults to `Source.Vanilla`.
+---@field from           string          The key of the Mortal joker.
+---@field to_exotic      string          The key of the Ascended joker.
+---@field source_file?   "skip" | string Where the Joker is defined in. Defaults to the key of the Ascended Joker with the leading `"j_asc"` removed. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
+---@field to_entropic?   string          The key of the Apotheosis joker.
+---@field entropic_file? "skip" | string Where the Entropic Joker is defined in. Defaults to the key of the Mortal Joker with the leading `"j_"` removed and the `"_entr"` appended. `".lua"` file extension are not to be added. If the source file is `"skip"` then loading will be skipped.
 ---@overload fun(o: AscensionInternal): AscensionInternal
 local AscensionInternal = setmetatable({}, {
     ---@param asc AscensionInternal
     ---@return AscensionInternal
     __call = function(_, asc)
+        dumped[asc.source] = dumped[asc.source] or {}
+
         local source_file = asc.source_file or get_source_file(asc.to_exotic)
         if source_file ~= "skip" then Ascensio.loadFile("items/jokers/" .. asc.source .. source_file .. ".lua") end
 
-        Ascensio.Ascensionable[asc.from] = asc.to_exotic
+        Ascensio.Ascensionable[asc.from]    = asc.to_exotic
         Ascensio.Descensions[asc.to_exotic] = asc.from
+
+        dumped[asc.source][asc.from] = { exotic = asc.to_exotic }
 
         if Entropy then
             if Ascensio.Apothable and asc.to_entropic ~= nil then
+                dumped[asc.source][asc.from].entropic = asc.to_entropic
+
                 local entr_source_file = asc.entropic_file or get_source_file(asc.to_exotic)
                 if entr_source_file ~= "skip" then Ascensio.loadFile("items/jokers/" .. asc.source .. "entr/" .. entr_source_file .. "_entr.lua") end
 
-                Ascensio.Apothable[asc.from] = asc.to_entropic
+                Ascensio.Apothable[asc.from]      = asc.to_entropic
                 Ascensio.Apothable[asc.to_exotic] = asc.to_entropic
 
                 Ascensio.Descensions[asc.to_entropic] = asc.from
@@ -246,6 +260,7 @@ AscensionInternal({ source = Source.Vanilla, from = "j_lucky_cat", to_exotic = "
 AscensionInternal({ source = Source.Vanilla, from = "j_baseball", to_exotic = "j_asc_baseball_card" })
 AscensionInternal({ source = Source.Vanilla, from = "j_bull", to_exotic = "j_asc_bull" })
 AscensionInternal({ source = Source.Vanilla, from = "j_trading", to_exotic = "j_asc_trading" })
+AscensionInternal({ source = Source.Vanilla, from = "j_flash", to_exotic = "j_asc_flash" })
 AscensionInternal({ source = Source.Vanilla, from = "j_ancient", to_exotic = "j_asc_ancient" })
 AscensionInternal({ source = Source.Vanilla, from = "j_selzer", to_exotic = "j_asc_seltzer" }) -- Sic! Don't correct!
 AscensionInternal({ source = Source.Vanilla, from = "j_castle", to_exotic = "j_asc_castle" })
@@ -253,6 +268,7 @@ AscensionInternal({ source = Source.Vanilla, from = "j_smiley", to_exotic = "j_a
 AscensionInternal({ source = Source.Vanilla, from = "j_campfire", to_exotic = "j_asc_campfire" })
 AscensionInternal({ source = Source.Vanilla, from = "j_throwback", to_exotic = "j_asc_throwback" })
 AscensionInternal({ source = Source.Vanilla, from = "j_hanging_chad", to_exotic = "j_asc_hanging_chad" })
+AscensionInternal({ source = Source.Vanilla, from = "j_ring_master", to_exotic = "j_asc_ring_master" })
 AscensionInternal({ source = Source.Vanilla, from = "j_blueprint", to_exotic = "j_asc_blueprint" })
 AscensionInternal({ source = Source.Vanilla, from = "j_mr_bones", to_exotic = "j_asc_mr_bones", source_file = "bones" })
 AscensionInternal({ source = Source.Vanilla, from = "j_acrobat", to_exotic = "j_asc_acrobat" })
@@ -319,16 +335,16 @@ end
 ----------------Colours------------------
 ---------Special Thanks Colours----------
 loc_colour("inactive")
-G.ARGS.LOC_COLOURS.asc_tattered = HEX("2ad5ff")
-G.ARGS.LOC_COLOURS.asc_slipstream = HEX("cc99ff")
-G.ARGS.LOC_COLOURS.asc_glitchkat = HEX("f04360")
+G.ARGS.LOC_COLOURS.asc_tattered        = HEX("2ad5ff")
+G.ARGS.LOC_COLOURS.asc_slipstream      = HEX("cc99ff")
+G.ARGS.LOC_COLOURS.asc_glitchkat       = HEX("f04360")
 G.ARGS.LOC_COLOURS.asc_somethingcom515 = HEX("E8463D")
-G.ARGS.LOC_COLOURS.asc_hssr = HEX("51c1ffff")
-G.ARGS.LOC_COLOURS.asc_omega = HEX("f5fffa")
-G.ARGS.LOC_COLOURS.asc_oinite = HEX("dc143c")
-G.ARGS.LOC_COLOURS.asc_hexa = HEX("52c5ff")
-G.ARGS.LOC_COLOURS.asc_grahkon = HEX("236400")
-G.ARGS.LOC_COLOURS.asc_grahkon_bg = HEX("48CF00")
+G.ARGS.LOC_COLOURS.asc_hssr            = HEX("51c1ffff")
+G.ARGS.LOC_COLOURS.asc_omega           = HEX("f5fffa")
+G.ARGS.LOC_COLOURS.asc_oinite          = HEX("dc143c")
+G.ARGS.LOC_COLOURS.asc_hexa            = HEX("52c5ff")
+G.ARGS.LOC_COLOURS.asc_grahkon         = HEX("236400")
+G.ARGS.LOC_COLOURS.asc_grahkon_bg      = HEX("48CF00")
 
 -- Credits system (Origin: Entropy)
 local smcmb = SMODS.create_mod_badges
@@ -336,14 +352,14 @@ function SMODS.create_mod_badges(obj, badges)
     smcmb(obj, badges)
     if not SMODS.config.no_mod_badges and obj and obj.asc_credits then
         local function calc_scale_fac(text)
-            local size = 0.9
-            local font = G.LANG.font
-            local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
+            local size              = 0.9
+            local font              = G.LANG.font
+            local max_text_width    = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
             local calced_text_width = 0
             ---@diagnostic disable-next-line: access-invisible, undefined-field
             -- Math reproduced from DynaText:update_text
             for _, c in utf8.chars(text) do
-                local tx = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE + 2.7 * 1 * G.TILESCALE * font.FONTSCALE
+                local tx          = font.FONT:getWidth(c) * (0.33 * size) * G.TILESCALE * font.FONTSCALE + 2.7 * 1 * G.TILESCALE * font.FONTSCALE
                 calced_text_width = math.floor(calced_text_width + tx / (G.TILESIZE * G.TILESCALE))
             end
             ---@diagnostic disable-next-line: assign-type-mismatch
@@ -351,9 +367,9 @@ function SMODS.create_mod_badges(obj, badges)
             return scale_fac
         end
         if obj.asc_credits.art or obj.asc_credits.code or obj.asc_credits.idea or obj.asc_credits.name or obj.asc_credits.custom then
-            local scale_fac = {}
+            local scale_fac     = {}
             local min_scale_fac = 1
-            local strings = { "Ascēnsiō" }
+            local strings       = { "Ascēnsiō" }
             for _, v in ipairs({ "name", "idea", "art", "code" }) do
                 if obj.asc_credits[v] then
                     for i = 1, #obj.asc_credits[v] do
@@ -369,14 +385,12 @@ function SMODS.create_mod_badges(obj, badges)
                 })
             end
             for i = 1, #strings do
-                scale_fac[i] = calc_scale_fac(strings[i])
+                scale_fac[i]  = calc_scale_fac(strings[i])
                 min_scale_fac = math.min(min_scale_fac, scale_fac[i])
             end
             local ct = {}
             for i = 1, #strings do
-                ct[i] = {
-                    string = strings[i],
-                }
+                ct[i] = { string = strings[i] }
             end
             local cry_badge = {
                 n = G.UIT.R,
@@ -438,9 +452,9 @@ function SMODS.create_mod_badges(obj, badges)
     smcmb2(obj, badges)
     if not SMODS.config.no_mod_badges and obj and obj.ascxast_credits then
         local function calc_scale_fac(text)
-            local size = 0.9
-            local font = G.LANG.font
-            local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
+            local size              = 0.9
+            local font              = G.LANG.font
+            local max_text_width    = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
             local calced_text_width = 0
 
             ---@diagnostic disable-next-line: access-invisible, undefined-field
@@ -455,9 +469,9 @@ function SMODS.create_mod_badges(obj, badges)
             return scale_fac
         end
         if obj.ascxast_credits.art or obj.ascxast_credits.code or obj.ascxast_credits.idea or obj.ascxast_credits.name or obj.ascxast_credits.custom then
-            local scale_fac = {}
+            local scale_fac     = {}
             local min_scale_fac = 1
-            local strings = { "Ascēnsiō X Astronomica" }
+            local strings       = { "Ascēnsiō X Astronomica" }
             for _, v in ipairs({ "name", "idea", "art", "code" }) do
                 if obj.ascxast_credits[v] then
                     for i = 1, #obj.ascxast_credits[v] do
@@ -473,14 +487,12 @@ function SMODS.create_mod_badges(obj, badges)
                 })
             end
             for i = 1, #strings do
-                scale_fac[i] = calc_scale_fac(strings[i])
+                scale_fac[i]  = calc_scale_fac(strings[i])
                 min_scale_fac = math.min(min_scale_fac, scale_fac[i])
             end
             local ct = {}
             for i = 1, #strings do
-                ct[i] = {
-                    string = strings[i],
-                }
+                ct[i] = { string = strings[i] }
             end
             local cry_badge = {
                 n = G.UIT.R,
@@ -538,18 +550,18 @@ function SMODS.create_mod_badges(obj, badges)
     end
 end
 
-if next(SMODS.find_mod("Entropy")) then
-    ---Ascēnsiō X Entropy Tag
+if next(SMODS.find_mod("entr")) then
+    --- Ascēnsiō X Entropy Tag
     local smcmb3 = SMODS.create_mod_badges
-    ---@param obj SMODS.GameObject|table
+    ---@param obj    SMODS.GameObject | table
     ---@param badges table[]
     function SMODS.create_mod_badges(obj, badges)
         smcmb3(obj, badges)
         if not SMODS.config.no_mod_badges and obj and obj.ascxentr_credits then
             local function calc_scale_fac(text)
-                local size = 0.9
-                local font = G.LANG.font
-                local max_text_width = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
+                local size              = 0.9
+                local font              = G.LANG.font
+                local max_text_width    = 2 - 2 * 0.05 - 4 * 0.03 * size - 2 * 0.03
                 local calced_text_width = 0
 
                 ---@diagnostic disable-next-line: access-invisible, undefined-field
@@ -564,9 +576,9 @@ if next(SMODS.find_mod("Entropy")) then
                 return scale_fac
             end
             if obj.ascxentr_credits.art or obj.ascxentr_credits.code or obj.ascxentr_credits.idea or obj.ascxentr_credits.name or obj.ascxentr_credits.custom then
-                local scale_fac = {}
+                local scale_fac     = {}
                 local min_scale_fac = 1
-                local strings = { "Ascēnsiō X Entropy" }
+                local strings       = { "Ascēnsiō X Entropy" }
                 for _, v in ipairs({ "name", "idea", "art", "code" }) do
                     if obj.ascxentr_credits[v] then
                         for i = 1, #obj.ascxentr_credits[v] do
@@ -582,14 +594,12 @@ if next(SMODS.find_mod("Entropy")) then
                     })
                 end
                 for i = 1, #strings do
-                    scale_fac[i] = calc_scale_fac(strings[i])
+                    scale_fac[i]  = calc_scale_fac(strings[i])
                     min_scale_fac = math.min(min_scale_fac, scale_fac[i])
                 end
                 local ct = {}
                 for i = 1, #strings do
-                    ct[i] = {
-                        string = strings[i],
-                    }
+                    ct[i] = { string = strings[i] }
                 end
                 local cry_badge = {
                     n = G.UIT.R,
@@ -651,10 +661,12 @@ end
 -- Mod Menu
 SMODS.current_mod = SMODS.current_mod or {}
 
---#region SMODS UI funcs (additions, config, collection) Taken from Cardsleves to make custom mod background description clear--
+-- #region SMODS UI funcs (additions, config, collection) Taken from Cardsleves to make custom mod background description clear--
 SMODS.current_mod.description_loc_vars = function() return { background_colour = G.C.CLEAR, text_colour = G.C.WHITE, scale = 1.2 } end
 
-if SMODS.current_mod.config == nil then SMODS.current_mod.config = { ["Insanity Mode!!!"] = false } end
+if SMODS.current_mod.config == nil then
+    SMODS.current_mod.config = { ["Insanity Mode!!!"] = false }
+end
 
 AscConfig = SMODS.current_mod.config
 

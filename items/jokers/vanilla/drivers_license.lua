@@ -47,9 +47,7 @@ SMODS.Joker({
         if context.joker_main or context.blueprint then
             local cnt = count_mod()
 
-            return {
-                x_mult = Number.exp(card.ability.extra.base, cnt),
-            }
+            return { x_mult = Number.exp(card.ability.extra.base, cnt) }
         end
     end,
 

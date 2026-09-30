@@ -1,26 +1,18 @@
 SMODS.Joker({
-    key = "crafty",
+    key    = "crafty",
     rarity = "cry_exotic",
-    atlas = "v_atlas_1",
+    atlas  = "v_atlas_1",
+
     blueprint_compat = true,
-    demicoloncompat = true,
-    pos = { x = 6, y = 12 },
+    demicoloncompat  = true,
+
+    pos      = { x = 6, y = 12 },
     soul_pos = { x = 8, y = 12, extra = { x = 7, y = 12 } },
 
     config = { extra = { Xchip = 1, Xchip_mod = 8, hand_type = "Flush" } },
 
     cost = 50,
-    asc_credits = {
-        idea = {
-            "TheOfficalFem",
-        },
-        art = {
-            "Tatteredlurker",
-        },
-        code = {
-            "Somethingcom515",
-        },
-    },
+
     loc_vars = function(_, _, card)
         return {
             vars = {
@@ -87,4 +79,10 @@ SMODS.Joker({
             }
         end
     end,
+
+    asc_credits = {
+        idea = { "TheOfficalFem" },
+        art  = { "Tatteredlurker" },
+        code = { "Somethingcom515" },
+    },
 })

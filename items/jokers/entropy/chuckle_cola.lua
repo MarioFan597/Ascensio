@@ -19,7 +19,7 @@ SMODS.Joker({
     end,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
-            card.ability.extra.triggers = card.ability.extra.triggers - 1
+            card.ability.extra.triggers      = card.ability.extra.triggers - 1
             context.other_card.ability.bonus = (context.other_card.ability.bonus or 0) + context.other_card:get_chip_bonus() * (card.ability.extra.xchip_mod - 1)
             if card.ability.extra.triggers <= 0 and not context.blueprint then
                 SMODS.scale_card(card, {
@@ -29,22 +29,14 @@ SMODS.Joker({
                     no_message = true,
                 })
                 card.ability.extra.immutable.trig_reset = card.ability.extra.immutable.trig_reset * 2
-                card.ability.extra.triggers = card.ability.extra.immutable.trig_reset
+                card.ability.extra.triggers             = card.ability.extra.immutable.trig_reset
                 card_eval_status_text(card, "extra", nil, nil, nil, {
                     message = localize("k_upgrade_ex"),
                     colour = G.C.BLUE,
                 })
-                return {
-                    message = localize("k_upgrade_ex"),
-                    colour = G.C.BLUE,
-                    card = card,
-                }
+                return { message = localize("k_upgrade_ex"), colour = G.C.BLUE, card = card }
             else
-                return {
-                    message = localize("k_upgrade_ex"),
-                    colour = G.C.BLUE,
-                    card = context.other_card,
-                }
+                return { message = localize("k_upgrade_ex"), colour = G.C.BLUE, card = context.other_card }
             end
         end
     end,

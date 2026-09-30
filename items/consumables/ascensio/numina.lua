@@ -1,10 +1,10 @@
 SMODS.ConsumableType({
     key = "Numina",
-    primary_colour = G.C.FILTER, -- Placeholder Colours
+    primary_colour = G.C.FILTER,   -- Placeholder Colours
     secondary_colour = G.C.FILTER, -- Placeholder Colours
     collection_rows = { 6, 6, 6 },
     shop_rate = 0,
-    default = "c_asc_samsara", -- Replace
+    default = "c_asc_samsara",     -- Replace
 })
 
 SMODS.Sticker({
@@ -17,7 +17,7 @@ SMODS.Sticker({
 
     apply = function(_, card)
         card.ability.samsara = true
-        card.ability.debuff = true
+        card.ability.debuff  = true
     end,
 })
 

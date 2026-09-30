@@ -56,6 +56,7 @@ SMODS.Joker({
                 colour = G.C.CODE,
             })
         end
+
         if context.forcetrigger then
             card.ability.extra.cards = card.ability.extra.cards + card.ability.extra.gain
             card_eval_status_text(card, "extra", nil, nil, nil, {
@@ -65,12 +66,10 @@ SMODS.Joker({
             G.E_MANAGER:add_event(Event({
                 trigger = "after",
                 func = function()
-                    for i = 1, card.ability.extra.cards do
+                    for _ = 1, card.ability.extra.cards do
                         play_sound("timpani")
                         local _card = create_card("Code", G.consumeables, nil, nil, nil, nil)
                         _card:set_edition({ negative = true })
-
-                        in_pool = function(_, _) return true, { allow_duplicates = true } end
 
                         _card:add_to_deck()
                         G.consumeables:emplace(_card)

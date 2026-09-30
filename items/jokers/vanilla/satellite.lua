@@ -31,7 +31,7 @@ SMODS.Joker({
 
     calculate = function(_, card, ctx)
         if ctx.using_consumeable and ctx.consumeable.set == "Planet" then
-            return SMODS.scale_card(card, {
+            SMODS.scale_card(card, {
                 ref_table = card.ability.extra,
                 ref_value = "money",
                 scalar_value = "gain",

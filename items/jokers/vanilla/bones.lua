@@ -51,7 +51,7 @@ SMODS.Joker({
                 card.ability.extra.immutable.beaten = card.ability.extra.immutable.beaten + 1
             else
                 card.ability.extra.immutable.beaten = card.ability.extra.immutable.beaten + 1
-                card.ability.extra.active = true
+                card.ability.extra.active           = true
             end
         end
 
@@ -79,11 +79,7 @@ SMODS.Joker({
                         return true
                     end,
                 }))
-                return {
-                    message = localize("k_saved_ex"),
-                    saved = "asc_saved_by_bones",
-                    colour = G.C.RED,
-                }
+                return { message = localize("k_saved_ex"), saved = "asc_saved_by_bones", colour = G.C.RED }
             end
         end
     end,

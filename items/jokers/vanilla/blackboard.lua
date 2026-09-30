@@ -25,9 +25,10 @@ SMODS.Joker({
             },
         }
     end,
-    calculate = function(self, card, context) --Kinda directly taken and modified from blackboard.
+    calculate = function(self, card, context)
+        -- Kinda directly taken and modified from blackboard.
         local black_suits = 0
-        local all_cards = 0
+        local all_cards   = 0
         if context.before or context.forcetrigger then
             for k, v in ipairs(G.hand.cards) do
                 all_cards = all_cards + 1
@@ -41,10 +42,7 @@ SMODS.Joker({
                     scalar_value = "all_black",
                     no_message = true,
                 })
-                return {
-                    extra = { message = localize("k_upgrade_ex"), colour = G.C.MULT },
-                    colour = G.C.MULT,
-                }
+                return { extra = { message = localize("k_upgrade_ex"), colour = G.C.MULT }, colour = G.C.MULT }
             elseif black_suits > 0 then
                 SMODS.scale_card(card, {
                     ref_table = card.ability.extra,
@@ -53,17 +51,17 @@ SMODS.Joker({
                     scalar_value = "non_all_black",
                     no_message = true,
                 })
-                return {
-                    extra = { message = localize("k_upgrade_ex"), colour = G.C.MULT },
-                    colour = G.C.MULT,
-                }
+                return { extra = { message = localize("k_upgrade_ex"), colour = G.C.MULT }, colour = G.C.MULT }
             end
         end
         if context.joker_main or context.forcetrigger then
             card.ability.extra.mult = card.ability.extra.mult + (black_suits * card.ability.extra.norm_gain)
             return {
                 message = localize({ type = "variable", key = "a_xmult", vars = { card.ability.extra.mult } }),
-                Xmult_mod = card.ability.extra.mult,
+                Xmult_mod = card
+                    .ability
+                    .extra
+                    .mult,
             }
         end
     end,

@@ -52,7 +52,7 @@ SMODS.Joker({
 
         if (ctx.individual and ctx.cardarea == G.play) or ctx.forcetrigger then
             if ctx.other_card:get_id() == 9 then
-                return SMODS.scale_card(card, {
+                SMODS.scale_card(card, {
                     ref_table = card.ability.extra,
                     ref_value = "xdollars_gain",
                     scalar_value = "xdollars_gain_gain",

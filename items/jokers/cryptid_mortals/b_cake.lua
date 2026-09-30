@@ -18,15 +18,18 @@ SMODS.Joker({
         }
     end,
     calculate = function(self, card, context)
-        --Taken from crustulum
+        -- Taken from crustulum
 
         if (context.reroll_shop and not context.blueprint) or context.forcetrigger then
             card.ability.extra.chips = lenient_bignum(card.ability.extra.chips) - lenient_bignum(card.ability.extra.reroll)
             if card.ability.extra.chips > 0 then
-                --G.GAME.current_round.free_rerolls = G.GAME.current_round.free_rerolls + 1
-                --calculate_reroll_cost(true)
+                -- G.GAME.current_round.free_rerolls = G.GAME.current_round.free_rerolls + 1
+                -- calculate_reroll_cost(true)
                 card_eval_status_text(card, "extra", nil, nil, nil, {
-                    card_eval_status_text(card, "extra", nil, nil, nil, { message = "-" .. lenient_bignum(card.ability.extra.reroll), colour = G.C.CHIPS }),
+                    card_eval_status_text(card, "extra", nil, nil, nil, {
+                        message = "-" .. lenient_bignum(card.ability.extra.reroll),
+                        colour = G.C.CHIPS,
+                    }),
                 })
                 return nil, true
             else
@@ -36,7 +39,7 @@ SMODS.Joker({
                         play_sound("tarot1")
                         card.T.r = -0.2
                         card:juice_up(0.3, 0.4)
-                        card.states.drag.is = true
+                        card.states.drag.is          = true
                         card.children.center.pinch.x = true
                         -- This part destroys the card.
                         G.E_MANAGER:add_event(Event({
@@ -53,9 +56,7 @@ SMODS.Joker({
                         return true
                     end,
                 }))
-                return {
-                    message = "Eaten!",
-                }
+                return { message = "Eaten!" }
             end
         end
         if context.joker_main or context.forcetrigger then
@@ -72,7 +73,7 @@ SMODS.Joker({
         end
     end,
     add_to_deck = function(self, card, from_debuff)
-        --This makes the reroll immediately after obtaining free because the game doesn't do that for some reason
+        -- This makes the reroll immediately after obtaining free because the game doesn't do that for some reason
         G.GAME.current_round.free_rerolls = G.GAME.current_round.free_rerolls + 1
         calculate_reroll_cost(true)
     end,

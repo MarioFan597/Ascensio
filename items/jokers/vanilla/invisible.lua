@@ -49,7 +49,7 @@ SMODS.Joker({
             local copied = G.jokers.cards[i + 1]
             if copied then
                 if (#G.jokers.cards < G.jokers.config.card_limit) or (#G.jokers.cards <= G.jokers.config.card_limit and copied.edition and copied.edition.negative) then
-                    local recopied = copy_card(copied, nil, nil, nil, nil) --copied.edition and copied.edition.negative (Replace last nil woth this if we want non negative copies)
+                    local recopied = copy_card(copied, nil, nil, nil, nil) -- copied.edition and copied.edition.negative (Replace last nil woth this if we want non negative copies)
                     recopied:add_to_deck()
                     G.jokers:emplace(recopied)
                 else
@@ -81,12 +81,8 @@ SMODS.Joker({
     end,
 
     asc_credits = {
-        idea = {
-            "Rhelvetican",
-        },
-        art = {
-            "Lil Mr. Slipstream",
-        },
+        idea = { "Rhelvetican" },
+        art = { "Lil Mr. Slipstream" },
         code = {
             "Rhelvetican",
             "MarioFan597",

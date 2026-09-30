@@ -25,7 +25,9 @@ SMODS.Consumable({
             else
                 for _, v in pairs(G.jokers.cards) do
                     if not v.ability.eternal then
-                        if Entropy and (Entropy.DeckOrSleeve and not Entropy.DeckOrSleeve("doc") or to_big(G.GAME.entropy or 0) < to_big(100)) then deletable_jokers[#deletable_jokers + 1] = v end
+                        if Entropy and (Entropy.DeckOrSleeve and not Entropy.DeckOrSleeve("doc") or to_big(G.GAME.entropy or 0) < to_big(100)) then
+                            deletable_jokers[#deletable_jokers + 1] = v
+                        end
                     end
                 end
             end

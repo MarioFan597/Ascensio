@@ -6,23 +6,24 @@ SMODS.Atlas({
 })
 
 SMODS.Joker({
-    key = "obelisk",
+    key    = "obelisk",
     rarity = "cry_exotic",
-    atlas = "obelisk",
-    blueprint_compat = true,
-    demicoloncompat = true,
+    atlas  = "obelisk",
 
-    cost = 50,
+    blueprint_compat = true,
+    demicoloncompat  = true,
+
+    cost  = 50,
     order = 23,
 
-    pos = { x = 0, y = 0 },
+    pos      = { x = 0, y = 0 },
     soul_pos = { x = 0, y = 1, extra = { x = 0, y = 4 } },
 
     ---@type CardAnimation
     animation = {
         macro = {
-            type = "skim",
-            soul_pos = {
+            type           = "skim",
+            soul_pos       = {
                 include = { Rect({ x1 = 0, y1 = 1, x2 = 9, y2 = 3 }) },
             },
             soul_pos_extra = {
@@ -33,7 +34,7 @@ SMODS.Joker({
 
     config = {
         extra = {
-            xmult = 1,
+            xmult     = 1,
             immutable = {
                 consecutive = 0,
             },
@@ -61,13 +62,11 @@ SMODS.Joker({
 
             if reset and not context.forcetrigger then
                 card.ability.immutable.consecutive = 0
-                return {
-                    message = localize("k_reset"),
-                }
+                return { message = localize("k_reset") }
             else
                 card.ability.extra.immutable.consecutive = card.ability.extra.immutable.consecutive + 1
 
-                return SMODS.scale_card(card, {
+                SMODS.scale_card(card, {
                     ref_table = card.ability.extra,
                     ref_value = "xmult",
                     scalar_value = "consecutive",
@@ -76,9 +75,9 @@ SMODS.Joker({
             end
         end
 
-        if context.joker_main then return {
-            xmult = card.ability.extra.xmult,
-        } end
+        if context.joker_main then
+            return { xmult = card.ability.extra.xmult }
+        end
     end,
 
     asc_credits = {

@@ -49,24 +49,14 @@ SMODS.Joker({
         end
 
         if context.repetition and context.cardarea == G.play and context.other_card:is_face() then
-            return {
-                message = localize("k_again_ex"),
-                repetitions = to_number(math.min(card.ability.immutable.max_rep, card.ability.extra.rep)),
-            }
+            return { message = localize("k_again_ex"), repetitions = to_number(math.min(card.ability.immutable.max_rep, card.ability.extra.rep)) }
         end
 
         if context.individual and context.cardarea == G.hand and context.other_card:is_face() and not context.end_of_round then
             if context.other_card.debuff then
-                return {
-                    message = localize("k_debuffed"),
-                    colour = G.C.MULT,
-                    card = card,
-                }
+                return { message = localize("k_debuffed"), colour = G.C.MULT, card = card }
             else
-                return {
-                    x_mult = lenient_bignum(card.ability.extra.xmult),
-                    card = card,
-                }
+                return { x_mult = lenient_bignum(card.ability.extra.xmult), card = card }
             end
         end
     end,

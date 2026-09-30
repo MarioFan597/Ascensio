@@ -21,8 +21,8 @@ SMODS.Joker({
             local converted
 
             for i = 1, #context.scoring_hand do
-                converted = true
-                local _card = context.scoring_hand[i]
+                converted         = true
+                local _card       = context.scoring_hand[i]
                 local enhancement = "m_gold"
                 if _card.ability.effect ~= "Gold Card" then _card:set_ability(G.P_CENTERS[enhancement], nil, true) end
                 if _card.ability.effect ~= "Golden" then _card:set_edition({ cry_gold = true }) end
@@ -39,17 +39,9 @@ SMODS.Joker({
         end
         if (context.individual and context.cardarea == G.hand and context.other_card.ability.effect == "Gold Card" and not context.end_of_round) or context.forcetrigger then
             if context.other_card.debuff then
-                return {
-                    message = localize("k_debuffed"),
-                    colour = G.C.RED,
-                    card = card,
-                }
+                return { message = localize("k_debuffed"), colour = G.C.RED, card = card }
             else
-                return {
-                    Emult_mod = lenient_bignum(card.ability.extra.power),
-                    message = "^" .. number_format(lenient_bignum(card.ability.extra.power)) .. " Mult",
-                    colour = G.C.DARK_EDITION,
-                }
+                return { Emult_mod = lenient_bignum(card.ability.extra.power), message = "^" .. number_format(lenient_bignum(card.ability.extra.power)) .. " Mult", colour = G.C.DARK_EDITION }
             end
         end
     end,

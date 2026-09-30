@@ -30,7 +30,7 @@
 			end
 		'''
         position     = "at"
-        target       = '''=[SMODS Cryptid "items/exotic.lua"]'''
+        target       = '=[SMODS Cryptid "items/exotic.lua"]'
 
 [[patches]]
     [patches.pattern]
@@ -38,7 +38,7 @@
         pattern      = '''if not SMODS.is_eternal(v) then'''
         payload      = '''if not SMODS.is_eternal(v) and ( ( not AscConfig["Insanity Mode!!!"] ) or false ) then'''
         position     = "at"
-        target       = '''=[SMODS Cryptid "items/exotic.lua"]'''
+        target       = '=[SMODS Cryptid "items/exotic.lua"]'
 
 # If astronomica is installed
 [[patches]]
@@ -47,7 +47,7 @@
         pattern      = '''if not v.ability.eternal then'''
         payload      = '''if not SMODS.is_eternal(v) and ( ( not AscConfig["Insanity Mode!!!"] ) or false ) then'''
         position     = "at"
-        target       = '''=[SMODS Astronomica "items/lib.lua"]'''
+        target       = '=[SMODS Astronomica "items/lib.lua"]'
 
 # Adds the Ascensionable tooltip to all ascensionable jokers. Thank you hexacryonic for the code.
 [[patches]]

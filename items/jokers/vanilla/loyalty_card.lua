@@ -42,7 +42,7 @@ SMODS.Joker({
 
             if (card.ability.extra.immutable.hand_played >= card.ability.extra.immutable.hand_requirement) or context.forcetrigger then
                 card.ability.extra.immutable.hand_played = 0
-                --card.ability.extra.xmult = card.ability.extra.xmult * card.ability.extra.multiplier
+                -- card.ability.extra.xmult = card.ability.extra.xmult * card.ability.extra.multiplier
                 SMODS.scale_card(card, {
                     ref_table = card.ability.extra,
                     ref_value = "xmult",
@@ -51,16 +51,13 @@ SMODS.Joker({
                     no_message = true,
                 })
 
-                return {
-                    message = localize("k_upgrade_ex"),
-                    colour = G.C.MULT,
-                }
+                return { message = localize("k_upgrade_ex"), colour = G.C.MULT }
             end
         end
 
-        if context.joker_main then return {
-            x_mult = card.ability.extra.xmult,
-        } end
+        if context.joker_main then
+            return { x_mult = card.ability.extra.xmult }
+        end
     end,
 
     asc_credits = {

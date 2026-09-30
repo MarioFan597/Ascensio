@@ -31,11 +31,11 @@ SMODS.Joker({
     --Taken from old blueprint and Chad
     calculate = function(self, card, context)
         local other_joker = nil
-        local position = 1
+        local position    = 1
         for i = 1, #G.jokers.cards do
             if G.jokers.cards[i] == card then
                 other_joker = G.jokers.cards[i + 1]
-                position = i
+                position    = i
             end
         end
         if context.retrigger_joker_check and not context.retrigger_joker and other_joker ~= nil then
@@ -44,23 +44,19 @@ SMODS.Joker({
                 if G.jokers.cards[i].config.center.key == other_joker.config.center.key then same_count = same_count + 1 end
             end
             if context.other_card == other_joker then
-                return {
-                    message = localize("k_again_ex"),
-                    repetitions = same_count,
-                    card = card,
-                }
+                return { message = localize("k_again_ex"), repetitions = same_count, card = card }
             else
                 return nil, true
             end
         end
-        --Taken and modifed from Cryptid's smile (:D)
-        if
-            (context.ending_shop and not context.individual and not context.repetition and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit and #G.jokers.cards and other_joker ~= nil)
-            or context.forcetrigger
-            --and not position == #G.jokers.cards
+        -- Taken and modifed from Cryptid's smile (:D)
+        if (context.ending_shop and not context.individual
+            and not context.repetition and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit
+            and #G.jokers.cards and other_joker ~= nil) or context.forcetrigger
+        -- and not position == #G.jokers.cards
         then
             local roundcreatejoker = math.min(1, G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer))
-            G.GAME.joker_buffer = G.GAME.joker_buffer + roundcreatejoker
+            G.GAME.joker_buffer    = G.GAME.joker_buffer + roundcreatejoker
             G.E_MANAGER:add_event(Event({
                 func = function()
                     if other_joker and roundcreatejoker > 0 then

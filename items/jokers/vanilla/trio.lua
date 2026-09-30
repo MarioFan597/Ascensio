@@ -12,11 +12,8 @@ SMODS.Joker({
     loc_vars = function(_, _, card) return { vars = { card and lenient_bignum(card.ability.extra.power) } } end,
     calculate = function(_, card, context)
         local flag = false
-        if --The card transformation apspect of this was taken and modifed in part from the Waterfall Joker from the Celesete Card Collection
-            context.before
-            and context.poker_hands ~= nil
-            and next(context.poker_hands["Three of a Kind"])
-        then
+        if-- The card transformation apspect of this was taken and modifed in part from the Waterfall Joker from the Celesete Card Collection
+        context.before and context.poker_hands ~= nil and next(context.poker_hands["Three of a Kind"]) then
             local rank_count = {}
             for i = 1, #context.scoring_hand do
                 local _card = context.scoring_hand[i]

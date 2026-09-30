@@ -15,9 +15,7 @@ SMODS.Joker({
     },
 
     loc_vars = function(_, _, card)
-        return {
-            vars = { card.ability.extra.mult },
-        }
+        return { vars = { card.ability.extra.mult } }
     end,
 
     calculate = function(_, card, context)

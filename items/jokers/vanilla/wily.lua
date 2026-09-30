@@ -47,8 +47,9 @@ SMODS.Joker({
                 func = function()
                     local temprank = 0
                     local tempcard
-                    for i, v in ipairs(G.hand.cards) do
+                    for _, v in ipairs(G.hand.cards) do
                         if v:get_id() > temprank and not v.debuff then
+                            ---@cast v.get_id fun(self: balatro.Card): int
                             temprank = v:get_id()
                             tempcard = v
                         end
@@ -61,7 +62,7 @@ SMODS.Joker({
                         end,
                     }))
                     SMODS.calculate_effect({ message = localize("k_level_up_ex") }, context.blueprint_card or card)
-                    SMODS.smart_level_up_hand(context.blueprint_card or card, card.ability.extra.hand_type, nil, temprank)
+                    SMODS.smart_level_up_hand(context.blueprint_card or card, card.ability.extra.hand_type, false, temprank)
                     G.E_MANAGER:add_event(Event({
                         func = function()
                             G.hand:remove_from_highlighted(tempcard)

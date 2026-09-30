@@ -1,25 +1,19 @@
 SMODS.Joker({
     key = "zany",
-    rarity = "cry_exotic",
-    atlas = "v_atlas_1",
+
+    rarity           = "cry_exotic",
+    atlas            = "v_atlas_1",
     blueprint_compat = true,
-    demicoloncompat = true,
-    pos = { x = 3, y = 10 },
-    soul_pos = { x = 5, y = 10, extra = { x = 4, y = 10 } },
+    demicoloncompat  = true,
+
     config = { extra = { Xmult = 1, Xmult_mod = 12, hand_type = "Three of a Kind" } },
+
+    pos      = { x = 3, y = 10 },
+    soul_pos = { x = 5, y = 10, extra = { x = 4, y = 10 } },
+
     cost = 50,
-    asc_credits = {
-        idea = {
-            "bent",
-        },
-        art = {
-            "Tatteredlurker",
-        },
-        code = {
-            "Somethingcom515",
-        },
-    },
-    loc_vars = function(self, info_queue, card)
+
+    loc_vars = function(_, _, card)
         return {
             vars = {
                 card.ability.extra.Xmult_mod,
@@ -28,7 +22,8 @@ SMODS.Joker({
             },
         }
     end,
-    calculate = function(self, card, context)
+
+    calculate = function(_, card, context)
         if context.before or context.forcetrigger then
             if context.scoring_name == card.ability.extra.hand_type or context.forcetrigger then
                 SMODS.scale_card(card, {
@@ -47,21 +42,26 @@ SMODS.Joker({
                 func = function()
                     local temprank = 0
                     local tempcard
-                    for i, v in ipairs(G.hand.cards) do
+                    for _, v in ipairs(G.hand.cards) do
                         if v:get_id() > temprank and not v.debuff then
+                            ---@cast v.get_id fun(self: balatro.Card): int
                             temprank = v:get_id()
                             tempcard = v
                         end
                     end
+
                     if not tempcard or tempcard.REMOVED then return nil end
+
                     G.E_MANAGER:add_event(Event({
                         func = function()
                             G.hand:add_to_highlighted(tempcard)
                             return true
                         end,
                     }))
+
                     SMODS.calculate_effect({ message = localize("k_level_up_ex") }, context.blueprint_card or card)
-                    SMODS.smart_level_up_hand(context.blueprint_card or card, card.ability.extra.hand_type, nil, temprank)
+                    SMODS.smart_level_up_hand(context.blueprint_card or card, card.ability.extra.hand_type, false, temprank)
+
                     G.E_MANAGER:add_event(Event({
                         func = function()
                             G.hand:remove_from_highlighted(tempcard)
@@ -71,8 +71,20 @@ SMODS.Joker({
                 end,
             }
         end
-        if context.joker_main and to_big(card.ability.extra.Xmult) > to_big(1) then return {
-            xmult = card.ability.extra.Xmult,
-        } end
+        if context.joker_main and to_big(card.ability.extra.Xmult) > to_big(1) then
+            return { xmult = card.ability.extra.Xmult }
+        end
     end,
+
+    asc_credits = {
+        idea = {
+            "bent",
+        },
+        art = {
+            "Tatteredlurker",
+        },
+        code = {
+            "Somethingcom515",
+        },
+    },
 })

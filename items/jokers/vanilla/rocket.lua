@@ -1,30 +1,29 @@
 SMODS.Joker({
     key = "rocket",
-    rarity = "cry_exotic",
-    atlas = "v_atlas_2",
-    blueprint_compat = true,
-    demicoloncompat = true,
 
-    pos = { x = 3, y = 0 },
+    rarity           = "cry_exotic",
+    atlas            = "v_atlas_2",
+    blueprint_compat = true,
+    demicoloncompat  = true,
+
+    pos      = { x = 3, y = 0 },
     soul_pos = { x = 5, y = 0, extra = { x = 4, y = 0 } },
 
-    cost = 50,
+    cost  = 50,
     order = 1,
 
     config = {
         extra = {
-            manipulate = 5,
-            manipulate_multiplier = 1.1,
-            money = 20,
+            immutable = { manipulate = 1 },
+            money     = 10,
         },
     },
 
     loc_vars = function(_, _, card)
         return {
             vars = {
-                card.ability.extra.manipulate,
+                card.ability.extra.immutable.manipulate,
                 card.ability.extra.money,
-                card.ability.extra.manipulate_multiplier,
             },
         }
     end,
@@ -37,22 +36,19 @@ SMODS.Joker({
                         ref_table = card.ability.extra,
                         ref_value = "money",
                         scalar_value = "manipulate",
+                        scalar_table = card.ability.extra.immutable,
                     })
                 else
                     if not Card.no(G.jokers.cards[i], "immutable", true) then
-                        Cryptid.with_deck_effects(G.jokers.cards[i], function(cards) Cryptid.manipulate(cards, { value = card.ability.extra.manipulate, type = "+" }) end)
+                        Cryptid.with_deck_effects(G.jokers.cards[i], function(cards)
+                            Cryptid.manipulate(cards, {
+                                value = card.ability.extra.immutable.manipulate,
+                                type = "+",
+                            })
+                        end)
                     end
                 end
             end
-        end
-
-        if (context.beat_boss and not context.repetition and not context.individual and not context.blueprint) or context.forcetrigger then
-            SMODS.scale_card(card, {
-                ref_table = card.ability.extra,
-                ref_value = "manipulate",
-                scalar_value = "manipulate_multiplier",
-                operation = "X",
-            })
         end
     end,
 

@@ -34,7 +34,7 @@ SMODS.Joker({
 
             if clubs > 0 and nclubs > 0 and flag then
                 flag = false
-                return SMODS.scale_card(card, {
+                SMODS.scale_card(card, {
                     ref_table = card.ability.extra,
                     ref_value = "xmult",
                     scalar_value = "change",

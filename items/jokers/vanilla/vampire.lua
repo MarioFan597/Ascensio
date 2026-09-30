@@ -36,7 +36,7 @@ SMODS.Joker({
 
             for _, scored in ipairs(context.scoring_hand) do
                 if next(SMODS.get_enhancements(scored)) and not scored.debuff and not scored.vampired then
-                    scalar = scalar + 1
+                    scalar          = scalar + 1
                     scored.vampired = true
                     scored:set_ability("c_base", nil, true)
 

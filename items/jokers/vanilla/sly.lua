@@ -19,7 +19,7 @@ SMODS.Joker({
             "Somethingcom515",
         },
     },
-    loc_vars = function(self, info_queue, card)
+    loc_vars = function(_, _, card)
         return {
             vars = {
                 card.ability.extra.Xchip_mod,
@@ -28,7 +28,7 @@ SMODS.Joker({
             },
         }
     end,
-    calculate = function(self, card, context)
+    calculate = function(_, card, context)
         if context.before or context.forcetrigger then
             if context.scoring_name == card.ability.extra.hand_type or context.forcetrigger then
                 SMODS.scale_card(card, {
@@ -47,7 +47,7 @@ SMODS.Joker({
                 func = function()
                     local temprank = 0
                     local tempcard
-                    for i, v in ipairs(G.hand.cards) do
+                    for _, v in ipairs(G.hand.cards) do
                         if v:get_id() > temprank and not v.debuff then
                             temprank = v:get_id()
                             tempcard = v

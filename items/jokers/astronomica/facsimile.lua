@@ -42,27 +42,19 @@ SMODS.Joker({
                 if G.jokers.cards[i].config.center.key == other_joker.config.center.key then same_count = same_count + 1 end
             end
             if context.other_card == other_joker then
-                return {
-                    message = localize("k_again_ex"),
-                    repetitions = same_count,
-                    card = card,
-                }
+                return { message = localize("k_again_ex"), repetitions = same_count, card = card }
             else
                 return nil, true
             end
         end
-        --Taken and modifed from Cryptid's smile (:D)
-        if
-            context.ending_shop
-            and not context.individual
-            and not context.repetition
-            and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit
-            and #G.jokers.cards
-            and other_joker ~= nil
-            --and not position == #G.jokers.cards
+        -- Taken and modifed from Cryptid's smile (:D)
+        if context.ending_shop and not context.individual
+            and not context.repetition and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit
+            and #G.jokers.cards and other_joker ~= nil
+        -- and not position == #G.jokers.cards
         then
             local roundcreatejoker = math.min(1, G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer))
-            G.GAME.joker_buffer = G.GAME.joker_buffer + roundcreatejoker
+            G.GAME.joker_buffer    = G.GAME.joker_buffer + roundcreatejoker
             G.E_MANAGER:add_event(Event({
                 func = function()
                     if roundcreatejoker > 0 then

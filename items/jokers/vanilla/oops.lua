@@ -19,7 +19,7 @@ SMODS.Joker({
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = { key = "cry_rigged", set = "Other" }
         info_queue[#info_queue + 1] = { key = "asc_fixed", set = "Other" }
-        local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "Exotic Oops", true)
+        local num, denom            = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, "Exotic Oops", true)
         return {
             vars = {
                 card and lenient_bignum(card.ability.extra.slot_gain),
@@ -42,15 +42,15 @@ SMODS.Joker({
 
     calculate = function(self, card, context)
         if context.before and not context.blueprint_card and not context.retrigger_joker and not context.repetition then
-            --This is directly borrowed/altered from kalidescope
+            -- This is directly borrowed/altered from kalidescope
             local selected_joker = math.random(1, #G.jokers.cards)
             local eligiblejokers = {}
             for k, v in pairs(G.jokers.cards) do
                 if v.ability.set == "Joker" and not v.sticker and v ~= card then table.insert(eligiblejokers, v) end
             end
             if #eligiblejokers > 0 then
-                local eligible_card = pseudorandom_element(eligiblejokers, pseudoseed("nevergonnagiveyouupnevergonnaletyoudown"))
-                local sticker = { cry_rigged = true }
+                local eligible_card              = pseudorandom_element(eligiblejokers, pseudoseed("nevergonnagiveyouupnevergonnaletyoudown"))
+                local sticker                    = { cry_rigged = true }
                 eligible_card.ability.cry_rigged = true
                 check_for_unlock({ type = "googol_play_rigged" })
             end
@@ -59,8 +59,8 @@ SMODS.Joker({
         if context.cardarea == G.jokers and context.before and not context.blueprint_card and not context.retrigger_joker then
             local converted = false
             for i = 1, #context.scoring_hand do
-                local _card = context.scoring_hand[i]
-                converted = true
+                local _card       = context.scoring_hand[i]
+                converted         = true
                 local enhancement = "cry_rigged"
                 if _card.ability.cry_rigged ~= "Rigged" then _card.ability.cry_rigged = true end
                 G.E_MANAGER:add_event(Event({
@@ -77,7 +77,7 @@ SMODS.Joker({
 
         if context.joker_main and not context.blueprint_card then
             if math.random(1, 6) == 1 then
-                --if SMODS.pseudorandom_probability(card, "Issac and his Issac", 1, card.ability.extra.odds, "Exotic Oops", true) then
+                -- if SMODS.pseudorandom_probability(card, "Issac and his Issac", 1, card.ability.extra.odds, "Exotic Oops", true) then
                 if math.random(1, 2) == 1 then
                     card.ability.extra.immutable.joker_slots = lenient_bignum(card.ability.extra.immutable.joker_slots) + lenient_bignum(card.ability.extra.slot_gain)
                     SMODS.scale_card(card, {
@@ -113,14 +113,14 @@ SMODS.Joker({
 
     add_to_deck = function(self, card, from_debuff)
         if G.jokers and not from_debuff then
-            G.jokers.config.card_limit = G.jokers.config.card_limit + lenient_bignum(card.ability.extra.immutable.joker_slots)
+            G.jokers.config.card_limit       = G.jokers.config.card_limit + lenient_bignum(card.ability.extra.immutable.joker_slots)
             G.consumeables.config.card_limit = G.consumeables.config.card_limit + lenient_bignum(card.ability.extra.immutable.consumable_slots)
         end
     end,
 
     remove_from_deck = function(self, card, from_debuff)
         if G.jokers and not from_debuff then
-            G.jokers.config.card_limit = G.jokers.config.card_limit - lenient_bignum(card.ability.extra.immutable.joker_slots)
+            G.jokers.config.card_limit       = G.jokers.config.card_limit - lenient_bignum(card.ability.extra.immutable.joker_slots)
             G.consumeables.config.card_limit = G.consumeables.config.card_limit - lenient_bignum(card.ability.extra.immutable.consumable_slots)
         end
     end,

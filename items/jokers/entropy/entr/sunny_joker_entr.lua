@@ -24,7 +24,7 @@ SMODS.Joker({
                 card.ability.extra.immutable.sign,
             },
         }
-    end, --This was in part inspired by astronomica's Asgard
+    end, -- This was in part inspired by astronomica's Asgard
     calculate = function(self, card, context)
         if (context.before and not context.blueprint) or context.forcetrigger then
             local asc = G.GAME.current_round.current_hand.cry_asc_num
@@ -33,11 +33,7 @@ SMODS.Joker({
                 if card.ability.extra.immutable.hands <= 0 then
                     card.ability.extra.immutable.hands = 4
                     card.ability.extra.immutable.level = card.ability.extra.immutable.level + 1
-                    return {
-                        extra = { focus = card, message = localize("k_upgrade_ex") },
-                        card = card,
-                        colour = G.C.GOLD,
-                    }
+                    return { extra = { focus = card, message = localize("k_upgrade_ex") }, card = card, colour = G.C.GOLD }
                 end
             end
         end
@@ -45,19 +41,13 @@ SMODS.Joker({
             if card.ability.extra.asc > 1 then
                 if card.ability.extra.immutable.level <= -1 then
                     card.ability.extra.immutable.sign = "+"
-                    return {
-                        plus_asc = lenient_bignum(card.ability.extra.asc),
-                    }
+                    return { plus_asc = lenient_bignum(card.ability.extra.asc) }
                 elseif card.ability.extra.immutable.level == 0 then
                     card.ability.extra.immutable.sign = "X"
-                    return {
-                        asc = lenient_bignum(card.ability.extra.asc),
-                    }
+                    return { asc = lenient_bignum(card.ability.extra.asc) }
                 elseif card.ability.extra.immutable.level == 1 then
                     card.ability.extra.immutable.sign = "^"
-                    return {
-                        exp_asc = lenient_bignum(card.ability.extra.asc),
-                    }
+                    return { exp_asc = lenient_bignum(card.ability.extra.asc) }
                 elseif card.ability.extra.immutable.level >= 2 then
                     card.ability.extra.immutable.sign = ""
                     for i = 1, card.ability.extra.immutable.level, 1 do

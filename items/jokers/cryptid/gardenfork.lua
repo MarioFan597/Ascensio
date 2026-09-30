@@ -13,7 +13,7 @@ SMODS.Joker({
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.before and context.full_hand then
             local has_ace = false
-            local has_7 = false
+            local has_7   = false
             for i = 1, #context.full_hand do
                 if context.full_hand[i]:get_id() == 14 then
                     has_ace = true

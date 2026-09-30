@@ -1,5 +1,5 @@
 ---@generic T
----@param f fun(jokers: balatro.Card): T
+---@param f    fun(jokers: balatro.Card): T
 ---@param ctx? CalcContext
 local function uncommons(f, ctx)
     for _, jokers in ipairs(G.jokers.cards) do
@@ -44,9 +44,7 @@ SMODS.Joker({
         if (ctx.beat_boss and ctx.main_eval) or ctx.forcetrigger then
             uncommons(function(jkr) Cryptid.manipulate(jkr, { value = card.ability.extra.xval }) end, ctx)
 
-            return {
-                message = "Upgraded!",
-            }
+            return { message = "Upgraded!" }
         end
     end,
 

@@ -53,7 +53,7 @@ SMODS.Joker({
     calculate = function(_, card, context)
         if (context.joker_main or context.forcetrigger) and not context.blueprint then
             local marker = -1
-            local ft = {}
+            local ft     = {}
 
             for i = 1, #G.jokers.cards do
                 if marker ~= -1 and Cryptid.demicolonGetTriggerable(G.jokers.cards[i])[1] then ft[#ft + 1] = G.jokers.cards[i] end
@@ -65,11 +65,7 @@ SMODS.Joker({
                 forcetrigger(card, joker, context)
             end
 
-            return {
-                message = localize("cry_demicolon"),
-                colour = G.C.RARITY.cry_exotic,
-                sound = "cry_demitrigger",
-            }
+            return { message = localize("cry_demicolon"), colour = G.C.RARITY.cry_exotic, sound = "cry_demitrigger" }
         end
     end,
 

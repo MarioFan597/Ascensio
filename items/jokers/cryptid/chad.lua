@@ -33,7 +33,7 @@ SMODS.Joker({
 
     calculate = function(self, card, context)
         if (context.ending_shop or context.forcetrigger) and not context.blueprint then
-            --card.ability.extra.immutable.slots = card.ability.extra.immutable.slots + card.ability.extra.slot_gain
+            -- card.ability.extra.immutable.slots = card.ability.extra.immutable.slots + card.ability.extra.slot_gain
             SMODS.scale_card(card, {
                 ref_table = card.ability.extra.immutable,
                 ref_value = "slots",
@@ -54,11 +54,7 @@ SMODS.Joker({
             card.ability.extra.retriggers = math.min(((G.jokers.config.card_limit - #G.jokers.cards) + card.ability.extra.base_retriggers), card.ability.extra.immutable.max_retriggers)
 
             if context.other_card == G.jokers.cards[1] or context.other_card == G.jokers.cards[#G.jokers.cards] then
-                return {
-                    message = localize("k_again_ex"),
-                    repetitions = math.min(lenient_bignum(card.ability.extra.retriggers), card.ability.extra.immutable.max_retriggers),
-                    card = card,
-                }
+                return { message = localize("k_again_ex"), repetitions = math.min(lenient_bignum(card.ability.extra.retriggers), card.ability.extra.immutable.max_retriggers), card = card }
             else
                 return nil, true
             end
@@ -66,11 +62,15 @@ SMODS.Joker({
     end,
 
     add_to_deck = function(_, card, from_debuff)
-        if G.jokers and not from_debuff then G.jokers.config.card_limit = G.jokers.config.card_limit + lenient_bignum(card.ability.extra.immutable.slots) end
+        if G.jokers and not from_debuff then
+            G.jokers.config.card_limit = G.jokers.config.card_limit + lenient_bignum(card.ability.extra.immutable.slots)
+        end
     end,
 
     remove_from_deck = function(_, card, from_debuff)
-        if G.jokers and not from_debuff then G.jokers.config.card_limit = G.jokers.config.card_limit - lenient_bignum(card.ability.extra.immutable.slots) end
+        if G.jokers and not from_debuff then
+            G.jokers.config.card_limit = G.jokers.config.card_limit - lenient_bignum(card.ability.extra.immutable.slots)
+        end
     end,
 
     asc_credits = {

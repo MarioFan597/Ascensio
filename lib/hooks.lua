@@ -1,9 +1,10 @@
---This was taken and modifed straight from entropy
+---@diagnostic disable: global-in-non-module
+-- This was taken and modifed straight from entropy
 local G_UIDEF_use_and_sell_buttons_ref = G.UIDEF.use_and_sell_buttons
 
 function G.UIDEF.use_and_sell_buttons(card)
     local abc = G_UIDEF_use_and_sell_buttons_ref(card)
-    if (card.area == G.jokers and G.jokers and card.config.center.key == "j_asc_marble_entr") and not card.debuff then --Gives buttons to entropic marble Joker
+    if (card.area == G.jokers and G.jokers and card.config.center.key == "j_asc_marble_entr") and not card.debuff then -- Gives buttons to entropic marble Joker
         sell = {
             n = G.UIT.C,
             config = { align = "cr" },
@@ -226,12 +227,20 @@ function G.UIDEF.use_and_sell_buttons(card)
                     n = G.UIT.C,
                     config = { padding = 0, align = "cl" },
                     nodes = {
-                        { n = G.UIT.R, config = { align = "cl" }, nodes = {
-                            sell,
-                        } },
-                        { n = G.UIT.R, config = { align = "cl" }, nodes = {
-                            buyslot,
-                        } },
+                        {
+                            n = G.UIT.R,
+                            config = { align = "cl" },
+                            nodes = {
+                                sell,
+                            },
+                        },
+                        {
+                            n = G.UIT.R,
+                            config = { align = "cl" },
+                            nodes = {
+                                buyslot,
+                            },
+                        },
                         {
                             n = G.UIT.R,
                             config = { align = "cl" },
@@ -247,7 +256,7 @@ function G.UIDEF.use_and_sell_buttons(card)
     return abc
 end
 
-local is_buying_stone = false
+local is_buying_stone  = false
 local is_selling_stone = false
 
 G.FUNCS.can_buy_stone = function(e)
@@ -262,7 +271,7 @@ end
 
 G.FUNCS.buy_stone = function(e)
     is_buying_stone = true
-    local ref = e.config.ref_table
+    local ref       = e.config.ref_table
     ease_dollars(-ref.ability.buycost)
 
     local stone = SMODS.create_card({
@@ -273,8 +282,10 @@ G.FUNCS.buy_stone = function(e)
     })
 
     stone:set_edition("e_cry_mosaic", nil, true)
-    G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+    G.playing_card     = (G.playing_card and G.playing_card + 1) or 1
     stone.playing_card = G.playing_card
+
+    ---@cast G.playing_cards balatro.Card[]
     table.insert(G.playing_cards, stone)
 
     G.E_MANAGER:add_event(Event({
@@ -292,6 +303,8 @@ G.FUNCS.buy_stone = function(e)
         end,
     }))
 
+    ---@cast G.play balatro.CardArea
+    ---@cast G.deck balatro.CardArea
     draw_card(G.play, G.deck, 90, "up")
     SMODS.calculate_context({ playing_card_added = true, cards = { stone } })
     is_buying_stone = false
@@ -371,11 +384,11 @@ function end_round()
                         card.ability.samsara = true
                     else
                         if Ascensio.isAscendable(card) then
-                            local ascref = Ascensio.ascendJoker(card)
+                            local ascref           = Ascensio.ascendJoker(card)
                             ascref.ability.samsara = true
                         else
                             if Ascensio.Descensions[card] then
-                                local desref = Ascensio.descendJoker(card)
+                                local desref           = Ascensio.descendJoker(card)
                                 desref.ability.samsara = true
                                 desref:set_debuff(true)
                             end

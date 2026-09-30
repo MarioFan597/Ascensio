@@ -35,20 +35,11 @@ SMODS.Joker({
                 operation = "+",
             })
 
-            return {
-                message = localize("k_upgrade_ex"),
-                colour = G.C.CHIPS,
-                message_card = card,
-            }
+            return { message = localize("k_upgrade_ex"), colour = G.C.CHIPS, message_card = card }
         end
 
         if context.joker_main then
-            return {
-                message = "^^" .. card.ability.extra.eechips .. " " .. localize("asc_chips"),
-                EEchip_mod = card.ability.extra.eechips,
-                colour = G.C.DARK_EDITION,
-                card = card,
-            }
+            return { message = "^^" .. card.ability.extra.eechips .. " " .. localize("asc_chips"), EEchip_mod = card.ability.extra.eechips, colour = G.C.DARK_EDITION, card = card }
         end
     end,
 

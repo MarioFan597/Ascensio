@@ -18,7 +18,7 @@ SMODS.Joker({
             local five_count = 0
             for i = 1, #context.scoring_hand do
                 local _card = context.scoring_hand[i]
-                local rank = _card:get_id()
+                local rank  = _card:get_id()
                 if rank == 5 then five_count = five_count + 1 end
             end
 
@@ -26,7 +26,7 @@ SMODS.Joker({
                 local converted = false
                 for i = 1, #context.scoring_hand do
                     local _card = context.scoring_hand[i]
-                    converted = true
+                    converted   = true
                     local _card = context.scoring_hand[i]
                     if _card:get_id() ~= 5 and not SMODS.has_no_rank(_card) then
                         G.E_MANAGER:add_event(Event({

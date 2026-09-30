@@ -60,14 +60,14 @@ SMODS.Joker({
         }
     end,
 
-    calculate = function(self, card, context)
+    calculate = function(_, card, context)
         if context.individual and context.cardarea == G.play and context.other_card ~= nil then
-            card.ability.extra.card.rank = context.other_card.base.value
-            card.ability.extra.card.suit = context.other_card.base.suit
-            card.ability.extra.card.edition = context.other_card.edition
+            card.ability.extra.card.rank        = context.other_card.base.value
+            card.ability.extra.card.suit        = context.other_card.base.suit
+            card.ability.extra.card.edition     = context.other_card.edition
             card.ability.extra.card.enhancement = context.other_card.config.center.key
-            card.ability.extra.card.seal = context.other_card.seal
-            card.ability.extra.card.has_copy = true
+            card.ability.extra.card.seal        = context.other_card.seal
+            card.ability.extra.card.has_copy    = true
         end
 
         if context.first_hand_drawn then
@@ -79,7 +79,7 @@ SMODS.Joker({
                         delay = 0.4,
                         func = function()
                             G.playing_card = (G.playing_card and G.playing_card + 1) or 1
-                            local _card = SMODS.create_card({
+                            local _card    = SMODS.create_card({
                                 set = "Base",
                                 rank = card.ability.extra.card.rank,
                                 suit = card.ability.extra.card.suit,

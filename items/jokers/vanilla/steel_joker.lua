@@ -53,8 +53,8 @@ SMODS.Joker({
 
     loc_vars = function(_, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.m_steel
-        local steels = total_steel()
-        local exmult, xmult = card.ability.extra.extern_xmult, card.ability.extra.xmult
+        local steels                = total_steel()
+        local exmult, xmult         = card.ability.extra.extern_xmult, card.ability.extra.xmult
 
         return {
             vars = {
@@ -73,15 +73,12 @@ SMODS.Joker({
         end
         if ((context.individual and context.cardarea == G.hand) or (context.individual and context.cardarea == G.play)) and not context.end_of_round then
             if context.other_card.debuff then
-                return {
-                    message = localize("k_debuffed"),
-                    colour = G.C.RED,
-                }
+                return { message = localize("k_debuffed"), colour = G.C.RED }
             else
                 local steels = total_steel(context.forcetrigger ~= nil)
-                if SMODS.has_enhancement(context.other_card, "m_steel") and steels > 0 then return {
-                    x_mult = 1 + card.ability.extra.extern_xmult * steels,
-                } end
+                if SMODS.has_enhancement(context.other_card, "m_steel") and steels > 0 then
+                    return { x_mult = 1 + card.ability.extra.extern_xmult * steels }
+                end
             end
         end
     end,
