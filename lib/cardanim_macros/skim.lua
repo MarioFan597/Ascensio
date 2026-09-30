@@ -159,6 +159,7 @@ return function(macro_obj)
         -- Rely on this variable instead of #timing
         local highest_timing = 1
         for k, _ in pairs(timing) do
+            ---@cast k int
             if type(k) == "number" and k > highest_timing then highest_timing = k end
         end
 

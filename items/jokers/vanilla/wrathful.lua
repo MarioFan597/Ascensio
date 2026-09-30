@@ -1,3 +1,5 @@
+local asc_spade_alt_table = {}
+
 SMODS.Joker({
     key = "wrathful",
     config = { extra = { e_mult = 1.2, gain = 0.01, odds = 4 } },
@@ -41,7 +43,8 @@ SMODS.Joker({
                     --delay = 0.1,
                     func = function()
                         local selected = math.random(#asc_spade_alt_table)
-                        local aaa      = asc_spade_alt_table[selected]
+                        ---@type balatro.Card
+                        local aaa = asc_spade_alt_table[selected]
                         if aaa == nil then math.random(#asc_spade_alt_table) end
                         table.remove(asc_spade_alt_table, selected)
                         if aaa ~= nil then

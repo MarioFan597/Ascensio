@@ -28,7 +28,7 @@ SMODS.Joker({
     calculate = function(_, card, ctx)
         if (ctx.blind_defeated and G.GAME.current_round.discards_left > 0) or ctx.forcetrigger then
             card.ability.extra.discard = 0
-            return SMODS.scale_card(card, {
+            SMODS.scale_card(card, {
                 ref_table = card.ability.extra,
                 ref_value = "discard",
                 scalar_value = "gain",

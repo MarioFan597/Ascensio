@@ -1,25 +1,19 @@
 SMODS.Joker({
-    key              = "zany",
+    key = "zany",
+
     rarity           = "cry_exotic",
     atlas            = "v_atlas_1",
     blueprint_compat = true,
     demicoloncompat  = true,
-    pos              = { x = 3, y = 10 },
-    soul_pos         = { x = 5, y = 10, extra = { x = 4, y = 10 } },
-    config           = { extra = { Xmult = 1, Xmult_mod = 12, hand_type = "Three of a Kind" } },
-    cost             = 50,
-    asc_credits      = {
-        idea = {
-            "bent",
-        },
-        art = {
-            "Tatteredlurker",
-        },
-        code = {
-            "Somethingcom515",
-        },
-    },
-    loc_vars         = function(self, info_queue, card)
+
+    config = { extra = { Xmult = 1, Xmult_mod = 12, hand_type = "Three of a Kind" } },
+
+    pos      = { x = 3, y = 10 },
+    soul_pos = { x = 5, y = 10, extra = { x = 4, y = 10 } },
+
+    cost = 50,
+
+    loc_vars = function(_, _, card)
         return {
             vars = {
                 card.ability.extra.Xmult_mod,
@@ -28,7 +22,8 @@ SMODS.Joker({
             },
         }
     end,
-    calculate        = function(self, card, context)
+
+    calculate = function(_, card, context)
         if context.before or context.forcetrigger then
             if context.scoring_name == card.ability.extra.hand_type or context.forcetrigger then
                 SMODS.scale_card(card, {
@@ -49,6 +44,7 @@ SMODS.Joker({
                     local tempcard
                     for _, v in ipairs(G.hand.cards) do
                         if v:get_id() > temprank and not v.debuff then
+                            ---@cast v.get_id fun(self: balatro.Card): int
                             temprank = v:get_id()
                             tempcard = v
                         end
@@ -79,4 +75,16 @@ SMODS.Joker({
             return { xmult = card.ability.extra.Xmult }
         end
     end,
+
+    asc_credits = {
+        idea = {
+            "bent",
+        },
+        art = {
+            "Tatteredlurker",
+        },
+        code = {
+            "Somethingcom515",
+        },
+    },
 })

@@ -18,7 +18,7 @@ SMODS.Joker({
     --pixel_size = { w =  1 * 71, h = 1 * 71},
     cost = 50,
     order = 1,
-    loc_vars = function(self, info_queue, card)
+    loc_vars = function(_, _, card)
         return {
             vars = {
                 card and lenient_bignum(card.ability.extra.gain),
@@ -26,7 +26,7 @@ SMODS.Joker({
             },
         }
     end,
-    calculate = function(self, card, context)
+    calculate = function(_, card, context)
         if context.cardarea == G.jokers and context.before and #context.full_hand == 4 and not context.blueprint and not context.retrigger_joker then
             card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.gain
             SMODS.scale_card(card, {
