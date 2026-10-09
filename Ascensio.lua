@@ -227,6 +227,8 @@ AscensionInternal({ source = Source.Vanilla, from = "j_steel_joker", to_exotic =
 AscensionInternal({ source = Source.Vanilla, from = "j_gros_michel", to_exotic = "j_asc_banana" })
 AscensionInternal({ source = Source.Vanilla, from = "j_even_steven", to_exotic = "j_asc_even_steven" })
 AscensionInternal({ source = Source.Vanilla, from = "j_odd_todd", to_exotic = "j_asc_odd_todd" })
+AscensionInternal({ source = Source.Vanilla, from = "j_scholar", to_exotic = "j_asc_scholar" })
+-- AscensionInternal({ source = Source.Vanilla, from = "j_business", to_exotic = "j_asc_business" })
 AscensionInternal({ source = Source.Vanilla, from = "j_space", to_exotic = "j_asc_space" })
 AscensionInternal({ source = Source.Vanilla, from = "j_burglar", to_exotic = "j_asc_burglar" })
 AscensionInternal({ source = Source.Vanilla, from = "j_egg", to_exotic = "j_asc_egg" })
@@ -399,12 +401,12 @@ function SMODS.create_mod_badges(obj, badges)
                     {
                         n = G.UIT.R,
                         config = {
-                            align = "cm",
-                            colour = HEX("235bb0"),
-                            r = 0.1,
-                            minw = 2 / min_scale_fac,
-                            minh = 0.36,
-                            emboss = 0.05,
+                            align   = "cm",
+                            colour  = HEX("235bb0"),
+                            r       = 0.1,
+                            minw    = 2 / min_scale_fac,
+                            minh    = 0.36,
+                            emboss  = 0.05,
                             padding = 0.03 * 0.9,
                         },
                         nodes = {
@@ -413,14 +415,14 @@ function SMODS.create_mod_badges(obj, badges)
                                 n = G.UIT.O,
                                 config = {
                                     object = DynaText({
-                                        string = ct or "ERROR",
-                                        colours = { obj.asc_credits and obj.asc_credits.text_colour or G.C.WHITE },
-                                        silent = true,
-                                        float = true,
-                                        shadow = true,
+                                        string   = ct or "ERROR",
+                                        colours  = { obj.asc_credits and obj.asc_credits.text_colour or G.C.WHITE },
+                                        silent   = true,
+                                        float    = true,
+                                        shadow   = true,
                                         offset_y = -0.03,
-                                        spacing = 1,
-                                        scale = 0.33 * 0.9,
+                                        spacing  = 1,
+                                        scale    = 0.33 * 0.9,
                                     }),
                                 },
                             },
@@ -501,12 +503,12 @@ function SMODS.create_mod_badges(obj, badges)
                     {
                         n = G.UIT.R,
                         config = {
-                            align = "cm",
-                            colour = HEX("7664AC"),
-                            r = 0.1,
-                            minw = 2 / min_scale_fac,
-                            minh = 0.36,
-                            emboss = 0.05,
+                            align   = "cm",
+                            colour  = HEX("7664AC"),
+                            r       = 0.1,
+                            minw    = 2 / min_scale_fac,
+                            minh    = 0.36,
+                            emboss  = 0.05,
                             padding = 0.03 * 0.9,
                         },
                         nodes = {
@@ -515,16 +517,14 @@ function SMODS.create_mod_badges(obj, badges)
                                 n = G.UIT.O,
                                 config = {
                                     object = DynaText({
-                                        string = ct or "ERROR",
-                                        colours = {
-                                            obj.ascxast_credits and obj.ascxast_credits.text_colour or G.C.WHITE,
-                                        },
-                                        silent = true,
-                                        float = true,
-                                        shadow = true,
+                                        string   = ct or "ERROR",
+                                        colours  = { obj.ascxast_credits and obj.ascxast_credits.text_colour or G.C.WHITE },
+                                        silent   = true,
+                                        float    = true,
+                                        shadow   = true,
                                         offset_y = -0.03,
-                                        spacing = 1,
-                                        scale = 0.33 * 0.9,
+                                        spacing  = 1,
+                                        scale    = 0.33 * 0.9,
                                     }),
                                 },
                             },
