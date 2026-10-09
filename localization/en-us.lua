@@ -630,6 +630,17 @@ return {
                 },
             },
 
+            j_asc_business = {
+                name = "Divitiae Infinitae",
+                text = {
+                    "Scored {C:attention}Face{} cards {C:green}randomly{} give",
+                    "one of these effects:",
+                    "{C:money}+$#1#{}",
+                    "{X:mult,C:white}X#2#{} Mult",
+                    "{X:asc_echips,C:white}^#3#{} Chips",
+                },
+            },
+
             j_asc_supernova = {
                 name = "Singularitas",
                 text = {
